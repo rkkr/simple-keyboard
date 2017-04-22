@@ -45,9 +45,4 @@
         android:title="@string/popup_on_keypress"
         android:defaultValue="@bool/config_default_key_preview_popup"
         android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_voice_input_key"
-        android:title="@string/voice_input"
-        android:defaultValue="true"
-        android:persistent="true" />
 </PreferenceScreen>

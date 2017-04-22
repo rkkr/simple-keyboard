@@ -52,13 +52,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_VIBRATE_ON = "vibrate_on";
     public static final String PREF_SOUND_ON = "sound_on";
     public static final String PREF_POPUP_ON = "popup_on";
-    // PREF_VOICE_MODE_OBSOLETE is obsolete. Use PREF_VOICE_INPUT_KEY instead.
-    public static final String PREF_VOICE_MODE_OBSOLETE = "voice_mode";
-    public static final String PREF_VOICE_INPUT_KEY = "pref_voice_input_key";
-    // PREF_AUTO_CORRECTION_THRESHOLD_OBSOLETE is obsolete. Use PREF_AUTO_CORRECTION instead.
-    public static final String PREF_AUTO_CORRECTION_THRESHOLD_OBSOLETE =
-            "auto_correction_threshold";
-    public static final String PREF_KEY_USE_DOUBLE_SPACE_PERIOD =
+        public static final String PREF_KEY_USE_DOUBLE_SPACE_PERIOD =
             "pref_key_use_double_space_period";
     public static final boolean ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS =
             BuildCompatUtils.EFFECTIVE_SDK_INT <= Build.VERSION_CODES.KITKAT;
@@ -192,10 +186,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         final boolean hasVibrator = AudioAndHapticFeedbackManager.getInstance().hasVibrator();
         return hasVibrator && prefs.getBoolean(PREF_VIBRATE_ON,
                 res.getBoolean(R.bool.config_default_vibration_enabled));
-    }
-
-    public static float readPlausibilityThreshold(final Resources res) {
-        return Float.parseFloat(res.getString(R.string.plausibility_threshold));
     }
 
     public static boolean readFromBuildConfigIfToShowKeyPreviewPopupOption(final Resources res) {

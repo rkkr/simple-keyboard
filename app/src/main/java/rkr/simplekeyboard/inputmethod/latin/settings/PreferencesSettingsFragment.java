@@ -56,11 +56,6 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
         // initialization method of these classes here. See {@link LatinIME#onCreate()}.
         RichInputMethodManager.init(context);
 
-        final boolean showVoiceKeyOption = res.getBoolean(
-                R.bool.config_enable_show_voice_key_option);
-        if (!showVoiceKeyOption) {
-            removePreference(Settings.PREF_VOICE_INPUT_KEY);
-        }
         if (!AudioAndHapticFeedbackManager.getInstance().hasVibrator()) {
             removePreference(Settings.PREF_VIBRATE_ON);
         }
@@ -74,13 +69,6 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
     @Override
     public void onResume() {
         super.onResume();
-        final Preference voiceInputKeyOption = findPreference(Settings.PREF_VOICE_INPUT_KEY);
-        if (voiceInputKeyOption != null) {
-            RichInputMethodManager.getInstance().refreshSubtypeCaches();
-            voiceInputKeyOption.setEnabled(VOICE_IME_ENABLED);
-            voiceInputKeyOption.setSummary(VOICE_IME_ENABLED
-                    ? null : getText(R.string.voice_input_disabled_summary));
-        }
     }
 
     @Override

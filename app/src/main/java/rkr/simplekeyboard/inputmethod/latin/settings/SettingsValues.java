@@ -89,7 +89,6 @@ public class SettingsValues {
     public final int mKeypressVibrationDuration;
     public final float mKeypressSoundVolume;
     public final int mKeyPreviewPopupDismissDelay;
-    public final float mPlausibilityThreshold;
     private final AsyncResultHolder<AppWorkaroundsUtils> mAppWorkarounds;
 
     // Debug settings
@@ -139,7 +138,6 @@ public class SettingsValues {
         mKeypressVibrationDuration = Settings.readKeypressVibrationDuration(prefs, res);
         mKeypressSoundVolume = Settings.readKeypressSoundVolume(prefs, res);
         mKeyPreviewPopupDismissDelay = Settings.readKeyPreviewPopupDismissDelay(prefs, res);
-        mPlausibilityThreshold = Settings.readPlausibilityThreshold(res);
         mAccount = prefs.getString(LocalSettingsConstants.PREF_ACCOUNT_NAME,
                 null /* default */);
         mIsInternal = Settings.isInternal(prefs);
@@ -165,14 +163,6 @@ public class SettingsValues {
             new TargetPackageInfoGetterTask(context, mAppWorkarounds)
                     .execute(mInputAttributes.mTargetApplicationPackageName);
         }
-    }
-
-    public boolean isMetricsLoggingEnabled() {
-        return mEnableMetricsLogging;
-    }
-
-    public boolean isApplicationSpecifiedCompletionsOn() {
-        return mInputAttributes.mApplicationSpecifiedCompletionOn;
     }
 
     public boolean isWordSeparator(final int code) {
@@ -223,61 +213,6 @@ public class SettingsValues {
         final AppWorkaroundsUtils appWorkaroundUtils
                 = mAppWorkarounds.get(null, TIMEOUT_TO_GET_TARGET_PACKAGE);
         return null == appWorkaroundUtils ? false : appWorkaroundUtils.isBeforeJellyBean();
-    }
-
-    public boolean isBrokenByRecorrection() {
-        final AppWorkaroundsUtils appWorkaroundUtils
-                = mAppWorkarounds.get(null, TIMEOUT_TO_GET_TARGET_PACKAGE);
-        return null == appWorkaroundUtils ? false : appWorkaroundUtils.isBrokenByRecorrection();
-    }
-
-    private static float readAutoCorrectionThreshold(final Resources res,
-            final String currentAutoCorrectionSetting) {
-        final String[] autoCorrectionThresholdValues = res.getStringArray(
-                R.array.auto_correction_threshold_values);
-        // When autoCorrectionThreshold is greater than 1.0, it's like auto correction is off.
-        final float autoCorrectionThreshold;
-        try {
-            final int arrayIndex = Integer.parseInt(currentAutoCorrectionSetting);
-            if (arrayIndex >= 0 && arrayIndex < autoCorrectionThresholdValues.length) {
-                final String val = autoCorrectionThresholdValues[arrayIndex];
-                if (FLOAT_MAX_VALUE_MARKER_STRING.equals(val)) {
-                    autoCorrectionThreshold = Float.MAX_VALUE;
-                } else if (FLOAT_NEGATIVE_INFINITY_MARKER_STRING.equals(val)) {
-                    autoCorrectionThreshold = Float.NEGATIVE_INFINITY;
-                } else {
-                    autoCorrectionThreshold = Float.parseFloat(val);
-                }
-            } else {
-                autoCorrectionThreshold = Float.MAX_VALUE;
-            }
-        } catch (final NumberFormatException e) {
-            // Whenever the threshold settings are correct, never come here.
-            Log.w(TAG, "Cannot load auto correction threshold setting."
-                    + " currentAutoCorrectionSetting: " + currentAutoCorrectionSetting
-                    + ", autoCorrectionThresholdValues: "
-                    + Arrays.toString(autoCorrectionThresholdValues), e);
-            return Float.MAX_VALUE;
-        }
-        return autoCorrectionThreshold;
-    }
-
-    private static boolean needsToShowVoiceInputKey(final SharedPreferences prefs,
-            final Resources res) {
-        // Migrate preference from {@link Settings#PREF_VOICE_MODE_OBSOLETE} to
-        // {@link Settings#PREF_VOICE_INPUT_KEY}.
-        if (prefs.contains(Settings.PREF_VOICE_MODE_OBSOLETE)) {
-            final String voiceModeMain = res.getString(R.string.voice_mode_main);
-            final String voiceMode = prefs.getString(
-                    Settings.PREF_VOICE_MODE_OBSOLETE, voiceModeMain);
-            final boolean shouldShowVoiceInputKey = voiceModeMain.equals(voiceMode);
-            prefs.edit()
-                    .putBoolean(Settings.PREF_VOICE_INPUT_KEY, shouldShowVoiceInputKey)
-                    // Remove the obsolete preference if exists.
-                    .remove(Settings.PREF_VOICE_MODE_OBSOLETE)
-                    .apply();
-        }
-        return prefs.getBoolean(Settings.PREF_VOICE_INPUT_KEY, true);
     }
 
     public String dump() {

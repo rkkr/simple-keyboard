@@ -37,21 +37,4 @@
         latin:minValue="@integer/config_min_longpress_timeout"
         latin:maxValue="@integer/config_max_longpress_timeout"
         latin:stepValue="@integer/config_longpress_timeout_step" />
-    <CheckBoxPreference
-        android:key="pref_enable_emoji_alt_physical_key"
-        android:title="@string/prefs_enable_emoji_alt_physical_key"
-        android:summary="@string/prefs_enable_emoji_alt_physical_key_summary"
-        android:defaultValue="true"
-        android:persistent="true" />
-    <CheckBoxPreference
-        android:key="pref_show_setup_wizard_icon"
-        android:title="@string/show_setup_wizard_icon"
-        android:summary="@string/show_setup_wizard_icon_summary"
-        android:persistent="true" />
-    <PreferenceScreen
-        android:fragment="rkr.simplekeyboard.inputmethod.latin.settings.DebugSettingsFragment"
-        android:key="screen_debug"
-        android:title="Debug settings"
-        android:defaultValue="false"
-        android:persistent="true" />
 </PreferenceScreen>

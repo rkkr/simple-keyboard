@@ -47,14 +47,6 @@
     <fraction name="config_language_on_spacebar_text_ratio">24.00%</fraction>
 
     <!-- For 5-row keyboard -->
-    <fraction name="config_key_vertical_gap_5row">2.65%p</fraction>
-    <fraction name="config_key_letter_ratio_5row">53%</fraction>
-    <fraction name="config_key_shifted_letter_hint_ratio_5row">30%</fraction>
-
-    <dimen name="config_suggestions_strip_height">44dp</dimen>
-    <dimen name="config_suggestions_strip_horizontal_margin">340dp</dimen>
-    <dimen name="config_suggestions_strip_edge_key_width">54dp</dimen>
-    <fraction name="config_min_more_suggestions_width">50%</fraction>
 
     <!-- Gesture floating preview text parameters -->
     <dimen name="config_gesture_floating_preview_text_size">32dp</dimen>
@@ -63,8 +55,4 @@
     <dimen name="config_gesture_floating_preview_vertical_padding">21dp</dimen>
 
     <!-- Emoji keyboard -->
-    <fraction name="config_emoji_keyboard_key_width">7.69%p</fraction>
-    <fraction name="config_emoji_keyboard_row_height">33%p</fraction>
-    <fraction name="config_emoji_keyboard_key_letter_size">60%p</fraction>
-    <integer name="config_emoji_keyboard_max_page_key_count">39</integer>
 </resources>
