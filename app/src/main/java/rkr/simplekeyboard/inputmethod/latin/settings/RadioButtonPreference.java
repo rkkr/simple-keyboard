@@ -34,7 +34,7 @@ public class RadioButtonPreference extends Preference {
          *
          * @param preference This preference.
          */
-        public void onRadioButtonClicked(RadioButtonPreference preference);
+        void onRadioButtonClicked(RadioButtonPreference preference);
     }
 
     private boolean mIsSelected;
@@ -78,10 +78,6 @@ public class RadioButtonPreference extends Preference {
         mRadioButton.setChecked(mIsSelected);
         mRadioButton.setOnClickListener(mClickListener);
         view.setOnClickListener(mClickListener);
-    }
-
-    public boolean isSelected() {
-        return mIsSelected;
     }
 
     public void setSelected(final boolean selected) {

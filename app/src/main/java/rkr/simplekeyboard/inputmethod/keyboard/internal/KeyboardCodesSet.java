@@ -16,9 +16,9 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-
 import java.util.HashMap;
+
+import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 public final class KeyboardCodesSet {
     public static final String PREFIX_CODE = "!code/";

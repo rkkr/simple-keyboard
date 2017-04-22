@@ -16,11 +16,11 @@
 
 package rkr.simplekeyboard.inputmethod.event;
 
+import android.support.annotation.NonNull;
+
 import rkr.simplekeyboard.inputmethod.annotations.ExternallyReferenced;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-
-import android.support.annotation.NonNull;
 
 /**
  * Class representing a generic input event as handled by Latin IME.

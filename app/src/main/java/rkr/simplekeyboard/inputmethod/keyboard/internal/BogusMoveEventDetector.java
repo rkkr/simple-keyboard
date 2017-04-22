@@ -107,9 +107,4 @@ public final class BogusMoveEventDetector {
     private static int getDistance(final int x1, final int y1, final int x2, final int y2) {
         return (int)Math.hypot(x1 - x2, y1 - y2);
     }
-
-    public boolean isCloseToActualDownEvent(final int x, final int y) {
-        return sNeedsProximateBogusDownMoveUpEventHack
-                && getDistanceFromDownEvent(x, y) < mRadiusThreshold;
-    }
 }

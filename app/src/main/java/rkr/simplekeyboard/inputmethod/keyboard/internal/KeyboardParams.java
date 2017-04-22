@@ -16,19 +16,18 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.SparseIntArray;
-
-import rkr.simplekeyboard.inputmethod.keyboard.Key;
-import rkr.simplekeyboard.inputmethod.keyboard.KeyboardId;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import rkr.simplekeyboard.inputmethod.keyboard.Key;
+import rkr.simplekeyboard.inputmethod.keyboard.KeyboardId;
+import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 public class KeyboardParams {
     public KeyboardId mId;

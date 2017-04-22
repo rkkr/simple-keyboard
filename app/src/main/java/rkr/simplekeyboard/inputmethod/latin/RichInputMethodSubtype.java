@@ -16,11 +16,14 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
-
 import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
+
+import java.util.HashMap;
+import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
@@ -29,11 +32,7 @@ import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
-import java.util.HashMap;
-import java.util.Locale;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
 
 /**
  * Enrichment class for InputMethodSubtype to enable concurrent multi-lingual input.
@@ -145,16 +144,6 @@ public class RichInputMethodSubtype {
     @NonNull
     public Locale getLocale() {
         return mLocale;
-    }
-
-    @NonNull
-    public Locale getOriginalLocale() {
-        return mOriginalLocale;
-    }
-
-    public boolean isRtlSubtype() {
-        // The subtype is considered RTL if the language of the main subtype is RTL.
-        return LocaleUtils.isRtlLanguage(mLocale);
     }
 
     // TODO: remove this method

@@ -21,8 +21,6 @@ import android.view.inputmethod.InputMethodSubtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 
-import android.support.annotation.Nullable;
-
 @SuppressWarnings("unused")
 public final class StatsUtils {
 

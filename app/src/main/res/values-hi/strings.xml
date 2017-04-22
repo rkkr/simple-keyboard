@@ -62,7 +62,5 @@
     <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"बटन दबाने पर कंपन अवधि"</string>
     <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"बटन दबाने पर आवाज़ का स्तर"</string>
     <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"बटन दबाए रखने की समयाविधि"</string>
-    <string name="prefs_enable_emoji_alt_physical_key" msgid="5963640002335470112">"कीबोर्ड के लिए स्माइलीज़"</string>
-    <string name="prefs_enable_emoji_alt_physical_key_summary" msgid="5259484820941627827">"भौतिक Alt कुंजी इमोजी पैलेट दिखाती है"</string>
     <string name="button_default" msgid="3988017840431881491">"सामान्य"</string>
 </resources>

@@ -18,11 +18,10 @@ package rkr.simplekeyboard.inputmethod.latin.utils;
 
 import android.os.Handler;
 import android.os.Looper;
-
-import java.lang.ref.WeakReference;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
+import java.lang.ref.WeakReference;
 
 public class LeakGuardHandlerWrapper<T> extends Handler {
     private final WeakReference<T> mOwnerInstanceRef;

@@ -16,14 +16,13 @@
 
 package rkr.simplekeyboard.inputmethod.event;
 
+import android.support.annotation.NonNull;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-
 import java.util.ArrayList;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 /**
  * This class implements the logic chain between receiving events and generating code points.

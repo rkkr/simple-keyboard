@@ -18,14 +18,14 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.content.res.Resources;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-import rkr.simplekeyboard.inputmethod.keyboard.internal.MoreKeySpec;
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-
 import java.util.Arrays;
 import java.util.Locale;
+
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
+import rkr.simplekeyboard.inputmethod.keyboard.internal.MoreKeySpec;
+import rkr.simplekeyboard.inputmethod.latin.common.Constants;
+import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
 public final class SpacingAndPunctuations {
     private final int[] mSortedSymbolsPrecededBySpace;
@@ -67,25 +67,6 @@ public final class SpacingAndPunctuations {
         // English variants. German rules (not "German typography") also have small gotchas.
         mUsesAmericanTypography = Locale.ENGLISH.getLanguage().equals(locale.getLanguage());
         mUsesGermanRules = Locale.GERMAN.getLanguage().equals(locale.getLanguage());
-        final String[] suggestPuncsSpec = MoreKeySpec.splitKeySpecs(
-                res.getString(R.string.suggested_punctuations));
-    }
-
-    @UsedForTesting
-    public SpacingAndPunctuations(final SpacingAndPunctuations model,
-            final int[] overrideSortedWordSeparators) {
-        mSortedSymbolsPrecededBySpace = model.mSortedSymbolsPrecededBySpace;
-        mSortedSymbolsFollowedBySpace = model.mSortedSymbolsFollowedBySpace;
-        mSortedSymbolsClusteringTogether = model.mSortedSymbolsClusteringTogether;
-        mSortedWordConnectors = model.mSortedWordConnectors;
-        mSortedWordSeparators = overrideSortedWordSeparators;
-        mSortedSentenceTerminators = model.mSortedSentenceTerminators;
-        mSentenceSeparator = model.mSentenceSeparator;
-        mAbbreviationMarker = model.mAbbreviationMarker;
-        mSentenceSeparatorAndSpace = model.mSentenceSeparatorAndSpace;
-        mCurrentLanguageHasSpaces = model.mCurrentLanguageHasSpaces;
-        mUsesAmericanTypography = model.mUsesAmericanTypography;
-        mUsesGermanRules = model.mUsesGermanRules;
     }
 
     public boolean isWordSeparator(final int code) {
@@ -94,10 +75,6 @@ public final class SpacingAndPunctuations {
 
     public boolean isWordConnector(final int code) {
         return Arrays.binarySearch(mSortedWordConnectors, code) >= 0;
-    }
-
-    public boolean isWordCodePoint(final int code) {
-        return Character.isLetter(code) || isWordConnector(code);
     }
 
     public boolean isUsuallyPrecededBySpace(final int code) {

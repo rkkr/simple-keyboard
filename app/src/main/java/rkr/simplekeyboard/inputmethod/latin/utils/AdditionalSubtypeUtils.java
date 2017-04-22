@@ -16,24 +16,23 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.ASCII_CAPABLE;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.IS_ADDITIONAL_SUBTYPE;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
-
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
+import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
+import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
+
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.ASCII_CAPABLE;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.IS_ADDITIONAL_SUBTYPE;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
 
 public final class AdditionalSubtypeUtils {
     private static final String TAG = AdditionalSubtypeUtils.class.getSimpleName();
@@ -42,11 +41,6 @@ public final class AdditionalSubtypeUtils {
 
     private AdditionalSubtypeUtils() {
         // This utility class is not publicly instantiable.
-    }
-
-    @UsedForTesting
-    public static boolean isAdditionalSubtype(final InputMethodSubtype subtype) {
-        return subtype.containsExtraValueKey(IS_ADDITIONAL_SUBTYPE);
     }
 
     private static final String LOCALE_AND_LAYOUT_SEPARATOR = ":";
@@ -177,11 +171,6 @@ public final class AdditionalSubtypeUtils {
         extraValueItems.add(KEYBOARD_LAYOUT_SET + "=" + keyboardLayoutSetName);
         if (isAsciiCapable) {
             extraValueItems.add(ASCII_CAPABLE);
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN &&
-                SubtypeLocaleUtils.isExceptionalLocale(localeString)) {
-            extraValueItems.add(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME + "=" +
-                    SubtypeLocaleUtils.getKeyboardLayoutSetDisplayName(keyboardLayoutSetName));
         }
         extraValueItems.add(IS_ADDITIONAL_SUBTYPE);
         return TextUtils.join(",", extraValueItems);

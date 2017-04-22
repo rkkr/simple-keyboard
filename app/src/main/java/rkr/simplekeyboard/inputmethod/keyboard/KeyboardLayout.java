@@ -16,12 +16,12 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 
 /**
  * KeyboardLayout maintains the keyboard layout information.

@@ -23,24 +23,23 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.util.Log;
-
-import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
-import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
-import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.RunInLocale;
-import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
 
 import java.util.Collections;
 import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
+import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
+import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
+import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.RunInLocale;
+import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
 
 public final class Settings implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = Settings.class.getSimpleName();
@@ -279,18 +278,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                 R.array.keypress_vibration_durations, DEFAULT_KEYPRESS_VIBRATION_DURATION));
     }
 
-    public static float readKeyPreviewAnimationScale(final SharedPreferences prefs,
-            final String prefKey, final float defaultValue) {
-        final float fraction = prefs.getFloat(prefKey, UNDEFINED_PREFERENCE_VALUE_FLOAT);
-        return (fraction != UNDEFINED_PREFERENCE_VALUE_FLOAT) ? fraction : defaultValue;
-    }
-
-    public static int readKeyPreviewAnimationDuration(final SharedPreferences prefs,
-            final String prefKey, final int defaultValue) {
-        final int milliseconds = prefs.getInt(prefKey, UNDEFINED_PREFERENCE_VALUE_INT);
-        return (milliseconds != UNDEFINED_PREFERENCE_VALUE_INT) ? milliseconds : defaultValue;
-    }
-
     public static float readKeyboardHeight(final SharedPreferences prefs,
             final float defaultValue) {
         final float percentage = UNDEFINED_PREFERENCE_VALUE_FLOAT;
@@ -299,18 +286,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static boolean readUseFullscreenMode(final Resources res) {
         return res.getBoolean(R.bool.config_use_fullscreen_mode);
-    }
-
-    public static boolean readShowSetupWizardIcon(final SharedPreferences prefs,
-            final Context context) {
-        if (!prefs.contains(PREF_SHOW_SETUP_WIZARD_ICON)) {
-            final ApplicationInfo appInfo = context.getApplicationInfo();
-            final boolean isApplicationInSystemImage =
-                    (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-            // Default value
-            return !isApplicationInSystemImage;
-        }
-        return prefs.getBoolean(PREF_SHOW_SETUP_WIZARD_ICON, false);
     }
 
     public static boolean readHasHardwareKeyboard(final Configuration conf) {
@@ -324,66 +299,5 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static boolean isInternal(final SharedPreferences prefs) {
         return prefs.getBoolean(PREF_KEY_IS_INTERNAL, false);
-    }
-
-    public void writeLastUsedPersonalizationToken(byte[] token) {
-        if (token == null) {
-            mPrefs.edit().remove(PREF_LAST_USED_PERSONALIZATION_TOKEN).apply();
-        } else {
-            final String tokenStr = StringUtils.byteArrayToHexString(token);
-            mPrefs.edit().putString(PREF_LAST_USED_PERSONALIZATION_TOKEN, tokenStr).apply();
-        }
-    }
-
-    public byte[] readLastUsedPersonalizationToken() {
-        final String tokenStr = mPrefs.getString(PREF_LAST_USED_PERSONALIZATION_TOKEN, null);
-        return StringUtils.hexStringToByteArray(tokenStr);
-    }
-
-    public void writeLastPersonalizationDictWipedTime(final long timestamp) {
-        mPrefs.edit().putLong(PREF_LAST_PERSONALIZATION_DICT_WIPED_TIME, timestamp).apply();
-    }
-
-    public long readLastPersonalizationDictGeneratedTime() {
-        return mPrefs.getLong(PREF_LAST_PERSONALIZATION_DICT_WIPED_TIME, 0);
-    }
-
-    public void writeCorpusHandlesForPersonalization(final Set<String> corpusHandles) {
-        mPrefs.edit().putStringSet(PREF_CORPUS_HANDLES_FOR_PERSONALIZATION, corpusHandles).apply();
-    }
-
-    public Set<String> readCorpusHandlesForPersonalization() {
-        final Set<String> emptySet = Collections.emptySet();
-        return mPrefs.getStringSet(PREF_CORPUS_HANDLES_FOR_PERSONALIZATION, emptySet);
-    }
-
-    public static void writeEmojiRecentKeys(final SharedPreferences prefs, String str) {
-        prefs.edit().putString(PREF_EMOJI_RECENT_KEYS, str).apply();
-    }
-
-    public static String readEmojiRecentKeys(final SharedPreferences prefs) {
-        return prefs.getString(PREF_EMOJI_RECENT_KEYS, "");
-    }
-
-    public static void writeLastTypedEmojiCategoryPageId(
-            final SharedPreferences prefs, final int categoryId, final int categoryPageId) {
-        final String key = PREF_EMOJI_CATEGORY_LAST_TYPED_ID + categoryId;
-        prefs.edit().putInt(key, categoryPageId).apply();
-    }
-
-    public static int readLastTypedEmojiCategoryPageId(
-            final SharedPreferences prefs, final int categoryId) {
-        final String key = PREF_EMOJI_CATEGORY_LAST_TYPED_ID + categoryId;
-        return prefs.getInt(key, 0);
-    }
-
-    public static void writeLastShownEmojiCategoryId(
-            final SharedPreferences prefs, final int categoryId) {
-        prefs.edit().putInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_ID, categoryId).apply();
-    }
-
-    public static int readLastShownEmojiCategoryId(
-            final SharedPreferences prefs, final int defValue) {
-        return prefs.getInt(PREF_LAST_SHOWN_EMOJI_CATEGORY_ID, defValue);
     }
 }

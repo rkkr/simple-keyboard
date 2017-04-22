@@ -16,6 +16,10 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
+import android.support.annotation.NonNull;
+
+import java.util.ArrayList;
+
 import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.event.CombinerChain;
 import rkr.simplekeyboard.inputmethod.event.Event;
@@ -26,10 +30,6 @@ import rkr.simplekeyboard.inputmethod.latin.common.InputPointers;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.define.DebugFlags;
 import rkr.simplekeyboard.inputmethod.latin.define.DecoderSpecificConstants;
-
-import java.util.ArrayList;
-
-import android.support.annotation.NonNull;
 
 /**
  * A place to store the currently composing word with information such as adjacent key codes as well
@@ -87,10 +87,6 @@ public final class WordComposer {
         mCursorPositionWithinWord = 0;
         mRejectedBatchModeSuggestion = null;
         refreshTypedWordCache();
-    }
-
-    public ComposedData getComposedDataSnapshot() {
-        return new ComposedData(getInputPointers(), isBatchMode(), mTypedWordCache.toString());
     }
 
     /**

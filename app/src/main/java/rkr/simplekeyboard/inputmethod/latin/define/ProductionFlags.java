@@ -21,8 +21,6 @@ public final class ProductionFlags {
         // This class is not publicly instantiable.
     }
 
-    public static final boolean IS_HARDWARE_KEYBOARD_SUPPORTED = false;
-
     /**
      * When {@code false}, the split keyboard is not yet ready to be enabled.
      */

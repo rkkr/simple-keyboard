@@ -62,7 +62,5 @@
     <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Kohëzgjatja e dridhjes nga shtypja e tastit"</string>
     <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Volumi i tingullit të tastit"</string>
     <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Vonesa e shtypjes së gjatë të tastit"</string>
-    <string name="prefs_enable_emoji_alt_physical_key" msgid="5963640002335470112">"Emoji për tastierën fizike"</string>
-    <string name="prefs_enable_emoji_alt_physical_key_summary" msgid="5259484820941627827">"Tasti fizik Alt shfaq paletën me emoji"</string>
     <string name="button_default" msgid="3988017840431881491">"I parazgjedhur"</string>
 </resources>

@@ -16,14 +16,14 @@
 
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
-import rkr.simplekeyboard.inputmethod.latin.utils.FragmentUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
-
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.MenuItem;
+
+import rkr.simplekeyboard.inputmethod.latin.utils.FragmentUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
 
 public final class SettingsActivity extends PreferenceActivity {
     private static final String DEFAULT_FRAGMENT = SettingsFragment.class.getName();

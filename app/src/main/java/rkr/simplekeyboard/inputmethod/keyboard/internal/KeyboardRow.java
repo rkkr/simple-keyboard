@@ -20,14 +20,14 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.util.Xml;
 
-import rkr.simplekeyboard.inputmethod.keyboard.Key;
-import rkr.simplekeyboard.inputmethod.keyboard.Keyboard;
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
-
 import org.xmlpull.v1.XmlPullParser;
 
 import java.util.ArrayDeque;
+
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.keyboard.Key;
+import rkr.simplekeyboard.inputmethod.keyboard.Keyboard;
+import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 
 /**
  * Container for keys in the keyboard. All keys in a row are at the same Y-coordinate.

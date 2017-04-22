@@ -19,12 +19,10 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
-import android.preference.Preference;
 
-import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 
 /**
@@ -39,10 +37,6 @@ import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
  * - Voice input key
  */
 public final class PreferencesSettingsFragment extends SubScreenFragment {
-
-    private static final boolean VOICE_IME_ENABLED =
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
-
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);

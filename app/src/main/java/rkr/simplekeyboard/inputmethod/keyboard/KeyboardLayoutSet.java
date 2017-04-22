@@ -16,34 +16,18 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.NO_SETTINGS_KEY;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.util.Log;
 import android.util.SparseArray;
 import android.util.Xml;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodSubtype;
-
-import rkr.simplekeyboard.inputmethod.compat.EditorInfoCompatUtils;
-import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
-import rkr.simplekeyboard.inputmethod.compat.UserManagerCompatUtils;
-import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardBuilder;
-import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardParams;
-import rkr.simplekeyboard.inputmethod.keyboard.internal.UniqueKeysCache;
-import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
-import rkr.simplekeyboard.inputmethod.latin.define.DebugFlags;
-import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.ScriptUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -52,8 +36,22 @@ import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.compat.EditorInfoCompatUtils;
+import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
+import rkr.simplekeyboard.inputmethod.compat.UserManagerCompatUtils;
+import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardBuilder;
+import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardParams;
+import rkr.simplekeyboard.inputmethod.keyboard.internal.UniqueKeysCache;
+import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
+import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
+import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.ScriptUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils;
+
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.NO_SETTINGS_KEY;
 
 /**
  * This class represents a set of keyboard layouts. Each of them represents a different keyboard

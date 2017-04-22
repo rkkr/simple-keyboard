@@ -16,11 +16,11 @@
 
 package rkr.simplekeyboard.inputmethod.latin.common;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
+import android.support.annotation.NonNull;
 
 import java.util.Arrays;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 
 // TODO: This class is not thread-safe.
 public final class ResizableIntArray {

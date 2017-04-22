@@ -48,7 +48,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         public final boolean mKeySelectionByDraggingFinger;
         public final int mTouchNoiseThresholdTime;
         public final int mTouchNoiseThresholdDistance;
-        public final int mSuppressKeyPreviewAfterBatchInputDuration;
         public final int mKeyRepeatStartTimeout;
         public final int mKeyRepeatInterval;
         public final int mLongPressShiftLockTimeout;
@@ -60,8 +59,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
                     R.styleable.MainKeyboardView_touchNoiseThresholdTime, 0);
             mTouchNoiseThresholdDistance = mainKeyboardViewAttr.getDimensionPixelSize(
                     R.styleable.MainKeyboardView_touchNoiseThresholdDistance, 0);
-            mSuppressKeyPreviewAfterBatchInputDuration = mainKeyboardViewAttr.getInt(
-                    R.styleable.MainKeyboardView_suppressKeyPreviewAfterBatchInputDuration, 0);
             mKeyRepeatStartTimeout = mainKeyboardViewAttr.getInt(
                     R.styleable.MainKeyboardView_keyRepeatStartTimeout, 0);
             mKeyRepeatInterval = mainKeyboardViewAttr.getInt(

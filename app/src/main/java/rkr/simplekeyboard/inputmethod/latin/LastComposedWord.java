@@ -18,11 +18,11 @@ package rkr.simplekeyboard.inputmethod.latin;
 
 import android.text.TextUtils;
 
+import java.util.ArrayList;
+
 import rkr.simplekeyboard.inputmethod.event.Event;
 import rkr.simplekeyboard.inputmethod.latin.common.InputPointers;
 import rkr.simplekeyboard.inputmethod.latin.define.DecoderSpecificConstants;
-
-import java.util.ArrayList;
 
 /**
  * This class encapsulates data about a word previously composed, but that has been

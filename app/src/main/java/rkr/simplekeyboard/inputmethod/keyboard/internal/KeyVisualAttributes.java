@@ -18,13 +18,12 @@ package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.SparseIntArray;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 public final class KeyVisualAttributes {
     @Nullable

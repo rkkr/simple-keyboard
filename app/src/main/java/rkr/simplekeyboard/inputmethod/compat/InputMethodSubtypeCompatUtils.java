@@ -17,19 +17,18 @@
 package rkr.simplekeyboard.inputmethod.compat;
 
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.inputmethod.InputMethodSubtype;
-
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Locale;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
+import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
+import rkr.simplekeyboard.inputmethod.latin.common.Constants;
+import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 
 public final class InputMethodSubtypeCompatUtils {
     private static final String TAG = InputMethodSubtypeCompatUtils.class.getSimpleName();
@@ -40,13 +39,6 @@ public final class InputMethodSubtypeCompatUtils {
             CompatUtils.getConstructor(InputMethodSubtype.class,
                     int.class, int.class, String.class, String.class, String.class, boolean.class,
                     boolean.class, int.class);
-    static {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            if (CONSTRUCTOR_INPUT_METHOD_SUBTYPE == null) {
-                android.util.Log.w(TAG, "Warning!!! Constructor is not defined.");
-            }
-        }
-    }
 
     // Note that {@link InputMethodSubtype#isAsciiCapable()} has been introduced in API level 19
     // (Build.VERSION_CODE.KITKAT).
@@ -57,16 +49,10 @@ public final class InputMethodSubtypeCompatUtils {
         // This utility class is not publicly instantiable.
     }
 
-    @SuppressWarnings("deprecation")
     @NonNull
     public static InputMethodSubtype newInputMethodSubtype(int nameId, int iconId, String locale,
             String mode, String extraValue, boolean isAuxiliary,
             boolean overridesImplicitlyEnabledSubtype, int id) {
-        if (CONSTRUCTOR_INPUT_METHOD_SUBTYPE == null
-                || Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return new InputMethodSubtype(nameId, iconId, locale, mode, extraValue, isAuxiliary,
-                    overridesImplicitlyEnabledSubtype);
-        }
         return (InputMethodSubtype) CompatUtils.newInstance(CONSTRUCTOR_INPUT_METHOD_SUBTYPE,
                 nameId, iconId, locale, mode, extraValue, isAuxiliary,
                 overridesImplicitlyEnabledSubtype, id);

@@ -125,78 +125,10 @@
         <attr name="backgroundDimAlpha" format="integer" />
         <!-- More keys keyboard will shown at touched point. -->
         <attr name="showMoreKeysKeyboardAtTouchedPoint" format="boolean" />
-        <!-- Minimum distance between gesture trail sampling points. -->
-        <attr name="gestureTrailMinSamplingDistance" format="dimension" />
-        <!-- Maximum angular threshold between gesture trail interpolation segments in degree. -->
-        <attr name="gestureTrailMaxInterpolationAngularThreshold" format="integer" />
-        <!-- Maximum distance threshold between gesture trail interpolation segments. -->
-        <attr name="gestureTrailMaxInterpolationDistanceThreshold" format="dimension" />
-        <!-- Maximum number of gesture trail interpolation segments. -->
-        <attr name="gestureTrailMaxInterpolationSegments" format="integer" />
-        <!-- Delay after gesture trail starts fading out in millisecond. -->
-        <attr name="gestureTrailFadeoutStartDelay" format="integer" />
-        <!-- Duration while gesture trail is fading out in millisecond. -->
-        <attr name="gestureTrailFadeoutDuration" format="integer" />
-        <!-- Interval of updating gesture trail in millisecond. -->
-        <attr name="gestureTrailUpdateInterval" format="integer" />
-        <attr name="gestureTrailColor" format="color" />
-        <attr name="gestureTrailStartWidth" format="dimension" />
-        <attr name="gestureTrailEndWidth" format="dimension" />
-        <attr name="gestureTrailBodyRatio" format="integer" />
-        <attr name="gestureTrailShadowRatio" format="integer" />
-        <!-- Delay after gesture input and gesture floating preview text dismissing in millisecond -->
-        <attr name="gestureFloatingPreviewTextLingerTimeout" format="integer" />
-        <!-- Attributes for GestureFloatingPreviewText -->
-        <attr name="gestureFloatingPreviewTextSize" format="dimension" />
-        <attr name="gestureFloatingPreviewTextColor" format="color" />
-        <attr name="gestureFloatingPreviewTextOffset" format="dimension" />
-        <attr name="gestureFloatingPreviewColor" format="color" />
-        <attr name="gestureFloatingPreviewHorizontalPadding" format="dimension" />
-        <attr name="gestureFloatingPreviewVerticalPadding" format="dimension" />
-        <attr name="gestureFloatingPreviewRoundRadius" format="dimension" />
-        <!-- Static threshold for gesture after fast typing (msec) -->
-        <attr name="gestureStaticTimeThresholdAfterFastTyping" format="integer" />
-        <!-- Static threshold for starting gesture detection (keyWidth%/sec) -->
-        <attr name="gestureDetectFastMoveSpeedThreshold" format="fraction" />
-        <!-- Dynamic threshold for gesture after fast typing (msec) -->
-        <attr name="gestureDynamicThresholdDecayDuration" format="integer" />
-        <!-- Time based threshold values for gesture detection (msec) -->
-        <attr name="gestureDynamicTimeThresholdFrom" format="integer" />
-        <attr name="gestureDynamicTimeThresholdTo" format="integer" />
-        <!-- Distance based threshold values for gesture detection (keyWidth%/sec) -->
-        <attr name="gestureDynamicDistanceThresholdFrom" format="fraction" />
-        <attr name="gestureDynamicDistanceThresholdTo" format="fraction" />
-        <!-- Parameter for gesture sampling (keyWidth%/sec) -->
-        <attr name="gestureSamplingMinimumDistance" format="fraction" />
-        <!-- Parameters for gesture recognition (msec) and (keyWidth%/sec) -->
-        <attr name="gestureRecognitionMinimumTime" format="integer" />
-        <attr name="gestureRecognitionUpdateTime" format="integer" />
-        <attr name="gestureRecognitionSpeedThreshold" format="fraction" />
-        <!-- Suppress showing key preview duration after batch input in millisecond -->
-        <attr name="suppressKeyPreviewAfterBatchInputDuration" format="integer" />
     </declare-styleable>
 
     <declare-styleable name="MoreKeysKeyboardView">
         <attr name="divider" format="reference" />
-    </declare-styleable>
-
-    <declare-styleable name="SuggestionStripView">
-        <attr name="suggestionStripOptions" format="integer">
-            <!-- This should be aligned with
-                 {@link rkr.simplekeyboard.inputmethod.suggestions.SuggestionStripLayoutHelper.AUTO_CORRECT_BOLD} etc. -->
-            <flag name="autoCorrectBold" value="0x01" />
-            <flag name="autoCorrectUnderline" value="0x02" />
-            <flag name="validTypedWordBold" value="0x04" />
-        </attr>
-        <attr name="colorValidTypedWord" format="color" />
-        <attr name="colorTypedWord" format="color" />
-        <attr name="colorAutoCorrect" format="color" />
-        <attr name="colorSuggested" format="color" />
-        <attr name="alphaObsoleted" format="fraction" />
-        <attr name="suggestionsCountInStrip" format="integer" />
-        <attr name="centerSuggestionPercentile" format="fraction" />
-        <attr name="maxMoreSuggestionsRow" format="integer" />
-        <attr name="minMoreSuggestionsWidth" format="float" />
     </declare-styleable>
 
     <declare-styleable name="Keyboard">

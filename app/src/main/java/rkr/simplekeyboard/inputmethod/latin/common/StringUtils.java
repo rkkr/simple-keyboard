@@ -16,14 +16,14 @@
 
 package rkr.simplekeyboard.inputmethod.latin.common;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 
 public final class StringUtils {
     public static final int CAPITALIZE_NONE = 0;  // No caps, or mixed case
@@ -170,33 +170,6 @@ public final class StringUtils {
         return join(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT, result);
     }
 
-    /**
-     * Remove duplicates from an array of strings.
-     *
-     * This method will always keep the first occurrence of all strings at their position
-     * in the array, removing the subsequent ones.
-     */
-    public static void removeDupes(@NonNull final ArrayList<String> suggestions) {
-        if (suggestions.size() < 2) {
-            return;
-        }
-        int i = 1;
-        // Don't cache suggestions.size(), since we may be removing items
-        while (i < suggestions.size()) {
-            final String cur = suggestions.get(i);
-            // Compare each suggestion with each previous suggestion
-            for (int j = 0; j < i; j++) {
-                final String previous = suggestions.get(j);
-                if (equals(cur, previous)) {
-                    suggestions.remove(i);
-                    i--;
-                    break;
-                }
-            }
-            i++;
-        }
-    }
-
     @NonNull
     public static String capitalizeFirstCodePoint(@NonNull final String s,
             @NonNull final Locale locale) {
@@ -208,24 +181,6 @@ public final class StringUtils {
         final int cutoff = s.offsetByCodePoints(0, 1);
         return s.substring(0, cutoff).toUpperCase(getLocaleUsedForToTitleCase(locale))
                 + s.substring(cutoff);
-    }
-
-    @NonNull
-    public static String capitalizeFirstAndDowncaseRest(@NonNull final String s,
-            @NonNull final Locale locale) {
-        if (s.length() <= 1) {
-            return s.toUpperCase(getLocaleUsedForToTitleCase(locale));
-        }
-        // TODO: fix the bugs below
-        // - It does not work for Serbian, because it fails to account for the "lj" character,
-        // which should be "Lj" in title case and "LJ" in upper case.
-        // - It does not work for Dutch, because it fails to account for the "ij" digraph when it's
-        // written as two separate code points. They are two different characters but both should
-        // be capitalized as "IJ" as if they were a single letter in most words (not all). If the
-        // unicode char for the ligature is used however, it works.
-        final int cutoff = s.offsetByCodePoints(0, 1);
-        return s.substring(0, cutoff).toUpperCase(getLocaleUsedForToTitleCase(locale))
-                + s.substring(cutoff).toLowerCase(locale);
     }
 
     @NonNull
@@ -295,63 +250,6 @@ public final class StringUtils {
         final int[] codePoints = toCodePointArray(string);
         Arrays.sort(codePoints);
         return codePoints;
-    }
-
-    /**
-     * Construct a String from a code point array
-     *
-     * @param codePoints a code point array that is null terminated when its logical length is
-     * shorter than the array length.
-     * @return a string constructed from the code point array.
-     */
-    @NonNull
-    public static String getStringFromNullTerminatedCodePointArray(
-            @NonNull final int[] codePoints) {
-        int stringLength = codePoints.length;
-        for (int i = 0; i < codePoints.length; i++) {
-            if (codePoints[i] == 0) {
-                stringLength = i;
-                break;
-            }
-        }
-        return new String(codePoints, 0 /* offset */, stringLength);
-    }
-
-    // This method assumes the text is not null. For the empty string, it returns CAPITALIZE_NONE.
-    public static int getCapitalizationType(@NonNull final String text) {
-        // If the first char is not uppercase, then the word is either all lower case or
-        // camel case, and in either case we return CAPITALIZE_NONE.
-        final int len = text.length();
-        int index = 0;
-        for (; index < len; index = text.offsetByCodePoints(index, 1)) {
-            if (Character.isLetter(text.codePointAt(index))) {
-                break;
-            }
-        }
-        if (index == len) return CAPITALIZE_NONE;
-        if (!Character.isUpperCase(text.codePointAt(index))) {
-            return CAPITALIZE_NONE;
-        }
-        int capsCount = 1;
-        int letterCount = 1;
-        for (index = text.offsetByCodePoints(index, 1); index < len;
-                index = text.offsetByCodePoints(index, 1)) {
-            if (1 != capsCount && letterCount != capsCount) break;
-            final int codePoint = text.codePointAt(index);
-            if (Character.isUpperCase(codePoint)) {
-                ++capsCount;
-                ++letterCount;
-            } else if (Character.isLetter(codePoint)) {
-                // We need to discount non-letters since they may not be upper-case, but may
-                // still be part of a word (e.g. single quote or dash, as in "IT'S" or "FULL-TIME")
-                ++letterCount;
-            }
-        }
-        // We know the first char is upper case. So we want to test if either every letter other
-        // than the first is lower case, or if they are all upper case. If the string is exactly
-        // one char long, then we will arrive here with letterCount 1, and this is correct, too.
-        if (1 == capsCount) return CAPITALIZE_FIRST;
-        return (letterCount == capsCount ? CAPITALIZE_ALL : CAPITALIZE_NONE);
     }
 
     public static boolean isIdenticalAfterUpcase(@NonNull final String text) {
@@ -540,51 +438,6 @@ public final class StringUtils {
         return Constants.CODE_DOUBLE_QUOTE == codePoint;
     }
 
-    public static boolean isEmptyStringOrWhiteSpaces(@NonNull final String s) {
-        final int N = codePointCount(s);
-        for (int i = 0; i < N; ++i) {
-            if (!Character.isWhitespace(s.codePointAt(i))) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    @UsedForTesting
-    @NonNull
-    public static String byteArrayToHexString(@Nullable final byte[] bytes) {
-        if (bytes == null || bytes.length == 0) {
-            return EMPTY_STRING;
-        }
-        final StringBuilder sb = new StringBuilder();
-        for (final byte b : bytes) {
-            sb.append(String.format("%02x", b & 0xff));
-        }
-        return sb.toString();
-    }
-
-    /**
-     * Convert hex string to byte array. The string length must be an even number.
-     */
-    @UsedForTesting
-    @Nullable
-    public static byte[] hexStringToByteArray(@Nullable final String hexString) {
-        if (isEmpty(hexString)) {
-            return null;
-        }
-        final int N = hexString.length();
-        if (N % 2 != 0) {
-            throw new NumberFormatException("Input hex string length must be an even number."
-                    + " Length = " + N);
-        }
-        final byte[] bytes = new byte[N / 2];
-        for (int i = 0; i < N; i += 2) {
-            bytes[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4)
-                    + Character.digit(hexString.charAt(i + 1), 16));
-        }
-        return bytes;
-    }
-
     private static final String LANGUAGE_GREEK = "el";
 
     @NonNull
@@ -623,82 +476,5 @@ public final class StringUtils {
             --i;
         }
         return lastIndex - i;
-    }
-
-    @UsedForTesting
-    public static class Stringizer<E> {
-        @NonNull
-        private static final String[] EMPTY_STRING_ARRAY = new String[0];
-
-        @UsedForTesting
-        @NonNull
-        public String stringize(@Nullable final E element) {
-            if (element == null) {
-                return "null";
-            }
-            return element.toString();
-        }
-
-        @UsedForTesting
-        @NonNull
-        public final String join(@Nullable final E[] array) {
-            return joinStringArray(toStringArray(array), null /* delimiter */);
-        }
-
-        @UsedForTesting
-        public final String join(@Nullable final E[] array, @Nullable final String delimiter) {
-            return joinStringArray(toStringArray(array), delimiter);
-        }
-
-        @NonNull
-        protected String[] toStringArray(@Nullable final E[] array) {
-            if (array == null) {
-                return EMPTY_STRING_ARRAY;
-            }
-            final String[] stringArray = new String[array.length];
-            for (int index = 0; index < array.length; index++) {
-                stringArray[index] = stringize(array[index]);
-            }
-            return stringArray;
-        }
-
-        @NonNull
-        protected String joinStringArray(@NonNull final String[] stringArray,
-                @Nullable final String delimiter) {
-            if (delimiter == null) {
-                return Arrays.toString(stringArray);
-            }
-            final StringBuilder sb = new StringBuilder();
-            for (int index = 0; index < stringArray.length; index++) {
-                sb.append(index == 0 ? "[" : delimiter);
-                sb.append(stringArray[index]);
-            }
-            return sb + "]";
-        }
-    }
-
-    /**
-     * Returns whether the last composed word contains line-breaking character (e.g. CR or LF).
-     * @param text the text to be examined.
-     * @return {@code true} if the last composed word contains line-breaking separator.
-     */
-    public static boolean hasLineBreakCharacter(@Nullable final String text) {
-        if (isEmpty(text)) {
-            return false;
-        }
-        for (int i = text.length() - 1; i >= 0; --i) {
-            final char c = text.charAt(i);
-            switch (c) {
-                case CHAR_LINE_FEED:
-                case CHAR_VERTICAL_TAB:
-                case CHAR_FORM_FEED:
-                case CHAR_CARRIAGE_RETURN:
-                case CHAR_NEXT_LINE:
-                case CHAR_LINE_SEPARATOR:
-                case CHAR_PARAGRAPH_SEPARATOR:
-                    return true;
-            }
-        }
-        return false;
     }
 }

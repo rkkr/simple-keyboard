@@ -17,7 +17,6 @@
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.content.res.TypedArray;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 

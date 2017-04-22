@@ -16,14 +16,14 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_OUTPUT_TEXT;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_UNSPECIFIED;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_OUTPUT_TEXT;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_UNSPECIFIED;
 
 /**
  * The string parser of the key specification.
@@ -69,10 +69,7 @@ public final class KeySpecParser {
         }
         // This is a workaround to have a key that has a supplementary code point. We can't put a
         // string in resource as a XML entity of a supplementary code point or a surrogate pair.
-        if (keySpec.startsWith(PREFIX_HEX, labelEnd + 1)) {
-            return true;
-        }
-        return false;
+        return keySpec.startsWith(PREFIX_HEX, labelEnd + 1);
     }
 
     @NonNull

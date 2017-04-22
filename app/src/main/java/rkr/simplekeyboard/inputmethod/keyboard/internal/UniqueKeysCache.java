@@ -16,11 +16,11 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
-import rkr.simplekeyboard.inputmethod.keyboard.Key;
+import android.support.annotation.NonNull;
 
 import java.util.HashMap;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.keyboard.Key;
 
 public abstract class UniqueKeysCache {
     public abstract void setEnabled(boolean enabled);

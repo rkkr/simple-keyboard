@@ -16,12 +16,12 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.keyboard.MoreKeysPanel;
 import rkr.simplekeyboard.inputmethod.keyboard.PointerTracker;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 public interface DrawingProxy {
     /**
@@ -29,14 +29,14 @@ public interface DrawingProxy {
      * @param key the {@link Key} that is being pressed.
      * @param withPreview true if key popup preview should be displayed.
      */
-    public void onKeyPressed(@NonNull Key key, boolean withPreview);
+    void onKeyPressed(@NonNull Key key, boolean withPreview);
 
     /**
      * Called when a key is being released.
      * @param key the {@link Key} that is being released.
      * @param withAnimation when true, key popup preview should be dismissed with animation.
      */
-    public void onKeyReleased(@NonNull Key key, boolean withAnimation);
+    void onKeyReleased(@NonNull Key key, boolean withAnimation);
 
     /**
      * Start showing more keys keyboard of a key that is being long pressed.
@@ -46,14 +46,14 @@ public interface DrawingProxy {
      *     keyboard.
      */
     @Nullable
-    public MoreKeysPanel showMoreKeysKeyboard(@NonNull Key key, @NonNull PointerTracker tracker);
+    MoreKeysPanel showMoreKeysKeyboard(@NonNull Key key, @NonNull PointerTracker tracker);
 
     /**
      * Start a while-typing-animation.
      * @param fadeInOrOut {@link #FADE_IN} starts while-typing-fade-in animation.
      * {@link #FADE_OUT} starts while-typing-fade-out animation.
      */
-    public void startWhileTypingAnimation(int fadeInOrOut);
-    public static final int FADE_IN = 0;
-    public static final int FADE_OUT = 1;
+    void startWhileTypingAnimation(int fadeInOrOut);
+    int FADE_IN = 0;
+    int FADE_OUT = 1;
 }

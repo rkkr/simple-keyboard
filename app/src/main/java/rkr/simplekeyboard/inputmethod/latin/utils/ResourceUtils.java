@@ -24,13 +24,13 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.PatternSyntaxException;
+
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
+import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 
 public final class ResourceUtils {
     private static final String TAG = ResourceUtils.class.getSimpleName();
@@ -228,11 +228,6 @@ public final class ResourceUtils {
     // {@link Resources#getDimensionPixelSize(int)} returns at least one pixel size.
     public static boolean isValidDimensionPixelSize(final int dimension) {
         return dimension > 0;
-    }
-
-    // {@link Resources#getDimensionPixelOffset(int)} may return zero pixel offset.
-    public static boolean isValidDimensionPixelOffset(final int dimension) {
-        return dimension >= 0;
     }
 
     public static float getFloatFromFraction(final Resources res, final int fractionResId) {

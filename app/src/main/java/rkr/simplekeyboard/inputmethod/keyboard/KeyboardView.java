@@ -28,20 +28,19 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
-import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyDrawParams;
-import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyVisualAttributes;
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
-
 import java.util.HashSet;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyDrawParams;
+import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyVisualAttributes;
+import rkr.simplekeyboard.inputmethod.latin.common.Constants;
+import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
 
 /**
  * A view that renders a virtual {@link Keyboard}.

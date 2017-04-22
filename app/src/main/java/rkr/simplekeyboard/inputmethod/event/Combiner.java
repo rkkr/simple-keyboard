@@ -16,9 +16,9 @@
 
 package rkr.simplekeyboard.inputmethod.event;
 
-import java.util.ArrayList;
-
 import android.support.annotation.NonNull;
+
+import java.util.ArrayList;
 
 /**
  * A generic interface for combiners. Combiners are objects that transform chains of input events

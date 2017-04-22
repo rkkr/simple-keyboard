@@ -19,15 +19,14 @@ package rkr.simplekeyboard.inputmethod.keyboard.internal;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.util.SparseIntArray;
 
-import rkr.simplekeyboard.inputmethod.R;
-
 import java.util.HashMap;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import rkr.simplekeyboard.inputmethod.R;
 
 public final class KeyboardIconsSet {
     private static final String TAG = KeyboardIconsSet.class.getSimpleName();

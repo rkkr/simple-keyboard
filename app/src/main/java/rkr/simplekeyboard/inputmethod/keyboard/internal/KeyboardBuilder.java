@@ -21,23 +21,12 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.util.Xml;
-
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-import rkr.simplekeyboard.inputmethod.keyboard.Key;
-import rkr.simplekeyboard.inputmethod.keyboard.Keyboard;
-import rkr.simplekeyboard.inputmethod.keyboard.KeyboardId;
-import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils.ParseException;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -46,7 +35,17 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Locale;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
+import rkr.simplekeyboard.inputmethod.keyboard.Key;
+import rkr.simplekeyboard.inputmethod.keyboard.Keyboard;
+import rkr.simplekeyboard.inputmethod.keyboard.KeyboardId;
+import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
+import rkr.simplekeyboard.inputmethod.latin.common.Constants;
+import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils.ParseException;
 
 /**
  * Keyboard Building helper.
@@ -604,9 +603,9 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             if (event == XmlPullParser.START_TAG) {
                 final String tag = parser.getName();
                 if (TAG_CASE.equals(tag)) {
-                    selected |= parseCase(parser, row, selected ? true : skip);
+                    selected |= parseCase(parser, row, selected || skip);
                 } else if (TAG_DEFAULT.equals(tag)) {
-                    selected |= parseDefault(parser, row, selected ? true : skip);
+                    selected |= parseDefault(parser, row, selected || skip);
                 } else {
                     throw new XmlParseUtils.IllegalStartTag(parser, tag, TAG_SWITCH);
                 }
@@ -626,10 +625,10 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         final boolean selected = parseCaseCondition(parser);
         if (row == null) {
             // Processing Rows.
-            parseKeyboardContent(parser, selected ? skip : true);
+            parseKeyboardContent(parser, !selected || skip);
         } else {
             // Processing Keys.
-            parseRowContent(parser, row, selected ? skip : true);
+            parseRowContent(parser, row, !selected || skip);
         }
         return selected;
     }

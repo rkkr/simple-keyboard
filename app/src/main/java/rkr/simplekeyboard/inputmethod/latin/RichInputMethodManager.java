@@ -16,8 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.inputmethodservice.InputMethodService;
@@ -25,10 +23,18 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.compat.InputMethodManagerCompatWrapper;
@@ -38,16 +44,7 @@ import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LanguageOnSpacebarUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
 
 /**
  * Enrichment class for InputMethodManager to simplify interaction and add functionality.
@@ -329,11 +326,6 @@ public class RichInputMethodManager {
 
     private static RichInputMethodSubtype sForcedSubtypeForTesting = null;
 
-    @UsedForTesting
-    static void forceSubtype(@NonNull final InputMethodSubtype subtype) {
-        sForcedSubtypeForTesting = RichInputMethodSubtype.getRichInputMethodSubtype(subtype);
-    }
-
     @NonNull
     public Locale getCurrentSubtypeLocale() {
         if (null != sForcedSubtypeForTesting) {
@@ -503,31 +495,6 @@ public class RichInputMethodManager {
             return defaultValue;
         }
         return mImmWrapper.shouldOfferSwitchingToNextInputMethod(binder);
-    }
-
-    public boolean isSystemLocaleSameAsLocaleOfAllEnabledSubtypesOfEnabledImes() {
-        final Locale systemLocale = mContext.getResources().getConfiguration().locale;
-        final Set<InputMethodSubtype> enabledSubtypesOfEnabledImes = new HashSet<>();
-        final InputMethodManager inputMethodManager = getInputMethodManager();
-        final List<InputMethodInfo> enabledInputMethodInfoList =
-                inputMethodManager.getEnabledInputMethodList();
-        for (final InputMethodInfo info : enabledInputMethodInfoList) {
-            final List<InputMethodSubtype> enabledSubtypes =
-                    inputMethodManager.getEnabledInputMethodSubtypeList(
-                            info, true /* allowsImplicitlySelectedSubtypes */);
-            if (enabledSubtypes.isEmpty()) {
-                // An IME with no subtypes is found.
-                return false;
-            }
-            enabledSubtypesOfEnabledImes.addAll(enabledSubtypes);
-        }
-        for (final InputMethodSubtype subtype : enabledSubtypesOfEnabledImes) {
-            if (!subtype.isAuxiliary() && !subtype.getLocale().isEmpty()
-                    && !systemLocale.equals(SubtypeLocaleUtils.getSubtypeLocale(subtype))) {
-                return false;
-            }
-        }
-        return true;
     }
 
     private void updateCurrentSubtype(@Nullable final InputMethodSubtype subtype) {

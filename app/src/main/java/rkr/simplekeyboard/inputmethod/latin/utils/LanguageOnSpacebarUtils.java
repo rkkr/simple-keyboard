@@ -16,15 +16,14 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
+import android.support.annotation.NonNull;
 import android.view.inputmethod.InputMethodSubtype;
-
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
 
 /**
  * This class determines that the language name on the spacebar should be displayed in what format.

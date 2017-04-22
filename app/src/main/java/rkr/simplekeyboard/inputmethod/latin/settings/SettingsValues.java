@@ -18,26 +18,18 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
-import android.util.Log;
-import android.view.inputmethod.EditorInfo;
-
-import rkr.simplekeyboard.inputmethod.compat.AppWorkaroundsUtils;
-import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
-import rkr.simplekeyboard.inputmethod.latin.utils.AsyncResultHolder;
-import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.TargetPackageInfoGetterTask;
-
-import java.util.Arrays;
-import java.util.Locale;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.inputmethod.EditorInfo;
+
+import java.util.Locale;
+
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
+import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
+import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 
 /**
  * When you call the constructor of this class, you may want to change the current system locale by
@@ -45,17 +37,10 @@ import android.support.annotation.Nullable;
  */
 // Non-final for testing via mock library.
 public class SettingsValues {
-    private static final String TAG = SettingsValues.class.getSimpleName();
-    // "floatMaxValue" and "floatNegativeInfinity" are special marker strings for
-    // Float.NEGATIVE_INFINITE and Float.MAX_VALUE. Currently used for auto-correction settings.
-    private static final String FLOAT_MAX_VALUE_MARKER_STRING = "floatMaxValue";
-    private static final String FLOAT_NEGATIVE_INFINITY_MARKER_STRING = "floatNegativeInfinity";
-    private static final int TIMEOUT_TO_GET_TARGET_PACKAGE = 5; // seconds
     public static final float DEFAULT_SIZE_SCALE = 1.0f; // 100%
 
     // From resources:
     public final SpacingAndPunctuations mSpacingAndPunctuations;
-    public final int mDelayInMillisecondsToUpdateOldSuggestions;
     public final long mDoubleSpacePeriodTimeout;
     // From configuration:
     public final Locale mLocale;
@@ -71,15 +56,9 @@ public class SettingsValues {
     public final boolean mShowsLanguageSwitchKey;
     public final boolean mUseDoubleSpacePeriod;
     public final int mKeyLongpressTimeout;
-    public final boolean mEnableEmojiAltPhysicalKey = false;
-    public final boolean mShowAppIcon = false;
-    public final boolean mIsShowAppIconSettingInPreferences = false;
-    public final boolean mCloudSyncEnabled = false;
-    public final boolean mEnableMetricsLogging = false;
     public final boolean mShouldShowLxxSuggestionUi;
     // Use split layout for keyboard.
     public final boolean mIsSplitKeyboardEnabled;
-    public final int mScreenMetrics;
 
     // From the input box
     @NonNull
@@ -89,7 +68,6 @@ public class SettingsValues {
     public final int mKeypressVibrationDuration;
     public final float mKeypressSoundVolume;
     public final int mKeyPreviewPopupDismissDelay;
-    private final AsyncResultHolder<AppWorkaroundsUtils> mAppWorkarounds;
 
     // Debug settings
     public final boolean mIsInternal;
@@ -102,14 +80,10 @@ public class SettingsValues {
     public final float mKeyPreviewDismissEndXScale;
     public final float mKeyPreviewDismissEndYScale;
 
-    @Nullable public final String mAccount;
-
     public SettingsValues(final Context context, final SharedPreferences prefs, final Resources res,
             @NonNull final InputAttributes inputAttributes) {
         mLocale = res.getConfiguration().locale;
         // Get the resources
-        mDelayInMillisecondsToUpdateOldSuggestions =
-                res.getInteger(R.integer.config_delay_in_milliseconds_to_update_old_suggestions);
         mSpacingAndPunctuations = new SpacingAndPunctuations(res);
 
         // Store the input attributes
@@ -120,17 +94,13 @@ public class SettingsValues {
         mVibrateOn = Settings.readVibrationEnabled(prefs, res);
         mSoundOn = Settings.readKeypressSoundEnabled(prefs, res);
         mKeyPreviewPopupOn = Settings.readKeyPreviewPopupEnabled(prefs, res);
-        mIncludesOtherImesInLanguageSwitchList = Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS
-                ? prefs.getBoolean(Settings.PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST, false)
-                : true /* forcibly */;
-        mShowsLanguageSwitchKey = Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS
-                ? Settings.readShowsLanguageSwitchKey(prefs) : true /* forcibly */;
+        mIncludesOtherImesInLanguageSwitchList = !Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS || prefs.getBoolean(Settings.PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST, false) /* forcibly */;
+        mShowsLanguageSwitchKey = !Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS || Settings.readShowsLanguageSwitchKey(prefs) /* forcibly */;
         mUseDoubleSpacePeriod = prefs.getBoolean(Settings.PREF_KEY_USE_DOUBLE_SPACE_PERIOD, true)
                 && inputAttributes.mIsGeneralTextInput;
         mDoubleSpacePeriodTimeout = res.getInteger(R.integer.config_double_space_period_timeout);
         mHasHardwareKeyboard = Settings.readHasHardwareKeyboard(res.getConfiguration());
         mIsSplitKeyboardEnabled = prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD, false);
-        mScreenMetrics = Settings.readScreenMetrics(res);
 
         mShouldShowLxxSuggestionUi = Settings.SHOULD_SHOW_LXX_SUGGESTION_UI;
         // Compute other readable settings
@@ -138,8 +108,6 @@ public class SettingsValues {
         mKeypressVibrationDuration = Settings.readKeypressVibrationDuration(prefs, res);
         mKeypressSoundVolume = Settings.readKeypressSoundVolume(prefs, res);
         mKeyPreviewPopupDismissDelay = Settings.readKeyPreviewPopupDismissDelay(prefs, res);
-        mAccount = prefs.getString(LocalSettingsConstants.PREF_ACCOUNT_NAME,
-                null /* default */);
         mIsInternal = Settings.isInternal(prefs);
         mHasKeyboardResize = true;
         mKeyboardHeightScale = Settings.readKeyboardHeight(prefs, DEFAULT_SIZE_SCALE);
@@ -154,15 +122,6 @@ public class SettingsValues {
         mKeyPreviewDismissEndXScale = defaultKeyPreviewDismissEndScale;
         mKeyPreviewDismissEndYScale = defaultKeyPreviewDismissEndScale;
         mDisplayOrientation = res.getConfiguration().orientation;
-        mAppWorkarounds = new AsyncResultHolder<>("AppWorkarounds");
-        final PackageInfo packageInfo = TargetPackageInfoGetterTask.getCachedPackageInfo(
-                mInputAttributes.mTargetApplicationPackageName);
-        if (null != packageInfo) {
-            mAppWorkarounds.set(new AppWorkaroundsUtils(packageInfo));
-        } else {
-            new TargetPackageInfoGetterTask(context, mAppWorkarounds)
-                    .execute(mInputAttributes.mTargetApplicationPackageName);
-        }
     }
 
     public boolean isWordSeparator(final int code) {
@@ -209,18 +168,10 @@ public class SettingsValues {
         return mDisplayOrientation == configuration.orientation;
     }
 
-    public boolean isBeforeJellyBean() {
-        final AppWorkaroundsUtils appWorkaroundUtils
-                = mAppWorkarounds.get(null, TIMEOUT_TO_GET_TARGET_PACKAGE);
-        return null == appWorkaroundUtils ? false : appWorkaroundUtils.isBeforeJellyBean();
-    }
-
     public String dump() {
         final StringBuilder sb = new StringBuilder("Current settings :");
         sb.append("\n   mSpacingAndPunctuations = ");
         sb.append("" + mSpacingAndPunctuations.dump());
-        sb.append("\n   mDelayInMillisecondsToUpdateOldSuggestions = ");
-        sb.append("" + mDelayInMillisecondsToUpdateOldSuggestions);
         sb.append("\n   mAutoCap = ");
         sb.append("" + mAutoCap);
         sb.append("\n   mVibrateOn = ");
@@ -252,9 +203,6 @@ public class SettingsValues {
         sb.append("\n   mAutoCorrectionEnabledPerUserSettings = ");
         sb.append("\n   mDisplayOrientation = ");
         sb.append("" + mDisplayOrientation);
-        sb.append("\n   mAppWorkarounds = ");
-        final AppWorkaroundsUtils awu = mAppWorkarounds.get(null, 0);
-        sb.append("" + (null == awu ? "null" : awu.toString()));
         sb.append("\n   mIsInternal = ");
         sb.append("" + mIsInternal);
         sb.append("\n   mKeyPreviewShowUpDuration = ");

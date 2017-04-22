@@ -16,10 +16,10 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
+import android.text.TextUtils;
+
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-
-import android.text.TextUtils;
 
 /**
  * The string parser of codesArray specification for <GridRows />. The attribute codesArray is an

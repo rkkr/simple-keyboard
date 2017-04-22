@@ -32,25 +32,25 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
+import java.util.TreeSet;
+
+import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.ViewCompatUtils;
-import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
-
-import java.util.TreeSet;
 
 final class CustomInputStylePreference extends DialogPreference
         implements DialogInterface.OnCancelListener {
     private static final boolean DEBUG_SUBTYPE_ID = false;
 
     interface Listener {
-        public void onRemoveCustomInputStyle(CustomInputStylePreference stylePref);
-        public void onSaveCustomInputStyle(CustomInputStylePreference stylePref);
-        public void onAddCustomInputStyle(CustomInputStylePreference stylePref);
-        public SubtypeLocaleAdapter getSubtypeLocaleAdapter();
-        public KeyboardLayoutSetAdapter getKeyboardLayoutSetAdapter();
+        void onRemoveCustomInputStyle(CustomInputStylePreference stylePref);
+        void onSaveCustomInputStyle(CustomInputStylePreference stylePref);
+        void onAddCustomInputStyle(CustomInputStylePreference stylePref);
+        SubtypeLocaleAdapter getSubtypeLocaleAdapter();
+        KeyboardLayoutSetAdapter getKeyboardLayoutSetAdapter();
     }
 
     private static final String KEY_PREFIX = "subtype_pref_";
@@ -236,7 +236,7 @@ final class CustomInputStylePreference extends DialogPreference
 
         public SavedState(final Parcel source) {
             super(source);
-            mSubtype = (InputMethodSubtype)source.readParcelable(null);
+            mSubtype = source.readParcelable(null);
         }
 
         @SuppressWarnings("hiding")

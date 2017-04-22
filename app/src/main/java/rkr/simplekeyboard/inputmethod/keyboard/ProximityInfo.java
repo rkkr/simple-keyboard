@@ -17,17 +17,16 @@
 package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.util.Log;
-
-import rkr.simplekeyboard.inputmethod.keyboard.internal.TouchPositionCorrection;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.keyboard.internal.TouchPositionCorrection;
+import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 public class ProximityInfo {
     private static final String TAG = ProximityInfo.class.getSimpleName();
@@ -90,10 +89,10 @@ public class ProximityInfo {
             float[] sweetSpotCenterYs, float[] sweetSpotRadii)
     {
         return -1;
-    };
+    }
 
     private static void releaseProximityInfoNative(long nativeProximityInfo)
-    {};
+    {}
 
     static boolean needsProximityInfo(final Key key) {
         // Don't include special keys into ProximityInfo.
@@ -223,10 +222,6 @@ public class ProximityInfo {
                 mMostCommonKeyWidth, mMostCommonKeyHeight, proximityCharsArray, keyCount,
                 keyXCoordinates, keyYCoordinates, keyWidths, keyHeights, keyCharCodes,
                 sweetSpotCenterXs, sweetSpotCenterYs, sweetSpotRadii);
-    }
-
-    public long getNativeProximityInfo() {
-        return mNativeProximityInfo;
     }
 
     @Override
@@ -363,32 +358,6 @@ y |---+---+---+---+-v-+-|-+---+---+---+---+---|          | thresholdBase and get
                 neighbors.add(neighborsFlatBuffer[index]);
             }
             mGridNeighbors[i] = Collections.unmodifiableList(neighbors);
-        }
-    }
-
-    public void fillArrayWithNearestKeyCodes(final int x, final int y, final int primaryKeyCode,
-            final int[] dest) {
-        final int destLength = dest.length;
-        if (destLength < 1) {
-            return;
-        }
-        int index = 0;
-        if (primaryKeyCode > Constants.CODE_SPACE) {
-            dest[index++] = primaryKeyCode;
-        }
-        final List<Key> nearestKeys = getNearestKeys(x, y);
-        for (Key key : nearestKeys) {
-            if (index >= destLength) {
-                break;
-            }
-            final int code = key.getCode();
-            if (code <= Constants.CODE_SPACE) {
-                break;
-            }
-            dest[index++] = code;
-        }
-        if (index < destLength) {
-            dest[index] = Constants.NOT_A_CODE;
         }
     }
 

@@ -31,12 +31,12 @@ import rkr.simplekeyboard.inputmethod.R;
 public final class SeekBarDialogPreference extends DialogPreference
         implements SeekBar.OnSeekBarChangeListener {
     public interface ValueProxy {
-        public int readValue(final String key);
-        public int readDefaultValue(final String key);
-        public void writeValue(final int value, final String key);
-        public void writeDefaultValue(final String key);
-        public String getValueText(final int value);
-        public void feedbackValue(final int value);
+        int readValue(final String key);
+        int readDefaultValue(final String key);
+        void writeValue(final int value, final String key);
+        void writeDefaultValue(final String key);
+        String getValueText(final int value);
+        void feedbackValue(final int value);
     }
 
     private final int mMaxValue;

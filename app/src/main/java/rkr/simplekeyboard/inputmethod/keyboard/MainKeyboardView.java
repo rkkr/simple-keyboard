@@ -26,6 +26,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +35,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.WeakHashMap;
+
+import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.annotations.ExternallyReferenced;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.DrawingPreviewPlacerView;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.DrawingProxy;
@@ -43,17 +48,11 @@ import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyPreviewView;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.MoreKeySpec;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.NonDistinctMultitouchHelper;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.TimerHandler;
-import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LanguageOnSpacebarUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
-
-import java.util.WeakHashMap;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 /**
  * A view that is responsible for detecting key presses and touch movements.
@@ -164,10 +163,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
                 attrs, R.styleable.MainKeyboardView, defStyle, R.style.MainKeyboardView);
         final int ignoreAltCodeKeyTimeout = mainKeyboardViewAttr.getInt(
                 R.styleable.MainKeyboardView_ignoreAltCodeKeyTimeout, 0);
-        final int gestureRecognitionUpdateTime = mainKeyboardViewAttr.getInt(
-                R.styleable.MainKeyboardView_gestureRecognitionUpdateTime, 0);
-        mTimerHandler = new TimerHandler(
-                this, ignoreAltCodeKeyTimeout, gestureRecognitionUpdateTime);
+        mTimerHandler = new TimerHandler(this, ignoreAltCodeKeyTimeout);
 
         final float keyHysteresisDistance = mainKeyboardViewAttr.getDimension(
                 R.styleable.MainKeyboardView_keyHysteresisDistance, 0.0f);
@@ -294,35 +290,9 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     }
 
     @ExternallyReferenced
-    public int getLanguageOnSpacebarAnimAlpha() {
-        return mLanguageOnSpacebarAnimAlpha;
-    }
-
-    @ExternallyReferenced
     public void setLanguageOnSpacebarAnimAlpha(final int alpha) {
         mLanguageOnSpacebarAnimAlpha = alpha;
         invalidateKey(mSpaceKey);
-    }
-
-    @ExternallyReferenced
-    public int getAltCodeKeyWhileTypingAnimAlpha() {
-        return mAltCodeKeyWhileTypingAnimAlpha;
-    }
-
-    @ExternallyReferenced
-    public void setAltCodeKeyWhileTypingAnimAlpha(final int alpha) {
-        if (mAltCodeKeyWhileTypingAnimAlpha == alpha) {
-            return;
-        }
-        // Update the visual of alt-code-key-while-typing.
-        mAltCodeKeyWhileTypingAnimAlpha = alpha;
-        final Keyboard keyboard = getKeyboard();
-        if (keyboard == null) {
-            return;
-        }
-        for (final Key key : keyboard.mAltCodeKeysWhileTyping) {
-            invalidateKey(key);
-        }
     }
 
     public void setKeyboardActionListener(final KeyboardActionListener listener) {

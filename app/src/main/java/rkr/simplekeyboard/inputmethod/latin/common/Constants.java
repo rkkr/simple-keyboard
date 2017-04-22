@@ -16,9 +16,9 @@
 
 package rkr.simplekeyboard.inputmethod.latin.common;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-
 import android.support.annotation.NonNull;
+
+import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 
 public final class Constants {
 

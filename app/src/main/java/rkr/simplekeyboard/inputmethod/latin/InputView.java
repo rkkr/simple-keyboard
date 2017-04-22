@@ -23,9 +23,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.keyboard.MainKeyboardView;
-
 public final class InputView extends FrameLayout {
     private final Rect mInputViewRect = new Rect();
     private MotionEventForwarder<?, ?> mActiveForwarder;

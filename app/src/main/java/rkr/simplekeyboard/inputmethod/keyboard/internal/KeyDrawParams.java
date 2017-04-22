@@ -17,11 +17,10 @@
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.graphics.Typeface;
-
-import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
+import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 
 public final class KeyDrawParams {
     @NonNull

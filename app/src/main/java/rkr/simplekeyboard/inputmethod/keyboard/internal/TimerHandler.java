@@ -38,13 +38,10 @@ public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
     private static final int MSG_DISMISS_GESTURE_FLOATING_PREVIEW_TEXT = 7;
 
     private final int mIgnoreAltCodeKeyTimeout;
-    private final int mGestureRecognitionUpdateTime;
 
-    public TimerHandler(@NonNull final DrawingProxy ownerInstance,
-            final int ignoreAltCodeKeyTimeout, final int gestureRecognitionUpdateTime) {
+    public TimerHandler(@NonNull final DrawingProxy ownerInstance, final int ignoreAltCodeKeyTimeout) {
         super(ownerInstance);
         mIgnoreAltCodeKeyTimeout = ignoreAltCodeKeyTimeout;
-        mGestureRecognitionUpdateTime = gestureRecognitionUpdateTime;
     }
 
     @Override
@@ -183,16 +180,6 @@ public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
     public void cancelAllKeyTimers() {
         cancelKeyRepeatTimers();
         cancelLongPressTimers();
-    }
-
-    @Override
-    public void startUpdateBatchInputTimer(@NonNull final PointerTracker tracker) {
-        if (mGestureRecognitionUpdateTime <= 0) {
-            return;
-        }
-        removeMessages(MSG_UPDATE_BATCH_INPUT, tracker);
-        sendMessageDelayed(obtainMessage(MSG_UPDATE_BATCH_INPUT, tracker),
-                mGestureRecognitionUpdateTime);
     }
 
     @Override

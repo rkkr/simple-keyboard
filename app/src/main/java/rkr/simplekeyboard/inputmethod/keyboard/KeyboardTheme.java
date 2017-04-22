@@ -23,11 +23,11 @@ import android.os.Build.VERSION_CODES;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
-import rkr.simplekeyboard.inputmethod.R;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
 
 public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     private static final String TAG = KeyboardTheme.class.getSimpleName();

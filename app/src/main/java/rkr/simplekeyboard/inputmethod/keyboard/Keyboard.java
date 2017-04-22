@@ -16,20 +16,19 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.SparseArray;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyVisualAttributes;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardIconsSet;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardParams;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 /**
  * Loads an XML description of a keyboard and stores the attributes of the keys. A keyboard

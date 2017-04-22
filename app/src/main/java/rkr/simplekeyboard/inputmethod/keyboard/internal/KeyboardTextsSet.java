@@ -20,12 +20,12 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
 
+import java.util.Locale;
+
 import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.utils.RunInLocale;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
-
-import java.util.Locale;
 
 // TODO: Make this an immutable class.
 public final class KeyboardTextsSet {

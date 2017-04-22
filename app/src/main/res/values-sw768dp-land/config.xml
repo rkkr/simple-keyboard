@@ -47,12 +47,4 @@
     <fraction name="config_language_on_spacebar_text_ratio">24.00%</fraction>
 
     <!-- For 5-row keyboard -->
-
-    <!-- Gesture floating preview text parameters -->
-    <dimen name="config_gesture_floating_preview_text_size">32dp</dimen>
-    <dimen name="config_gesture_floating_preview_text_offset">100dp</dimen>
-    <dimen name="config_gesture_floating_preview_horizontal_padding">32dp</dimen>
-    <dimen name="config_gesture_floating_preview_vertical_padding">21dp</dimen>
-
-    <!-- Emoji keyboard -->
 </resources>

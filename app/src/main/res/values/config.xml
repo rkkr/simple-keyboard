@@ -67,46 +67,4 @@
     <fraction name="config_key_vertical_gap_5row">3.20%p</fraction>
     <fraction name="config_key_letter_ratio_5row">55%</fraction>
     <fraction name="config_key_shifted_letter_hint_ratio_5row">41%</fraction>
-
-    <dimen name="config_suggestions_strip_height">40dp</dimen>
-    <dimen name="config_suggestions_strip_horizontal_margin">36dp</dimen>
-    <dimen name="config_suggestions_strip_edge_key_width">36dp</dimen>
-    <dimen name="config_more_suggestions_row_height">40dp</dimen>
-    <integer name="config_max_more_suggestions_row">6</integer>
-    <fraction name="config_min_more_suggestions_width">90%</fraction>
-    <dimen name="config_suggestion_min_width">44dp</dimen>
-    <dimen name="config_suggestion_text_horizontal_padding">6dp</dimen>
-    <dimen name="config_suggestion_text_size">18dp</dimen>
-    <dimen name="config_more_suggestions_hint_text_size">27dp</dimen>
-
-    <!-- Gesture floating preview text parameters -->
-    <dimen name="config_gesture_floating_preview_text_size">24dp</dimen>
-    <dimen name="config_gesture_floating_preview_text_offset">73dp</dimen>
-    <dimen name="config_gesture_floating_preview_horizontal_padding">24dp</dimen>
-    <dimen name="config_gesture_floating_preview_vertical_padding">16dp</dimen>
-    <dimen name="config_gesture_floating_preview_round_radius">2dp</dimen>
-
-    <!-- Emoji keyboard -->
-    <fraction name="config_emoji_keyboard_key_width">14.2857%p</fraction>
-    <fraction name="config_emoji_keyboard_row_height">33%p</fraction>
-    <fraction name="config_emoji_keyboard_key_letter_size">68%p</fraction>
-    <integer name="config_emoji_keyboard_max_page_key_count">21</integer>
-
-    <!-- Key codes of hardware keys that can be used to toggle the Emoji layout.
-         Each array defines a comma-separated tuple containing:
-         1. Key code constant from android.view.KeyEvent
-         2. Meta mask (if any) from android.view.KeyEvent
-         Used in EmojiAltPhysicalKeyDetector and KeyboardSwitcher. -->
-    <string-array name="keyboard_switcher_emoji" translatable="false">
-        <item>57,16</item> <!-- KeyEvent.KEYCODE_ALT_LEFT , KeyEvent.META_ALT_LEFT_ON -->
-    </string-array>
-
-    <!-- Key codes of hardware keys that can be used to toggle the Symbols (Shifted) layout.
-         Each array defines a comma-separated tuple containing:
-         1. Key code constant from android.view.KeyEvent
-         2. Meta mask (if any) from android.view.KeyEvent
-         Used in EmojiAltPhysicalKeyDetector and KeyboardSwitcher. -->
-    <string-array name="keyboard_switcher_symbols_shifted" translatable="false">
-        <item>58,32</item> <!-- KeyEvent.KEYCODE_ALT_RIGHT , KeyEvent.META_ALT_RIGHT_ON -->
-    </string-array>
 </resources>

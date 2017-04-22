@@ -16,16 +16,15 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-import rkr.simplekeyboard.inputmethod.latin.define.DecoderSpecificConstants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
+import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
+import rkr.simplekeyboard.inputmethod.latin.define.DecoderSpecificConstants;
 
 /**
  * Class to represent information of previous words. This class is used to add n-gram entries

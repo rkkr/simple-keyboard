@@ -16,10 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE_COMPAT;
-
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -37,11 +33,11 @@ import android.os.Debug;
 import android.os.IBinder;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.text.InputType;
 import android.util.Log;
 import android.util.PrintWriterPrinter;
 import android.util.Printer;
-import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -50,6 +46,12 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodSubtype;
 
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+
+import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.EditorInfoCompatUtils;
@@ -57,7 +59,6 @@ import rkr.simplekeyboard.inputmethod.compat.InputMethodServiceCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils.InsetsUpdater;
 import rkr.simplekeyboard.inputmethod.event.Event;
-import rkr.simplekeyboard.inputmethod.event.HardwareEventDecoder;
 import rkr.simplekeyboard.inputmethod.event.InputTransaction;
 import rkr.simplekeyboard.inputmethod.keyboard.Keyboard;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardActionListener;
@@ -79,14 +80,10 @@ import rkr.simplekeyboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
 import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
-import rkr.simplekeyboard.inputmethod.R;
 
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-
-import android.support.annotation.NonNull;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE_COMPAT;
 
 /**
  * Input method implementation for Qwerty'ish keyboard.
@@ -100,17 +97,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private static final int PENDING_IMS_CALLBACK_DURATION_MILLIS = 800;
     static final long DELAY_DEALLOCATE_MEMORY_MILLIS = TimeUnit.SECONDS.toMillis(10);
 
-    /**
-     * The name of the scheme used by the Package Manager to warn of a new package installation,
-     * replacement or removal.
-     */
-    private static final String SCHEME_PACKAGE = "package";
-
     final Settings mSettings;
     final InputLogic mInputLogic = new InputLogic(this /* LatinIME */);
-    // We expect to have only one decoder in almost all cases, hence the default capacity of 1.
-    // If it turns out we need several, it will get grown seamlessly.
-    final SparseArray<HardwareEventDecoder> mHardwareEventDecoders = new SparseArray<>(1);
 
     // TODO: Move these {@link View}s to {@link KeyboardSwitcher}.
     private View mInputView;
@@ -133,25 +121,14 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         private static final int MSG_UPDATE_SHIFT_STATE = 0;
         private static final int MSG_PENDING_IMS_CALLBACK = 1;
         private static final int MSG_UPDATE_SUGGESTION_STRIP = 2;
-        private static final int MSG_SHOW_GESTURE_PREVIEW_AND_SUGGESTION_STRIP = 3;
-        private static final int MSG_RESUME_SUGGESTIONS = 4;
         private static final int MSG_REOPEN_DICTIONARIES = 5;
-        private static final int MSG_UPDATE_TAIL_BATCH_INPUT_COMPLETED = 6;
         private static final int MSG_RESET_CACHES = 7;
         private static final int MSG_WAIT_FOR_DICTIONARY_LOAD = 8;
         private static final int MSG_DEALLOCATE_MEMORY = 9;
-        private static final int MSG_RESUME_SUGGESTIONS_FOR_START_INPUT = 10;
         private static final int MSG_SWITCH_LANGUAGE_AUTOMATICALLY = 11;
-        // Update this when adding new messages
-        private static final int MSG_LAST = MSG_SWITCH_LANGUAGE_AUTOMATICALLY;
 
-        private static final int ARG1_NOT_GESTURE_INPUT = 0;
-        private static final int ARG1_DISMISS_GESTURE_FLOATING_PREVIEW_TEXT = 1;
-        private static final int ARG1_SHOW_GESTURE_FLOATING_PREVIEW_TEXT = 2;
-        private static final int ARG2_UNUSED = 0;
         private static final int ARG1_TRUE = 1;
 
-        private int mDelayInMillisecondsToUpdateSuggestions;
         private int mDelayInMillisecondsToUpdateShiftState;
 
         public UIHandler(@NonNull final LatinIME ownerInstance) {
@@ -164,8 +141,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 return;
             }
             final Resources res = latinIme.getResources();
-            mDelayInMillisecondsToUpdateSuggestions = res.getInteger(
-                    R.integer.config_delay_in_milliseconds_to_update_suggestions);
             mDelayInMillisecondsToUpdateShiftState = res.getInteger(
                     R.integer.config_delay_in_milliseconds_to_update_shift_state);
         }
@@ -220,10 +195,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             removeMessages(MSG_UPDATE_SUGGESTION_STRIP);
         }
 
-        public boolean hasPendingUpdateSuggestions() {
-            return hasMessages(MSG_UPDATE_SUGGESTION_STRIP);
-        }
-
         public void postUpdateShiftState() {
             removeMessages(MSG_UPDATE_SHIFT_STATE);
             sendMessageDelayed(obtainMessage(MSG_UPDATE_SHIFT_STATE),
@@ -241,13 +212,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
         public boolean hasPendingDeallocateMemory() {
             return hasMessages(MSG_DEALLOCATE_MEMORY);
-        }
-
-        @UsedForTesting
-        public void removeAllMessages() {
-            for (int i = 0; i <= MSG_LAST; ++i) {
-                removeMessages(i);
-            }
         }
 
         public void postSwitchLanguage(final InputMethodSubtype subtype) {
@@ -370,10 +334,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         private InputMethodSubtype mLastActiveSubtype;
         private boolean mCurrentSubtypeHasBeenUsed;
 
-        public void setCurrentSubtypeHasBeenUsed() {
-            mCurrentSubtypeHasBeenUsed = true;
-        }
-
         public void switchSubtype(final IBinder token, final RichInputMethodManager richImm) {
             final InputMethodSubtype currentSubtype = richImm.getInputMethodManager()
                     .getCurrentInputMethodSubtype();
@@ -445,12 +405,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         super.onDestroy();
     }
 
-    @UsedForTesting
-    public void recycle() {
-        unregisterReceiver(mRingerModeChangeReceiver);
-        mInputLogic.recycle();
-    }
-
     private boolean isImeSuppressedByHardwareKeyboard() {
         final KeyboardSwitcher switcher = KeyboardSwitcher.getInstance();
         return !onEvaluateInputViewShown() && switcher.isImeSuppressedByHardwareKeyboard(
@@ -470,7 +424,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // TODO: we should probably do this unconditionally here, rather than only when we
             // have a change in hardware keyboard configuration.
             loadSettings();
-            settingsValues = mSettings.getCurrent();
             if (isImeSuppressedByHardwareKeyboard()) {
                 // We call cleanupInternalStateForFinishInput() because it's the right thing to do;
                 // however, it seems at the moment the framework is passing us a seemingly valid
@@ -833,7 +786,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public boolean onEvaluateFullscreenMode() {
-        final SettingsValues settingsValues = mSettings.getCurrent();
         if (isImeSuppressedByHardwareKeyboard()) {
             // If there is a hardware keyboard, disable full screen mode.
             return false;

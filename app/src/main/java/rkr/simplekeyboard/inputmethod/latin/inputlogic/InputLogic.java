@@ -18,6 +18,7 @@ package rkr.simplekeyboard.inputmethod.latin.inputlogic;
 
 import android.graphics.Color;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -27,6 +28,9 @@ import android.util.Log;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
+
+import java.util.ArrayList;
+import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.event.Event;
 import rkr.simplekeyboard.inputmethod.event.InputTransaction;
@@ -45,11 +49,6 @@ import rkr.simplekeyboard.inputmethod.latin.settings.SpacingAndPunctuations;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.RecapitalizeStatus;
 import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
-
-import java.util.ArrayList;
-import java.util.TreeSet;
-
-import android.support.annotation.NonNull;
 
 /**
  * This class manages the input logic.
@@ -754,8 +753,7 @@ public final class InputLogic {
             mConnection.deleteTextBeforeCursor(numCharsDeleted);
         } else {
             // There is no selection, just delete one character.
-            if (inputTransaction.mSettingsValues.isBeforeJellyBean()
-                    || inputTransaction.mSettingsValues.mInputAttributes.isTypeNull()
+            if (inputTransaction.mSettingsValues.mInputAttributes.isTypeNull()
                     || Constants.NOT_A_CURSOR_POSITION
                             == mConnection.getExpectedSelectionEnd()) {
                 // There are three possible reasons to send a key event: either the field has
@@ -1311,16 +1309,7 @@ public final class InputLogic {
             return;
         }
 
-        // TODO: we should do this also when the editor has TYPE_NULL
-        if (Constants.CODE_ENTER == codePoint && settingsValues.isBeforeJellyBean()) {
-            // Backward compatibility mode. Before Jelly bean, the keyboard would simulate
-            // a hardware keyboard event on pressing enter or delete. This is bad for many
-            // reasons (there are race conditions with commits) but some applications are
-            // relying on this behavior so we continue to support it for older apps.
-            sendDownUpKeyEvent(KeyEvent.KEYCODE_ENTER);
-        } else {
-            mConnection.commitText(StringUtils.newSingleCodePointString(codePoint), 1);
-        }
+        mConnection.commitText(StringUtils.newSingleCodePointString(codePoint), 1);
     }
 
     /**

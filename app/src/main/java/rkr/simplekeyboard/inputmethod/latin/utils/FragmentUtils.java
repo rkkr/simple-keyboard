@@ -16,14 +16,14 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
+import java.util.HashSet;
+
 import rkr.simplekeyboard.inputmethod.latin.settings.AdvancedSettingsFragment;
 import rkr.simplekeyboard.inputmethod.latin.settings.AppearanceSettingsFragment;
 import rkr.simplekeyboard.inputmethod.latin.settings.CustomInputStyleSettingsFragment;
 import rkr.simplekeyboard.inputmethod.latin.settings.PreferencesSettingsFragment;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsFragment;
 import rkr.simplekeyboard.inputmethod.latin.settings.ThemeSettingsFragment;
-
-import java.util.HashSet;
 
 public class FragmentUtils {
     private static final HashSet<String> sLatinImeFragments = new HashSet<>();

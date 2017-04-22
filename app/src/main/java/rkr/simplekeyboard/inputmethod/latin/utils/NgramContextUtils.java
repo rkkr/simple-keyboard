@@ -16,15 +16,15 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
-import rkr.simplekeyboard.inputmethod.latin.NgramContext;
-import rkr.simplekeyboard.inputmethod.latin.NgramContext.WordInfo;
-import rkr.simplekeyboard.inputmethod.latin.define.DecoderSpecificConstants;
-import rkr.simplekeyboard.inputmethod.latin.settings.SpacingAndPunctuations;
+import android.support.annotation.NonNull;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.latin.NgramContext;
+import rkr.simplekeyboard.inputmethod.latin.NgramContext.WordInfo;
+import rkr.simplekeyboard.inputmethod.latin.define.DecoderSpecificConstants;
+import rkr.simplekeyboard.inputmethod.latin.settings.SpacingAndPunctuations;
 
 public final class NgramContextUtils {
     private NgramContextUtils() {

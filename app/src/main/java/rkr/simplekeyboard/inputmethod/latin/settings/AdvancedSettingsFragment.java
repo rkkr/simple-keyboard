@@ -22,12 +22,9 @@ import android.content.res.Resources;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.ListPreference;
-import android.preference.Preference;
 
-import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.SystemBroadcastReceiver;
-import rkr.simplekeyboard.inputmethod.latin.define.ProductionFlags;
+import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 
 /**
  * "Advanced" settings sub screen.

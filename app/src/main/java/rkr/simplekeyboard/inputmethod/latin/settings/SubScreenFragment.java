@@ -80,16 +80,6 @@ public abstract class SubScreenFragment extends PreferenceFragment
         return getPreferenceManager().getSharedPreferences();
     }
 
-    /**
-     * Gets the application name to display on the UI.
-     */
-    final String getApplicationName() {
-        final Context context = getActivity();
-        final Resources res = getResources();
-        final int applicationLabelRes = context.getApplicationInfo().labelRes;
-        return res.getString(applicationLabelRes);
-    }
-
     @Override
     public void addPreferencesFromResource(final int preferencesResId) {
         super.addPreferencesFromResource(preferencesResId);

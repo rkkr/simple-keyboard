@@ -16,25 +16,23 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.COMBINING_RULES;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
-
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
+
+import java.util.HashMap;
+import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
-import java.util.HashMap;
-import java.util.Locale;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.COMBINING_RULES;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
 
 /**
  * A helper class to deal with subtype locales.
@@ -158,8 +156,7 @@ public final class SubtypeLocaleUtils {
     }
 
     public static int getSubtypeNameId(final String localeString, final String keyboardLayoutName) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
-                && isExceptionalLocale(localeString)) {
+        if (isExceptionalLocale(localeString)) {
             return sExceptionalLocaleToWithLayoutNameIdsMap.get(localeString);
         }
         final String key = NO_LANGUAGE.equals(localeString)
@@ -258,8 +255,7 @@ public final class SubtypeLocaleUtils {
     @NonNull
     private static String getReplacementString(@NonNull final InputMethodSubtype subtype,
             @NonNull final Locale displayLocale) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
-                && subtype.containsExtraValueKey(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME)) {
+        if (subtype.containsExtraValueKey(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME)) {
             return subtype.getExtraValueOf(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME);
         }
         return getSubtypeLocaleDisplayNameInternal(subtype.getLocale(), displayLocale);

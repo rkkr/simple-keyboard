@@ -16,15 +16,14 @@
 
 package rkr.simplekeyboard.inputmethod.event;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
-
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
 
-import android.support.annotation.NonNull;
+import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 /**
  * A combiner that handles dead keys.

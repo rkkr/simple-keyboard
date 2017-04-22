@@ -22,12 +22,12 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayDeque;
+import java.util.HashMap;
+
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
-
-import java.util.ArrayDeque;
-import java.util.HashMap;
 
 /**
  * This class controls pop up key previews. This class decides:

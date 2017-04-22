@@ -48,12 +48,4 @@
     <dimen name="config_key_shifted_letter_hint_padding">4dp</dimen>
 
     <!-- For 5-row keyboard -->
-
-    <!-- Gesture floating preview text parameters -->
-    <dimen name="config_gesture_floating_preview_text_size">26dp</dimen>
-    <dimen name="config_gesture_floating_preview_text_offset">76dp</dimen>
-    <dimen name="config_gesture_floating_preview_horizontal_padding">26dp</dimen>
-    <dimen name="config_gesture_floating_preview_vertical_padding">17dp</dimen>
-
-    <!-- Emoji keyboard -->
 </resources>

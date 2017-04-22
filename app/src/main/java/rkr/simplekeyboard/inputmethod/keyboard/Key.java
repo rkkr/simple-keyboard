@@ -16,18 +16,18 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard;
 
-import static rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardIconsSet.ICON_UNDEFINED;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_OUTPUT_TEXT;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_SHIFT;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_SWITCH_ALPHA_SYMBOL;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_UNSPECIFIED;
-
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
+import java.util.Arrays;
+import java.util.Locale;
+
+import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyDrawParams;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeySpecParser;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyStyle;
@@ -36,15 +36,14 @@ import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardIconsSet;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardParams;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardRow;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.MoreKeySpec;
-import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
-import java.util.Arrays;
-import java.util.Locale;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import static rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardIconsSet.ICON_UNDEFINED;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_OUTPUT_TEXT;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_SHIFT;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_SWITCH_ALPHA_SYMBOL;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_UNSPECIFIED;
 
 /**
  * Class for describing the position and characteristics of a single key in the keyboard.

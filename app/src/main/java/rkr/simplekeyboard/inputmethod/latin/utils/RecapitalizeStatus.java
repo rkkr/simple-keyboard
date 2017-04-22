@@ -16,9 +16,9 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-
 import java.util.Locale;
+
+import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
 /**
  * The status of the current recapitalize process.
@@ -29,8 +29,6 @@ public class RecapitalizeStatus {
     public static final int CAPS_MODE_ALL_LOWER = 1;
     public static final int CAPS_MODE_FIRST_WORD_UPPER = 2;
     public static final int CAPS_MODE_ALL_UPPER = 3;
-    // When adding a new mode, don't forget to update the CAPS_MODE_LAST constant.
-    public static final int CAPS_MODE_LAST = CAPS_MODE_ALL_UPPER;
 
     private static final int[] ROTATION_STYLE = {
         CAPS_MODE_ORIGINAL_MIXED_CASE,

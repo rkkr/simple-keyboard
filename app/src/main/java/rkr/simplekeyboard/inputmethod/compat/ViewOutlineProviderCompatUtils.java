@@ -26,7 +26,7 @@ public class ViewOutlineProviderCompatUtils {
     }
 
     public interface InsetsUpdater {
-        public void setInsets(final InputMethodService.Insets insets);
+        void setInsets(final InputMethodService.Insets insets);
     }
 
     private static final InsetsUpdater EMPTY_INSETS_UPDATER = new InsetsUpdater() {
