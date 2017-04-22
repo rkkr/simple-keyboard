@@ -58,7 +58,6 @@ public final class BogusMoveEventDetector {
     }
 
     private int mAccumulatedDistanceThreshold;
-    private int mRadiusThreshold;
 
     // Accumulated distance from actual and artificial down keys.
     /* package */ int mAccumulatedDistanceFromDownKey;
@@ -69,7 +68,6 @@ public final class BogusMoveEventDetector {
         final float keyDiagonal = (float)Math.hypot(keyWidth, keyHeight);
         mAccumulatedDistanceThreshold = (int)(
                 keyDiagonal * BOGUS_MOVE_ACCUMULATED_DISTANCE_THRESHOLD);
-        mRadiusThreshold = (int)(keyDiagonal * BOGUS_MOVE_RADIUS_THRESHOLD);
     }
 
     public void onActualDownEvent(final int x, final int y) {

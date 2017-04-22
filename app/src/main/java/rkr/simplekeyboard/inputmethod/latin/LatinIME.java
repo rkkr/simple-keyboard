@@ -391,8 +391,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     void loadSettings() {
         final Locale locale = mRichImm.getCurrentSubtypeLocale();
         final EditorInfo editorInfo = getCurrentInputEditorInfo();
-        final InputAttributes inputAttributes = new InputAttributes(
-                editorInfo, isFullscreenMode(), getPackageName());
+        final InputAttributes inputAttributes = new InputAttributes(editorInfo, isFullscreenMode());
         mSettings.loadSettings(this, locale, inputAttributes);
         final SettingsValues currentSettingsValues = mSettings.getCurrent();
         AudioAndHapticFeedbackManager.getInstance().onSettingsChanged(currentSettingsValues);
@@ -966,21 +965,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                         mKeyboardSwitcher.getKeyboardShiftMode(), mHandler);
         updateStateAfterInputTransaction(completeInputTransaction);
         mKeyboardSwitcher.onEvent(event, getCurrentAutoCapsState(), getCurrentRecapitalizeState());
-    }
-
-    @Override
-    public void onStartBatchInput() {
-        mInputLogic.onStartBatchInput(mSettings.getCurrent(), mKeyboardSwitcher, mHandler);
-    }
-
-    @Override
-    public void onUpdateBatchInput(final InputPointers batchPointers) {
-        mInputLogic.onUpdateBatchInput(batchPointers);
-    }
-
-    @Override
-    public void onEndBatchInput(final InputPointers batchPointers) {
-        mInputLogic.onEndBatchInput(batchPointers);
     }
 
     @Override

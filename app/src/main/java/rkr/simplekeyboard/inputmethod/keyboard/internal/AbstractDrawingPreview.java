@@ -65,10 +65,4 @@ public abstract class AbstractDrawingPreview {
      * @param canvas The canvas where the preview is drawn.
      */
     public abstract void drawPreview(@NonNull final Canvas canvas);
-
-    /**
-     * Set the position of the preview.
-     * @param tracker The new location of the preview is based on the points in PointerTracker.
-     */
-    public abstract void setPreviewPosition(@NonNull final PointerTracker tracker);
 }

@@ -62,13 +62,6 @@ public final class Constants {
         @SuppressWarnings("dep-ann")
         public static final String FORCE_ASCII = "forceAscii";
 
-        /**
-         * The private IME option used to suppress the floating gesture preview for a given text
-         * field. This overrides the corresponding keyboard settings preference.
-         * {@link com.android.inputmethod.latin.settings.SettingsValues#mGestureFloatingPreviewTextEnabled}
-         */
-        public static final String NO_FLOATING_GESTURE_PREVIEW = "noGestureFloatingPreview";
-
         private ImeOption() {
             // This utility class is not publicly instantiable.
         }
@@ -99,12 +92,6 @@ public final class Constants {
              * entering emoji characters.
              */
             public static final String EMOJI_CAPABLE = "EmojiCapable";
-
-            /**
-             * The subtype extra value used to indicate that this subtype requires a network
-             * connection to work.
-             */
-            public static final String REQ_NETWORK_CONNECTIVITY = "requireNetworkConnectivity";
 
             /**
              * The subtype extra value used to indicate that the display name of this subtype
@@ -307,27 +294,6 @@ public final class Constants {
         return screenMetrics == SCREEN_METRICS_SMALL_PHONE
                 || screenMetrics == SCREEN_METRICS_LARGE_PHONE;
     }
-
-    @UsedForTesting
-    public static boolean isTablet(final int screenMetrics) {
-        return screenMetrics == SCREEN_METRICS_SMALL_TABLET
-                || screenMetrics == SCREEN_METRICS_LARGE_TABLET;
-    }
-
-    /**
-     * Default capacity of gesture points container.
-     * This constant is used by {@link com.android.inputmethod.keyboard.internal.BatchInputArbiter}
-     * and etc. to preallocate regions that contain gesture event points.
-     */
-    public static final int DEFAULT_GESTURE_POINTS_CAPACITY = 128;
-
-    public static final int MAX_IME_DECODER_RESULTS = 20;
-    public static final int DECODER_SCORE_SCALAR = 1000000;
-    public static final int DECODER_MAX_SCORE = 1000000000;
-
-    public static final int EVENT_BACKSPACE = 1;
-    public static final int EVENT_REJECTION = 2;
-    public static final int EVENT_REVERT = 3;
 
     private Constants() {
         // This utility class is not publicly instantiable.

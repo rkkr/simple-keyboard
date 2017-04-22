@@ -65,44 +65,6 @@ public class KeyboardLayout {
         }
     }
 
-    @UsedForTesting
-    public int[] getKeyCodes() {
-        return mKeyCodes;
-    }
-
-    /**
-     * The x-coordinate for the top-left corner of the keys.
-     *
-     */
-    public int[] getKeyXCoordinates() {
-        return mKeyXCoordinates;
-    }
-
-    /**
-     * The y-coordinate for the top-left corner of the keys.
-     */
-    public int[] getKeyYCoordinates() {
-        return mKeyYCoordinates;
-    }
-
-    /**
-     * The widths of the keys which are smaller than the true hit-area due to the gaps
-     * between keys. The mostCommonKey(Width/Height) represents the true key width/height
-     * including the gaps.
-     */
-    public int[] getKeyWidths() {
-        return mKeyWidths;
-    }
-
-    /**
-     * The heights of the keys which are smaller than the true hit-area due to the gaps
-     * between keys. The mostCommonKey(Width/Height) represents the true key width/height
-     * including the gaps.
-     */
-    public int[] getKeyHeights() {
-        return mKeyHeights;
-    }
-
     /**
      * Factory method to create {@link KeyboardLayout} objects.
      */

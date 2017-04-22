@@ -29,25 +29,6 @@ import android.view.inputmethod.InputMethodManager;
  */
 public final class UncachedInputMethodManagerUtils {
     /**
-     * Check if the IME specified by the context is enabled.
-     * CAVEAT: This may cause a round trip IPC.
-     *
-     * @param context package context of the IME to be checked.
-     * @param imm the {@link InputMethodManager}.
-     * @return true if this IME is enabled.
-     */
-    public static boolean isThisImeEnabled(final Context context,
-            final InputMethodManager imm) {
-        final String packageName = context.getPackageName();
-        for (final InputMethodInfo imi : imm.getEnabledInputMethodList()) {
-            if (packageName.equals(imi.getPackageName())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Check if the IME specified by the context is the current IME.
      * CAVEAT: This may cause a round trip IPC.
      *

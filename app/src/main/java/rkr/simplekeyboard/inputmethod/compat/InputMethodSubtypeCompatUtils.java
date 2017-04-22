@@ -31,7 +31,6 @@ import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 
 public final class InputMethodSubtypeCompatUtils {
-    private static final String TAG = InputMethodSubtypeCompatUtils.class.getSimpleName();
     // Note that InputMethodSubtype(int nameId, int iconId, String locale, String mode,
     // String extraValue, boolean isAuxiliary, boolean overridesImplicitlyEnabledSubtype, int id)
     // has been introduced in API level 17 (Build.VERSION_CODE.JELLY_BEAN_MR1).

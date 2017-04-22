@@ -40,9 +40,6 @@ public final class LastComposedWord {
     // or it may be exactly what the user typed if it's in the dictionary or the IME does not have
     // enough confidence in any suggestion to auto-correct (auto-correct to typed word).
     public static final int COMMIT_TYPE_DECIDED_WORD = 2;
-    // COMMIT_TYPE_CANCEL_AUTO_CORRECT is used upon committing back the old word upon cancelling
-    // an auto-correction.
-    public static final int COMMIT_TYPE_CANCEL_AUTO_CORRECT = 3;
 
     public static final String NOT_A_SEPARATOR = "";
 

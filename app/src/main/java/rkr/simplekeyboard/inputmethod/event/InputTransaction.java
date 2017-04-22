@@ -76,25 +76,9 @@ public class InputTransaction {
     }
 
     /**
-     * Find out whether this transaction requires updating the suggestions.
-     * @return Whether this transaction requires updating the suggestions.
-     */
-    public boolean requiresUpdateSuggestions() {
-        return mRequiresUpdateSuggestions;
-    }
-
-    /**
      * Indicate that this transaction affected the contents of the editor.
      */
     public void setDidAffectContents() {
         mDidAffectContents = true;
-    }
-
-    /**
-     * Find out whether this transaction affected contents of the editor.
-     * @return Whether this transaction affected contents of the editor.
-     */
-    public boolean didAffectContents() {
-        return mDidAffectContents;
     }
 }

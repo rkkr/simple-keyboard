@@ -64,24 +64,6 @@ public final class EditorInfoCompatUtils {
         }
     }
 
-    public static String imeOptionsName(final int imeOptions) {
-        final String action = imeActionName(imeOptions);
-        final StringBuilder flags = new StringBuilder();
-        if ((imeOptions & EditorInfo.IME_FLAG_NO_ENTER_ACTION) != 0) {
-            flags.append("flagNoEnterAction|");
-        }
-        if ((imeOptions & EditorInfo.IME_FLAG_NAVIGATE_NEXT) != 0) {
-            flags.append("flagNavigateNext|");
-        }
-        if ((imeOptions & EditorInfo.IME_FLAG_NAVIGATE_PREVIOUS) != 0) {
-            flags.append("flagNavigatePrevious|");
-        }
-        if (hasFlagForceAscii(imeOptions)) {
-            flags.append("flagForceAscii|");
-        }
-        return (action != null) ? flags + action : flags.toString();
-    }
-
     public static Locale getPrimaryHintLocale(final EditorInfo editorInfo) {
         if (editorInfo == null) {
             return null;

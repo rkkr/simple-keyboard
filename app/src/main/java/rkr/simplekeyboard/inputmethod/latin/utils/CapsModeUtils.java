@@ -33,37 +33,6 @@ public final class CapsModeUtils {
     }
 
     /**
-     * Apply an auto-caps mode to a string.
-     *
-     * This intentionally does NOT apply manual caps mode. It only changes the capitalization if
-     * the mode is one of the auto-caps modes.
-     * @param s The string to capitalize.
-     * @param capitalizeMode The mode in which to capitalize.
-     * @param locale The locale for capitalizing.
-     * @return The capitalized string.
-     */
-    public static String applyAutoCapsMode(final String s, final int capitalizeMode,
-            final Locale locale) {
-        if (WordComposer.CAPS_MODE_AUTO_SHIFT_LOCKED == capitalizeMode) {
-            return s.toUpperCase(locale);
-        } else if (WordComposer.CAPS_MODE_AUTO_SHIFTED == capitalizeMode) {
-            return StringUtils.capitalizeFirstCodePoint(s, locale);
-        } else {
-            return s;
-        }
-    }
-
-    /**
-     * Return whether a constant represents an auto-caps mode (either auto-shift or auto-shift-lock)
-     * @param mode The mode to test for
-     * @return true if this represents an auto-caps mode, false otherwise
-     */
-    public static boolean isAutoCapsMode(final int mode) {
-        return WordComposer.CAPS_MODE_AUTO_SHIFTED == mode
-                || WordComposer.CAPS_MODE_AUTO_SHIFT_LOCKED == mode;
-    }
-
-    /**
      * Helper method to find out if a code point is starting punctuation.
      *
      * This include the Unicode START_PUNCTUATION category, but also some other symbols that are

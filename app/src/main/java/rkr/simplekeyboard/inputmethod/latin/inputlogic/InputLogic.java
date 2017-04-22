@@ -169,15 +169,6 @@ public final class InputLogic {
         resetComposingState(true /* alsoResetLastComposedWord */);
     }
 
-    // Normally this class just gets out of scope after the process ends, but in unit tests, we
-    // create several instances of LatinIME in the same process, which results in several
-    // instances of InputLogic. This cleans up the associated handler so that tests don't leak
-    // handlers.
-    public void recycle() {
-        final InputLogicHandler inputLogicHandler = mInputLogicHandler;
-        mInputLogicHandler = InputLogicHandler.NULL_HANDLER;
-    }
-
     /**
      * React to a string input.
      *
@@ -334,57 +325,6 @@ public final class InputLogic {
         }
         mConnection.endBatchEdit();
         return inputTransaction;
-    }
-
-    public void onStartBatchInput(final SettingsValues settingsValues,
-            final KeyboardSwitcher keyboardSwitcher, final LatinIME.UIHandler handler) {
-        mInputLogicHandler.onStartBatchInput();
-        handler.cancelUpdateSuggestionStrip();
-        ++mAutoCommitSequenceNumber;
-        mConnection.beginBatchEdit();
-        final int codePointBeforeCursor = mConnection.getCodePointBeforeCursor();
-        if (Character.isLetterOrDigit(codePointBeforeCursor)
-                || settingsValues.isUsuallyFollowedBySpace(codePointBeforeCursor)) {
-            final boolean autoShiftHasBeenOverriden = keyboardSwitcher.getKeyboardShiftMode() !=
-                    getCurrentAutoCapsState(settingsValues);
-            mSpaceState = SpaceState.PHANTOM;
-            if (!autoShiftHasBeenOverriden) {
-                // When we change the space state, we need to update the shift state of the
-                // keyboard unless it has been overridden manually. This is happening for example
-                // after typing some letters and a period, then gesturing; the keyboard is not in
-                // caps mode yet, but since a gesture is starting, it should go in caps mode,
-                // unless the user explictly said it should not.
-                keyboardSwitcher.requestUpdatingShiftState(getCurrentAutoCapsState(settingsValues),
-                        getCurrentRecapitalizeState());
-            }
-        }
-        mConnection.endBatchEdit();
-        mWordComposer.setCapitalizedModeAtStartComposingTime(
-                getActualCapsMode(settingsValues, keyboardSwitcher.getKeyboardShiftMode()));
-    }
-
-    /* The sequence number member is only used in onUpdateBatchInput. It is increased each time
-     * auto-commit happens. The reason we need this is, when auto-commit happens we trim the
-     * input pointers that are held in a singleton, and to know how much to trim we rely on the
-     * results of the suggestion process that is held in mSuggestedWords.
-     * However, the suggestion process is asynchronous, and sometimes we may enter the
-     * onUpdateBatchInput method twice without having recomputed suggestions yet, or having
-     * received new suggestions generated from not-yet-trimmed input pointers. In this case, the
-     * mIndexOfTouchPointOfSecondWords member will be out of date, and we must not use it lest we
-     * remove an unrelated number of pointers (possibly even more than are left in the input
-     * pointers, leading to a crash).
-     * To avoid that, we increase the sequence number each time we auto-commit and trim the
-     * input pointers, and we do not use any suggested words that have been generated with an
-     * earlier sequence number.
-     */
-    private int mAutoCommitSequenceNumber = 1;
-    public void onUpdateBatchInput(final InputPointers batchPointers) {
-        mInputLogicHandler.onUpdateBatchInput(batchPointers, mAutoCommitSequenceNumber);
-    }
-
-    public void onEndBatchInput(final InputPointers batchPointers) {
-        mInputLogicHandler.updateTailBatchInput(batchPointers, mAutoCommitSequenceNumber);
-        ++mAutoCommitSequenceNumber;
     }
 
     public void onCancelBatchInput(final LatinIME.UIHandler handler) {
@@ -870,10 +810,6 @@ public final class InputLogic {
         return false;
     }
 
-    public void startDoubleSpacePeriodCountdown(final InputTransaction inputTransaction) {
-        mDoubleSpacePeriodCountdownStart = inputTransaction.mTimestamp;
-    }
-
     public void cancelDoubleSpacePeriodCountdown() {
         mDoubleSpacePeriodCountdownStart = 0;
     }
@@ -1153,45 +1089,6 @@ public final class InputLogic {
      */
     private EditorInfo getCurrentInputEditorInfo() {
         return mLatinIME.getCurrentInputEditorInfo();
-    }
-
-    /**
-     * Get n-gram context from the nth previous word before the cursor as context
-     * for the suggestion process.
-     * @param spacingAndPunctuations the current spacing and punctuations settings.
-     * @param nthPreviousWord reverse index of the word to get (1-indexed)
-     * @return the information of previous words
-     */
-    public NgramContext getNgramContextFromNthPreviousWordForSuggestion(
-            final SpacingAndPunctuations spacingAndPunctuations, final int nthPreviousWord) {
-        if (spacingAndPunctuations.mCurrentLanguageHasSpaces) {
-            // If we are typing in a language with spaces we can just look up the previous
-            // word information from textview.
-            return mConnection.getNgramContextFromNthPreviousWord(
-                    spacingAndPunctuations, nthPreviousWord);
-        }
-        if (LastComposedWord.NOT_A_COMPOSED_WORD == mLastComposedWord) {
-            return NgramContext.BEGINNING_OF_SENTENCE;
-        }
-        return new NgramContext(new NgramContext.WordInfo(
-                mLastComposedWord.mCommittedWord.toString()));
-    }
-
-    /**
-     * Tests the passed word for resumability.
-     *
-     * We can resume suggestions on words whose first code point is a word code point (with some
-     * nuances: check the code for details).
-     *
-     * @param settings the current values of the settings.
-     * @param word the word to evaluate.
-     * @return whether it's fine to resume suggestions on this word.
-     */
-    private static boolean isResumableWord(final SettingsValues settings, final String word) {
-        final int firstCodePoint = word.codePointAt(0);
-        return settings.isWordCodePoint(firstCodePoint)
-                && Constants.CODE_SINGLE_QUOTE != firstCodePoint
-                && Constants.CODE_DASH != firstCodePoint;
     }
 
     /**
@@ -1496,46 +1393,5 @@ public final class InputLogic {
             composingTextToBeSet = spannable;
         }
         mConnection.setComposingText(composingTextToBeSet, newCursorPosition);
-    }
-
-    /**
-     * Gets an object allowing private IME commands to be sent to the
-     * underlying editor.
-     * @return An object for sending private commands to the underlying editor.
-     */
-    public PrivateCommandPerformer getPrivateCommandPerformer() {
-        return mConnection;
-    }
-
-    /**
-     * Gets the expected index of the first char of the composing span within the editor's text.
-     * Returns a negative value in case there appears to be no valid composing span.
-     *
-     * @see #getComposingLength()
-     * @see RichInputConnection#hasSelection()
-     * @see RichInputConnection#isCursorPositionKnown()
-     * @see RichInputConnection#getExpectedSelectionStart()
-     * @see RichInputConnection#getExpectedSelectionEnd()
-     * @return The expected index in Java chars of the first char of the composing span.
-     */
-    // TODO: try and see if we can get rid of this method. Ideally the users of this class should
-    // never need to know this.
-    public int getComposingStart() {
-        if (!mConnection.isCursorPositionKnown() || mConnection.hasSelection()) {
-            return -1;
-        }
-        return mConnection.getExpectedSelectionStart() - mWordComposer.size();
-    }
-
-    /**
-     * Gets the expected length in Java chars of the composing span.
-     * May be 0 if there is no valid composing span.
-     * @see #getComposingStart()
-     * @return The expected length of the composing span.
-     */
-    // TODO: try and see if we can get rid of this method. Ideally the users of this class should
-    // never need to know this.
-    public int getComposingLength() {
-        return mWordComposer.size();
     }
 }

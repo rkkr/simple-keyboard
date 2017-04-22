@@ -117,21 +117,6 @@ public final class CompatUtils {
         return defaultValue;
     }
 
-    public static void setFieldValue(final Object receiver, final Field field, final Object value) {
-        if (field == null) {
-            return;
-        }
-        try {
-            field.set(receiver, value);
-        } catch (final IllegalAccessException | IllegalArgumentException e) {
-            Log.e(TAG, "Exception in setFieldValue", e);
-        }
-    }
-
-    public static ClassWrapper getClassWrapper(final String className) {
-        return new ClassWrapper(getClass(className));
-    }
-
     public static final class ClassWrapper {
         private final Class<?> mClass;
         public ClassWrapper(final Class<?> targetClass) {

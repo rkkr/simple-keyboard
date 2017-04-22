@@ -54,24 +54,4 @@ public final class CollectionUtils {
         }
         return list;
     }
-
-    /**
-     * Tests whether c contains no elements, true if c is null or c is empty.
-     * @param c Collection to test.
-     * @return Whether c contains no elements.
-     */
-    @UsedForTesting
-    public static boolean isNullOrEmpty(@Nullable final Collection c) {
-        return c == null || c.isEmpty();
-    }
-
-    /**
-     * Tests whether map contains no elements, true if map is null or map is empty.
-     * @param map Map to test.
-     * @return Whether map contains no elements.
-     */
-    @UsedForTesting
-    public static boolean isNullOrEmpty(@Nullable final Map map) {
-        return map == null || map.isEmpty();
-    }
 }

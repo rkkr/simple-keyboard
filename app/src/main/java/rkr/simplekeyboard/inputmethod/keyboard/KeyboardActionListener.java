@@ -65,24 +65,6 @@ public interface KeyboardActionListener {
      */
     void onTextInput(String text);
 
-    /**
-     * Called when user started batch input.
-     */
-    void onStartBatchInput();
-
-    /**
-     * Sends the ongoing batch input points data.
-     * @param batchPointers the batch input points representing the user input
-     */
-    void onUpdateBatchInput(InputPointers batchPointers);
-
-    /**
-     * Sends the final batch input points data.
-     *
-     * @param batchPointers the batch input points representing the user input
-     */
-    void onEndBatchInput(InputPointers batchPointers);
-
     void onCancelBatchInput();
 
     /**
@@ -112,12 +94,6 @@ public interface KeyboardActionListener {
         public void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat) {}
         @Override
         public void onTextInput(String text) {}
-        @Override
-        public void onStartBatchInput() {}
-        @Override
-        public void onUpdateBatchInput(InputPointers batchPointers) {}
-        @Override
-        public void onEndBatchInput(InputPointers batchPointers) {}
         @Override
         public void onCancelBatchInput() {}
         @Override

@@ -306,18 +306,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         return KeyboardSwitchState.OTHER;
     }
 
-    public void onToggleKeyboard(@NonNull final KeyboardSwitchState toggleState) {
-        KeyboardSwitchState currentState = getKeyboardSwitchState();
-        Log.w(TAG, "onToggleKeyboard() : Current = " + currentState + " : Toggle = " + toggleState);
-        if (currentState == toggleState) {
-            mLatinIME.stopShowingInputView();
-            mLatinIME.hideWindow();
-            setAlphabetKeyboard();
-        } else {
-            mLatinIME.startShowingInputView(true);
-        }
-    }
-
     // Future method for requesting an updating to the shift state.
     @Override
     public void requestUpdatingShiftState(final int autoCapsFlags, final int recapitalizeMode) {

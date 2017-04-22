@@ -31,7 +31,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 public final class KeyboardTextsSet {
     public static final String PREFIX_TEXT = "!text/";
     private static final String PREFIX_RESOURCE = "!string/";
-    public static final String SWITCH_TO_ALPHA_KEY_LABEL = "keylabel_to_alpha";
 
     private static final char BACKSLASH = Constants.CODE_BACKSLASH;
     private static final int MAX_REFERENCE_INDIRECTION = 10;

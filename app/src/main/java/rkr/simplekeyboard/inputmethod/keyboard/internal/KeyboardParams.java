@@ -109,12 +109,6 @@ public class KeyboardParams {
         mUniqueKeysCache = keysCache;
     }
 
-    protected void clearKeys() {
-        mSortedKeys.clear();
-        mShiftKeys.clear();
-        clearHistogram();
-    }
-
     public void onAddKey(@NonNull final Key newKey) {
         final Key key = mUniqueKeysCache.getUniqueKey(newKey);
         final boolean isSpacer = key.isSpacer();
@@ -156,16 +150,6 @@ public class KeyboardParams {
     private int mMaxWidthCount = 0;
     private final SparseIntArray mHeightHistogram = new SparseIntArray();
     private final SparseIntArray mWidthHistogram = new SparseIntArray();
-
-    private void clearHistogram() {
-        mMostCommonKeyHeight = 0;
-        mMaxHeightCount = 0;
-        mHeightHistogram.clear();
-
-        mMaxWidthCount = 0;
-        mMostCommonKeyWidth = 0;
-        mWidthHistogram.clear();
-    }
 
     private static int updateHistogramCounter(final SparseIntArray histogram, final int key) {
         final int index = histogram.indexOfKey(key);

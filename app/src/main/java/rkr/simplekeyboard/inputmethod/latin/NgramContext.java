@@ -34,17 +34,6 @@ public class NgramContext {
     @NonNull
     public static final NgramContext EMPTY_PREV_WORDS_INFO =
             new NgramContext(WordInfo.EMPTY_WORD_INFO);
-    @NonNull
-    public static final NgramContext BEGINNING_OF_SENTENCE =
-            new NgramContext(WordInfo.BEGINNING_OF_SENTENCE_WORD_INFO);
-
-    public static final String BEGINNING_OF_SENTENCE_TAG = "<S>";
-
-    public static final String CONTEXT_SEPARATOR = " ";
-
-    public static NgramContext getEmptyPrevWordsContext(int maxPrevWordCount) {
-        return new NgramContext(maxPrevWordCount, WordInfo.EMPTY_WORD_INFO);
-    }
 
     /**
      * Word information used to represent previous words information.
@@ -105,8 +94,6 @@ public class NgramContext {
     private final WordInfo[] mPrevWordsInfo;
     private final int mPrevWordsCount;
 
-    private final int mMaxPrevWordCount;
-
     // Construct from the previous word information.
     public NgramContext(final WordInfo... prevWordsInfo) {
         this(DecoderSpecificConstants.MAX_PREV_WORD_COUNT_FOR_N_GRAM, prevWordsInfo);
@@ -115,111 +102,6 @@ public class NgramContext {
     public NgramContext(final int maxPrevWordCount, final WordInfo... prevWordsInfo) {
         mPrevWordsInfo = prevWordsInfo;
         mPrevWordsCount = prevWordsInfo.length;
-        mMaxPrevWordCount = maxPrevWordCount;
-    }
-
-    /**
-     * Create next prevWordsInfo using current prevWordsInfo.
-     */
-    @NonNull
-    public NgramContext getNextNgramContext(final WordInfo wordInfo) {
-        final int nextPrevWordCount = Math.min(mMaxPrevWordCount, mPrevWordsCount + 1);
-        final WordInfo[] prevWordsInfo = new WordInfo[nextPrevWordCount];
-        prevWordsInfo[0] = wordInfo;
-        System.arraycopy(mPrevWordsInfo, 0, prevWordsInfo, 1, nextPrevWordCount - 1);
-        return new NgramContext(mMaxPrevWordCount, prevWordsInfo);
-    }
-
-
-    /**
-     * Extracts the previous words context.
-     *
-     * @return a String with the previous words separated by white space.
-     */
-    public String extractPrevWordsContext() {
-        final ArrayList<String> terms = new ArrayList<>();
-        for (int i = mPrevWordsInfo.length - 1; i >= 0; --i) {
-            if (mPrevWordsInfo[i] != null && mPrevWordsInfo[i].isValid()) {
-                final NgramContext.WordInfo wordInfo = mPrevWordsInfo[i];
-                if (wordInfo.mIsBeginningOfSentence) {
-                    terms.add(BEGINNING_OF_SENTENCE_TAG);
-                } else {
-                    final String term = wordInfo.mWord.toString();
-                    if (!term.isEmpty()) {
-                        terms.add(term);
-                    }
-                }
-            }
-        }
-        return TextUtils.join(CONTEXT_SEPARATOR, terms);
-    }
-
-    /**
-     * Extracts the previous words context.
-     *
-     * @return a String array with the previous words.
-     */
-    public String[] extractPrevWordsContextArray() {
-        final ArrayList<String> prevTermList = new ArrayList<>();
-        for (int i = mPrevWordsInfo.length - 1; i >= 0; --i) {
-            if (mPrevWordsInfo[i] != null && mPrevWordsInfo[i].isValid()) {
-                final NgramContext.WordInfo wordInfo = mPrevWordsInfo[i];
-                if (wordInfo.mIsBeginningOfSentence) {
-                    prevTermList.add(BEGINNING_OF_SENTENCE_TAG);
-                } else {
-                    final String term = wordInfo.mWord.toString();
-                    if (!term.isEmpty()) {
-                        prevTermList.add(term);
-                    }
-                }
-            }
-        }
-        final String[] contextStringArray = prevTermList.toArray(new String[prevTermList.size()]);
-        return contextStringArray;
-    }
-
-    public boolean isValid() {
-        return mPrevWordsCount > 0 && mPrevWordsInfo[0].isValid();
-    }
-
-    public boolean isBeginningOfSentenceContext() {
-        return mPrevWordsCount > 0 && mPrevWordsInfo[0].mIsBeginningOfSentence;
-    }
-
-    // n is 1-indexed.
-    // TODO: Remove
-    public CharSequence getNthPrevWord(final int n) {
-        if (n <= 0 || n > mPrevWordsCount) {
-            return null;
-        }
-        return mPrevWordsInfo[n - 1].mWord;
-    }
-
-    // n is 1-indexed.
-    @UsedForTesting
-    public boolean isNthPrevWordBeginningOfSentence(final int n) {
-        if (n <= 0 || n > mPrevWordsCount) {
-            return false;
-        }
-        return mPrevWordsInfo[n - 1].mIsBeginningOfSentence;
-    }
-
-    public void outputToArray(final int[][] codePointArrays,
-            final boolean[] isBeginningOfSentenceArray) {
-        for (int i = 0; i < mPrevWordsCount; i++) {
-            final WordInfo wordInfo = mPrevWordsInfo[i];
-            if (wordInfo == null || !wordInfo.isValid()) {
-                codePointArrays[i] = new int[0];
-                isBeginningOfSentenceArray[i] = false;
-                continue;
-            }
-            codePointArrays[i] = StringUtils.toCodePointArray(wordInfo.mWord);
-            isBeginningOfSentenceArray[i] = wordInfo.mIsBeginningOfSentence;
-        }
-    }
-
-    public int getPrevWordCount() {
-        return mPrevWordsCount;
     }
 
     @Override

@@ -64,14 +64,6 @@ public final class InputPointers {
         mTimes.addAt(index, time);
     }
 
-    @UsedForTesting
-    public void addPointer(final int x, final int y, final int pointerId, final int time) {
-        mXCoordinates.add(x);
-        mYCoordinates.add(y);
-        mPointerIds.add(pointerId);
-        mTimes.add(time);
-    }
-
     public void set(@NonNull final InputPointers ip) {
         mXCoordinates.set(ip.mXCoordinates);
         mYCoordinates.set(ip.mYCoordinates);
@@ -130,32 +122,6 @@ public final class InputPointers {
 
     public int getPointerSize() {
         return mXCoordinates.getLength();
-    }
-
-    @NonNull
-    public int[] getXCoordinates() {
-        return mXCoordinates.getPrimitiveArray();
-    }
-
-    @NonNull
-    public int[] getYCoordinates() {
-        return mYCoordinates.getPrimitiveArray();
-    }
-
-    @NonNull
-    public int[] getPointerIds() {
-        return mPointerIds.getPrimitiveArray();
-    }
-
-    /**
-     * Gets the time each point was registered, in milliseconds, relative to the first event in the
-     * sequence.
-     * @return The time each point was registered, in milliseconds, relative to the first event in
-     * the sequence.
-     */
-    @NonNull
-    public int[] getTimes() {
-        return mTimes.getPrimitiveArray();
     }
 
     @Override

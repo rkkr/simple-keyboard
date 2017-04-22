@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.event.CombinerChain;
 import rkr.simplekeyboard.inputmethod.event.Event;
-import rkr.simplekeyboard.inputmethod.latin.common.ComposedData;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
 import rkr.simplekeyboard.inputmethod.latin.common.InputPointers;

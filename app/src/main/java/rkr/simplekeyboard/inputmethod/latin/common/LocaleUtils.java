@@ -69,23 +69,4 @@ public final class LocaleUtils {
             return locale;
         }
     }
-
-    // TODO: Get this information from the framework instead of maintaining here by ourselves.
-    private static final HashSet<String> sRtlLanguageCodes = new HashSet<>();
-    static {
-        // List of known Right-To-Left language codes.
-        sRtlLanguageCodes.add("ar"); // Arabic
-        sRtlLanguageCodes.add("fa"); // Persian
-        sRtlLanguageCodes.add("iw"); // Hebrew
-        sRtlLanguageCodes.add("ku"); // Kurdish
-        sRtlLanguageCodes.add("ps"); // Pashto
-        sRtlLanguageCodes.add("sd"); // Sindhi
-        sRtlLanguageCodes.add("ug"); // Uyghur
-        sRtlLanguageCodes.add("ur"); // Urdu
-        sRtlLanguageCodes.add("yi"); // Yiddish
-    }
-
-    public static boolean isRtlLanguage(@NonNull final Locale locale) {
-        return sRtlLanguageCodes.contains(locale.getLanguage());
-    }
 }

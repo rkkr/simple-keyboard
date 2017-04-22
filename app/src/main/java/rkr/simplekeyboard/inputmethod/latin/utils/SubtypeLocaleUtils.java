@@ -47,7 +47,6 @@ public final class SubtypeLocaleUtils {
     // Special language code to represent "no language".
     public static final String NO_LANGUAGE = "zz";
     public static final String QWERTY = "qwerty";
-    public static final String EMOJI = "emoji";
     public static final int UNKNOWN_KEYBOARD_LAYOUT = R.string.subtype_generic;
 
     private static volatile boolean sInitialized = false;

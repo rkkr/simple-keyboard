@@ -405,10 +405,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         CoordinateUtils.set(outCoords, mLastX, mLastY);
     }
 
-    public void getDownCoordinates(@NonNull final int[] outCoords) {
-        CoordinateUtils.copy(outCoords, mDownCoordinates);
-    }
-
     private Key onDownKey(final int x, final int y, final long eventTime) {
         mDownTime = eventTime;
         CoordinateUtils.set(mDownCoordinates, x, y);
@@ -605,39 +601,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         setPressedKeyGraphics(key, eventTime);
     }
 
-    private void processPhantomSuddenMoveHack(final Key key, final int x, final int y,
-            final long eventTime, final Key oldKey, final int lastX, final int lastY) {
-        if (DEBUG_MODE) {
-            Log.w(TAG, String.format("[%d] onMoveEvent:"
-                    + " phantom sudden move event (distance=%d) is translated to "
-                    + "up[%d,%d,%s]/down[%d,%d,%s] events", mPointerId,
-                    getDistance(x, y, lastX, lastY),
-                    lastX, lastY, Constants.printableCode(oldKey.getCode()),
-                    x, y, Constants.printableCode(key.getCode())));
-        }
-        onUpEventInternal(x, y, eventTime);
-        onDownEventInternal(x, y, eventTime);
-    }
-
-    private void processProximateBogusDownMoveUpEventHack(final Key key, final int x, final int y,
-            final long eventTime, final Key oldKey, final int lastX, final int lastY) {
-        if (DEBUG_MODE) {
-            final float keyDiagonal = (float)Math.hypot(
-                    mKeyboard.mMostCommonKeyWidth, mKeyboard.mMostCommonKeyHeight);
-            final float radiusRatio =
-                    mBogusMoveEventDetector.getDistanceFromDownEvent(x, y)
-                    / keyDiagonal;
-            Log.w(TAG, String.format("[%d] onMoveEvent:"
-                    + " bogus down-move-up event (raidus=%.2f key diagonal) is "
-                    + " translated to up[%d,%d,%s]/down[%d,%d,%s] events",
-                    mPointerId, radiusRatio,
-                    lastX, lastY, Constants.printableCode(oldKey.getCode()),
-                    x, y, Constants.printableCode(key.getCode())));
-        }
-        onUpEventInternal(x, y, eventTime);
-        onDownEventInternal(x, y, eventTime);
-    }
-
     private void processDraggingFingerOutFromOldKey(final Key oldKey) {
         setReleasedKeyGraphics(oldKey, true /* withAnimation */);
         callListenerOnRelease(oldKey, oldKey.getCode(), true /* withSliding */);
@@ -781,10 +744,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             return;
         }
         mIsTrackingForActionDisabled = true;
-    }
-
-    public boolean isInOperation() {
-        return !mIsTrackingForActionDisabled;
     }
 
     public void onLongPressed() {

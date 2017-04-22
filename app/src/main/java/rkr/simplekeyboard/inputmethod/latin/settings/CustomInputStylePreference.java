@@ -36,7 +36,6 @@ import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
-import rkr.simplekeyboard.inputmethod.compat.ViewCompatUtils;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
@@ -121,12 +120,6 @@ final class CustomInputStylePreference extends DialogPreference
         mSubtypeLocaleSpinner.setAdapter(mProxy.getSubtypeLocaleAdapter());
         mKeyboardLayoutSetSpinner = (Spinner) v.findViewById(R.id.keyboard_layout_set_spinner);
         mKeyboardLayoutSetSpinner.setAdapter(mProxy.getKeyboardLayoutSetAdapter());
-        // All keyboard layout names are in the Latin script and thus left to right. That means
-        // the view would align them to the left even if the system locale is RTL, but that
-        // would look strange. To fix this, we align them to the view's start, which will be
-        // natural for any direction.
-        ViewCompatUtils.setTextAlignment(
-                mKeyboardLayoutSetSpinner, ViewCompatUtils.TEXT_ALIGNMENT_VIEW_START);
         return v;
     }
 

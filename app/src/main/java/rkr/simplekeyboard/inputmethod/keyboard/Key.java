@@ -536,28 +536,6 @@ public class Key implements Comparable<Key> {
         return Constants.printableCode(code);
     }
 
-    public String toLongString() {
-        final int iconId = getIconId();
-        final String topVisual = (iconId == KeyboardIconsSet.ICON_UNDEFINED)
-                ? KeyboardIconsSet.PREFIX_ICON + KeyboardIconsSet.getIconName(iconId) : getLabel();
-        final String hintLabel = getHintLabel();
-        final String visual = (hintLabel == null) ? topVisual : topVisual + "^" + hintLabel;
-        return toString() + " " + visual + "/" + backgroundName(mBackgroundType);
-    }
-
-    private static String backgroundName(final int backgroundType) {
-        switch (backgroundType) {
-        case BACKGROUND_TYPE_EMPTY: return "empty";
-        case BACKGROUND_TYPE_NORMAL: return "normal";
-        case BACKGROUND_TYPE_FUNCTIONAL: return "functional";
-        case BACKGROUND_TYPE_STICKY_OFF: return "stickyOff";
-        case BACKGROUND_TYPE_STICKY_ON: return "stickyOn";
-        case BACKGROUND_TYPE_ACTION: return "action";
-        case BACKGROUND_TYPE_SPACEBAR: return "spacebar";
-        default: return null;
-        }
-    }
-
     public int getCode() {
         return mCode;
     }
@@ -686,10 +664,6 @@ public class Key implements Comparable<Key> {
                     : params.mShiftedLetterHintInactivatedColor;
         }
         return params.mHintLetterColor;
-    }
-
-    public final int selectMoreKeyTextSize(final KeyDrawParams params) {
-        return hasLabelsInMoreKeys() ? params.mLabelSize : params.mLetterSize;
     }
 
     public final String getPreviewLabel() {

@@ -146,17 +146,6 @@ public final class KeyboardLayoutSet {
         sUniqueKeysCache.clear();
     }
 
-    public static int getScriptId(final Resources resources,
-            @NonNull final InputMethodSubtype subtype) {
-        final Integer value = sScriptIdsForSubtypes.get(subtype);
-        if (null == value) {
-            final int scriptId = Builder.readScriptId(resources, subtype);
-            sScriptIdsForSubtypes.put(subtype, scriptId);
-            return scriptId;
-        }
-        return value;
-    }
-
     KeyboardLayoutSet(final Context context, @NonNull final Params params) {
         mContext = context;
         mParams = params;
@@ -310,11 +299,6 @@ public final class KeyboardLayoutSet {
             return this;
         }
 
-        public Builder setIsSpellChecker(final boolean isSpellChecker) {
-            mParams.mIsSpellChecker = isSpellChecker;
-            return this;
-        }
-
         public Builder setVoiceInputKeyEnabled(final boolean enabled) {
             mParams.mVoiceInputKeyEnabled = enabled;
             return this;
@@ -325,39 +309,9 @@ public final class KeyboardLayoutSet {
             return this;
         }
 
-        public Builder disableTouchPositionCorrectionData() {
-            mParams.mDisableTouchPositionCorrectionDataForTest = true;
-            return this;
-        }
-
         public Builder setSplitLayoutEnabledByUser(final boolean enabled) {
             mParams.mIsSplitLayoutEnabledByUser = enabled;
             return this;
-        }
-
-        // Super redux version of reading the script ID for some subtype from Xml.
-        static int readScriptId(final Resources resources, final InputMethodSubtype subtype) {
-            final String layoutSetName = KEYBOARD_LAYOUT_SET_RESOURCE_PREFIX
-                    + SubtypeLocaleUtils.getKeyboardLayoutSetName(subtype);
-            final int xmlId = getXmlId(resources, layoutSetName);
-            final XmlResourceParser parser = resources.getXml(xmlId);
-            try {
-                while (parser.getEventType() != XmlPullParser.END_DOCUMENT) {
-                    // Bovinate through the XML stupidly searching for TAG_FEATURE, and read
-                    // the script Id from it.
-                    parser.next();
-                    final String tag = parser.getName();
-                    if (TAG_FEATURE.equals(tag)) {
-                        return readScriptIdFromTagFeature(resources, parser);
-                    }
-                }
-            } catch (final IOException | XmlPullParserException e) {
-                throw new RuntimeException(e.getMessage() + " in " + layoutSetName, e);
-            } finally {
-                parser.close();
-            }
-            // If the tag is not found, then the default script is Latin.
-            return ScriptUtils.SCRIPT_LATIN;
         }
 
         private static int readScriptIdFromTagFeature(final Resources resources,

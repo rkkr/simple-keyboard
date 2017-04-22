@@ -66,10 +66,6 @@ class InputLogicHandler {
         }
     }
 
-    public boolean isInBatchInput() {
-        return mInBatchInput;
-    }
-
     /**
      * Fetch suggestions corresponding to an update of a batch input.
      * @param batchPointers the updated pointers, including the part that was passed last time.

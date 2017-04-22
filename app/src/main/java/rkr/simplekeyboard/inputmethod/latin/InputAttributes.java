@@ -44,13 +44,8 @@ public final class InputAttributes {
      */
     final public boolean mIsGeneralTextInput;
     final private int mInputType;
-    final private EditorInfo mEditorInfo;
-    final private String mPackageNameForPrivateImeOptions;
 
-    public InputAttributes(final EditorInfo editorInfo, final boolean isFullscreenMode,
-            final String packageNameForPrivateImeOptions) {
-        mEditorInfo = editorInfo;
-        mPackageNameForPrivateImeOptions = packageNameForPrivateImeOptions;
+    public InputAttributes(final EditorInfo editorInfo, final boolean isFullscreenMode) {
         mTargetApplicationPackageName = null != editorInfo ? editorInfo.packageName : null;
         final int inputType = null != editorInfo ? editorInfo.inputType : 0;
         final int inputClass = inputType & InputType.TYPE_MASK_CLASS;
