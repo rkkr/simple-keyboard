@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- TODO: these settings depend on the language. They should be put either in the dictionary
          header, or in the subtype maybe? -->
     <!-- Symbols that are suggested between words -->

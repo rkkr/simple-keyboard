@@ -17,31 +17,16 @@
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.graphics.Canvas;
-import android.view.View;
+import android.support.annotation.NonNull;
 
 import rkr.simplekeyboard.inputmethod.keyboard.MainKeyboardView;
-import rkr.simplekeyboard.inputmethod.keyboard.PointerTracker;
-
-import android.support.annotation.NonNull;
 
 /**
  * Abstract base class for previews that are drawn on DrawingPreviewPlacerView, e.g.,
  * GestureFloatingTextDrawingPreview.
  */
 public abstract class AbstractDrawingPreview {
-    private View mDrawingView;
-    private boolean mPreviewEnabled;
     private boolean mHasValidGeometry;
-
-    protected void invalidateDrawingView() {
-        if (mDrawingView != null) {
-            mDrawingView.invalidate();
-        }
-    }
-
-    protected final boolean isPreviewEnabled() {
-        return mPreviewEnabled && mHasValidGeometry;
-    }
 
     /**
      * Set {@link MainKeyboardView} geometry and position in the window of input method.

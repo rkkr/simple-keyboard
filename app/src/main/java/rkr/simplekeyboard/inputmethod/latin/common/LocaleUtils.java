@@ -17,10 +17,8 @@
 package rkr.simplekeyboard.inputmethod.latin.common;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Locale;
 
 /**

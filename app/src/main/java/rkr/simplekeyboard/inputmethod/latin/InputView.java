@@ -40,9 +40,6 @@ public final class InputView extends FrameLayout {
     public boolean onInterceptTouchEvent(final MotionEvent me) {
         final Rect rect = mInputViewRect;
         getGlobalVisibleRect(rect);
-        final int index = me.getActionIndex();
-        final int x = (int)me.getX(index) + rect.left;
-        final int y = (int)me.getY(index) + rect.top;
 
         mActiveForwarder = null;
         return false;

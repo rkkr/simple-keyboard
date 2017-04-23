@@ -32,7 +32,6 @@ public final class BogusMoveEventDetector {
     // Move these thresholds to resource.
     // These thresholds' unit is a diagonal length of a key.
     private static final float BOGUS_MOVE_ACCUMULATED_DISTANCE_THRESHOLD = 0.53f;
-    private static final float BOGUS_MOVE_RADIUS_THRESHOLD = 1.14f;
 
     private static boolean sNeedsProximateBogusDownMoveUpEventHack;
 
@@ -96,13 +95,5 @@ public final class BogusMoveEventDetector {
 
     public int getAccumulatedDistanceFromDownKey() {
         return mAccumulatedDistanceFromDownKey;
-    }
-
-    public int getDistanceFromDownEvent(final int x, final int y) {
-        return getDistance(x, y, mActualDownX, mActualDownY);
-    }
-
-    private static int getDistance(final int x1, final int y1, final int x2, final int y2) {
-        return (int)Math.hypot(x1 - x2, y1 - y2);
     }
 }

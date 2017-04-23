@@ -163,12 +163,8 @@ public final class Constants {
 
     // Key events coming any faster than this are long-presses.
     public static final int LONG_PRESS_MILLISECONDS = 200;
-    // TODO: Set this value appropriately.
-    public static final int GET_SUGGESTED_WORDS_TIMEOUT = 200;
     // How many continuous deletes at which to start deleting at a higher speed.
     public static final int DELETE_ACCELERATE_AT = 20;
-
-    public static final String WORD_SEPARATOR = " ";
 
     public static boolean isValidCoordinate(final int coordinate) {
         // Detect {@link NOT_A_COORDINATE}, {@link SUGGESTION_STRIP_COORDINATE},
@@ -210,7 +206,6 @@ public final class Constants {
     public static final int CODE_CIRCUMFLEX_ACCENT = '^';
     public static final int CODE_TILDE = '~';
 
-    public static final String REGEXP_PERIOD = "\\.";
     public static final String STRING_SPACE = " ";
 
     /**
@@ -265,19 +260,6 @@ public final class Constants {
             if (code < 0x10000) return String.format("\\u%04X", code);
             return String.format("\\U%05X", code);
         }
-    }
-
-    @NonNull
-    public static String printableCodes(@NonNull final int[] codes) {
-        final StringBuilder sb = new StringBuilder();
-        boolean addDelimiter = false;
-        for (final int code : codes) {
-            if (code == NOT_A_CODE) break;
-            if (addDelimiter) sb.append(", ");
-            sb.append(printableCode(code));
-            addDelimiter = true;
-        }
-        return "[" + sb + "]";
     }
 
     /**

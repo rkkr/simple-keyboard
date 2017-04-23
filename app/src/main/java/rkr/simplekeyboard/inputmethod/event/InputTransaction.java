@@ -40,8 +40,6 @@ public class InputTransaction {
 
     // Outputs
     private int mRequiredShiftUpdate = SHIFT_NO_UPDATE;
-    private boolean mRequiresUpdateSuggestions = false;
-    private boolean mDidAffectContents = false;
 
     public InputTransaction(final SettingsValues settingsValues, final Event event,
             final long timestamp, final int spaceState, final int shiftState) {
@@ -66,19 +64,5 @@ public class InputTransaction {
      */
     public int getRequiredShiftUpdate() {
         return mRequiredShiftUpdate;
-    }
-
-    /**
-     * Indicate that this transaction requires updating the suggestions.
-     */
-    public void setRequiresUpdateSuggestions() {
-        mRequiresUpdateSuggestions = true;
-    }
-
-    /**
-     * Indicate that this transaction affected the contents of the editor.
-     */
-    public void setDidAffectContents() {
-        mDidAffectContents = true;
     }
 }

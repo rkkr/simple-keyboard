@@ -151,8 +151,6 @@ public class Key implements Comparable<Key> {
     public static final int BACKGROUND_TYPE_EMPTY = 0;
     public static final int BACKGROUND_TYPE_NORMAL = 1;
     public static final int BACKGROUND_TYPE_FUNCTIONAL = 2;
-    public static final int BACKGROUND_TYPE_STICKY_OFF = 3;
-    public static final int BACKGROUND_TYPE_STICKY_ON = 4;
     public static final int BACKGROUND_TYPE_ACTION = 5;
     public static final int BACKGROUND_TYPE_SPACEBAR = 6;
 

@@ -17,9 +17,9 @@
 package rkr.simplekeyboard.inputmethod.latin;
 
 import android.inputmethodservice.InputMethodService;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.CharacterStyle;
@@ -32,19 +32,13 @@ import android.view.inputmethod.InputMethodManager;
 
 import rkr.simplekeyboard.inputmethod.compat.InputConnectionCompatUtils;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.common.UnicodeSurrogate;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
+import rkr.simplekeyboard.inputmethod.latin.common.UnicodeSurrogate;
 import rkr.simplekeyboard.inputmethod.latin.inputlogic.PrivateCommandPerformer;
 import rkr.simplekeyboard.inputmethod.latin.settings.SpacingAndPunctuations;
 import rkr.simplekeyboard.inputmethod.latin.utils.CapsModeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.DebugLogUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.NgramContextUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
-
-import java.util.concurrent.TimeUnit;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 /**
  * Enrichment class for InputConnection to simplify interaction and add functionality.
@@ -59,7 +53,6 @@ public final class RichInputConnection implements PrivateCommandPerformer {
     private static final boolean DBG = false;
     private static final boolean DEBUG_PREVIOUS_TEXT = false;
     private static final boolean DEBUG_BATCH_NESTING = false;
-    private static final int NUM_CHARS_TO_GET_BEFORE_CURSOR = 40;
     private static final int INVALID_CURSOR_POSITION = -1;
 
     /**
@@ -73,19 +66,12 @@ public final class RichInputConnection implements PrivateCommandPerformer {
     private static final long SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS = 200;
 
     private static final int OPERATION_GET_TEXT_BEFORE_CURSOR = 0;
-    private static final int OPERATION_GET_TEXT_AFTER_CURSOR = 1;
     private static final int OPERATION_RELOAD_TEXT_CACHE = 3;
     private static final String[] OPERATION_NAMES = new String[] {
             "GET_TEXT_BEFORE_CURSOR",
             "GET_TEXT_AFTER_CURSOR",
             "GET_WORD_RANGE_AT_CURSOR",
             "RELOAD_TEXT_CACHE"};
-
-    /**
-     * The amount of time the keyboard will persist in the {@link #hasSlowInputConnection} state
-     * after observing a slow InputConnection event.
-     */
-    private static final long SLOW_INPUTCONNECTION_PERSIST_MS = TimeUnit.MINUTES.toMillis(10);
 
     /**
      * This variable contains an expected value for the selection start position. This is where the
@@ -121,11 +107,6 @@ public final class RichInputConnection implements PrivateCommandPerformer {
     private InputConnection mIC;
     private int mNestLevel;
 
-    /**
-     * The timestamp of the last slow InputConnection operation
-     */
-    private long mLastSlowInputConnectionTime = -SLOW_INPUTCONNECTION_PERSIST_MS;
-
     public RichInputConnection(final InputMethodService parent) {
         mParent = parent;
         mIC = null;
@@ -134,10 +115,6 @@ public final class RichInputConnection implements PrivateCommandPerformer {
 
     public boolean isConnected() {
         return mIC != null;
-    }
-
-    public void onStartInput() {
-        mLastSlowInputConnectionTime = -SLOW_INPUTCONNECTION_PERSIST_MS;
     }
 
     private void checkConsistencyForDebug() {
@@ -424,32 +401,12 @@ public final class RichInputConnection implements PrivateCommandPerformer {
         return result;
     }
 
-    public CharSequence getTextAfterCursor(final int n, final int flags) {
-        return getTextAfterCursorAndDetectLaggyConnection(
-                OPERATION_GET_TEXT_AFTER_CURSOR,
-                SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS,
-                n, flags);
-    }
-
-    private CharSequence getTextAfterCursorAndDetectLaggyConnection(
-            final int operation, final long timeout, final int n, final int flags) {
-        mIC = mParent.getCurrentInputConnection();
-        if (!isConnected()) {
-            return null;
-        }
-        final long startTime = SystemClock.uptimeMillis();
-        final CharSequence result = mIC.getTextAfterCursor(n, flags);
-        detectLaggyConnection(operation, timeout, startTime);
-        return result;
-    }
-
     private void detectLaggyConnection(final int operation, final long timeout, final long startTime) {
         final long duration = SystemClock.uptimeMillis() - startTime;
         if (duration >= timeout) {
             final String operationName = OPERATION_NAMES[operation];
             Log.w(TAG, "Slow InputConnection: " + operationName + " took " + duration + " ms.");
             StatsUtils.onInputConnectionLaggy(operation, duration);
-            mLastSlowInputConnectionTime = SystemClock.uptimeMillis();
         }
     }
 
@@ -583,37 +540,6 @@ public final class RichInputConnection implements PrivateCommandPerformer {
             }
         }
         return reloadTextCache();
-    }
-
-    @SuppressWarnings("unused")
-    @NonNull
-    public NgramContext getNgramContextFromNthPreviousWord(
-            final SpacingAndPunctuations spacingAndPunctuations, final int n) {
-        mIC = mParent.getCurrentInputConnection();
-        if (!isConnected()) {
-            return NgramContext.EMPTY_PREV_WORDS_INFO;
-        }
-        final CharSequence prev = getTextBeforeCursor(NUM_CHARS_TO_GET_BEFORE_CURSOR, 0);
-        if (DEBUG_PREVIOUS_TEXT && null != prev) {
-            final int checkLength = NUM_CHARS_TO_GET_BEFORE_CURSOR - 1;
-            final String reference = prev.length() <= checkLength ? prev.toString()
-                    : prev.subSequence(prev.length() - checkLength, prev.length()).toString();
-            // TODO: right now the following works because mComposingText holds the part of the
-            // composing text that is before the cursor, but this is very confusing. We should
-            // fix it.
-            final StringBuilder internal = new StringBuilder()
-                    .append(mCommittedTextBeforeComposingText).append(mComposingText);
-            if (internal.length() > checkLength) {
-                internal.delete(0, internal.length() - checkLength);
-                if (!(reference.equals(internal.toString()))) {
-                    final String context =
-                            "Expected text = " + internal + "\nActual text = " + reference;
-                    ((LatinIME)mParent).debugDumpStateAndCrashWithException(context);
-                }
-            }
-        }
-        return NgramContextUtils.getNgramContextFromNthPreviousWord(
-                prev, spacingAndPunctuations, n);
     }
 
     public void removeTrailingSpace() {
@@ -812,27 +738,6 @@ public final class RichInputConnection implements PrivateCommandPerformer {
 
     public boolean isCursorPositionKnown() {
         return INVALID_CURSOR_POSITION != mExpectedSelStart;
-    }
-
-    /**
-     * Work around a bug that was present before Jelly Bean upon rotation.
-     *
-     * Before Jelly Bean, there is a bug where setComposingRegion and other committing
-     * functions on the input connection get ignored until the cursor moves. This method works
-     * around the bug by wiggling the cursor first, which reactivates the connection and has
-     * the subsequent methods work, then restoring it to its original position.
-     *
-     * On platforms on which this method is not present, this is a no-op.
-     */
-    public void maybeMoveTheCursorAroundAndRestoreToWorkaroundABug() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-            if (mExpectedSelStart > 0) {
-                mIC.setSelection(mExpectedSelStart - 1, mExpectedSelStart - 1);
-            } else {
-                mIC.setSelection(mExpectedSelStart + 1, mExpectedSelStart + 1);
-            }
-            mIC.setSelection(mExpectedSelStart, mExpectedSelEnd);
-        }
     }
 
     /**

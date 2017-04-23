@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- Predefined subtypes (language:layout[:extraValue]) -->
     <string-array name="predefined_subtypes" translatable="false">
         <item>de:qwerty:AsciiCapable</item>

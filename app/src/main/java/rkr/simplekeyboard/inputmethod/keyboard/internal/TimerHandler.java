@@ -17,14 +17,13 @@
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.view.ViewConfiguration;
 
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.keyboard.PointerTracker;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
-
-import android.support.annotation.NonNull;
 
 public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
         implements TimerProxy {

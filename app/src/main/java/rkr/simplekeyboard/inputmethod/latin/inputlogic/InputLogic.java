@@ -34,18 +34,14 @@ import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.event.Event;
 import rkr.simplekeyboard.inputmethod.event.InputTransaction;
-import rkr.simplekeyboard.inputmethod.keyboard.KeyboardSwitcher;
 import rkr.simplekeyboard.inputmethod.latin.LastComposedWord;
 import rkr.simplekeyboard.inputmethod.latin.LatinIME;
-import rkr.simplekeyboard.inputmethod.latin.NgramContext;
 import rkr.simplekeyboard.inputmethod.latin.RichInputConnection;
 import rkr.simplekeyboard.inputmethod.latin.WordComposer;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.common.InputPointers;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.define.DebugFlags;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
-import rkr.simplekeyboard.inputmethod.latin.settings.SpacingAndPunctuations;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.RecapitalizeStatus;
 import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
@@ -102,7 +98,6 @@ public final class InputLogic {
      */
     public void startInput(final String combiningSpec, final SettingsValues settingsValues) {
         mEnteredText = null;
-        mConnection.onStartInput();
         if (!mWordComposer.getTypedWord().isEmpty()) {
             // For messaging apps that offer send button, the IME does not get the opportunity
             // to capture the last word. This block should capture those uncommitted words.
@@ -197,7 +192,6 @@ public final class InputLogic {
         // Space state must be updated before calling updateShiftState
         mSpaceState = SpaceState.NONE;
         mEnteredText = text;
-        inputTransaction.setDidAffectContents();
         inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
         return inputTransaction;
     }
@@ -327,10 +321,6 @@ public final class InputLogic {
         return inputTransaction;
     }
 
-    public void onCancelBatchInput(final LatinIME.UIHandler handler) {
-        mInputLogicHandler.onCancelBatchInput();
-    }
-
     /**
      * Handle a consumed event.
      *
@@ -347,12 +337,9 @@ public final class InputLogic {
         final CharSequence textToCommit = event.getTextToCommit();
         if (!TextUtils.isEmpty(textToCommit)) {
             mConnection.commitText(textToCommit, 1);
-            inputTransaction.setDidAffectContents();
         }
         if (mWordComposer.isComposingWord()) {
             setComposingTextInternal(mWordComposer.getTypedWord(), 1);
-            inputTransaction.setDidAffectContents();
-            inputTransaction.setRequiresUpdateSuggestions();
         }
     }
 
@@ -374,7 +361,6 @@ public final class InputLogic {
             case Constants.CODE_DELETE:
                 handleBackspaceEvent(event, inputTransaction, currentKeyboardScriptId);
                 // Backspace is a functional key, but it affects the contents of the editor.
-                inputTransaction.setDidAffectContents();
                 break;
             case Constants.CODE_SHIFT:
                 performRecapitalization(inputTransaction.mSettingsValues);
@@ -422,7 +408,6 @@ public final class InputLogic {
                 handleNonSpecialCharacterEvent(tmpEvent, inputTransaction, handler);
                 // Shift + Enter is treated as a functional key but it results in adding a new
                 // line, so that does affect the contents of the editor.
-                inputTransaction.setDidAffectContents();
                 break;
             default:
                 throw new RuntimeException("Unknown key code : " + event.mKeyCode);
@@ -441,7 +426,6 @@ public final class InputLogic {
     private void handleNonFunctionalEvent(final Event event,
             final InputTransaction inputTransaction,
             final LatinIME.UIHandler handler) {
-        inputTransaction.setDidAffectContents();
         switch (event.mCodePoint) {
             case Constants.CODE_ENTER:
                 final EditorInfo editorInfo = getCurrentInputEditorInfo();
@@ -505,40 +489,21 @@ public final class InputLogic {
     private void handleNonSeparatorEvent(final Event event, final SettingsValues settingsValues,
             final InputTransaction inputTransaction) {
         final int codePoint = event.mCodePoint;
-        // TODO: refactor this method to stop flipping isComposingWord around all the time, and
-        // make it shorter (possibly cut into several pieces). Also factor
-        // handleNonSpecialCharacterEvent which has the same name as other handle* methods but is
-        // not the same.
-        boolean isComposingWord = mWordComposer.isComposingWord();
-
         // TODO: remove isWordConnector() and use isUsuallyFollowedBySpace() instead.
         // See onStartBatchInput() to see how to do it.
         if (SpaceState.PHANTOM == inputTransaction.mSpaceState
                 && !settingsValues.isWordConnector(codePoint)) {
-            if (isComposingWord) {
-                // Sanity check
-                throw new RuntimeException("Should not be composing here");
-            }
             insertAutomaticSpaceIfOptionsAndTextAllow(settingsValues);
         }
 
-        if (isComposingWord) {
-            mWordComposer.applyProcessedEvent(event);
-            // If it's the first letter, make note of auto-caps state
-            if (mWordComposer.isSingleLetter()) {
-                mWordComposer.setCapitalizedModeAtStartComposingTime(inputTransaction.mShiftState);
-            }
-        } else {
-            final boolean swapWeakSpace = tryStripSpaceAndReturnWhetherShouldSwapInstead(event,
-                    inputTransaction);
+        final boolean swapWeakSpace = tryStripSpaceAndReturnWhetherShouldSwapInstead(event,
+                inputTransaction);
 
-            if (swapWeakSpace && trySwapSwapperAndSpace(event, inputTransaction)) {
-                mSpaceState = SpaceState.WEAK;
-            } else {
-                sendKeyCodePoint(settingsValues, codePoint);
-            }
+        if (swapWeakSpace && trySwapSwapperAndSpace(event, inputTransaction)) {
+            mSpaceState = SpaceState.WEAK;
+        } else {
+            sendKeyCodePoint(settingsValues, codePoint);
         }
-        inputTransaction.setRequiresUpdateSuggestions();
     }
 
     /**
@@ -588,7 +553,6 @@ public final class InputLogic {
 
         if (tryPerformDoubleSpacePeriod(event, inputTransaction)) {
             mSpaceState = SpaceState.DOUBLE;
-            inputTransaction.setRequiresUpdateSuggestions();
             StatsUtils.onDoubleSpacePeriod();
         } else if (swapWeakSpace && trySwapSwapperAndSpace(event, inputTransaction)) {
             mSpaceState = SpaceState.SWAP_PUNCTUATION;
@@ -665,9 +629,6 @@ public final class InputLogic {
                     inputTransaction.mSettingsValues.mSpacingAndPunctuations)) {
                 // No need to reset mSpaceState, it has already be done (that's why we
                 // receive it as a parameter)
-                inputTransaction.setRequiresUpdateSuggestions();
-                mWordComposer.setCapitalizedModeAtStartComposingTime(
-                        WordComposer.CAPS_MODE_OFF);
                 StatsUtils.onRevertDoubleSpacePeriod();
                 return;
             }
@@ -678,8 +639,6 @@ public final class InputLogic {
                 return;
             }
         }
-
-        boolean hasUnlearnedWordBeingDeleted = false;
 
         // No cancelling of commit/double space/swap: we have a regular backspace.
         // We should backspace one char and restart suggestion if at the end of a word.
@@ -865,7 +824,6 @@ public final class InputLogic {
                     .mSentenceSeparatorAndSpace;
             mConnection.commitText(textToInsert, 1);
             inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
-            inputTransaction.setRequiresUpdateSuggestions();
             return true;
         }
         return false;
@@ -945,8 +903,6 @@ public final class InputLogic {
     private void revertCommit(final InputTransaction inputTransaction,
             final SettingsValues settingsValues) {
         final CharSequence originallyTypedWord = mLastComposedWord.mTypedWord;
-        final String originallyTypedWordString =
-                originallyTypedWord != null ? originallyTypedWord.toString() : "";
         final CharSequence committedWord = mLastComposedWord.mCommittedWord;
         final String committedWordString = committedWord.toString();
         final int cancelLength = committedWord.length();
@@ -1024,9 +980,6 @@ public final class InputLogic {
         }
         // Don't restart suggestion yet. We'll restart if the user deletes the separator.
         mLastComposedWord = LastComposedWord.NOT_A_COMPOSED_WORD;
-
-        // We have a separator between the word and the cursor: we should show predictions.
-        inputTransaction.setRequiresUpdateSuggestions();
     }
 
     /**
@@ -1261,58 +1214,9 @@ public final class InputLogic {
      */
     private void commitChosenWord(final SettingsValues settingsValues, final String chosenWord,
             final int commitType, final String separatorString) {
-        long startTimeMillis = 0;
-        if (DebugFlags.DEBUG_ENABLED) {
-            startTimeMillis = System.currentTimeMillis();
-            Log.d(TAG, "commitChosenWord() : [" + chosenWord + "]");
-        }
         final CharSequence chosenWordWithSuggestions = chosenWord;
-        // b/21926256
-        //      SuggestionSpanUtils.getTextWithSuggestionSpan(mLatinIME, chosenWord,
-        //                suggestedWords, locale);
-        if (DebugFlags.DEBUG_ENABLED) {
-            long runTimeMillis = System.currentTimeMillis() - startTimeMillis;
-            Log.d(TAG, "commitChosenWord() : " + runTimeMillis + " ms to run "
-                    + "SuggestionSpanUtils.getTextWithSuggestionSpan()");
-            startTimeMillis = System.currentTimeMillis();
-        }
-        // When we are composing word, get n-gram context from the 2nd previous word because the
-        // 1st previous word is the word to be committed. Otherwise get n-gram context from the 1st
-        // previous word.
-        final NgramContext ngramContext = mConnection.getNgramContextFromNthPreviousWord(
-                settingsValues.mSpacingAndPunctuations, mWordComposer.isComposingWord() ? 2 : 1);
-        if (DebugFlags.DEBUG_ENABLED) {
-            long runTimeMillis = System.currentTimeMillis() - startTimeMillis;
-            Log.d(TAG, "commitChosenWord() : " + runTimeMillis + " ms to run "
-                    + "Connection.getNgramContextFromNthPreviousWord()");
-            Log.d(TAG, "commitChosenWord() : NgramContext = " + ngramContext);
-            startTimeMillis = System.currentTimeMillis();
-        }
         mConnection.commitText(chosenWordWithSuggestions, 1);
-        if (DebugFlags.DEBUG_ENABLED) {
-            long runTimeMillis = System.currentTimeMillis() - startTimeMillis;
-            Log.d(TAG, "commitChosenWord() : " + runTimeMillis + " ms to run "
-                    + "Connection.commitText");
-            startTimeMillis = System.currentTimeMillis();
-        }
-        if (DebugFlags.DEBUG_ENABLED) {
-            long runTimeMillis = System.currentTimeMillis() - startTimeMillis;
-            Log.d(TAG, "commitChosenWord() : " + runTimeMillis + " ms to run "
-                    + "performAdditionToUserHistoryDictionary()");
-            startTimeMillis = System.currentTimeMillis();
-        }
-        // TODO: figure out here if this is an auto-correct or if the best word is actually
-        // what user typed. Note: currently this is done much later in
-        // LastComposedWord#didCommitTypedWord by string equality of the remembered
-        // strings.
-        mLastComposedWord = mWordComposer.commitWord(commitType,
-                chosenWordWithSuggestions, separatorString, ngramContext);
-        if (DebugFlags.DEBUG_ENABLED) {
-            long runTimeMillis = System.currentTimeMillis() - startTimeMillis;
-            Log.d(TAG, "commitChosenWord() : " + runTimeMillis + " ms to run "
-                    + "WordComposer.commitWord()");
-            startTimeMillis = System.currentTimeMillis();
-        }
+        mLastComposedWord = mWordComposer.commitWord(commitType, chosenWordWithSuggestions, separatorString);
     }
 
     /**

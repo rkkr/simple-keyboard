@@ -27,7 +27,6 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.util.Xml;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodSubtype;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -47,7 +46,6 @@ import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ScriptUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils;
 
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
@@ -86,8 +84,6 @@ public final class KeyboardLayoutSet {
             new HashMap<>();
     @NonNull
     private static final UniqueKeysCache sUniqueKeysCache = UniqueKeysCache.newInstance();
-    private final static HashMap<InputMethodSubtype, Integer> sScriptIdsForSubtypes =
-            new HashMap<>();
 
     @SuppressWarnings("serial")
     public static final class KeyboardLayoutSetException extends RuntimeException {
@@ -114,7 +110,6 @@ public final class KeyboardLayoutSet {
         // TODO: Use {@link InputAttributes} instead of these variables.
         EditorInfo mEditorInfo;
         boolean mIsPasswordField;
-        boolean mVoiceInputKeyEnabled;
         boolean mNoSettingsKey;
         boolean mLanguageSwitchKeyEnabled;
         RichInputMethodSubtype mSubtype;
@@ -296,11 +291,6 @@ public final class KeyboardLayoutSet {
             mParams.mSubtype = keyboardSubtype;
             mParams.mKeyboardLayoutSetName = KEYBOARD_LAYOUT_SET_RESOURCE_PREFIX
                     + keyboardSubtype.getKeyboardLayoutSetName();
-            return this;
-        }
-
-        public Builder setVoiceInputKeyEnabled(final boolean enabled) {
-            mParams.mVoiceInputKeyEnabled = enabled;
             return this;
         }
 

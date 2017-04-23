@@ -18,7 +18,6 @@ package rkr.simplekeyboard.inputmethod.event;
 
 import android.support.annotation.NonNull;
 
-import rkr.simplekeyboard.inputmethod.annotations.ExternallyReferenced;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
@@ -134,31 +133,6 @@ public class Event {
                 isKeyRepeat ? FLAG_REPEAT : FLAG_NONE, next);
     }
 
-    // This creates an input event for a dead character. @see {@link #FLAG_DEAD}
-    @ExternallyReferenced
-    @NonNull
-    public static Event createDeadEvent(final int codePoint, final int keyCode, final Event next) {
-        // TODO: add an argument or something if we ever create a software layout with dead keys.
-        return new Event(EVENT_TYPE_INPUT_KEYPRESS, null /* text */, codePoint, keyCode,
-                Constants.EXTERNAL_KEYBOARD_COORDINATE, Constants.EXTERNAL_KEYBOARD_COORDINATE,
-                FLAG_DEAD, next);
-    }
-
-    /**
-     * Create an input event with nothing but a code point. This is the most basic possible input
-     * event; it contains no information on many things the IME requires to function correctly,
-     * so avoid using it unless really nothing is known about this input.
-     * @param codePoint the code point.
-     * @return an event for this code point.
-     */
-    @NonNull
-    public static Event createEventForCodePointFromUnknownSource(final int codePoint) {
-        // TODO: should we have a different type of event for this? After all, it's not a key press.
-        return new Event(EVENT_TYPE_INPUT_KEYPRESS, null /* text */, codePoint, NOT_A_KEY_CODE,
-                Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE,
-                FLAG_NONE, null /* next */);
-    }
-
     /**
      * Creates an input event with a code point and x, y coordinates. This is typically used when
      * resuming a previously-typed word, when the coordinates are still known.
@@ -215,13 +189,6 @@ public class Event {
                 source.mNextEvent);
     }
 
-    @NonNull
-    public static Event createNotHandledEvent() {
-        return new Event(EVENT_TYPE_NOT_HANDLED, null /* text */, NOT_A_CODE_POINT, NOT_A_KEY_CODE,
-                Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE,
-                FLAG_NONE, null);
-    }
-
     // Returns whether this is a function key like backspace, ctrl, settings... as opposed to keys
     // that result in input like letters or space.
     public boolean isFunctionalKeyEvent() {
@@ -240,16 +207,10 @@ public class Event {
 
     public boolean isConsumed() { return 0 != (FLAG_CONSUMED & mFlags); }
 
-    public boolean isGesture() { return EVENT_TYPE_GESTURE == mEventType; }
-
     // Returns whether this is a fake key press from the suggestion strip. This happens with
     // punctuation signs selected from the suggestion strip.
     public boolean isSuggestionStripPress() {
         return EVENT_TYPE_SUGGESTION_PICKED == mEventType;
-    }
-
-    public boolean isHandled() {
-        return EVENT_TYPE_NOT_HANDLED != mEventType;
     }
 
     public CharSequence getTextToCommit() {

@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- Symbols that are suggested between words -->
     <string name="suggested_punctuations">:,;,\",(,),\',-,/,@,_</string>
 </resources>

@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- Title for Android keyboard debug settings activity / dialog -->
     <string name="english_ime_debug_settings">Android Keyboard Debug settings</string>
     <string name="prefs_debug_mode">Debug Mode</string>

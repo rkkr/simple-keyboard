@@ -39,10 +39,7 @@ import android.util.Log;
     }
 
     public void onPressOnShifted() {
-        int oldState = mState;
         mState = PRESSING_ON_SHIFTED;
-        if (DEBUG)
-            Log.d(TAG, mName + ".onPressOnShifted: " + toString(oldState) + " > " + this);
     }
 
     public boolean isPressingOnShifted() {

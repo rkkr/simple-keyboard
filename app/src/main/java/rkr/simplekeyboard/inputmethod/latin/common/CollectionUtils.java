@@ -17,13 +17,8 @@
 package rkr.simplekeyboard.inputmethod.latin.common;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
-
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 
 /**
  * Utility methods for working with collections.

@@ -16,10 +16,10 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
+import android.support.annotation.NonNull;
+
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.keyboard.PointerTracker;
-
-import android.support.annotation.NonNull;
 
 public interface TimerProxy {
     /**

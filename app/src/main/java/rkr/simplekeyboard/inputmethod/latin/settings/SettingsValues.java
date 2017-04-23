@@ -21,7 +21,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.inputmethod.EditorInfo;
 
 import java.util.Locale;
@@ -130,11 +129,6 @@ public class SettingsValues {
 
     public boolean isWordConnector(final int code) {
         return mSpacingAndPunctuations.isWordConnector(code);
-    }
-
-    public boolean isWordCodePoint(final int code) {
-        return Character.isLetter(code) || isWordConnector(code)
-                || Character.COMBINING_SPACING_MARK == Character.getType(code);
     }
 
     public boolean isUsuallyPrecededBySpace(final int code) {

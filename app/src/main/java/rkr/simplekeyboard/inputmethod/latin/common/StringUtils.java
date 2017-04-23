@@ -23,23 +23,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-
 public final class StringUtils {
-    public static final int CAPITALIZE_NONE = 0;  // No caps, or mixed case
-    public static final int CAPITALIZE_FIRST = 1; // First only
-    public static final int CAPITALIZE_ALL = 2;   // All caps
-
     @NonNull
     private static final String EMPTY_STRING = "";
-
-    private static final char CHAR_LINE_FEED = 0X000A;
-    private static final char CHAR_VERTICAL_TAB = 0X000B;
-    private static final char CHAR_FORM_FEED = 0X000C;
-    private static final char CHAR_CARRIAGE_RETURN = 0X000D;
-    private static final char CHAR_NEXT_LINE = 0X0085;
-    private static final char CHAR_LINE_SEPARATOR = 0X2028;
-    private static final char CHAR_PARAGRAPH_SEPARATOR = 0X2029;
 
     private StringUtils() {
         // This utility class is not publicly instantiable.
@@ -467,14 +453,5 @@ public final class StringUtils {
         final String titleCaseLabel = toTitleCaseOfKeyLabel(label, locale);
         return codePointCount(titleCaseLabel) == 1
                 ? titleCaseLabel.codePointAt(0) : Constants.CODE_UNSPECIFIED;
-    }
-
-    public static int getTrailingSingleQuotesCount(@NonNull final CharSequence charSequence) {
-        final int lastIndex = charSequence.length() - 1;
-        int i = lastIndex;
-        while (i >= 0 && charSequence.charAt(i) == Constants.CODE_SINGLE_QUOTE) {
-            --i;
-        }
-        return lastIndex - i;
     }
 }

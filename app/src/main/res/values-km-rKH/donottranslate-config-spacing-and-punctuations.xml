@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- Whether this language uses spaces between words -->
     <bool name="current_language_has_spaces">false</bool>
 </resources>

@@ -81,10 +81,7 @@ public final class AlphabetShiftState {
     }
 
     public void setAutomaticShifted() {
-        final int oldState = mState;
         mState = AUTOMATIC_SHIFTED;
-        if (DEBUG)
-            Log.d(TAG, "setAutomaticShifted: " + toString(oldState) + " > " + this);
     }
 
     public boolean isShiftedOrShiftLocked() {

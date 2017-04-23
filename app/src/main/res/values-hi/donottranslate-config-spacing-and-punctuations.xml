@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- The sentence separator code point, for double-space-to-period -->
     <!-- U+007C: "|" VERTICAL LINE ; 7Ch = 124d -->
     <integer name="sentence_separator">124</integer>

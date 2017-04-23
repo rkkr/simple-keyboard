@@ -36,7 +36,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.compat.InputMethodManagerCompatWrapper;
 import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;

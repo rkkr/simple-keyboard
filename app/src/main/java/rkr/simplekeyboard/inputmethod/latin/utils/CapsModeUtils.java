@@ -20,11 +20,8 @@ import android.text.InputType;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-import rkr.simplekeyboard.inputmethod.latin.WordComposer;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.settings.SpacingAndPunctuations;
 
 public final class CapsModeUtils {

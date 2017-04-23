@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- Same list as in English, but add armenian period and comma: -->
     <!-- U+055D: "՝" ARMENIAN COMMA -->
     <!-- U+0589: "։" ARMENIAN FULL STOP -->

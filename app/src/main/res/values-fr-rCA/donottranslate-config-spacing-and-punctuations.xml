@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- Symbols that are normally preceded by a space (used to add an auto-space before these) -->
     <!-- This is similar to French with the exception of "!" "?" and ";" which do not take a space before in Canadian French. Note that ":" does take a space before according to Canadian rules. -->
     <string name="symbols_preceded_by_space">([{&amp;:</string>

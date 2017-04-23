@@ -22,8 +22,6 @@ import java.util.Arrays;
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-import rkr.simplekeyboard.inputmethod.keyboard.internal.MoreKeySpec;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 

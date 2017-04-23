@@ -18,8 +18,7 @@
 */
  -->
 
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="english_ime_input_options" msgid="3909945612939668554">"உள்ளீட்டு விருப்பங்கள்"</string>
     <string name="vibrate_on_keypress" msgid="5258079494276955460">"விசையழுத்தின்போது அதிர்வுரு"</string>
     <string name="sound_on_keypress" msgid="6093592297198243644">"விசையழுத்தத்தின்போது ஒலியெழுப்பு"</string>

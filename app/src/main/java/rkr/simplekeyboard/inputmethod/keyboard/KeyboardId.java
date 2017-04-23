@@ -80,7 +80,6 @@ public final class KeyboardId {
     public final boolean mClobberSettingsKey;
     public final boolean mLanguageSwitchKeyEnabled;
     public final String mCustomActionLabel;
-    public final boolean mHasShortcutKey;
     public final boolean mIsSplitLayout;
 
     private final int mHashCode;
@@ -96,7 +95,6 @@ public final class KeyboardId {
         mLanguageSwitchKeyEnabled = params.mLanguageSwitchKeyEnabled;
         mCustomActionLabel = (mEditorInfo.actionLabel != null)
                 ? mEditorInfo.actionLabel.toString() : null;
-        mHasShortcutKey = params.mVoiceInputKeyEnabled;
         mIsSplitLayout = params.mIsSplitLayoutEnabled;
 
         mHashCode = computeHashCode(this);
@@ -110,7 +108,6 @@ public final class KeyboardId {
                 id.mHeight,
                 id.passwordInput(),
                 id.mClobberSettingsKey,
-                id.mHasShortcutKey,
                 id.mLanguageSwitchKeyEnabled,
                 id.isMultiLine(),
                 id.imeAction(),
@@ -131,7 +128,6 @@ public final class KeyboardId {
                 && other.mHeight == mHeight
                 && other.passwordInput() == passwordInput()
                 && other.mClobberSettingsKey == mClobberSettingsKey
-                && other.mHasShortcutKey == mHasShortcutKey
                 && other.mLanguageSwitchKeyEnabled == mLanguageSwitchKeyEnabled
                 && other.isMultiLine() == isMultiLine()
                 && other.imeAction() == imeAction()
@@ -201,7 +197,6 @@ public final class KeyboardId {
                 (navigatePrevious() ? " navigatePrevious" : ""),
                 (mClobberSettingsKey ? " clobberSettingsKey" : ""),
                 (passwordInput() ? " passwordInput" : ""),
-                (mHasShortcutKey ? " hasShortcutKey" : ""),
                 (mLanguageSwitchKeyEnabled ? " languageSwitchKeyEnabled" : ""),
                 (isMultiLine() ? " isMultiLine" : ""),
                 (mIsSplitLayout ? " isSplitLayout" : "")

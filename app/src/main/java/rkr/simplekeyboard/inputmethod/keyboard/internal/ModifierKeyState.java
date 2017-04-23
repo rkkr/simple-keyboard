@@ -34,17 +34,11 @@ import android.util.Log;
     }
 
     public void onPress() {
-        final int oldState = mState;
         mState = PRESSING;
-        if (DEBUG)
-            Log.d(TAG, mName + ".onPress: " + toString(oldState) + " > " + this);
     }
 
     public void onRelease() {
-        final int oldState = mState;
         mState = RELEASING;
-        if (DEBUG)
-            Log.d(TAG, mName + ".onRelease: " + toString(oldState) + " > " + this);
     }
 
     public void onOtherKeyPressed() {

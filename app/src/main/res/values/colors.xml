@@ -18,7 +18,7 @@
 */
 -->
 
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
     <!-- Color resources for IceCreamSandwich theme. Base color = 33B5E5 -->
     <!-- android:color/holo_blue_light value is #FF33B5E5 -->
     <color name="highlight_translucent_color_ics">#9933B5E5</color>

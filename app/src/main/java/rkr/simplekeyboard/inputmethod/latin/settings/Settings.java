@@ -18,7 +18,6 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -26,16 +25,13 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import java.util.Collections;
 import java.util.Locale;
-import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.RunInLocale;
@@ -70,7 +66,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             "pref_vibration_duration_settings";
     public static final String PREF_KEYPRESS_SOUND_VOLUME = "pref_keypress_sound_volume";
     public static final String PREF_KEY_LONGPRESS_TIMEOUT = "pref_key_longpress_timeout";
-    public static final String PREF_SHOW_SETUP_WIZARD_ICON = "pref_show_setup_wizard_icon";
 
     public static final String PREF_KEY_IS_INTERNAL = "pref_key_is_internal";
 
@@ -78,18 +73,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     // This is being used only for the backward compatibility.
     private static final String PREF_SUPPRESS_LANGUAGE_SWITCH_KEY =
             "pref_suppress_language_switch_key";
-
-    private static final String PREF_LAST_USED_PERSONALIZATION_TOKEN =
-            "pref_last_used_personalization_token";
-    private static final String PREF_LAST_PERSONALIZATION_DICT_WIPED_TIME =
-            "pref_last_used_personalization_dict_wiped_time";
-    private static final String PREF_CORPUS_HANDLES_FOR_PERSONALIZATION =
-            "pref_corpus_handles_for_personalization";
-
-    // Emoji
-    public static final String PREF_EMOJI_RECENT_KEYS = "emoji_recent_keys";
-    public static final String PREF_EMOJI_CATEGORY_LAST_TYPED_ID = "emoji_category_last_typed_id";
-    public static final String PREF_LAST_SHOWN_EMOJI_CATEGORY_ID = "last_shown_emoji_category_id";
 
     private static final float UNDEFINED_PREFERENCE_VALUE_FLOAT = -1.0f;
     private static final int UNDEFINED_PREFERENCE_VALUE_INT = -1;

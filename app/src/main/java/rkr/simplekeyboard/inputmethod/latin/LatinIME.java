@@ -67,7 +67,6 @@ import rkr.simplekeyboard.inputmethod.keyboard.KeyboardSwitcher;
 import rkr.simplekeyboard.inputmethod.keyboard.MainKeyboardView;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
-import rkr.simplekeyboard.inputmethod.latin.common.InputPointers;
 import rkr.simplekeyboard.inputmethod.latin.define.DebugFlags;
 import rkr.simplekeyboard.inputmethod.latin.inputlogic.InputLogic;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
@@ -107,9 +106,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private RichInputMethodManager mRichImm;
     @UsedForTesting final KeyboardSwitcher mKeyboardSwitcher;
     private final SubtypeState mSubtypeState = new SubtypeState();
-    // Working variable for {@link #startShowingInputView()} and
-    // {@link #onEvaluateInputViewShown()}.
-    private boolean mIsExecutingStartShowingInputView;
 
     private AlertDialog mOptionsDialog;
 
@@ -752,35 +748,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mInsetsUpdater.setInsets(outInsets);
     }
 
-    public void startShowingInputView(final boolean needsToLoadKeyboard) {
-        mIsExecutingStartShowingInputView = true;
-        // This {@link #showWindow(boolean)} will eventually call back
-        // {@link #onEvaluateInputViewShown()}.
-        showWindow(true /* showInput */);
-        mIsExecutingStartShowingInputView = false;
-        if (needsToLoadKeyboard) {
-            loadKeyboard();
-        }
-    }
-
-    public void stopShowingInputView() {
-        showWindow(false /* showInput */);
-    }
-
     @Override
     public boolean onShowInputRequested(final int flags, final boolean configChange) {
         if (isImeSuppressedByHardwareKeyboard()) {
             return true;
         }
         return super.onShowInputRequested(flags, configChange);
-    }
-
-    @Override
-    public boolean onEvaluateInputViewShown() {
-        if (mIsExecutingStartShowingInputView) {
-            return true;
-        }
-        return super.onEvaluateInputViewShown();
     }
 
     @Override
@@ -965,11 +938,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                         mKeyboardSwitcher.getKeyboardShiftMode(), mHandler);
         updateStateAfterInputTransaction(completeInputTransaction);
         mKeyboardSwitcher.onEvent(event, getCurrentAutoCapsState(), getCurrentRecapitalizeState());
-    }
-
-    @Override
-    public void onCancelBatchInput() {
-        mInputLogic.onCancelBatchInput(mHandler);
     }
 
     // Called from PointerTracker through the KeyboardActionListener interface

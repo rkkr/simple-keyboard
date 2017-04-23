@@ -113,7 +113,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         final int keyboardHeight = ResourceUtils.getKeyboardHeight(res, settingsValues);
         builder.setKeyboardGeometry(keyboardWidth, keyboardHeight);
         builder.setSubtype(mRichImm.getCurrentSubtype());
-        builder.setVoiceInputKeyEnabled(settingsValues.mShowsVoiceInputKey);
         builder.setLanguageSwitchKeyEnabled(mLatinIME.shouldShowLanguageSwitchKey());
         builder.setSplitLayoutEnabledByUser(ProductionFlags.IS_SPLIT_KEYBOARD_SUPPORTED
                 && settingsValues.mIsSplitKeyboardEnabled);
@@ -297,7 +296,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         boolean hidden = mKeyboardLayoutSet == null
                 || mKeyboardView == null
                 || !mKeyboardView.isShown();
-        KeyboardSwitchState state;
         if (hidden) {
             return KeyboardSwitchState.HIDDEN;
         } else if (isShowingKeyboardId(KeyboardId.ELEMENT_SYMBOLS_SHIFTED)) {

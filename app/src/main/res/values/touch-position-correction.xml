@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- Note that correctionX is obsolete (See rkr.simplekeyboard.inputmethod.keyboard.internal.TouchPositionCorrection)
         An entry of the touch_position_correction word should be:
         1. correctionX: (touch_center_x - hitbox_center_x) / hitbox_width

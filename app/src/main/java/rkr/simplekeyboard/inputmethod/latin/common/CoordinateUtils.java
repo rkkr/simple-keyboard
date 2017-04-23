@@ -73,22 +73,10 @@ public final class CoordinateUtils {
         return coordsArray[ELEMENT_SIZE * index + INDEX_Y];
     }
 
-    @NonNull
-    public static int[] coordinateFromArray(@NonNull final int[] coordsArray, final int index) {
-        final int[] coords = newInstance();
-        set(coords, xFromArray(coordsArray, index), yFromArray(coordsArray, index));
-        return coords;
-    }
-
     public static void setXYInArray(@NonNull final int[] coordsArray, final int index,
             final int x, final int y) {
         final int baseIndex = ELEMENT_SIZE * index;
         coordsArray[baseIndex + INDEX_X] = x;
         coordsArray[baseIndex + INDEX_Y] = y;
-    }
-
-    public static void setCoordinateInArray(@NonNull final int[] coordsArray, final int index,
-            @NonNull final int[] coords) {
-        setXYInArray(coordsArray, index, x(coords), y(coords));
     }
 }

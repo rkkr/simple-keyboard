@@ -94,7 +94,6 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
     @Override
     public void onResume() {
         super.onResume();
-        final SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
         updateListPreferenceSummaryToCurrentValue(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
     }
 

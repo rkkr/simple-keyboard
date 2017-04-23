@@ -19,23 +19,22 @@ package rkr.simplekeyboard.inputmethod.keyboard;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import java.util.ArrayList;
+
+import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.BogusMoveEventDetector;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.DrawingProxy;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.PointerTrackerQueue;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.TimerProxy;
-import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
 import rkr.simplekeyboard.inputmethod.latin.define.DebugFlags;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
-
-import java.util.ArrayList;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 public final class PointerTracker implements PointerTrackerQueue.Element {
     private static final String TAG = PointerTracker.class.getSimpleName();
@@ -70,9 +69,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
     // Parameters for pointer handling.
     private static PointerTrackerParams sParams;
-    // Move this threshold to resource.
-    // TODO: Device specific parameter would be better for device specific hack?
-    private static final float PHANTOM_SUDDEN_MOVE_THRESHOLD = 0.25f; // in keyWidth
 
     private static final ArrayList<PointerTracker> sTrackers = new ArrayList<>();
     private static final PointerTrackerQueue sPointerTrackerQueue = new PointerTrackerQueue();
@@ -87,16 +83,13 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
     // when new {@link Keyboard} is set by {@link #setKeyDetector(KeyDetector)}.
     private KeyDetector mKeyDetector = new KeyDetector();
     private Keyboard mKeyboard;
-    private int mPhantomSuddenMoveThreshold;
     private final BogusMoveEventDetector mBogusMoveEventDetector = new BogusMoveEventDetector();
 
     private boolean mIsDetectingGesture = false; // per PointerTracker.
 
     // The position and time at which first down event occurred.
-    private long mDownTime;
     @NonNull
     private int[] mDownCoordinates = CoordinateUtils.newInstance();
-    private long mUpTime;
 
     // The current key where this pointer is.
     private Key mCurrentKey = null;
@@ -308,7 +301,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         // Keep {@link #mCurrentKey} that comes from previous keyboard. The key preview of
         // {@link #mCurrentKey} will be dismissed by {@setReleasedKeyGraphics(Key)} via
         // {@link onMoveEventInternal(int,int,long)} or {@link #onUpEventInternal(int,int,long)}.
-        mPhantomSuddenMoveThreshold = (int)(keyWidth * PHANTOM_SUDDEN_MOVE_THRESHOLD);
         mBogusMoveEventDetector.setKeyboardGeometry(keyWidth, keyHeight);
     }
 
@@ -406,7 +398,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
     }
 
     private Key onDownKey(final int x, final int y, final long eventTime) {
-        mDownTime = eventTime;
         CoordinateUtils.set(mDownCoordinates, x, y);
         mBogusMoveEventDetector.onDownKey();
         return onMoveToNewKey(onMoveKeyInternal(x, y), x, y);
@@ -436,15 +427,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
     /* package */ static int getActivePointerTrackerCount() {
         return sPointerTrackerQueue.size();
-    }
-
-    private void cancelBatchInput() {
-        cancelAllPointerTrackers();
-        mIsDetectingGesture = false;
-        if (DEBUG_LISTENER) {
-            Log.d(TAG, String.format("[%d] onCancelBatchInput", mPointerId));
-        }
-        sListener.onCancelBatchInput();
     }
 
     public void processMotionEvent(final MotionEvent me, final KeyDetector keyDetector) {
@@ -493,7 +475,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             printTouchEvent("onDownEvent:", x, y, eventTime);
         }
         // Naive up-to-down noise filter.
-        final long deltaT = eventTime - mUpTime;
+        final long deltaT = eventTime;
         if (deltaT < sParams.mTouchNoiseThresholdTime) {
             final int distance = getDistance(x, y, mLastX, mLastY);
             if (distance < sParams.mTouchNoiseThresholdDistance) {
@@ -797,7 +779,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             printTouchEvent("onCancelEvt:", x, y, eventTime);
         }
 
-        cancelBatchInput();
         cancelAllPointerTrackers();
         sPointerTrackerQueue.releaseAllPointers(eventTime);
         onCancelEventInternal();

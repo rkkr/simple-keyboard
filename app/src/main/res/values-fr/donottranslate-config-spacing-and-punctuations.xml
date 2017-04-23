@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- Symbols that are normally preceded by a space (used to add an auto-space before these) -->
     <string name="symbols_preceded_by_space">([{&amp;;:!?</string>
     <!-- Symbols that are normally followed by a space (used to add an auto-space after these) -->

@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- For keyboard color scheme option dialog. -->
     <string-array name="keyboard_theme_names" translatable="false">
         <item>@string/keyboard_theme_material_light</item>

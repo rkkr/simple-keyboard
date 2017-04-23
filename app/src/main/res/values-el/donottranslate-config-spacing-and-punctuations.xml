@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- Symbols that terminate sentences and require capitalization on the next char -->
     <string name="symbols_sentence_terminators">.;!?</string>
 </resources>

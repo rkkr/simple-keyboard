@@ -17,7 +17,7 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- The all letters need to be mirrored are found at
          http://www.unicode.org/Public/6.1.0/ucd/BidiMirroring.txt -->
     <!-- Symbols that are suggested between words -->

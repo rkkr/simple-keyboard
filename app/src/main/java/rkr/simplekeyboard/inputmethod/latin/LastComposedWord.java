@@ -21,8 +21,6 @@ import android.text.TextUtils;
 import java.util.ArrayList;
 
 import rkr.simplekeyboard.inputmethod.event.Event;
-import rkr.simplekeyboard.inputmethod.latin.common.InputPointers;
-import rkr.simplekeyboard.inputmethod.latin.define.DecoderSpecificConstants;
 
 /**
  * This class encapsulates data about a word previously composed, but that has been
@@ -47,33 +45,22 @@ public final class LastComposedWord {
     public final String mTypedWord;
     public final CharSequence mCommittedWord;
     public final String mSeparatorString;
-    public final NgramContext mNgramContext;
-    public final int mCapitalizedMode;
-    public final InputPointers mInputPointers =
-            new InputPointers(DecoderSpecificConstants.DICTIONARY_MAX_WORD_LENGTH);
 
     private boolean mActive;
 
     public static final LastComposedWord NOT_A_COMPOSED_WORD =
-            new LastComposedWord(new ArrayList<Event>(), null, "", "",
-            NOT_A_SEPARATOR, null, WordComposer.CAPS_MODE_OFF);
+            new LastComposedWord(new ArrayList<Event>(), "", "",
+            NOT_A_SEPARATOR);
 
     // Warning: this is using the passed objects as is and fully expects them to be
     // immutable. Do not fiddle with their contents after you passed them to this constructor.
-    public LastComposedWord(final ArrayList<Event> events,
-            final InputPointers inputPointers, final String typedWord,
-            final CharSequence committedWord, final String separatorString,
-            final NgramContext ngramContext, final int capitalizedMode) {
-        if (inputPointers != null) {
-            mInputPointers.copy(inputPointers);
-        }
+    public LastComposedWord(final ArrayList<Event> events, final String typedWord,
+            final CharSequence committedWord, final String separatorString) {
         mTypedWord = typedWord;
         mEvents = new ArrayList<>(events);
         mCommittedWord = committedWord;
         mSeparatorString = separatorString;
         mActive = true;
-        mNgramContext = ngramContext;
-        mCapitalizedMode = capitalizedMode;
     }
 
     public void deactivate() {

@@ -17,7 +17,6 @@
 package rkr.simplekeyboard.inputmethod.keyboard;
 
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.common.InputPointers;
 
 public interface KeyboardActionListener {
     /**
@@ -65,8 +64,6 @@ public interface KeyboardActionListener {
      */
     void onTextInput(String text);
 
-    void onCancelBatchInput();
-
     /**
      * Called when user released a finger outside any key.
      */
@@ -94,8 +91,6 @@ public interface KeyboardActionListener {
         public void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat) {}
         @Override
         public void onTextInput(String text) {}
-        @Override
-        public void onCancelBatchInput() {}
         @Override
         public void onCancelInput() {}
         @Override
