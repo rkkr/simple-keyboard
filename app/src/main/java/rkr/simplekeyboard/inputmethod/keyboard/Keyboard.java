@@ -97,8 +97,6 @@ public class Keyboard {
     @NonNull
     private final KeyboardLayout mKeyboardLayout;
 
-    private final boolean mProximityCharsCorrectionEnabled;
-
     public Keyboard(@NonNull final KeyboardParams params) {
         mId = params.mId;
         mThemeId = params.mThemeId;
@@ -120,9 +118,8 @@ public class Keyboard {
         mIconsSet = params.mIconsSet;
 
         mProximityInfo = new ProximityInfo(params.GRID_WIDTH, params.GRID_HEIGHT,
-                mOccupiedWidth, mOccupiedHeight, mMostCommonKeyWidth, mMostCommonKeyHeight,
-                mSortedKeys, params.mTouchPositionCorrection);
-        mProximityCharsCorrectionEnabled = params.mProximityCharsCorrectionEnabled;
+                mOccupiedWidth, mOccupiedHeight, mMostCommonKeyWidth,
+                mSortedKeys);
         mKeyboardLayout = KeyboardLayout.newKeyboardLayout(mSortedKeys, mMostCommonKeyWidth,
                 mMostCommonKeyHeight, mOccupiedWidth, mOccupiedHeight);
     }
@@ -148,20 +145,7 @@ public class Keyboard {
         mIconsSet = keyboard.mIconsSet;
 
         mProximityInfo = keyboard.mProximityInfo;
-        mProximityCharsCorrectionEnabled = keyboard.mProximityCharsCorrectionEnabled;
         mKeyboardLayout = keyboard.mKeyboardLayout;
-    }
-
-    public boolean hasProximityCharsCorrection(final int code) {
-        if (!mProximityCharsCorrectionEnabled) {
-            return false;
-        }
-        // Note: The native code has the main keyboard layout only at this moment.
-        // TODO: Figure out how to handle proximity characters information of all layouts.
-        final boolean canAssumeNativeHasProximityCharsInfoOfAllKeys = (
-                mId.mElementId == KeyboardId.ELEMENT_ALPHABET
-                || mId.mElementId == KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED);
-        return canAssumeNativeHasProximityCharsInfoOfAllKeys || Character.isLetter(code);
     }
 
     @NonNull

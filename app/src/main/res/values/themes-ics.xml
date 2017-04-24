@@ -74,7 +74,6 @@
         <item name="keyboardTopPadding">0%p</item>
         <item name="keyboardBottomPadding">0%p</item>
         <item name="horizontalGap">0%p</item>
-        <item name="touchPositionCorrectionData">@null</item>
     </style>
     <style
         name="MoreKeysKeyboardView.ICS"

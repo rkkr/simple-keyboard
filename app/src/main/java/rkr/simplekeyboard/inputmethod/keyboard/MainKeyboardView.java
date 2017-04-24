@@ -367,7 +367,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
 
     private void locatePreviewPlacerView() {
         getLocationInWindow(mOriginCoords);
-        mDrawingPreviewPlacerView.setKeyboardViewGeometry(mOriginCoords, getWidth(), getHeight());
+        mDrawingPreviewPlacerView.setKeyboardViewGeometry(mOriginCoords);
     }
 
     private void installPreviewPlacerView() {
@@ -739,6 +739,5 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     @Override
     public void deallocateMemory() {
         super.deallocateMemory();
-        mDrawingPreviewPlacerView.deallocateMemory();
     }
 }

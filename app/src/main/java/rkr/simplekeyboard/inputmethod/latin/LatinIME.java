@@ -116,7 +116,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public static final class UIHandler extends LeakGuardHandlerWrapper<LatinIME> {
         private static final int MSG_UPDATE_SHIFT_STATE = 0;
         private static final int MSG_PENDING_IMS_CALLBACK = 1;
-        private static final int MSG_UPDATE_SUGGESTION_STRIP = 2;
         private static final int MSG_REOPEN_DICTIONARIES = 5;
         private static final int MSG_RESET_CACHES = 7;
         private static final int MSG_WAIT_FOR_DICTIONARY_LOAD = 8;
@@ -185,10 +184,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             removeMessages(MSG_RESET_CACHES);
             sendMessage(obtainMessage(MSG_RESET_CACHES, tryResumeSuggestions ? 1 : 0,
                     remainingTries, null));
-        }
-
-        public void cancelUpdateSuggestionStrip() {
-            removeMessages(MSG_UPDATE_SUGGESTION_STRIP);
         }
 
         public void postUpdateShiftState() {
@@ -628,8 +623,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     getCurrentRecapitalizeState());
         }
 
-        mHandler.cancelUpdateSuggestionStrip();
-
         if (TRACE) Debug.startMethodTracing("/data/trace/latinime");
     }
 
@@ -664,8 +657,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void cleanupInternalStateForFinishInput() {
-        // Remove pending messages related to update suggestions
-        mHandler.cancelUpdateSuggestionStrip();
         // Should do the following in onFinishInputInternal but until JB MR2 it's not called :(
         mInputLogic.finishInput();
     }

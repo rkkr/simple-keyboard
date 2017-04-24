@@ -181,10 +181,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         return this;
     }
 
-    public void setProximityCharsCorrectionEnabled(final boolean enabled) {
-        mParams.mProximityCharsCorrectionEnabled = enabled;
-    }
-
     @NonNull
     public Keyboard build() {
         return new Keyboard(mParams);
@@ -276,13 +272,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             params.mThemeId = keyboardAttr.getInt(R.styleable.Keyboard_themeId, 0);
             params.mIconsSet.loadIcons(keyboardAttr);
             params.mTextsSet.setLocale(params.mId.getLocale(), mContext);
-
-            final int resourceId = keyboardAttr.getResourceId(
-                    R.styleable.Keyboard_touchPositionCorrectionData, 0);
-            if (resourceId != 0) {
-                final String[] data = mResources.getStringArray(resourceId);
-                params.mTouchPositionCorrection.load(data);
-            }
         } finally {
             keyAttr.recycle();
             keyboardAttr.recycle();

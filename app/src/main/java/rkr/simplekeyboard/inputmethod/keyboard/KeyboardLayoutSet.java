@@ -97,7 +97,6 @@ public final class KeyboardLayoutSet {
 
     private static final class ElementParams {
         int mKeyboardXmlId;
-        boolean mProximityCharsCorrectionEnabled;
         boolean mSupportsSplitLayout;
         boolean mAllowRedundantMoreKeys;
         public ElementParams() {}
@@ -205,7 +204,6 @@ public final class KeyboardLayoutSet {
         builder.setAllowRedundantMoreKes(elementParams.mAllowRedundantMoreKeys);
         final int keyboardXmlId = elementParams.mKeyboardXmlId;
         builder.load(keyboardXmlId, id);
-        builder.setProximityCharsCorrectionEnabled(elementParams.mProximityCharsCorrectionEnabled);
         final Keyboard keyboard = builder.build();
         sKeyboardCache.put(id, new SoftReference<>(keyboard));
         if ((id.mElementId == KeyboardId.ELEMENT_ALPHABET
@@ -393,9 +391,6 @@ public final class KeyboardLayoutSet {
                         R.styleable.KeyboardLayoutSet_Element_elementName, 0);
                 elementParams.mKeyboardXmlId = a.getResourceId(
                         R.styleable.KeyboardLayoutSet_Element_elementKeyboard, 0);
-                elementParams.mProximityCharsCorrectionEnabled = a.getBoolean(
-                        R.styleable.KeyboardLayoutSet_Element_enableProximityCharsCorrection,
-                        false);
                 elementParams.mSupportsSplitLayout = a.getBoolean(
                         R.styleable.KeyboardLayoutSet_Element_supportsSplitLayout, false);
                 elementParams.mAllowRedundantMoreKeys = a.getBoolean(

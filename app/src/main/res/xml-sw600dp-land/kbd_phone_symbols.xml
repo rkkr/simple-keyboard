@@ -23,7 +23,6 @@
     latin:keyboardLeftPadding="10%p"
     latin:keyboardRightPadding="10%p"
     latin:keyWidth="18%p"
-    latin:touchPositionCorrectionData="@array/touch_position_correction_data_default"
 >
     <!-- Tablet doesn't have phone symbols keyboard -->
     <include

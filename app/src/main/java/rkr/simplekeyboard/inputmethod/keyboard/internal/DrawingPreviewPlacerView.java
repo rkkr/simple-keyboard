@@ -24,14 +24,10 @@ import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import java.util.ArrayList;
-
 import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
 
 public final class DrawingPreviewPlacerView extends RelativeLayout {
     private final int[] mKeyboardViewOrigin = CoordinateUtils.newInstance();
-
-    private final ArrayList<AbstractDrawingPreview> mPreviews = new ArrayList<>();
 
     public DrawingPreviewPlacerView(final Context context, final AttributeSet attrs) {
         super(context, attrs);
@@ -45,26 +41,13 @@ public final class DrawingPreviewPlacerView extends RelativeLayout {
         setLayerType(LAYER_TYPE_HARDWARE, layerPaint);
     }
 
-    public void setKeyboardViewGeometry(final int[] originCoords, final int width,
-            final int height) {
+    public void setKeyboardViewGeometry(final int[] originCoords) {
         CoordinateUtils.copy(mKeyboardViewOrigin, originCoords);
-        final int count = mPreviews.size();
-        for (int i = 0; i < count; i++) {
-            mPreviews.get(i).setKeyboardViewGeometry(originCoords, width, height);
-        }
-    }
-
-    public void deallocateMemory() {
-        final int count = mPreviews.size();
-        for (int i = 0; i < count; i++) {
-            mPreviews.get(i).onDeallocateMemory();
-        }
     }
 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        deallocateMemory();
     }
 
     @Override
@@ -73,10 +56,6 @@ public final class DrawingPreviewPlacerView extends RelativeLayout {
         final int originX = CoordinateUtils.x(mKeyboardViewOrigin);
         final int originY = CoordinateUtils.y(mKeyboardViewOrigin);
         canvas.translate(originX, originY);
-        final int count = mPreviews.size();
-        for (int i = 0; i < count; i++) {
-            mPreviews.get(i).drawPreview(canvas);
-        }
         canvas.translate(-originX, -originY);
     }
 }

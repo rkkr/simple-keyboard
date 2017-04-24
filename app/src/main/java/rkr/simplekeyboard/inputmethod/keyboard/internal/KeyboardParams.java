@@ -83,12 +83,6 @@ public class KeyboardParams {
     public int mMostCommonKeyHeight = 0;
     public int mMostCommonKeyWidth = 0;
 
-    public boolean mProximityCharsCorrectionEnabled;
-
-    @NonNull
-    public final TouchPositionCorrection mTouchPositionCorrection =
-            new TouchPositionCorrection();
-
     // Comparator to sort {@link Key}s from top-left to bottom-right order.
     private static final Comparator<Key> ROW_COLUMN_COMPARATOR = new Comparator<Key>() {
         @Override

@@ -177,12 +177,7 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
         if (code == Constants.CODE_OUTPUT_TEXT) {
             mListener.onTextInput(mCurrentKey.getOutputText());
         } else if (code != Constants.CODE_UNSPECIFIED) {
-            if (getKeyboard().hasProximityCharsCorrection(code)) {
-                mListener.onCodeInput(code, x, y, false /* isKeyRepeat */);
-            } else {
-                mListener.onCodeInput(code, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE,
-                        false /* isKeyRepeat */);
-            }
+            mListener.onCodeInput(code, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false /* isKeyRepeat */);
         }
     }
 

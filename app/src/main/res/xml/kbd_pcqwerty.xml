@@ -24,7 +24,6 @@
     latin:verticalGap="@fraction/config_key_vertical_gap_5row"
     latin:keyLetterSize="@fraction/config_key_letter_ratio_5row"
     latin:keyShiftedLetterHintRatio="@fraction/config_key_shifted_letter_hint_ratio_5row"
-    latin:touchPositionCorrectionData="@array/touch_position_correction_data_default"
 >
     <include
         latin:keyboardLayout="@xml/rows_pcqwerty" />
