@@ -73,13 +73,6 @@ public final class InputTypeUtils implements InputType {
                 || isWebEmailAddressVariation(variation);
     }
 
-    public static boolean isWebInputType(final int inputType) {
-        final int maskedInputType =
-                inputType & (TYPE_MASK_CLASS | TYPE_MASK_VARIATION);
-        return isWebEditTextInputType(maskedInputType) || isWebPasswordInputType(maskedInputType)
-                || isWebEmailAddressInputType(maskedInputType);
-    }
-
     // Please refer to TextView.isPasswordInputType
     public static boolean isPasswordInputType(final int inputType) {
         final int maskedInputType =

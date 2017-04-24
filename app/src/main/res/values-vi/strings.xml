@@ -33,8 +33,6 @@
     <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Mặc định"</string>
     <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> mili giây"</string>
     <string name="settings_system_default" msgid="6268225104743331821">"Mặc định của hệ thống"</string>
-    <string name="use_double_space_period" msgid="8781529969425082860">"Đúp phím cách chèn dấu chấm"</string>
-    <string name="use_double_space_period_summary" msgid="6532892187247952799">"Nhấn đúp phím cách sẽ chèn một dấu chấm, theo sau là dấu cách"</string>
     <string name="auto_cap" msgid="1719746674854628252">"Tự động viết hoa"</string>
     <string name="auto_cap_summary" msgid="7934452761022946874">"Viết hoa chữ đầu tiên của mỗi câu"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"Ngôn ngữ"</string>

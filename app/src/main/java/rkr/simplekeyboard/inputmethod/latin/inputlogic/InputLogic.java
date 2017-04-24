@@ -24,7 +24,6 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.SuggestionSpan;
-import android.util.Log;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
@@ -50,8 +49,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
  * This class manages the input logic.
  */
 public final class InputLogic {
-    private static final String TAG = InputLogic.class.getSimpleName();
-
     // TODO : Remove this member when we can.
     final LatinIME mLatinIME;
 
@@ -74,7 +71,6 @@ public final class InputLogic {
 
     // Keeps track of most recently inserted text (multi-character key) for reverting
     private String mEnteredText;
-    private long mDoubleSpacePeriodCountdownStart;
 
     /**
      * Create a new instance of the input logic.
@@ -114,7 +110,6 @@ public final class InputLogic {
         // In some cases (namely, after rotation of the device) editorInfo.initialSelStart is lying
         // so we try using some heuristics to find out about these and fix them.
         mConnection.tryFixLyingCursorPosition();
-        cancelDoubleSpacePeriodCountdown();
         if (InputLogicHandler.NULL_HANDLER == mInputLogicHandler) {
             mInputLogicHandler = new InputLogicHandler(mLatinIME, this);
         }
@@ -293,11 +288,6 @@ public final class InputLogic {
         mLastKeyTime = inputTransaction.mTimestamp;
         mConnection.beginBatchEdit();
 
-        // TODO: Consolidate the double-space period timer, mLastKeyTime, and the space state.
-        if (processedEvent.mCodePoint != Constants.CODE_SPACE) {
-            cancelDoubleSpacePeriodCountdown();
-        }
-
         Event currentEvent = processedEvent;
         while (null != currentEvent) {
             if (currentEvent.isConsumed()) {
@@ -393,14 +383,6 @@ public final class InputLogic {
                 break;
             case Constants.CODE_LANGUAGE_SWITCH:
                 handleLanguageSwitchKey();
-                break;
-            case Constants.CODE_EMOJI:
-                // Note: Switching emoji keyboard is being handled in
-                // {@link KeyboardState#onEvent(Event,int)}.
-                break;
-            case Constants.CODE_ALPHA_FROM_EMOJI:
-                // Note: Switching back from Emoji keyboard to the main keyboard is being
-                // handled in {@link KeyboardState#onEvent(Event,int)}.
                 break;
             case Constants.CODE_SHIFT_ENTER:
                 final Event tmpEvent = Event.createSoftwareKeypressEvent(Constants.CODE_ENTER,
@@ -551,10 +533,7 @@ public final class InputLogic {
             insertAutomaticSpaceIfOptionsAndTextAllow(settingsValues);
         }
 
-        if (tryPerformDoubleSpacePeriod(event, inputTransaction)) {
-            mSpaceState = SpaceState.DOUBLE;
-            StatsUtils.onDoubleSpacePeriod();
-        } else if (swapWeakSpace && trySwapSwapperAndSpace(event, inputTransaction)) {
+        if (swapWeakSpace && trySwapSwapperAndSpace(event, inputTransaction)) {
             mSpaceState = SpaceState.SWAP_PUNCTUATION;
         } else if (Constants.CODE_SPACE == codePoint) {
             if (!shouldAvoidSendingCode) {
@@ -623,16 +602,7 @@ public final class InputLogic {
             // reverting any autocorrect at this point. So we can safely return.
             return;
         }
-        if (SpaceState.DOUBLE == inputTransaction.mSpaceState) {
-            cancelDoubleSpacePeriodCountdown();
-            if (mConnection.revertDoubleSpacePeriod(
-                    inputTransaction.mSettingsValues.mSpacingAndPunctuations)) {
-                // No need to reset mSpaceState, it has already be done (that's why we
-                // receive it as a parameter)
-                StatsUtils.onRevertDoubleSpacePeriod();
-                return;
-            }
-        } else if (SpaceState.SWAP_PUNCTUATION == inputTransaction.mSpaceState) {
+        if (SpaceState.SWAP_PUNCTUATION == inputTransaction.mSpaceState) {
             if (mConnection.revertSwapPunctuation()) {
                 StatsUtils.onRevertSwapPunctuation();
                 // Likewise
@@ -767,92 +737,6 @@ public final class InputLogic {
             mConnection.removeTrailingSpace();
         }
         return false;
-    }
-
-    public void cancelDoubleSpacePeriodCountdown() {
-        mDoubleSpacePeriodCountdownStart = 0;
-    }
-
-    public boolean isDoubleSpacePeriodCountdownActive(final InputTransaction inputTransaction) {
-        return inputTransaction.mTimestamp - mDoubleSpacePeriodCountdownStart
-                < inputTransaction.mSettingsValues.mDoubleSpacePeriodTimeout;
-    }
-
-    /**
-     * Apply the double-space-to-period transformation if applicable.
-     *
-     * The double-space-to-period transformation means that we replace two spaces with a
-     * period-space sequence of characters. This typically happens when the user presses space
-     * twice in a row quickly.
-     * This method will check that the double-space-to-period is active in settings, that the
-     * two spaces have been input close enough together, that the typed character is a space
-     * and that the previous character allows for the transformation to take place. If all of
-     * these conditions are fulfilled, this method applies the transformation and returns true.
-     * Otherwise, it does nothing and returns false.
-     *
-     * @param event The event to handle.
-     * @param inputTransaction The transaction in progress.
-     * @return true if we applied the double-space-to-period transformation, false otherwise.
-     */
-    private boolean tryPerformDoubleSpacePeriod(final Event event,
-            final InputTransaction inputTransaction) {
-        // Check the setting, the typed character and the countdown. If any of the conditions is
-        // not fulfilled, return false.
-        if (!inputTransaction.mSettingsValues.mUseDoubleSpacePeriod
-                || Constants.CODE_SPACE != event.mCodePoint
-                || !isDoubleSpacePeriodCountdownActive(inputTransaction)) {
-            return false;
-        }
-        // We only do this when we see one space and an accepted code point before the cursor.
-        // The code point may be a surrogate pair but the space may not, so we need 3 chars.
-        final CharSequence lastTwo = mConnection.getTextBeforeCursor(3, 0);
-        if (null == lastTwo) return false;
-        final int length = lastTwo.length();
-        if (length < 2) return false;
-        if (lastTwo.charAt(length - 1) != Constants.CODE_SPACE) {
-            return false;
-        }
-        // We know there is a space in pos -1, and we have at least two chars. If we have only two
-        // chars, isSurrogatePairs can't return true as charAt(1) is a space, so this is fine.
-        final int firstCodePoint =
-                Character.isSurrogatePair(lastTwo.charAt(0), lastTwo.charAt(1)) ?
-                        Character.codePointAt(lastTwo, length - 3) : lastTwo.charAt(length - 2);
-        if (canBeFollowedByDoubleSpacePeriod(firstCodePoint)) {
-            cancelDoubleSpacePeriodCountdown();
-            mConnection.deleteTextBeforeCursor(1);
-            final String textToInsert = inputTransaction.mSettingsValues.mSpacingAndPunctuations
-                    .mSentenceSeparatorAndSpace;
-            mConnection.commitText(textToInsert, 1);
-            inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Returns whether this code point can be followed by the double-space-to-period transformation.
-     *
-     * See #maybeDoubleSpaceToPeriod for details.
-     * Generally, most word characters can be followed by the double-space-to-period transformation,
-     * while most punctuation can't. Some punctuation however does allow for this to take place
-     * after them, like the closing parenthesis for example.
-     *
-     * @param codePoint the code point after which we may want to apply the transformation
-     * @return whether it's fine to apply the transformation after this code point.
-     */
-    private static boolean canBeFollowedByDoubleSpacePeriod(final int codePoint) {
-        // TODO: This should probably be a blacklist rather than a whitelist.
-        // TODO: This should probably be language-dependant...
-        return Character.isLetterOrDigit(codePoint)
-                || codePoint == Constants.CODE_SINGLE_QUOTE
-                || codePoint == Constants.CODE_DOUBLE_QUOTE
-                || codePoint == Constants.CODE_CLOSING_PARENTHESIS
-                || codePoint == Constants.CODE_CLOSING_SQUARE_BRACKET
-                || codePoint == Constants.CODE_CLOSING_CURLY_BRACKET
-                || codePoint == Constants.CODE_CLOSING_ANGLE_BRACKET
-                || codePoint == Constants.CODE_PLUS
-                || codePoint == Constants.CODE_PERCENT
-                || Character.getType(codePoint) == Character.OTHER_SYMBOL;
     }
 
     /**

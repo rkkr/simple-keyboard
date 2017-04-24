@@ -181,11 +181,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         return this;
     }
 
-    @UsedForTesting
-    public void disableTouchPositionCorrectionDataForTest() {
-        mParams.mTouchPositionCorrection.setEnabled(false);
-    }
-
     public void setProximityCharsCorrectionEnabled(final boolean enabled) {
         mParams.mProximityCharsCorrectionEnabled = enabled;
     }

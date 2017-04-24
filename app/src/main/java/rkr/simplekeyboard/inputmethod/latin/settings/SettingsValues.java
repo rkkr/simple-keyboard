@@ -40,7 +40,6 @@ public class SettingsValues {
 
     // From resources:
     public final SpacingAndPunctuations mSpacingAndPunctuations;
-    public final long mDoubleSpacePeriodTimeout;
     // From configuration:
     public final Locale mLocale;
     public final boolean mHasHardwareKeyboard;
@@ -53,7 +52,6 @@ public class SettingsValues {
     public final boolean mShowsVoiceInputKey = false;
     public final boolean mIncludesOtherImesInLanguageSwitchList;
     public final boolean mShowsLanguageSwitchKey;
-    public final boolean mUseDoubleSpacePeriod;
     public final int mKeyLongpressTimeout;
     public final boolean mShouldShowLxxSuggestionUi;
     // Use split layout for keyboard.
@@ -95,9 +93,6 @@ public class SettingsValues {
         mKeyPreviewPopupOn = Settings.readKeyPreviewPopupEnabled(prefs, res);
         mIncludesOtherImesInLanguageSwitchList = !Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS || prefs.getBoolean(Settings.PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST, false) /* forcibly */;
         mShowsLanguageSwitchKey = !Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS || Settings.readShowsLanguageSwitchKey(prefs) /* forcibly */;
-        mUseDoubleSpacePeriod = prefs.getBoolean(Settings.PREF_KEY_USE_DOUBLE_SPACE_PERIOD, true)
-                && inputAttributes.mIsGeneralTextInput;
-        mDoubleSpacePeriodTimeout = res.getInteger(R.integer.config_double_space_period_timeout);
         mHasHardwareKeyboard = Settings.readHasHardwareKeyboard(res.getConfiguration());
         mIsSplitKeyboardEnabled = prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD, false);
 
@@ -180,8 +175,6 @@ public class SettingsValues {
         sb.append("" + mIncludesOtherImesInLanguageSwitchList);
         sb.append("\n   mShowsLanguageSwitchKey = ");
         sb.append("" + mShowsLanguageSwitchKey);
-        sb.append("\n   mUseDoubleSpacePeriod = ");
-        sb.append("" + mUseDoubleSpacePeriod);
         sb.append("\n   mKeyLongpressTimeout = ");
         sb.append("" + mKeyLongpressTimeout);
         sb.append("\n   mLocale = ");

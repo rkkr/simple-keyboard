@@ -106,14 +106,12 @@ public final class KeyboardLayoutSet {
     public static final class Params {
         String mKeyboardLayoutSetName;
         int mMode;
-        boolean mDisableTouchPositionCorrectionDataForTest;
         // TODO: Use {@link InputAttributes} instead of these variables.
         EditorInfo mEditorInfo;
         boolean mIsPasswordField;
         boolean mNoSettingsKey;
         boolean mLanguageSwitchKeyEnabled;
         RichInputMethodSubtype mSubtype;
-        boolean mIsSpellChecker;
         int mKeyboardWidth;
         int mKeyboardHeight;
         int mScriptId = ScriptUtils.SCRIPT_LATIN;
@@ -207,15 +205,11 @@ public final class KeyboardLayoutSet {
         builder.setAllowRedundantMoreKes(elementParams.mAllowRedundantMoreKeys);
         final int keyboardXmlId = elementParams.mKeyboardXmlId;
         builder.load(keyboardXmlId, id);
-        if (mParams.mDisableTouchPositionCorrectionDataForTest) {
-            builder.disableTouchPositionCorrectionDataForTest();
-        }
         builder.setProximityCharsCorrectionEnabled(elementParams.mProximityCharsCorrectionEnabled);
         final Keyboard keyboard = builder.build();
         sKeyboardCache.put(id, new SoftReference<>(keyboard));
         if ((id.mElementId == KeyboardId.ELEMENT_ALPHABET
-                || id.mElementId == KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED)
-                && !mParams.mIsSpellChecker) {
+                || id.mElementId == KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED)) {
             // We only forcibly cache the primary, "ALPHABET", layouts.
             for (int i = sForcibleKeyboardCache.length - 1; i >= 1; --i) {
                 sForcibleKeyboardCache[i] = sForcibleKeyboardCache[i - 1];

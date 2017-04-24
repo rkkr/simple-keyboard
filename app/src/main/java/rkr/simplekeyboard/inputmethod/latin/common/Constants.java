@@ -150,7 +150,6 @@ public final class Constants {
     public static final int NOT_A_CURSOR_POSITION = -1;
     // TODO: replace the following constants with state in InputTransaction?
     public static final int NOT_A_COORDINATE = -1;
-    public static final int SUGGESTION_STRIP_COORDINATE = -2;
     public static final int EXTERNAL_KEYBOARD_COORDINATE = -4;
 
     // A hint on how many characters to cache from the TextView. A good value of this is given by
@@ -194,12 +193,7 @@ public final class Constants {
     public static final int CODE_BACKSLASH = '\\';
     public static final int CODE_VERTICAL_BAR = '|';
     public static final int CODE_COMMERCIAL_AT = '@';
-    public static final int CODE_PLUS = '+';
     public static final int CODE_PERCENT = '%';
-    public static final int CODE_CLOSING_PARENTHESIS = ')';
-    public static final int CODE_CLOSING_SQUARE_BRACKET = ']';
-    public static final int CODE_CLOSING_CURLY_BRACKET = '}';
-    public static final int CODE_CLOSING_ANGLE_BRACKET = '>';
     public static final int CODE_INVERTED_QUESTION_MARK = 0xBF; // ¿
     public static final int CODE_INVERTED_EXCLAMATION_MARK = 0xA1; // ¡
     public static final int CODE_GRAVE_ACCENT = '`';

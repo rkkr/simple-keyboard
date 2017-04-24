@@ -33,8 +33,6 @@
     <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Standart"</string>
     <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default" msgid="6268225104743331821">"Tizim standarti"</string>
-    <string name="use_double_space_period" msgid="8781529969425082860">"Nuqtani avtomatik qo‘yish"</string>
-    <string name="use_double_space_period_summary" msgid="6532892187247952799">"Bo‘sh joy tugmasi ikki marta bosilsa, nuqta qo‘yiladi va bo‘sh joy tashlanadi"</string>
     <string name="auto_cap" msgid="1719746674854628252">"Avtomatik bosh harf"</string>
     <string name="auto_cap_summary" msgid="7934452761022946874">"Har bir gapning birinchi so‘zini bosh harf bilan boshlash"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"Tillar"</string>

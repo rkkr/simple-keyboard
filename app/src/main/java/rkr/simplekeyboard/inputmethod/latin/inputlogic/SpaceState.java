@@ -29,10 +29,6 @@ public class SpaceState {
     // input is added or removed. In this state, all self-inserting keys only insert themselves,
     // and backspace removes one character.
     public static final int NONE = 0;
-    // Double space: the state where the user pressed space twice quickly, which LatinIME
-    // resolved as period-space. In this state, pressing backspace will undo the
-    // double-space-to-period insertion: it will replace ". " with "  ".
-    public static final int DOUBLE = 1;
     // Swap punctuation: the state where a weak space and a punctuation from the suggestion strip
     // have just been swapped. In this state, pressing backspace will undo the swap: the
     // characters will be swapped back back, and the space state will go to WEAK.

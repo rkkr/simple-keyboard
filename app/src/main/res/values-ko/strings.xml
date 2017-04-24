@@ -33,8 +33,6 @@
     <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"기본값"</string>
     <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default" msgid="6268225104743331821">"시스템 기본값"</string>
-    <string name="use_double_space_period" msgid="8781529969425082860">"더블스페이스 마침표"</string>
-    <string name="use_double_space_period_summary" msgid="6532892187247952799">"스페이스바를 두 번 탭하면 마침표와 공백 한 개가 삽입됩니다."</string>
     <string name="auto_cap" msgid="1719746674854628252">"자동 대문자화"</string>
     <string name="auto_cap_summary" msgid="7934452761022946874">"문장의 첫 단어를 대문자로 표시"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"언어"</string>

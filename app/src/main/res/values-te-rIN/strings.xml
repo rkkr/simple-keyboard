@@ -33,8 +33,6 @@
     <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"డిఫాల్ట్"</string>
     <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>మిసె"</string>
     <string name="settings_system_default" msgid="6268225104743331821">"సిస్టమ్ డిఫాల్ట్"</string>
-    <string name="use_double_space_period" msgid="8781529969425082860">"రెండు-అంతరాల చుక్క గుర్తు"</string>
-    <string name="use_double_space_period_summary" msgid="6532892187247952799">"స్పేస్ బార్‌పై రెండుసార్లు నొక్కడం వలన చుక్క, దాని ప్రక్కన అంతరం చొప్పించబడుతుంది"</string>
     <string name="auto_cap" msgid="1719746674854628252">"స్వీయ-పెద్ద అక్షరాలు"</string>
     <string name="auto_cap_summary" msgid="7934452761022946874">"ప్రతి వాక్యంలో మొదటి అక్షరాన్ని పెద్ద అక్షరం చేయి"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"భాషలు"</string>

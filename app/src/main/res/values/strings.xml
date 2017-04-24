@@ -61,11 +61,6 @@
     <!-- The text that represents the current settings value is the system default [CHAR LIMIT=25] -->
     <string name="settings_system_default">System default</string>
 
-    <!-- Option name for enabling or disabling the double-space period feature that lets double tap on spacebar insert a period followed by a space [CHAR LIMIT=30] -->
-    <string name="use_double_space_period">Double-space period</string>
-    <!-- Description for option enabling or disabling the double-space period feature that lets double tap on spacebar insert a period followed by a space [CHAR LIMIT=65] -->
-    <string name="use_double_space_period_summary">Double tap on spacebar inserts a period followed by a space</string>
-
     <!-- Option to enable auto capitalization of sentences -->
     <string name="auto_cap">Auto-capitalization</string>
     <!-- Description for option to enable auto capitalization of sentences -->

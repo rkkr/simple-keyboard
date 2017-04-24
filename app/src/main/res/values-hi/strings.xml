@@ -33,8 +33,6 @@
     <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"सामान्य"</string>
     <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> मिलीसेकंड"</string>
     <string name="settings_system_default" msgid="6268225104743331821">"सिस्टम डिफ़ॉल्ट"</string>
-    <string name="use_double_space_period" msgid="8781529969425082860">"दोहरे स्पेस वाला पीरियड"</string>
-    <string name="use_double_space_period_summary" msgid="6532892187247952799">"स्पेसबार पर डबल टैप करने से पीरियड शामिल हो जाता है जिसके बाद एक रिक्ति होती है"</string>
     <string name="auto_cap" msgid="1719746674854628252">"स्‍वत: अक्षर बड़े करना"</string>
     <string name="auto_cap_summary" msgid="7934452761022946874">"प्रत्येक वाक्य के पहले शब्द को बड़ा लिखें"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"भाषाएं"</string>

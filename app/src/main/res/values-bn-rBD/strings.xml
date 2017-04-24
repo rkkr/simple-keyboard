@@ -33,8 +33,6 @@
     <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"ডিফল্ট"</string>
     <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>মিলি.সে."</string>
     <string name="settings_system_default" msgid="6268225104743331821">"সিস্টেম ডিফল্ট"</string>
-    <string name="use_double_space_period" msgid="8781529969425082860">"ডাবল-স্পেস পিরিয়ড"</string>
-    <string name="use_double_space_period_summary" msgid="6532892187247952799">"স্পেসবার দুবার টিপলে একটি স্পেস এর পর একটি পিরিয়ড লেখা হয়"</string>
     <string name="auto_cap" msgid="1719746674854628252">"স্বতঃ-ক্যাপিটালাইজেশন"</string>
     <string name="auto_cap_summary" msgid="7934452761022946874">"প্রতিটি বাক্যের প্রথম শব্দ বড় হাতের করুন"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"ভাষাগুলি"</string>

@@ -47,8 +47,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_VIBRATE_ON = "vibrate_on";
     public static final String PREF_SOUND_ON = "sound_on";
     public static final String PREF_POPUP_ON = "popup_on";
-        public static final String PREF_KEY_USE_DOUBLE_SPACE_PERIOD =
-            "pref_key_use_double_space_period";
     public static final boolean ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS =
             BuildCompatUtils.EFFECTIVE_SDK_INT <= Build.VERSION_CODES.KITKAT;
     public static final boolean SHOULD_SHOW_LXX_SUGGESTION_UI =
@@ -146,10 +144,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     // TODO: Remove this method and add proxy method to SettingsValues.
     public SettingsValues getCurrent() {
         return mSettingsValues;
-    }
-
-    public boolean isInternal() {
-        return mSettingsValues.mIsInternal;
     }
 
     public static int readScreenMetrics(final Resources res) {

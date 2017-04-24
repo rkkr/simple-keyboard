@@ -33,8 +33,6 @@
     <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"မူရင်းအတိုင်း"</string>
     <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default" msgid="6268225104743331821">"စနစ်ပုံသေ"</string>
-    <string name="use_double_space_period" msgid="8781529969425082860">"နှစ်နေရာခြား အဆုံးသတ်"</string>
-    <string name="use_double_space_period_summary" msgid="6532892187247952799">"အချိန်ကာလ"</string>
     <string name="auto_cap" msgid="1719746674854628252">"အော်တိုစာလုံးကြီးပြောင်း"</string>
     <string name="auto_cap_summary" msgid="7934452761022946874">"စာကြောင်းတိုင်း ပထမစာလုံးကို အကြီးလုပ်ရန်"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"ဘာသာစကားများ"</string>

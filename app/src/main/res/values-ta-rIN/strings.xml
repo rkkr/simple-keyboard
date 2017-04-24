@@ -33,8 +33,6 @@
     <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"இயல்புநிலை"</string>
     <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>மி.வி."</string>
     <string name="settings_system_default" msgid="6268225104743331821">"அமைப்பின் இயல்புநிலை"</string>
-    <string name="use_double_space_period" msgid="8781529969425082860">"புள்ளியைத் தொடர்ந்து இடைவெளியை உள்ளிடு"</string>
-    <string name="use_double_space_period_summary" msgid="6532892187247952799">"ஸ்பேஸ் பட்டியை இருமுறை தட்டுவது, புள்ளியை தொடர்ந்து இடைவெளியை உள்ளிடும்"</string>
     <string name="auto_cap" msgid="1719746674854628252">"தன்னியக்க பேரெழுத்தாக்கல்"</string>
     <string name="auto_cap_summary" msgid="7934452761022946874">"வரியின் முதல் எழுத்தை பேரெழுத்தாக்கும்"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"மொழிகள்"</string>

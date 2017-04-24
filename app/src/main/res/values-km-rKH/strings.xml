@@ -33,8 +33,6 @@
     <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"លំនាំដើម"</string>
     <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> មិល្លី​វិនាទី"</string>
     <string name="settings_system_default" msgid="6268225104743331821">"លំនាំ​ដើម​​​ប្រព័ន្ធ"</string>
-    <string name="use_double_space_period" msgid="8781529969425082860">"រយៈ​ពេល​ចុច​ដកឃ្លា​ពីរដង"</string>
-    <string name="use_double_space_period_summary" msgid="6532892187247952799">"ប៉ះ​ដកឃ្លា​ពីរ​​ដង​បញ្ចូល​​​រយៈ​ពេល​ដែល​អនុវត្ត​តាម​ដកឃ្លា"</string>
     <string name="auto_cap" msgid="1719746674854628252">"ការ​សរសេរ​ជា​អក្សរ​ធំ​​ស្វ័យប្រវត្តិ​"</string>
     <string name="auto_cap_summary" msgid="7934452761022946874">"សរសេរ​ពាក្យ​ដំបូង​​​ជា​អក្សរ​ធំ​​នៃ​ប្រយោគ​នីមួយ​ៗ"</string>
     <string name="language_selection_title" msgid="3666971864764478269">"ភាសា"</string>
