@@ -37,4 +37,10 @@
         latin:minValue="@integer/config_min_longpress_timeout"
         latin:maxValue="@integer/config_max_longpress_timeout"
         latin:stepValue="@integer/config_longpress_timeout_step" />
+    <rkr.simplekeyboard.inputmethod.latin.settings.SeekBarDialogPreference
+        android:key="pref_keyboard_height"
+        android:title="@string/prefs_keyboard_height_settings"
+        latin:minValue="@integer/config_min_keyboar_height"
+        latin:maxValue="@integer/config_max_keyboar_height"
+        latin:stepValue="@integer/config_keyboar_height_step" />
 </PreferenceScreen>

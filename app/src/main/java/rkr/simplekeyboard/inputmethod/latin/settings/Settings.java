@@ -64,6 +64,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             "pref_vibration_duration_settings";
     public static final String PREF_KEYPRESS_SOUND_VOLUME = "pref_keypress_sound_volume";
     public static final String PREF_KEY_LONGPRESS_TIMEOUT = "pref_key_longpress_timeout";
+    public static final String PREF_KEYBOARD_HEIGHT = "pref_keyboard_height";
 
     public static final String PREF_KEY_IS_INTERNAL = "pref_key_is_internal";
 
@@ -257,8 +258,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static float readKeyboardHeight(final SharedPreferences prefs,
             final float defaultValue) {
-        final float percentage = UNDEFINED_PREFERENCE_VALUE_FLOAT;
-        return (percentage != UNDEFINED_PREFERENCE_VALUE_FLOAT) ? percentage : defaultValue;
+        return prefs.getFloat(PREF_KEYBOARD_HEIGHT, defaultValue);
     }
 
     public static boolean readUseFullscreenMode(final Resources res) {

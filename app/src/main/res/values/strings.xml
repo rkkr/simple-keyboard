@@ -222,8 +222,12 @@ mobile devices. [CHAR LIMIT=25] -->
     <!-- Title of the settings for key long press delay [CHAR LIMIT=35] -->
     <string name="prefs_key_longpress_timeout_settings">Key long press delay</string>
 
+    <string translatable="false" name="prefs_keyboard_height_settings">Keyboard height</string>
+
     <!-- Title of the button to revert to the default value of the device in the settings dialog [CHAR LIMIT=15] -->
     <string name="button_default">Default</string>
+
+    <string translatable="false" name="abbreviation_unit_percent"><xliff:g id="PERCENTS">%s</xliff:g>%%</string>
 
     <!-- Standard message to dismiss a dialog box -->
     <!-- Title of the button in a dialog box. The button takes the user to the keyboard settings. [CHAR LIMIT=15] -->

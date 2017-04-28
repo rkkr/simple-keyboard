@@ -69,4 +69,9 @@
 
     <!-- Common key top visual configuration. -->
     <dimen name="config_key_popup_hint_letter_padding">2dp</dimen>
+
+    <!-- Keyboard height -->
+    <integer name="config_max_keyboar_height">150</integer>
+    <integer name="config_min_keyboar_height">50</integer>
+    <integer name="config_keyboar_height_step">10</integer>
 </resources>

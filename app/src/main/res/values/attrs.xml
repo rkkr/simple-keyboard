@@ -175,9 +175,6 @@
         <attr name="iconLanguageSwitchKey" format="reference" />
         <attr name="iconZwnjKey" format="reference" />
         <attr name="iconZwjKey" format="reference" />
-        <attr name="iconImeKey" format="reference" />
-        <attr name="iconEmojiActionKey" format="reference" />
-        <attr name="iconEmojiNormalKey" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="Keyboard_GridRows">

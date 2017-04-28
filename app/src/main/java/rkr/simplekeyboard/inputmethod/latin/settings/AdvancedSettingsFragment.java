@@ -88,6 +88,7 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         setupKeypressVibrationDurationSettings();
         setupKeypressSoundVolumeSettings();
         setupKeyLongpressTimeoutSettings();
+        setupKeyboardHeightSettings();
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
     }
 
@@ -249,6 +250,58 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
             @Override
             public String getValueText(final int value) {
                 return res.getString(R.string.abbreviation_unit_milliseconds, value);
+            }
+
+            @Override
+            public void feedbackValue(final int value) {}
+        });
+    }
+
+    private void setupKeyboardHeightSettings() {
+        final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(
+                Settings.PREF_KEYBOARD_HEIGHT);
+        if (pref == null) {
+            return;
+        }
+        final SharedPreferences prefs = getSharedPreferences();
+        final Resources res = getResources();
+        pref.setInterface(new SeekBarDialogPreference.ValueProxy() {
+            private static final float PERCENTAGE_FLOAT = 100.0f;
+
+            private float getValueFromPercentage(final int percentage) {
+                return percentage / PERCENTAGE_FLOAT;
+            }
+
+            private int getPercentageFromValue(final float floatValue) {
+                return (int)(floatValue * PERCENTAGE_FLOAT);
+            }
+
+            @Override
+            public void writeValue(final int value, final String key) {
+                prefs.edit().putFloat(key, getValueFromPercentage(value)).apply();
+            }
+
+            @Override
+            public void writeDefaultValue(final String key) {
+                prefs.edit().remove(key).apply();
+            }
+
+            @Override
+            public int readValue(final String key) {
+                return getPercentageFromValue(Settings.readKeyboardHeight(prefs, 1));
+            }
+
+            @Override
+            public int readDefaultValue(final String key) {
+                return getPercentageFromValue(1);
+            }
+
+            @Override
+            public String getValueText(final int value) {
+                if (value < 0) {
+                    return res.getString(R.string.settings_system_default);
+                }
+                return res.getString(R.string.abbreviation_unit_percent, value);
             }
 
             @Override
