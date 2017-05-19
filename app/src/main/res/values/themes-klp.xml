@@ -40,7 +40,7 @@
         name="KeyboardView.KLP"
         parent="KeyboardView.Holo"
     >
-        <item name="android:background">@drawable/keyboard_background_holo</item>
+        <item name="android:background">@android:color/black</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_klp</item>
         <item name="functionalKeyBackground">@drawable/btn_keyboard_key_functional_klp</item>
         <item name="spacebarBackground">@drawable/btn_keyboard_spacebar_klp</item>

@@ -36,7 +36,6 @@ import java.util.Arrays;
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.keyboard.Keyboard;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardId;

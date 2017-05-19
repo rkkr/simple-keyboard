@@ -55,8 +55,6 @@ public final class KeyboardIconsSet {
     public static final String NAME_LANGUAGE_SWITCH_KEY = "language_switch_key";
     public static final String NAME_ZWNJ_KEY = "zwnj_key";
     public static final String NAME_ZWJ_KEY = "zwj_key";
-    public static final String NAME_EMOJI_ACTION_KEY = "emoji_action_key";
-    public static final String NAME_EMOJI_NORMAL_KEY = "emoji_normal_key";
 
     private static final SparseIntArray ATTR_ID_TO_ICON_ID = new SparseIntArray();
 

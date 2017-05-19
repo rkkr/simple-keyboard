@@ -39,7 +39,7 @@
         name="KeyboardView.LXX_Light"
         parent="KeyboardView.LXX"
     >
-        <item name="android:background">@drawable/keyboard_background_lxx_light</item>
+        <item name="android:background">#ECEFF1</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_lxx_light</item>
         <item name="functionalKeyBackground">@drawable/btn_keyboard_key_functional_lxx_light</item>
         <item name="spacebarBackground">@drawable/btn_keyboard_spacebar_lxx_light</item>

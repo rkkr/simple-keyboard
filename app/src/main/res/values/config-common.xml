@@ -73,5 +73,5 @@
     <!-- Keyboard height -->
     <integer name="config_max_keyboar_height">150</integer>
     <integer name="config_min_keyboar_height">50</integer>
-    <integer name="config_keyboar_height_step">10</integer>
+    <integer name="config_keyboar_height_step">5</integer>
 </resources>
