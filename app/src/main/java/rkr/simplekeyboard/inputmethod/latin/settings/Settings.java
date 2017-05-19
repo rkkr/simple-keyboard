@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -65,6 +66,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEYPRESS_SOUND_VOLUME = "pref_keypress_sound_volume";
     public static final String PREF_KEY_LONGPRESS_TIMEOUT = "pref_key_longpress_timeout";
     public static final String PREF_KEYBOARD_HEIGHT = "pref_keyboard_height";
+    public static final String PREF_KEYBOARD_COLOR_ENABLED = "pref_keyboard_color_enabled";
+    public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
 
     public static final String PREF_KEY_IS_INTERNAL = "pref_key_is_internal";
 
@@ -165,6 +168,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                 res.getBoolean(R.bool.config_default_vibration_enabled));
     }
 
+    public static boolean readCustomColorEnabledEnabled(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_KEYBOARD_COLOR_ENABLED, false);
+    }
+
     public static boolean readFromBuildConfigIfToShowKeyPreviewPopupOption(final Resources res) {
         return res.getBoolean(R.bool.config_enable_show_key_preview_popup_option);
     }
@@ -259,6 +266,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static float readKeyboardHeight(final SharedPreferences prefs,
             final float defaultValue) {
         return prefs.getFloat(PREF_KEYBOARD_HEIGHT, defaultValue);
+    }
+
+    public static int readKeyboardColor(final SharedPreferences prefs) {
+        return prefs.getInt(PREF_KEYBOARD_COLOR, Color.GRAY);
     }
 
     public static boolean readUseFullscreenMode(final Resources res) {

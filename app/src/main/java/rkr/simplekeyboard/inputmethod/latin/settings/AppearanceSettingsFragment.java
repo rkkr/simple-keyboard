@@ -16,9 +16,12 @@
 
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.SwitchPreference;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.define.ProductionFlags;
 
@@ -34,6 +37,9 @@ public final class AppearanceSettingsFragment extends SubScreenFragment {
                 Constants.isPhone(Settings.readScreenMetrics(getResources()))) {
             removePreference(Settings.PREF_ENABLE_SPLIT_KEYBOARD);
         }
+
+        refreshEnablingsOfCustomColorSettings();
+        setupKeyboardColorSettings();
     }
 
     @Override
@@ -42,5 +48,48 @@ public final class AppearanceSettingsFragment extends SubScreenFragment {
         CustomInputStyleSettingsFragment.updateCustomInputStylesSummary(
                 findPreference(Settings.PREF_CUSTOM_INPUT_STYLES));
         ThemeSettingsFragment.updateKeyboardThemeSummary(findPreference(Settings.SCREEN_THEME));
+    }
+
+    private void refreshEnablingsOfCustomColorSettings() {
+        final SharedPreferences prefs = getSharedPreferences();
+        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR,
+                Settings.readCustomColorEnabledEnabled(prefs));
+        int themeId = KeyboardTheme.getKeyboardTheme(this.getActivity().getApplicationContext()).mThemeId;
+        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR_ENABLED,
+                themeId == KeyboardTheme.THEME_ID_LXX_DARK || themeId == KeyboardTheme.THEME_ID_LXX_LIGHT);
+        if (themeId == KeyboardTheme.THEME_ID_ICS || themeId == KeyboardTheme.THEME_ID_KLP && Settings.readCustomColorEnabledEnabled(prefs))
+            ((SwitchPreference)findPreference(Settings.PREF_KEYBOARD_COLOR_ENABLED)).setChecked(false);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
+        refreshEnablingsOfCustomColorSettings();
+    }
+
+    private void setupKeyboardColorSettings() {
+        final ColorDialogPreference pref = (ColorDialogPreference)findPreference(
+                Settings.PREF_KEYBOARD_COLOR);
+        if (pref == null) {
+            return;
+        }
+        final SharedPreferences prefs = getSharedPreferences();
+        pref.setInterface(new ColorDialogPreference.ValueProxy() {
+            @Override
+            public void writeValue(final int value, final String key) {
+                prefs.edit().putInt(key, value).apply();
+            }
+
+            @Override
+            public int readValue(final String key) {
+                return Settings.readKeyboardColor(prefs);
+            }
+
+            @Override
+            public String getValueText(final int value) {
+                String temp = Integer.toHexString(value);
+                for (; temp.length() < 8; temp = "0" + temp);
+                return temp.substring(2).toUpperCase();
+            }
+        });
     }
 }

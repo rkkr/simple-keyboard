@@ -228,6 +228,8 @@ mobile devices. [CHAR LIMIT=25] -->
     <string name="button_default">Default</string>
 
     <string translatable="false" name="abbreviation_unit_percent"><xliff:g id="PERCENTS">%s</xliff:g>%%</string>
+    <string translatable="false" name="keyboard_color_enabled">Enable custom keyboard color</string>
+    <string translatable="false" name="keyboard_color">Set custom keyboard color</string>
 
     <!-- Standard message to dismiss a dialog box -->
     <!-- Title of the button in a dialog box. The button takes the user to the keyboard settings. [CHAR LIMIT=15] -->

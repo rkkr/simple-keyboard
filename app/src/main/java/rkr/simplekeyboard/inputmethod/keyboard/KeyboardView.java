@@ -17,6 +17,7 @@
 package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -28,6 +29,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -40,6 +42,7 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyDrawParams;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyVisualAttributes;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
+import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
 
 /**
@@ -94,6 +97,8 @@ public class KeyboardView extends View {
     private final float mSpacebarIconWidthRatio;
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
+    private boolean mCustomColorEnabled;
+    private int mCustomColor;
 
     // The maximum key label width in the proportion to the key width.
     private static final float MAX_LABEL_RATIO = 0.90f;
@@ -188,6 +193,9 @@ public class KeyboardView extends View {
         final int keyHeight = keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap;
         mKeyDrawParams.updateParams(keyHeight, mKeyVisualAttributes);
         mKeyDrawParams.updateParams(keyHeight, keyboard.mKeyVisualAttributes);
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        mCustomColorEnabled = Settings.readCustomColorEnabledEnabled(prefs);
+        mCustomColor = Settings.readKeyboardColor(prefs);
         invalidateAllKeys();
         requestLayout();
     }
@@ -276,6 +284,8 @@ public class KeyboardView extends View {
 
         final Paint paint = mPaint;
         final Drawable background = getBackground();
+        if (mCustomColorEnabled)
+            setBackgroundColor(mCustomColor);
         // Calculate clip region and set.
         final boolean drawAllKeys = mInvalidateAllKeys || mInvalidatedKeys.isEmpty();
         final boolean isHardwareAccelerated = canvas.isHardwareAccelerated();
@@ -376,6 +386,11 @@ public class KeyboardView extends View {
         final int keyHeight = key.getHeight();
         final float centerX = keyWidth * 0.5f;
         final float centerY = keyHeight * 0.5f;
+
+        if (mCustomColorEnabled && key.getCode() != Constants.CODE_SPACE && !key.isActionKey()) {
+            mPaint.setColor(mCustomColor);
+            canvas.drawRect(0, 0, key.getWidth(), key.getHeight(), mPaint);
+        }
 
         // Draw key label.
         final Keyboard keyboard = getKeyboard();
