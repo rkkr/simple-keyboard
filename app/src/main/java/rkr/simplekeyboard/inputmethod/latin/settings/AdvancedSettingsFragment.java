@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 
 /**
@@ -90,6 +91,8 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         setupKeyLongpressTimeoutSettings();
         setupKeyboardHeightSettings();
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
+        refreshEnablingsOfCustomColorSettings();
+        setupKeyboardColorSettings();
     }
 
     @Override
@@ -306,6 +309,38 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
 
             @Override
             public void feedbackValue(final int value) {}
+        });
+    }
+
+    private void refreshEnablingsOfCustomColorSettings() {
+        int themeId = KeyboardTheme.getKeyboardTheme(this.getActivity().getApplicationContext()).mThemeId;
+        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR,
+                themeId == KeyboardTheme.THEME_ID_LXX_DARK || themeId == KeyboardTheme.THEME_ID_LXX_LIGHT);
+    }
+
+    private void setupKeyboardColorSettings() {
+        final ColorDialogPreference pref = (ColorDialogPreference)findPreference(
+                Settings.PREF_KEYBOARD_COLOR);
+        if (pref == null) {
+            return;
+        }
+        final SharedPreferences prefs = getSharedPreferences();
+        final Context context = this.getActivity().getApplicationContext();
+        pref.setInterface(new ColorDialogPreference.ValueProxy() {
+            @Override
+            public void writeValue(final int value, final String key) {
+                prefs.edit().putInt(key, value).apply();
+            }
+
+            @Override
+            public int readValue(final String key) {
+                return Settings.readKeyboardColor(prefs, context);
+            }
+
+            @Override
+            public int readDefaultValue(final String key) {
+                return Settings.readKeyboardDefaultColor(context);
+            }
         });
     }
 }

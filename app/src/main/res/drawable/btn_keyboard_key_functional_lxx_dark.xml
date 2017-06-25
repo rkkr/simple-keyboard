@@ -18,5 +18,4 @@
     <!-- Functional keys. -->
     <item android:state_pressed="true"
           android:drawable="@color/key_background_pressed_lxx_dark" />
-    <item android:drawable="@color/key_background_lxx_dark" />
 </selector>

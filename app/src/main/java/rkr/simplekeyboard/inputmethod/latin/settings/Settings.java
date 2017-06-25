@@ -31,6 +31,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
+import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
 import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
@@ -66,7 +67,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEYPRESS_SOUND_VOLUME = "pref_keypress_sound_volume";
     public static final String PREF_KEY_LONGPRESS_TIMEOUT = "pref_key_longpress_timeout";
     public static final String PREF_KEYBOARD_HEIGHT = "pref_keyboard_height";
-    public static final String PREF_KEYBOARD_COLOR_ENABLED = "pref_keyboard_color_enabled";
     public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
 
     public static final String PREF_KEY_IS_INTERNAL = "pref_key_is_internal";
@@ -168,10 +168,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                 res.getBoolean(R.bool.config_default_vibration_enabled));
     }
 
-    public static boolean readCustomColorEnabledEnabled(final SharedPreferences prefs) {
-        return prefs.getBoolean(PREF_KEYBOARD_COLOR_ENABLED, false);
-    }
-
     public static boolean readFromBuildConfigIfToShowKeyPreviewPopupOption(final Resources res) {
         return res.getBoolean(R.bool.config_enable_show_key_preview_popup_option);
     }
@@ -268,8 +264,26 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return prefs.getFloat(PREF_KEYBOARD_HEIGHT, defaultValue);
     }
 
-    public static int readKeyboardColor(final SharedPreferences prefs) {
-        return prefs.getInt(PREF_KEYBOARD_COLOR, Color.GRAY);
+    public static int readKeyboardDefaultColor(final Context context) {
+        final int[] keyboardThemeColors = context.getResources().getIntArray(R.array.keyboard_theme_colors);
+        final int[] keyboardThemeIds = context.getResources().getIntArray(R.array.keyboard_theme_ids);
+        final int themeId = KeyboardTheme.getKeyboardTheme(context).mThemeId;
+        for (int index = 0; index < keyboardThemeIds.length; index++) {
+            if (themeId == keyboardThemeIds[index]) {
+                return keyboardThemeColors[index];
+            }
+        }
+
+        return Color.LTGRAY;
+    }
+
+    public static int readKeyboardColor(final SharedPreferences prefs, final Context context) {
+        int color = prefs.getInt(PREF_KEYBOARD_COLOR, UNDEFINED_PREFERENCE_VALUE_INT);
+        return color == UNDEFINED_PREFERENCE_VALUE_INT ? readKeyboardDefaultColor(context) : color;
+    }
+
+    public static void setKeyboardColor(final SharedPreferences prefs, int color) {
+        prefs.edit().putInt(PREF_KEYBOARD_COLOR, color).apply();
     }
 
     public static boolean readUseFullscreenMode(final Resources res) {

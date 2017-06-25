@@ -31,12 +31,4 @@
         android:title="@string/enable_split_keyboard"
         android:persistent="true"
         android:defaultValue="false" />
-    <CheckBoxPreference
-        android:key="pref_keyboard_color_enabled"
-        android:title="@string/keyboard_color_enabled"
-        android:persistent="true"
-        android:defaultValue="false" />
-    <rkr.simplekeyboard.inputmethod.latin.settings.ColorDialogPreference
-        android:key="pref_keyboard_color"
-        android:title="@string/keyboard_color" />
 </PreferenceScreen>

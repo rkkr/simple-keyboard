@@ -39,7 +39,7 @@
         name="KeyboardView.LXX_Dark"
         parent="KeyboardView.LXX"
     >
-        <item name="android:background">#263238</item>
+        <!--<item name="android:background">#263238</item>-->
         <item name="keyBackground">@drawable/btn_keyboard_key_lxx_dark</item>
         <item name="functionalKeyBackground">@drawable/btn_keyboard_key_functional_lxx_dark</item>
         <item name="spacebarBackground">@drawable/btn_keyboard_spacebar_lxx_dark</item>

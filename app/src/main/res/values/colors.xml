@@ -39,7 +39,6 @@
     <color name="key_hint_letter_color_lxx_light">#B337474F</color>
     <color name="language_on_spacebar_text_color_lxx_light">#B337474F</color>
     <color name="sliding_key_input_preview_color_lxx_light">#B34DB6AC</color>
-    <color name="key_background_lxx_light">#ECEFF1</color>
     <color name="key_background_pressed_lxx_light">#2637474F</color>
     <!-- Color resources for LXX_Dark theme.
          10%:0x19 50%:0x80 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6  -->
@@ -48,6 +47,5 @@
     <color name="key_text_inactive_color_lxx_dark">#80FFFFFF</color>
     <color name="key_hint_letter_color_lxx_dark">#80FFFFFF</color>
     <color name="sliding_key_input_preview_color_lxx_dark">#B380CBC4</color>
-    <color name="key_background_lxx_dark">#263238</color>
     <color name="key_background_pressed_lxx_dark">#19FFFFFF</color>
 </resources>

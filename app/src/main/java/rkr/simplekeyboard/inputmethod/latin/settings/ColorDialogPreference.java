@@ -21,20 +21,23 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 public final class ColorDialogPreference extends DialogPreference
         implements SeekBar.OnSeekBarChangeListener {
     public interface ValueProxy {
         int readValue(final String key);
+        int readDefaultValue(final String key);
         void writeValue(final int value, final String key);
-        String getValueText(final int value);
     }
 
     private TextView mValueView;
@@ -78,17 +81,34 @@ public final class ColorDialogPreference extends DialogPreference
     @Override
     protected void onBindDialogView(final View view) {
         final int color = mValueProxy.readValue(getKey());
-        mValueView.setText(mValueProxy.getValueText(color));
         mSeekBarRed.setProgress(Color.red(color));
         mSeekBarGreen.setProgress(Color.green(color));
         mSeekBarBlue.setProgress(Color.blue(color));
-        mValueView.setBackgroundColor(color);
+        setHeaderText(color);
+    }
+
+    @Override
+    protected void showDialog(Bundle bundle) {
+        super.showDialog(bundle);
+        Button pos = ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_NEUTRAL);
+        pos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int color = mValueProxy.readDefaultValue(null);
+                mSeekBarRed.setProgress(Color.red(color));
+                mSeekBarGreen.setProgress(Color.green(color));
+                mSeekBarBlue.setProgress(Color.blue(color));
+                setHeaderText(color);
+                return;
+            }
+        });
     }
 
     @Override
     protected void onPrepareDialogBuilder(final AlertDialog.Builder builder) {
         builder.setPositiveButton(android.R.string.ok, this)
-                .setNegativeButton(android.R.string.cancel, this);
+                .setNegativeButton(android.R.string.cancel, this)
+                .setNeutralButton(R.string.button_default, null);
     }
 
     @Override
@@ -96,6 +116,7 @@ public final class ColorDialogPreference extends DialogPreference
         super.onClick(dialog, which);
         final String key = getKey();
         if (which == DialogInterface.BUTTON_POSITIVE) {
+            super.onClick(dialog, which);
             final int value = Color.rgb(
                     mSeekBarRed.getProgress(),
                     mSeekBarGreen.getProgress(),
@@ -112,8 +133,7 @@ public final class ColorDialogPreference extends DialogPreference
                 mSeekBarRed.getProgress(),
                 mSeekBarGreen.getProgress(),
                 mSeekBarBlue.getProgress());
-        mValueView.setText(mValueProxy.getValueText(color));
-        mValueView.setBackgroundColor(color);
+        setHeaderText(color);
         if (!fromUser) {
             seekBar.setProgress(progress);
         }
@@ -121,11 +141,22 @@ public final class ColorDialogPreference extends DialogPreference
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+    }
 
+    private void setHeaderText(int color) {
+        mValueView.setText(getValueText(color));
+        boolean bright = Color.red(color) + Color.green(color) + Color.blue(color) > 128 * 3;
+        mValueView.setTextColor(bright ? Color.BLACK : Color.WHITE);
+        mValueView.setBackgroundColor(color);
+    }
+
+    private String getValueText(final int value) {
+        String temp = Integer.toHexString(value);
+        for (; temp.length() < 8; temp = "0" + temp);
+        return temp.substring(2).toUpperCase();
     }
 }

@@ -33,4 +33,11 @@
         <item>2</item>
         <item>0</item>
     </integer-array>
+
+    <array name="keyboard_theme_colors" translatable="false">
+        <item>#ECEFF1</item>
+        <item>#263238</item>
+        <item>#000000</item>
+        <item>#000000</item>
+    </array>
 </resources>

@@ -34,6 +34,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.util.HashSet;
@@ -98,7 +99,7 @@ public class KeyboardView extends View {
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
     private boolean mCustomColorEnabled;
-    private int mCustomColor;
+    private int mCustomColor = 0;
 
     // The maximum key label width in the proportion to the key width.
     private static final float MAX_LABEL_RATIO = 0.90f;
@@ -194,11 +195,27 @@ public class KeyboardView extends View {
         mKeyDrawParams.updateParams(keyHeight, mKeyVisualAttributes);
         mKeyDrawParams.updateParams(keyHeight, keyboard.mKeyVisualAttributes);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        mCustomColorEnabled = Settings.readCustomColorEnabledEnabled(prefs);
-        mCustomColor = Settings.readKeyboardColor(prefs);
+        //Only set for Material themes
+        mCustomColorEnabled = keyboard.mThemeId == KeyboardTheme.THEME_ID_LXX_DARK || keyboard.mThemeId == KeyboardTheme.THEME_ID_LXX_LIGHT;
+        //Only for main dialog
+        mCustomColorEnabled = mCustomColorEnabled && keyboard.getKey(Constants.CODE_SPACE) != null;
+        mCustomColor = Settings.readKeyboardColor(prefs, getContext());
+        /*if (mCustomColorEnabled && keyboard.getKey(Constants.CODE_SPACE) == null) {
+            mCustomColor = Settings.readKeyboardColor(prefs, getContext());
+            //Overlay for non main view
+            int overlay = getContext().getResources().getColor(keyboard.mThemeId == KeyboardTheme.THEME_ID_LXX_DARK ? R.color.key_background_pressed_lxx_dark : R.color.key_background_pressed_lxx_light);
+            mCustomColor = Color.rgb(
+                    colorOverlay(Color.red(mCustomColor), Color.red(overlay), Color.alpha(overlay)),
+                    colorOverlay(Color.green(mCustomColor), Color.green(overlay), Color.alpha(overlay)),
+                    colorOverlay(Color.blue(mCustomColor), Color.blue(overlay), Color.alpha(overlay)));
+        }*/
         invalidateAllKeys();
         requestLayout();
     }
+
+    /*private int colorOverlay(int background, int overlay, int alpha) {
+        return (overlay * alpha + background * (255 - alpha)) / 255;
+    }*/
 
     /**
      * Returns the current keyboard being displayed by this view.
@@ -284,8 +301,9 @@ public class KeyboardView extends View {
 
         final Paint paint = mPaint;
         final Drawable background = getBackground();
-        if (mCustomColorEnabled)
+        if (mCustomColorEnabled) {
             setBackgroundColor(mCustomColor);
+        }
         // Calculate clip region and set.
         final boolean drawAllKeys = mInvalidateAllKeys || mInvalidatedKeys.isEmpty();
         final boolean isHardwareAccelerated = canvas.isHardwareAccelerated();
@@ -386,11 +404,6 @@ public class KeyboardView extends View {
         final int keyHeight = key.getHeight();
         final float centerX = keyWidth * 0.5f;
         final float centerY = keyHeight * 0.5f;
-
-        if (mCustomColorEnabled && key.getCode() != Constants.CODE_SPACE && !key.isActionKey()) {
-            mPaint.setColor(mCustomColor);
-            canvas.drawRect(0, 0, key.getWidth(), key.getHeight(), mPaint);
-        }
 
         // Draw key label.
         final Keyboard keyboard = getKeyboard();

@@ -179,12 +179,7 @@ public final class KeyboardLayoutSet {
         mParams.mIsSplitLayoutEnabled = mParams.mIsSplitLayoutEnabledByUser
                 && elementParams.mSupportsSplitLayout;
         final KeyboardId id = new KeyboardId(keyboardLayoutSetElementId, mParams);
-        try {
-            return getKeyboard(elementParams, id);
-        } catch (final RuntimeException e) {
-            Log.e(TAG, "Can't create keyboard: " + id, e);
-            throw new KeyboardLayoutSetException(e, id);
-        }
+        return getKeyboard(elementParams, id);
     }
 
     @NonNull

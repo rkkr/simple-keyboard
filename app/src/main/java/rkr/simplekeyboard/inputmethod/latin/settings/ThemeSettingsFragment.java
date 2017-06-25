@@ -95,6 +95,16 @@ public final class ThemeSettingsFragment extends SubScreenFragment
     public void onPause() {
         super.onPause();
         KeyboardTheme.saveKeyboardThemeId(mSelectedThemeId, getSharedPreferences());
+
+        final Resources res = this.getResources();
+        final int[] keyboardThemeColors = res.getIntArray(R.array.keyboard_theme_colors);
+        final int[] keyboardThemeIds = res.getIntArray(R.array.keyboard_theme_ids);
+        for (int index = 0; index < keyboardThemeIds.length; index++) {
+            if (mSelectedThemeId == keyboardThemeIds[index]) {
+                Settings.setKeyboardColor(getSharedPreferences(), keyboardThemeColors[index]);
+                return;
+            }
+        }
     }
 
     private void updateSelected() {

@@ -43,4 +43,7 @@
         latin:minValue="@integer/config_min_keyboar_height"
         latin:maxValue="@integer/config_max_keyboar_height"
         latin:stepValue="@integer/config_keyboar_height_step" />
+    <rkr.simplekeyboard.inputmethod.latin.settings.ColorDialogPreference
+        android:key="pref_keyboard_color"
+        android:title="@string/keyboard_color" />
 </PreferenceScreen>
