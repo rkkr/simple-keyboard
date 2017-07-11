@@ -98,8 +98,8 @@ public class KeyboardView extends View {
     private final float mSpacebarIconWidthRatio;
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
-    private boolean mCustomColorEnabled;
-    private int mCustomColor = 0;
+    public boolean mCustomColorEnabled;
+    public int mCustomColor = 0;
 
     // The maximum key label width in the proportion to the key width.
     private static final float MAX_LABEL_RATIO = 0.90f;
@@ -198,7 +198,7 @@ public class KeyboardView extends View {
         //Only set for Material themes
         mCustomColorEnabled = keyboard.mThemeId == KeyboardTheme.THEME_ID_LXX_DARK || keyboard.mThemeId == KeyboardTheme.THEME_ID_LXX_LIGHT;
         //Only for main dialog
-        mCustomColorEnabled = mCustomColorEnabled && keyboard.getKey(Constants.CODE_SPACE) != null;
+        //mCustomColorEnabled = mCustomColorEnabled && keyboard.getKey(Constants.CODE_SPACE) != null;
         mCustomColor = Settings.readKeyboardColor(prefs, getContext());
         /*if (mCustomColorEnabled && keyboard.getKey(Constants.CODE_SPACE) == null) {
             mCustomColor = Settings.readKeyboardColor(prefs, getContext());
@@ -302,7 +302,10 @@ public class KeyboardView extends View {
         final Paint paint = mPaint;
         final Drawable background = getBackground();
         if (mCustomColorEnabled) {
-            setBackgroundColor(mCustomColor);
+            if (keyboard.getKey(Constants.CODE_SPACE) != null)
+                setBackgroundColor(mCustomColor);
+            else
+                background.setColorFilter(mCustomColor, PorterDuff.Mode.OVERLAY);
         }
         // Calculate clip region and set.
         final boolean drawAllKeys = mInvalidateAllKeys || mInvalidatedKeys.isEmpty();

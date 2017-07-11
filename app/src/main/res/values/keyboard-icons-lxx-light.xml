@@ -33,12 +33,8 @@
         <item name="iconDoneKey">@drawable/sym_keyboard_done_lxx_light</item>
         <item name="iconPreviousKey">@drawable/sym_keyboard_previous_lxx_light</item>
         <item name="iconTabKey">@drawable/sym_keyboard_tab_lxx_light</item>
-        <item name="iconShortcutKey">@drawable/sym_keyboard_voice_lxx_light</item>
         <item name="iconSpaceKeyForNumberLayout">@drawable/sym_keyboard_space_lxx_light</item>
         <item name="iconShiftKeyShifted">@drawable/sym_keyboard_shift_locked_lxx_light</item>
-        <item name="iconShortcutKeyDisabled">@drawable/sym_keyboard_voice_off_lxx_light</item>
         <item name="iconLanguageSwitchKey">@drawable/sym_keyboard_language_switch_lxx_light</item>
-        <item name="iconZwnjKey">@drawable/sym_keyboard_zwnj_lxx_light</item>
-        <item name="iconZwjKey">@drawable/sym_keyboard_zwj_lxx_light</item>
     </style>
 </resources>

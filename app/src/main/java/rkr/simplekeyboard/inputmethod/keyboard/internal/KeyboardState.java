@@ -649,8 +649,6 @@ public final class KeyboardState {
         // If the code is a letter, update keyboard shift state.
         if (Constants.isLetterCode(code)) {
             updateAlphabetShiftState(autoCapsFlags, recapitalizeMode);
-        } else if (code == Constants.CODE_ALPHA_FROM_EMOJI) {
-            setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
         }
     }
 

@@ -50,11 +50,7 @@ public final class KeyboardIconsSet {
     public static final String NAME_DONE_KEY = "done_key";
     public static final String NAME_PREVIOUS_KEY = "previous_key";
     public static final String NAME_TAB_KEY = "tab_key";
-    public static final String NAME_SHORTCUT_KEY = "shortcut_key";
-    public static final String NAME_SHORTCUT_KEY_DISABLED = "shortcut_key_disabled";
     public static final String NAME_LANGUAGE_SWITCH_KEY = "language_switch_key";
-    public static final String NAME_ZWNJ_KEY = "zwnj_key";
-    public static final String NAME_ZWJ_KEY = "zwj_key";
 
     private static final SparseIntArray ATTR_ID_TO_ICON_ID = new SparseIntArray();
 
@@ -75,13 +71,9 @@ public final class KeyboardIconsSet {
         NAME_DONE_KEY,                    R.styleable.Keyboard_iconDoneKey,
         NAME_PREVIOUS_KEY,                R.styleable.Keyboard_iconPreviousKey,
         NAME_TAB_KEY,                     R.styleable.Keyboard_iconTabKey,
-        NAME_SHORTCUT_KEY,                R.styleable.Keyboard_iconShortcutKey,
         NAME_SPACE_KEY_FOR_NUMBER_LAYOUT, R.styleable.Keyboard_iconSpaceKeyForNumberLayout,
         NAME_SHIFT_KEY_SHIFTED,           R.styleable.Keyboard_iconShiftKeyShifted,
-        NAME_SHORTCUT_KEY_DISABLED,       R.styleable.Keyboard_iconShortcutKeyDisabled,
         NAME_LANGUAGE_SWITCH_KEY,         R.styleable.Keyboard_iconLanguageSwitchKey,
-        NAME_ZWNJ_KEY,                    R.styleable.Keyboard_iconZwnjKey,
-        NAME_ZWJ_KEY,                     R.styleable.Keyboard_iconZwjKey,
     };
 
     private static int NUM_ICONS = NAMES_AND_ATTR_IDS.length / 2;
