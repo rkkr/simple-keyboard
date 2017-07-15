@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 
@@ -108,6 +109,8 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
             setPreferenceEnabled(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY,
                     Settings.readKeyPreviewPopupEnabled(prefs, res));
         }
+        if (key.equals(Settings.PREF_HIDE_SPECIAL_CHARS))
+            KeyboardLayoutSet.onKeyboardThemeChanged();
         updateListPreferenceSummaryToCurrentValue(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
     }

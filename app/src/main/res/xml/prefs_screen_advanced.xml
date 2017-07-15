@@ -46,4 +46,8 @@
     <rkr.simplekeyboard.inputmethod.latin.settings.ColorDialogPreference
         android:key="pref_keyboard_color"
         android:title="@string/keyboard_color" />
+    <CheckBoxPreference
+        android:key="pref_hide_special_chars"
+        android:title="@string/hide_special_chars"
+        android:defaultValue="false" />
 </PreferenceScreen>

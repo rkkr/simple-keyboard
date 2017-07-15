@@ -53,23 +53,6 @@ public final class KeyboardId {
     public static final int ELEMENT_PHONE = 7;
     public static final int ELEMENT_PHONE_SYMBOLS = 8;
     public static final int ELEMENT_NUMBER = 9;
-    public static final int ELEMENT_EMOJI_RECENTS = 10;
-    public static final int ELEMENT_EMOJI_CATEGORY1 = 11;
-    public static final int ELEMENT_EMOJI_CATEGORY2 = 12;
-    public static final int ELEMENT_EMOJI_CATEGORY3 = 13;
-    public static final int ELEMENT_EMOJI_CATEGORY4 = 14;
-    public static final int ELEMENT_EMOJI_CATEGORY5 = 15;
-    public static final int ELEMENT_EMOJI_CATEGORY6 = 16;
-    public static final int ELEMENT_EMOJI_CATEGORY7 = 17;
-    public static final int ELEMENT_EMOJI_CATEGORY8 = 18;
-    public static final int ELEMENT_EMOJI_CATEGORY9 = 19;
-    public static final int ELEMENT_EMOJI_CATEGORY10 = 20;
-    public static final int ELEMENT_EMOJI_CATEGORY11 = 21;
-    public static final int ELEMENT_EMOJI_CATEGORY12 = 22;
-    public static final int ELEMENT_EMOJI_CATEGORY13 = 23;
-    public static final int ELEMENT_EMOJI_CATEGORY14 = 24;
-    public static final int ELEMENT_EMOJI_CATEGORY15 = 25;
-    public static final int ELEMENT_EMOJI_CATEGORY16 = 26;
 
     public final RichInputMethodSubtype mSubtype;
     public final int mWidth;
@@ -81,6 +64,7 @@ public final class KeyboardId {
     public final boolean mLanguageSwitchKeyEnabled;
     public final String mCustomActionLabel;
     public final boolean mIsSplitLayout;
+    public final boolean mShowMoreKeys;
 
     private final int mHashCode;
 
@@ -96,6 +80,7 @@ public final class KeyboardId {
         mCustomActionLabel = (mEditorInfo.actionLabel != null)
                 ? mEditorInfo.actionLabel.toString() : null;
         mIsSplitLayout = params.mIsSplitLayoutEnabled;
+        mShowMoreKeys = params.mShowMoreKeys;
 
         mHashCode = computeHashCode(this);
     }
@@ -223,23 +208,6 @@ public final class KeyboardId {
         case ELEMENT_PHONE: return "phone";
         case ELEMENT_PHONE_SYMBOLS: return "phoneSymbols";
         case ELEMENT_NUMBER: return "number";
-        case ELEMENT_EMOJI_RECENTS: return "emojiRecents";
-        case ELEMENT_EMOJI_CATEGORY1: return "emojiCategory1";
-        case ELEMENT_EMOJI_CATEGORY2: return "emojiCategory2";
-        case ELEMENT_EMOJI_CATEGORY3: return "emojiCategory3";
-        case ELEMENT_EMOJI_CATEGORY4: return "emojiCategory4";
-        case ELEMENT_EMOJI_CATEGORY5: return "emojiCategory5";
-        case ELEMENT_EMOJI_CATEGORY6: return "emojiCategory6";
-        case ELEMENT_EMOJI_CATEGORY7: return "emojiCategory7";
-        case ELEMENT_EMOJI_CATEGORY8: return "emojiCategory8";
-        case ELEMENT_EMOJI_CATEGORY9: return "emojiCategory9";
-        case ELEMENT_EMOJI_CATEGORY10: return "emojiCategory10";
-        case ELEMENT_EMOJI_CATEGORY11: return "emojiCategory11";
-        case ELEMENT_EMOJI_CATEGORY12: return "emojiCategory12";
-        case ELEMENT_EMOJI_CATEGORY13: return "emojiCategory13";
-        case ELEMENT_EMOJI_CATEGORY14: return "emojiCategory14";
-        case ELEMENT_EMOJI_CATEGORY15: return "emojiCategory15";
-        case ELEMENT_EMOJI_CATEGORY16: return "emojiCategory16";
         default: return null;
         }
     }

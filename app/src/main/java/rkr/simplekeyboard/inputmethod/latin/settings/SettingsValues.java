@@ -56,6 +56,7 @@ public class SettingsValues {
     public final boolean mShouldShowLxxSuggestionUi;
     // Use split layout for keyboard.
     public final boolean mIsSplitKeyboardEnabled;
+    public final boolean mHideSpecialChars;
 
     // From the input box
     @NonNull
@@ -116,6 +117,7 @@ public class SettingsValues {
         mKeyPreviewDismissEndXScale = defaultKeyPreviewDismissEndScale;
         mKeyPreviewDismissEndYScale = defaultKeyPreviewDismissEndScale;
         mDisplayOrientation = res.getConfiguration().orientation;
+        mHideSpecialChars = Settings.readHideSpecialChars(prefs);
     }
 
     public boolean isWordSeparator(final int code) {

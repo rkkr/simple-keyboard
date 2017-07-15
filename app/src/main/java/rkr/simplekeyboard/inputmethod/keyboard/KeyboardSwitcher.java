@@ -116,6 +116,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         builder.setLanguageSwitchKeyEnabled(mLatinIME.shouldShowLanguageSwitchKey());
         builder.setSplitLayoutEnabledByUser(ProductionFlags.IS_SPLIT_KEYBOARD_SUPPORTED
                 && settingsValues.mIsSplitKeyboardEnabled);
+        builder.setShowSpecialChars(!settingsValues.mHideSpecialChars);
         mKeyboardLayoutSet = builder.build();
         try {
             mState.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState);
@@ -282,7 +283,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     public enum KeyboardSwitchState {
         HIDDEN(-1),
         SYMBOLS_SHIFTED(KeyboardId.ELEMENT_SYMBOLS_SHIFTED),
-        EMOJI(KeyboardId.ELEMENT_EMOJI_RECENTS),
         OTHER(-1);
 
         final int mKeyboardId;

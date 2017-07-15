@@ -114,7 +114,6 @@
      subtype.-->
 <input-method xmlns:android="http://schemas.android.com/apk/res/android"
         android:settingsActivity="rkr.simplekeyboard.inputmethod.latin.settings.SettingsActivity"
-        android:isDefault="@bool/im_is_default"
         android:supportsSwitchingToNextInputMethod="true">
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
             android:label="@string/subtype_en_US"

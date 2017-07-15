@@ -68,6 +68,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEY_LONGPRESS_TIMEOUT = "pref_key_longpress_timeout";
     public static final String PREF_KEYBOARD_HEIGHT = "pref_keyboard_height";
     public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
+    public static final String PREF_HIDE_SPECIAL_CHARS = "pref_hide_special_chars";
 
     public static final String PREF_KEY_IS_INTERNAL = "pref_key_is_internal";
 
@@ -199,6 +200,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             editor.apply();
         }
         return prefs.getBoolean(PREF_SHOW_LANGUAGE_SWITCH_KEY, true);
+    }
+
+    public static boolean readHideSpecialChars(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_HIDE_SPECIAL_CHARS, false);
     }
 
     public static String readPrefAdditionalSubtypes(final SharedPreferences prefs,
