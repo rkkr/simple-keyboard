@@ -91,17 +91,17 @@ public final class KeyPreviewChoreographer {
     }
 
     public void placeAndShowKeyPreview(final Key key, final KeyboardIconsSet iconsSet,
-            final KeyDrawParams drawParams, final int keyboardViewWidth, final int[] keyboardOrigin,
+            final KeyDrawParams drawParams, final int[] keyboardOrigin,
             final ViewGroup placerView, final boolean withAnimation, boolean customColorEnabled, int customColor) {
         final KeyPreviewView keyPreviewView = getKeyPreviewView(key, placerView);
         placeKeyPreview(
-                key, keyPreviewView, iconsSet, drawParams, keyboardViewWidth, keyboardOrigin, customColorEnabled, customColor);
+                key, keyPreviewView, iconsSet, drawParams, keyboardOrigin, customColorEnabled, customColor);
         showKeyPreview(key, keyPreviewView, withAnimation);
     }
 
     private void placeKeyPreview(final Key key, final KeyPreviewView keyPreviewView,
             final KeyboardIconsSet iconsSet, final KeyDrawParams drawParams,
-            final int keyboardViewWidth, final int[] originCoords, boolean customColorEnabled, int customColor) {
+            final int[] originCoords, boolean customColorEnabled, int customColor) {
         keyPreviewView.setPreviewVisual(key, iconsSet, drawParams);
         keyPreviewView.measure(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -112,20 +112,9 @@ public final class KeyPreviewChoreographer {
         // The key preview is horizontally aligned with the center of the visible part of the
         // parent key. If it doesn't fit in this {@link KeyboardView}, it is moved inward to fit and
         // the left/right background is used if such background is specified.
-        final int keyPreviewPosition;
         int previewX = key.getDrawX() - (previewWidth - keyDrawWidth) / 2
                 + CoordinateUtils.x(originCoords);
-        if (previewX < 0) {
-            previewX = 0;
-            keyPreviewPosition = KeyPreviewView.POSITION_LEFT;
-        } else if (previewX > keyboardViewWidth - previewWidth) {
-            previewX = keyboardViewWidth - previewWidth;
-            keyPreviewPosition = KeyPreviewView.POSITION_RIGHT;
-        } else {
-            keyPreviewPosition = KeyPreviewView.POSITION_MIDDLE;
-        }
-        final boolean hasMoreKeys = (key.getMoreKeys() != null);
-        keyPreviewView.setPreviewBackground(hasMoreKeys, keyPreviewPosition, customColorEnabled, customColor);
+        keyPreviewView.setPreviewBackground(customColorEnabled, customColor);
         // The key preview is placed vertically above the top edge of the parent key with an
         // arbitrary offset.
         final int previewY = key.getY() - previewHeight + mParams.mPreviewOffset
@@ -133,8 +122,8 @@ public final class KeyPreviewChoreographer {
 
         ViewLayoutUtils.placeViewAt(
                 keyPreviewView, previewX, previewY, previewWidth, previewHeight);
-        keyPreviewView.setPivotX(previewWidth / 2.0f);
-        keyPreviewView.setPivotY(previewHeight);
+        //keyPreviewView.setPivotX(previewWidth / 2.0f);
+        //keyPreviewView.setPivotY(previewHeight);
     }
 
     void showKeyPreview(final Key key, final KeyPreviewView keyPreviewView,

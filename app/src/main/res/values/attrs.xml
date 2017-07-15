@@ -62,11 +62,6 @@
         <!-- Blur radius of key text shadow. -->
         <attr name="keyTextShadowRadius" format="float" />
 
-        <!-- Key preview background states -->
-        <attr name="state_left_edge" format="boolean" />
-        <attr name="state_right_edge" format="boolean" />
-        <attr name="state_has_morekeys" format="boolean" />
-
         <!-- Amount to offset the touch Y coordinate by, for bias correction. -->
         <attr name="verticalCorrection" format="dimension" />
     </declare-styleable>

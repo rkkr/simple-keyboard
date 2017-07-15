@@ -409,7 +409,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         locatePreviewPlacerView();
         getLocationInWindow(mOriginCoords);
         mKeyPreviewChoreographer.placeAndShowKeyPreview(key, keyboard.mIconsSet, getKeyDrawParams(),
-                getWidth(), mOriginCoords, mDrawingPreviewPlacerView, isHardwareAccelerated(), mCustomColorEnabled, mCustomColor);
+                mOriginCoords, mDrawingPreviewPlacerView, isHardwareAccelerated(), mCustomColorEnabled, mCustomColor);
     }
 
     private void dismissKeyPreviewWithoutDelay(@NonNull final Key key) {

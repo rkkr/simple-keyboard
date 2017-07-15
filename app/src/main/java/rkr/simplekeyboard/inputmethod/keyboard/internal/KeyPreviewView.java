@@ -42,10 +42,6 @@ import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
  * The pop up key preview view.
  */
 public class KeyPreviewView extends TextView {
-    public static final int POSITION_MIDDLE = 0;
-    public static final int POSITION_LEFT = 1;
-    public static final int POSITION_RIGHT = 2;
-
     private final Rect mBackgroundPadding = new Rect();
     private static final HashSet<String> sNoScaleXTextSet = new HashSet<>();
 
@@ -117,32 +113,9 @@ public class KeyPreviewView extends TextView {
         return width;
     }
 
-    // Background state set
-    private static final int[][][] KEY_PREVIEW_BACKGROUND_STATE_TABLE = {
-        { // POSITION_MIDDLE
-            {},
-            { R.attr.state_has_morekeys }
-        },
-        { // POSITION_LEFT
-            { R.attr.state_left_edge },
-            { R.attr.state_left_edge, R.attr.state_has_morekeys }
-        },
-        { // POSITION_RIGHT
-            { R.attr.state_right_edge },
-            { R.attr.state_right_edge, R.attr.state_has_morekeys }
-        }
-    };
-    private static final int STATE_NORMAL = 0;
-    private static final int STATE_HAS_MOREKEYS = 1;
-
-    public void setPreviewBackground(final boolean hasMoreKeys, final int position, boolean customColorEnabled, int customColor) {
+    public void setPreviewBackground(boolean customColorEnabled, int customColor) {
         final Drawable background = getBackground();
         if (customColorEnabled)
             background.setColorFilter(customColor, PorterDuff.Mode.OVERLAY);
-        if (background == null) {
-            return;
-        }
-        final int hasMoreKeysState = hasMoreKeys ? STATE_HAS_MOREKEYS : STATE_NORMAL;
-        background.setState(KEY_PREVIEW_BACKGROUND_STATE_TABLE[position][hasMoreKeysState]);
     }
 }
