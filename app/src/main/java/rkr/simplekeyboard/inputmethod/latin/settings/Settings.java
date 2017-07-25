@@ -30,7 +30,6 @@ import java.util.Locale;
 import java.util.concurrent.locks.ReentrantLock;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
@@ -50,9 +49,9 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_SOUND_ON = "sound_on";
     public static final String PREF_POPUP_ON = "popup_on";
     public static final boolean ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS =
-            BuildCompatUtils.EFFECTIVE_SDK_INT <= Build.VERSION_CODES.KITKAT;
+            Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT;
     public static final boolean SHOULD_SHOW_LXX_SUGGESTION_UI =
-            BuildCompatUtils.EFFECTIVE_SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     public static final String PREF_SHOW_LANGUAGE_SWITCH_KEY =
             "pref_show_language_switch_key";
     public static final String PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST =

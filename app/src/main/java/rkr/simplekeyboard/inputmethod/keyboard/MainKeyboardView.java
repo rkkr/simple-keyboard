@@ -234,12 +234,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
                 R.dimen.config_language_on_spacebar_horizontal_margin);
     }
 
-    @Override
-    public void setHardwareAcceleratedDrawingEnabled(final boolean enabled) {
-        super.setHardwareAcceleratedDrawingEnabled(enabled);
-        mDrawingPreviewPlacerView.setHardwareAcceleratedDrawingEnabled(enabled);
-    }
-
     private ObjectAnimator loadObjectAnimator(final int resId, final Object target) {
         if (resId == 0) {
             // TODO: Stop returning null.
@@ -409,7 +403,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         locatePreviewPlacerView();
         getLocationInWindow(mOriginCoords);
         mKeyPreviewChoreographer.placeAndShowKeyPreview(key, keyboard.mIconsSet, getKeyDrawParams(),
-                mOriginCoords, mDrawingPreviewPlacerView, isHardwareAccelerated(), mCustomColorEnabled, mCustomColor);
+                mOriginCoords, mDrawingPreviewPlacerView, isHardwareAccelerated());
     }
 
     private void dismissKeyPreviewWithoutDelay(@NonNull final Key key) {

@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
 
 public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     private static final String TAG = KeyboardTheme.class.getSimpleName();
@@ -148,7 +147,7 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     }
 
     public static void saveKeyboardThemeId(final int themeId, final SharedPreferences prefs) {
-        saveKeyboardThemeId(themeId, prefs, BuildCompatUtils.EFFECTIVE_SDK_INT);
+        saveKeyboardThemeId(themeId, prefs, Build.VERSION.SDK_INT);
     }
 
     /* package private for testing */
@@ -169,7 +168,7 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     public static KeyboardTheme getKeyboardTheme(final Context context) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final KeyboardTheme[] availableThemeArray = getAvailableThemeArray(context);
-        return getKeyboardTheme(prefs, BuildCompatUtils.EFFECTIVE_SDK_INT, availableThemeArray);
+        return getKeyboardTheme(prefs, Build.VERSION.SDK_INT, availableThemeArray);
     }
 
     /* package private for testing */

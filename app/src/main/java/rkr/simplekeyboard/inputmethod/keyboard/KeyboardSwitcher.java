@@ -26,7 +26,6 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.compat.InputMethodServiceCompatUtils;
 import rkr.simplekeyboard.inputmethod.event.Event;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet.KeyboardLayoutSetException;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardState;
@@ -52,7 +51,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private MainKeyboardView mKeyboardView;
     private LatinIME mLatinIME;
     private RichInputMethodManager mRichImm;
-    private boolean mIsHardwareAcceleratedDrawingEnabled;
 
     private KeyboardState mState;
 
@@ -81,15 +79,13 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mLatinIME = latinIme;
         mRichImm = RichInputMethodManager.getInstance();
         mState = new KeyboardState(this);
-        mIsHardwareAcceleratedDrawingEnabled =
-                InputMethodServiceCompatUtils.enableHardwareAcceleration(mLatinIME);
     }
 
     public void updateKeyboardTheme() {
         final boolean themeUpdated = updateKeyboardThemeAndContextThemeWrapper(
                 mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */));
         if (themeUpdated && mKeyboardView != null) {
-            mLatinIME.setInputView(onCreateInputView(mIsHardwareAcceleratedDrawingEnabled));
+            mLatinIME.setInputView(onCreateInputView());
         }
     }
 
@@ -389,7 +385,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         }
     }
 
-    public View onCreateInputView(final boolean isHardwareAcceleratedDrawingEnabled) {
+    public View onCreateInputView() {
         if (mKeyboardView != null) {
             mKeyboardView.closing();
         }
@@ -401,7 +397,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mMainKeyboardFrame = mCurrentInputView.findViewById(R.id.main_keyboard_frame);
 
         mKeyboardView = (MainKeyboardView) mCurrentInputView.findViewById(R.id.keyboard_view);
-        mKeyboardView.setHardwareAcceleratedDrawingEnabled(isHardwareAcceleratedDrawingEnabled);
         mKeyboardView.setKeyboardActionListener(mLatinIME);
         return mCurrentInputView;
     }

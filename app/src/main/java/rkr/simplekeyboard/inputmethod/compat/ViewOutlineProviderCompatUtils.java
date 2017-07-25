@@ -35,7 +35,7 @@ public class ViewOutlineProviderCompatUtils {
     };
 
     public static InsetsUpdater setInsetsOutlineProvider(final View view) {
-        if (BuildCompatUtils.EFFECTIVE_SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             return EMPTY_INSETS_UPDATER;
         }
         return ViewOutlineProviderCompatUtilsLXX.setInsetsOutlineProvider(view);

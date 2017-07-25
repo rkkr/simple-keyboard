@@ -113,9 +113,9 @@ public class KeyPreviewView extends TextView {
         return width;
     }
 
-    public void setPreviewBackground(boolean customColorEnabled, int customColor) {
+    /*public void setPreviewBackground(boolean customColorEnabled, int customColor) {
         final Drawable background = getBackground();
         if (customColorEnabled)
             background.setColorFilter(customColor, PorterDuff.Mode.OVERLAY);
-    }
+    }*/
 }

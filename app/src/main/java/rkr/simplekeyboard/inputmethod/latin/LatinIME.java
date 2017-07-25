@@ -53,9 +53,7 @@ import java.util.concurrent.TimeUnit;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.EditorInfoCompatUtils;
-import rkr.simplekeyboard.inputmethod.compat.InputMethodServiceCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils.InsetsUpdater;
 import rkr.simplekeyboard.inputmethod.event.Event;
@@ -108,8 +106,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private final SubtypeState mSubtypeState = new SubtypeState();
 
     private AlertDialog mOptionsDialog;
-
-    private final boolean mIsHardwareAcceleratedDrawingEnabled;
 
     public final UIHandler mHandler = new UIHandler(this);
 
@@ -348,9 +344,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         super();
         mSettings = Settings.getInstance();
         mKeyboardSwitcher = KeyboardSwitcher.getInstance();
-        mIsHardwareAcceleratedDrawingEnabled =
-                InputMethodServiceCompatUtils.enableHardwareAcceleration(this);
-        Log.i(TAG, "Hardware accelerated drawing: " + mIsHardwareAcceleratedDrawingEnabled);
     }
 
     @Override
@@ -429,7 +422,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public View onCreateInputView() {
         StatsUtils.onCreateInputView();
-        return mKeyboardSwitcher.onCreateInputView(mIsHardwareAcceleratedDrawingEnabled);
+        return mKeyboardSwitcher.onCreateInputView();
     }
 
     @Override
@@ -1159,7 +1152,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void setNavigationBarVisibility(final boolean visible) {
-        if (BuildCompatUtils.EFFECTIVE_SDK_INT > Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             // For N and later, IMEs can specify Color.TRANSPARENT to make the navigation bar
             // transparent.  For other colors the system uses the default color.
             getWindow().getWindow().setNavigationBarColor(

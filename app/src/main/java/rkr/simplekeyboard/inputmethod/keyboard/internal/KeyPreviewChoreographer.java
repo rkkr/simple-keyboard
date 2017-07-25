@@ -92,16 +92,16 @@ public final class KeyPreviewChoreographer {
 
     public void placeAndShowKeyPreview(final Key key, final KeyboardIconsSet iconsSet,
             final KeyDrawParams drawParams, final int[] keyboardOrigin,
-            final ViewGroup placerView, final boolean withAnimation, boolean customColorEnabled, int customColor) {
+            final ViewGroup placerView, final boolean withAnimation) {
         final KeyPreviewView keyPreviewView = getKeyPreviewView(key, placerView);
         placeKeyPreview(
-                key, keyPreviewView, iconsSet, drawParams, keyboardOrigin, customColorEnabled, customColor);
+                key, keyPreviewView, iconsSet, drawParams, keyboardOrigin);
         showKeyPreview(key, keyPreviewView, withAnimation);
     }
 
     private void placeKeyPreview(final Key key, final KeyPreviewView keyPreviewView,
             final KeyboardIconsSet iconsSet, final KeyDrawParams drawParams,
-            final int[] originCoords, boolean customColorEnabled, int customColor) {
+            final int[] originCoords) {
         keyPreviewView.setPreviewVisual(key, iconsSet, drawParams);
         keyPreviewView.measure(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -114,7 +114,6 @@ public final class KeyPreviewChoreographer {
         // the left/right background is used if such background is specified.
         int previewX = key.getDrawX() - (previewWidth - keyDrawWidth) / 2
                 + CoordinateUtils.x(originCoords);
-        keyPreviewView.setPreviewBackground(customColorEnabled, customColor);
         // The key preview is placed vertically above the top edge of the parent key with an
         // arbitrary offset.
         final int previewY = key.getY() - previewHeight + mParams.mPreviewOffset

@@ -18,9 +18,6 @@ package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
@@ -32,13 +29,6 @@ public final class DrawingPreviewPlacerView extends RelativeLayout {
     public DrawingPreviewPlacerView(final Context context, final AttributeSet attrs) {
         super(context, attrs);
         setWillNotDraw(false);
-    }
-
-    public void setHardwareAcceleratedDrawingEnabled(final boolean enabled) {
-        if (!enabled) return;
-        final Paint layerPaint = new Paint();
-        layerPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
-        setLayerType(LAYER_TYPE_HARDWARE, layerPaint);
     }
 
     public void setKeyboardViewGeometry(final int[] originCoords) {

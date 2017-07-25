@@ -34,7 +34,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import java.util.HashSet;
@@ -176,12 +175,6 @@ public class KeyboardView extends View {
                 Color.red(color), Color.green(color), Color.blue(color));
     }
 
-    public void setHardwareAcceleratedDrawingEnabled(final boolean enabled) {
-        if (!enabled) return;
-        // TODO: Should use LAYER_TYPE_SOFTWARE when hardware acceleration is off?
-        setLayerType(LAYER_TYPE_HARDWARE, null);
-    }
-
     /**
      * Attaches a keyboard to this view. The keyboard can be switched at any time and the
      * view will re-layout itself to accommodate the keyboard.
@@ -197,25 +190,10 @@ public class KeyboardView extends View {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         //Only set for Material themes
         mCustomColorEnabled = keyboard.mThemeId == KeyboardTheme.THEME_ID_LXX_DARK || keyboard.mThemeId == KeyboardTheme.THEME_ID_LXX_LIGHT;
-        //Only for main dialog
-        //mCustomColorEnabled = mCustomColorEnabled && keyboard.getKey(Constants.CODE_SPACE) != null;
         mCustomColor = Settings.readKeyboardColor(prefs, getContext());
-        /*if (mCustomColorEnabled && keyboard.getKey(Constants.CODE_SPACE) == null) {
-            mCustomColor = Settings.readKeyboardColor(prefs, getContext());
-            //Overlay for non main view
-            int overlay = getContext().getResources().getColor(keyboard.mThemeId == KeyboardTheme.THEME_ID_LXX_DARK ? R.color.key_background_pressed_lxx_dark : R.color.key_background_pressed_lxx_light);
-            mCustomColor = Color.rgb(
-                    colorOverlay(Color.red(mCustomColor), Color.red(overlay), Color.alpha(overlay)),
-                    colorOverlay(Color.green(mCustomColor), Color.green(overlay), Color.alpha(overlay)),
-                    colorOverlay(Color.blue(mCustomColor), Color.blue(overlay), Color.alpha(overlay)));
-        }*/
         invalidateAllKeys();
         requestLayout();
     }
-
-    /*private int colorOverlay(int background, int overlay, int alpha) {
-        return (overlay * alpha + background * (255 - alpha)) / 255;
-    }*/
 
     /**
      * Returns the current keyboard being displayed by this view.
@@ -301,11 +279,8 @@ public class KeyboardView extends View {
 
         final Paint paint = mPaint;
         final Drawable background = getBackground();
-        if (mCustomColorEnabled) {
-            if (keyboard.getKey(Constants.CODE_SPACE) != null)
-                setBackgroundColor(mCustomColor);
-            else
-                background.setColorFilter(mCustomColor, PorterDuff.Mode.OVERLAY);
+        if (mCustomColorEnabled && keyboard.getKey(Constants.CODE_SPACE) != null) {
+            setBackgroundColor(mCustomColor);
         }
         // Calculate clip region and set.
         final boolean drawAllKeys = mInvalidateAllKeys || mInvalidatedKeys.isEmpty();

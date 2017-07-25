@@ -26,7 +26,6 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.compat.BuildCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
@@ -45,7 +44,7 @@ public class RichInputMethodSubtype {
     private static final HashMap<Locale, Locale> sLocaleMap = initializeLocaleMap();
     private static final HashMap<Locale, Locale> initializeLocaleMap() {
         final HashMap<Locale, Locale> map = new HashMap<>();
-        if (BuildCompatUtils.EFFECTIVE_SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // Locale#forLanguageTag is available on API Level 21+.
             // TODO: Remove this workaround once when we become able to deal with "sr-Latn".
             map.put(Locale.forLanguageTag("sr-Latn"), new Locale("sr_ZZ"));
