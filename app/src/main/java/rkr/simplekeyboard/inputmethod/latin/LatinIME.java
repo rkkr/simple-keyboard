@@ -1131,24 +1131,24 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // TODO: Revisit here to reorganize the settings. Probably we can/should use different
         // strategy once the implementation of
         // {@link InputMethodManager#shouldOfferSwitchingToNextInputMethod} is defined well.
-        final boolean fallbackValue = mSettings.getCurrent().mIncludesOtherImesInLanguageSwitchList;
         final IBinder token = getWindow().getWindow().getAttributes().token;
         if (token == null) {
-            return fallbackValue;
+            return false;
         }
-        return mRichImm.shouldOfferSwitchingToNextInputMethod(token, fallbackValue);
+        final boolean overrideValue = mSettings.getCurrent().isLanguageSwitchKeyEnabled();
+        return mRichImm.shouldOfferSwitchingToNextInputMethod(token) && overrideValue;
     }
 
     public boolean shouldShowLanguageSwitchKey() {
         // TODO: Revisit here to reorganize the settings. Probably we can/should use different
         // strategy once the implementation of
         // {@link InputMethodManager#shouldOfferSwitchingToNextInputMethod} is defined well.
-        final boolean fallbackValue = mSettings.getCurrent().isLanguageSwitchKeyEnabled();
         final IBinder token = getWindow().getWindow().getAttributes().token;
         if (token == null) {
-            return fallbackValue;
+            return false;
         }
-        return mRichImm.shouldOfferSwitchingToNextInputMethod(token, fallbackValue);
+        final boolean overrideValue = mSettings.getCurrent().isLanguageSwitchKeyEnabled();
+        return mRichImm.shouldOfferSwitchingToNextInputMethod(token) && overrideValue;
     }
 
     private void setNavigationBarVisibility(final boolean visible) {

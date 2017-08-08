@@ -485,13 +485,12 @@ public class RichInputMethodManager {
         updateShortcutIme();
     }
 
-    public boolean shouldOfferSwitchingToNextInputMethod(final IBinder binder,
-            boolean defaultValue) {
+    public boolean shouldOfferSwitchingToNextInputMethod(final IBinder binder) {
         // Use the default value instead on Jelly Bean MR2 and previous where
         // {@link InputMethodManager#shouldOfferSwitchingToNextInputMethod} isn't yet available
         // and on KitKat where the API is still just a stub to return true always.
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            return defaultValue;
+            return false;
         }
         return mImmWrapper.shouldOfferSwitchingToNextInputMethod(binder);
     }
