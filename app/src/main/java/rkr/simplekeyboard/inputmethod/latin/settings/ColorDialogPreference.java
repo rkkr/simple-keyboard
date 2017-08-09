@@ -21,22 +21,19 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 public final class ColorDialogPreference extends DialogPreference
         implements SeekBar.OnSeekBarChangeListener {
     public interface ValueProxy {
         int readValue(final String key);
-        int readDefaultValue(final String key);
+        void writeDefaultValue(final String key);
         void writeValue(final int value, final String key);
     }
 
@@ -88,27 +85,10 @@ public final class ColorDialogPreference extends DialogPreference
     }
 
     @Override
-    protected void showDialog(Bundle bundle) {
-        super.showDialog(bundle);
-        Button pos = ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_NEUTRAL);
-        pos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final int color = mValueProxy.readDefaultValue(null);
-                mSeekBarRed.setProgress(Color.red(color));
-                mSeekBarGreen.setProgress(Color.green(color));
-                mSeekBarBlue.setProgress(Color.blue(color));
-                setHeaderText(color);
-                return;
-            }
-        });
-    }
-
-    @Override
     protected void onPrepareDialogBuilder(final AlertDialog.Builder builder) {
         builder.setPositiveButton(android.R.string.ok, this)
                 .setNegativeButton(android.R.string.cancel, this)
-                .setNeutralButton(R.string.button_default, null);
+                .setNeutralButton(R.string.button_default, this);
     }
 
     @Override
@@ -122,6 +102,11 @@ public final class ColorDialogPreference extends DialogPreference
                     mSeekBarGreen.getProgress(),
                     mSeekBarBlue.getProgress());
             mValueProxy.writeValue(value, key);
+            return;
+        }
+        if (which == DialogInterface.BUTTON_NEUTRAL) {
+            super.onClick(dialog, which);
+            mValueProxy.writeDefaultValue(key);
             return;
         }
     }

@@ -267,12 +267,11 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     }
 
     public static int readKeyboardColor(final SharedPreferences prefs, final Context context) {
-        int color = prefs.getInt(PREF_KEYBOARD_COLOR, UNDEFINED_PREFERENCE_VALUE_INT);
-        return color == UNDEFINED_PREFERENCE_VALUE_INT ? readKeyboardDefaultColor(context) : color;
+        return prefs.getInt(PREF_KEYBOARD_COLOR, readKeyboardDefaultColor(context));
     }
 
-    public static void setKeyboardColor(final SharedPreferences prefs, int color) {
-        prefs.edit().putInt(PREF_KEYBOARD_COLOR, color).apply();
+    public static void removeKeyboardColor(final SharedPreferences prefs) {
+        prefs.edit().remove(PREF_KEYBOARD_COLOR).apply();
     }
 
     public static boolean readUseFullscreenMode(final Resources res) {

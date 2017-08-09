@@ -25,7 +25,6 @@ import android.preference.ListPreference;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet;
-import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 
 /**
@@ -92,7 +91,6 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         setupKeyLongpressTimeoutSettings();
         setupKeyboardHeightSettings();
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
-        refreshEnablingsOfCustomColorSettings();
         setupKeyboardColorSettings();
     }
 
@@ -315,12 +313,6 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         });
     }
 
-    private void refreshEnablingsOfCustomColorSettings() {
-        int themeId = KeyboardTheme.getKeyboardTheme(this.getActivity().getApplicationContext()).mThemeId;
-        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR,
-                themeId == KeyboardTheme.THEME_ID_LXX_DARK || themeId == KeyboardTheme.THEME_ID_LXX_LIGHT);
-    }
-
     private void setupKeyboardColorSettings() {
         final ColorDialogPreference pref = (ColorDialogPreference)findPreference(
                 Settings.PREF_KEYBOARD_COLOR);
@@ -341,8 +333,8 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
             }
 
             @Override
-            public int readDefaultValue(final String key) {
-                return Settings.readKeyboardDefaultColor(context);
+            public void writeDefaultValue(final String key) {
+                Settings.removeKeyboardColor(prefs);
             }
         });
     }

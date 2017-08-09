@@ -97,7 +97,6 @@ public class KeyboardView extends View {
     private final float mSpacebarIconWidthRatio;
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
-    public boolean mCustomColorEnabled;
     public int mCustomColor = 0;
 
     // The maximum key label width in the proportion to the key width.
@@ -188,8 +187,6 @@ public class KeyboardView extends View {
         mKeyDrawParams.updateParams(keyHeight, mKeyVisualAttributes);
         mKeyDrawParams.updateParams(keyHeight, keyboard.mKeyVisualAttributes);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        //Only set for Material themes
-        mCustomColorEnabled = keyboard.mThemeId == KeyboardTheme.THEME_ID_LXX_DARK || keyboard.mThemeId == KeyboardTheme.THEME_ID_LXX_LIGHT;
         mCustomColor = Settings.readKeyboardColor(prefs, getContext());
         invalidateAllKeys();
         requestLayout();
@@ -279,7 +276,7 @@ public class KeyboardView extends View {
 
         final Paint paint = mPaint;
         final Drawable background = getBackground();
-        if (mCustomColorEnabled && keyboard.getKey(Constants.CODE_SPACE) != null) {
+        if (keyboard.getKey(Constants.CODE_SPACE) != null) {
             setBackgroundColor(mCustomColor);
         }
         // Calculate clip region and set.
