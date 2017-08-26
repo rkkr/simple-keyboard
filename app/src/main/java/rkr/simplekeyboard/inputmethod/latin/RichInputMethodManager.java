@@ -490,7 +490,7 @@ public class RichInputMethodManager {
         // {@link InputMethodManager#shouldOfferSwitchingToNextInputMethod} isn't yet available
         // and on KitKat where the API is still just a stub to return true always.
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            return false;
+            return hasMultipleEnabledSubtypesInThisIme(false);
         }
         return mImmWrapper.shouldOfferSwitchingToNextInputMethod(binder);
     }
