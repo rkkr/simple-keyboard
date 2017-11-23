@@ -23,6 +23,35 @@
 >
     <include
         latin:keyboardLayout="@xml/key_styles_common" />
+    <switch>
+        <case latin:showNumberRow="true">
+            <switch>
+                <case latin:isSplitLayout="true" >
+                    <Row
+                        latin:rowHeight="16%p"
+                        >
+                        <include
+                            latin:keyboardLayout="@xml/rowkeys_qwerty0_left5"
+                            latin:keyWidth="7.0%p" />
+                        <Spacer
+                            latin:keyWidth="20.0%p" />
+                        <include
+                            latin:keyboardLayout="@xml/rowkeys_qwerty0_right5"
+                            latin:keyWidth="7.0%p" />
+                    </Row>
+                </case>
+                <default>
+                    <Row
+                        latin:keyWidth="9.0%p"
+                        latin:rowHeight="16%p"
+                        >
+                        <include
+                            latin:keyboardLayout="@xml/rowkeys_qwerty0" />
+                    </Row>
+                </default>
+            </switch>
+        </case>
+    </switch>
     <!-- First row -->
     <Row>
         <switch>

@@ -107,7 +107,7 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
             setPreferenceEnabled(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY,
                     Settings.readKeyPreviewPopupEnabled(prefs, res));
         }
-        if (key.equals(Settings.PREF_HIDE_SPECIAL_CHARS))
+        if (key.equals(Settings.PREF_HIDE_SPECIAL_CHARS) || key.equals(Settings.PREF_SHOW_NUMBER_ROW))
             KeyboardLayoutSet.onKeyboardThemeChanged();
         updateListPreferenceSummaryToCurrentValue(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
         refreshEnablingsOfKeypressSoundAndVibrationSettings();

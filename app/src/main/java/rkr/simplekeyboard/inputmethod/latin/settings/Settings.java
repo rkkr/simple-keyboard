@@ -52,8 +52,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     public static final String PREF_HIDE_LANGUAGE_SWITCH_KEY =
             "pref_hide_language_switch_key";
-    public static final String PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST =
-            "pref_include_other_imes_in_language_switch_list";
     public static final String PREF_CUSTOM_INPUT_STYLES = "custom_input_styles";
     public static final String PREF_ENABLE_SPLIT_KEYBOARD = "pref_split_keyboard";
     // TODO: consolidate key preview dismiss delay with the key preview animation parameters.
@@ -66,6 +64,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEYBOARD_HEIGHT = "pref_keyboard_height";
     public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
     public static final String PREF_HIDE_SPECIAL_CHARS = "pref_hide_special_chars";
+    public static final String PREF_SHOW_NUMBER_ROW = "pref_show_number_row";
 
     public static final String PREF_KEY_IS_INTERNAL = "pref_key_is_internal";
 
@@ -188,6 +187,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static boolean readHideSpecialChars(final SharedPreferences prefs) {
         return prefs.getBoolean(PREF_HIDE_SPECIAL_CHARS, false);
+    }
+
+    public static boolean readShowNumberRow(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_SHOW_NUMBER_ROW, false);
     }
 
     public static String readPrefAdditionalSubtypes(final SharedPreferences prefs,

@@ -113,6 +113,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         builder.setSplitLayoutEnabledByUser(ProductionFlags.IS_SPLIT_KEYBOARD_SUPPORTED
                 && settingsValues.mIsSplitKeyboardEnabled);
         builder.setShowSpecialChars(!settingsValues.mHideSpecialChars);
+        builder.setShowNumberRow(settingsValues.mShowNumberRow);
         mKeyboardLayoutSet = builder.build();
         try {
             mState.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState);

@@ -121,6 +121,7 @@ public final class KeyboardLayoutSet {
         // whether the user has enabled it, and the keyboard layout supports it.
         boolean mIsSplitLayoutEnabled;
         boolean mShowMoreKeys;
+        boolean mShowNumberRow;
         // Sparse array of KeyboardLayoutSet element parameters indexed by element's id.
         final SparseArray<ElementParams> mKeyboardLayoutSetElementIdToParamsMap =
                 new SparseArray<>();
@@ -294,6 +295,11 @@ public final class KeyboardLayoutSet {
 
         public Builder setShowSpecialChars(final boolean enabled) {
             mParams.mShowMoreKeys = enabled;
+            return this;
+        }
+
+        public Builder setShowNumberRow(final boolean enabled) {
+            mParams.mShowNumberRow = enabled;
             return this;
         }
 

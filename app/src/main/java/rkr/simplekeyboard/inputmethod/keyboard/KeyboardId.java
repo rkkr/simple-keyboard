@@ -65,6 +65,7 @@ public final class KeyboardId {
     public final String mCustomActionLabel;
     public final boolean mIsSplitLayout;
     public final boolean mShowMoreKeys;
+    public final boolean mShowNumberRow;
 
     private final int mHashCode;
 
@@ -81,6 +82,7 @@ public final class KeyboardId {
                 ? mEditorInfo.actionLabel.toString() : null;
         mIsSplitLayout = params.mIsSplitLayoutEnabled;
         mShowMoreKeys = params.mShowMoreKeys;
+        mShowNumberRow = params.mShowNumberRow;
 
         mHashCode = computeHashCode(this);
     }

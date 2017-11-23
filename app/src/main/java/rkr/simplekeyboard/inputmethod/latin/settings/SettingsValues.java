@@ -56,6 +56,7 @@ public class SettingsValues {
     // Use split layout for keyboard.
     public final boolean mIsSplitKeyboardEnabled;
     public final boolean mHideSpecialChars;
+    public final boolean mShowNumberRow;
 
     // From the input box
     @NonNull
@@ -116,6 +117,7 @@ public class SettingsValues {
         mKeyPreviewDismissEndYScale = defaultKeyPreviewDismissEndScale;
         mDisplayOrientation = res.getConfiguration().orientation;
         mHideSpecialChars = Settings.readHideSpecialChars(prefs);
+        mShowNumberRow = Settings.readShowNumberRow(prefs);
     }
 
     public boolean isWordSeparator(final int code) {

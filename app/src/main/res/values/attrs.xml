@@ -411,6 +411,7 @@
         <!-- Enable split keyboard layout. Disabled by default. -->
         <attr name="isSplitLayout" format="boolean" />
         <attr name="showExtraChars" format="boolean" />
+        <attr name="showNumberRow" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="Keyboard_KeyStyle">
