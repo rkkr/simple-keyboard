@@ -100,7 +100,7 @@
         latin:backgroundType="functional" />
     <key-style
         latin:styleName="languageSwitchKeyStyle"
-        latin:keySpec="!icon/language_switch_key|!code/key_language_switch"
+        latin:keySpec="&#x1f310;&#xfe0e;|!code/key_language_switch"
         latin:keyActionFlags="noKeyPreview|altCodeWhileTyping|enableLongPress"
         latin:altCode="!code/key_space" />
     <key-style
@@ -110,7 +110,7 @@
         latin:backgroundType="functional" />
     <key-style
         latin:styleName="settingsKeyStyle"
-        latin:keySpec="!icon/settings_key|!code/key_settings"
+        latin:keySpec="&#9881;|!code/key_settings"
         latin:keyActionFlags="noKeyPreview"
         latin:backgroundType="functional" />
     <switch>

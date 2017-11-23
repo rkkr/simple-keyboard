@@ -423,7 +423,7 @@ public final class KeyboardTextsTable {
         // U+2205: "∅" EMPTY SET
         /* morekeys_symbols_0 */ "\u207F,\u2205",
         /* morekeys_am_pm */ "!fixedColumnOrder!2,!hasLabels!,!text/keylabel_time_am,!text/keylabel_time_pm",
-        /* keyspec_settings */ "!icon/settings_key|!code/key_settings",
+        /* keyspec_settings */ "\u2699|!code/key_settings",
         /* keyspec_shortcut */ "!icon/shortcut_key|!code/key_shortcut",
         /* keyspec_action_next */ "!hasLabels!,!text/label_next_key|!code/key_action_next",
         /* keyspec_action_previous */ "!hasLabels!,!text/label_previous_key|!code/key_action_previous",
