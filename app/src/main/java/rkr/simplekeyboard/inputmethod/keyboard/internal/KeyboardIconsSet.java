@@ -39,6 +39,7 @@ public final class KeyboardIconsSet {
     public static final String NAME_SHIFT_KEY = "shift_key";
     public static final String NAME_SHIFT_KEY_SHIFTED = "shift_key_shifted";
     public static final String NAME_DELETE_KEY = "delete_key";
+    public static final String NAME_SETTINGS_KEY = "settings_key";
     public static final String NAME_SPACE_KEY = "space_key";
     public static final String NAME_SPACE_KEY_FOR_NUMBER_LAYOUT = "space_key_for_number_layout";
     public static final String NAME_ENTER_KEY = "enter_key";
@@ -49,6 +50,7 @@ public final class KeyboardIconsSet {
     public static final String NAME_DONE_KEY = "done_key";
     public static final String NAME_PREVIOUS_KEY = "previous_key";
     public static final String NAME_TAB_KEY = "tab_key";
+    public static final String NAME_LANGUAGE_SWITCH_KEY = "language_switch_key";
     public static final String NAME_ZWNJ_KEY = "zwnj_key";
     public static final String NAME_ZWJ_KEY = "zwj_key";
 
@@ -61,6 +63,7 @@ public final class KeyboardIconsSet {
         NAME_UNDEFINED,                   ATTR_UNDEFINED,
         NAME_SHIFT_KEY,                   R.styleable.Keyboard_iconShiftKey,
         NAME_DELETE_KEY,                  R.styleable.Keyboard_iconDeleteKey,
+        NAME_SETTINGS_KEY,                R.styleable.Keyboard_iconSettingsKey,
         NAME_SPACE_KEY,                   R.styleable.Keyboard_iconSpaceKey,
         NAME_ENTER_KEY,                   R.styleable.Keyboard_iconEnterKey,
         NAME_GO_KEY,                      R.styleable.Keyboard_iconGoKey,
@@ -72,6 +75,7 @@ public final class KeyboardIconsSet {
         NAME_TAB_KEY,                     R.styleable.Keyboard_iconTabKey,
         NAME_SPACE_KEY_FOR_NUMBER_LAYOUT, R.styleable.Keyboard_iconSpaceKeyForNumberLayout,
         NAME_SHIFT_KEY_SHIFTED,           R.styleable.Keyboard_iconShiftKeyShifted,
+        NAME_LANGUAGE_SWITCH_KEY,         R.styleable.Keyboard_iconLanguageSwitchKey,
         NAME_ZWNJ_KEY,                    R.styleable.Keyboard_iconZwnjKey,
         NAME_ZWJ_KEY,                     R.styleable.Keyboard_iconZwjKey,
     };
