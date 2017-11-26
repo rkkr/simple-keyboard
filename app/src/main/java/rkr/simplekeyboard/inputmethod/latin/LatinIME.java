@@ -982,22 +982,17 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             return;
         }
         if (repeatCount > 0) {
-            if (code == Constants.CODE_DELETE && !mInputLogic.mConnection.canDeleteCharacters()) {
-                // No need to feedback when repeat delete key will have no effect.
-                return;
-            }
-            // TODO: Use event time that the last feedback has been generated instead of relying on
-            // a repeat count to thin out feedback.
-            if (repeatCount % PERIOD_FOR_AUDIO_AND_HAPTIC_FEEDBACK_IN_KEY_REPEAT == 0) {
-                return;
-            }
+          if (code == Constants.CODE_DELETE && !mInputLogic.mConnection.canDeleteCharacters()) {
+              // No need to feedback when repeat delete key will have no effect.
+              return;
+          }
+          if (repeatCount % 4 != 0) {
+              return;
+          }
         }
         final AudioAndHapticFeedbackManager feedbackManager =
                 AudioAndHapticFeedbackManager.getInstance();
-        if (repeatCount == 0) {
-            // TODO: Reconsider how to perform haptic feedback when repeating key.
-            feedbackManager.performHapticFeedback(keyboardView);
-        }
+        feedbackManager.performHapticFeedback(keyboardView);
         feedbackManager.performAudioFeedback(code);
     }
 

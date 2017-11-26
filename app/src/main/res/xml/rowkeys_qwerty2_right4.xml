@@ -23,13 +23,13 @@
         <case latin:showExtraChars="true">
             <Key
                 latin:keySpec="h"
-                latin:keyHintLabel="-"
-                latin:additionalMoreKeys="-"
+                latin:keyHintLabel="+"
+                latin:additionalMoreKeys="+"
                 latin:moreKeys="!text/morekeys_h" />
             <Key
                 latin:keySpec="j"
-                latin:keyHintLabel="+"
-                latin:additionalMoreKeys="+"
+                latin:keyHintLabel="="
+                latin:additionalMoreKeys="="
                 latin:moreKeys="!text/morekeys_j" />
             <Key
                 latin:keySpec="k"
