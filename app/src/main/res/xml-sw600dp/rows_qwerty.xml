@@ -18,43 +18,10 @@
 */
 -->
 
-<merge
-    xmlns:latin="http://schemas.android.com/apk/res/rkr.simplekeyboard.inputmethod"
->
-    <include
-        latin:keyboardLayout="@xml/key_styles_common" />
+<merge xmlns:latin="http://schemas.android.com/apk/res/rkr.simplekeyboard.inputmethod">
     <!-- TODO: Consolidate the layout specification between protrait and landscape.
          Ideally just the keyWidth should be different and the spacer should adjust to fill
          the available space. -->
-    <switch>
-        <case latin:showNumberRow="true">
-            <switch>
-                <case latin:isSplitLayout="true" >
-                    <Row
-                        latin:rowHeight="16%p"
-                        >
-                        <include
-                            latin:keyboardLayout="@xml/rowkeys_qwerty0_left5"
-                            latin:keyWidth="8.0%p" />
-                        <Spacer
-                            latin:keyWidth="10.0%p" />
-                        <include
-                            latin:keyboardLayout="@xml/rowkeys_qwerty0_right5"
-                            latin:keyWidth="8.0%p" />
-                    </Row>
-                </case>
-                <default>
-                    <Row
-                        latin:keyWidth="9.0%p"
-                        latin:rowHeight="16%p"
-                        >
-                        <include
-                            latin:keyboardLayout="@xml/rowkeys_qwerty0" />
-                    </Row>
-                </default>
-            </switch>
-        </case>
-    </switch>
     <!-- First row -->
     <Row>
         <switch>
