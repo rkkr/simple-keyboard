@@ -30,6 +30,8 @@ import android.view.inputmethod.EditorInfo;
 
 import java.util.ArrayList;
 import java.util.TreeSet;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import rkr.simplekeyboard.inputmethod.event.Event;
 import rkr.simplekeyboard.inputmethod.event.InputTransaction;
@@ -58,6 +60,7 @@ public final class InputLogic {
     // TODO : make all these fields private as soon as possible.
     // Current space state of the input method. This can be any of the above constants.
     private int mSpaceState;
+    private int mRepeat;
 
     public LastComposedWord mLastComposedWord = LastComposedWord.NOT_A_COMPOSED_WORD;
     // This has package visibility so it can be accessed from InputLogicHandler.
@@ -659,24 +662,46 @@ public final class InputLogic {
                     // TODO: Add a new StatsUtils method onBackspaceWhenNoText()
                     return;
                 }
-                final int lengthToDelete =
-                        Character.isSupplementaryCodePoint(codePointBeforeCursor) ? 2 : 1;
-                mConnection.deleteTextBeforeCursor(lengthToDelete);
-                int totalDeletedLength = lengthToDelete;
-                if (mDeleteCount > Constants.DELETE_ACCELERATE_AT) {
-                    // If this is an accelerated (i.e., double) deletion, then we need to
-                    // consider unlearning here because we may have already reached
-                    // the previous word, and will lose it after next deletion.
-                    final int codePointBeforeCursorToDeleteAgain =
-                            mConnection.getCodePointBeforeCursor();
-                    if (codePointBeforeCursorToDeleteAgain != Constants.NOT_A_CODE) {
-                        final int lengthToDeleteAgain = Character.isSupplementaryCodePoint(
-                                codePointBeforeCursorToDeleteAgain) ? 2 : 1;
-                        mConnection.deleteTextBeforeCursor(lengthToDeleteAgain);
-                        totalDeletedLength += lengthToDeleteAgain;
-                    }
+                if (event.isKeyRepeat()) {
+                  this.mRepeat++;
+                  if ((this.mRepeat % 4) != 0) {
+                    return;
+                  }
+                  final Pattern sPattern = Pattern.compile("\\w+");
+
+                  String textBefore = mConnection.getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0).toString();
+                  Pattern pattern = Pattern.compile("\\w+");
+                  Matcher matcher = pattern.matcher(textBefore);
+
+                  int lastMatchStart = -1;
+                  int lastMatchEnd = -1;
+
+                  while (matcher.find()) {
+                    lastMatchStart = matcher.start();
+                    lastMatchEnd = matcher.end();
+                  }
+                  if (lastMatchEnd > -1 && lastMatchEnd == textBefore.length()) {
+                    final int lengthToDelete = lastMatchEnd - lastMatchStart;
+
+                    mConnection.deleteTextBeforeCursor(lengthToDelete);
+                    int totalDeletedLength = lengthToDelete;
+                    StatsUtils.onBackspacePressed(totalDeletedLength);
+                  } else {
+                    final int lengthToDelete =
+                            Character.isSupplementaryCodePoint(codePointBeforeCursor) ? 2 : 1;
+                    mConnection.deleteTextBeforeCursor(lengthToDelete);
+                    int totalDeletedLength = lengthToDelete;
+                  StatsUtils.onBackspacePressed(totalDeletedLength);
+                  }
+
+                } else {
+                  this.mRepeat = 0;
+                  final int lengthToDelete =
+                          Character.isSupplementaryCodePoint(codePointBeforeCursor) ? 2 : 1;
+                  mConnection.deleteTextBeforeCursor(lengthToDelete);
+                  int totalDeletedLength = lengthToDelete;
+                  StatsUtils.onBackspacePressed(totalDeletedLength);
                 }
-                StatsUtils.onBackspacePressed(totalDeletedLength);
             }
         }
     }
