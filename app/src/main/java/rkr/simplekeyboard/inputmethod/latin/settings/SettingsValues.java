@@ -52,9 +52,7 @@ public class SettingsValues {
     public final boolean mShowsVoiceInputKey = false;
     public final boolean mShowsLanguageSwitchKey;
     public final int mKeyLongpressTimeout;
-    public final boolean mShouldShowLxxSuggestionUi;
-    // Use split layout for keyboard.
-    public final boolean mIsSplitKeyboardEnabled;
+    //public final boolean mShouldShowLxxSuggestionUi;
     public final boolean mHideSpecialChars;
     public final boolean mShowNumberRow;
 
@@ -94,9 +92,7 @@ public class SettingsValues {
         mKeyPreviewPopupOn = Settings.readKeyPreviewPopupEnabled(prefs, res);
         mShowsLanguageSwitchKey = Settings.readShowsLanguageSwitchKey(prefs);
         mHasHardwareKeyboard = Settings.readHasHardwareKeyboard(res.getConfiguration());
-        mIsSplitKeyboardEnabled = prefs.getBoolean(Settings.PREF_ENABLE_SPLIT_KEYBOARD, false);
 
-        mShouldShowLxxSuggestionUi = Settings.SHOULD_SHOW_LXX_SUGGESTION_UI;
         // Compute other readable settings
         mKeyLongpressTimeout = Settings.readKeyLongpressTimeout(prefs, res);
         mKeypressVibrationDuration = Settings.readKeypressVibrationDuration(prefs, res);

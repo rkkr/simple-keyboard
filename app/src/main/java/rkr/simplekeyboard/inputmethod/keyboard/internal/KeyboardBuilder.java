@@ -662,8 +662,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             final boolean localeCodeMatched = matchLocaleCodes(caseAttr, locale);
             final boolean languageCodeMatched = matchLanguageCodes(caseAttr, locale);
             final boolean countryCodeMatched = matchCountryCodes(caseAttr, locale);
-            final boolean splitLayoutMatched = matchBoolean(caseAttr,
-                    R.styleable.Keyboard_Case_isSplitLayout, id.mIsSplitLayout);
             final boolean showMoreKeysMatched = matchBoolean(caseAttr,
                     R.styleable.Keyboard_Case_showExtraChars, id.mShowMoreKeys);
             final boolean showNumberRowMatched = matchBoolean(caseAttr,
@@ -674,7 +672,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     && languageSwitchKeyEnabledMatched
                     && isMultiLineMatched && imeActionMatched && isIconDefinedMatched
                     && localeCodeMatched && languageCodeMatched && countryCodeMatched
-                    && splitLayoutMatched && showMoreKeysMatched && showNumberRowMatched;
+                    && showMoreKeysMatched && showNumberRowMatched;
 
             if (DEBUG) {
                 startTag("<%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s>%s", TAG_CASE,
@@ -702,8 +700,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                                 "languageSwitchKeyEnabled"),
                         booleanAttr(caseAttr, R.styleable.Keyboard_Case_isMultiLine,
                                 "isMultiLine"),
-                        booleanAttr(caseAttr, R.styleable.Keyboard_Case_isSplitLayout,
-                                "splitLayout"),
                         textAttr(caseAttr.getString(R.styleable.Keyboard_Case_isIconDefined),
                                 "isIconDefined"),
                         textAttr(caseAttr.getString(R.styleable.Keyboard_Case_localeCode),

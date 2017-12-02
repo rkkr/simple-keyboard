@@ -63,7 +63,6 @@ public final class KeyboardId {
     public final boolean mClobberSettingsKey;
     public final boolean mLanguageSwitchKeyEnabled;
     public final String mCustomActionLabel;
-    public final boolean mIsSplitLayout;
     public final boolean mShowMoreKeys;
     public final boolean mShowNumberRow;
 
@@ -80,7 +79,6 @@ public final class KeyboardId {
         mLanguageSwitchKeyEnabled = params.mLanguageSwitchKeyEnabled;
         mCustomActionLabel = (mEditorInfo.actionLabel != null)
                 ? mEditorInfo.actionLabel.toString() : null;
-        mIsSplitLayout = params.mIsSplitLayoutEnabled;
         mShowMoreKeys = params.mShowMoreKeys;
         mShowNumberRow = params.mShowNumberRow;
 
@@ -102,7 +100,6 @@ public final class KeyboardId {
                 id.navigateNext(),
                 id.navigatePrevious(),
                 id.mSubtype,
-                id.mIsSplitLayout
         });
     }
 
@@ -121,8 +118,7 @@ public final class KeyboardId {
                 && TextUtils.equals(other.mCustomActionLabel, mCustomActionLabel)
                 && other.navigateNext() == navigateNext()
                 && other.navigatePrevious() == navigatePrevious()
-                && other.mSubtype.equals(mSubtype)
-                && other.mIsSplitLayout == mIsSplitLayout;
+                && other.mSubtype.equals(mSubtype);
     }
 
     private static boolean isAlphabetKeyboard(final int elementId) {
@@ -185,8 +181,7 @@ public final class KeyboardId {
                 (mClobberSettingsKey ? " clobberSettingsKey" : ""),
                 (passwordInput() ? " passwordInput" : ""),
                 (mLanguageSwitchKeyEnabled ? " languageSwitchKeyEnabled" : ""),
-                (isMultiLine() ? " isMultiLine" : ""),
-                (mIsSplitLayout ? " isSplitLayout" : "")
+                (isMultiLine() ? " isMultiLine" : "")
         );
     }
 

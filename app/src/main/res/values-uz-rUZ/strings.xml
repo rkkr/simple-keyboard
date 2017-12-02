@@ -27,7 +27,6 @@
     <string name="settings_screen_appearance" msgid="7358046399111611615">"Ko‘rinish va sxema"</string>
     <string name="settings_screen_advanced" msgid="7472408607625972994">"Qo‘shimcha sozlamalar"</string>
     <string name="settings_screen_theme" msgid="2137262503543943871">"Mavzu"</string>
-    <string name="enable_split_keyboard" msgid="4177264923999493614">"Ikkiga ajratiladigan klaviaturani yoqish"</string>
     <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Yopilish vaqti"</string>
     <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Kechikishsiz"</string>
     <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Standart"</string>

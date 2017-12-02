@@ -397,10 +397,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public void onConfigurationChanged(final Configuration conf) {
         SettingsValues settingsValues = mSettings.getCurrent();
-        if (settingsValues.mDisplayOrientation != conf.orientation) {
-            mHandler.startOrientationChanging();
-            mInputLogic.onOrientationChange(mSettings.getCurrent());
-        }
         if (settingsValues.mHasHardwareKeyboard != Settings.readHasHardwareKeyboard(conf)) {
             // If the state of having a hardware keyboard changed, then we want to reload the
             // settings to adjust for that.
@@ -1031,7 +1027,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     };
 
     void launchSettings(final String extraEntryValue) {
-        mInputLogic.commitTyped(mSettings.getCurrent(), LastComposedWord.NOT_A_SEPARATOR);
         requestHideSelf(0);
         final MainKeyboardView mainKeyboardView = mKeyboardSwitcher.getMainKeyboardView();
         if (mainKeyboardView != null) {

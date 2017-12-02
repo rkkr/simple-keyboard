@@ -97,7 +97,6 @@ public final class KeyboardLayoutSet {
 
     private static final class ElementParams {
         int mKeyboardXmlId;
-        boolean mSupportsSplitLayout;
         boolean mAllowRedundantMoreKeys;
         public ElementParams() {}
     }
@@ -114,12 +113,6 @@ public final class KeyboardLayoutSet {
         int mKeyboardWidth;
         int mKeyboardHeight;
         int mScriptId = ScriptUtils.SCRIPT_LATIN;
-        // Indicates if the user has enabled the split-layout preference
-        // and the required ProductionFlags are enabled.
-        boolean mIsSplitLayoutEnabledByUser;
-        // Indicates if split layout is actually enabled, taking into account
-        // whether the user has enabled it, and the keyboard layout supports it.
-        boolean mIsSplitLayoutEnabled;
         boolean mShowMoreKeys;
         boolean mShowNumberRow;
         // Sparse array of KeyboardLayoutSet element parameters indexed by element's id.
@@ -178,8 +171,6 @@ public final class KeyboardLayoutSet {
         // specified as an elementKeyboard attribute in the file.
         // The KeyboardId is an internal key for a Keyboard object.
 
-        mParams.mIsSplitLayoutEnabled = mParams.mIsSplitLayoutEnabledByUser
-                && elementParams.mSupportsSplitLayout;
         final KeyboardId id = new KeyboardId(keyboardLayoutSetElementId, mParams);
         return getKeyboard(elementParams, id);
     }
@@ -288,11 +279,6 @@ public final class KeyboardLayoutSet {
             return this;
         }
 
-        public Builder setSplitLayoutEnabledByUser(final boolean enabled) {
-            mParams.mIsSplitLayoutEnabledByUser = enabled;
-            return this;
-        }
-
         public Builder setShowSpecialChars(final boolean enabled) {
             mParams.mShowMoreKeys = enabled;
             return this;
@@ -398,8 +384,6 @@ public final class KeyboardLayoutSet {
                         R.styleable.KeyboardLayoutSet_Element_elementName, 0);
                 elementParams.mKeyboardXmlId = a.getResourceId(
                         R.styleable.KeyboardLayoutSet_Element_elementKeyboard, 0);
-                elementParams.mSupportsSplitLayout = a.getBoolean(
-                        R.styleable.KeyboardLayoutSet_Element_supportsSplitLayout, false);
                 elementParams.mAllowRedundantMoreKeys = a.getBoolean(
                         R.styleable.KeyboardLayoutSet_Element_allowRedundantMoreKeys, true);
                 mParams.mKeyboardLayoutSetElementIdToParamsMap.put(elementName, elementParams);

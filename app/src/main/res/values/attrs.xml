@@ -408,8 +408,6 @@
         <attr name="localeCode" format="string" />
         <attr name="languageCode" format="string" />
         <attr name="countryCode" format="string" />
-        <!-- Enable split keyboard layout. Disabled by default. -->
-        <attr name="isSplitLayout" format="boolean" />
         <attr name="showExtraChars" format="boolean" />
         <attr name="showNumberRow" format="boolean" />
     </declare-styleable>
@@ -455,8 +453,6 @@
         <!-- Enable proximity characters correction. Disabled by default. -->
         <attr name="enableProximityCharsCorrection" format="boolean" />
         <!-- Indicates if the keyboard layout supports being split or not. false by default -->
-        <attr name="supportsSplitLayout" format="boolean" />
-        <!-- Allow redundant more keys when they are in the base layout. true by default. -->
         <attr name="allowRedundantMoreKeys" format="boolean" />
     </declare-styleable>
 

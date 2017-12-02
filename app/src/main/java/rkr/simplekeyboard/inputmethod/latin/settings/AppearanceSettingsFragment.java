@@ -20,7 +20,6 @@ import android.os.Bundle;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.define.ProductionFlags;
 
 /**
  * "Appearance" settings sub screen.
@@ -30,10 +29,6 @@ public final class AppearanceSettingsFragment extends SubScreenFragment {
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.prefs_screen_appearance);
-        if (!ProductionFlags.IS_SPLIT_KEYBOARD_SUPPORTED ||
-                Constants.isPhone(Settings.readScreenMetrics(getResources()))) {
-            removePreference(Settings.PREF_ENABLE_SPLIT_KEYBOARD);
-        }
     }
 
     @Override

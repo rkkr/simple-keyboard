@@ -716,25 +716,4 @@ public final class RichInputConnection implements PrivateCommandPerformer {
     public boolean isCursorPositionKnown() {
         return INVALID_CURSOR_POSITION != mExpectedSelStart;
     }
-
-    /**
-     * Requests the editor to call back {@link InputMethodManager#updateCursorAnchorInfo}.
-     * @param enableMonitor {@code true} to request the editor to call back the method whenever the
-     * cursor/anchor position is changed.
-     * @param requestImmediateCallback {@code true} to request the editor to call back the method
-     * as soon as possible to notify the current cursor/anchor position to the input method.
-     * @return {@code true} if the request is accepted. Returns {@code false} otherwise, which
-     * includes "not implemented" or "rejected" or "temporarily unavailable" or whatever which
-     * prevents the application from fulfilling the request. (TODO: Improve the API when it turns
-     * out that we actually need more detailed error codes)
-     */
-    public boolean requestCursorUpdates(final boolean enableMonitor,
-            final boolean requestImmediateCallback) {
-        mIC = mParent.getCurrentInputConnection();
-        if (!isConnected()) {
-            return false;
-        }
-        return InputConnectionCompatUtils.requestCursorUpdates(
-                mIC, enableMonitor, requestImmediateCallback);
-    }
 }

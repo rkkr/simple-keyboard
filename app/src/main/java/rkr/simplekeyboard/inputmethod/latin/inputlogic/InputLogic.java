@@ -114,10 +114,10 @@ public final class InputLogic {
             mInputLogicHandler = new InputLogicHandler(mLatinIME, this);
         }
 
-        if (settingsValues.mShouldShowLxxSuggestionUi) {
-            mConnection.requestCursorUpdates(true /* enableMonitor */,
-                    true /* requestImmediateCallback */);
-        }
+        //if (settingsValues.mShouldShowLxxSuggestionUi) {
+        //    mConnection.requestCursorUpdates(true /* enableMonitor */,
+        //            true /* requestImmediateCallback */);
+        //}
     }
 
     /**
@@ -128,23 +128,6 @@ public final class InputLogic {
     public void onSubtypeChanged(final String combiningSpec, final SettingsValues settingsValues) {
         finishInput();
         startInput(combiningSpec, settingsValues);
-    }
-
-    /**
-     * Call this when the orientation changes.
-     * @param settingsValues the current values of the settings.
-     */
-    public void onOrientationChange(final SettingsValues settingsValues) {
-        // If !isComposingWord, #commitTyped() is a no-op, but still, it's better to avoid
-        // the useless IPC of {begin,end}BatchEdit.
-        if (mWordComposer.isComposingWord()) {
-            mConnection.beginBatchEdit();
-            // If we had a composition in progress, we need to commit the word so that the
-            // suggestionsSpan will be added. This will allow resuming on the same suggestions
-            // after rotation is finished.
-            commitTyped(settingsValues, LastComposedWord.NOT_A_SEPARATOR);
-            mConnection.endBatchEdit();
-        }
     }
 
     /**
@@ -502,11 +485,6 @@ public final class InputLogic {
         final boolean shouldAvoidSendingCode = Constants.CODE_SPACE == codePoint
                 && !settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces
                 && wasComposingWord;
-        // isComposingWord() may have changed since we stored wasComposing
-        if (mWordComposer.isComposingWord()) {
-            commitTyped(settingsValues,
-                StringUtils.newSingleCodePointString(codePoint));
-        }
 
         final boolean swapWeakSpace = tryStripSpaceAndReturnWhetherShouldSwapInstead(event,
                 inputTransaction);
@@ -1060,47 +1038,6 @@ public final class InputLogic {
                 && !mConnection.textBeforeCursorLooksLikeURL()) {
             sendKeyCodePoint(settingsValues, Constants.CODE_SPACE);
         }
-    }
-
-    /**
-     * Commit the typed string to the editor.
-     *
-     * This is typically called when we should commit the currently composing word without applying
-     * auto-correction to it. Typically, we come here upon pressing a separator when the keyboard
-     * is configured to not do auto-correction at all (because of the settings or the properties of
-     * the editor). In this case, `separatorString' is set to the separator that was pressed.
-     * We also come here in a variety of cases with external user action. For example, when the
-     * cursor is moved while there is a composition, or when the keyboard is closed, or when the
-     * user presses the Send button for an SMS, we don't auto-correct as that would be unexpected.
-     * In this case, `separatorString' is set to NOT_A_SEPARATOR.
-     *
-     * @param settingsValues the current values of the settings.
-     * @param separatorString the separator that's causing the commit, or NOT_A_SEPARATOR if none.
-     */
-    public void commitTyped(final SettingsValues settingsValues, final String separatorString) {
-        if (!mWordComposer.isComposingWord()) return;
-        final String typedWord = mWordComposer.getTypedWord();
-        if (typedWord.length() > 0) {
-            final boolean isBatchMode = mWordComposer.isBatchMode();
-            commitChosenWord(settingsValues, typedWord,
-                    LastComposedWord.COMMIT_TYPE_USER_TYPED_WORD, separatorString);
-            StatsUtils.onWordCommitUserTyped(typedWord, isBatchMode);
-        }
-    }
-
-    /**
-     * Commits the chosen word to the text field and saves it for later retrieval.
-     *
-     * @param settingsValues the current values of the settings.
-     * @param chosenWord the word we want to commit.
-     * @param commitType the type of the commit, as one of LastComposedWord.COMMIT_TYPE_*
-     * @param separatorString the separator that's causing the commit, or NOT_A_SEPARATOR if none.
-     */
-    private void commitChosenWord(final SettingsValues settingsValues, final String chosenWord,
-            final int commitType, final String separatorString) {
-        final CharSequence chosenWordWithSuggestions = chosenWord;
-        mConnection.commitText(chosenWordWithSuggestions, 1);
-        mLastComposedWord = mWordComposer.commitWord(commitType, chosenWordWithSuggestions, separatorString);
     }
 
     /**

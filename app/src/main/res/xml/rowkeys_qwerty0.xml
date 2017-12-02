@@ -23,11 +23,25 @@
         latin:keyWidth="10%p"
         latin:rowHeight="15%p"
         >
-        <!-- 1,2,3,4,5 -->
-        <include
-            latin:keyboardLayout="@xml/rowkeys_qwerty0_left5" />
-        <!-- 6,7,6,9,0 -->
-        <include
-            latin:keyboardLayout="@xml/rowkeys_qwerty0_right5" />
+        <Key
+            latin:keySpec="1" />
+        <Key
+            latin:keySpec="2" />
+        <Key
+            latin:keySpec="3" />
+        <Key
+            latin:keySpec="4" />
+        <Key
+            latin:keySpec="5" />
+        <Key
+            latin:keySpec="6" />
+        <Key
+            latin:keySpec="7" />
+        <Key
+            latin:keySpec="8" />
+        <Key
+            latin:keySpec="9" />
+        <Key
+            latin:keySpec="0" />
     </Row>
 </merge>

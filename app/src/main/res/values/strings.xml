@@ -41,9 +41,6 @@
     <!-- Settings screen title for keyboard theme settings [CHAR LIMIT=33] -->
     <string name="settings_screen_theme">Theme</string>
 
-    <!--  Option for enabling or disabling the split keyboard layout. [CHAR LIMIT=65]-->
-    <string name="enable_split_keyboard">Enable split keyboard</string>
-
     <!-- Option name for including other IMEs in the language switch list [CHAR LIMIT=30] -->
     <!-- Option summary for including other IMEs in the language switch list [CHAR LIMIT=65] -->
     <!-- Option to show language switch key [CHAR LIMIT=30] -->
@@ -228,7 +225,6 @@ mobile devices. [CHAR LIMIT=25] -->
     <string name="button_default">Default</string>
 
     <string translatable="false" name="abbreviation_unit_percent"><xliff:g id="PERCENTS">%s</xliff:g>%%</string>
-    <string translatable="false" name="keyboard_color_enabled">Enable custom keyboard color</string>
     <string translatable="false" name="keyboard_color">Set custom keyboard color</string>
     <string translatable="false" name="hide_special_chars">Hide special characters</string>
     <string translatable="false" name="hide_language_switch_key">Hide language switch key</string>
