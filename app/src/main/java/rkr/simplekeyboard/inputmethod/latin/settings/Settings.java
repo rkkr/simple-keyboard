@@ -21,7 +21,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -36,7 +35,6 @@ import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
 import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.RunInLocale;
-import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
 
 public final class Settings implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = Settings.class.getSimpleName();
@@ -112,7 +110,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                 return;
             }
             loadSettings(mContext, mSettingsValues.mLocale, mSettingsValues.mInputAttributes);
-            StatsUtils.onLoadSettings(mSettingsValues);
         } finally {
             mSettingsValuesLock.unlock();
         }
@@ -127,7 +124,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             final RunInLocale<SettingsValues> job = new RunInLocale<SettingsValues>() {
                 @Override
                 protected SettingsValues job(final Resources res) {
-                    return new SettingsValues(context, prefs, res, inputAttributes);
+                    return new SettingsValues(prefs, res, inputAttributes);
                 }
             };
             mSettingsValues = job.runInLocale(mRes, locale);
@@ -141,9 +138,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return mSettingsValues;
     }
 
-    public static int readScreenMetrics(final Resources res) {
-        return res.getInteger(R.integer.config_screen_metrics);
-    }
 
     // Accessed from the settings interface, hence public
     public static boolean readKeypressSoundEnabled(final SharedPreferences prefs,

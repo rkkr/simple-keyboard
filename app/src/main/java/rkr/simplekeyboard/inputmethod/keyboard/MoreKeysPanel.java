@@ -75,9 +75,8 @@ public interface MoreKeysPanel {
      * @param x translated x coordinate of the touch point
      * @param y translated y coordinate of the touch point
      * @param pointerId pointer id touch point
-     * @param eventTime timestamp of touch point
      */
-    void onMoveEvent(final int x, final int y, final int pointerId, final long eventTime);
+    void onMoveEvent(final int x, final int y, final int pointerId);
 
     /**
      * Process a down event on the more keys panel.
@@ -85,9 +84,8 @@ public interface MoreKeysPanel {
      * @param x translated x coordinate of the touch point
      * @param y translated y coordinate of the touch point
      * @param pointerId pointer id touch point
-     * @param eventTime timestamp of touch point
      */
-    void onDownEvent(final int x, final int y, final int pointerId, final long eventTime);
+    void onDownEvent(final int x, final int y, final int pointerId);
 
     /**
      * Process an up event on the more keys panel.
@@ -95,9 +93,8 @@ public interface MoreKeysPanel {
      * @param x translated x coordinate of the touch point
      * @param y translated y coordinate of the touch point
      * @param pointerId pointer id touch point
-     * @param eventTime timestamp of touch point
      */
-    void onUpEvent(final int x, final int y, final int pointerId, final long eventTime);
+    void onUpEvent(final int x, final int y, final int pointerId);
 
     /**
      * Translate X-coordinate of touch event to the local X-coordinate of this

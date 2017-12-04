@@ -65,11 +65,6 @@ public interface KeyboardActionListener {
     void onTextInput(String text);
 
     /**
-     * Called when user released a finger outside any key.
-     */
-    void onCancelInput();
-
-    /**
      * Called when user finished sliding key input.
      */
     void onFinishSlidingInput();
@@ -91,8 +86,6 @@ public interface KeyboardActionListener {
         public void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat) {}
         @Override
         public void onTextInput(String text) {}
-        @Override
-        public void onCancelInput() {}
         @Override
         public void onFinishSlidingInput() {}
         @Override

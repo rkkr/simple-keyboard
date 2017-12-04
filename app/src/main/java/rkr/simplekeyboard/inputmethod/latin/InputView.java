@@ -32,11 +32,6 @@ public final class InputView extends FrameLayout {
     }
 
     @Override
-    protected boolean dispatchHoverEvent(final MotionEvent event) {
-        return super.dispatchHoverEvent(event);
-    }
-
-    @Override
     public boolean onInterceptTouchEvent(final MotionEvent me) {
         final Rect rect = mInputViewRect;
         getGlobalVisibleRect(rect);

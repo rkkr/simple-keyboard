@@ -341,11 +341,6 @@ public class RichInputMethodManager {
         return mCurrentRichInputMethodSubtype;
     }
 
-
-    public String getCombiningRulesExtraValueOfCurrentSubtype() {
-        return SubtypeLocaleUtils.getCombiningRulesExtraValue(getCurrentSubtype().getRawSubtype());
-    }
-
     public boolean hasMultipleEnabledIMEsOrSubtypes(final boolean shouldIncludeAuxiliarySubtypes) {
         final List<InputMethodInfo> enabledImis = mImmWrapper.mImm.getEnabledInputMethodList();
         return hasMultipleEnabledSubtypes(shouldIncludeAuxiliarySubtypes, enabledImis);

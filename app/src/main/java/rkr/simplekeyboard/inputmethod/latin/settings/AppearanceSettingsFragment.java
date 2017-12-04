@@ -19,7 +19,6 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 import android.os.Bundle;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 /**
  * "Appearance" settings sub screen.

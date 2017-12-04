@@ -136,13 +136,13 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
     }
 
     @Override
-    public void onDownEvent(final int x, final int y, final int pointerId, final long eventTime) {
+    public void onDownEvent(final int x, final int y, final int pointerId) {
         mActivePointerId = pointerId;
         mCurrentKey = detectKey(x, y);
     }
 
     @Override
-    public void onMoveEvent(final int x, final int y, final int pointerId, final long eventTime) {
+    public void onMoveEvent(final int x, final int y, final int pointerId) {
         if (mActivePointerId != pointerId) {
             return;
         }
@@ -155,7 +155,7 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
     }
 
     @Override
-    public void onUpEvent(final int x, final int y, final int pointerId, final long eventTime) {
+    public void onUpEvent(final int x, final int y, final int pointerId) {
         if (mActivePointerId != pointerId) {
             return;
         }
@@ -164,7 +164,7 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
         mCurrentKey = detectKey(x, y);
         if (mCurrentKey != null) {
             updateReleaseKeyGraphics(mCurrentKey);
-            onKeyInput(mCurrentKey, x, y);
+            onKeyInput(mCurrentKey);
             mCurrentKey = null;
         }
     }
@@ -172,7 +172,7 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
     /**
      * Performs the specific action for this panel when the user presses a key on the panel.
      */
-    protected void onKeyInput(final Key key, final int x, final int y) {
+    protected void onKeyInput(final Key key) {
         final int code = key.getCode();
         if (code == Constants.CODE_OUTPUT_TEXT) {
             mListener.onTextInput(mCurrentKey.getOutputText());
@@ -230,7 +230,6 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
     @Override
     public boolean onTouchEvent(final MotionEvent me) {
         final int action = me.getActionMasked();
-        final long eventTime = me.getEventTime();
         final int index = me.getActionIndex();
         final int x = (int)me.getX(index);
         final int y = (int)me.getY(index);
@@ -238,25 +237,17 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
         switch (action) {
         case MotionEvent.ACTION_DOWN:
         case MotionEvent.ACTION_POINTER_DOWN:
-            onDownEvent(x, y, pointerId, eventTime);
+            onDownEvent(x, y, pointerId);
             break;
         case MotionEvent.ACTION_UP:
         case MotionEvent.ACTION_POINTER_UP:
-            onUpEvent(x, y, pointerId, eventTime);
+            onUpEvent(x, y, pointerId);
             break;
         case MotionEvent.ACTION_MOVE:
-            onMoveEvent(x, y, pointerId, eventTime);
+            onMoveEvent(x, y, pointerId);
             break;
         }
         return true;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean onHoverEvent(final MotionEvent event) {
-        return super.onHoverEvent(event);
     }
 
     private View getContainerView() {

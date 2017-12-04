@@ -36,11 +36,6 @@ public final class DrawingPreviewPlacerView extends RelativeLayout {
     }
 
     @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-    }
-
-    @Override
     public void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
         final int originX = CoordinateUtils.x(mKeyboardViewOrigin);

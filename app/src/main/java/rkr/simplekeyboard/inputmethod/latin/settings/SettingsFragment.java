@@ -18,7 +18,6 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.os.Bundle;
 import android.preference.PreferenceScreen;
-import android.view.MenuItem;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.utils.ApplicationUtils;
@@ -34,10 +33,5 @@ public final class SettingsFragment extends InputMethodSettingsFragment {
         final PreferenceScreen preferenceScreen = getPreferenceScreen();
         preferenceScreen.setTitle(
                 ApplicationUtils.getActivityTitleResId(getActivity(), SettingsActivity.class));
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
-        return super.onOptionsItemSelected(item);
     }
 }

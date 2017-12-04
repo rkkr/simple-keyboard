@@ -22,8 +22,6 @@ import android.view.inputmethod.EditorInfo;
 public final class InputTypeUtils implements InputType {
     private static final int WEB_TEXT_PASSWORD_INPUT_TYPE =
             TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_PASSWORD;
-    private static final int WEB_TEXT_EMAIL_ADDRESS_INPUT_TYPE =
-            TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS;
     private static final int NUMBER_PASSWORD_INPUT_TYPE =
             TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_PASSWORD;
     private static final int TEXT_PASSWORD_INPUT_TYPE =
@@ -41,18 +39,9 @@ public final class InputTypeUtils implements InputType {
         // This utility class is not publicly instantiable.
     }
 
-    private static boolean isWebEditTextInputType(final int inputType) {
-        return inputType == (TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_EDIT_TEXT);
-    }
-
     private static boolean isWebPasswordInputType(final int inputType) {
         return WEB_TEXT_PASSWORD_INPUT_TYPE != 0
                 && inputType == WEB_TEXT_PASSWORD_INPUT_TYPE;
-    }
-
-    private static boolean isWebEmailAddressInputType(final int inputType) {
-        return WEB_TEXT_EMAIL_ADDRESS_INPUT_TYPE != 0
-                && inputType == WEB_TEXT_EMAIL_ADDRESS_INPUT_TYPE;
     }
 
     private static boolean isNumberPasswordInputType(final int inputType) {

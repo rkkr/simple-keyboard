@@ -120,8 +120,7 @@ public class Keyboard {
         mProximityInfo = new ProximityInfo(params.GRID_WIDTH, params.GRID_HEIGHT,
                 mOccupiedWidth, mOccupiedHeight, mMostCommonKeyWidth,
                 mSortedKeys);
-        mKeyboardLayout = KeyboardLayout.newKeyboardLayout(mSortedKeys, mMostCommonKeyWidth,
-                mMostCommonKeyHeight, mOccupiedWidth, mOccupiedHeight);
+        mKeyboardLayout = KeyboardLayout.newKeyboardLayout(mSortedKeys);
     }
 
     protected Keyboard(@NonNull final Keyboard keyboard) {
@@ -146,11 +145,6 @@ public class Keyboard {
 
         mProximityInfo = keyboard.mProximityInfo;
         mKeyboardLayout = keyboard.mKeyboardLayout;
-    }
-
-    @NonNull
-    public ProximityInfo getProximityInfo() {
-        return mProximityInfo;
     }
 
     @NonNull

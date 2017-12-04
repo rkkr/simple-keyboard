@@ -116,29 +116,4 @@ public final class CompatUtils {
         }
         return defaultValue;
     }
-
-    public static final class ClassWrapper {
-        private final Class<?> mClass;
-        public ClassWrapper(final Class<?> targetClass) {
-            mClass = targetClass;
-        }
-
-        public ToBooleanMethodWrapper getPrimitiveMethod(final String name,
-                final boolean defaultValue, final Class<?>... parameterTypes) {
-            return new ToBooleanMethodWrapper(CompatUtils.getMethod(mClass, name, parameterTypes),
-                    defaultValue);
-        }
-    }
-
-    public static final class ToBooleanMethodWrapper {
-        private final Method mMethod;
-        private final boolean mDefaultValue;
-        public ToBooleanMethodWrapper(final Method method, final boolean defaultValue) {
-            mMethod = method;
-            mDefaultValue = defaultValue;
-        }
-        public boolean invoke(final Object receiver, final Object... args) {
-            return (boolean) CompatUtils.invoke(receiver, mDefaultValue, mMethod, args);
-        }
-    }
 }

@@ -34,18 +34,7 @@ public class KeyboardLayout {
     private final int[] mKeyWidths;
     private final int[] mKeyHeights;
 
-    public final int mMostCommonKeyWidth;
-    public final int mMostCommonKeyHeight;
-
-    public final int mKeyboardWidth;
-    public final int mKeyboardHeight;
-
-    public KeyboardLayout(ArrayList<Key> layoutKeys, int mostCommonKeyWidth,
-            int mostCommonKeyHeight, int keyboardWidth, int keyboardHeight) {
-        mMostCommonKeyWidth = mostCommonKeyWidth;
-        mMostCommonKeyHeight = mostCommonKeyHeight;
-        mKeyboardWidth = keyboardWidth;
-        mKeyboardHeight = keyboardHeight;
+    public KeyboardLayout(ArrayList<Key> layoutKeys) {
 
         mKeyCodes = new int[layoutKeys.size()];
         mKeyXCoordinates = new int[layoutKeys.size()];
@@ -66,9 +55,7 @@ public class KeyboardLayout {
     /**
      * Factory method to create {@link KeyboardLayout} objects.
      */
-    public static KeyboardLayout newKeyboardLayout(@NonNull final List<Key> sortedKeys,
-            int mostCommonKeyWidth, int mostCommonKeyHeight,
-            int occupiedWidth, int occupiedHeight) {
+    public static KeyboardLayout newKeyboardLayout(@NonNull final List<Key> sortedKeys) {
         final ArrayList<Key> layoutKeys = new ArrayList<Key>();
         for (final Key key : sortedKeys) {
             if (!ProximityInfo.needsProximityInfo(key)) {
@@ -78,7 +65,6 @@ public class KeyboardLayout {
                 layoutKeys.add(key);
             }
         }
-        return new KeyboardLayout(layoutKeys, mostCommonKeyWidth,
-                mostCommonKeyHeight, occupiedWidth, occupiedHeight);
+        return new KeyboardLayout(layoutKeys);
     }
 }

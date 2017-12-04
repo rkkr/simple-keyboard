@@ -65,34 +65,6 @@ public final class StringUtils {
         return sb.toString();
     }
 
-    // Taken from android.text.TextUtils to cut the dependency to the Android framework.
-    /**
-     * Returns true if a and b are equal, including if they are both null.
-     * <p><i>Note: In platform versions 1.1 and earlier, this method only worked well if
-     * both the arguments were instances of String.</i></p>
-     * @param a first CharSequence to check
-     * @param b second CharSequence to check
-     * @return true if a and b are equal
-     */
-    public static boolean equals(@Nullable final CharSequence a, @Nullable final CharSequence b) {
-        if (a == b) {
-            return true;
-        }
-        final int length;
-        if (a != null && b != null && (length = a.length()) == b.length()) {
-            if (a instanceof String && b instanceof String) {
-                return a.equals(b);
-            }
-            for (int i = 0; i < length; i++) {
-                if (a.charAt(i) != b.charAt(i)) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
     public static int codePointCount(@Nullable final CharSequence text) {
         if (isEmpty(text)) {
             return 0;

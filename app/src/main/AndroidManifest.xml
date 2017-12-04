@@ -42,14 +42,9 @@
             </intent-filter>
         </activity>
 
-        <!-- Unexported activity used for tests. -->
-        <activity android:name=".latin.settings.TestFragmentActivity"
-            android:exported="false" />
-
         <!-- Broadcast receivers -->
         <receiver android:name=".latin.SystemBroadcastReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.LOCALE_CHANGED" />
             </intent-filter>
         </receiver>

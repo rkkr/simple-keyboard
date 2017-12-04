@@ -16,7 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -76,7 +75,7 @@ public class SettingsValues {
     public final float mKeyPreviewDismissEndXScale;
     public final float mKeyPreviewDismissEndYScale;
 
-    public SettingsValues(final Context context, final SharedPreferences prefs, final Resources res,
+    public SettingsValues(final SharedPreferences prefs, final Resources res,
             @NonNull final InputAttributes inputAttributes) {
         mLocale = res.getConfiguration().locale;
         // Get the resources

@@ -64,7 +64,6 @@ import rkr.simplekeyboard.inputmethod.keyboard.KeyboardId;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardSwitcher;
 import rkr.simplekeyboard.inputmethod.keyboard.MainKeyboardView;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
 import rkr.simplekeyboard.inputmethod.latin.define.DebugFlags;
 import rkr.simplekeyboard.inputmethod.latin.inputlogic.InputLogic;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
@@ -74,13 +73,9 @@ import rkr.simplekeyboard.inputmethod.latin.utils.ApplicationUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
-import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.NO_MICROPHONE_COMPAT;
 
 /**
  * Input method implementation for Qwerty'ish keyboard.
@@ -212,19 +207,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         private boolean mHasPendingFinishInputView;
         private boolean mHasPendingFinishInput;
         private EditorInfo mAppliedEditorInfo;
-
-        public void startOrientationChanging() {
-            removeMessages(MSG_PENDING_IMS_CALLBACK);
-            resetPendingImsCallback();
-            mIsOrientationChanging = true;
-            final LatinIME latinIme = getOwnerInstance();
-            if (latinIme == null) {
-                return;
-            }
-            if (latinIme.isInputViewShown()) {
-                latinIme.mKeyboardSwitcher.saveKeyboardState();
-            }
-        }
 
         private void resetPendingImsCallback() {
             mHasPendingFinishInputView = false;
@@ -366,8 +348,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         final IntentFilter filter = new IntentFilter();
         filter.addAction(AudioManager.RINGER_MODE_CHANGED_ACTION);
         registerReceiver(mRingerModeChangeReceiver, filter);
-
-        StatsUtils.onCreate(mSettings.getCurrent(), mRichImm);
     }
 
     // Has to be package-visible for unit tests
@@ -403,21 +383,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // TODO: we should probably do this unconditionally here, rather than only when we
             // have a change in hardware keyboard configuration.
             loadSettings();
-            if (isImeSuppressedByHardwareKeyboard()) {
-                // We call cleanupInternalStateForFinishInput() because it's the right thing to do;
-                // however, it seems at the moment the framework is passing us a seemingly valid
-                // but actually non-functional InputConnection object. So if this bug ever gets
-                // fixed we'll be able to remove the composition, but until it is this code is
-                // actually not doing much.
-                cleanupInternalStateForFinishInput();
-            }
         }
         super.onConfigurationChanged(conf);
     }
 
     @Override
     public View onCreateInputView() {
-        StatsUtils.onCreateInputView();
         return mKeyboardSwitcher.onCreateInputView();
     }
 
@@ -446,7 +417,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public void onFinishInputView(final boolean finishingInput) {
-        StatsUtils.onFinishInputView();
         mHandler.onFinishInputView(finishingInput);
     }
 
@@ -459,11 +429,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void onCurrentInputMethodSubtypeChanged(final InputMethodSubtype subtype) {
         // Note that the calling sequence of onCreate() and onCurrentInputMethodSubtypeChanged()
         // is not guaranteed. It may even be called at the same time on a different thread.
-        InputMethodSubtype oldSubtype = mRichImm.getCurrentSubtype().getRawSubtype();
-        StatsUtils.onSubtypeChanged(oldSubtype, subtype);
         mRichImm.onSubtypeChanged(subtype);
-        mInputLogic.onSubtypeChanged(SubtypeLocaleUtils.getCombiningRulesExtraValue(subtype),
-                mSettings.getCurrent());
+        mInputLogic.onSubtypeChanged();
         loadKeyboard();
     }
 
@@ -518,11 +485,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
         Log.i(TAG, "Starting input. Cursor position = "
                 + editorInfo.initialSelStart + "," + editorInfo.initialSelEnd);
-        // TODO: Consolidate these checks with {@link InputAttributes}.
-        if (InputAttributes.inPrivateImeOptions(null, NO_MICROPHONE_COMPAT, editorInfo)) {
-            Log.w(TAG, "Deprecated private IME option specified: " + editorInfo.privateImeOptions);
-            Log.w(TAG, "Use " + getPackageName() + "." + NO_MICROPHONE + " instead");
-        }
         if (InputAttributes.inPrivateImeOptions(getPackageName(), FORCE_ASCII, editorInfo)) {
             Log.w(TAG, "Deprecated private IME option specified: " + editorInfo.privateImeOptions);
             Log.w(TAG, "Use EditorInfo.IME_FLAG_FORCE_ASCII flag instead");
@@ -535,10 +497,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
         final boolean inputTypeChanged = !currentSettingsValues.isSameInputType(editorInfo);
         final boolean isDifferentTextField = !restarting || inputTypeChanged;
-
-        StatsUtils.onStartInputView(editorInfo.inputType,
-                Settings.getInstance().getCurrent().mDisplayOrientation,
-                !isDifferentTextField);
 
         // The EditorInfo might have a flag that affects fullscreen mode.
         // Note: This call should be done by InputMethodService?
@@ -557,8 +515,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // span, so we should reset our state unconditionally, even if restarting is true.
             // We also tell the input logic about the combining rules for the current subtype, so
             // it can adjust its combiners if needed.
-            mInputLogic.startInput(mRichImm.getCombiningRulesExtraValueOfCurrentSubtype(),
-                    currentSettingsValues);
+            mInputLogic.startInput();
 
             // TODO[IL]: Can the following be moved to InputLogic#startInput?
             if (!mInputLogic.mConnection.resetCachesUponCursorMoveAndReturnSuccess(
@@ -642,41 +599,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     void onFinishInputViewInternal(final boolean finishingInput) {
         super.onFinishInputView(finishingInput);
-        cleanupInternalStateForFinishInput();
-    }
-
-    private void cleanupInternalStateForFinishInput() {
-        // Should do the following in onFinishInputInternal but until JB MR2 it's not called :(
-        mInputLogic.finishInput();
     }
 
     protected void deallocateMemory() {
         mKeyboardSwitcher.deallocateMemory();
-    }
-
-    @Override
-    public void onUpdateSelection(final int oldSelStart, final int oldSelEnd,
-            final int newSelStart, final int newSelEnd,
-            final int composingSpanStart, final int composingSpanEnd) {
-        super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
-                composingSpanStart, composingSpanEnd);
-        if (DebugFlags.DEBUG_ENABLED) {
-            Log.i(TAG, "onUpdateSelection: oss=" + oldSelStart + ", ose=" + oldSelEnd
-                    + ", nss=" + newSelStart + ", nse=" + newSelEnd
-                    + ", cs=" + composingSpanStart + ", ce=" + composingSpanEnd);
-        }
-
-        // This call happens whether our view is displayed or not, but if it's not then we should
-        // not attempt recorrection. This is true even with a hardware keyboard connected: if the
-        // view is not displayed we have no means of showing suggestions anyway, and if it is then
-        // we want to show suggestions anyway.
-        final SettingsValues settingsValues = mSettings.getCurrent();
-        if (isInputViewShown()
-                && mInputLogic.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
-                        settingsValues)) {
-            mKeyboardSwitcher.requestUpdatingShiftState(getCurrentAutoCapsState(),
-                    getCurrentRecapitalizeState());
-        }
     }
 
     @Override
@@ -792,19 +718,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return mInputLogic.getCurrentRecapitalizeState();
     }
 
-    /**
-     * @param codePoints code points to get coordinates for.
-     * @return x,y coordinates for this keyboard, as a flattened array.
-     */
-    public int[] getCoordinatesForCurrentKeyboard(final int[] codePoints) {
-        final Keyboard keyboard = mKeyboardSwitcher.getKeyboard();
-        if (null == keyboard) {
-            return CoordinateUtils.newCoordinateArray(codePoints.length,
-                    Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE);
-        }
-        return keyboard.getCoordinates(codePoints);
-    }
-
     public void displaySettingsDialog() {
         if (isShowingOptionDialog()) {
             return;
@@ -884,8 +797,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
         final InputTransaction completeInputTransaction =
                 mInputLogic.onCodeInput(mSettings.getCurrent(), event,
-                        mKeyboardSwitcher.getKeyboardShiftMode(),
-                        mKeyboardSwitcher.getCurrentKeyboardScriptId(), mHandler);
+                        mKeyboardSwitcher.getKeyboardShiftMode());
         updateStateAfterInputTransaction(completeInputTransaction);
         mKeyboardSwitcher.onEvent(event, getCurrentAutoCapsState(), getCurrentRecapitalizeState());
     }
@@ -915,7 +827,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         final Event event = Event.createSoftwareTextEvent(rawText, Constants.CODE_OUTPUT_TEXT);
         final InputTransaction completeInputTransaction =
                 mInputLogic.onTextInput(mSettings.getCurrent(), event,
-                        mKeyboardSwitcher.getKeyboardShiftMode(), mHandler);
+                        mKeyboardSwitcher.getKeyboardShiftMode());
         updateStateAfterInputTransaction(completeInputTransaction);
         mKeyboardSwitcher.onEvent(event, getCurrentAutoCapsState(), getCurrentRecapitalizeState());
     }
@@ -926,13 +838,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // User finished sliding input.
         mKeyboardSwitcher.onFinishSlidingInput(getCurrentAutoCapsState(),
                 getCurrentRecapitalizeState());
-    }
-
-    // Called from PointerTracker through the KeyboardActionListener interface
-    @Override
-    public void onCancelInput() {
-        // User released a finger outside any key
-        // Nothing to do so far.
     }
 
     // Outside LatinIME, only used by the {@link InputTestsBase} test suite.

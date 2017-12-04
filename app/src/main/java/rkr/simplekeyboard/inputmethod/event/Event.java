@@ -65,9 +65,6 @@ public class Event {
     final public static int NOT_A_KEY_CODE = 0;
 
     final private static int FLAG_NONE = 0;
-    // This event is a dead character, usually input by a dead key. Examples include dead-acute
-    // or dead-abovering.
-    final private static int FLAG_DEAD = 0x1;
     // This event is coming from a key repeat, software or hardware.
     final private static int FLAG_REPEAT = 0x2;
     // This event has already been consumed.
@@ -125,30 +122,6 @@ public class Event {
                 isKeyRepeat ? FLAG_REPEAT : FLAG_NONE, null);
     }
 
-    @NonNull
-    public static Event createHardwareKeypressEvent(final int codePoint, final int keyCode,
-            final Event next, final boolean isKeyRepeat) {
-        return new Event(EVENT_TYPE_INPUT_KEYPRESS, null /* text */, codePoint, keyCode,
-                Constants.EXTERNAL_KEYBOARD_COORDINATE, Constants.EXTERNAL_KEYBOARD_COORDINATE,
-                isKeyRepeat ? FLAG_REPEAT : FLAG_NONE, next);
-    }
-
-    /**
-     * Creates an input event with a code point and x, y coordinates. This is typically used when
-     * resuming a previously-typed word, when the coordinates are still known.
-     * @param codePoint the code point to input.
-     * @param x the X coordinate.
-     * @param y the Y coordinate.
-     * @return an event for this code point and coordinates.
-     */
-    @NonNull
-    public static Event createEventForCodePointFromAlreadyTypedText(final int codePoint,
-            final int x, final int y) {
-        // TODO: should we have a different type of event for this? After all, it's not a key press.
-        return new Event(EVENT_TYPE_INPUT_KEYPRESS, null /* text */, codePoint, NOT_A_KEY_CODE,
-                x, y, FLAG_NONE, null /* next */);
-    }
-
     /**
      * Creates an input event with a CharSequence. This is used by some software processes whose
      * output is a string, possibly with styling. Examples include press on a multi-character key,
@@ -164,41 +137,11 @@ public class Event {
                 FLAG_NONE, null /* next */);
     }
 
-    /**
-     * Creates an input event representing moving the cursor. The relative move amount is stored
-     * in mX.
-     * @param moveAmount the relative move amount.
-     * @return an event for this cursor move.
-     */
-    @NonNull
-    public static Event createCursorMovedEvent(final int moveAmount) {
-        return new Event(EVENT_TYPE_CURSOR_MOVE, null, NOT_A_CODE_POINT, NOT_A_KEY_CODE,
-                moveAmount, Constants.NOT_A_COORDINATE, FLAG_NONE, null);
-    }
-
-    /**
-     * Creates an event identical to the passed event, but that has already been consumed.
-     * @param source the event to copy the properties of.
-     * @return an identical event marked as consumed.
-     */
-    @NonNull
-    public static Event createConsumedEvent(final Event source) {
-        // A consumed event should not input any text at all, so we pass the empty string as text.
-        return new Event(source.mEventType, source.mText, source.mCodePoint, source.mKeyCode,
-                source.mX, source.mY, source.mFlags | FLAG_CONSUMED,
-                source.mNextEvent);
-    }
-
     // Returns whether this is a function key like backspace, ctrl, settings... as opposed to keys
     // that result in input like letters or space.
     public boolean isFunctionalKeyEvent() {
         // This logic may need to be refined in the future
         return NOT_A_CODE_POINT == mCodePoint;
-    }
-
-    // Returns whether this event is for a dead character. @see {@link #FLAG_DEAD}
-    public boolean isDead() {
-        return 0 != (FLAG_DEAD & mFlags);
     }
 
     public boolean isKeyRepeat() {

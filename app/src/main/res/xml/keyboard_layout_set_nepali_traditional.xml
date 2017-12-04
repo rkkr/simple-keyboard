@@ -20,8 +20,6 @@
 
 <KeyboardLayoutSet
     xmlns:latin="http://schemas.android.com/apk/res/rkr.simplekeyboard.inputmethod">
-    <Feature
-        latin:supportedScript="devanagari" />
     <Element
         latin:elementName="alphabet"
         latin:elementKeyboard="@xml/kbd_nepali_traditional"

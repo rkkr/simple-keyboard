@@ -45,7 +45,6 @@ import rkr.simplekeyboard.inputmethod.keyboard.internal.UniqueKeysCache;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.ScriptUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils;
 
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
@@ -64,7 +63,6 @@ public final class KeyboardLayoutSet {
 
     private static final String TAG_KEYBOARD_SET = "KeyboardLayoutSet";
     private static final String TAG_ELEMENT = "Element";
-    private static final String TAG_FEATURE = "Feature";
 
     private static final String KEYBOARD_LAYOUT_SET_RESOURCE_PREFIX = "keyboard_layout_set_";
 
@@ -106,13 +104,11 @@ public final class KeyboardLayoutSet {
         int mMode;
         // TODO: Use {@link InputAttributes} instead of these variables.
         EditorInfo mEditorInfo;
-        boolean mIsPasswordField;
         boolean mNoSettingsKey;
         boolean mLanguageSwitchKeyEnabled;
         RichInputMethodSubtype mSubtype;
         int mKeyboardWidth;
         int mKeyboardHeight;
-        int mScriptId = ScriptUtils.SCRIPT_LATIN;
         boolean mShowMoreKeys;
         boolean mShowNumberRow;
         // Sparse array of KeyboardLayoutSet element parameters indexed by element's id.
@@ -212,10 +208,6 @@ public final class KeyboardLayoutSet {
         return keyboard;
     }
 
-    public int getScriptId() {
-        return mParams.mScriptId;
-    }
-
     public static final class Builder {
         private final Context mContext;
         private final String mPackageName;
@@ -235,7 +227,6 @@ public final class KeyboardLayoutSet {
             params.mMode = getKeyboardMode(editorInfo);
             // TODO: Consolidate those with {@link InputAttributes}.
             params.mEditorInfo = editorInfo;
-            params.mIsPasswordField = InputTypeUtils.isPasswordInputType(editorInfo.inputType);
             params.mNoSettingsKey = InputAttributes.inPrivateImeOptions(
                     mPackageName, NO_SETTINGS_KEY, editorInfo);
 
@@ -289,21 +280,6 @@ public final class KeyboardLayoutSet {
             return this;
         }
 
-        private static int readScriptIdFromTagFeature(final Resources resources,
-                final XmlPullParser parser) throws IOException, XmlPullParserException {
-            final TypedArray featureAttr = resources.obtainAttributes(Xml.asAttributeSet(parser),
-                    R.styleable.KeyboardLayoutSet_Feature);
-            try {
-                final int scriptId =
-                        featureAttr.getInt(R.styleable.KeyboardLayoutSet_Feature_supportedScript,
-                                ScriptUtils.SCRIPT_UNKNOWN);
-                XmlParseUtils.checkEndTag(TAG_FEATURE, parser);
-                return scriptId;
-            } finally {
-                featureAttr.recycle();
-            }
-        }
-
         public KeyboardLayoutSet build() {
             if (mParams.mSubtype == null)
                 throw new RuntimeException("KeyboardLayoutSet subtype is not specified");
@@ -351,8 +327,6 @@ public final class KeyboardLayoutSet {
                     final String tag = parser.getName();
                     if (TAG_ELEMENT.equals(tag)) {
                         parseKeyboardLayoutSetElement(parser);
-                    } else if (TAG_FEATURE.equals(tag)) {
-                        mParams.mScriptId = readScriptIdFromTagFeature(mResources, parser);
                     } else {
                         throw new XmlParseUtils.IllegalStartTag(parser, tag, TAG_KEYBOARD_SET);
                     }

@@ -17,12 +17,8 @@
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.preference.PreferenceManager;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -32,11 +28,7 @@ import android.widget.TextView;
 
 import java.util.HashSet;
 
-import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
-import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 
 /**
  * The pop up key preview view.

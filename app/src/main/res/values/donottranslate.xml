@@ -79,47 +79,47 @@
 
     <!-- Compatibility map from subtypeLocale:subtypeExtraValue to keyboardLayoutSet -->
     <string-array name="locale_and_extra_value_to_keyboard_layout_set_map">
-        <item>en_US:TrySuppressingImeSwitcher,AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>en_US:TrySuppressingImeSwitcher,AsciiCapable</item>
         <item>qwerty</item>
-        <item>en_GB:TrySuppressingImeSwitcher,AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>en_GB:TrySuppressingImeSwitcher,AsciiCapable</item>
         <item>qwerty</item>
-        <item>ar:SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>ar:EmojiCapable</item>
         <item>arabic</item>
-        <item>cs:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>cs:AsciiCapable</item>
         <item>qwertz</item>
-        <item>da:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>da:AsciiCapable</item>
         <item>nordic</item>
-        <item>de:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>de:AsciiCapable</item>
         <item>qwertz</item>
-        <item>es:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>es:AsciiCapable</item>
         <item>spanish</item>
-        <item>fi:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>fi:AsciiCapable</item>
         <item>nordic</item>
-        <item>fr:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>fr:AsciiCapable</item>
         <item>azerty</item>
-        <item>fr_CA:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>fr_CA:AsciiCapable</item>
         <item>qwerty</item>
-        <item>hr:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>hr:AsciiCapable</item>
         <item>qwertz</item>
-        <item>hu:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>hu:AsciiCapable</item>
         <item>qwertz</item>
-        <item>it:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>it:AsciiCapable</item>
         <item>qwerty</item>
-        <item>iw:SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>iw:EmojiCapable</item>
         <item>hebrew</item>
-        <item>nb:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>nb:AsciiCapable</item>
         <item>nordic</item>
-        <item>nl:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>nl:AsciiCapable</item>
         <item>qwerty</item>
-        <item>pl:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>pl:AsciiCapable</item>
         <item>qwerty</item>
-        <item>ru:SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>ru:EmojiCapable</item>
         <item>east_slavic</item>
-        <item>sr:SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>sr:EmojiCapable</item>
         <item>south_slavic</item>
-        <item>sv:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>sv:AsciiCapable</item>
         <item>nordic</item>
-        <item>tr:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>tr:AsciiCapable</item>
         <item>qwerty</item>
     </string-array>
 </resources>

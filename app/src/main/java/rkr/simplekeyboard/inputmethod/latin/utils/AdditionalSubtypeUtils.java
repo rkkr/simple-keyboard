@@ -54,8 +54,7 @@ public final class AdditionalSubtypeUtils {
             final String localeString, final String keyboardLayoutSetName,
             final boolean isAsciiCapable) {
         final int nameId = SubtypeLocaleUtils.getSubtypeNameId(localeString, keyboardLayoutSetName);
-        final String platformVersionDependentExtraValues = getPlatformVersionDependentExtraValue(
-                localeString, keyboardLayoutSetName, isAsciiCapable);
+        final String platformVersionDependentExtraValues = getPlatformVersionDependentExtraValue(keyboardLayoutSetName, isAsciiCapable);
         final int platformVersionIndependentSubtypeId =
                 getPlatformVersionIndependentSubtypeId(localeString, keyboardLayoutSetName);
         // NOTE: In KitKat and later, InputMethodSubtypeBuilder#setIsAsciiCapable is also available.
@@ -158,14 +157,12 @@ public final class AdditionalSubtypeUtils {
      * assume that the extra values stored in a persistent storage are always valid. We need to
      * regenerate the extra value on the fly instead.
      * </p>
-     * @param localeString the locale string (e.g., "en_US").
      * @param keyboardLayoutSetName the keyboard layout set name (e.g., "dvorak").
      * @param isAsciiCapable true when ASCII characters are supported with this layout.
      * @return extra value that is optimized for the running OS.
      * @see #getPlatformVersionIndependentSubtypeId(String, String)
      */
-    private static String getPlatformVersionDependentExtraValue(final String localeString,
-            final String keyboardLayoutSetName, final boolean isAsciiCapable) {
+    private static String getPlatformVersionDependentExtraValue(final String keyboardLayoutSetName, final boolean isAsciiCapable) {
         final ArrayList<String> extraValueItems = new ArrayList<>();
         extraValueItems.add(KEYBOARD_LAYOUT_SET + "=" + keyboardLayoutSetName);
         if (isAsciiCapable) {

@@ -55,24 +55,6 @@ public final class CoordinateUtils {
         return new int[ELEMENT_SIZE * arraySize];
     }
 
-    @NonNull
-    public static int[] newCoordinateArray(final int arraySize,
-            final int defaultX, final int defaultY) {
-        final int[] result = new int[ELEMENT_SIZE * arraySize];
-        for (int i = 0; i < arraySize; ++i) {
-            setXYInArray(result, i, defaultX, defaultY);
-        }
-        return result;
-    }
-
-    public static int xFromArray(@NonNull final int[] coordsArray, final int index) {
-        return coordsArray[ELEMENT_SIZE * index + INDEX_X];
-    }
-
-    public static int yFromArray(@NonNull final int[] coordsArray, final int index) {
-        return coordsArray[ELEMENT_SIZE * index + INDEX_Y];
-    }
-
     public static void setXYInArray(@NonNull final int[] coordsArray, final int index,
             final int x, final int y) {
         final int baseIndex = ELEMENT_SIZE * index;

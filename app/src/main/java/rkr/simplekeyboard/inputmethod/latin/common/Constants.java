@@ -18,8 +18,6 @@ package rkr.simplekeyboard.inputmethod.latin.common;
 
 import android.support.annotation.NonNull;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
-
 public final class Constants {
 
     public static final class Color {
@@ -30,23 +28,6 @@ public final class Constants {
     }
 
     public static final class ImeOption {
-        /**
-         * The private IME option used to indicate that no microphone should be shown for a given
-         * text field. For instance, this is specified by the search dialog when the dialog is
-         * already showing a voice search button.
-         *
-         * @deprecated Use {@link ImeOption#NO_MICROPHONE} with package name prefixed.
-         */
-        @SuppressWarnings("dep-ann")
-        public static final String NO_MICROPHONE_COMPAT = "nm";
-
-        /**
-         * The private IME option used to indicate that no microphone should be shown for a given
-         * text field. For instance, this is specified by the search dialog when the dialog is
-         * already showing a voice search button.
-         */
-        public static final String NO_MICROPHONE = "noMicrophoneKey";
-
         /**
          * The private IME option used to indicate that no settings key should be shown for a given
          * text field.
@@ -260,12 +241,6 @@ public final class Constants {
     public static final int SCREEN_METRICS_LARGE_PHONE = 1;
     public static final int SCREEN_METRICS_LARGE_TABLET = 2;
     public static final int SCREEN_METRICS_SMALL_TABLET = 3;
-
-    @UsedForTesting
-    public static boolean isPhone(final int screenMetrics) {
-        return screenMetrics == SCREEN_METRICS_SMALL_PHONE
-                || screenMetrics == SCREEN_METRICS_LARGE_PHONE;
-    }
 
     private Constants() {
         // This utility class is not publicly instantiable.

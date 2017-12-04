@@ -33,14 +33,13 @@ import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardTextsSet;
 import rkr.simplekeyboard.inputmethod.latin.InputView;
 import rkr.simplekeyboard.inputmethod.latin.LatinIME;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
-import rkr.simplekeyboard.inputmethod.latin.WordComposer;
+import rkr.simplekeyboard.inputmethod.latin.inputlogic.InputLogic;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 import rkr.simplekeyboard.inputmethod.latin.utils.CapsModeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LanguageOnSpacebarUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.RecapitalizeStatus;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.ScriptUtils;
 
 public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private static final String TAG = KeyboardSwitcher.class.getSimpleName();
@@ -402,25 +401,18 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     public int getKeyboardShiftMode() {
         final Keyboard keyboard = getKeyboard();
         if (keyboard == null) {
-            return WordComposer.CAPS_MODE_OFF;
+            return InputLogic.CAPS_MODE_OFF;
         }
         switch (keyboard.mId.mElementId) {
         case KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCKED:
         case KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCK_SHIFTED:
-            return WordComposer.CAPS_MODE_MANUAL_SHIFT_LOCKED;
+            return InputLogic.CAPS_MODE_MANUAL_SHIFT_LOCKED;
         case KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED:
-            return WordComposer.CAPS_MODE_MANUAL_SHIFTED;
+            return InputLogic.CAPS_MODE_MANUAL_SHIFTED;
         case KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED:
-            return WordComposer.CAPS_MODE_AUTO_SHIFTED;
+            return InputLogic.CAPS_MODE_AUTO_SHIFTED;
         default:
-            return WordComposer.CAPS_MODE_OFF;
+            return InputLogic.CAPS_MODE_OFF;
         }
-    }
-
-    public int getCurrentKeyboardScriptId() {
-        if (null == mKeyboardLayoutSet) {
-            return ScriptUtils.SCRIPT_UNKNOWN;
-        }
-        return mKeyboardLayoutSet.getScriptId();
     }
 }

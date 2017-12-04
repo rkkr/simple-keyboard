@@ -17,7 +17,6 @@
 package rkr.simplekeyboard.inputmethod.latin;
 
 import android.inputmethodservice.InputMethodService;
-import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.text.SpannableStringBuilder;
@@ -28,17 +27,13 @@ import android.view.KeyEvent;
 import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputMethodManager;
 
-import rkr.simplekeyboard.inputmethod.compat.InputConnectionCompatUtils;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.common.UnicodeSurrogate;
-import rkr.simplekeyboard.inputmethod.latin.inputlogic.PrivateCommandPerformer;
 import rkr.simplekeyboard.inputmethod.latin.settings.SpacingAndPunctuations;
 import rkr.simplekeyboard.inputmethod.latin.utils.CapsModeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.DebugLogUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
 
 /**
  * Enrichment class for InputConnection to simplify interaction and add functionality.
@@ -48,7 +43,7 @@ import rkr.simplekeyboard.inputmethod.latin.utils.StatsUtils;
  * all the time to find out what text is in the buffer, when we need it to determine caps mode
  * for example.
  */
-public final class RichInputConnection implements PrivateCommandPerformer {
+public final class RichInputConnection {
     private static final String TAG = "RichInputConnection";
     private static final boolean DBG = false;
     private static final boolean DEBUG_PREVIOUS_TEXT = false;
@@ -406,7 +401,6 @@ public final class RichInputConnection implements PrivateCommandPerformer {
         if (duration >= timeout) {
             final String operationName = OPERATION_NAMES[operation];
             Log.w(TAG, "Slow InputConnection: " + operationName + " took " + duration + " ms.");
-            StatsUtils.onInputConnectionLaggy(operation, duration);
         }
     }
 
@@ -499,21 +493,6 @@ public final class RichInputConnection implements PrivateCommandPerformer {
         }
     }
 
-    public void setComposingText(final CharSequence text, final int newCursorPosition) {
-        if (DEBUG_BATCH_NESTING) checkBatchEdit();
-        if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
-        mExpectedSelStart += text.length() - mComposingText.length();
-        mExpectedSelEnd = mExpectedSelStart;
-        mComposingText.setLength(0);
-        mComposingText.append(text);
-        // TODO: support values of newCursorPosition != 1. At this time, this is never called with
-        // newCursorPosition != 1.
-        if (isConnected()) {
-            mIC.setComposingText(text, newCursorPosition);
-        }
-        if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
-    }
-
     /**
      * Set the selection of the text editor.
      *
@@ -575,46 +554,6 @@ public final class RichInputConnection implements PrivateCommandPerformer {
         final String text = " " + textBeforeCursor.subSequence(0, 1);
         commitText(text, 1);
         return true;
-    }
-
-    /**
-     * Heuristic to determine if this is an expected update of the cursor.
-     *
-     * Sometimes updates to the cursor position are late because of their asynchronous nature.
-     * This method tries to determine if this update is one, based on the values of the cursor
-     * position in the update, and the currently expected position of the cursor according to
-     * LatinIME's internal accounting. If this is not a belated expected update, then it should
-     * mean that the user moved the cursor explicitly.
-     * This is quite robust, but of course it's not perfect. In particular, it will fail in the
-     * case we get an update A, the user types in N characters so as to move the cursor to A+N but
-     * we don't get those, and then the user places the cursor between A and A+N, and we get only
-     * this update and not the ones in-between. This is almost impossible to achieve even trying
-     * very very hard.
-     *
-     * @param oldSelStart The value of the old selection in the update.
-     * @param newSelStart The value of the new selection in the update.
-     * @param oldSelEnd The value of the old selection end in the update.
-     * @param newSelEnd The value of the new selection end in the update.
-     * @return whether this is a belated expected update or not.
-     */
-    public boolean isBelatedExpectedUpdate(final int oldSelStart, final int newSelStart,
-            final int oldSelEnd, final int newSelEnd) {
-        // This update is "belated" if we are expecting it. That is, mExpectedSelStart and
-        // mExpectedSelEnd match the new values that the TextView is updating TO.
-        if (mExpectedSelStart == newSelStart && mExpectedSelEnd == newSelEnd) return true;
-        // This update is not belated if mExpectedSelStart and mExpectedSelEnd match the old
-        // values, and one of newSelStart or newSelEnd is updated to a different value. In this
-        // case, it is likely that something other than the IME has moved the selection endpoint
-        // to the new value.
-        if (mExpectedSelStart == oldSelStart && mExpectedSelEnd == oldSelEnd
-                && (oldSelStart != newSelStart || oldSelEnd != newSelEnd)) return false;
-        // If neither of the above two cases hold, then the system may be having trouble keeping up
-        // with updates. If 1) the selection is a cursor, 2) newSelStart is between oldSelStart
-        // and mExpectedSelStart, and 3) newSelEnd is between oldSelEnd and mExpectedSelEnd, then
-        // assume a belated update.
-        return (newSelStart == newSelEnd)
-                && (newSelStart - oldSelStart) * (mExpectedSelStart - newSelStart) >= 0
-                && (newSelEnd - oldSelEnd) * (mExpectedSelEnd - newSelEnd) >= 0;
     }
 
     /**
@@ -687,15 +626,6 @@ public final class RichInputConnection implements PrivateCommandPerformer {
                 }
             }
         }
-    }
-
-    @Override
-    public boolean performPrivateCommand(final String action, final Bundle data) {
-        mIC = mParent.getCurrentInputConnection();
-        if (!isConnected()) {
-            return false;
-        }
-        return mIC.performPrivateCommand(action, data);
     }
 
     public int getExpectedSelectionStart() {

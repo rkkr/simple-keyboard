@@ -61,11 +61,6 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
     public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
         final Resources res = getResources();
         if (key.equals(Settings.PREF_POPUP_ON)) {

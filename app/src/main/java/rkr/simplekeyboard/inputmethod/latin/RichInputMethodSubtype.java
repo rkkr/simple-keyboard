@@ -72,11 +72,6 @@ public class RichInputMethodSubtype {
         return mSubtype.getExtraValueOf(key);
     }
 
-    // The mode is also determined by the primary subtype.
-    public String getMode() {
-        return mSubtype.getMode();
-    }
-
     public boolean isNoLanguage() {
         return SubtypeLocaleUtils.NO_LANGUAGE.equals(mSubtype.getLocale());
     }

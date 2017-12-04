@@ -42,7 +42,6 @@ public final class InputAttributes {
      * Whether the floating gesture preview should be disabled. If true, this should override the
      * corresponding keyboard settings preference, always suppressing the floating preview text.
      */
-    final public boolean mIsGeneralTextInput;
     final private int mInputType;
 
     public InputAttributes(final EditorInfo editorInfo, final boolean isFullscreenMode) {
@@ -71,7 +70,6 @@ public final class InputAttributes {
             mInputTypeNoAutoCorrect = false;
             mApplicationSpecifiedCompletionOn = false;
             mShouldInsertSpacesAutomatically = false;
-            mIsGeneralTextInput = false;
             return;
         }
         // inputClass == InputType.TYPE_CLASS_TEXT
@@ -107,15 +105,6 @@ public final class InputAttributes {
                 || (!flagAutoCorrect && !flagMultiLine);
 
         mApplicationSpecifiedCompletionOn = flagAutoComplete && isFullscreenMode;
-
-        // If we come here, inputClass is always TYPE_CLASS_TEXT
-        mIsGeneralTextInput = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS != variation
-                && InputType.TYPE_TEXT_VARIATION_PASSWORD != variation
-                && InputType.TYPE_TEXT_VARIATION_PHONETIC != variation
-                && InputType.TYPE_TEXT_VARIATION_URI != variation
-                && InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD != variation
-                && InputType.TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS != variation
-                && InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD != variation;
     }
 
     public boolean isTypeNull() {

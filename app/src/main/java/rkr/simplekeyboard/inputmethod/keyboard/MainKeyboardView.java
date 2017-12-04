@@ -595,14 +595,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         onDismissMoreKeysPanel();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean onHoverEvent(final MotionEvent event) {
-        return super.onHoverEvent(event);
-    }
-
     public void updateShortcutKey(final boolean available) {
         final Keyboard keyboard = getKeyboard();
         if (keyboard == null) {
@@ -728,10 +720,5 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         canvas.drawText(language, width / 2, baseline - descent, paint);
         paint.clearShadowLayer();
         paint.setTextScaleX(1.0f);
-    }
-
-    @Override
-    public void deallocateMemory() {
-        super.deallocateMemory();
     }
 }

@@ -33,21 +33,16 @@ public class InputTransaction {
 
     // Initial conditions
     public final SettingsValues mSettingsValues;
-    public final Event mEvent;
     public final long mTimestamp;
     public final int mSpaceState;
-    public final int mShiftState;
 
     // Outputs
     private int mRequiredShiftUpdate = SHIFT_NO_UPDATE;
 
-    public InputTransaction(final SettingsValues settingsValues, final Event event,
-            final long timestamp, final int spaceState, final int shiftState) {
+    public InputTransaction(final SettingsValues settingsValues, final long timestamp, final int spaceState) {
         mSettingsValues = settingsValues;
-        mEvent = event;
         mTimestamp = timestamp;
         mSpaceState = spaceState;
-        mShiftState = shiftState;
     }
 
     /**

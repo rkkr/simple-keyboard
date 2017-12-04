@@ -814,24 +814,6 @@ public class Key implements Comparable<Key> {
     }
 
     /**
-     * The combined width in pixels of the horizontal gaps belonging to this key, both above and
-     * below. I.e., getWidth() + getHorizontalGap() = total width belonging to the key.
-     * @return Horizontal gap belonging to this key.
-     */
-    public int getHorizontalGap() {
-        return mHorizontalGap;
-    }
-
-    /**
-     * The combined height in pixels of the vertical gaps belonging to this key, both above and
-     * below. I.e., getHeight() + getVerticalGap() = total height belonging to the key.
-     * @return Vertical gap belonging to this key.
-     */
-    public int getVerticalGap() {
-        return mVerticalGap;
-    }
-
-    /**
      * Gets the x-coordinate of the top-left corner of the key in pixels, excluding the gap.
      * @return The x-coordinate of the top-left corner of the key in pixels, excluding the gap.
      */
@@ -883,11 +865,6 @@ public class Key implements Comparable<Key> {
 
     public void setEnabled(final boolean enabled) {
         mEnabled = enabled;
-    }
-
-    @NonNull
-    public Rect getHitBox() {
-        return mHitBox;
     }
 
     /**
