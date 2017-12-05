@@ -48,10 +48,6 @@ public final class InputLogic {
     // TODO : Remove this member when we can.
     final LatinIME mLatinIME;
 
-    // TODO : make all these fields private as soon as possible.
-    // Current space state of the input method. This can be any of the above constants.
-    private int mSpaceState;
-
     // This has package visibility so it can be accessed from InputLogicHandler.
     public final RichInputConnection mConnection;
     private final RecapitalizeStatus mRecapitalizeStatus = new RecapitalizeStatus();
@@ -59,9 +55,6 @@ public final class InputLogic {
     private int mDeleteCount;
     private long mLastKeyTime;
     public final TreeSet<Long> mCurrentlyPressedHardwareKeys = new TreeSet<>();
-
-    // Keeps track of most recently inserted text (multi-character key) for reverting
-    private String mEnteredText;
 
     /**
      * Create a new instance of the input logic.
@@ -79,9 +72,7 @@ public final class InputLogic {
      * Call this when input starts or restarts in some editor (typically, in onStartInputView).
      */
     public void startInput() {
-        mEnteredText = null;
         mDeleteCount = 0;
-        mSpaceState = SpaceState.NONE;
         mRecapitalizeStatus.disable(); // Do not perform recapitalize until the cursor is moved once
         mCurrentlyPressedHardwareKeys.clear();
         // In some cases (namely, after rotation of the device) editorInfo.initialSelStart is lying
@@ -109,18 +100,12 @@ public final class InputLogic {
     public InputTransaction onTextInput(final SettingsValues settingsValues, final Event event,
             final int keyboardShiftMode) {
         final String rawText = event.getTextToCommit().toString();
-        final InputTransaction inputTransaction = new InputTransaction(settingsValues, mSpaceState,
-                getActualCapsMode(settingsValues, keyboardShiftMode));
+        final InputTransaction inputTransaction = new InputTransaction(settingsValues, getActualCapsMode(settingsValues, keyboardShiftMode));
         mConnection.beginBatchEdit();
         final String text = performSpecificTldProcessingOnTextInput(rawText);
-        if (SpaceState.PHANTOM == mSpaceState) {
-            insertAutomaticSpaceIfOptionsAndTextAllow(settingsValues);
-        }
         mConnection.commitText(text, 1);
         mConnection.endBatchEdit();
         // Space state must be updated before calling updateShiftState
-        mSpaceState = SpaceState.NONE;
-        mEnteredText = text;
         inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
         return inputTransaction;
     }
@@ -140,8 +125,7 @@ public final class InputLogic {
      */
     public InputTransaction onCodeInput(final SettingsValues settingsValues,
             @NonNull final Event event, final int keyboardShiftMode) {
-        final InputTransaction inputTransaction = new InputTransaction(settingsValues, mSpaceState,
-                getActualCapsMode(settingsValues, keyboardShiftMode));
+        final InputTransaction inputTransaction = new InputTransaction(settingsValues, getActualCapsMode(settingsValues, keyboardShiftMode));
         if (event.mKeyCode != Constants.CODE_DELETE
                 || inputTransaction.mTimestamp > mLastKeyTime + Constants.LONG_PRESS_MILLISECONDS) {
             mDeleteCount = 0;
@@ -163,9 +147,6 @@ public final class InputLogic {
         if (event.mKeyCode != Constants.CODE_SHIFT
                 && event.mKeyCode != Constants.CODE_CAPSLOCK
                 && event.mKeyCode != Constants.CODE_SWITCH_ALPHA_SYMBOL)
-        if (Constants.CODE_DELETE != event.mKeyCode) {
-            mEnteredText = null;
-        }
         mConnection.endBatchEdit();
         return inputTransaction;
     }
@@ -305,39 +286,20 @@ public final class InputLogic {
     private void handleNonSpecialCharacterEvent(final Event event,
             final InputTransaction inputTransaction) {
         final int codePoint = event.mCodePoint;
-        mSpaceState = SpaceState.NONE;
         if (inputTransaction.mSettingsValues.isWordSeparator(codePoint)
                 || Character.getType(codePoint) == Character.OTHER_SYMBOL) {
             handleSeparatorEvent(event, inputTransaction);
         } else {
-            handleNonSeparatorEvent(event, inputTransaction.mSettingsValues, inputTransaction);
+            handleNonSeparatorEvent(event);
         }
     }
 
     /**
      * Handle a non-separator.
      * @param event The event to handle.
-     * @param settingsValues The current settings values.
-     * @param inputTransaction The transaction in progress.
      */
-    private void handleNonSeparatorEvent(final Event event, final SettingsValues settingsValues,
-            final InputTransaction inputTransaction) {
-        final int codePoint = event.mCodePoint;
-        // TODO: remove isWordConnector() and use isUsuallyFollowedBySpace() instead.
-        // See onStartBatchInput() to see how to do it.
-        if (SpaceState.PHANTOM == inputTransaction.mSpaceState
-                && !settingsValues.isWordConnector(codePoint)) {
-            insertAutomaticSpaceIfOptionsAndTextAllow(settingsValues);
-        }
-
-        final boolean swapWeakSpace = tryStripSpaceAndReturnWhetherShouldSwapInstead(event,
-                inputTransaction);
-
-        if (swapWeakSpace && trySwapSwapperAndSpace(event, inputTransaction)) {
-            mSpaceState = SpaceState.WEAK;
-        } else {
-            sendKeyCodePoint(codePoint);
-        }
+    private void handleNonSeparatorEvent(final Event event) {
+        sendKeyCodePoint(event.mCodePoint);
     }
 
     /**
@@ -346,64 +308,7 @@ public final class InputLogic {
      * @param inputTransaction The transaction in progress.
      */
     private void handleSeparatorEvent(final Event event, final InputTransaction inputTransaction) {
-        final int codePoint = event.mCodePoint;
-        final SettingsValues settingsValues = inputTransaction.mSettingsValues;
-        // We avoid sending spaces in languages without spaces if we were composing.
-        final boolean shouldAvoidSendingCode = Constants.CODE_SPACE == codePoint
-                && !settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces;
-
-        final boolean swapWeakSpace = tryStripSpaceAndReturnWhetherShouldSwapInstead(event,
-                inputTransaction);
-
-        final boolean isInsideDoubleQuoteOrAfterDigit = Constants.CODE_DOUBLE_QUOTE == codePoint
-                && mConnection.isInsideDoubleQuoteOrAfterDigit();
-
-        final boolean needsPrecedingSpace;
-        if (SpaceState.PHANTOM != inputTransaction.mSpaceState) {
-            needsPrecedingSpace = false;
-        } else if (Constants.CODE_DOUBLE_QUOTE == codePoint) {
-            // Double quotes behave like they are usually preceded by space iff we are
-            // not inside a double quote or after a digit.
-            needsPrecedingSpace = !isInsideDoubleQuoteOrAfterDigit;
-        } else if (settingsValues.mSpacingAndPunctuations.isClusteringSymbol(codePoint)
-                && settingsValues.mSpacingAndPunctuations.isClusteringSymbol(
-                        mConnection.getCodePointBeforeCursor())) {
-            needsPrecedingSpace = false;
-        } else {
-            needsPrecedingSpace = settingsValues.isUsuallyPrecededBySpace(codePoint);
-        }
-
-        if (needsPrecedingSpace) {
-            insertAutomaticSpaceIfOptionsAndTextAllow(settingsValues);
-        }
-
-        if (swapWeakSpace && trySwapSwapperAndSpace(event, inputTransaction)) {
-            mSpaceState = SpaceState.SWAP_PUNCTUATION;
-        } else if (Constants.CODE_SPACE == codePoint) {
-            if (!shouldAvoidSendingCode) {
-                sendKeyCodePoint(codePoint);
-            }
-        } else {
-            if ((SpaceState.PHANTOM == inputTransaction.mSpaceState
-                    && settingsValues.isUsuallyFollowedBySpace(codePoint))
-                    || (Constants.CODE_DOUBLE_QUOTE == codePoint
-                            && isInsideDoubleQuoteOrAfterDigit)) {
-                // If we are in phantom space state, and the user presses a separator, we want to
-                // stay in phantom space state so that the next keypress has a chance to add the
-                // space. For example, if I type "Good dat", pick "day" from the suggestion strip
-                // then insert a comma and go on to typing the next word, I want the space to be
-                // inserted automatically before the next word, the same way it is when I don't
-                // input the comma. A double quote behaves like it's usually followed by space if
-                // we're inside a double quote.
-                // The case is a little different if the separator is a space stripper. Such a
-                // separator does not normally need a space on the right (that's the difference
-                // between swappers and strippers), so we should not stay in phantom space state if
-                // the separator is a stripper. Hence the additional test above.
-                mSpaceState = SpaceState.PHANTOM;
-            }
-
-            sendKeyCodePoint(codePoint);
-        }
+        sendKeyCodePoint(event.mCodePoint);
 
         inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
     }
@@ -414,7 +319,6 @@ public final class InputLogic {
      * @param inputTransaction The transaction in progress.
      */
     private void handleBackspaceEvent(final Event event, final InputTransaction inputTransaction) {
-        mSpaceState = SpaceState.NONE;
         mDeleteCount++;
 
         // In many cases after backspace, we need to update the shift state. Normally we need
@@ -428,24 +332,6 @@ public final class InputLogic {
                 event.isKeyRepeat() && mConnection.getExpectedSelectionStart() > 0
                 ? InputTransaction.SHIFT_UPDATE_LATER : InputTransaction.SHIFT_UPDATE_NOW;
         inputTransaction.requireShiftUpdate(shiftUpdateKind);
-
-        if (mEnteredText != null && mConnection.sameAsTextBeforeCursor(mEnteredText)) {
-            // Cancel multi-character input: remove the text we just entered.
-            // This is triggered on backspace after a key that inputs multiple characters,
-            // like the smiley key or the .com key.
-            mConnection.deleteTextBeforeCursor(mEnteredText.length());
-            mEnteredText = null;
-            // If we have mEnteredText, then we know that mHasUncommittedTypedChars == false.
-            // In addition we know that spaceState is false, and that we should not be
-            // reverting any autocorrect at this point. So we can safely return.
-            return;
-        }
-        if (SpaceState.SWAP_PUNCTUATION == inputTransaction.mSpaceState) {
-            if (mConnection.revertSwapPunctuation()) {
-                // Likewise
-                return;
-            }
-        }
 
         // No cancelling of commit/double space/swap: we have a regular backspace.
         // We should backspace one char and restart suggestion if at the end of a word.
@@ -517,57 +403,6 @@ public final class InputLogic {
      */
     private void handleLanguageSwitchKey() {
         mLatinIME.switchToNextSubtype();
-    }
-
-    /**
-     * Swap a space with a space-swapping punctuation sign.
-     *
-     * This method will check that there are two characters before the cursor and that the first
-     * one is a space before it does the actual swapping.
-     * @param event The event to handle.
-     * @param inputTransaction The transaction in progress.
-     * @return true if the swap has been performed, false if it was prevented by preliminary checks.
-     */
-    private boolean trySwapSwapperAndSpace(final Event event,
-            final InputTransaction inputTransaction) {
-        final int codePointBeforeCursor = mConnection.getCodePointBeforeCursor();
-        if (Constants.CODE_SPACE != codePointBeforeCursor) {
-            return false;
-        }
-        mConnection.deleteTextBeforeCursor(1);
-        final String text = event.getTextToCommit() + " ";
-        mConnection.commitText(text, 1);
-        inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
-        return true;
-    }
-
-    /*
-     * Strip a trailing space if necessary and returns whether it's a swap weak space situation.
-     * @param event The event to handle.
-     * @param inputTransaction The transaction in progress.
-     * @return whether we should swap the space instead of removing it.
-     */
-    private boolean tryStripSpaceAndReturnWhetherShouldSwapInstead(final Event event,
-            final InputTransaction inputTransaction) {
-        final int codePoint = event.mCodePoint;
-        final boolean isFromSuggestionStrip = event.isSuggestionStripPress();
-        if (Constants.CODE_ENTER == codePoint &&
-                SpaceState.SWAP_PUNCTUATION == inputTransaction.mSpaceState) {
-            mConnection.removeTrailingSpace();
-            return false;
-        }
-        if ((SpaceState.WEAK == inputTransaction.mSpaceState
-                || SpaceState.SWAP_PUNCTUATION == inputTransaction.mSpaceState)
-                && isFromSuggestionStrip) {
-            if (inputTransaction.mSettingsValues.isUsuallyPrecededBySpace(codePoint)) {
-                return false;
-            }
-            if (inputTransaction.mSettingsValues.isUsuallyFollowedBySpace(codePoint)) {
-                return true;
-            }
-            mConnection.removeTrailingSpace();
-        }
-        return false;
     }
 
     /**
@@ -648,8 +483,7 @@ public final class InputLogic {
         final int inputType = ei.inputType;
         // Warning: this depends on mSpaceState, which may not be the most current value. If
         // mSpaceState gets updated later, whoever called this may need to be told about it.
-        return mConnection.getCursorCapsMode(inputType, settingsValues.mSpacingAndPunctuations,
-                SpaceState.PHANTOM == mSpaceState);
+        return mConnection.getCursorCapsMode(inputType, settingsValues.mSpacingAndPunctuations);
     }
 
     public int getCurrentRecapitalizeState() {
@@ -695,9 +529,6 @@ public final class InputLogic {
             // Not a tld: do nothing.
             return text;
         }
-        // We have a TLD (or something that looks like this): make sure we don't add
-        // a space even if currently in phantom mode.
-        mSpaceState = SpaceState.NONE;
         final int codePointBeforeCursor = mConnection.getCodePointBeforeCursor();
         // If no code point, #getCodePointBeforeCursor returns NOT_A_CODE_POINT.
         if (Constants.CODE_PERIOD == codePointBeforeCursor) {
@@ -750,22 +581,6 @@ public final class InputLogic {
         }
 
         mConnection.commitText(StringUtils.newSingleCodePointString(codePoint), 1);
-    }
-
-    /**
-     * Insert an automatic space, if the options allow it.
-     *
-     * This checks the options and the text before the cursor are appropriate before inserting
-     * an automatic space.
-     *
-     * @param settingsValues the current values of the settings.
-     */
-    private void insertAutomaticSpaceIfOptionsAndTextAllow(final SettingsValues settingsValues) {
-        if (settingsValues.shouldInsertSpacesAutomatically()
-                && settingsValues.mSpacingAndPunctuations.mCurrentLanguageHasSpaces
-                && !mConnection.textBeforeCursorLooksLikeURL()) {
-            sendKeyCodePoint(Constants.CODE_SPACE);
-        }
     }
 
     /**

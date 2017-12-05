@@ -95,11 +95,6 @@ public final class Constants {
              */
             public static final String IS_ADDITIONAL_SUBTYPE = "isAdditionalSubtype";
 
-            /**
-             * The subtype extra value used to specify the combining rules.
-             */
-            public static final String COMBINING_RULES = "CombiningRules";
-
             private ExtraValue() {
                 // This utility class is not publicly instantiable.
             }
@@ -131,7 +126,6 @@ public final class Constants {
     public static final int NOT_A_CURSOR_POSITION = -1;
     // TODO: replace the following constants with state in InputTransaction?
     public static final int NOT_A_COORDINATE = -1;
-    public static final int EXTERNAL_KEYBOARD_COORDINATE = -4;
 
     // A hint on how many characters to cache from the TextView. A good value of this is given by
     // how many characters we need to be able to almost always find the caps mode.
@@ -180,8 +174,6 @@ public final class Constants {
     public static final int CODE_GRAVE_ACCENT = '`';
     public static final int CODE_CIRCUMFLEX_ACCENT = '^';
     public static final int CODE_TILDE = '~';
-
-    public static final String STRING_SPACE = " ";
 
     /**
      * Special keys code. Must be negative.

@@ -235,7 +235,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         // Even if the key is disabled, it should respond if it is in the altCodeWhileTyping state.
         if (key.isEnabled() || altersCode) {
             if (code == Constants.CODE_OUTPUT_TEXT) {
-                sListener.onTextInput(key.getOutputText());
+                sListener.onTextInput();
             } else if (code != Constants.CODE_UNSPECIFIED) {
                 sListener.onCodeInput(code,
                     Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, isKeyRepeat);

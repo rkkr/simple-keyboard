@@ -34,15 +34,13 @@ public class InputTransaction {
     // Initial conditions
     public final SettingsValues mSettingsValues;
     public final long mTimestamp;
-    public final int mSpaceState;
 
     // Outputs
     private int mRequiredShiftUpdate = SHIFT_NO_UPDATE;
 
-    public InputTransaction(final SettingsValues settingsValues, final long timestamp, final int spaceState) {
+    public InputTransaction(final SettingsValues settingsValues, final long timestamp) {
         mSettingsValues = settingsValues;
         mTimestamp = timestamp;
-        mSpaceState = spaceState;
     }
 
     /**

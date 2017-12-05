@@ -75,8 +75,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
 import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
-
 /**
  * Input method implementation for Qwerty'ish keyboard.
  */
@@ -485,10 +483,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
         Log.i(TAG, "Starting input. Cursor position = "
                 + editorInfo.initialSelStart + "," + editorInfo.initialSelEnd);
-        if (InputAttributes.inPrivateImeOptions(getPackageName(), FORCE_ASCII, editorInfo)) {
-            Log.w(TAG, "Deprecated private IME option specified: " + editorInfo.privateImeOptions);
-            Log.w(TAG, "Use EditorInfo.IME_FLAG_FORCE_ASCII flag instead");
-        }
 
         // In landscape mode, this method gets called without the input view being created.
         if (mainKeyboardView == null) {
@@ -822,9 +816,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     // Called from PointerTracker through the KeyboardActionListener interface
     @Override
-    public void onTextInput(final String rawText) {
+    public void onTextInput() {
         // TODO: have the keyboard pass the correct key code when we need it.
-        final Event event = Event.createSoftwareTextEvent(rawText, Constants.CODE_OUTPUT_TEXT);
+        final Event event = Event.createSoftwareTextEvent(Constants.CODE_OUTPUT_TEXT);
         final InputTransaction completeInputTransaction =
                 mInputLogic.onTextInput(mSettings.getCurrent(), event,
                         mKeyboardSwitcher.getKeyboardShiftMode());

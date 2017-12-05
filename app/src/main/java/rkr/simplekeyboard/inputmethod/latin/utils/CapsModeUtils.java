@@ -59,7 +59,6 @@ public final class CapsModeUtils {
      * {@link TextUtils#CAP_MODE_CHARACTERS}, {@link TextUtils#CAP_MODE_WORDS}, and
      * {@link TextUtils#CAP_MODE_SENTENCES}.
      * @param spacingAndPunctuations The current spacing and punctuations settings.
-     * @param hasSpaceBefore Whether we should consider there is a space inserted at the end of cs
      *
      * @return Returns the actual capitalization modes that can be in effect
      * at the current position, which is any combination of
@@ -67,7 +66,7 @@ public final class CapsModeUtils {
      * {@link TextUtils#CAP_MODE_SENTENCES}.
      */
     public static int getCapsMode(final CharSequence cs, final int reqModes,
-            final SpacingAndPunctuations spacingAndPunctuations, final boolean hasSpaceBefore) {
+            final SpacingAndPunctuations spacingAndPunctuations) {
         // Quick description of what we want to do:
         // CAP_MODE_CHARACTERS is always on.
         // CAP_MODE_WORDS is on if there is some whitespace before the cursor.
@@ -94,14 +93,10 @@ public final class CapsModeUtils {
         // single quote since they aren't start punctuation in the unicode sense, but should still
         // be skipped for English. TODO: does this depend on the language?
         int i;
-        if (hasSpaceBefore) {
-            i = cs.length() + 1;
-        } else {
-            for (i = cs.length(); i > 0; i--) {
-                final char c = cs.charAt(i - 1);
-                if (!isStartPunctuation(c)) {
-                    break;
-                }
+        for (i = cs.length(); i > 0; i--) {
+            final char c = cs.charAt(i - 1);
+            if (!isStartPunctuation(c)) {
+                break;
             }
         }
 
@@ -115,7 +110,6 @@ public final class CapsModeUtils {
         // or some other similar characters).
         int j = i;
         char prevChar = Constants.CODE_SPACE;
-        if (hasSpaceBefore) --j;
         while (j > 0) {
             prevChar = cs.charAt(j - 1);
             if (!Character.isSpaceChar(prevChar) && prevChar != Constants.CODE_TAB) break;

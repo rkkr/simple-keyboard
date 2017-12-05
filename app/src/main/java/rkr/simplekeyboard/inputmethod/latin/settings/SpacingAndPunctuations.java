@@ -26,10 +26,6 @@ import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
 public final class SpacingAndPunctuations {
-    private final int[] mSortedSymbolsPrecededBySpace;
-    private final int[] mSortedSymbolsFollowedBySpace;
-    private final int[] mSortedSymbolsClusteringTogether;
-    private final int[] mSortedWordConnectors;
     public final int[] mSortedWordSeparators;
     private final int mSentenceSeparator;
     private final int mAbbreviationMarker;
@@ -40,17 +36,6 @@ public final class SpacingAndPunctuations {
     public final boolean mUsesGermanRules;
 
     public SpacingAndPunctuations(final Resources res) {
-        // To be able to binary search the code point. See {@link #isUsuallyPrecededBySpace(int)}.
-        mSortedSymbolsPrecededBySpace = StringUtils.toSortedCodePointArray(
-                res.getString(R.string.symbols_preceded_by_space));
-        // To be able to binary search the code point. See {@link #isUsuallyFollowedBySpace(int)}.
-        mSortedSymbolsFollowedBySpace = StringUtils.toSortedCodePointArray(
-                res.getString(R.string.symbols_followed_by_space));
-        mSortedSymbolsClusteringTogether = StringUtils.toSortedCodePointArray(
-                res.getString(R.string.symbols_clustering_together));
-        // To be able to binary search the code point. See {@link #isWordConnector(int)}.
-        mSortedWordConnectors = StringUtils.toSortedCodePointArray(
-                res.getString(R.string.symbols_word_connectors));
         mSortedWordSeparators = StringUtils.toSortedCodePointArray(
                 res.getString(R.string.symbols_word_separators));
         mSortedSentenceTerminators = StringUtils.toSortedCodePointArray(
@@ -71,22 +56,6 @@ public final class SpacingAndPunctuations {
         return Arrays.binarySearch(mSortedWordSeparators, code) >= 0;
     }
 
-    public boolean isWordConnector(final int code) {
-        return Arrays.binarySearch(mSortedWordConnectors, code) >= 0;
-    }
-
-    public boolean isUsuallyPrecededBySpace(final int code) {
-        return Arrays.binarySearch(mSortedSymbolsPrecededBySpace, code) >= 0;
-    }
-
-    public boolean isUsuallyFollowedBySpace(final int code) {
-        return Arrays.binarySearch(mSortedSymbolsFollowedBySpace, code) >= 0;
-    }
-
-    public boolean isClusteringSymbol(final int code) {
-        return Arrays.binarySearch(mSortedSymbolsClusteringTogether, code) >= 0;
-    }
-
     public boolean isSentenceTerminator(final int code) {
         return Arrays.binarySearch(mSortedSentenceTerminators, code) >= 0;
     }
@@ -97,28 +66,5 @@ public final class SpacingAndPunctuations {
 
     public boolean isSentenceSeparator(final int code) {
         return code == mSentenceSeparator;
-    }
-
-    public String dump() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("mSortedSymbolsPrecededBySpace = ");
-        sb.append("" + Arrays.toString(mSortedSymbolsPrecededBySpace));
-        sb.append("\n   mSortedSymbolsFollowedBySpace = ");
-        sb.append("" + Arrays.toString(mSortedSymbolsFollowedBySpace));
-        sb.append("\n   mSortedWordConnectors = ");
-        sb.append("" + Arrays.toString(mSortedWordConnectors));
-        sb.append("\n   mSortedWordSeparators = ");
-        sb.append("" + Arrays.toString(mSortedWordSeparators));
-        sb.append("\n   mSentenceSeparator = ");
-        sb.append("" + mSentenceSeparator);
-        sb.append("\n   mSentenceSeparatorAndSpace = ");
-        sb.append("" + mSentenceSeparatorAndSpace);
-        sb.append("\n   mCurrentLanguageHasSpaces = ");
-        sb.append("" + mCurrentLanguageHasSpaces);
-        sb.append("\n   mUsesAmericanTypography = ");
-        sb.append("" + mUsesAmericanTypography);
-        sb.append("\n   mUsesGermanRules = ");
-        sb.append("" + mUsesGermanRules);
-        return sb.toString();
     }
 }

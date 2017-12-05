@@ -119,22 +119,6 @@ public class SettingsValues {
         return mSpacingAndPunctuations.isWordSeparator(code);
     }
 
-    public boolean isWordConnector(final int code) {
-        return mSpacingAndPunctuations.isWordConnector(code);
-    }
-
-    public boolean isUsuallyPrecededBySpace(final int code) {
-        return mSpacingAndPunctuations.isUsuallyPrecededBySpace(code);
-    }
-
-    public boolean isUsuallyFollowedBySpace(final int code) {
-        return mSpacingAndPunctuations.isUsuallyFollowedBySpace(code);
-    }
-
-    public boolean shouldInsertSpacesAutomatically() {
-        return mInputAttributes.mShouldInsertSpacesAutomatically;
-    }
-
     public boolean isLanguageSwitchKeyEnabled() {
         if (!mShowsLanguageSwitchKey) {
             return false;
@@ -153,8 +137,6 @@ public class SettingsValues {
 
     public String dump() {
         final StringBuilder sb = new StringBuilder("Current settings :");
-        sb.append("\n   mSpacingAndPunctuations = ");
-        sb.append("" + mSpacingAndPunctuations.dump());
         sb.append("\n   mAutoCap = ");
         sb.append("" + mAutoCap);
         sb.append("\n   mVibrateOn = ");

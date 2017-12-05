@@ -62,7 +62,7 @@ public interface KeyboardActionListener {
      *
      * @param text the string of characters to be registered.
      */
-    void onTextInput(String text);
+    void onTextInput();
 
     /**
      * Called when user finished sliding key input.
@@ -85,7 +85,7 @@ public interface KeyboardActionListener {
         @Override
         public void onCodeInput(int primaryCode, int x, int y, boolean isKeyRepeat) {}
         @Override
-        public void onTextInput(String text) {}
+        public void onTextInput() {}
         @Override
         public void onFinishSlidingInput() {}
         @Override

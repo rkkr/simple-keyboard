@@ -311,21 +311,14 @@ public final class RichInputConnection {
      *
      * @param inputType a mask of the caps modes to test for.
      * @param spacingAndPunctuations the values of the settings to use for locale and separators.
-     * @param hasSpaceBefore if we should consider there should be a space after the string.
      * @return the caps modes that should be on as a set of bits
      */
-    public int getCursorCapsMode(final int inputType,
-            final SpacingAndPunctuations spacingAndPunctuations, final boolean hasSpaceBefore) {
+    public int getCursorCapsMode(final int inputType, final SpacingAndPunctuations spacingAndPunctuations) {
         mIC = mParent.getCurrentInputConnection();
         if (!isConnected()) {
             return Constants.TextUtils.CAP_MODE_OFF;
         }
         if (!TextUtils.isEmpty(mComposingText)) {
-            if (hasSpaceBefore) {
-                // If we have some composing text and a space before, then we should have
-                // MODE_CHARACTERS and MODE_WORDS on.
-                return (TextUtils.CAP_MODE_CHARACTERS | TextUtils.CAP_MODE_WORDS) & inputType;
-            }
             // We have some composing text - we should be in MODE_CHARACTERS only.
             return TextUtils.CAP_MODE_CHARACTERS & inputType;
         }
@@ -345,7 +338,7 @@ public final class RichInputConnection {
         // TODO: don't call #toString() here. Instead, all accesses to
         // mCommittedTextBeforeComposingText should be done on the main thread.
         return CapsModeUtils.getCapsMode(mCommittedTextBeforeComposingText.toString(), inputType,
-                spacingAndPunctuations, hasSpaceBefore);
+                spacingAndPunctuations);
     }
 
     public int getCodePointBeforeCursor() {
@@ -519,63 +512,6 @@ public final class RichInputConnection {
             }
         }
         return reloadTextCache();
-    }
-
-    public void removeTrailingSpace() {
-        if (DEBUG_BATCH_NESTING) checkBatchEdit();
-        final int codePointBeforeCursor = getCodePointBeforeCursor();
-        if (Constants.CODE_SPACE == codePointBeforeCursor) {
-            deleteTextBeforeCursor(1);
-        }
-    }
-
-    public boolean sameAsTextBeforeCursor(final CharSequence text) {
-        final CharSequence beforeText = getTextBeforeCursor(text.length(), 0);
-        return TextUtils.equals(text, beforeText);
-    }
-
-    public boolean revertSwapPunctuation() {
-        if (DEBUG_BATCH_NESTING) checkBatchEdit();
-        // Here we test whether we indeed have a space and something else before us. This should not
-        // be needed, but it's there just in case something went wrong.
-        final CharSequence textBeforeCursor = getTextBeforeCursor(2, 0);
-        // NOTE: This does not work with surrogate pairs. Hopefully when the keyboard is able to
-        // enter surrogate pairs this code will have been removed.
-        if (TextUtils.isEmpty(textBeforeCursor)
-                || (Constants.CODE_SPACE != textBeforeCursor.charAt(1))) {
-            // We may only come here if the application is changing the text while we are typing.
-            // This is quite a broken case, but not logically impossible, so we shouldn't crash,
-            // but some debugging log may be in order.
-            Log.d(TAG, "Tried to revert a swap of punctuation but we didn't "
-                    + "find a space just before the cursor.");
-            return false;
-        }
-        deleteTextBeforeCursor(2);
-        final String text = " " + textBeforeCursor.subSequence(0, 1);
-        commitText(text, 1);
-        return true;
-    }
-
-    /**
-     * Looks at the text just before the cursor to find out if it looks like a URL.
-     *
-     * The weakest point here is, if we don't have enough text bufferized, we may fail to realize
-     * we are in URL situation, but other places in this class have the same limitation and it
-     * does not matter too much in the practice.
-     */
-    public boolean textBeforeCursorLooksLikeURL() {
-        return StringUtils.lastPartLooksLikeURL(mCommittedTextBeforeComposingText);
-    }
-
-    /**
-     * Looks at the text just before the cursor to find out if we are inside a double quote.
-     *
-     * As with #textBeforeCursorLooksLikeURL, this is dependent on how much text we have cached.
-     * However this won't be a concrete problem in most situations, as the cache is almost always
-     * long enough for this use.
-     */
-    public boolean isInsideDoubleQuoteOrAfterDigit() {
-        return StringUtils.isInsideDoubleQuoteOrAfterDigit(mCommittedTextBeforeComposingText);
     }
 
     /**

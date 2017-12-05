@@ -30,7 +30,6 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.COMBINING_RULES;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
 
@@ -338,9 +337,5 @@ public final class SubtypeLocaleUtils {
             return QWERTY;
         }
         return keyboardLayoutSet;
-    }
-
-    public static String getCombiningRulesExtraValue(final InputMethodSubtype subtype) {
-        return subtype.getExtraValueOf(COMBINING_RULES);
     }
 }

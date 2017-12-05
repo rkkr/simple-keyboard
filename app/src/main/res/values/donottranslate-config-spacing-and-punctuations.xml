@@ -18,21 +18,9 @@
 */
 -->
 <resources>
-    <!-- TODO: these settings depend on the language. They should be put either in the dictionary
-         header, or in the subtype maybe? -->
-    <!-- Symbols that are suggested between words -->
-    <string name="suggested_punctuations">!,?,\\,,:,;,\",(,),\',-,/,@,_</string>
-    <!-- Symbols that are normally preceded by a space (used to add an auto-space before these) -->
-    <string name="symbols_preceded_by_space">([{&amp;</string>
-    <!-- Symbols that are normally followed by a space (used to add an auto-space after these) -->
-    <string name="symbols_followed_by_space">.,;:!?)]}&amp;</string>
-    <!-- Symbols that behave like a single punctuation when typed next to each other -->
-    <string name="symbols_clustering_together"></string>
     <!-- Symbols that separate words -->
     <!-- Don't remove the enclosing double quotes, they protect whitespace (not just U+0020) -->
     <string name="symbols_word_separators">"&#x0009;&#x0020;&#x000A;&#x00A0;"()[]{}*&amp;&lt;&gt;+=|.,;:!?/_\"</string>
-    <!-- Word connectors -->
-    <string name="symbols_word_connectors">\'-</string>
     <!-- The sentence separator code point, for capitalization and auto-insertion -->
     <!-- U+002E: "." FULL STOP   ; 2Eh = 46d -->
     <integer name="sentence_separator">46</integer>
