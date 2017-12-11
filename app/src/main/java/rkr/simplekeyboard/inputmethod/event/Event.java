@@ -74,6 +74,8 @@ public class Event {
     // it's not relevant.
     final public int mCodePoint;
 
+    final public CharSequence mText;
+
     // The key code associated with the event, if relevant. This is relevant whenever this event
     // has been triggered by a key press, but not for a gesture for example. This has conceptually
     // no link to the code point, although keys that enter a straight code point may often set
@@ -95,10 +97,11 @@ public class Event {
     final public Event mNextEvent;
 
     // This method is private - to create a new event, use one of the create* utility methods.
-    private Event(final int type, final int codePoint, final int keyCode,
+    private Event(final int type, final CharSequence text, final int codePoint, final int keyCode,
             final int x, final int y, final int flags,
             final Event next) {
         mEventType = type;
+        mText = text;
         mCodePoint = codePoint;
         mKeyCode = keyCode;
         mX = x;
@@ -110,7 +113,7 @@ public class Event {
     @NonNull
     public static Event createSoftwareKeypressEvent(final int codePoint, final int keyCode,
             final int x, final int y, final boolean isKeyRepeat) {
-        return new Event(EVENT_TYPE_INPUT_KEYPRESS, codePoint, keyCode, x, y,
+        return new Event(EVENT_TYPE_INPUT_KEYPRESS, null, codePoint, keyCode, x, y,
                 isKeyRepeat ? FLAG_REPEAT : FLAG_NONE, null);
     }
 
@@ -123,8 +126,8 @@ public class Event {
      * @return an event for this text.
      */
     @NonNull
-    public static Event createSoftwareTextEvent(final int keyCode) {
-        return new Event(EVENT_TYPE_SOFTWARE_GENERATED_STRING, NOT_A_CODE_POINT, keyCode,
+    public static Event createSoftwareTextEvent(final CharSequence text, final int keyCode) {
+        return new Event(EVENT_TYPE_SOFTWARE_GENERATED_STRING, text, NOT_A_CODE_POINT, keyCode,
                 Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE,
                 FLAG_NONE, null /* next */);
     }
@@ -154,6 +157,8 @@ public class Event {
             return "";
         case EVENT_TYPE_INPUT_KEYPRESS:
             return StringUtils.newSingleCodePointString(mCodePoint);
+        case EVENT_TYPE_SOFTWARE_GENERATED_STRING:
+            return mText;
         }
         throw new RuntimeException("Unknown event type: " + mEventType);
     }

@@ -175,7 +175,7 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
     protected void onKeyInput(final Key key) {
         final int code = key.getCode();
         if (code == Constants.CODE_OUTPUT_TEXT) {
-            mListener.onTextInput();
+            mListener.onTextInput(mCurrentKey.getOutputText());
         } else if (code != Constants.CODE_UNSPECIFIED) {
             mListener.onCodeInput(code, Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, false /* isKeyRepeat */);
         }

@@ -48,7 +48,6 @@ public class SettingsValues {
     public final boolean mVibrateOn;
     public final boolean mSoundOn;
     public final boolean mKeyPreviewPopupOn;
-    public final boolean mShowsVoiceInputKey = false;
     public final boolean mShowsLanguageSwitchKey;
     public final int mKeyLongpressTimeout;
     //public final boolean mShouldShowLxxSuggestionUi;
@@ -133,51 +132,5 @@ public class SettingsValues {
 
     public boolean hasSameOrientation(final Configuration configuration) {
         return mDisplayOrientation == configuration.orientation;
-    }
-
-    public String dump() {
-        final StringBuilder sb = new StringBuilder("Current settings :");
-        sb.append("\n   mAutoCap = ");
-        sb.append("" + mAutoCap);
-        sb.append("\n   mVibrateOn = ");
-        sb.append("" + mVibrateOn);
-        sb.append("\n   mSoundOn = ");
-        sb.append("" + mSoundOn);
-        sb.append("\n   mKeyPreviewPopupOn = ");
-        sb.append("" + mKeyPreviewPopupOn);
-        sb.append("\n   mShowsVoiceInputKey = ");
-        sb.append("" + mShowsVoiceInputKey);
-        sb.append("\n   mShowsLanguageSwitchKey = ");
-        sb.append("" + mShowsLanguageSwitchKey);
-        sb.append("\n   mKeyLongpressTimeout = ");
-        sb.append("" + mKeyLongpressTimeout);
-        sb.append("\n   mLocale = ");
-        sb.append("" + mLocale);
-        sb.append("\n   mInputAttributes = ");
-        sb.append("" + mInputAttributes);
-        sb.append("\n   mKeypressVibrationDuration = ");
-        sb.append("" + mKeypressVibrationDuration);
-        sb.append("\n   mKeypressSoundVolume = ");
-        sb.append("" + mKeypressSoundVolume);
-        sb.append("\n   mKeyPreviewPopupDismissDelay = ");
-        sb.append("" + mKeyPreviewPopupDismissDelay);
-        sb.append("\n   mAutoCorrectionEnabledPerUserSettings = ");
-        sb.append("\n   mDisplayOrientation = ");
-        sb.append("" + mDisplayOrientation);
-        sb.append("\n   mIsInternal = ");
-        sb.append("" + mIsInternal);
-        sb.append("\n   mKeyPreviewShowUpDuration = ");
-        sb.append("" + mKeyPreviewShowUpDuration);
-        sb.append("\n   mKeyPreviewDismissDuration = ");
-        sb.append("" + mKeyPreviewDismissDuration);
-        sb.append("\n   mKeyPreviewShowUpStartScaleX = ");
-        sb.append("" + mKeyPreviewShowUpStartXScale);
-        sb.append("\n   mKeyPreviewShowUpStartScaleY = ");
-        sb.append("" + mKeyPreviewShowUpStartYScale);
-        sb.append("\n   mKeyPreviewDismissEndScaleX = ");
-        sb.append("" + mKeyPreviewDismissEndXScale);
-        sb.append("\n   mKeyPreviewDismissEndScaleY = ");
-        sb.append("" + mKeyPreviewDismissEndYScale);
-        return sb.toString();
     }
 }
