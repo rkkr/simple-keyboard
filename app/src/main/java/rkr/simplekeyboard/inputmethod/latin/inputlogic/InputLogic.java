@@ -111,6 +111,24 @@ public final class InputLogic {
     }
 
     /**
+     * Consider an update to the cursor position. Evaluate whether this update has happened as
+     * part of normal typing or whether it was an explicit cursor move by the user. In any case,
+     * do the necessary adjustments.
+     * @param newSelStart new selection start
+     * @param newSelEnd new selection end
+     * @return whether the cursor has moved as a result of user interaction.
+     */
+    public boolean onUpdateSelection(final int newSelStart, final int newSelEnd) {
+        resetEntireInputState(newSelStart, newSelEnd);
+
+        // The cursor has been moved : we now accept to perform recapitalization
+        mRecapitalizeStatus.enable();
+        // Stop the last recapitalization, if started.
+        mRecapitalizeStatus.stop();
+        return true;
+    }
+
+    /**
      * React to a code input. It may be a code point to insert, or a symbolic value that influences
      * the keyboard behavior.
      *
@@ -545,6 +563,20 @@ public final class InputLogic {
     }
 
     /**
+     * Resets the whole input state to the starting state.
+     *
+     * This will clear the composing word, reset the last composed word, clear the suggestion
+     * strip and tell the input connection about it so that it can refresh its caches.
+     *
+     * @param newSelStart the new selection start, in java characters.
+     * @param newSelEnd the new selection end, in java characters.
+     */
+    // TODO: how is this different from startInput ?!
+    private void resetEntireInputState(final int newSelStart, final int newSelEnd) {
+        mConnection.resetCachesUponCursorMoveAndReturnSuccess(newSelStart, newSelEnd);
+    }
+
+    /**
      * Sends a DOWN key event followed by an UP key event to the editor.
      *
      * If possible at all, avoid using this method. It causes all sorts of race conditions with
@@ -596,11 +628,8 @@ public final class InputLogic {
      */
     public boolean retryResetCachesAndReturnSuccess(final boolean tryResumeSuggestions,
             final int remainingTries, final LatinIME.UIHandler handler) {
-        final boolean shouldFinishComposition = mConnection.hasSelection()
-                || !mConnection.isCursorPositionKnown();
         if (!mConnection.resetCachesUponCursorMoveAndReturnSuccess(
-                mConnection.getExpectedSelectionStart(), mConnection.getExpectedSelectionEnd(),
-                shouldFinishComposition)) {
+                mConnection.getExpectedSelectionStart(), mConnection.getExpectedSelectionEnd())) {
             if (0 < remainingTries) {
                 handler.postResetCaches(tryResumeSuggestions, remainingTries - 1);
                 return false;

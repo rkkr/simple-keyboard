@@ -179,13 +179,12 @@ public final class RichInputConnection {
      *
      * @param newSelStart the new position of the selection start, as received from the system.
      * @param newSelEnd the new position of the selection end, as received from the system.
-     * @param shouldFinishComposition whether we should finish the composition in progress.
      * @return true if we were able to connect to the editor successfully, false otherwise. When
      *   this method returns false, the caches could not be correctly refreshed so they were only
      *   reset: the caller should try again later to return to normal operation.
      */
     public boolean resetCachesUponCursorMoveAndReturnSuccess(final int newSelStart,
-            final int newSelEnd, final boolean shouldFinishComposition) {
+            final int newSelEnd) {
         mExpectedSelStart = newSelStart;
         mExpectedSelEnd = newSelEnd;
         mComposingText.setLength(0);
@@ -193,9 +192,6 @@ public final class RichInputConnection {
         if (!didReloadTextSuccessfully) {
             Log.d(TAG, "Will try to retrieve text later.");
             return false;
-        }
-        if (isConnected() && shouldFinishComposition) {
-            mIC.finishComposingText();
         }
         return true;
     }

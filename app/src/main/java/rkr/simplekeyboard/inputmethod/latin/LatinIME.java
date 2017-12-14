@@ -513,8 +513,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
             // TODO[IL]: Can the following be moved to InputLogic#startInput?
             if (!mInputLogic.mConnection.resetCachesUponCursorMoveAndReturnSuccess(
-                    editorInfo.initialSelStart, editorInfo.initialSelEnd,
-                    false /* shouldFinishComposition */)) {
+                    editorInfo.initialSelStart, editorInfo.initialSelEnd)) {
                 // Sometimes, while rotating, for some reason the framework tells the app we are not
                 // connected to it and that means we can't refresh the cache. In this case, schedule
                 // a refresh later.
@@ -597,6 +596,29 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     protected void deallocateMemory() {
         mKeyboardSwitcher.deallocateMemory();
+    }
+
+    @Override
+    public void onUpdateSelection(final int oldSelStart, final int oldSelEnd,
+            final int newSelStart, final int newSelEnd,
+            final int composingSpanStart, final int composingSpanEnd) {
+        super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
+                composingSpanStart, composingSpanEnd);
+        if (DebugFlags.DEBUG_ENABLED) {
+            Log.i(TAG, "onUpdateSelection: oss=" + oldSelStart + ", ose=" + oldSelEnd
+                    + ", nss=" + newSelStart + ", nse=" + newSelEnd
+                    + ", cs=" + composingSpanStart + ", ce=" + composingSpanEnd);
+        }
+
+        // This call happens whether our view is displayed or not, but if it's not then we should
+        // not attempt recorrection. This is true even with a hardware keyboard connected: if the
+        // view is not displayed we have no means of showing suggestions anyway, and if it is then
+        // we want to show suggestions anyway.
+        if (isInputViewShown()
+                && mInputLogic.onUpdateSelection(newSelStart, newSelEnd)) {
+            mKeyboardSwitcher.requestUpdatingShiftState(getCurrentAutoCapsState(),
+                    getCurrentRecapitalizeState());
+        }
     }
 
     @Override
