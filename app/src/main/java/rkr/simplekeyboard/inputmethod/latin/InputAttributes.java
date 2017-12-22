@@ -20,9 +20,6 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
 

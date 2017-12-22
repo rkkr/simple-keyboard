@@ -45,15 +45,11 @@ public final class KeyboardTextsTable {
     private static final HashMap<String, Integer> sNameToIndexesMap = new HashMap<>();
     // Locale to texts table map.
     private static final HashMap<String, String[]> sLocaleToTextsTableMap = new HashMap<>();
-    // TODO: Remove this variable after debugging.
-    // Texts table to locale maps.
-    private static final HashMap<String[], String> sTextsTableToLocaleMap = new HashMap<>();
 
     public static String getText(final String name, final String[] textsTable) {
         final Integer indexObj = sNameToIndexesMap.get(name);
         if (indexObj == null) {
-            throw new RuntimeException("Unknown text name=" + name + " locale="
-                    + sTextsTableToLocaleMap.get(textsTable));
+            throw new RuntimeException("Unknown text name=" + name);
         }
         final int index = indexObj;
         final String text = (index < textsTable.length) ? textsTable[index] : null;
@@ -65,8 +61,7 @@ public final class KeyboardTextsTable {
             return TEXTS_DEFAULT[index];
         }
         // Throw exception for debugging purpose.
-        throw new RuntimeException("Illegal index=" + index + " for name=" + name
-                + " locale=" + sTextsTableToLocaleMap.get(textsTable));
+        throw new RuntimeException("Illegal index=" + index + " for name=" + name);
     }
 
     public static String[] getTextsTable(final Locale locale) {
@@ -258,7 +253,6 @@ public final class KeyboardTextsTable {
         /* 172: 0 */ "morekeys_single_quote",
         /* 173: 0 */ "morekeys_double_quote",
         /* 174: 0 */ "morekeys_tablet_double_quote",
-        /* 175: 0 */ "keyspec_emoji_action_key",
     };
 
     private static final String EMPTY = "";
@@ -480,7 +474,6 @@ public final class KeyboardTextsTable {
         /* morekeys_single_quote */ "!fixedColumnOrder!5,!text/single_quotes,!text/single_angle_quotes",
         /* morekeys_double_quote */ "!fixedColumnOrder!5,!text/double_quotes,!text/double_angle_quotes",
         /* morekeys_tablet_double_quote */ "!fixedColumnOrder!6,!text/double_quotes,!text/single_quotes,!text/double_angle_quotes,!text/single_angle_quotes",
-        /* keyspec_emoji_action_key */ "!icon/emoji_action_key|!code/key_emoji",
     };
 
     /* Locale af: Afrikaans */
@@ -4192,7 +4185,6 @@ public final class KeyboardTextsTable {
             final String locale = (String)LOCALES_AND_TEXTS[i];
             final String[] textsTable = (String[])LOCALES_AND_TEXTS[i + 1];
             sLocaleToTextsTableMap.put(locale, textsTable);
-            sTextsTableToLocaleMap.put(textsTable, locale);
         }
     }
 }
