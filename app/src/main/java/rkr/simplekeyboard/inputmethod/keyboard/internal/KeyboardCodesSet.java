@@ -50,6 +50,8 @@ public final class KeyboardCodesSet {
         "key_action_previous",
         "key_shift_enter",
         "key_language_switch",
+        "key_left",
+        "key_right",
         "key_unspecified",
     };
 
@@ -68,6 +70,8 @@ public final class KeyboardCodesSet {
         Constants.CODE_ACTION_PREVIOUS,
         Constants.CODE_SHIFT_ENTER,
         Constants.CODE_LANGUAGE_SWITCH,
+        Constants.CODE_LEFT,
+        Constants.CODE_RIGHT,
         Constants.CODE_UNSPECIFIED,
     };
 

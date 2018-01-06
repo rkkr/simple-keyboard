@@ -25,6 +25,24 @@
         <case
             latin:keyboardLayoutSet="bengali_akkhor|farsi|kannada|nepali_romanized|nepali_traditional|telugu"
             latin:languageSwitchKeyEnabled="true"
+            latin:showArrowKeys="true"
+            >
+            <Key
+                latin:keyStyle="languageSwitchKeyStyle" />
+            <Key
+                latin:keyStyle="leftKeyStyle" />
+            <Key
+                latin:keyStyle="spaceKeyStyle"
+                latin:keyWidth="27.0%p" />
+            <Key
+                latin:keyStyle="rightKeyStyle" />
+            <Key
+                latin:keyStyle="zwnjKeyStyle" />
+        </case>
+        <case
+            latin:keyboardLayoutSet="bengali_akkhor|farsi|kannada|nepali_romanized|nepali_traditional|telugu"
+            latin:languageSwitchKeyEnabled="true"
+            latin:showArrowKeys="false"
         >
             <Key
                 latin:keyStyle="languageSwitchKeyStyle" />
@@ -37,6 +55,22 @@
         <case
             latin:keyboardLayoutSet="bengali_akkhor|farsi|kannada|nepali_romanized|nepali_traditional|telugu"
             latin:languageSwitchKeyEnabled="false"
+            latin:showArrowKeys="true"
+            >
+            <Key
+                latin:keyStyle="leftKeyStyle" />
+            <Key
+                latin:keyStyle="spaceKeyStyle"
+                latin:keyWidth="36%p" />
+            <Key
+                latin:keyStyle="rightKeyStyle" />
+            <Key
+                latin:keyStyle="zwnjKeyStyle" />
+        </case>
+        <case
+            latin:keyboardLayoutSet="bengali_akkhor|farsi|kannada|nepali_romanized|nepali_traditional|telugu"
+            latin:languageSwitchKeyEnabled="false"
+            latin:showArrowKeys="false"
         >
             <Key
                 latin:keyStyle="spaceKeyStyle"
@@ -46,18 +80,44 @@
         </case>
         <case
             latin:languageSwitchKeyEnabled="true"
+            latin:showArrowKeys="true"
+            >
+            <Key
+                latin:keyStyle="languageSwitchKeyStyle" />
+            <Key
+                latin:keyStyle="leftKeyStyle" />
+            <Key
+                latin:keyStyle="spaceKeyStyle"
+                latin:keyWidth="36%p" />
+            <Key
+                latin:keyStyle="rightKeyStyle" />
+        </case>
+        <case
+            latin:languageSwitchKeyEnabled="true"
+            latin:showArrowKeys="false"
         >
             <Key
                 latin:keyStyle="languageSwitchKeyStyle" />
             <Key
                 latin:keyStyle="spaceKeyStyle"
-                latin:keyWidth="54.0%p" />
+                latin:keyWidth="54%p" />
+        </case>
+        <case
+            latin:showArrowKeys="true"
+            >
+            <Key
+                latin:keyStyle="leftKeyStyle" />
+            <Key
+                latin:keyStyle="spaceKeyStyle"
+                latin:keyWidth="45%p" />
+            <Key
+                latin:keyStyle="rightKeyStyle" />
         </case>
         <!-- languageSwitchKeyEnabled="false" -->
         <default>
             <Key
                 latin:keyStyle="spaceKeyStyle"
-                latin:keyWidth="63.0%p" />
+                latin:keyWidth="63%p" />
         </default>
     </switch>
 </merge>

@@ -62,6 +62,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
     public static final String PREF_HIDE_SPECIAL_CHARS = "pref_hide_special_chars";
     public static final String PREF_SHOW_NUMBER_ROW = "pref_show_number_row";
+    public static final String PREF_SHOW_ARROW_KEYS = "pref_show_arrow_keys";
 
     public static final String PREF_KEY_IS_INTERNAL = "pref_key_is_internal";
 
@@ -184,6 +185,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static boolean readShowNumberRow(final SharedPreferences prefs) {
         return prefs.getBoolean(PREF_SHOW_NUMBER_ROW, false);
+    }
+
+    public static boolean readShowArrowKeys(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_SHOW_ARROW_KEYS, false);
     }
 
     public static String readPrefAdditionalSubtypes(final SharedPreferences prefs,

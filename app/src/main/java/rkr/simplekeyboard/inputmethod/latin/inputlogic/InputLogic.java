@@ -244,6 +244,12 @@ public final class InputLogic {
                 // Shift + Enter is treated as a functional key but it results in adding a new
                 // line, so that does affect the contents of the editor.
                 break;
+            case Constants.CODE_LEFT:
+                sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_LEFT);
+                break;
+            case Constants.CODE_RIGHT:
+                sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_RIGHT);
+                break;
             default:
                 throw new RuntimeException("Unknown key code : " + event.mKeyCode);
         }

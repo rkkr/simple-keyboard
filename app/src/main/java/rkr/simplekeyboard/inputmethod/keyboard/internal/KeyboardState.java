@@ -80,10 +80,7 @@ public final class KeyboardState {
     private static final int SWITCH_STATE_MOMENTARY_ALPHA_SHIFT = 5;
     private int mSwitchState = SWITCH_STATE_ALPHA;
 
-    // TODO: Consolidate these two mode booleans into one integer to distinguish between alphabet,
-    // symbols, and emoji mode.
     private boolean mIsAlphabetMode;
-    private boolean mIsEmojiMode;
     private AlphabetShiftState mAlphabetShiftState = new AlphabetShiftState();
     private boolean mIsSymbolShifted;
     private boolean mPrevMainKeyboardWasShiftLocked;
@@ -100,7 +97,6 @@ public final class KeyboardState {
         public boolean mIsValid;
         public boolean mIsAlphabetMode;
         public boolean mIsAlphabetShiftLocked;
-        public boolean mIsEmojiMode;
         public int mShiftMode;
 
         @Override
@@ -111,9 +107,6 @@ public final class KeyboardState {
             if (mIsAlphabetMode) {
                 return mIsAlphabetShiftLocked ? "ALPHABET_SHIFT_LOCKED"
                         : "ALPHABET_" + shiftModeToString(mShiftMode);
-            }
-            if (mIsEmojiMode) {
-                return "EMOJI";
             }
             return "SYMBOLS_" + shiftModeToString(mShiftMode);
         }
@@ -152,7 +145,6 @@ public final class KeyboardState {
     public void onSaveKeyboardState() {
         final SavedKeyboardState state = mSavedKeyboardState;
         state.mIsAlphabetMode = mIsAlphabetMode;
-        state.mIsEmojiMode = mIsEmojiMode;
         if (mIsAlphabetMode) {
             state.mIsAlphabetShiftLocked = mAlphabetShiftState.isShiftLocked();
             state.mShiftMode = mAlphabetShiftState.isAutomaticShifted() ? AUTOMATIC_SHIFT
@@ -299,7 +291,6 @@ public final class KeyboardState {
 
         mSwitchActions.setAlphabetKeyboard();
         mIsAlphabetMode = true;
-        mIsEmojiMode = false;
         mIsSymbolShifted = false;
         mRecapitalizeMode = RecapitalizeStatus.NOT_A_RECAPITALIZE_MODE;
         mSwitchState = SWITCH_STATE_ALPHA;
@@ -626,11 +617,6 @@ public final class KeyboardState {
             }
             break;
         case SWITCH_STATE_SYMBOL_BEGIN:
-            if (mIsEmojiMode) {
-                // When in the Emoji keyboard, we don't want to switch back to the main layout even
-                // after the user hits an emoji letter followed by an enter or a space.
-                break;
-            }
             if (!isSpaceOrEnter(code) && (Constants.isLetterCode(code)
                     || code == Constants.CODE_OUTPUT_TEXT)) {
                 mSwitchState = SWITCH_STATE_SYMBOL;

@@ -164,16 +164,11 @@ public final class Constants {
     public static final int CODE_DASH = '-';
     public static final int CODE_SINGLE_QUOTE = '\'';
     public static final int CODE_DOUBLE_QUOTE = '"';
-    public static final int CODE_SLASH = '/';
     public static final int CODE_BACKSLASH = '\\';
     public static final int CODE_VERTICAL_BAR = '|';
-    public static final int CODE_COMMERCIAL_AT = '@';
     public static final int CODE_PERCENT = '%';
     public static final int CODE_INVERTED_QUESTION_MARK = 0xBF; // ¿
     public static final int CODE_INVERTED_EXCLAMATION_MARK = 0xA1; // ¡
-    public static final int CODE_GRAVE_ACCENT = '`';
-    public static final int CODE_CIRCUMFLEX_ACCENT = '^';
-    public static final int CODE_TILDE = '~';
 
     /**
      * Special keys code. Must be negative.
@@ -193,7 +188,9 @@ public final class Constants {
     public static final int CODE_SHIFT_ENTER = -11;
     public static final int CODE_SYMBOL_SHIFT = -12;
     // Code value representing the code is not specified.
-    public static final int CODE_UNSPECIFIED = -13;
+    public static final int CODE_LEFT = -13;
+    public static final int CODE_RIGHT = -14;
+    public static final int CODE_UNSPECIFIED = -15;
 
     public static boolean isLetterCode(final int code) {
         return code >= CODE_SPACE;

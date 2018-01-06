@@ -7,8 +7,8 @@ android {
         applicationId "rkr.simplekeyboard.inputmethod"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 30
-        versionName "2.64"
+        versionCode 31
+        versionName "2.7"
     }
     buildTypes {
         release {
@@ -19,5 +19,5 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-annotations:25.3.1'
+    compile 'com.android.support:support-annotations:27.0.2'
 }
