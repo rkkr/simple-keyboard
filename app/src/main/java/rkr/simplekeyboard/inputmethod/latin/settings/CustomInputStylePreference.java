@@ -135,17 +135,29 @@ final class CustomInputStylePreference extends DialogPreference
                     .setNegativeButton(R.string.remove, this);
             final SubtypeLocaleItem localeItem = new SubtypeLocaleItem(mSubtype);
             final KeyboardLayoutSetItem layoutItem = new KeyboardLayoutSetItem(mSubtype);
-            setSpinnerPosition(mSubtypeLocaleSpinner, localeItem);
-            setSpinnerPosition(mKeyboardLayoutSetSpinner, layoutItem);
+            setSubtypeSpinnerPosition(mSubtypeLocaleSpinner, localeItem);
+            setLayoutSpinnerPosition(mKeyboardLayoutSetSpinner, layoutItem);
         }
     }
 
-    private static void setSpinnerPosition(final Spinner spinner, final Object itemToSelect) {
+    private static void setSubtypeSpinnerPosition(final Spinner spinner, final SubtypeLocaleItem itemToSelect) {
         final SpinnerAdapter adapter = spinner.getAdapter();
         final int count = adapter.getCount();
         for (int i = 0; i < count; i++) {
-            final Object item = spinner.getItemAtPosition(i);
-            if (item.equals(itemToSelect)) {
+            final SubtypeLocaleItem item = (SubtypeLocaleItem)spinner.getItemAtPosition(i);
+            if (item.mLocaleString.equals(itemToSelect.mLocaleString)) {
+                spinner.setSelection(i);
+                return;
+            }
+        }
+    }
+
+    private static void setLayoutSpinnerPosition(final Spinner spinner, final KeyboardLayoutSetItem itemToSelect) {
+        final SpinnerAdapter adapter = spinner.getAdapter();
+        final int count = adapter.getCount();
+        for (int i = 0; i < count; i++) {
+            final KeyboardLayoutSetItem item = (KeyboardLayoutSetItem)spinner.getItemAtPosition(i);
+            if (item.mLayoutName.equals(itemToSelect.mLayoutName)) {
                 spinner.setSelection(i);
                 return;
             }
@@ -163,29 +175,29 @@ final class CustomInputStylePreference extends DialogPreference
     public void onClick(final DialogInterface dialog, final int which) {
         super.onClick(dialog, which);
         switch (which) {
-        case DialogInterface.BUTTON_POSITIVE:
-            final boolean isEditing = !isIncomplete();
-            final SubtypeLocaleItem locale =
-                    (SubtypeLocaleItem) mSubtypeLocaleSpinner.getSelectedItem();
-            final KeyboardLayoutSetItem layout =
-                    (KeyboardLayoutSetItem) mKeyboardLayoutSetSpinner.getSelectedItem();
-            final InputMethodSubtype subtype =
-                    AdditionalSubtypeUtils.createAsciiEmojiCapableAdditionalSubtype(
-                            locale.mLocaleString, layout.mLayoutName);
-            setSubtype(subtype);
-            notifyChanged();
-            if (isEditing) {
-                mProxy.onSaveCustomInputStyle(this);
-            } else {
-                mProxy.onAddCustomInputStyle(this);
-            }
-            break;
-        case DialogInterface.BUTTON_NEUTRAL:
-            // Nothing to do
-            break;
-        case DialogInterface.BUTTON_NEGATIVE:
-            mProxy.onRemoveCustomInputStyle(this);
-            break;
+            case DialogInterface.BUTTON_POSITIVE:
+                final boolean isEditing = !isIncomplete();
+                final SubtypeLocaleItem locale =
+                        (SubtypeLocaleItem) mSubtypeLocaleSpinner.getSelectedItem();
+                final KeyboardLayoutSetItem layout =
+                        (KeyboardLayoutSetItem) mKeyboardLayoutSetSpinner.getSelectedItem();
+                final InputMethodSubtype subtype =
+                        AdditionalSubtypeUtils.createAsciiEmojiCapableAdditionalSubtype(
+                                locale.mLocaleString, layout.mLayoutName);
+                setSubtype(subtype);
+                notifyChanged();
+                if (isEditing) {
+                    mProxy.onSaveCustomInputStyle(this);
+                } else {
+                    mProxy.onAddCustomInputStyle(this);
+                }
+                break;
+            case DialogInterface.BUTTON_NEUTRAL:
+                // Nothing to do
+                break;
+            case DialogInterface.BUTTON_NEGATIVE:
+                mProxy.onRemoveCustomInputStyle(this);
+                break;
         }
     }
 

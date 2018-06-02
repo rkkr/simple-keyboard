@@ -46,8 +46,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
-//import android.support.v4.view.ViewCompat;
-
 public final class CustomInputStyleSettingsFragment extends PreferenceFragment
         implements CustomInputStylePreference.Listener {
     private static final String TAG = CustomInputStyleSettingsFragment.class.getSimpleName();
