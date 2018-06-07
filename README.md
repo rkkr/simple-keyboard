@@ -10,3 +10,5 @@ Forked from https://android.googlesource.com/platform/packages/inputmethods/Lati
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
       alt="Get it on Google Play"
       height="80">](https://play.google.com/store/apps/details?id=rkr.simplekeyboard.inputmethod)
+      
+You can contribute translations here: https://crowdin.com/project/simple-keyboard (registration is free). If your language is missing, please contact me to have it added.
