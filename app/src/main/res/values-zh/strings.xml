@@ -20,60 +20,60 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Title for Latin keyboard input options dialog [CHAR LIMIT=25] -->
-  <string name="english_ime_input_options">輸入選項</string>
+  <string name="english_ime_input_options">输入选项</string>
   <!-- Option to provide vibrate/haptic feedback on keypress -->
-  <string name="vibrate_on_keypress">按鍵時震動</string>
+  <string name="vibrate_on_keypress">按键振动</string>
   <!-- Option to play back sound on keypress in soft keyboard -->
-  <string name="sound_on_keypress">按鍵聲音</string>
+  <string name="sound_on_keypress">按键音效</string>
   <!-- Option to control whether or not to show a popup with a larger font on each key press. -->
-  <string name="popup_on_keypress">按鍵時彈出</string>
+  <string name="popup_on_keypress">按键时弹出显示字符</string>
   <!-- Settings screen title for preferences [CHAR LIMIT=33]-->
-  <string name="settings_screen_preferences">偏好設定</string>
+  <string name="settings_screen_preferences">偏好设置</string>
   <!-- Settings screen title for accounts and privacy preferences [CHAR LIMIT=33]-->
   <!-- Settings screen title for appearance & layouts preferences [CHAR LIMIT=33] -->
-  <string name="settings_screen_appearance">外觀與版面配置</string>
+  <string name="settings_screen_appearance">外观和布局</string>
   <!-- Settings screen title for gesture typing preferences [CHAR_LIMIT=33] -->
   <!-- Settings screen title for advanced settings [CHAR LIMIT=33] -->
-  <string name="settings_screen_advanced">進階</string>
+  <string name="settings_screen_advanced">高级</string>
   <!-- Settings screen title for keyboard theme settings [CHAR LIMIT=33] -->
-  <string name="settings_screen_theme">主題</string>
+  <string name="settings_screen_theme">主题背景</string>
   <!-- Option name for including other IMEs in the language switch list [CHAR LIMIT=30] -->
   <!-- Option summary for including other IMEs in the language switch list [CHAR LIMIT=65] -->
   <!-- Option to show language switch key [CHAR LIMIT=30] -->
   <!-- Option summary for showing language switch key [CHAR LIMIT=65] -->
   <!-- Option for the dismiss delay of the key popup [CHAR LIMIT=25] -->
-  <string name="key_preview_popup_dismiss_delay">關閉彈出式鍵盤的延遲時間</string>
+  <string name="key_preview_popup_dismiss_delay">弹出字符隐藏延迟</string>
   <!-- Description for delay for dismissing a popup on keypress: no delay [CHAR LIMIT=15] -->
-  <string name="key_preview_popup_dismiss_no_delay">不延遲</string>
+  <string name="key_preview_popup_dismiss_no_delay">无延迟</string>
   <!-- Description for delay for dismissing a popup on screen: default value of the delay [CHAR LIMIT=15] -->
-  <string name="key_preview_popup_dismiss_default_delay">預設</string>
+  <string name="key_preview_popup_dismiss_default_delay">默认</string>
   <!-- Units abbreviation for the duration (milliseconds) [CHAR LIMIT=10] -->
-  <string name="abbreviation_unit_milliseconds"><xliff:g id="MILLISECONDS">%s</xliff:g> 毫秒</string>
+  <string name="abbreviation_unit_milliseconds"><xliff:g id="MILLISECONDS">%s</xliff:g>毫秒</string>
   <!-- The text that represents the current settings value is the system default [CHAR LIMIT=25] -->
-  <string name="settings_system_default">系統預設</string>
+  <string name="settings_system_default">系统默认值</string>
   <!-- Option to enable auto capitalization of sentences -->
-  <string name="auto_cap">自動大寫</string>
+  <string name="auto_cap">自动大写</string>
   <!-- Description for option to enable auto capitalization of sentences -->
-  <string name="auto_cap_summary">句首字詞大寫</string>
+  <string name="auto_cap_summary">句首字词大写</string>
   <!-- Title for configuring input method settings [CHAR LIMIT=35] -->
   <!-- Title for input language selection screen -->
-  <string name="language_selection_title">語言</string>
+  <string name="language_selection_title">语言</string>
   <!-- Preference for input language selection -->
-  <string name="select_language">語言</string>
+  <string name="select_language">语言</string>
   <!-- Title of the item to change the keyboard theme [CHAR LIMIT=20]-->
   <!-- Description for English (UK) keyboard subtype [CHAR LIMIT=25]
          (UK) should be an abbreviation of United Kingdom to fit in the CHAR LIMIT. -->
-  <string name="subtype_en_GB">英文 (英國)</string>
+  <string name="subtype_en_GB">英语(英国)</string>
   <!-- Description for English (US) keyboard subtype [CHAR LIMIT=25]
          (US) should be an abbreviation of United States to fit in the CHAR LIMIT. -->
-  <string name="subtype_en_US">英文 (美國)</string>
+  <string name="subtype_en_US">英语(美国)</string>
   <!-- Description for Spanish (US) keyboard subtype [CHAR LIMIT=25]
          (US) should be an abbreviation of United States to fit in the CHAR LIMIT. -->
-  <string name="subtype_es_US">西班牙文 (美國)</string>
+  <string name="subtype_es_US">西班牙语（美国）</string>
   <!-- Description for Hinglish (https://en.wikipedia.org/wiki/Hinglish) keyboard subtype [CHAR LIMIT=25] -->
   <!-- Description for Serbian (Latin) keyboard subtype [CHAR LIMIT=25]
          (Latin) can be an abbreviation to fit in the CHAR LIMIT. -->
-  <string name="subtype_sr_ZZ">塞爾維亞文 (拉丁文)</string>
+  <string name="subtype_sr_ZZ">塞尔维亚语（拉丁语布局）</string>
   <!-- Description for English (UK) keyboard subtype with explicit keyboard layout [CHAR LIMIT=25]
          (UK) should be an abbreviation of United Kingdom to fit in the CHAR LIMIT.
          This should be identical to subtype_en_GB aside from the trailing (%s). -->
@@ -89,10 +89,10 @@
          This should be identical to subtype_sr_ZZ aside from the trailing (%s). -->
   <!-- Description for "LANGUAGE_NAME" (Traditional) keyboard subtype [CHAR LIMIT=25]
          (Traditional) can be an abbreviation to fit in the CHAR LIMIT. -->
-  <string name="subtype_generic_traditional"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> (傳統)</string>
+  <string name="subtype_generic_traditional"><xliff:g id="LANGUAGE_NAME">%s</xliff:g>（传统）</string>
   <!-- Description for "LANGUAGE_NAME" (Compact) keyboard subtype [CHAR LIMIT=25]
          (Compact) can be an abbreviation to fit in the CHAR LIMIT. -->
-  <string name="subtype_generic_compact"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> (精簡)</string>
+  <string name="subtype_generic_compact"><xliff:g id="LANGUAGE_NAME">%s</xliff:g>（紧凑型）</string>
   <!-- This string is displayed in a language list that allows to choose a language for
 suggestions in a software keyboard. This setting won't give suggestions in any particular
 language, hence "No language".
@@ -102,7 +102,7 @@ be a QWERTY, or AZERTY, or any other disposition that only offers Latin characte
 you wouldn't be able to type, say, Arabic on it. Please translate it in a way that "alphabet"
 would be understood to mean specifically the Latin alphabet, rather than any other
 alphabet. [CHAR LIMIT=29] -->
-  <string name="subtype_no_language">無語言 (字母)</string>
+  <string name="subtype_no_language">无语言（字母）</string>
   <!-- This string is displayed in the description for a keyboard type. It refers specifically to
 the Latin alphabet, as opposed to Cyrillic, Arabic, Hebrew or other scripts.
 When the device is configured to use a language using a script other than the Latin alphabet, the
@@ -172,35 +172,35 @@ mobile devices. [CHAR LIMIT=25] -->
   <!-- The keyboard theme name, Material Dark. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
   <!-- The keyboard theme name, Material Light. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
   <!-- Title of the preference settings for custom input styles (language and keyboard layout pairs) [CHAR LIMIT=35]-->
-  <string name="custom_input_styles_title">自訂輸入樣式</string>
+  <string name="custom_input_styles_title">自定义输入样式</string>
   <!-- Title of the option menu to add a new style entry in the preference settings [CHAR LIMIT=16] -->
-  <string name="add_style">新增樣式</string>
+  <string name="add_style">添加样式</string>
   <!-- Title of the button to add custom style entry in the settings dialog [CHAR LIMIT=15] -->
-  <string name="add">新增</string>
+  <string name="add">添加</string>
   <!-- Title of the button to remove a custom style entry in the settings dialog [CHAR LIMIT=15] -->
-  <string name="remove">移除</string>
+  <string name="remove">删除</string>
   <!-- Title of the button to save a custom style entry in the settings dialog [CHAR LIMIT=15] -->
-  <string name="save">儲存</string>
+  <string name="save">保存</string>
   <!-- Title of the spinner for choosing a language of custom style in the settings dialog [CHAR LIMIT=15] -->
-  <string name="subtype_locale">語言</string>
+  <string name="subtype_locale">语言</string>
   <!-- Title of the spinner for choosing a keyboard layout of custom style in the settings dialog [CHAR LIMIT=15] -->
-  <string name="keyboard_layout_set">配置</string>
+  <string name="keyboard_layout_set">布局</string>
   <!-- The message of the dialog to note that a custom input style needs to be enabled. [CHAR LIMIT=130] -->
-  <string name="custom_input_style_note_message">"您必須先啟用自訂輸入樣式，才能開始使用。您要立即啟用嗎？"</string>
+  <string name="custom_input_style_note_message">"您需要先启用自定义输入样式，然后才能开始使用。要立即启用该样式吗？"</string>
   <!-- Title of the button to enable a custom input style entry in the settings dialog [CHAR LIMIT=15] -->
-  <string name="enable">啟用</string>
+  <string name="enable">启用</string>
   <!-- Title of the button to postpone enabling a custom input style entry in the settings dialog [CHAR LIMIT=15] -->
-  <string name="not_now">暫時不要</string>
+  <string name="not_now">以后再说</string>
   <!-- Toast text to describe the same input style already exists [CHAR LIMIT=64]-->
-  <string name="custom_input_style_already_exists">"已存在相同的輸入樣式：<xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+  <string name="custom_input_style_already_exists">"已经存在相同的输入样式：<xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
   <!-- Title of the settings for keypress vibration duration [CHAR LIMIT=35] -->
-  <string name="prefs_keypress_vibration_duration_settings">按鍵震動持續時間</string>
+  <string name="prefs_keypress_vibration_duration_settings">按键振动时长</string>
   <!-- Title of the settings for keypress sound volume [CHAR LIMIT=35] -->
-  <string name="prefs_keypress_sound_volume_settings">按鍵音量</string>
+  <string name="prefs_keypress_sound_volume_settings">按键音量</string>
   <!-- Title of the settings for key long press delay [CHAR LIMIT=35] -->
-  <string name="prefs_key_longpress_timeout_settings">按鍵長按延遲</string>
+  <string name="prefs_key_longpress_timeout_settings">按键长按延迟</string>
   <!-- Title of the button to revert to the default value of the device in the settings dialog [CHAR LIMIT=15] -->
-  <string name="button_default">預設</string>
+  <string name="button_default">默认</string>
   <!-- Standard message to dismiss a dialog box -->
   <!-- Title of the button in a dialog box. The button takes the user to the keyboard settings. [CHAR LIMIT=15] -->
   <!-- Version text [CHAR LIMIT=30]-->
