@@ -59,6 +59,10 @@
     <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Garso paspaudus mygt. garsumas"</string>
     <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Klavišo ilgo paspaudimo delsa"</string>
     <string name="button_default" msgid="3988017840431881491">"Numatytieji"</string>
-    <!-- syntax error in translation for should_download_over_metered_prompt (6737084685073734292) org.xmlpull.v1.XmlPullParserException: expected: /string read: b (position:END_TAG </b>@1:781 in     <string name="should_download_over_metered_prompt" msgid="6737084685073734292">"Pasiekiamas mobiliajame įrenginyje pasirinktos kalbos žodynas.&lt;br/&gt; Rekomenduojame &lt;b&gt;atsisiųsti&lt;/b&gt; <xliff:g id="LANGUAGE_NAME">%1$s</xliff:g> žodyną, kad pagerintumėte savo teksto vedimo įgūdžius.&lt;br/&gt; &lt;br/&gt; Jei naudojamas 3G ryšys, atsisiuntimas truks kelias minutes. Jei neturite &lt;b&gt;neribotų duomenų plano&lt;/b&gt;, gali būti taikomi mokesčiai.&lt;br/&gt; Jei nežinote, kokį duomenų planą naudojate, rekomenduojame prisijungti prie „Wi-Fi“ ryšio, kad atsisiuntimas būtų pradėtas automatiškai.&lt;br/&gt; &lt;br/&gt; Patarimas: žodynus galite atsisiųsti ir pridėti mobiliajame įrenginyje nuėję į meniu <b>Nustatymai</b> skiltį &lt;b&gt;Kalbos ir įvestis</b>."</string>
-)  -->
+    <string name="prefs_keyboard_height_settings">Klaviatūros aukštis</string>
+    <string name="keyboard_color">Keisti klaviatūros spalvą</string>
+    <string name="hide_special_chars">Paslėpti specialius simbolius</string>
+    <string name="hide_language_switch_key">Paslėpti kalbos pasirinkimą</string>
+    <string name="show_number_row">Rodyti skaičių eilutę</string>
+    <string name="show_arrow_keys">Rodyti navigacijos rodykles</string>
 </resources>

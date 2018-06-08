@@ -59,4 +59,10 @@
     <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Звук при нажатии клавиш"</string>
     <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Долгое нажатие"</string>
     <string name="button_default" msgid="3988017840431881491">"По умолчанию"</string>
+    <string name="prefs_keyboard_height_settings">Высота клавиатуры</string>
+    <string name="keyboard_color">Установить пользовательский цвет клавиатуры</string>
+    <string name="hide_special_chars">Скрыть специальные символы</string>
+    <string name="hide_language_switch_key">Скрыть клавишу переключения языка</string>
+    <string name="show_number_row">Показать ряд цифр</string>
+    <string name="show_arrow_keys">Показать клавиши со стрелками навигации</string>
 </resources>
