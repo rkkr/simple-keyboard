@@ -649,12 +649,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
             if (mLanguageOnSpacebarFormatType != LanguageOnSpacebarUtils.FORMAT_TYPE_NONE) {
                 drawLanguageOnSpacebar(key, canvas, paint);
             }
-            // Whether space key needs to show the "..." popup hint for special purposes
-            if (key.isLongPressEnabled() && mHasMultipleEnabledIMEsOrSubtypes) {
-                drawKeyPopupHint(key, canvas, paint, params);
-            }
-        } else if (code == Constants.CODE_LANGUAGE_SWITCH) {
-            drawKeyPopupHint(key, canvas, paint, params);
         }
     }
 

@@ -20,7 +20,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="KeyboardTheme.LXX_Light" parent="KeyboardIcons.LXX_Light">
-        <item name="inputViewStyle">@style/InputView.LXX</item>
+        <item name="inputViewStyle">@style/InputView</item>
         <item name="keyboardStyle">@style/Keyboard.LXX_Light</item>
         <item name="keyboardViewStyle">@style/KeyboardView.LXX_Light</item>
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXX_Light</item>
@@ -37,7 +37,7 @@
     </style>
     <style
         name="KeyboardView.LXX_Light"
-        parent="KeyboardView.LXX"
+        parent="KeyboardView"
     >
         <item name="android:background">#ECEFF1</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_lxx_light</item>

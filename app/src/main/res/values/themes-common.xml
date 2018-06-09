@@ -41,7 +41,6 @@
         <!-- A negative value to disable key text shadow layer. -->
         <item name="keyTextShadowRadius">-1.0</item>
         <item name="keyHintLetterPadding">@dimen/config_key_hint_letter_padding</item>
-        <item name="keyPopupHintLetterPadding">@dimen/config_key_popup_hint_letter_padding</item>
         <item name="keyShiftedLetterHintPadding">@dimen/config_key_shifted_letter_hint_padding</item>
         <item name="keyPreviewTextRatio">@fraction/config_key_preview_text_ratio</item>
         <item name="verticalCorrection">@dimen/config_keyboard_vertical_correction</item>
@@ -66,6 +65,16 @@
         <item name="languageOnSpacebarTextRatio">@fraction/config_language_on_spacebar_text_ratio</item>
         <item name="languageOnSpacebarFinalAlpha">@integer/config_language_on_spacebar_final_alpha</item>
         <item name="languageOnSpacebarFadeoutAnimator">@anim/language_on_spacebar_fadeout</item>
+        <item name="keyLetterSize">@fraction/config_key_letter_ratio_lxx</item>
+        <item name="keyLabelSize">@fraction/config_key_label_ratio_lxx</item>
+        <item name="keyHintLetterRatio">@fraction/config_key_hint_letter_ratio_lxx</item>
+        <item name="keyShiftedLetterHintRatio">@fraction/config_key_shifted_letter_hint_ratio_lxx</item>
+        <item name="keyLargeLetterRatio">@fraction/config_key_large_letter_ratio_lxx</item>
+        <item name="keyLabelOffCenterRatio">-80%</item>
+        <item name="keyHintLabelRatio">@fraction/config_key_hint_label_ratio_lxx</item>
+        <item name="keyHintLabelOffCenterRatio">300%</item>
+        <item name="keyLabelFlags">alignHintLabelToBottom</item>
+        <item name="spacebarIconWidthRatio">0.9</item>
     </style>
     <style
         name="MainKeyboardView"

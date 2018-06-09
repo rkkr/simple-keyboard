@@ -19,8 +19,8 @@
 -->
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <style name="KeyboardTheme.ICS" parent="KeyboardIcons.Holo">
-        <item name="inputViewStyle">@style/InputView.Holo</item>
+    <style name="KeyboardTheme.ICS" parent="KeyboardIcons.LXX_Dark">
+        <item name="inputViewStyle">@style/InputView</item>
         <item name="keyboardStyle">@style/Keyboard.ICS</item>
         <item name="keyboardViewStyle">@style/KeyboardView.ICS</item>
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.ICS</item>
@@ -38,7 +38,7 @@
     </style>
     <style
         name="KeyboardView.ICS"
-        parent="KeyboardView.Holo"
+        parent="KeyboardView"
     >
         <item name="android:background">@android:color/black</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_ics</item>
