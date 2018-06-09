@@ -57,11 +57,12 @@
         name="MainKeyboardView.KLP"
         parent="KeyboardView.KLP"
     >
+        <item name="moreKeysKeyboardForActionLayout">@layout/more_keys_keyboard_for_action_lxx</item>
         <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background_klp</item>
-        <item name="keyPreviewHeight">@dimen/config_key_preview_height_holo</item>
-        <item name="keyPreviewOffset">@dimen/config_key_preview_offset_holo</item>
-        <item name="keyPreviewShowUpAnimator">@anim/key_preview_show_up_holo</item>
-        <item name="keyPreviewDismissAnimator">@anim/key_preview_dismiss_holo</item>
+        <item name="keyPreviewHeight">@dimen/config_key_preview_height_lxx</item>
+        <item name="keyPreviewOffset">@dimen/config_key_preview_offset_lxx</item>
+        <item name="keyPreviewShowUpAnimator">@anim/key_preview_show_up_lxx</item>
+        <item name="keyPreviewDismissAnimator">@anim/key_preview_dismiss_lxx</item>
         <item name="slidingKeyInputPreviewColor">@color/highlight_translucent_color_klp</item>
         <item name="languageOnSpacebarTextColor">@color/spacebar_text_color_holo</item>
         <item name="languageOnSpacebarTextShadowRadius">1.0</item>
