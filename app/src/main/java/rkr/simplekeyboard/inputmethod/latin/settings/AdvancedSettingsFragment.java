@@ -54,10 +54,6 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
 
         final SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
 
-        if (!Settings.isInternal(prefs)) {
-            removePreference(Settings.SCREEN_DEBUG);
-        }
-
         if (!AudioAndHapticFeedbackManager.getInstance().hasVibrator()) {
             removePreference(Settings.PREF_VIBRATION_DURATION_SETTINGS);
         }

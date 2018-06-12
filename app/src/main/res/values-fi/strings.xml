@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Syöttövalinnat"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Käytä värinää näppäimiä painettaessa"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Toista ääni näppäimiä painettaessa"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Ponnahdusikkuna painalluksella"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Asetukset"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Ulkoasu ja asettelut"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Lisäasetukset"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Teema"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Näppäimen hylkäysviive"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Ei viivettä"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Oletus"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Järjestelmän oletusarvo"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Automaattiset isot kirjaimet"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Kirjoita jokaisen lauseen ensimmäinen sana isolla alkukirjaimella."</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Kielet"</string>
-    <string name="select_language" msgid="5709487854987078367">"Kielet"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"englanti (Iso-Britannia)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"englanti (Yhdysvallat)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"espanja (Yhdysvallat)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"serbialainen (latinal.)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (perinteinen)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tiivis)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Ei kieltä (aakkoset)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"aakkoset (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Muokatut syöttötyylit"</string>
-    <string name="add_style" msgid="6163126614514489951">"Lisää tyyli"</string>
-    <string name="add" msgid="8299699805688017798">"Lisää"</string>
-    <string name="remove" msgid="4486081658752944606">"Poista"</string>
-    <string name="save" msgid="7646738597196767214">"Tallenna"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Kieli"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Asettelu"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Muokattua syöttötyyliä ei ole otettu käyttöön. Haluatko ottaa sen käyttöön nyt?"</string>
-    <string name="enable" msgid="5031294444630523247">"Ota käyttöön"</string>
-    <string name="not_now" msgid="6172462888202790482">"Ei nyt"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Syöttötyyli on jo olemassa: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Painalluksen värinän kesto"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Näppäinpainalluksen äänenvoimakkuus"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Pitkän painalluksen viive"</string>
-    <string name="button_default" msgid="3988017840431881491">"Oletusarvot"</string>
+    <string name="english_ime_input_options">"Syöttövalinnat"</string>
+    <string name="vibrate_on_keypress">"Käytä värinää näppäimiä painettaessa"</string>
+    <string name="sound_on_keypress">"Toista ääni näppäimiä painettaessa"</string>
+    <string name="popup_on_keypress">"Ponnahdusikkuna painalluksella"</string>
+    <string name="settings_screen_preferences">"Asetukset"</string>
+    <string name="settings_screen_appearance">"Ulkoasu ja asettelut"</string>
+    <string name="settings_screen_advanced">"Lisäasetukset"</string>
+    <string name="settings_screen_theme">"Teema"</string>
+    <string name="key_preview_popup_dismiss_delay">"Näppäimen hylkäysviive"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Ei viivettä"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Oletus"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
+    <string name="settings_system_default">"Järjestelmän oletusarvo"</string>
+    <string name="auto_cap">"Automaattiset isot kirjaimet"</string>
+    <string name="auto_cap_summary">"Kirjoita jokaisen lauseen ensimmäinen sana isolla alkukirjaimella."</string>
+    <string name="language_selection_title">"Kielet"</string>
+    <string name="select_language">"Kielet"</string>
+    <string name="subtype_en_GB">"englanti (Iso-Britannia)"</string>
+    <string name="subtype_en_US">"englanti (Yhdysvallat)"</string>
+    <string name="subtype_es_US">"espanja (Yhdysvallat)"</string>
+    <string name="subtype_sr_ZZ">"serbialainen (latinal.)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (perinteinen)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tiivis)"</string>
+    <string name="subtype_no_language">"Ei kieltä (aakkoset)"</string>
+    <string name="subtype_no_language_qwerty">"aakkoset (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Muokatut syöttötyylit"</string>
+    <string name="add_style">"Lisää tyyli"</string>
+    <string name="add">"Lisää"</string>
+    <string name="remove">"Poista"</string>
+    <string name="save">"Tallenna"</string>
+    <string name="subtype_locale">"Kieli"</string>
+    <string name="keyboard_layout_set">"Asettelu"</string>
+    <string name="custom_input_style_note_message">"Muokattua syöttötyyliä ei ole otettu käyttöön. Haluatko ottaa sen käyttöön nyt?"</string>
+    <string name="enable">"Ota käyttöön"</string>
+    <string name="not_now">"Ei nyt"</string>
+    <string name="custom_input_style_already_exists">"Syöttötyyli on jo olemassa: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Painalluksen värinän kesto"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Näppäinpainalluksen äänenvoimakkuus"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Pitkän painalluksen viive"</string>
+    <string name="button_default">"Oletusarvot"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Invoeropties"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Trillen bij toetsaanslag"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Geluid bij toetsaanslag"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Pop-up bij toetsaanslag"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Voorkeuren"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Uiterlijk en lay-out"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Geavanceerd"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Thema"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Pop-up vertraagd sluiten"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Geen vertraging"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Standaard"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Systeemstandaard"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Auto-hoofdlettergebruik"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Het eerste woord van elke zin met een hoofdletter schrijven"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Talen"</string>
-    <string name="select_language" msgid="5709487854987078367">"Talen"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"Engels (GB)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"Engels (VS)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"Spaans (VS)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Servisch (Latijns)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditioneel)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (compact)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Geen taal (alfabet)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Alfabet (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Aangepaste invoer"</string>
-    <string name="add_style" msgid="6163126614514489951">"Stijl toevoegen"</string>
-    <string name="add" msgid="8299699805688017798">"Toevoegen"</string>
-    <string name="remove" msgid="4486081658752944606">"Verwijderen"</string>
-    <string name="save" msgid="7646738597196767214">"Opslaan"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Taal"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Lay-out"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Je moet je aangepaste invoerstijl inschakelen voor je deze kunt gebruiken. Wil je de invoerstijl nu inschakelen?"</string>
-    <string name="enable" msgid="5031294444630523247">"Inschakelen"</string>
-    <string name="not_now" msgid="6172462888202790482">"Niet nu"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Dezelfde invoerstijl bestaat al: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Trilingsduur bij toetsgebruik"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Geluidsvolume bij toetsgebruik"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Lengte toetsinvoer"</string>
-    <string name="button_default" msgid="3988017840431881491">"Standaard"</string>
+    <string name="english_ime_input_options">"Invoeropties"</string>
+    <string name="vibrate_on_keypress">"Trillen bij toetsaanslag"</string>
+    <string name="sound_on_keypress">"Geluid bij toetsaanslag"</string>
+    <string name="popup_on_keypress">"Pop-up bij toetsaanslag"</string>
+    <string name="settings_screen_preferences">"Voorkeuren"</string>
+    <string name="settings_screen_appearance">"Uiterlijk en lay-out"</string>
+    <string name="settings_screen_advanced">"Geavanceerd"</string>
+    <string name="settings_screen_theme">"Thema"</string>
+    <string name="key_preview_popup_dismiss_delay">"Pop-up vertraagd sluiten"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Geen vertraging"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Standaard"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
+    <string name="settings_system_default">"Systeemstandaard"</string>
+    <string name="auto_cap">"Auto-hoofdlettergebruik"</string>
+    <string name="auto_cap_summary">"Het eerste woord van elke zin met een hoofdletter schrijven"</string>
+    <string name="language_selection_title">"Talen"</string>
+    <string name="select_language">"Talen"</string>
+    <string name="subtype_en_GB">"Engels (GB)"</string>
+    <string name="subtype_en_US">"Engels (VS)"</string>
+    <string name="subtype_es_US">"Spaans (VS)"</string>
+    <string name="subtype_sr_ZZ">"Servisch (Latijns)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditioneel)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (compact)"</string>
+    <string name="subtype_no_language">"Geen taal (alfabet)"</string>
+    <string name="subtype_no_language_qwerty">"Alfabet (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Aangepaste invoer"</string>
+    <string name="add_style">"Stijl toevoegen"</string>
+    <string name="add">"Toevoegen"</string>
+    <string name="remove">"Verwijderen"</string>
+    <string name="save">"Opslaan"</string>
+    <string name="subtype_locale">"Taal"</string>
+    <string name="keyboard_layout_set">"Lay-out"</string>
+    <string name="custom_input_style_note_message">"Je moet je aangepaste invoerstijl inschakelen voor je deze kunt gebruiken. Wil je de invoerstijl nu inschakelen?"</string>
+    <string name="enable">"Inschakelen"</string>
+    <string name="not_now">"Niet nu"</string>
+    <string name="custom_input_style_already_exists">"Dezelfde invoerstijl bestaat al: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Trilingsduur bij toetsgebruik"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Geluidsvolume bij toetsgebruik"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Lengte toetsinvoer"</string>
+    <string name="button_default">"Standaard"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

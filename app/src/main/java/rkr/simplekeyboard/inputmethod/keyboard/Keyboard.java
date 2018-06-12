@@ -28,7 +28,6 @@ import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyVisualAttributes;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardIconsSet;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardParams;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
 
 /**
  * Loads an XML description of a keyboard and stores the attributes of the keys. A keyboard
@@ -94,8 +93,6 @@ public class Keyboard {
 
     @NonNull
     private final ProximityInfo mProximityInfo;
-    @NonNull
-    private final KeyboardLayout mKeyboardLayout;
 
     public Keyboard(@NonNull final KeyboardParams params) {
         mId = params.mId;
@@ -120,36 +117,6 @@ public class Keyboard {
         mProximityInfo = new ProximityInfo(params.GRID_WIDTH, params.GRID_HEIGHT,
                 mOccupiedWidth, mOccupiedHeight, mMostCommonKeyWidth,
                 mSortedKeys);
-        mKeyboardLayout = KeyboardLayout.newKeyboardLayout(mSortedKeys);
-    }
-
-    protected Keyboard(@NonNull final Keyboard keyboard) {
-        mId = keyboard.mId;
-        mThemeId = keyboard.mThemeId;
-        mOccupiedHeight = keyboard.mOccupiedHeight;
-        mOccupiedWidth = keyboard.mOccupiedWidth;
-        mBaseHeight = keyboard.mBaseHeight;
-        mBaseWidth = keyboard.mBaseWidth;
-        mMostCommonKeyHeight = keyboard.mMostCommonKeyHeight;
-        mMostCommonKeyWidth = keyboard.mMostCommonKeyWidth;
-        mMoreKeysTemplate = keyboard.mMoreKeysTemplate;
-        mMaxMoreKeysKeyboardColumn = keyboard.mMaxMoreKeysKeyboardColumn;
-        mKeyVisualAttributes = keyboard.mKeyVisualAttributes;
-        mTopPadding = keyboard.mTopPadding;
-        mVerticalGap = keyboard.mVerticalGap;
-
-        mSortedKeys = keyboard.mSortedKeys;
-        mShiftKeys = keyboard.mShiftKeys;
-        mAltCodeKeysWhileTyping = keyboard.mAltCodeKeysWhileTyping;
-        mIconsSet = keyboard.mIconsSet;
-
-        mProximityInfo = keyboard.mProximityInfo;
-        mKeyboardLayout = keyboard.mKeyboardLayout;
-    }
-
-    @NonNull
-    public KeyboardLayout getKeyboardLayout() {
-        return mKeyboardLayout;
     }
 
     /**
@@ -217,22 +184,5 @@ public class Keyboard {
         final int adjustedX = Math.max(0, Math.min(x, mOccupiedWidth - 1));
         final int adjustedY = Math.max(0, Math.min(y, mOccupiedHeight - 1));
         return mProximityInfo.getNearestKeys(adjustedX, adjustedY);
-    }
-
-    @NonNull
-    public int[] getCoordinates(@NonNull final int[] codePoints) {
-        final int length = codePoints.length;
-        final int[] coordinates = CoordinateUtils.newCoordinateArray(length);
-        for (int i = 0; i < length; ++i) {
-            final Key key = getKey(codePoints[i]);
-            if (null != key) {
-                CoordinateUtils.setXYInArray(coordinates, i,
-                        key.getX() + key.getWidth() / 2, key.getY() + key.getHeight() / 2);
-            } else {
-                CoordinateUtils.setXYInArray(coordinates, i,
-                        Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE);
-            }
-        }
-        return coordinates;
     }
 }

@@ -49,16 +49,4 @@ public final class CoordinateUtils {
         destination[INDEX_X] = source[INDEX_X];
         destination[INDEX_Y] = source[INDEX_Y];
     }
-
-    @NonNull
-    public static int[] newCoordinateArray(final int arraySize) {
-        return new int[ELEMENT_SIZE * arraySize];
-    }
-
-    public static void setXYInArray(@NonNull final int[] coordsArray, final int index,
-            final int x, final int y) {
-        final int baseIndex = ELEMENT_SIZE * index;
-        coordsArray[baseIndex + INDEX_X] = x;
-        coordsArray[baseIndex + INDEX_Y] = y;
-    }
 }

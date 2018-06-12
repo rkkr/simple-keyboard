@@ -39,12 +39,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.RecapitalizeStatus;
  * This class manages the input logic.
  */
 public final class InputLogic {
-    public static final int CAPS_MODE_OFF = 0;
-    public static final int CAPS_MODE_MANUAL_SHIFTED = 0x1;
-    public static final int CAPS_MODE_MANUAL_SHIFT_LOCKED = 0x3;
-    public static final int CAPS_MODE_AUTO_SHIFTED = 0x5;
-    public static final int CAPS_MODE_AUTO_SHIFT_LOCKED = 0x7;
-
     // TODO : Remove this member when we can.
     final LatinIME mLatinIME;
 
@@ -52,8 +46,6 @@ public final class InputLogic {
     public final RichInputConnection mConnection;
     private final RecapitalizeStatus mRecapitalizeStatus = new RecapitalizeStatus();
 
-    private int mDeleteCount;
-    private long mLastKeyTime;
     public final TreeSet<Long> mCurrentlyPressedHardwareKeys = new TreeSet<>();
 
     /**
@@ -72,7 +64,6 @@ public final class InputLogic {
      * Call this when input starts or restarts in some editor (typically, in onStartInputView).
      */
     public void startInput() {
-        mDeleteCount = 0;
         mRecapitalizeStatus.disable(); // Do not perform recapitalize until the cursor is moved once
         mCurrentlyPressedHardwareKeys.clear();
         // In some cases (namely, after rotation of the device) editorInfo.initialSelStart is lying
@@ -97,10 +88,9 @@ public final class InputLogic {
      * @param event the input event containing the data.
      * @return the complete transaction object
      */
-    public InputTransaction onTextInput(final SettingsValues settingsValues, final Event event,
-            final int keyboardShiftMode) {
+    public InputTransaction onTextInput(final SettingsValues settingsValues, final Event event) {
         final String rawText = event.getTextToCommit().toString();
-        final InputTransaction inputTransaction = new InputTransaction(settingsValues, getActualCapsMode(settingsValues, keyboardShiftMode));
+        final InputTransaction inputTransaction = new InputTransaction(settingsValues);
         mConnection.beginBatchEdit();
         final String text = performSpecificTldProcessingOnTextInput(rawText);
         mConnection.commitText(text, 1);
@@ -137,18 +127,10 @@ public final class InputLogic {
      *
      * @param settingsValues the current settings values.
      * @param event the event to handle.
-     * @param keyboardShiftMode the current shift mode of the keyboard, as returned by
-     *     {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardSwitcher#getKeyboardShiftMode()}
      * @return the complete transaction object
      */
-    public InputTransaction onCodeInput(final SettingsValues settingsValues,
-            @NonNull final Event event, final int keyboardShiftMode) {
-        final InputTransaction inputTransaction = new InputTransaction(settingsValues, getActualCapsMode(settingsValues, keyboardShiftMode));
-        if (event.mKeyCode != Constants.CODE_DELETE
-                || inputTransaction.mTimestamp > mLastKeyTime + Constants.LONG_PRESS_MILLISECONDS) {
-            mDeleteCount = 0;
-        }
-        mLastKeyTime = inputTransaction.mTimestamp;
+    public InputTransaction onCodeInput(final SettingsValues settingsValues, @NonNull final Event event) {
+        final InputTransaction inputTransaction = new InputTransaction(settingsValues);
         mConnection.beginBatchEdit();
 
         Event currentEvent = event;
@@ -343,8 +325,6 @@ public final class InputLogic {
      * @param inputTransaction The transaction in progress.
      */
     private void handleBackspaceEvent(final Event event, final InputTransaction inputTransaction) {
-        mDeleteCount++;
-
         // In many cases after backspace, we need to update the shift state. Normally we need
         // to do this right away to avoid the shift state being out of date in case the user types
         // backspace then some other character very fast. However, in the case of backspace key
@@ -384,12 +364,6 @@ public final class InputLogic {
                 // because of bugs in the framework. But the framework should know, so the next
                 // best thing is to leave it to whatever it thinks is best.
                 sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
-                if (mDeleteCount > Constants.DELETE_ACCELERATE_AT) {
-                    // If this is an accelerated (i.e., double) deletion, then we need to
-                    // consider unlearning here because we may have already reached
-                    // the previous word, and will lose it after next deletion.
-                    sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
-                }
             } else {
                 final int codePointBeforeCursor = mConnection.getCodePointBeforeCursor();
                 if (codePointBeforeCursor == Constants.NOT_A_CODE) {
@@ -406,18 +380,6 @@ public final class InputLogic {
                 final int lengthToDelete =
                         Character.isSupplementaryCodePoint(codePointBeforeCursor) ? 2 : 1;
                 mConnection.deleteTextBeforeCursor(lengthToDelete);
-                if (mDeleteCount > Constants.DELETE_ACCELERATE_AT) {
-                    // If this is an accelerated (i.e., double) deletion, then we need to
-                    // consider unlearning here because we may have already reached
-                    // the previous word, and will lose it after next deletion.
-                    final int codePointBeforeCursorToDeleteAgain =
-                            mConnection.getCodePointBeforeCursor();
-                    if (codePointBeforeCursorToDeleteAgain != Constants.NOT_A_CODE) {
-                        final int lengthToDeleteAgain = Character.isSupplementaryCodePoint(
-                                codePointBeforeCursorToDeleteAgain) ? 2 : 1;
-                        mConnection.deleteTextBeforeCursor(lengthToDeleteAgain);
-                    }
-                }
             }
         }
     }
@@ -464,28 +426,6 @@ public final class InputLogic {
         mConnection.commitText(mRecapitalizeStatus.getRecapitalizedString(), 0);
         mConnection.setSelection(mRecapitalizeStatus.getNewCursorStart(),
                 mRecapitalizeStatus.getNewCursorEnd());
-    }
-
-    /**
-     * Factor in auto-caps and manual caps and compute the current caps mode.
-     * @param settingsValues the current settings values.
-     * @param keyboardShiftMode the current shift mode of the keyboard. See
-     *   KeyboardSwitcher#getKeyboardShiftMode() for possible values.
-     * @return the actual caps mode the keyboard is in right now.
-     */
-    private int getActualCapsMode(final SettingsValues settingsValues,
-            final int keyboardShiftMode) {
-        if (keyboardShiftMode != CAPS_MODE_AUTO_SHIFTED) {
-            return keyboardShiftMode;
-        }
-        final int auto = getCurrentAutoCapsState(settingsValues);
-        if (0 != (auto & TextUtils.CAP_MODE_CHARACTERS)) {
-            return CAPS_MODE_AUTO_SHIFT_LOCKED;
-        }
-        if (0 != auto) {
-            return CAPS_MODE_AUTO_SHIFTED;
-        }
-        return CAPS_MODE_OFF;
     }
 
     /**

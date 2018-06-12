@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"ടൈപ്പിംഗ് ഓപ്‌ഷനുകൾ"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"കീ അമർത്തുമ്പോൾ വൈബ്രേറ്റുചെയ്യുക"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"കീയമർത്തുമ്പോൾ ശബ്ദം"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"കീയമർത്തുമ്പോൾ പോപ്പപ്പ്"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"മുൻഗണനകൾ"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"രൂപഭാവവും ലേഔട്ടുകളും"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"വിപുലം"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"തീം"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"കീ പോപ്പ്അപ്പ് നിരസിക്കൽ കാലതാമസം"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"കാലതാമസമില്ല"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"സ്ഥിരമായത്"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>മി.സെ"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"സ്ഥിരമായ സിസ്റ്റം"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"സ്വയം വലിയക്ഷരമാക്കുക"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"ഓരോ വാക്യത്തിന്റെയും ആദ്യ പദം വലിയക്ഷരമാക്കുക"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"ഭാഷകൾ"</string>
-    <string name="select_language" msgid="5709487854987078367">"ഭാഷകൾ"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"ഇംഗ്ലീഷ് (യുകെ)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"ഇംഗ്ലീഷ് (യുഎസ്)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"സ്‌പാനിഷ് (യുഎസ്)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"സെർബിയൻ (ലാറ്റിൻ)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (പരമ്പരാഗതം)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (കോം‌പാക്‌ട്)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"ഭാഷയില്ല (അക്ഷരമാല)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"അക്ഷരമാല (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"ഇഷ്‌ട ടൈപ്പ്സ്റ്റൈൽ"</string>
-    <string name="add_style" msgid="6163126614514489951">"സ്റ്റൈൽ ചേർക്കുക"</string>
-    <string name="add" msgid="8299699805688017798">"ചേര്‍ക്കുക"</string>
-    <string name="remove" msgid="4486081658752944606">"നീക്കംചെയ്യുക"</string>
-    <string name="save" msgid="7646738597196767214">"സംരക്ഷിക്കുക"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"ഭാഷ"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"ലേ‌ഔട്ട്"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"നിങ്ങളുടെ ഇഷ്‌ടാനുസൃത ടൈപ്പുചെയ്യൽ ശൈലി ഉപയോഗിക്കാൻ ആരംഭിക്കുന്നതിന് മുമ്പ് അത് പ്രവർത്തനക്ഷമമാക്കേണ്ടതുണ്ട്. ഇപ്പോൾ ഇത് പ്രവർത്തനക്ഷമമാക്കണോ?"</string>
-    <string name="enable" msgid="5031294444630523247">"പ്രവർത്തനക്ഷമമാക്കുക"</string>
-    <string name="not_now" msgid="6172462888202790482">"ഇപ്പോൾ വേണ്ട"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"സമാന ടൈപ്പുചെയ്യൽ ശൈലി ഇതിനകം നിലവിലുണ്ട്: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"കീ അമർത്തുമ്പോഴുള്ള വൈബ്രേഷൻ ദൈർഘ്യം"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"കീ അമർത്തുമ്പോഴുള്ള ശബ്‌ദ വോളിയം"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"കീ അമർത്തിപ്പിടിക്കുന്നതിലെ കാലതാമസം"</string>
-    <string name="button_default" msgid="3988017840431881491">"സ്ഥിരമായത്"</string>
+    <string name="english_ime_input_options">"ടൈപ്പിംഗ് ഓപ്‌ഷനുകൾ"</string>
+    <string name="vibrate_on_keypress">"കീ അമർത്തുമ്പോൾ വൈബ്രേറ്റുചെയ്യുക"</string>
+    <string name="sound_on_keypress">"കീയമർത്തുമ്പോൾ ശബ്ദം"</string>
+    <string name="popup_on_keypress">"കീയമർത്തുമ്പോൾ പോപ്പപ്പ്"</string>
+    <string name="settings_screen_preferences">"മുൻഗണനകൾ"</string>
+    <string name="settings_screen_appearance">"രൂപഭാവവും ലേഔട്ടുകളും"</string>
+    <string name="settings_screen_advanced">"വിപുലം"</string>
+    <string name="settings_screen_theme">"തീം"</string>
+    <string name="key_preview_popup_dismiss_delay">"കീ പോപ്പ്അപ്പ് നിരസിക്കൽ കാലതാമസം"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"കാലതാമസമില്ല"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"സ്ഥിരമായത്"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>മി.സെ"</string>
+    <string name="settings_system_default">"സ്ഥിരമായ സിസ്റ്റം"</string>
+    <string name="auto_cap">"സ്വയം വലിയക്ഷരമാക്കുക"</string>
+    <string name="auto_cap_summary">"ഓരോ വാക്യത്തിന്റെയും ആദ്യ പദം വലിയക്ഷരമാക്കുക"</string>
+    <string name="language_selection_title">"ഭാഷകൾ"</string>
+    <string name="select_language">"ഭാഷകൾ"</string>
+    <string name="subtype_en_GB">"ഇംഗ്ലീഷ് (യുകെ)"</string>
+    <string name="subtype_en_US">"ഇംഗ്ലീഷ് (യുഎസ്)"</string>
+    <string name="subtype_es_US">"സ്‌പാനിഷ് (യുഎസ്)"</string>
+    <string name="subtype_sr_ZZ">"സെർബിയൻ (ലാറ്റിൻ)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (പരമ്പരാഗതം)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (കോം‌പാക്‌ട്)"</string>
+    <string name="subtype_no_language">"ഭാഷയില്ല (അക്ഷരമാല)"</string>
+    <string name="subtype_no_language_qwerty">"അക്ഷരമാല (QWERTY)"</string>
+    <string name="custom_input_styles_title">"ഇഷ്‌ട ടൈപ്പ്സ്റ്റൈൽ"</string>
+    <string name="add_style">"സ്റ്റൈൽ ചേർക്കുക"</string>
+    <string name="add">"ചേര്‍ക്കുക"</string>
+    <string name="remove">"നീക്കംചെയ്യുക"</string>
+    <string name="save">"സംരക്ഷിക്കുക"</string>
+    <string name="subtype_locale">"ഭാഷ"</string>
+    <string name="keyboard_layout_set">"ലേ‌ഔട്ട്"</string>
+    <string name="custom_input_style_note_message">"നിങ്ങളുടെ ഇഷ്‌ടാനുസൃത ടൈപ്പുചെയ്യൽ ശൈലി ഉപയോഗിക്കാൻ ആരംഭിക്കുന്നതിന് മുമ്പ് അത് പ്രവർത്തനക്ഷമമാക്കേണ്ടതുണ്ട്. ഇപ്പോൾ ഇത് പ്രവർത്തനക്ഷമമാക്കണോ?"</string>
+    <string name="enable">"പ്രവർത്തനക്ഷമമാക്കുക"</string>
+    <string name="not_now">"ഇപ്പോൾ വേണ്ട"</string>
+    <string name="custom_input_style_already_exists">"സമാന ടൈപ്പുചെയ്യൽ ശൈലി ഇതിനകം നിലവിലുണ്ട്: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"കീ അമർത്തുമ്പോഴുള്ള വൈബ്രേഷൻ ദൈർഘ്യം"</string>
+    <string name="prefs_keypress_sound_volume_settings">"കീ അമർത്തുമ്പോഴുള്ള ശബ്‌ദ വോളിയം"</string>
+    <string name="prefs_key_longpress_timeout_settings">"കീ അമർത്തിപ്പിടിക്കുന്നതിലെ കാലതാമസം"</string>
+    <string name="button_default">"സ്ഥിരമായത്"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

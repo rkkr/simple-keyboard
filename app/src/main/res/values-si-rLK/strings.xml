@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"ආදාන විකල්ප"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"යතුර එබීමට කම්පනය කිරීම සක්‍රියයි"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"යතුරු එබිම මත හඬ"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"යතුරු එබීම මත උත්පතනය"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"අභිරුචි"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"පෙනුම සහ පිරිසැලසුම්"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"උසස්"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"තේමාව"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"යතුරු උත්පතන ඉවත් කිරීමේ ප්‍රමාදය"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"ප්‍රමාද නැත"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"සුපුරුදු"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"පද්ධති සුපුරුදු"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"ස්වයං-ලොකු අකුරු කරණය"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"එක් එක් වාක්‍යයේ පළමු වචනය ලොකු අකුරු කරන්න"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"භාෂා"</string>
-    <string name="select_language" msgid="5709487854987078367">"භාෂා"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"ඉංග්‍රීසි (UK)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"ඉංග්‍රීසි (US)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"ස්පාඤ්ඤ (US)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"සර්බියානු (ලතින්)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (සාම්ප්‍රදායික)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (සංයුක්ත)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"භාෂාවක් නැත (අකාරාදිය)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"අකාරාදිය (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"අභිරුචි ආදාන විලාස"</string>
-    <string name="add_style" msgid="6163126614514489951">"විලාසය එක් කරන්න"</string>
-    <string name="add" msgid="8299699805688017798">"එක් කරන්න"</string>
-    <string name="remove" msgid="4486081658752944606">"ඉවත් කරන්න"</string>
-    <string name="save" msgid="7646738597196767214">"සුරකින්න"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"භාෂාව"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"පිරිසැලසුම"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"ඔබ එය භාවිතය ආරම්භ කිරීමට පෙර ඔබගේ අභිරුචි ආදාන විලාසය සබල කිරීමට අවශ්‍යය. ඔබට එය දැන් සබල කිරීමට අවශ්‍යද?"</string>
-    <string name="enable" msgid="5031294444630523247">"සබල කරන්න"</string>
-    <string name="not_now" msgid="6172462888202790482">"දැන් නොවේ"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"සමාන ආදාන විලාසය දැනටමත් පවතී: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"යතුරු එබිම් කම්පන කාලපරිච්ඡේදය"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"යතුරු එබීම් හඬ තීව්‍රතාවය"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"යතුරු දිගු එබීම් ප්‍රමාදය"</string>
-    <string name="button_default" msgid="3988017840431881491">"සුපුරුදු"</string>
+    <string name="english_ime_input_options">"ආදාන විකල්ප"</string>
+    <string name="vibrate_on_keypress">"යතුර එබීමට කම්පනය කිරීම සක්‍රියයි"</string>
+    <string name="sound_on_keypress">"යතුරු එබිම මත හඬ"</string>
+    <string name="popup_on_keypress">"යතුරු එබීම මත උත්පතනය"</string>
+    <string name="settings_screen_preferences">"අභිරුචි"</string>
+    <string name="settings_screen_appearance">"පෙනුම සහ පිරිසැලසුම්"</string>
+    <string name="settings_screen_advanced">"උසස්"</string>
+    <string name="settings_screen_theme">"තේමාව"</string>
+    <string name="key_preview_popup_dismiss_delay">"යතුරු උත්පතන ඉවත් කිරීමේ ප්‍රමාදය"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"ප්‍රමාද නැත"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"සුපුරුදු"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
+    <string name="settings_system_default">"පද්ධති සුපුරුදු"</string>
+    <string name="auto_cap">"ස්වයං-ලොකු අකුරු කරණය"</string>
+    <string name="auto_cap_summary">"එක් එක් වාක්‍යයේ පළමු වචනය ලොකු අකුරු කරන්න"</string>
+    <string name="language_selection_title">"භාෂා"</string>
+    <string name="select_language">"භාෂා"</string>
+    <string name="subtype_en_GB">"ඉංග්‍රීසි (UK)"</string>
+    <string name="subtype_en_US">"ඉංග්‍රීසි (US)"</string>
+    <string name="subtype_es_US">"ස්පාඤ්ඤ (US)"</string>
+    <string name="subtype_sr_ZZ">"සර්බියානු (ලතින්)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (සාම්ප්‍රදායික)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (සංයුක්ත)"</string>
+    <string name="subtype_no_language">"භාෂාවක් නැත (අකාරාදිය)"</string>
+    <string name="subtype_no_language_qwerty">"අකාරාදිය (QWERTY)"</string>
+    <string name="custom_input_styles_title">"අභිරුචි ආදාන විලාස"</string>
+    <string name="add_style">"විලාසය එක් කරන්න"</string>
+    <string name="add">"එක් කරන්න"</string>
+    <string name="remove">"ඉවත් කරන්න"</string>
+    <string name="save">"සුරකින්න"</string>
+    <string name="subtype_locale">"භාෂාව"</string>
+    <string name="keyboard_layout_set">"පිරිසැලසුම"</string>
+    <string name="custom_input_style_note_message">"ඔබ එය භාවිතය ආරම්භ කිරීමට පෙර ඔබගේ අභිරුචි ආදාන විලාසය සබල කිරීමට අවශ්‍යය. ඔබට එය දැන් සබල කිරීමට අවශ්‍යද?"</string>
+    <string name="enable">"සබල කරන්න"</string>
+    <string name="not_now">"දැන් නොවේ"</string>
+    <string name="custom_input_style_already_exists">"සමාන ආදාන විලාසය දැනටමත් පවතී: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"යතුරු එබිම් කම්පන කාලපරිච්ඡේදය"</string>
+    <string name="prefs_keypress_sound_volume_settings">"යතුරු එබීම් හඬ තීව්‍රතාවය"</string>
+    <string name="prefs_key_longpress_timeout_settings">"යතුරු දිගු එබීම් ප්‍රමාදය"</string>
+    <string name="button_default">"සුපුරුදු"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

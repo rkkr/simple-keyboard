@@ -65,7 +65,6 @@ public class SettingsValues {
     public final int mKeyPreviewPopupDismissDelay;
 
     // Debug settings
-    public final boolean mIsInternal;
     public final boolean mHasKeyboardResize;
     public final float mKeyboardHeightScale;
     public final int mKeyPreviewShowUpDuration;
@@ -97,7 +96,6 @@ public class SettingsValues {
         mKeypressVibrationDuration = Settings.readKeypressVibrationDuration(prefs, res);
         mKeypressSoundVolume = Settings.readKeypressSoundVolume(prefs, res);
         mKeyPreviewPopupDismissDelay = Settings.readKeyPreviewPopupDismissDelay(prefs, res);
-        mIsInternal = Settings.isInternal(prefs);
         mHasKeyboardResize = true;
         mKeyboardHeightScale = Settings.readKeyboardHeight(prefs, DEFAULT_SIZE_SCALE);
         mKeyPreviewShowUpDuration = res.getInteger(R.integer.config_key_preview_show_up_duration);

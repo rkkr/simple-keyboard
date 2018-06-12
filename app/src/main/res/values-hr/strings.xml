@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Opcije ulaza"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Vibracija pri pritisku na tipku"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Zvuk pri pritisku tipke"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Povećani font na pritisak tipke"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Postavke"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Izgled i rasporedi"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Napredno"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Odgoda odbac. poveć. fonta"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Bez odgode"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Zadano"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Zadano sustavom"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Autom. veliko početno slovo"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Napiši velikim slovom prvu riječ svake rečenice"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Jezici"</string>
-    <string name="select_language" msgid="5709487854987078367">"Jezici"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"Engleski (UK)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"Engleski (SAD)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"španjolski (SAD)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Srpski (latinica)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicionalni)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktna)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Nema jezika (abeceda)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"abeceda (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Pril. stilovi unosa"</string>
-    <string name="add_style" msgid="6163126614514489951">"Dodaj stil"</string>
-    <string name="add" msgid="8299699805688017798">"Dodaj"</string>
-    <string name="remove" msgid="4486081658752944606">"Ukloni"</string>
-    <string name="save" msgid="7646738597196767214">"Spremi"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Jezik"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Izgled"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Prilagođeni stil unosa mora biti omogućen. Omogućiti sada?"</string>
-    <string name="enable" msgid="5031294444630523247">"Omogući"</string>
-    <string name="not_now" msgid="6172462888202790482">"Ne sada"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Već postoji isti stil unosa: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Trajanje vibracije pritiska"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Glasnoća pritiska tipke"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Trajanje dugog pritiska tipke"</string>
-    <string name="button_default" msgid="3988017840431881491">"Zadano"</string>
+    <string name="english_ime_input_options">"Opcije ulaza"</string>
+    <string name="vibrate_on_keypress">"Vibracija pri pritisku na tipku"</string>
+    <string name="sound_on_keypress">"Zvuk pri pritisku tipke"</string>
+    <string name="popup_on_keypress">"Povećani font na pritisak tipke"</string>
+    <string name="settings_screen_preferences">"Postavke"</string>
+    <string name="settings_screen_appearance">"Izgled i rasporedi"</string>
+    <string name="settings_screen_advanced">"Napredno"</string>
+    <string name="settings_screen_theme">"Tema"</string>
+    <string name="key_preview_popup_dismiss_delay">"Odgoda odbac. poveć. fonta"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Bez odgode"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Zadano"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
+    <string name="settings_system_default">"Zadano sustavom"</string>
+    <string name="auto_cap">"Autom. veliko početno slovo"</string>
+    <string name="auto_cap_summary">"Napiši velikim slovom prvu riječ svake rečenice"</string>
+    <string name="language_selection_title">"Jezici"</string>
+    <string name="select_language">"Jezici"</string>
+    <string name="subtype_en_GB">"Engleski (UK)"</string>
+    <string name="subtype_en_US">"Engleski (SAD)"</string>
+    <string name="subtype_es_US">"španjolski (SAD)"</string>
+    <string name="subtype_sr_ZZ">"Srpski (latinica)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicionalni)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktna)"</string>
+    <string name="subtype_no_language">"Nema jezika (abeceda)"</string>
+    <string name="subtype_no_language_qwerty">"abeceda (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Pril. stilovi unosa"</string>
+    <string name="add_style">"Dodaj stil"</string>
+    <string name="add">"Dodaj"</string>
+    <string name="remove">"Ukloni"</string>
+    <string name="save">"Spremi"</string>
+    <string name="subtype_locale">"Jezik"</string>
+    <string name="keyboard_layout_set">"Izgled"</string>
+    <string name="custom_input_style_note_message">"Prilagođeni stil unosa mora biti omogućen. Omogućiti sada?"</string>
+    <string name="enable">"Omogući"</string>
+    <string name="not_now">"Ne sada"</string>
+    <string name="custom_input_style_already_exists">"Već postoji isti stil unosa: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Trajanje vibracije pritiska"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Glasnoća pritiska tipke"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Trajanje dugog pritiska tipke"</string>
+    <string name="button_default">"Zadano"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

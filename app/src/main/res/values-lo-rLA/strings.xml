@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"ຕົວເລືອກການປ້ອນຂໍ້ມູນ"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"ສັ່ນເຕືອນເມື່ອພິມ"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"ສຽງໃນການກົດປຸ່ມ"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"ໂຕອັກສອນເວລາພິມ"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"​​ການ​ຕັ້ງ​ຄ່າ"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"​ລັກ​ສະ​ນະ &amp; ໂຄງ​ຮ່າງ"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"​ຂັ້ນ​ສູງ"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"ຮູບແບບສີສັນ"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"ໄລຍະເວລາການສະແດງໂຕອັກສອນ"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"ບໍ່ຕ້ອໜ່ວງເວລາ"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"ຄ່າເລີ່ມຕົ້ນ"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"ຄ່າເລີ່ມຕົ້ນຂອງລະບົບ"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"ເຮັດໂຕພິມໃຫຍ່ອັດຕະໂນມັດ"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"ເຮັດໂຕພິມໃຫຍ່ໃຫ້ໂຕອັກສອນທຳອິດຂອງແຕ່ລໃນປະໂຫຍກ"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"ພາ​ສາ"</string>
-    <string name="select_language" msgid="5709487854987078367">"ພາ​ສາ"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"ອັງກິດ (ສະຫະລາດຊະອານາຈັກ)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"ອັງກິດ (ສະຫະລັດຯ)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"ສະເປນ (ອາເມລິກາ)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"ເຊີ​ບຽນ (​ລາ​ຕິນ)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ດັ້ງ​ເດີມ)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ກະ​ທັດ​ຮັດ)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"ບໍ່ມີພາສາ (ໂຕອັກສອນ)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"ໂຕອັກສອນ (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"ຮູບແບບການປ້ອນຂໍ້ມູນສ່ວນຕົວ"</string>
-    <string name="add_style" msgid="6163126614514489951">"ເພີ່ມຮູບແບບ"</string>
-    <string name="add" msgid="8299699805688017798">"ເພີ່ມ"</string>
-    <string name="remove" msgid="4486081658752944606">"ລຶບອອກ"</string>
-    <string name="save" msgid="7646738597196767214">"ບັນທຶກ"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"ພາສາ"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"ຮູບແບບ"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"ຮູບແບບການປ້ອນຂໍ້ມູນແບບສ່ວນຕົວຂອງທ່ານ ຕ້ອງຖືກເປີດນຳໃຊ້ຢູ່ກ່ອນທີ່ທ່ານຈະສາມາດໃຊ້ມັນໄດ້. ທ່ານຕ້ອງການທີ່ຈະເປີດໃຊ້ມັນດຽວນີ້ບໍ່?"</string>
-    <string name="enable" msgid="5031294444630523247">"ເປີດນຳໃຊ້"</string>
-    <string name="not_now" msgid="6172462888202790482">"ບໍ່ແມ່ນຕອນນີ້"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"ຮູບແບບການປ້ອນຂໍ້ມູນທີ່ຄືກັນມີຢູ່ແລ້ວ: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"ໄລຍະເວລາຂອງການສັ່ນໃນການກົດປຸ່ມ"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"ລະດັບສຽງຂອງການກົດປຸ່ມ"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"ໄລຍະເວລາຂອງການກົດປຸ່ມ"</string>
-    <string name="button_default" msgid="3988017840431881491">"ຄ່າເລີ່ມຕົ້ນ"</string>
+    <string name="english_ime_input_options">"ຕົວເລືອກການປ້ອນຂໍ້ມູນ"</string>
+    <string name="vibrate_on_keypress">"ສັ່ນເຕືອນເມື່ອພິມ"</string>
+    <string name="sound_on_keypress">"ສຽງໃນການກົດປຸ່ມ"</string>
+    <string name="popup_on_keypress">"ໂຕອັກສອນເວລາພິມ"</string>
+    <string name="settings_screen_preferences">"​​ການ​ຕັ້ງ​ຄ່າ"</string>
+    <string name="settings_screen_appearance">"​ລັກ​ສະ​ນະ &amp; ໂຄງ​ຮ່າງ"</string>
+    <string name="settings_screen_advanced">"​ຂັ້ນ​ສູງ"</string>
+    <string name="settings_screen_theme">"ຮູບແບບສີສັນ"</string>
+    <string name="key_preview_popup_dismiss_delay">"ໄລຍະເວລາການສະແດງໂຕອັກສອນ"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"ບໍ່ຕ້ອໜ່ວງເວລາ"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"ຄ່າເລີ່ມຕົ້ນ"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
+    <string name="settings_system_default">"ຄ່າເລີ່ມຕົ້ນຂອງລະບົບ"</string>
+    <string name="auto_cap">"ເຮັດໂຕພິມໃຫຍ່ອັດຕະໂນມັດ"</string>
+    <string name="auto_cap_summary">"ເຮັດໂຕພິມໃຫຍ່ໃຫ້ໂຕອັກສອນທຳອິດຂອງແຕ່ລໃນປະໂຫຍກ"</string>
+    <string name="language_selection_title">"ພາ​ສາ"</string>
+    <string name="select_language">"ພາ​ສາ"</string>
+    <string name="subtype_en_GB">"ອັງກິດ (ສະຫະລາດຊະອານາຈັກ)"</string>
+    <string name="subtype_en_US">"ອັງກິດ (ສະຫະລັດຯ)"</string>
+    <string name="subtype_es_US">"ສະເປນ (ອາເມລິກາ)"</string>
+    <string name="subtype_sr_ZZ">"ເຊີ​ບຽນ (​ລາ​ຕິນ)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ດັ້ງ​ເດີມ)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ກະ​ທັດ​ຮັດ)"</string>
+    <string name="subtype_no_language">"ບໍ່ມີພາສາ (ໂຕອັກສອນ)"</string>
+    <string name="subtype_no_language_qwerty">"ໂຕອັກສອນ (QWERTY)"</string>
+    <string name="custom_input_styles_title">"ຮູບແບບການປ້ອນຂໍ້ມູນສ່ວນຕົວ"</string>
+    <string name="add_style">"ເພີ່ມຮູບແບບ"</string>
+    <string name="add">"ເພີ່ມ"</string>
+    <string name="remove">"ລຶບອອກ"</string>
+    <string name="save">"ບັນທຶກ"</string>
+    <string name="subtype_locale">"ພາສາ"</string>
+    <string name="keyboard_layout_set">"ຮູບແບບ"</string>
+    <string name="custom_input_style_note_message">"ຮູບແບບການປ້ອນຂໍ້ມູນແບບສ່ວນຕົວຂອງທ່ານ ຕ້ອງຖືກເປີດນຳໃຊ້ຢູ່ກ່ອນທີ່ທ່ານຈະສາມາດໃຊ້ມັນໄດ້. ທ່ານຕ້ອງການທີ່ຈະເປີດໃຊ້ມັນດຽວນີ້ບໍ່?"</string>
+    <string name="enable">"ເປີດນຳໃຊ້"</string>
+    <string name="not_now">"ບໍ່ແມ່ນຕອນນີ້"</string>
+    <string name="custom_input_style_already_exists">"ຮູບແບບການປ້ອນຂໍ້ມູນທີ່ຄືກັນມີຢູ່ແລ້ວ: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"ໄລຍະເວລາຂອງການສັ່ນໃນການກົດປຸ່ມ"</string>
+    <string name="prefs_keypress_sound_volume_settings">"ລະດັບສຽງຂອງການກົດປຸ່ມ"</string>
+    <string name="prefs_key_longpress_timeout_settings">"ໄລຍະເວລາຂອງການກົດປຸ່ມ"</string>
+    <string name="button_default">"ຄ່າເລີ່ມຕົ້ນ"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

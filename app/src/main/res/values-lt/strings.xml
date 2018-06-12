@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Įvesties parinktys"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Vibruoti, kai paspaudžiami klavišai"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Klavišo paspaudimo garsas"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Iššoka paspaudus klavišą"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Nuostatos"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Išvaizda ir išdėstymai"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Išplėstiniai"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Pagr. išš. l. atsis. d."</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Be delsos"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Numatytasis"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Sist. numat. nustat."</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Automatinis didžiųjų raidžių rašymas"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Kiekvieno sakinio pirmą žodį rašyti iš didžiosios raidės"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Kalbos"</string>
-    <string name="select_language" msgid="5709487854987078367">"Kalbos"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"Anglų k. (JK)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"Anglų k. (JAV)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"Ispanų k. (JAV)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Serbų k. (lot. rašmenys)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicinė)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktiška)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Kalbos nėra (abėcėlė)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Abėcėlė (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Pasirinkti įvesties stilių"</string>
-    <string name="add_style" msgid="6163126614514489951">"Prid. stilių"</string>
-    <string name="add" msgid="8299699805688017798">"Pridėti"</string>
-    <string name="remove" msgid="4486081658752944606">"Pašalinti"</string>
-    <string name="save" msgid="7646738597196767214">"Išsaugoti"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Kalba"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Išdėstymas"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Norint pradėti naudoti pasirinkiamą įvesties stilių, reikia jį įgalinti. Ar norite įgalinti jį dabar?"</string>
-    <string name="enable" msgid="5031294444630523247">"Įgalinti"</string>
-    <string name="not_now" msgid="6172462888202790482">"Ne dabar"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Toks pat įvesties stilius jau yra: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Vibrav. paspaudus mygt. trukmė"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Garso paspaudus mygt. garsumas"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Klavišo ilgo paspaudimo delsa"</string>
-    <string name="button_default" msgid="3988017840431881491">"Numatytieji"</string>
+    <string name="english_ime_input_options">"Įvesties parinktys"</string>
+    <string name="vibrate_on_keypress">"Vibruoti, kai paspaudžiami klavišai"</string>
+    <string name="sound_on_keypress">"Klavišo paspaudimo garsas"</string>
+    <string name="popup_on_keypress">"Iššoka paspaudus klavišą"</string>
+    <string name="settings_screen_preferences">"Nuostatos"</string>
+    <string name="settings_screen_appearance">"Išvaizda ir išdėstymai"</string>
+    <string name="settings_screen_advanced">"Išplėstiniai"</string>
+    <string name="settings_screen_theme">"Tema"</string>
+    <string name="key_preview_popup_dismiss_delay">"Pagr. išš. l. atsis. d."</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Be delsos"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Numatytasis"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
+    <string name="settings_system_default">"Sist. numat. nustat."</string>
+    <string name="auto_cap">"Automatinis didžiųjų raidžių rašymas"</string>
+    <string name="auto_cap_summary">"Kiekvieno sakinio pirmą žodį rašyti iš didžiosios raidės"</string>
+    <string name="language_selection_title">"Kalbos"</string>
+    <string name="select_language">"Kalbos"</string>
+    <string name="subtype_en_GB">"Anglų k. (JK)"</string>
+    <string name="subtype_en_US">"Anglų k. (JAV)"</string>
+    <string name="subtype_es_US">"Ispanų k. (JAV)"</string>
+    <string name="subtype_sr_ZZ">"Serbų k. (lot. rašmenys)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicinė)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktiška)"</string>
+    <string name="subtype_no_language">"Kalbos nėra (abėcėlė)"</string>
+    <string name="subtype_no_language_qwerty">"Abėcėlė (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Pasirinkti įvesties stilių"</string>
+    <string name="add_style">"Prid. stilių"</string>
+    <string name="add">"Pridėti"</string>
+    <string name="remove">"Pašalinti"</string>
+    <string name="save">"Išsaugoti"</string>
+    <string name="subtype_locale">"Kalba"</string>
+    <string name="keyboard_layout_set">"Išdėstymas"</string>
+    <string name="custom_input_style_note_message">"Norint pradėti naudoti pasirinkiamą įvesties stilių, reikia jį įgalinti. Ar norite įgalinti jį dabar?"</string>
+    <string name="enable">"Įgalinti"</string>
+    <string name="not_now">"Ne dabar"</string>
+    <string name="custom_input_style_already_exists">"Toks pat įvesties stilius jau yra: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Vibrav. paspaudus mygt. trukmė"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Garso paspaudus mygt. garsumas"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Klavišo ilgo paspaudimo delsa"</string>
+    <string name="button_default">"Numatytieji"</string>
     <string name="prefs_keyboard_height_settings">Klaviatūros aukštis</string>
     <string name="keyboard_color">Keisti klaviatūros spalvą</string>
     <string name="hide_special_chars">Paslėpti specialius simbolius</string>

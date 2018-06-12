@@ -33,7 +33,6 @@ import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardTextsSet;
 import rkr.simplekeyboard.inputmethod.latin.InputView;
 import rkr.simplekeyboard.inputmethod.latin.LatinIME;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
-import rkr.simplekeyboard.inputmethod.latin.inputlogic.InputLogic;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 import rkr.simplekeyboard.inputmethod.latin.utils.CapsModeUtils;
@@ -158,10 +157,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
                 || !newKeyboard.mId.mSubtype.equals(oldKeyboard.mId.mSubtype);
         final int languageOnSpacebarFormatType = LanguageOnSpacebarUtils
                 .getLanguageOnSpacebarFormatType(newKeyboard.mId.mSubtype);
-        final boolean hasMultipleEnabledIMEsOrSubtypes = mRichImm
-                .hasMultipleEnabledIMEsOrSubtypes(true /* shouldIncludeAuxiliarySubtypes */);
-        keyboardView.startDisplayLanguageOnSpacebar(subtypeChanged, languageOnSpacebarFormatType,
-                hasMultipleEnabledIMEsOrSubtypes);
+        keyboardView.startDisplayLanguageOnSpacebar(subtypeChanged, languageOnSpacebarFormatType);
     }
 
     public Keyboard getKeyboard() {
@@ -397,23 +393,5 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mKeyboardView = (MainKeyboardView) mCurrentInputView.findViewById(R.id.keyboard_view);
         mKeyboardView.setKeyboardActionListener(mLatinIME);
         return mCurrentInputView;
-    }
-
-    public int getKeyboardShiftMode() {
-        final Keyboard keyboard = getKeyboard();
-        if (keyboard == null) {
-            return InputLogic.CAPS_MODE_OFF;
-        }
-        switch (keyboard.mId.mElementId) {
-        case KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCKED:
-        case KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCK_SHIFTED:
-            return InputLogic.CAPS_MODE_MANUAL_SHIFT_LOCKED;
-        case KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED:
-            return InputLogic.CAPS_MODE_MANUAL_SHIFTED;
-        case KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED:
-            return InputLogic.CAPS_MODE_AUTO_SHIFTED;
-        default:
-            return InputLogic.CAPS_MODE_OFF;
-        }
     }
 }

@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Valkostir innsláttar"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Titringur þegar ýtt er á lykla"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Hljóð þegar ýtt er á lykil"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Stækkaðir stafir við innslátt"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Kjörstillingar"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Útlit og uppsetning"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Ítarlegt"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Þema"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Hunsunartöf lyklaglugga"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Engin töf"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Sjálfgefið"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms."</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Sjálfgildi kerfis"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Sjálfvirkir hástafir"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Setja hástaf í upphaf hverrar málsgreinar"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Tungumál"</string>
-    <string name="select_language" msgid="5709487854987078367">"Tungumál"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"Enskt (Bretland)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"Enskt (Bandaríkin)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"Spænskt (US)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Serbneskt (latneskt)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (hefðbundið)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (lítið)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Ekkert tungumál (stafróf)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Stafróf (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Sérsniðnar innsláttaraðferðir"</string>
-    <string name="add_style" msgid="6163126614514489951">"Bæta stíl við"</string>
-    <string name="add" msgid="8299699805688017798">"Bæta við"</string>
-    <string name="remove" msgid="4486081658752944606">"Fjarlægja"</string>
-    <string name="save" msgid="7646738597196767214">"Vista"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Tungumál"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Skipan"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Gera þarf sérsniðnu innsláttaraðferðina virka áður en þú tekur hana í notkun. Viltu virkja hana núna?"</string>
-    <string name="enable" msgid="5031294444630523247">"Kveikja"</string>
-    <string name="not_now" msgid="6172462888202790482">"Ekki núna"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Sama innsláttaraðferð er þegar fyrir hendi: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Lengd lyklatitrings"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Styrkur lyklahljóða"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Töf áður en lykli er haldið inni"</string>
-    <string name="button_default" msgid="3988017840431881491">"Sjálfgefið"</string>
+    <string name="english_ime_input_options">"Valkostir innsláttar"</string>
+    <string name="vibrate_on_keypress">"Titringur þegar ýtt er á lykla"</string>
+    <string name="sound_on_keypress">"Hljóð þegar ýtt er á lykil"</string>
+    <string name="popup_on_keypress">"Stækkaðir stafir við innslátt"</string>
+    <string name="settings_screen_preferences">"Kjörstillingar"</string>
+    <string name="settings_screen_appearance">"Útlit og uppsetning"</string>
+    <string name="settings_screen_advanced">"Ítarlegt"</string>
+    <string name="settings_screen_theme">"Þema"</string>
+    <string name="key_preview_popup_dismiss_delay">"Hunsunartöf lyklaglugga"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Engin töf"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Sjálfgefið"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms."</string>
+    <string name="settings_system_default">"Sjálfgildi kerfis"</string>
+    <string name="auto_cap">"Sjálfvirkir hástafir"</string>
+    <string name="auto_cap_summary">"Setja hástaf í upphaf hverrar málsgreinar"</string>
+    <string name="language_selection_title">"Tungumál"</string>
+    <string name="select_language">"Tungumál"</string>
+    <string name="subtype_en_GB">"Enskt (Bretland)"</string>
+    <string name="subtype_en_US">"Enskt (Bandaríkin)"</string>
+    <string name="subtype_es_US">"Spænskt (US)"</string>
+    <string name="subtype_sr_ZZ">"Serbneskt (latneskt)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (hefðbundið)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (lítið)"</string>
+    <string name="subtype_no_language">"Ekkert tungumál (stafróf)"</string>
+    <string name="subtype_no_language_qwerty">"Stafróf (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Sérsniðnar innsláttaraðferðir"</string>
+    <string name="add_style">"Bæta stíl við"</string>
+    <string name="add">"Bæta við"</string>
+    <string name="remove">"Fjarlægja"</string>
+    <string name="save">"Vista"</string>
+    <string name="subtype_locale">"Tungumál"</string>
+    <string name="keyboard_layout_set">"Skipan"</string>
+    <string name="custom_input_style_note_message">"Gera þarf sérsniðnu innsláttaraðferðina virka áður en þú tekur hana í notkun. Viltu virkja hana núna?"</string>
+    <string name="enable">"Kveikja"</string>
+    <string name="not_now">"Ekki núna"</string>
+    <string name="custom_input_style_already_exists">"Sama innsláttaraðferð er þegar fyrir hendi: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Lengd lyklatitrings"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Styrkur lyklahljóða"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Töf áður en lykli er haldið inni"</string>
+    <string name="button_default">"Sjálfgefið"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

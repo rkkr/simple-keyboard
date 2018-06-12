@@ -22,7 +22,6 @@ import java.util.Arrays;
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
 public final class SpacingAndPunctuations {
@@ -30,8 +29,6 @@ public final class SpacingAndPunctuations {
     private final int mSentenceSeparator;
     private final int mAbbreviationMarker;
     private final int[] mSortedSentenceTerminators;
-    public final String mSentenceSeparatorAndSpace;
-    public final boolean mCurrentLanguageHasSpaces;
     public final boolean mUsesAmericanTypography;
     public final boolean mUsesGermanRules;
 
@@ -42,9 +39,6 @@ public final class SpacingAndPunctuations {
                 res.getString(R.string.symbols_sentence_terminators));
         mSentenceSeparator = res.getInteger(R.integer.sentence_separator);
         mAbbreviationMarker = res.getInteger(R.integer.abbreviation_marker);
-        mSentenceSeparatorAndSpace = new String(new int[] {
-                mSentenceSeparator, Constants.CODE_SPACE }, 0, 2);
-        mCurrentLanguageHasSpaces = res.getBoolean(R.bool.current_language_has_spaces);
         final Locale locale = res.getConfiguration().locale;
         // Heuristic: we use American Typography rules because it's the most common rules for all
         // English variants. German rules (not "German typography") also have small gotchas.

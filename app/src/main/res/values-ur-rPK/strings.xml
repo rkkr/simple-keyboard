@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"ان پٹ اختیارات"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"کلید دبانے پر وائبریٹ کریں"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"کلید دبانے پر آواز"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"کلید دبانے پر پاپ اپ"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"ترجیحات"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"ظہور اور لے آؤٹس"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"جدید ترین"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"تھیم"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"کلید پاپ اپ رفع کی تاخیر"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"کوئی تاخیر نہیں"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"ڈیفالٹ"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>ملی سیکنڈ"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"سسٹم ڈیفالٹ"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"بڑے حروف میں خودکار تبدیلی"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"ہر جملے کا پہلا لفظ بڑے حروف میں لکھیں"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"زبانیں"</string>
-    <string name="select_language" msgid="5709487854987078367">"زبانیں"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"انگریزی (برطانیہ)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"انگریزی (امریکہ)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"ہسپانوی (امریکہ)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"سربیائی (لاطینی)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (روایتی)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (کمپیکٹ)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"کوئی زبان نہیں (الفابیٹ)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"‏حروف تہجی (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"حسب ضرورت ان پٹ اسٹائلز"</string>
-    <string name="add_style" msgid="6163126614514489951">"اسٹائل شامل کریں"</string>
-    <string name="add" msgid="8299699805688017798">"شامل کریں"</string>
-    <string name="remove" msgid="4486081658752944606">"ہٹائیں"</string>
-    <string name="save" msgid="7646738597196767214">"محفوظ کریں"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"زبان"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"لے آؤٹ"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"آپ کیلئے اپنا حسب ضرورت ان پٹ اسٹائل استعمال کرنے سے پہلے اسے فعال کرنا ضروری ہے۔ کیا آپ اسے ابھی فعال کرنا چاہتے ہیں؟"</string>
-    <string name="enable" msgid="5031294444630523247">"فعال کریں"</string>
-    <string name="not_now" msgid="6172462888202790482">"ابھی نہیں"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"ایسا ہی ان پٹ اسٹائل پہلے سے موجود ہے: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"کلید دبانے پر وائبریشن کا دورانیہ"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"کلید دبانے پر آواز کا والیوم"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"کلید کو دیر تک دبانے کی تاخیر"</string>
-    <string name="button_default" msgid="3988017840431881491">"ڈیفالٹ"</string>
+    <string name="english_ime_input_options">"ان پٹ اختیارات"</string>
+    <string name="vibrate_on_keypress">"کلید دبانے پر وائبریٹ کریں"</string>
+    <string name="sound_on_keypress">"کلید دبانے پر آواز"</string>
+    <string name="popup_on_keypress">"کلید دبانے پر پاپ اپ"</string>
+    <string name="settings_screen_preferences">"ترجیحات"</string>
+    <string name="settings_screen_appearance">"ظہور اور لے آؤٹس"</string>
+    <string name="settings_screen_advanced">"جدید ترین"</string>
+    <string name="settings_screen_theme">"تھیم"</string>
+    <string name="key_preview_popup_dismiss_delay">"کلید پاپ اپ رفع کی تاخیر"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"کوئی تاخیر نہیں"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"ڈیفالٹ"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ملی سیکنڈ"</string>
+    <string name="settings_system_default">"سسٹم ڈیفالٹ"</string>
+    <string name="auto_cap">"بڑے حروف میں خودکار تبدیلی"</string>
+    <string name="auto_cap_summary">"ہر جملے کا پہلا لفظ بڑے حروف میں لکھیں"</string>
+    <string name="language_selection_title">"زبانیں"</string>
+    <string name="select_language">"زبانیں"</string>
+    <string name="subtype_en_GB">"انگریزی (برطانیہ)"</string>
+    <string name="subtype_en_US">"انگریزی (امریکہ)"</string>
+    <string name="subtype_es_US">"ہسپانوی (امریکہ)"</string>
+    <string name="subtype_sr_ZZ">"سربیائی (لاطینی)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (روایتی)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (کمپیکٹ)"</string>
+    <string name="subtype_no_language">"کوئی زبان نہیں (الفابیٹ)"</string>
+    <string name="subtype_no_language_qwerty">"‏حروف تہجی (QWERTY)"</string>
+    <string name="custom_input_styles_title">"حسب ضرورت ان پٹ اسٹائلز"</string>
+    <string name="add_style">"اسٹائل شامل کریں"</string>
+    <string name="add">"شامل کریں"</string>
+    <string name="remove">"ہٹائیں"</string>
+    <string name="save">"محفوظ کریں"</string>
+    <string name="subtype_locale">"زبان"</string>
+    <string name="keyboard_layout_set">"لے آؤٹ"</string>
+    <string name="custom_input_style_note_message">"آپ کیلئے اپنا حسب ضرورت ان پٹ اسٹائل استعمال کرنے سے پہلے اسے فعال کرنا ضروری ہے۔ کیا آپ اسے ابھی فعال کرنا چاہتے ہیں؟"</string>
+    <string name="enable">"فعال کریں"</string>
+    <string name="not_now">"ابھی نہیں"</string>
+    <string name="custom_input_style_already_exists">"ایسا ہی ان پٹ اسٹائل پہلے سے موجود ہے: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"کلید دبانے پر وائبریشن کا دورانیہ"</string>
+    <string name="prefs_keypress_sound_volume_settings">"کلید دبانے پر آواز کا والیوم"</string>
+    <string name="prefs_key_longpress_timeout_settings">"کلید کو دیر تک دبانے کی تاخیر"</string>
+    <string name="button_default">"ڈیفالٹ"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

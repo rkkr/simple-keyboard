@@ -828,13 +828,4 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         mLeftEdge = false;
         mRightEdgeKey = null;
     }
-
-    private static String textAttr(final String value, final String name) {
-        return value != null ? String.format(" %s=%s", name, value) : "";
-    }
-
-    private static String booleanAttr(final TypedArray a, final int index, final String name) {
-        return a.hasValue(index)
-                ? String.format(" %s=%s", name, a.getBoolean(index, false)) : "";
-    }
 }

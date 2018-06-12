@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"ਇਨਪੁਟ ਚੋਣਾਂ"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"ਕੁੰਜੀ ਦਬਾਉਣ ’ਤੇ ਥਰਥਰਾਹਟ ਕਰੋ"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"ਕੁੰਜੀ ਦਬਾਉਣ \'ਤੇ ਧੁਨ ਵਜਾਓ"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"ਕੁੰਜੀ ਦਬਾਉਣ ’ਤੇ ਪੌਪਅੱਪ ਕਰੋ"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"ਤਰਜੀਹਾਂ"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"ਪ੍ਰਗਟਾਅ &amp; ਲੇਆਉਟਸ"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"ਉੱਨਤ"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"ਵਿਸ਼ਾ"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"ਕੁੰਜੀ ਪੌਪਅਪ ਬਰਖਾਸਤ ਦੇਰੀ"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"ਕੋਈ ਦੇਰੀ ਨਹੀਂ"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"ਡਿਫੌਲਟ"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"ਸਿਸਟਮ ਡਿਫੌਲਟ"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"ਆਟੋ-ਕੈਪਿਟਲਾਈਜ਼ੇਸ਼ਨ"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"ਹਰੇਕ ਵਾਕ ਦਾ ਪਹਿਲਾ ਸ਼ਬਦ ਕੈਪੀਟਲਾਈਜ਼ ਕਰੋ"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"ਭਾਸ਼ਾਵਾਂ"</string>
-    <string name="select_language" msgid="5709487854987078367">"ਭਾਸ਼ਾਵਾਂ"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"ਅੰਗ੍ਰੇਜ਼ੀ (ਯੂਕੇ)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"ਅੰਗ੍ਰੇਜੀ (ਅਮਰੀਕਾ)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"ਸਪੇਨੀ (ਅਮਰੀਕਾ)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"ਸਰਬੀਅਨ (ਲਾਤੀਨੀ)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ਪਰੰਪਰਿਕ)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ਕੰਪੈਕਟ)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"ਕੋਈ ਭਾਸ਼ਾ ਨਹੀਂ (ਵਰਨਮਾਲਾ)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"ਵਰਨਮਾਲਾ (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"ਕਸਟਮ ਇਨਪੁਟ ਸਟਾਈਲ"</string>
-    <string name="add_style" msgid="6163126614514489951">"ਸਟਾਈਲ ਜੋੜੋ"</string>
-    <string name="add" msgid="8299699805688017798">"ਜੋੜੋ"</string>
-    <string name="remove" msgid="4486081658752944606">"ਹਟਾਓ"</string>
-    <string name="save" msgid="7646738597196767214">"ਰੱਖਿਅਤ ਕਰੋ"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"ਭਾਸ਼ਾ"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"ਲੇਆਉਟ"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"ਇਸਤੋਂ ਪਹਿਲਾਂ ਕਿ ਤੁਸੀਂ ਆਪਣਾ ਕਸਟਮ ਇਨਪੁਟ ਸਟਾਈਲ ਵਰਤਣਾ ਸ਼ੁਰੂ ਕਰੋ ਤੁਹਾਨੂੰ ਇਸਨੂੰ ਸਮਰੱਥ ਬਣਾਉਣ ਦੀ ਲੋੜ ਹੈ। ਕੀ ਤੁਸੀਂ ਹੁਣ ਇਸਨੂੰ ਸਮਰੱਥ ਬਣਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"</string>
-    <string name="enable" msgid="5031294444630523247">"ਸਮਰੱਥ ਬਣਾਓ"</string>
-    <string name="not_now" msgid="6172462888202790482">"ਅਜੇ ਨਹੀਂ"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"ਸਮਾਨ ਇਨਪੁਟ ਸਟਾਈਲ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"ਕੀਪ੍ਰੈਸ ਵਾਈਬ੍ਰੇਸ਼ਨ ਮਿਆਦ"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"ਕੀਪ੍ਰੈਸ ਅਵਾਜ਼ ਵੌਲਿਊਮ"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"ਕੁੰਜੀ ਦਬਾਈ ਰੱਖਣ ਦੀ ਮਿਆਦ"</string>
-    <string name="button_default" msgid="3988017840431881491">"ਡਿਫੌਲਟ"</string>
+    <string name="english_ime_input_options">"ਇਨਪੁਟ ਚੋਣਾਂ"</string>
+    <string name="vibrate_on_keypress">"ਕੁੰਜੀ ਦਬਾਉਣ ’ਤੇ ਥਰਥਰਾਹਟ ਕਰੋ"</string>
+    <string name="sound_on_keypress">"ਕੁੰਜੀ ਦਬਾਉਣ \'ਤੇ ਧੁਨ ਵਜਾਓ"</string>
+    <string name="popup_on_keypress">"ਕੁੰਜੀ ਦਬਾਉਣ ’ਤੇ ਪੌਪਅੱਪ ਕਰੋ"</string>
+    <string name="settings_screen_preferences">"ਤਰਜੀਹਾਂ"</string>
+    <string name="settings_screen_appearance">"ਪ੍ਰਗਟਾਅ &amp; ਲੇਆਉਟਸ"</string>
+    <string name="settings_screen_advanced">"ਉੱਨਤ"</string>
+    <string name="settings_screen_theme">"ਵਿਸ਼ਾ"</string>
+    <string name="key_preview_popup_dismiss_delay">"ਕੁੰਜੀ ਪੌਪਅਪ ਬਰਖਾਸਤ ਦੇਰੀ"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"ਕੋਈ ਦੇਰੀ ਨਹੀਂ"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"ਡਿਫੌਲਟ"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
+    <string name="settings_system_default">"ਸਿਸਟਮ ਡਿਫੌਲਟ"</string>
+    <string name="auto_cap">"ਆਟੋ-ਕੈਪਿਟਲਾਈਜ਼ੇਸ਼ਨ"</string>
+    <string name="auto_cap_summary">"ਹਰੇਕ ਵਾਕ ਦਾ ਪਹਿਲਾ ਸ਼ਬਦ ਕੈਪੀਟਲਾਈਜ਼ ਕਰੋ"</string>
+    <string name="language_selection_title">"ਭਾਸ਼ਾਵਾਂ"</string>
+    <string name="select_language">"ਭਾਸ਼ਾਵਾਂ"</string>
+    <string name="subtype_en_GB">"ਅੰਗ੍ਰੇਜ਼ੀ (ਯੂਕੇ)"</string>
+    <string name="subtype_en_US">"ਅੰਗ੍ਰੇਜੀ (ਅਮਰੀਕਾ)"</string>
+    <string name="subtype_es_US">"ਸਪੇਨੀ (ਅਮਰੀਕਾ)"</string>
+    <string name="subtype_sr_ZZ">"ਸਰਬੀਅਨ (ਲਾਤੀਨੀ)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ਪਰੰਪਰਿਕ)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ਕੰਪੈਕਟ)"</string>
+    <string name="subtype_no_language">"ਕੋਈ ਭਾਸ਼ਾ ਨਹੀਂ (ਵਰਨਮਾਲਾ)"</string>
+    <string name="subtype_no_language_qwerty">"ਵਰਨਮਾਲਾ (QWERTY)"</string>
+    <string name="custom_input_styles_title">"ਕਸਟਮ ਇਨਪੁਟ ਸਟਾਈਲ"</string>
+    <string name="add_style">"ਸਟਾਈਲ ਜੋੜੋ"</string>
+    <string name="add">"ਜੋੜੋ"</string>
+    <string name="remove">"ਹਟਾਓ"</string>
+    <string name="save">"ਰੱਖਿਅਤ ਕਰੋ"</string>
+    <string name="subtype_locale">"ਭਾਸ਼ਾ"</string>
+    <string name="keyboard_layout_set">"ਲੇਆਉਟ"</string>
+    <string name="custom_input_style_note_message">"ਇਸਤੋਂ ਪਹਿਲਾਂ ਕਿ ਤੁਸੀਂ ਆਪਣਾ ਕਸਟਮ ਇਨਪੁਟ ਸਟਾਈਲ ਵਰਤਣਾ ਸ਼ੁਰੂ ਕਰੋ ਤੁਹਾਨੂੰ ਇਸਨੂੰ ਸਮਰੱਥ ਬਣਾਉਣ ਦੀ ਲੋੜ ਹੈ। ਕੀ ਤੁਸੀਂ ਹੁਣ ਇਸਨੂੰ ਸਮਰੱਥ ਬਣਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"</string>
+    <string name="enable">"ਸਮਰੱਥ ਬਣਾਓ"</string>
+    <string name="not_now">"ਅਜੇ ਨਹੀਂ"</string>
+    <string name="custom_input_style_already_exists">"ਸਮਾਨ ਇਨਪੁਟ ਸਟਾਈਲ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"ਕੀਪ੍ਰੈਸ ਵਾਈਬ੍ਰੇਸ਼ਨ ਮਿਆਦ"</string>
+    <string name="prefs_keypress_sound_volume_settings">"ਕੀਪ੍ਰੈਸ ਅਵਾਜ਼ ਵੌਲਿਊਮ"</string>
+    <string name="prefs_key_longpress_timeout_settings">"ਕੁੰਜੀ ਦਬਾਈ ਰੱਖਣ ਦੀ ਮਿਆਦ"</string>
+    <string name="button_default">"ਡਿਫੌਲਟ"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

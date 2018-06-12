@@ -19,50 +19,50 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Opțiuni de introducere text"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Vibrare la apăsarea tastei"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Sunet la apăsarea tastei"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Pop-up la apăsarea tastei"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Preferințe"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Aspect"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Avansate"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Temă"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Închidere pop-up taste"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Fără întârziere"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Prestabilit"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> msec."</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Valoare prestabilită"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Scriere automată cu majuscule"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Scrie cu majusculă primul cuvânt din fiecare propoziție"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Limbi"</string>
-    <string name="select_language" msgid="5709487854987078367">"Limbi"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"engleză (Regatul Unit)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"engleză (S.U.A.)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"spaniolă (S.U.A.)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Sârbă (caractere latine)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradițională)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Compact)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Nicio limbă (alfabet)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Alfabet (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Stiluri personalizate"</string>
-    <string name="add_style" msgid="6163126614514489951">"Stil"</string>
-    <string name="add" msgid="8299699805688017798">"Adăugați"</string>
-    <string name="remove" msgid="4486081658752944606">"Eliminați"</string>
-    <string name="save" msgid="7646738597196767214">"Salvați"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Limbă"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Aspect"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Stilul de introducere personalizat trebuie să fie activat pentru a-l utiliza. Îl activați acum?"</string>
-    <string name="enable" msgid="5031294444630523247">"Activați"</string>
-    <string name="not_now" msgid="6172462888202790482">"Nu acum"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Același stil de introducere există deja: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Vibrare după apăsarea tastei"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Sunet la apăsarea tastelor"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Timpul apăsării lungi a tastei"</string>
-    <string name="button_default" msgid="3988017840431881491">"Prestabilit"</string>
-    <string name="prefs_keyboard_height_settings">Keyboard height</string>
-    <string name="keyboard_color">Set custom keyboard color</string>
-    <string name="hide_special_chars">Hide special characters</string>
-    <string name="hide_language_switch_key">Hide language switch key</string>
-    <string name="show_number_row">Show separate number row</string>
-    <string name="show_arrow_keys">Show navigation arrow keys</string>
+    <string name="english_ime_input_options">"Opțiuni de introducere text"</string>
+    <string name="vibrate_on_keypress">"Vibrare la apăsarea tastei"</string>
+    <string name="sound_on_keypress">"Sunet la apăsarea tastei"</string>
+    <string name="popup_on_keypress">"Pop-up la apăsarea tastei"</string>
+    <string name="settings_screen_preferences">"Preferințe"</string>
+    <string name="settings_screen_appearance">"Aspect"</string>
+    <string name="settings_screen_advanced">"Avansate"</string>
+    <string name="settings_screen_theme">"Temă"</string>
+    <string name="key_preview_popup_dismiss_delay">"Închidere pop-up taste"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Fără întârziere"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Prestabilit"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> msec."</string>
+    <string name="settings_system_default">"Valoare prestabilită"</string>
+    <string name="auto_cap">"Scriere automată cu majuscule"</string>
+    <string name="auto_cap_summary">"Scrie cu majusculă primul cuvânt din fiecare propoziție"</string>
+    <string name="language_selection_title">"Limbi"</string>
+    <string name="select_language">"Limbi"</string>
+    <string name="subtype_en_GB">"engleză (Regatul Unit)"</string>
+    <string name="subtype_en_US">"engleză (S.U.A.)"</string>
+    <string name="subtype_es_US">"spaniolă (S.U.A.)"</string>
+    <string name="subtype_sr_ZZ">"Sârbă (caractere latine)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradițională)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Compact)"</string>
+    <string name="subtype_no_language">"Nicio limbă (alfabet)"</string>
+    <string name="subtype_no_language_qwerty">"Alfabet (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Stiluri personalizate"</string>
+    <string name="add_style">"Stil"</string>
+    <string name="add">"Adăugați"</string>
+    <string name="remove">"Eliminați"</string>
+    <string name="save">"Salvați"</string>
+    <string name="subtype_locale">"Limbă"</string>
+    <string name="keyboard_layout_set">"Aspect"</string>
+    <string name="custom_input_style_note_message">"Stilul de introducere personalizat trebuie să fie activat pentru a-l utiliza. Îl activați acum?"</string>
+    <string name="enable">"Activați"</string>
+    <string name="not_now">"Nu acum"</string>
+    <string name="custom_input_style_already_exists">"Același stil de introducere există deja: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Vibrare după apăsarea tastei"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Sunet la apăsarea tastelor"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Timpul apăsării lungi a tastei"</string>
+    <string name="button_default">"Prestabilit"</string>
+    <string name="prefs_keyboard_height_settings">Înălțime tastatură</string>
+    <string name="keyboard_color">Setează culoare personalizată</string>
+    <string name="hide_special_chars">Ascunde caracterele speciale</string>
+    <string name="hide_language_switch_key">Ascunde butonul de schimbare limbă</string>
+    <string name="show_number_row">Arată un rând separat cu cifre</string>
+    <string name="show_arrow_keys">Arată săgețile de navigare</string>
 </resources>

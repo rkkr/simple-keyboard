@@ -574,8 +574,4 @@ public final class RichInputConnection {
     public boolean hasSelection() {
         return mExpectedSelEnd != mExpectedSelStart;
     }
-
-    public boolean isCursorPositionKnown() {
-        return INVALID_CURSOR_POSITION != mExpectedSelStart;
-    }
 }

@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Opcións de entrada"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Vibrar ao premer as teclas"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Son ao premer as teclas"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Ventás emerxentes ao premer as teclas"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Preferencias"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Aparencia e deseños"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Opcións avanzadas"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Retraso ao ampliar tecla"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Sen retraso"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Predeterminado"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Predeterminado do sistema"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Maiúsculas automáticas"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Pon en maiúscula a primeira palabra de cada frase"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Idiomas"</string>
-    <string name="select_language" msgid="5709487854987078367">"Idiomas"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"Inglés (Reino Unido)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"Inglés (EUA)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"Español (EUA)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Serbio (latino)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicional)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (compacto)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Ningún idioma (alfabeto)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"alfabeto (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Estilos de entrada personalizados"</string>
-    <string name="add_style" msgid="6163126614514489951">"Engadir estilo"</string>
-    <string name="add" msgid="8299699805688017798">"Engadir"</string>
-    <string name="remove" msgid="4486081658752944606">"Eliminar"</string>
-    <string name="save" msgid="7646738597196767214">"Gardar"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Idioma"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Deseño"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"É necesario activar o estilo de entrada personalizado para poder comezar a utilizalo. Queres activalo agora?"</string>
-    <string name="enable" msgid="5031294444630523247">"Activar"</string>
-    <string name="not_now" msgid="6172462888202790482">"Agora non"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Xa existe o mesmo estilo de entrada: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Duración vibración ao premer teclas"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Volume do son ao premer teclas"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Retraso de pulsación prolongada"</string>
-    <string name="button_default" msgid="3988017840431881491">"Predeterminado"</string>
+    <string name="english_ime_input_options">"Opcións de entrada"</string>
+    <string name="vibrate_on_keypress">"Vibrar ao premer as teclas"</string>
+    <string name="sound_on_keypress">"Son ao premer as teclas"</string>
+    <string name="popup_on_keypress">"Ventás emerxentes ao premer as teclas"</string>
+    <string name="settings_screen_preferences">"Preferencias"</string>
+    <string name="settings_screen_appearance">"Aparencia e deseños"</string>
+    <string name="settings_screen_advanced">"Opcións avanzadas"</string>
+    <string name="settings_screen_theme">"Tema"</string>
+    <string name="key_preview_popup_dismiss_delay">"Retraso ao ampliar tecla"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Sen retraso"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Predeterminado"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
+    <string name="settings_system_default">"Predeterminado do sistema"</string>
+    <string name="auto_cap">"Maiúsculas automáticas"</string>
+    <string name="auto_cap_summary">"Pon en maiúscula a primeira palabra de cada frase"</string>
+    <string name="language_selection_title">"Idiomas"</string>
+    <string name="select_language">"Idiomas"</string>
+    <string name="subtype_en_GB">"Inglés (Reino Unido)"</string>
+    <string name="subtype_en_US">"Inglés (EUA)"</string>
+    <string name="subtype_es_US">"Español (EUA)"</string>
+    <string name="subtype_sr_ZZ">"Serbio (latino)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicional)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (compacto)"</string>
+    <string name="subtype_no_language">"Ningún idioma (alfabeto)"</string>
+    <string name="subtype_no_language_qwerty">"alfabeto (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Estilos de entrada personalizados"</string>
+    <string name="add_style">"Engadir estilo"</string>
+    <string name="add">"Engadir"</string>
+    <string name="remove">"Eliminar"</string>
+    <string name="save">"Gardar"</string>
+    <string name="subtype_locale">"Idioma"</string>
+    <string name="keyboard_layout_set">"Deseño"</string>
+    <string name="custom_input_style_note_message">"É necesario activar o estilo de entrada personalizado para poder comezar a utilizalo. Queres activalo agora?"</string>
+    <string name="enable">"Activar"</string>
+    <string name="not_now">"Agora non"</string>
+    <string name="custom_input_style_already_exists">"Xa existe o mesmo estilo de entrada: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Duración vibración ao premer teclas"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Volume do son ao premer teclas"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Retraso de pulsación prolongada"</string>
+    <string name="button_default">"Predeterminado"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

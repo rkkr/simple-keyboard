@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"ជម្រើស​​បញ្ចូល"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"ញ័រ​នៅ​ពេល​ចុច​គ្រាប់ចុច"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"សំឡេង​នៅ​ពេល​ចុច​គ្រាប់ចុច"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"លេច​ឡើង​នៅ​​ពេល​ចុច​គ្រាប់​ចុច"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"ចំណូលចិត្ត"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"រូបរាង &amp;amp ប្លង់"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"កម្រិត​ខ្ពស់"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"រូបរាង"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"​សោ​លេចឡើង​បោះបង់​ការ​​ពន្យារពេល​"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"គ្មាន​ការ​ពន្យារពេល"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"លំនាំដើម"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> មិល្លី​វិនាទី"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"លំនាំ​ដើម​​​ប្រព័ន្ធ"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"ការ​សរសេរ​ជា​អក្សរ​ធំ​​ស្វ័យប្រវត្តិ​"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"សរសេរ​ពាក្យ​ដំបូង​​​ជា​អក្សរ​ធំ​​នៃ​ប្រយោគ​នីមួយ​ៗ"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"ភាសា"</string>
-    <string name="select_language" msgid="5709487854987078367">"ភាសា"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"អង់គ្លេស (​អង់គ្លេស)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"អង់គ្លេស (សហរដ្ឋ​អាមេរិក)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"អេស្ប៉ាញ (សហរដ្ឋ​អាមេរិក​)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"សើប (ឡាតាំង​)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (អក្សរ​ពេញ)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (បង្រួម)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"គ្មាន​ភាសា (អក្សរ​ក្រម)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"តាម​លំដាប់​អក្សរក្រម (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"រចនាប័ទ្ម​បញ្ចូល​ផ្ទាល់ខ្លួន"</string>
-    <string name="add_style" msgid="6163126614514489951">"បន្ថែម​រចនាប័ទ្ម"</string>
-    <string name="add" msgid="8299699805688017798">"បន្ថែម"</string>
-    <string name="remove" msgid="4486081658752944606">"លុប​ចេញ"</string>
-    <string name="save" msgid="7646738597196767214">"រក្សាទុក"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"ភាសា"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"ប្លង់"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"ចាំបាច់​ត្រូវ​បើក​រចនាប័ទ្ម​បញ្ចូល​ផ្ទាល់​ខ្លួន​របស់​អ្នក មុន​ពេល​អ្នក​ចាប់ផ្ដើម​ប្រើ​វា។ តើ​អ្នក​ចង់​បើក​វា​ឥឡូវ​នេះ​ឬ?"</string>
-    <string name="enable" msgid="5031294444630523247">"បើក"</string>
-    <string name="not_now" msgid="6172462888202790482">"មិនមែន​ឥឡូវ"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"មាន​រចនាប័ទ្ម​បញ្ចូល​ដូច​គ្នា​ដូច​ហើយ៖ <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"ថិរវេលា​​ញ័រ​​ពេល​ចុច​គ្រាប់ចុច"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"កម្រិត​សំឡេង​ពេល​ចុច​គ្រាប់​ចុច"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"ពន្យារពេល​​​ចុច​គ្រាប់​ចុច​ឲ្យ​​យូរ"</string>
-    <string name="button_default" msgid="3988017840431881491">"លំនាំដើម"</string>
+    <string name="english_ime_input_options">"ជម្រើស​​បញ្ចូល"</string>
+    <string name="vibrate_on_keypress">"ញ័រ​នៅ​ពេល​ចុច​គ្រាប់ចុច"</string>
+    <string name="sound_on_keypress">"សំឡេង​នៅ​ពេល​ចុច​គ្រាប់ចុច"</string>
+    <string name="popup_on_keypress">"លេច​ឡើង​នៅ​​ពេល​ចុច​គ្រាប់​ចុច"</string>
+    <string name="settings_screen_preferences">"ចំណូលចិត្ត"</string>
+    <string name="settings_screen_appearance">"រូបរាង &amp;amp ប្លង់"</string>
+    <string name="settings_screen_advanced">"កម្រិត​ខ្ពស់"</string>
+    <string name="settings_screen_theme">"រូបរាង"</string>
+    <string name="key_preview_popup_dismiss_delay">"​សោ​លេចឡើង​បោះបង់​ការ​​ពន្យារពេល​"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"គ្មាន​ការ​ពន្យារពេល"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"លំនាំដើម"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> មិល្លី​វិនាទី"</string>
+    <string name="settings_system_default">"លំនាំ​ដើម​​​ប្រព័ន្ធ"</string>
+    <string name="auto_cap">"ការ​សរសេរ​ជា​អក្សរ​ធំ​​ស្វ័យប្រវត្តិ​"</string>
+    <string name="auto_cap_summary">"សរសេរ​ពាក្យ​ដំបូង​​​ជា​អក្សរ​ធំ​​នៃ​ប្រយោគ​នីមួយ​ៗ"</string>
+    <string name="language_selection_title">"ភាសា"</string>
+    <string name="select_language">"ភាសា"</string>
+    <string name="subtype_en_GB">"អង់គ្លេស (​អង់គ្លេស)"</string>
+    <string name="subtype_en_US">"អង់គ្លេស (សហរដ្ឋ​អាមេរិក)"</string>
+    <string name="subtype_es_US">"អេស្ប៉ាញ (សហរដ្ឋ​អាមេរិក​)"</string>
+    <string name="subtype_sr_ZZ">"សើប (ឡាតាំង​)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (អក្សរ​ពេញ)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (បង្រួម)"</string>
+    <string name="subtype_no_language">"គ្មាន​ភាសា (អក្សរ​ក្រម)"</string>
+    <string name="subtype_no_language_qwerty">"តាម​លំដាប់​អក្សរក្រម (QWERTY)"</string>
+    <string name="custom_input_styles_title">"រចនាប័ទ្ម​បញ្ចូល​ផ្ទាល់ខ្លួន"</string>
+    <string name="add_style">"បន្ថែម​រចនាប័ទ្ម"</string>
+    <string name="add">"បន្ថែម"</string>
+    <string name="remove">"លុប​ចេញ"</string>
+    <string name="save">"រក្សាទុក"</string>
+    <string name="subtype_locale">"ភាសា"</string>
+    <string name="keyboard_layout_set">"ប្លង់"</string>
+    <string name="custom_input_style_note_message">"ចាំបាច់​ត្រូវ​បើក​រចនាប័ទ្ម​បញ្ចូល​ផ្ទាល់​ខ្លួន​របស់​អ្នក មុន​ពេល​អ្នក​ចាប់ផ្ដើម​ប្រើ​វា។ តើ​អ្នក​ចង់​បើក​វា​ឥឡូវ​នេះ​ឬ?"</string>
+    <string name="enable">"បើក"</string>
+    <string name="not_now">"មិនមែន​ឥឡូវ"</string>
+    <string name="custom_input_style_already_exists">"មាន​រចនាប័ទ្ម​បញ្ចូល​ដូច​គ្នា​ដូច​ហើយ៖ <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"ថិរវេលា​​ញ័រ​​ពេល​ចុច​គ្រាប់ចុច"</string>
+    <string name="prefs_keypress_sound_volume_settings">"កម្រិត​សំឡេង​ពេល​ចុច​គ្រាប់​ចុច"</string>
+    <string name="prefs_key_longpress_timeout_settings">"ពន្យារពេល​​​ចុច​គ្រាប់​ចុច​ឲ្យ​​យូរ"</string>
+    <string name="button_default">"លំនាំដើម"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

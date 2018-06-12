@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Tùy chọn nhập"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Rung khi nhấn phím"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Âm thanh khi nhấn phím"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Bật lên khi nhấn phím"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Tùy chọn"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Giao diện và bố cục"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Nâng cao"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Chủ đề"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Độ trễ ẩn phím bật lên"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Không trễ"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Mặc định"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> mili giây"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Mặc định của hệ thống"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Tự động viết hoa"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Viết hoa chữ đầu tiên của mỗi câu"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Ngôn ngữ"</string>
-    <string name="select_language" msgid="5709487854987078367">"Ngôn ngữ"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"Tiếng Anh (Anh)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"Tiếng Anh (Mỹ)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"Tiếng Tây Ban Nha (Mỹ)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Tiếng Serbia (La tinh)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Truyền thống)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Viết tắt)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Không ngôn ngữ nào (Bảng chữ cái)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Bảng chữ cái (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Kiểu nhập tùy chỉnh"</string>
-    <string name="add_style" msgid="6163126614514489951">"Thêm kiểu"</string>
-    <string name="add" msgid="8299699805688017798">"Thêm"</string>
-    <string name="remove" msgid="4486081658752944606">"Xóa"</string>
-    <string name="save" msgid="7646738597196767214">"Lưu"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Ngôn ngữ"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Bố cục"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Bạn cần phải bật kiểu nhập tùy chỉnh trước khi bắt đầu sử dụng nó. Bạn có muốn bật kiểu nhập tùy chỉnh ngay bây giờ không?"</string>
-    <string name="enable" msgid="5031294444630523247">"Bật"</string>
-    <string name="not_now" msgid="6172462888202790482">"Để sau"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Đã tồn tại kiểu nhập tương tự: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Thời gian rung khi nhấn phím"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Âm lượng khi nhấn phím"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Thời gian trễ nhấn và giữ phím"</string>
-    <string name="button_default" msgid="3988017840431881491">"Mặc định"</string>
+    <string name="english_ime_input_options">"Tùy chọn nhập"</string>
+    <string name="vibrate_on_keypress">"Rung khi nhấn phím"</string>
+    <string name="sound_on_keypress">"Âm thanh khi nhấn phím"</string>
+    <string name="popup_on_keypress">"Bật lên khi nhấn phím"</string>
+    <string name="settings_screen_preferences">"Tùy chọn"</string>
+    <string name="settings_screen_appearance">"Giao diện và bố cục"</string>
+    <string name="settings_screen_advanced">"Nâng cao"</string>
+    <string name="settings_screen_theme">"Chủ đề"</string>
+    <string name="key_preview_popup_dismiss_delay">"Độ trễ ẩn phím bật lên"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Không trễ"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Mặc định"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> mili giây"</string>
+    <string name="settings_system_default">"Mặc định của hệ thống"</string>
+    <string name="auto_cap">"Tự động viết hoa"</string>
+    <string name="auto_cap_summary">"Viết hoa chữ đầu tiên của mỗi câu"</string>
+    <string name="language_selection_title">"Ngôn ngữ"</string>
+    <string name="select_language">"Ngôn ngữ"</string>
+    <string name="subtype_en_GB">"Tiếng Anh (Anh)"</string>
+    <string name="subtype_en_US">"Tiếng Anh (Mỹ)"</string>
+    <string name="subtype_es_US">"Tiếng Tây Ban Nha (Mỹ)"</string>
+    <string name="subtype_sr_ZZ">"Tiếng Serbia (La tinh)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Truyền thống)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Viết tắt)"</string>
+    <string name="subtype_no_language">"Không ngôn ngữ nào (Bảng chữ cái)"</string>
+    <string name="subtype_no_language_qwerty">"Bảng chữ cái (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Kiểu nhập tùy chỉnh"</string>
+    <string name="add_style">"Thêm kiểu"</string>
+    <string name="add">"Thêm"</string>
+    <string name="remove">"Xóa"</string>
+    <string name="save">"Lưu"</string>
+    <string name="subtype_locale">"Ngôn ngữ"</string>
+    <string name="keyboard_layout_set">"Bố cục"</string>
+    <string name="custom_input_style_note_message">"Bạn cần phải bật kiểu nhập tùy chỉnh trước khi bắt đầu sử dụng nó. Bạn có muốn bật kiểu nhập tùy chỉnh ngay bây giờ không?"</string>
+    <string name="enable">"Bật"</string>
+    <string name="not_now">"Để sau"</string>
+    <string name="custom_input_style_already_exists">"Đã tồn tại kiểu nhập tương tự: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Thời gian rung khi nhấn phím"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Âm lượng khi nhấn phím"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Thời gian trễ nhấn và giữ phím"</string>
+    <string name="button_default">"Mặc định"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

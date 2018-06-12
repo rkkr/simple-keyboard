@@ -75,7 +75,6 @@ public class Key implements Comparable<Key> {
     private static final int LABEL_FLAGS_FOLLOW_KEY_LABEL_RATIO = 0xC0;
     private static final int LABEL_FLAGS_FOLLOW_KEY_HINT_LABEL_RATIO = 0x140;
     // End of key text ratio mask enum values
-    private static final int LABEL_FLAGS_HAS_POPUP_HINT = 0x200;
     private static final int LABEL_FLAGS_HAS_SHIFTED_LETTER_HINT = 0x400;
     private static final int LABEL_FLAGS_HAS_HINT_LABEL = 0x800;
     // The bit to calculate the ratio of key label width against key width. If autoXScale bit is on
@@ -698,10 +697,6 @@ public class Key implements Comparable<Key> {
 
     public final boolean isAlignLabelOffCenter() {
         return (mLabelFlags & LABEL_FLAGS_ALIGN_LABEL_OFF_CENTER) != 0;
-    }
-
-    public final boolean hasPopupHint() {
-        return (mLabelFlags & LABEL_FLAGS_HAS_POPUP_HINT) != 0;
     }
 
     public final boolean hasShiftedLetterHint() {

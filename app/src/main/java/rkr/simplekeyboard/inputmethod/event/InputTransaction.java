@@ -33,14 +33,12 @@ public class InputTransaction {
 
     // Initial conditions
     public final SettingsValues mSettingsValues;
-    public final long mTimestamp;
 
     // Outputs
     private int mRequiredShiftUpdate = SHIFT_NO_UPDATE;
 
-    public InputTransaction(final SettingsValues settingsValues, final long timestamp) {
+    public InputTransaction(final SettingsValues settingsValues) {
         mSettingsValues = settingsValues;
-        mTimestamp = timestamp;
     }
 
     /**

@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Енгізу опциялары"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Пернені басқан кездегі діріл"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Пернені басу кезіндегі дыбыс"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Басылған пернені үлкейтіп көрсету"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Қалауларыңыз"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Сыртқы түр және орналасулар"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Кеңейтілген"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Тақырып"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Перненің ұлғайған кескінін жабу"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Кідіріс жоқ"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Әдепкі"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>мс"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Жүйе әдепкісі"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Авто бас әріптерге түрлендіру"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Әрбір сөйлемнің бірінші әріпін бас әріпке түрлендіру"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Тілдер"</string>
-    <string name="select_language" msgid="5709487854987078367">"Тілдер"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"ағылшын (ҰБ)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"ағылшын (АҚШ)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"Испан (АҚШ)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Серб (латын жазуы)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (дәстүрлі)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (шағын)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Тіл жоқ (әліпби)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Әліпби (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Реттелетін енгізу стильдері"</string>
-    <string name="add_style" msgid="6163126614514489951">"Стиль қосу"</string>
-    <string name="add" msgid="8299699805688017798">"Қосу"</string>
-    <string name="remove" msgid="4486081658752944606">"Өшіру"</string>
-    <string name="save" msgid="7646738597196767214">"Сақтау"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Тіл"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Орналасу"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Реттелетін енгізу стилі пайдалануды бастамас бұрын қосылуы қажет. Оны қазір қосу қажет пе?"</string>
-    <string name="enable" msgid="5031294444630523247">"Қосу"</string>
-    <string name="not_now" msgid="6172462888202790482">"Қазір емес"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Бірдей енгізу стилі бұрыннан бар: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Пернені басқан кездегі діріл ұзақтығы"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Пернені басқан кездегі дыбыс деңгейі"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Пернені ұзақ басу кідірісі"</string>
-    <string name="button_default" msgid="3988017840431881491">"Әдепкі"</string>
+    <string name="english_ime_input_options">"Енгізу опциялары"</string>
+    <string name="vibrate_on_keypress">"Пернені басқан кездегі діріл"</string>
+    <string name="sound_on_keypress">"Пернені басу кезіндегі дыбыс"</string>
+    <string name="popup_on_keypress">"Басылған пернені үлкейтіп көрсету"</string>
+    <string name="settings_screen_preferences">"Қалауларыңыз"</string>
+    <string name="settings_screen_appearance">"Сыртқы түр және орналасулар"</string>
+    <string name="settings_screen_advanced">"Кеңейтілген"</string>
+    <string name="settings_screen_theme">"Тақырып"</string>
+    <string name="key_preview_popup_dismiss_delay">"Перненің ұлғайған кескінін жабу"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Кідіріс жоқ"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Әдепкі"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>мс"</string>
+    <string name="settings_system_default">"Жүйе әдепкісі"</string>
+    <string name="auto_cap">"Авто бас әріптерге түрлендіру"</string>
+    <string name="auto_cap_summary">"Әрбір сөйлемнің бірінші әріпін бас әріпке түрлендіру"</string>
+    <string name="language_selection_title">"Тілдер"</string>
+    <string name="select_language">"Тілдер"</string>
+    <string name="subtype_en_GB">"ағылшын (ҰБ)"</string>
+    <string name="subtype_en_US">"ағылшын (АҚШ)"</string>
+    <string name="subtype_es_US">"Испан (АҚШ)"</string>
+    <string name="subtype_sr_ZZ">"Серб (латын жазуы)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (дәстүрлі)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (шағын)"</string>
+    <string name="subtype_no_language">"Тіл жоқ (әліпби)"</string>
+    <string name="subtype_no_language_qwerty">"Әліпби (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Реттелетін енгізу стильдері"</string>
+    <string name="add_style">"Стиль қосу"</string>
+    <string name="add">"Қосу"</string>
+    <string name="remove">"Өшіру"</string>
+    <string name="save">"Сақтау"</string>
+    <string name="subtype_locale">"Тіл"</string>
+    <string name="keyboard_layout_set">"Орналасу"</string>
+    <string name="custom_input_style_note_message">"Реттелетін енгізу стилі пайдалануды бастамас бұрын қосылуы қажет. Оны қазір қосу қажет пе?"</string>
+    <string name="enable">"Қосу"</string>
+    <string name="not_now">"Қазір емес"</string>
+    <string name="custom_input_style_already_exists">"Бірдей енгізу стилі бұрыннан бар: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Пернені басқан кездегі діріл ұзақтығы"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Пернені басқан кездегі дыбыс деңгейі"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Пернені ұзақ басу кідірісі"</string>
+    <string name="button_default">"Әдепкі"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

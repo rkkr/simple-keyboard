@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Invoeropsies"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Vibreer met sleuteldruk"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Klank met sleuteldruk"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Opspring met sleuteldruk"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Voorkeure"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Voorkoms en uitlegte"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Gevorderd"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Sleutelopspringer-wagperiode"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Geen wagperiode nie"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Verstek"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms."</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Stelsel se verstek"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Outohoofletters"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Die eerste woord van elke sin moet met \'n hoofletter begin"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Tale"</string>
-    <string name="select_language" msgid="5709487854987078367">"Tale"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"Engels (VK)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"Engels (VS)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"Spaans (VS)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Serwies (Latyns)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Tradisioneel)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Kompak)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Geen taal nie (alfabet)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Alfabet (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Gepasmaakte invoerstyle"</string>
-    <string name="add_style" msgid="6163126614514489951">"Voeg styl by"</string>
-    <string name="add" msgid="8299699805688017798">"Voeg by"</string>
-    <string name="remove" msgid="4486081658752944606">"Verwyder"</string>
-    <string name="save" msgid="7646738597196767214">"Stoor"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Taal"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Uitleg"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Jou gepasmaakte invoerstyl moet geaktiveer word voor gebruik. Aktiveer nou?"</string>
-    <string name="enable" msgid="5031294444630523247">"Aktiveer"</string>
-    <string name="not_now" msgid="6172462888202790482">"Nie nou nie"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Dieselfde invoerstyl bestaan ​​reeds: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Sleuteldruk se vibrasie-tydsduur"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Sleuteldruk se klankvolume"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Vertraging van sleutellangdruk"</string>
-    <string name="button_default" msgid="3988017840431881491">"Verstek"</string>
+    <string name="english_ime_input_options">"Invoeropsies"</string>
+    <string name="vibrate_on_keypress">"Vibreer met sleuteldruk"</string>
+    <string name="sound_on_keypress">"Klank met sleuteldruk"</string>
+    <string name="popup_on_keypress">"Opspring met sleuteldruk"</string>
+    <string name="settings_screen_preferences">"Voorkeure"</string>
+    <string name="settings_screen_appearance">"Voorkoms en uitlegte"</string>
+    <string name="settings_screen_advanced">"Gevorderd"</string>
+    <string name="settings_screen_theme">"Tema"</string>
+    <string name="key_preview_popup_dismiss_delay">"Sleutelopspringer-wagperiode"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Geen wagperiode nie"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Verstek"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms."</string>
+    <string name="settings_system_default">"Stelsel se verstek"</string>
+    <string name="auto_cap">"Outohoofletters"</string>
+    <string name="auto_cap_summary">"Die eerste woord van elke sin moet met \'n hoofletter begin"</string>
+    <string name="language_selection_title">"Tale"</string>
+    <string name="select_language">"Tale"</string>
+    <string name="subtype_en_GB">"Engels (VK)"</string>
+    <string name="subtype_en_US">"Engels (VS)"</string>
+    <string name="subtype_es_US">"Spaans (VS)"</string>
+    <string name="subtype_sr_ZZ">"Serwies (Latyns)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Tradisioneel)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Kompak)"</string>
+    <string name="subtype_no_language">"Geen taal nie (alfabet)"</string>
+    <string name="subtype_no_language_qwerty">"Alfabet (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Gepasmaakte invoerstyle"</string>
+    <string name="add_style">"Voeg styl by"</string>
+    <string name="add">"Voeg by"</string>
+    <string name="remove">"Verwyder"</string>
+    <string name="save">"Stoor"</string>
+    <string name="subtype_locale">"Taal"</string>
+    <string name="keyboard_layout_set">"Uitleg"</string>
+    <string name="custom_input_style_note_message">"Jou gepasmaakte invoerstyl moet geaktiveer word voor gebruik. Aktiveer nou?"</string>
+    <string name="enable">"Aktiveer"</string>
+    <string name="not_now">"Nie nou nie"</string>
+    <string name="custom_input_style_already_exists">"Dieselfde invoerstyl bestaan ​​reeds: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Sleuteldruk se vibrasie-tydsduur"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Sleuteldruk se klankvolume"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Vertraging van sleutellangdruk"</string>
+    <string name="button_default">"Verstek"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

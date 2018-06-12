@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Opzioni inserimento"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Vibrazione tasti"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Suono tasti"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Popup tasti"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Preferenze"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Aspetto e layout"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Avanzate"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Ritardo eliminaz. popup tasto"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Nessun ritardo"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Predefinito"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Predefinito"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Maiuscole automatiche"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Iniziale maiuscola per la prima parola di ogni frase"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Lingue"</string>
-    <string name="select_language" msgid="5709487854987078367">"Lingue"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"Inglese (UK)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"Inglese (USA)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"Spagnolo (USA)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Serbo (latino)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradizionale)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (compatto)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Nessuna lingua (alfabeto)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Alfabeto (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Stili personalizzati"</string>
-    <string name="add_style" msgid="6163126614514489951">"Aggiungi stile"</string>
-    <string name="add" msgid="8299699805688017798">"Aggiungi"</string>
-    <string name="remove" msgid="4486081658752944606">"Rimuovi"</string>
-    <string name="save" msgid="7646738597196767214">"Salva"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Lingua"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Layout"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Lo stile di ingresso personalizzato deve essere attivato prima dell\'utilizzo. Vuoi attivarlo?"</string>
-    <string name="enable" msgid="5031294444630523247">"Attiva"</string>
-    <string name="not_now" msgid="6172462888202790482">"Non ora"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Esiste già uno stile di inuput uguale: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Durata vibrazione pressione tasto"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Volume audio a pressione tasto"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Ritardo pressione lunga tasti"</string>
-    <string name="button_default" msgid="3988017840431881491">"Predefinito"</string>
+    <string name="english_ime_input_options">"Opzioni inserimento"</string>
+    <string name="vibrate_on_keypress">"Vibrazione tasti"</string>
+    <string name="sound_on_keypress">"Suono tasti"</string>
+    <string name="popup_on_keypress">"Popup tasti"</string>
+    <string name="settings_screen_preferences">"Preferenze"</string>
+    <string name="settings_screen_appearance">"Aspetto e layout"</string>
+    <string name="settings_screen_advanced">"Avanzate"</string>
+    <string name="settings_screen_theme">"Tema"</string>
+    <string name="key_preview_popup_dismiss_delay">"Ritardo eliminaz. popup tasto"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Nessun ritardo"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Predefinito"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
+    <string name="settings_system_default">"Predefinito"</string>
+    <string name="auto_cap">"Maiuscole automatiche"</string>
+    <string name="auto_cap_summary">"Iniziale maiuscola per la prima parola di ogni frase"</string>
+    <string name="language_selection_title">"Lingue"</string>
+    <string name="select_language">"Lingue"</string>
+    <string name="subtype_en_GB">"Inglese (UK)"</string>
+    <string name="subtype_en_US">"Inglese (USA)"</string>
+    <string name="subtype_es_US">"Spagnolo (USA)"</string>
+    <string name="subtype_sr_ZZ">"Serbo (latino)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradizionale)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (compatto)"</string>
+    <string name="subtype_no_language">"Nessuna lingua (alfabeto)"</string>
+    <string name="subtype_no_language_qwerty">"Alfabeto (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Stili personalizzati"</string>
+    <string name="add_style">"Aggiungi stile"</string>
+    <string name="add">"Aggiungi"</string>
+    <string name="remove">"Rimuovi"</string>
+    <string name="save">"Salva"</string>
+    <string name="subtype_locale">"Lingua"</string>
+    <string name="keyboard_layout_set">"Layout"</string>
+    <string name="custom_input_style_note_message">"Lo stile di ingresso personalizzato deve essere attivato prima dell\'utilizzo. Vuoi attivarlo?"</string>
+    <string name="enable">"Attiva"</string>
+    <string name="not_now">"Non ora"</string>
+    <string name="custom_input_style_already_exists">"Esiste già uno stile di inuput uguale: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Durata vibrazione pressione tasto"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Volume audio a pressione tasto"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Ritardo pressione lunga tasti"</string>
+    <string name="button_default">"Predefinito"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

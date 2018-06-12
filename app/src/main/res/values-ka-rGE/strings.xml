@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"შეყვანის მეთოდები"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"ვიბრაცია კლავიშზე დაჭერისას"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"ხმა კლავიშზე დაჭერისას"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"გადიდება ღილაკზე დაჭერისას"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"პარამეტრები"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"იერსახე &amp; განლაგებები"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"გაფართოებული"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"თემა"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"ამომხტ.კლავიშის დაყოვნება"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"არ დაყოვნდეს"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"ნაგულისხმევი"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>მწმ"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"სისტემის ნაგულისხმევი"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"ავტო-კაპიტალიზაცია"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"ყოველი წინადადების პირველი სიტყვის კაპიტალიზაცია"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"ენები"</string>
-    <string name="select_language" msgid="5709487854987078367">"ენები"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"ინგლისური (გართ. სამ.)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"ინგლისური (აშშ)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"ესპანური (აშშ)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"სერბული (ლათინური)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ტრადიციული)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (კომპაქტური)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"ენის გარეშე (ლათინური ანბანი)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"ანბანი (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"შეყვანის სტილების კონფიგურაცია"</string>
-    <string name="add_style" msgid="6163126614514489951">"სტილის დამატება"</string>
-    <string name="add" msgid="8299699805688017798">"დამატება"</string>
-    <string name="remove" msgid="4486081658752944606">"ამოშლა"</string>
-    <string name="save" msgid="7646738597196767214">"შენახვა"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"ენა"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"განლაგება"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"თქვენი მორგებული შეყვანის სტილი გამოყენებამდე უნდა გაააქტიუროთ. გსურთ მისი აქტივაცია ახლა?"</string>
-    <string name="enable" msgid="5031294444630523247">"ჩართვა"</string>
-    <string name="not_now" msgid="6172462888202790482">"ახლა არა"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"შეყვანის იგივე სტილი უკვე არსებობს: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"კლავიშზე დაჭერის ვიბრაციის ხანგრძლივობა"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"კლავიშზე დაჭერის ხმა"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"კლავიშზე გრძელი დაჭერის დაყოვნება"</string>
-    <string name="button_default" msgid="3988017840431881491">"ნაგულისხმევი"</string>
+    <string name="english_ime_input_options">"შეყვანის მეთოდები"</string>
+    <string name="vibrate_on_keypress">"ვიბრაცია კლავიშზე დაჭერისას"</string>
+    <string name="sound_on_keypress">"ხმა კლავიშზე დაჭერისას"</string>
+    <string name="popup_on_keypress">"გადიდება ღილაკზე დაჭერისას"</string>
+    <string name="settings_screen_preferences">"პარამეტრები"</string>
+    <string name="settings_screen_appearance">"იერსახე &amp; განლაგებები"</string>
+    <string name="settings_screen_advanced">"გაფართოებული"</string>
+    <string name="settings_screen_theme">"თემა"</string>
+    <string name="key_preview_popup_dismiss_delay">"ამომხტ.კლავიშის დაყოვნება"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"არ დაყოვნდეს"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"ნაგულისხმევი"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>მწმ"</string>
+    <string name="settings_system_default">"სისტემის ნაგულისხმევი"</string>
+    <string name="auto_cap">"ავტო-კაპიტალიზაცია"</string>
+    <string name="auto_cap_summary">"ყოველი წინადადების პირველი სიტყვის კაპიტალიზაცია"</string>
+    <string name="language_selection_title">"ენები"</string>
+    <string name="select_language">"ენები"</string>
+    <string name="subtype_en_GB">"ინგლისური (გართ. სამ.)"</string>
+    <string name="subtype_en_US">"ინგლისური (აშშ)"</string>
+    <string name="subtype_es_US">"ესპანური (აშშ)"</string>
+    <string name="subtype_sr_ZZ">"სერბული (ლათინური)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ტრადიციული)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (კომპაქტური)"</string>
+    <string name="subtype_no_language">"ენის გარეშე (ლათინური ანბანი)"</string>
+    <string name="subtype_no_language_qwerty">"ანბანი (QWERTY)"</string>
+    <string name="custom_input_styles_title">"შეყვანის სტილების კონფიგურაცია"</string>
+    <string name="add_style">"სტილის დამატება"</string>
+    <string name="add">"დამატება"</string>
+    <string name="remove">"ამოშლა"</string>
+    <string name="save">"შენახვა"</string>
+    <string name="subtype_locale">"ენა"</string>
+    <string name="keyboard_layout_set">"განლაგება"</string>
+    <string name="custom_input_style_note_message">"თქვენი მორგებული შეყვანის სტილი გამოყენებამდე უნდა გაააქტიუროთ. გსურთ მისი აქტივაცია ახლა?"</string>
+    <string name="enable">"ჩართვა"</string>
+    <string name="not_now">"ახლა არა"</string>
+    <string name="custom_input_style_already_exists">"შეყვანის იგივე სტილი უკვე არსებობს: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"კლავიშზე დაჭერის ვიბრაციის ხანგრძლივობა"</string>
+    <string name="prefs_keypress_sound_volume_settings">"კლავიშზე დაჭერის ხმა"</string>
+    <string name="prefs_key_longpress_timeout_settings">"კლავიშზე გრძელი დაჭერის დაყოვნება"</string>
+    <string name="button_default">"ნაგულისხმევი"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

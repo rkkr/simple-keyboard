@@ -109,7 +109,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     private final int mLanguageOnSpacebarFinalAlpha;
     private ObjectAnimator mLanguageOnSpacebarFadeoutAnimator;
     private int mLanguageOnSpacebarFormatType;
-    private boolean mHasMultipleEnabledIMEsOrSubtypes;
     private int mLanguageOnSpacebarAnimAlpha = Constants.Color.ALPHA_OPAQUE;
     private final float mLanguageOnSpacebarTextRatio;
     private float mLanguageOnSpacebarTextSize;
@@ -609,13 +608,11 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     }
 
     public void startDisplayLanguageOnSpacebar(final boolean subtypeChanged,
-            final int languageOnSpacebarFormatType,
-            final boolean hasMultipleEnabledIMEsOrSubtypes) {
+            final int languageOnSpacebarFormatType) {
         if (subtypeChanged) {
             KeyPreviewView.clearTextCache();
         }
         mLanguageOnSpacebarFormatType = languageOnSpacebarFormatType;
-        mHasMultipleEnabledIMEsOrSubtypes = hasMultipleEnabledIMEsOrSubtypes;
         final ObjectAnimator animator = mLanguageOnSpacebarFadeoutAnimator;
         if (animator == null) {
             mLanguageOnSpacebarFormatType = LanguageOnSpacebarUtils.FORMAT_TYPE_NONE;

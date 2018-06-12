@@ -40,7 +40,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     private static final String TAG = Settings.class.getSimpleName();
     // Settings screens
     public static final String SCREEN_THEME = "screen_theme";
-    public static final String SCREEN_DEBUG = "screen_debug";
     // In the same order as xml/prefs.xml
     public static final String PREF_AUTO_CAP = "auto_cap";
     public static final String PREF_VIBRATE_ON = "vibrate_on";
@@ -63,8 +62,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_HIDE_SPECIAL_CHARS = "pref_hide_special_chars";
     public static final String PREF_SHOW_NUMBER_ROW = "pref_show_number_row";
     public static final String PREF_SHOW_ARROW_KEYS = "pref_show_arrow_keys";
-
-    public static final String PREF_KEY_IS_INTERNAL = "pref_key_is_internal";
 
     private static final float UNDEFINED_PREFERENCE_VALUE_FLOAT = -1.0f;
     private static final int UNDEFINED_PREFERENCE_VALUE_INT = -1;
@@ -286,9 +283,5 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         // is NOKEYS and if it's not hidden (e.g. folded inside the device).
         return conf.keyboard != Configuration.KEYBOARD_NOKEYS
                 && conf.hardKeyboardHidden != Configuration.HARDKEYBOARDHIDDEN_YES;
-    }
-
-    public static boolean isInternal(final SharedPreferences prefs) {
-        return prefs.getBoolean(PREF_KEY_IS_INTERNAL, false);
     }
 }

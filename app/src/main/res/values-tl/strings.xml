@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Mga pagpipilian sa input"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Mag-vibrate sa keypress"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Tumunog sa keypress"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Mag-popup sa keypress"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Mga Kagustuhan"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Hitsura at Mga Layout"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Advanced"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Tema"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"I-dismiss ang delay ng key popup"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Walang delay"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Default"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Default ng system"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Auto-capitalization"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"I-capitalize ang unang salita ng bawat pangungusap"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Mga Wika"</string>
-    <string name="select_language" msgid="5709487854987078367">"Mga Wika"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"English (UK)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"English (United States)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"Spanish (US)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Serbian (Latin)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Traditional)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Compact)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Walang wika (Alpabeto)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Alpabeto (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Custom style ng input"</string>
-    <string name="add_style" msgid="6163126614514489951">"Mag-add ng style"</string>
-    <string name="add" msgid="8299699805688017798">"Idagdag"</string>
-    <string name="remove" msgid="4486081658752944606">"Alisin"</string>
-    <string name="save" msgid="7646738597196767214">"I-save"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Wika"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Layout"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Kailangan pinagana ang custom na istilo ng input bago simulang gamitin. Nais itong paganahin?"</string>
-    <string name="enable" msgid="5031294444630523247">"Paganahin"</string>
-    <string name="not_now" msgid="6172462888202790482">"Hindi ngayon"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Umiiral na ang parehong estilo ng input: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Tagal ng vibration ng keypress"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Volume ng tunog ng keypress"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Delay sa long press ng key"</string>
-    <string name="button_default" msgid="3988017840431881491">"Default"</string>
+    <string name="english_ime_input_options">"Mga pagpipilian sa input"</string>
+    <string name="vibrate_on_keypress">"Mag-vibrate sa keypress"</string>
+    <string name="sound_on_keypress">"Tumunog sa keypress"</string>
+    <string name="popup_on_keypress">"Mag-popup sa keypress"</string>
+    <string name="settings_screen_preferences">"Mga Kagustuhan"</string>
+    <string name="settings_screen_appearance">"Hitsura at Mga Layout"</string>
+    <string name="settings_screen_advanced">"Advanced"</string>
+    <string name="settings_screen_theme">"Tema"</string>
+    <string name="key_preview_popup_dismiss_delay">"I-dismiss ang delay ng key popup"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Walang delay"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Default"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
+    <string name="settings_system_default">"Default ng system"</string>
+    <string name="auto_cap">"Auto-capitalization"</string>
+    <string name="auto_cap_summary">"I-capitalize ang unang salita ng bawat pangungusap"</string>
+    <string name="language_selection_title">"Mga Wika"</string>
+    <string name="select_language">"Mga Wika"</string>
+    <string name="subtype_en_GB">"English (UK)"</string>
+    <string name="subtype_en_US">"English (United States)"</string>
+    <string name="subtype_es_US">"Spanish (US)"</string>
+    <string name="subtype_sr_ZZ">"Serbian (Latin)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Traditional)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Compact)"</string>
+    <string name="subtype_no_language">"Walang wika (Alpabeto)"</string>
+    <string name="subtype_no_language_qwerty">"Alpabeto (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Custom style ng input"</string>
+    <string name="add_style">"Mag-add ng style"</string>
+    <string name="add">"Idagdag"</string>
+    <string name="remove">"Alisin"</string>
+    <string name="save">"I-save"</string>
+    <string name="subtype_locale">"Wika"</string>
+    <string name="keyboard_layout_set">"Layout"</string>
+    <string name="custom_input_style_note_message">"Kailangan pinagana ang custom na istilo ng input bago simulang gamitin. Nais itong paganahin?"</string>
+    <string name="enable">"Paganahin"</string>
+    <string name="not_now">"Hindi ngayon"</string>
+    <string name="custom_input_style_already_exists">"Umiiral na ang parehong estilo ng input: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Tagal ng vibration ng keypress"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Volume ng tunog ng keypress"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Delay sa long press ng key"</string>
+    <string name="button_default">"Default"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

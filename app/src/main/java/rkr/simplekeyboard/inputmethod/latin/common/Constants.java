@@ -135,11 +135,6 @@ public final class Constants {
     // right for this.
     public static final int MAX_CHARACTERS_FOR_RECAPITALIZATION = 1024 * 100;
 
-    // Key events coming any faster than this are long-presses.
-    public static final int LONG_PRESS_MILLISECONDS = 200;
-    // How many continuous deletes at which to start deleting at a higher speed.
-    public static final int DELETE_ACCELERATE_AT = 20;
-
     public static boolean isValidCoordinate(final int coordinate) {
         // Detect {@link NOT_A_COORDINATE}, {@link SUGGESTION_STRIP_COORDINATE},
         // and {@link SPELL_CHECKER_COORDINATE}.
@@ -161,7 +156,6 @@ public final class Constants {
     public static final int CODE_SPACE = ' ';
     public static final int CODE_PERIOD = '.';
     public static final int CODE_COMMA = ',';
-    public static final int CODE_DASH = '-';
     public static final int CODE_SINGLE_QUOTE = '\'';
     public static final int CODE_DOUBLE_QUOTE = '"';
     public static final int CODE_BACKSLASH = '\\';
@@ -226,8 +220,6 @@ public final class Constants {
      * Screen metrics (a.k.a. Device form factor) constants of
      * {@link com.android.inputmethod.latin.R.integer#config_screen_metrics}.
      */
-    public static final int SCREEN_METRICS_SMALL_PHONE = 0;
-    public static final int SCREEN_METRICS_LARGE_PHONE = 1;
     public static final int SCREEN_METRICS_LARGE_TABLET = 2;
     public static final int SCREEN_METRICS_SMALL_TABLET = 3;
 

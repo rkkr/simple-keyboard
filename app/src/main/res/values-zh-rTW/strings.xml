@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"輸入選項"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"按鍵時震動"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"按鍵聲音"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"按鍵時彈出"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"偏好設定"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"外觀與版面配置"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"進階"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"主題"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"關閉彈出式鍵盤的延遲時間"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"不延遲"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"預設"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> 毫秒"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"系統預設"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"自動大寫"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"句首字詞大寫"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"語言"</string>
-    <string name="select_language" msgid="5709487854987078367">"語言"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"英文 (英國)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"英文 (美國)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"西班牙文 (美國)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"塞爾維亞文 (拉丁文)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (傳統)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (精簡)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"無語言 (字母)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"字母 (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"自訂輸入樣式"</string>
-    <string name="add_style" msgid="6163126614514489951">"新增樣式"</string>
-    <string name="add" msgid="8299699805688017798">"新增"</string>
-    <string name="remove" msgid="4486081658752944606">"移除"</string>
-    <string name="save" msgid="7646738597196767214">"儲存"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"語言"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"配置"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"您必須先啟用自訂輸入樣式，才能開始使用。您要立即啟用嗎？"</string>
-    <string name="enable" msgid="5031294444630523247">"啟用"</string>
-    <string name="not_now" msgid="6172462888202790482">"暫時不要"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"已存在相同的輸入樣式：<xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"按鍵震動持續時間"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"按鍵音量"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"按鍵長按延遲"</string>
-    <string name="button_default" msgid="3988017840431881491">"預設"</string>
+    <string name="english_ime_input_options">"輸入選項"</string>
+    <string name="vibrate_on_keypress">"按鍵時震動"</string>
+    <string name="sound_on_keypress">"按鍵聲音"</string>
+    <string name="popup_on_keypress">"按鍵時彈出"</string>
+    <string name="settings_screen_preferences">"偏好設定"</string>
+    <string name="settings_screen_appearance">"外觀與版面配置"</string>
+    <string name="settings_screen_advanced">"進階"</string>
+    <string name="settings_screen_theme">"主題"</string>
+    <string name="key_preview_popup_dismiss_delay">"關閉彈出式鍵盤的延遲時間"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"不延遲"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"預設"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> 毫秒"</string>
+    <string name="settings_system_default">"系統預設"</string>
+    <string name="auto_cap">"自動大寫"</string>
+    <string name="auto_cap_summary">"句首字詞大寫"</string>
+    <string name="language_selection_title">"語言"</string>
+    <string name="select_language">"語言"</string>
+    <string name="subtype_en_GB">"英文 (英國)"</string>
+    <string name="subtype_en_US">"英文 (美國)"</string>
+    <string name="subtype_es_US">"西班牙文 (美國)"</string>
+    <string name="subtype_sr_ZZ">"塞爾維亞文 (拉丁文)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (傳統)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (精簡)"</string>
+    <string name="subtype_no_language">"無語言 (字母)"</string>
+    <string name="subtype_no_language_qwerty">"字母 (QWERTY)"</string>
+    <string name="custom_input_styles_title">"自訂輸入樣式"</string>
+    <string name="add_style">"新增樣式"</string>
+    <string name="add">"新增"</string>
+    <string name="remove">"移除"</string>
+    <string name="save">"儲存"</string>
+    <string name="subtype_locale">"語言"</string>
+    <string name="keyboard_layout_set">"配置"</string>
+    <string name="custom_input_style_note_message">"您必須先啟用自訂輸入樣式，才能開始使用。您要立即啟用嗎？"</string>
+    <string name="enable">"啟用"</string>
+    <string name="not_now">"暫時不要"</string>
+    <string name="custom_input_style_already_exists">"已存在相同的輸入樣式：<xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"按鍵震動持續時間"</string>
+    <string name="prefs_keypress_sound_volume_settings">"按鍵音量"</string>
+    <string name="prefs_key_longpress_timeout_settings">"按鍵長按延遲"</string>
+    <string name="button_default">"預設"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

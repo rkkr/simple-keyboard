@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Настройки"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Виброотклик клавиш"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Звук клавиш"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Увеличивать при нажатии"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Настройки"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Вид и раскладки"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Дополнительные настройки"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Тема"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Задержка закрытия"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Без задержки"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"По умолчанию"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"По умолчанию"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Заглавные автоматически"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Писать первое слово предложения с прописной буквы"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Выберите язык"</string>
-    <string name="select_language" msgid="5709487854987078367">"Язык"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"английский (Великобритания)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"английский (США)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"Испанский (США)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Сербский (латиница)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (классическая)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактная раскладка)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Язык не определен (латиница)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Латиница (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Свои стили ввода"</string>
-    <string name="add_style" msgid="6163126614514489951">"Добавить стиль"</string>
-    <string name="add" msgid="8299699805688017798">"Добавить"</string>
-    <string name="remove" msgid="4486081658752944606">"Удалить"</string>
-    <string name="save" msgid="7646738597196767214">"Сохранить"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Язык"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Раскладка"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Необходимо включить персонализированный стиль ввода."</string>
-    <string name="enable" msgid="5031294444630523247">"Включить"</string>
-    <string name="not_now" msgid="6172462888202790482">"Не сейчас"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Такой стиль ввода уже существует: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Вибросигнал при нажатии клавиш"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Звук при нажатии клавиш"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Долгое нажатие"</string>
-    <string name="button_default" msgid="3988017840431881491">"По умолчанию"</string>
+    <string name="english_ime_input_options">"Настройки"</string>
+    <string name="vibrate_on_keypress">"Виброотклик клавиш"</string>
+    <string name="sound_on_keypress">"Звук клавиш"</string>
+    <string name="popup_on_keypress">"Увеличивать при нажатии"</string>
+    <string name="settings_screen_preferences">"Настройки"</string>
+    <string name="settings_screen_appearance">"Вид и раскладки"</string>
+    <string name="settings_screen_advanced">"Дополнительные настройки"</string>
+    <string name="settings_screen_theme">"Тема"</string>
+    <string name="key_preview_popup_dismiss_delay">"Задержка закрытия"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Без задержки"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"По умолчанию"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
+    <string name="settings_system_default">"По умолчанию"</string>
+    <string name="auto_cap">"Заглавные автоматически"</string>
+    <string name="auto_cap_summary">"Писать первое слово предложения с прописной буквы"</string>
+    <string name="language_selection_title">"Выберите язык"</string>
+    <string name="select_language">"Язык"</string>
+    <string name="subtype_en_GB">"английский (Великобритания)"</string>
+    <string name="subtype_en_US">"английский (США)"</string>
+    <string name="subtype_es_US">"Испанский (США)"</string>
+    <string name="subtype_sr_ZZ">"Сербский (латиница)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (классическая)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактная раскладка)"</string>
+    <string name="subtype_no_language">"Язык не определен (латиница)"</string>
+    <string name="subtype_no_language_qwerty">"Латиница (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Свои стили ввода"</string>
+    <string name="add_style">"Добавить стиль"</string>
+    <string name="add">"Добавить"</string>
+    <string name="remove">"Удалить"</string>
+    <string name="save">"Сохранить"</string>
+    <string name="subtype_locale">"Язык"</string>
+    <string name="keyboard_layout_set">"Раскладка"</string>
+    <string name="custom_input_style_note_message">"Необходимо включить персонализированный стиль ввода."</string>
+    <string name="enable">"Включить"</string>
+    <string name="not_now">"Не сейчас"</string>
+    <string name="custom_input_style_already_exists">"Такой стиль ввода уже существует: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Вибросигнал при нажатии клавиш"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Звук при нажатии клавиш"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Долгое нажатие"</string>
+    <string name="button_default">"По умолчанию"</string>
     <string name="prefs_keyboard_height_settings">Высота клавиатуры</string>
     <string name="keyboard_color">Установить пользовательский цвет клавиатуры</string>
     <string name="hide_special_chars">Скрыть специальные символы</string>

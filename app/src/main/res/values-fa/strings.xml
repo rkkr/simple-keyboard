@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"گزینه‌های ورودی"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"لرزش با فشار کلید"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"صدا با فشار کلید"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"بازشدن با فشار کلید"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"تنظیمات برگزیده"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"شکل ظاهری و چیدمان"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"پیشرفته"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"طرح‌زمینه"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"تأخیر در رد کردن کلید نمایشی"</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"بدون تأخیر"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"پیش‌فرض"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> میلی‌ثانیه"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"پیش‌فرض سیستم"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"بزرگ‌کردن خودکار حروف"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"بزرگ‌نویسی کلمه اول هر جمله"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"زبان‌ها"</string>
-    <string name="select_language" msgid="5709487854987078367">"زبان‌ها"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"انگلیسی (بریتانیا)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"انگلیسی (امریکا)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"اسپانیایی (امریکا)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"صربی (لاتین)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (سنتی)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (فشرده)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"بدون زبان (حروف الفبا)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"‏حروف الفبا (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"سبک‌های ورودی سفارشی"</string>
-    <string name="add_style" msgid="6163126614514489951">"افزودن سبک"</string>
-    <string name="add" msgid="8299699805688017798">"افزودن"</string>
-    <string name="remove" msgid="4486081658752944606">"حذف"</string>
-    <string name="save" msgid="7646738597196767214">"ذخیره"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"زبان"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"چیدمان"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"سبک ورودی سفارشی شما باید قبل از شروع به استفاده از آن فعال شود. می‌خواهید اکنون آن را فعال کنید؟"</string>
-    <string name="enable" msgid="5031294444630523247">"فعال کردن"</string>
-    <string name="not_now" msgid="6172462888202790482">"اکنون نه"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"سبک ورودی مشابهی در حال حاضر وجود دارد: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"طول مدت لرزش در اثر فشردن کلید"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"میزان صدای فشردن کلید"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"تأخیر فشار طولانی کلید"</string>
-    <string name="button_default" msgid="3988017840431881491">"پیش‌فرض"</string>
+    <string name="english_ime_input_options">"گزینه‌های ورودی"</string>
+    <string name="vibrate_on_keypress">"لرزش با فشار کلید"</string>
+    <string name="sound_on_keypress">"صدا با فشار کلید"</string>
+    <string name="popup_on_keypress">"بازشدن با فشار کلید"</string>
+    <string name="settings_screen_preferences">"تنظیمات برگزیده"</string>
+    <string name="settings_screen_appearance">"شکل ظاهری و چیدمان"</string>
+    <string name="settings_screen_advanced">"پیشرفته"</string>
+    <string name="settings_screen_theme">"طرح‌زمینه"</string>
+    <string name="key_preview_popup_dismiss_delay">"تأخیر در رد کردن کلید نمایشی"</string>
+    <string name="key_preview_popup_dismiss_no_delay">"بدون تأخیر"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"پیش‌فرض"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> میلی‌ثانیه"</string>
+    <string name="settings_system_default">"پیش‌فرض سیستم"</string>
+    <string name="auto_cap">"بزرگ‌کردن خودکار حروف"</string>
+    <string name="auto_cap_summary">"بزرگ‌نویسی کلمه اول هر جمله"</string>
+    <string name="language_selection_title">"زبان‌ها"</string>
+    <string name="select_language">"زبان‌ها"</string>
+    <string name="subtype_en_GB">"انگلیسی (بریتانیا)"</string>
+    <string name="subtype_en_US">"انگلیسی (امریکا)"</string>
+    <string name="subtype_es_US">"اسپانیایی (امریکا)"</string>
+    <string name="subtype_sr_ZZ">"صربی (لاتین)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (سنتی)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (فشرده)"</string>
+    <string name="subtype_no_language">"بدون زبان (حروف الفبا)"</string>
+    <string name="subtype_no_language_qwerty">"‏حروف الفبا (QWERTY)"</string>
+    <string name="custom_input_styles_title">"سبک‌های ورودی سفارشی"</string>
+    <string name="add_style">"افزودن سبک"</string>
+    <string name="add">"افزودن"</string>
+    <string name="remove">"حذف"</string>
+    <string name="save">"ذخیره"</string>
+    <string name="subtype_locale">"زبان"</string>
+    <string name="keyboard_layout_set">"چیدمان"</string>
+    <string name="custom_input_style_note_message">"سبک ورودی سفارشی شما باید قبل از شروع به استفاده از آن فعال شود. می‌خواهید اکنون آن را فعال کنید؟"</string>
+    <string name="enable">"فعال کردن"</string>
+    <string name="not_now">"اکنون نه"</string>
+    <string name="custom_input_style_already_exists">"سبک ورودی مشابهی در حال حاضر وجود دارد: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"طول مدت لرزش در اثر فشردن کلید"</string>
+    <string name="prefs_keypress_sound_volume_settings">"میزان صدای فشردن کلید"</string>
+    <string name="prefs_key_longpress_timeout_settings">"تأخیر فشار طولانی کلید"</string>
+    <string name="button_default">"پیش‌فرض"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>

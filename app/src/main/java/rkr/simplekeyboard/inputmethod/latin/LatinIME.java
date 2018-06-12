@@ -812,8 +812,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             mRichImm.switchToShortcutIme(this);
         }
         final InputTransaction completeInputTransaction =
-                mInputLogic.onCodeInput(mSettings.getCurrent(), event,
-                        mKeyboardSwitcher.getKeyboardShiftMode());
+                mInputLogic.onCodeInput(mSettings.getCurrent(), event);
         updateStateAfterInputTransaction(completeInputTransaction);
         mKeyboardSwitcher.onEvent(event, getCurrentAutoCapsState(), getCurrentRecapitalizeState());
     }
@@ -842,8 +841,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // TODO: have the keyboard pass the correct key code when we need it.
         final Event event = Event.createSoftwareTextEvent(rawText, Constants.CODE_OUTPUT_TEXT);
         final InputTransaction completeInputTransaction =
-                mInputLogic.onTextInput(mSettings.getCurrent(), event,
-                        mKeyboardSwitcher.getKeyboardShiftMode());
+                mInputLogic.onTextInput(mSettings.getCurrent(), event);
         updateStateAfterInputTransaction(completeInputTransaction);
         mKeyboardSwitcher.onEvent(event, getCurrentAutoCapsState(), getCurrentRecapitalizeState());
     }

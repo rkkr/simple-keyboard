@@ -19,46 +19,46 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options" msgid="3909945612939668554">"Параметры ўводу"</string>
-    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Вібрацыя пры націску клавіш"</string>
-    <string name="sound_on_keypress" msgid="6093592297198243644">"Гук пры націску"</string>
-    <string name="popup_on_keypress" msgid="123894815723512944">"Па націску на клавішы ўсплывае акно"</string>
-    <string name="settings_screen_preferences" msgid="2696713156722014624">"Параметры"</string>
-    <string name="settings_screen_appearance" msgid="7358046399111611615">"Знешні выгляд і раскладкі"</string>
-    <string name="settings_screen_advanced" msgid="7472408607625972994">"Дадатковыя"</string>
-    <string name="settings_screen_theme" msgid="2137262503543943871">"Тэма"</string>
-    <string name="key_preview_popup_dismiss_delay" msgid="6213164897443068248">"Затрым. скр. падк. клав."</string>
-    <string name="key_preview_popup_dismiss_no_delay" msgid="2096123151571458064">"Няма затрымкі"</string>
-    <string name="key_preview_popup_dismiss_default_delay" msgid="2166964333903906734">"Па змаўчанні"</string>
-    <string name="abbreviation_unit_milliseconds" msgid="8700286094028323363">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
-    <string name="settings_system_default" msgid="6268225104743331821">"Стандартныя сістэмныя"</string>
-    <string name="auto_cap" msgid="1719746674854628252">"Аўтаматычна рабіць літары вялікімі"</string>
-    <string name="auto_cap_summary" msgid="7934452761022946874">"Пісаць з загалоўнай літары першае слова ў кожным сказе"</string>
-    <string name="language_selection_title" msgid="3666971864764478269">"Мовы"</string>
-    <string name="select_language" msgid="5709487854987078367">"Мовы"</string>
-    <string name="subtype_en_GB" msgid="88170601942311355">"англійская (Вялікабрытанія)"</string>
-    <string name="subtype_en_US" msgid="6160452336634534239">"англійская (ЗША)"</string>
-    <string name="subtype_es_US" msgid="5583145191430180200">"iспанская (ЗША)"</string>
-    <string name="subtype_sr_ZZ" msgid="9059219552986034343">"Сербская (лацініца)"</string>
-    <string name="subtype_generic_traditional" msgid="8584594350973800586">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (традыцыйная)"</string>
-    <string name="subtype_generic_compact" msgid="3353673321203202922">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (кампактная)"</string>
-    <string name="subtype_no_language" msgid="7137390094240139495">"Мова не выбрана (лацініца)"</string>
-    <string name="subtype_no_language_qwerty" msgid="244337630616742604">"Лацініца (QWERTY)"</string>
-    <string name="custom_input_styles_title" msgid="8429952441821251512">"Карыстальніцкія стылі ўводу"</string>
-    <string name="add_style" msgid="6163126614514489951">"Дадаць стыль"</string>
-    <string name="add" msgid="8299699805688017798">"Дадаць"</string>
-    <string name="remove" msgid="4486081658752944606">"Выдаліць"</string>
-    <string name="save" msgid="7646738597196767214">"Захаваць"</string>
-    <string name="subtype_locale" msgid="8576443440738143764">"Мова"</string>
-    <string name="keyboard_layout_set" msgid="4309233698194565609">"Раскладка"</string>
-    <string name="custom_input_style_note_message" msgid="8826731320846363423">"Карыстальніцкі метад уводу павінен быць уключаны, перш чым пачаць выкарыстоўваць яго. Жадаеце ўключыць яго зараз?"</string>
-    <string name="enable" msgid="5031294444630523247">"Уключыць"</string>
-    <string name="not_now" msgid="6172462888202790482">"Не цяпер"</string>
-    <string name="custom_input_style_already_exists" msgid="8008728952215449707">"Такі метад уводу ўжо існуе: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
-    <string name="prefs_keypress_vibration_duration_settings" msgid="7918341459947439226">"Працягласць вібрацыі пры націску клавіш"</string>
-    <string name="prefs_keypress_sound_volume_settings" msgid="6027007337036891623">"Гучнасць гуку пры націску клавіш"</string>
-    <string name="prefs_key_longpress_timeout_settings" msgid="6102240298932897873">"Затрымка доўгага націску клавішы"</string>
-    <string name="button_default" msgid="3988017840431881491">"Па змаўчанні"</string>
+    <string name="english_ime_input_options">"Параметры ўводу"</string>
+    <string name="vibrate_on_keypress">"Вібрацыя пры націску клавіш"</string>
+    <string name="sound_on_keypress">"Гук пры націску"</string>
+    <string name="popup_on_keypress">"Па націску на клавішы ўсплывае акно"</string>
+    <string name="settings_screen_preferences">"Параметры"</string>
+    <string name="settings_screen_appearance">"Знешні выгляд і раскладкі"</string>
+    <string name="settings_screen_advanced">"Дадатковыя"</string>
+    <string name="settings_screen_theme">"Тэма"</string>
+    <string name="key_preview_popup_dismiss_delay">"Затрым. скр. падк. клав."</string>
+    <string name="key_preview_popup_dismiss_no_delay">"Няма затрымкі"</string>
+    <string name="key_preview_popup_dismiss_default_delay">"Па змаўчанні"</string>
+    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
+    <string name="settings_system_default">"Стандартныя сістэмныя"</string>
+    <string name="auto_cap">"Аўтаматычна рабіць літары вялікімі"</string>
+    <string name="auto_cap_summary">"Пісаць з загалоўнай літары першае слова ў кожным сказе"</string>
+    <string name="language_selection_title">"Мовы"</string>
+    <string name="select_language">"Мовы"</string>
+    <string name="subtype_en_GB">"англійская (Вялікабрытанія)"</string>
+    <string name="subtype_en_US">"англійская (ЗША)"</string>
+    <string name="subtype_es_US">"iспанская (ЗША)"</string>
+    <string name="subtype_sr_ZZ">"Сербская (лацініца)"</string>
+    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (традыцыйная)"</string>
+    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (кампактная)"</string>
+    <string name="subtype_no_language">"Мова не выбрана (лацініца)"</string>
+    <string name="subtype_no_language_qwerty">"Лацініца (QWERTY)"</string>
+    <string name="custom_input_styles_title">"Карыстальніцкія стылі ўводу"</string>
+    <string name="add_style">"Дадаць стыль"</string>
+    <string name="add">"Дадаць"</string>
+    <string name="remove">"Выдаліць"</string>
+    <string name="save">"Захаваць"</string>
+    <string name="subtype_locale">"Мова"</string>
+    <string name="keyboard_layout_set">"Раскладка"</string>
+    <string name="custom_input_style_note_message">"Карыстальніцкі метад уводу павінен быць уключаны, перш чым пачаць выкарыстоўваць яго. Жадаеце ўключыць яго зараз?"</string>
+    <string name="enable">"Уключыць"</string>
+    <string name="not_now">"Не цяпер"</string>
+    <string name="custom_input_style_already_exists">"Такі метад уводу ўжо існуе: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
+    <string name="prefs_keypress_vibration_duration_settings">"Працягласць вібрацыі пры націску клавіш"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Гучнасць гуку пры націску клавіш"</string>
+    <string name="prefs_key_longpress_timeout_settings">"Затрымка доўгага націску клавішы"</string>
+    <string name="button_default">"Па змаўчанні"</string>
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>
