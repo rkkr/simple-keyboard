@@ -59,10 +59,10 @@
     <string name="prefs_keypress_sound_volume_settings">"Volumen de sonido al pulsar tecla"</string>
     <string name="prefs_key_longpress_timeout_settings">"Retraso al mantener pulsado"</string>
     <string name="button_default">"Predeterminado"</string>
-    <string name="prefs_keyboard_height_settings">Keyboard height</string>
-    <string name="keyboard_color">Set custom keyboard color</string>
-    <string name="hide_special_chars">Hide special characters</string>
-    <string name="hide_language_switch_key">Hide language switch key</string>
-    <string name="show_number_row">Show separate number row</string>
-    <string name="show_arrow_keys">Show navigation arrow keys</string>
+    <string name="prefs_keyboard_height_settings">Altura del teclado</string>
+    <string name="keyboard_color">Establecer color de teclado personalizado</string>
+    <string name="hide_special_chars">Ocultar caracteres especiales</string>
+    <string name="hide_language_switch_key">Ocultar tecla de cambio de idioma</string>
+    <string name="show_number_row">Mostrar la fila de digitos separada</string>
+    <string name="show_arrow_keys">Mostrar teclas de navegación</string>
 </resources>
