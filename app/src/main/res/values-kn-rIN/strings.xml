@@ -64,5 +64,4 @@
     <string name="hide_special_chars">Hide special characters</string>
     <string name="hide_language_switch_key">Hide language switch key</string>
     <string name="show_number_row">Show separate number row</string>
-    <string name="show_arrow_keys">Show navigation arrow keys</string>
 </resources>

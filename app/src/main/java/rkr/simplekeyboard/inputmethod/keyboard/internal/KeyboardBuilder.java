@@ -666,15 +666,13 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     R.styleable.Keyboard_Case_showExtraChars, id.mShowMoreKeys);
             final boolean showNumberRowMatched = matchBoolean(caseAttr,
                     R.styleable.Keyboard_Case_showNumberRow, id.mShowNumberRow);
-            final boolean showArrowKeysMatched = matchBoolean(caseAttr,
-                    R.styleable.Keyboard_Case_showArrowKeys, id.mShowArrowKeys);
             final boolean selected = keyboardLayoutSetMatched && keyboardLayoutSetElementMatched
                     && keyboardThemeMatched && modeMatched && navigateNextMatched
                     && navigatePreviousMatched && passwordInputMatched && clobberSettingsKeyMatched
                     && languageSwitchKeyEnabledMatched
                     && isMultiLineMatched && imeActionMatched && isIconDefinedMatched
                     && localeCodeMatched && languageCodeMatched && countryCodeMatched
-                    && showMoreKeysMatched && showNumberRowMatched && showArrowKeysMatched;
+                    && showMoreKeysMatched && showNumberRowMatched;
 
             return selected;
         } finally {

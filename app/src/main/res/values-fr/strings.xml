@@ -64,5 +64,4 @@
     <string name="hide_special_chars">Masquer les caractères spéciaux</string>
     <string name="hide_language_switch_key">Masquer la touche de sélection de langue</string>
     <string name="show_number_row">Afficher la ligne de chiffres</string>
-    <string name="show_arrow_keys">Afficher les flèches de navigation</string>
 </resources>

@@ -64,5 +64,4 @@
     <string name="hide_special_chars">Paslėpti specialius simbolius</string>
     <string name="hide_language_switch_key">Paslėpti kalbos pasirinkimą</string>
     <string name="show_number_row">Rodyti skaičių eilutę</string>
-    <string name="show_arrow_keys">Rodyti navigacijos rodykles</string>
 </resources>

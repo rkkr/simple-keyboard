@@ -35,6 +35,7 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.PrintWriterPrinter;
 import android.util.Printer;
@@ -745,12 +746,24 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public boolean onCustomRequest(final int requestCode) {
         if (isShowingOptionDialog()) return false;
         switch (requestCode) {
-        case Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER:
-            if (mRichImm.hasMultipleEnabledIMEsOrSubtypes(true /* include aux subtypes */)) {
-                mRichImm.getInputMethodManager().showInputMethodPicker();
+            case Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER:
+                if (mRichImm.hasMultipleEnabledIMEsOrSubtypes(true /* include aux subtypes */)) {
+                    mRichImm.getInputMethodManager().showInputMethodPicker();
+                    return true;
+                }
+                return false;
+            case Constants.CUSTOM_CODE_POINTER_LEFT:
+                int newPositionLeft = mInputLogic.mConnection.mExpectedSelStart--;
+                if (TextUtils.isEmpty(getCurrentInputConnection().getTextBeforeCursor(1, 0)))
+                    return false;
+                getCurrentInputConnection().setSelection(newPositionLeft, newPositionLeft);
                 return true;
-            }
-            return false;
+            case Constants.CUSTOM_CODE_POINTER_RIGHT:
+                int newPositionRight = mInputLogic.mConnection.mExpectedSelStart++;
+                if (TextUtils.isEmpty(getCurrentInputConnection().getTextAfterCursor(1, 0)))
+                    return false;
+                getCurrentInputConnection().setSelection(newPositionRight, newPositionRight);
+                return true;
         }
         return false;
     }

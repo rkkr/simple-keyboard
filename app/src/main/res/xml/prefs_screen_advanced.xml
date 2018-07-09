@@ -58,8 +58,4 @@
         android:key="pref_show_number_row"
         android:title="@string/show_number_row"
         android:defaultValue="false" />
-    <CheckBoxPreference
-        android:key="pref_show_arrow_keys"
-        android:title="@string/show_arrow_keys"
-        android:defaultValue="false" />
 </PreferenceScreen>

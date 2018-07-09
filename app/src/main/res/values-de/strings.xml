@@ -64,5 +64,4 @@
     <string name="hide_special_chars">Sonderzeichen ausblenden</string>
     <string name="hide_language_switch_key">Taste für Sprachwahl ausblenden</string>
     <string name="show_number_row">Zahlenreihe anzeigen</string>
-    <string name="show_arrow_keys">Pfeiltasten anzeigen</string>
 </resources>

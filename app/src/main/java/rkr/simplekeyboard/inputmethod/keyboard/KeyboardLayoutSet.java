@@ -111,7 +111,6 @@ public final class KeyboardLayoutSet {
         int mKeyboardHeight;
         boolean mShowMoreKeys;
         boolean mShowNumberRow;
-        boolean mShowArrowKeys;
         // Sparse array of KeyboardLayoutSet element parameters indexed by element's id.
         final SparseArray<ElementParams> mKeyboardLayoutSetElementIdToParamsMap =
                 new SparseArray<>();
@@ -278,11 +277,6 @@ public final class KeyboardLayoutSet {
 
         public Builder setShowNumberRow(final boolean enabled) {
             mParams.mShowNumberRow = enabled;
-            return this;
-        }
-
-        public Builder setShowArrowKeys(final boolean enabled) {
-            mParams.mShowArrowKeys = enabled;
             return this;
         }
 

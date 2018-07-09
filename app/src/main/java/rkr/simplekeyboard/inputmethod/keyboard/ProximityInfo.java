@@ -66,11 +66,6 @@ public class ProximityInfo {
         computeNearestNeighbors();
     }
 
-    static boolean needsProximityInfo(final Key key) {
-        // Don't include special keys into ProximityInfo.
-        return key.getCode() >= Constants.CODE_SPACE;
-    }
-
     private void computeNearestNeighbors() {
         final int defaultWidth = mMostCommonKeyWidth;
         final int keyCount = mSortedKeys.size();
