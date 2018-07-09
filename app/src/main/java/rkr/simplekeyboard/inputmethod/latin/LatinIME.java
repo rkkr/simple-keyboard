@@ -752,20 +752,23 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     return true;
                 }
                 return false;
-            case Constants.CUSTOM_CODE_POINTER_LEFT:
-                int newPositionLeft = mInputLogic.mConnection.mExpectedSelStart--;
-                if (TextUtils.isEmpty(getCurrentInputConnection().getTextBeforeCursor(1, 0)))
-                    return false;
-                getCurrentInputConnection().setSelection(newPositionLeft, newPositionLeft);
-                return true;
-            case Constants.CUSTOM_CODE_POINTER_RIGHT:
-                int newPositionRight = mInputLogic.mConnection.mExpectedSelStart++;
-                if (TextUtils.isEmpty(getCurrentInputConnection().getTextAfterCursor(1, 0)))
-                    return false;
-                getCurrentInputConnection().setSelection(newPositionRight, newPositionRight);
-                return true;
         }
         return false;
+    }
+
+    @Override
+    public void onMovePointer(int steps) {
+        if (steps < 0) {
+            int availableCharacters = getCurrentInputConnection().getTextBeforeCursor(64, 0).length();
+            steps = availableCharacters < -steps ? -availableCharacters : steps;
+        }
+        else if (steps > 0) {
+            int availableCharacters = getCurrentInputConnection().getTextAfterCursor(64, 0).length();
+            steps = availableCharacters < steps ? availableCharacters : steps;
+        } else return;
+
+        int newPosition = mInputLogic.mConnection.mExpectedSelStart + steps;
+        getCurrentInputConnection().setSelection(newPosition, newPosition);
     }
 
     private boolean isShowingOptionDialog() {

@@ -68,6 +68,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
     // Parameters for pointer handling.
     private static PointerTrackerParams sParams;
+    private static int sPointerStep = (int)(10.0 * Resources.getSystem().getDisplayMetrics().density);
 
     private static final ArrayList<PointerTracker> sTrackers = new ArrayList<>();
     private static final PointerTrackerQueue sPointerTrackerQueue = new PointerTrackerQueue();
@@ -619,14 +620,11 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         final Key oldKey = mCurrentKey;
         if (oldKey != null && oldKey.getCode() == Constants.CODE_SPACE) {
             //Pointer slider
-            if (mStartX - x > oldKey.getWidth() / 20) {
+            int steps = (x - mStartX) / sPointerStep;
+            if (steps != 0) {
                 mCursorMoved = true;
-                mStartX -= oldKey.getWidth() / 20;
-                sListener.onCustomRequest(Constants.CUSTOM_CODE_POINTER_LEFT);
-            } else if (mStartX - x < -oldKey.getWidth() / 20) {
-                mCursorMoved = true;
-                mStartX += oldKey.getWidth() / 20;
-                sListener.onCustomRequest(Constants.CUSTOM_CODE_POINTER_RIGHT);
+                mStartX += steps * sPointerStep;
+                sListener.onMovePointer(steps);
             }
             return;
         }

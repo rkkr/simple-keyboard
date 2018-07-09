@@ -74,6 +74,7 @@ public interface KeyboardActionListener {
      * @return true if the request has been consumed, false otherwise.
      */
     boolean onCustomRequest(int requestCode);
+    void onMovePointer(int steps);
 
     KeyboardActionListener EMPTY_LISTENER = new Adapter();
 
@@ -92,5 +93,7 @@ public interface KeyboardActionListener {
         public boolean onCustomRequest(int requestCode) {
             return false;
         }
+        @Override
+        public void onMovePointer(int steps) {}
     }
 }
