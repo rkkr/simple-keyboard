@@ -35,11 +35,11 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.text.InputType;
-import android.text.TextUtils;
 import android.util.Log;
 import android.util.PrintWriterPrinter;
 import android.util.Printer;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -758,17 +758,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public void onMovePointer(int steps) {
-        if (steps < 0) {
-            int availableCharacters = getCurrentInputConnection().getTextBeforeCursor(64, 0).length();
-            steps = availableCharacters < -steps ? -availableCharacters : steps;
-        }
-        else if (steps > 0) {
-            int availableCharacters = getCurrentInputConnection().getTextAfterCursor(64, 0).length();
-            steps = availableCharacters < steps ? availableCharacters : steps;
-        } else return;
-
-        int newPosition = mInputLogic.mConnection.mExpectedSelStart + steps;
-        getCurrentInputConnection().setSelection(newPosition, newPosition);
+        for (;steps < 0; steps++)
+            mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_LEFT);
+        for (;steps > 0; steps--)
+            mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_RIGHT);
     }
 
     private boolean isShowingOptionDialog() {

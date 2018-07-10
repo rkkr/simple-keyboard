@@ -140,12 +140,4 @@
         latin:styleName="backFromMoreSymbolKeyStyle"
         latin:keySpec="!text/keylabel_to_symbol|!code/key_shift"
         latin:parentStyle="baseForLayoutSwitchKeyStyle" />
-    <key-style
-        latin:styleName="leftKeyStyle"
-        latin:keySpec="&#x2190;|!code/key_left"
-        latin:keyActionFlags="isRepeatable|noKeyPreview" />
-    <key-style
-        latin:styleName="rightKeyStyle"
-        latin:keySpec="&#x2192;|!code/key_right"
-        latin:keyActionFlags="isRepeatable|noKeyPreview" />
 </merge>

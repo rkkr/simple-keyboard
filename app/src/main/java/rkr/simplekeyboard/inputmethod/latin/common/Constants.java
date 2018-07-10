@@ -182,9 +182,7 @@ public final class Constants {
     public static final int CODE_SHIFT_ENTER = -11;
     public static final int CODE_SYMBOL_SHIFT = -12;
     // Code value representing the code is not specified.
-    public static final int CODE_LEFT = -13;
-    public static final int CODE_RIGHT = -14;
-    public static final int CODE_UNSPECIFIED = -15;
+    public static final int CODE_UNSPECIFIED = -13;
 
     public static boolean isLetterCode(final int code) {
         return code >= CODE_SPACE;
