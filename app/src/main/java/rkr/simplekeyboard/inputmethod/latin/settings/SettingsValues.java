@@ -53,6 +53,7 @@ public class SettingsValues {
     //public final boolean mShouldShowLxxSuggestionUi;
     public final boolean mHideSpecialChars;
     public final boolean mShowNumberRow;
+    public final boolean mSpaceSwipeEnabled;
 
     // From the input box
     @NonNull
@@ -110,6 +111,7 @@ public class SettingsValues {
         mDisplayOrientation = res.getConfiguration().orientation;
         mHideSpecialChars = Settings.readHideSpecialChars(prefs);
         mShowNumberRow = Settings.readShowNumberRow(prefs);
+        mSpaceSwipeEnabled = Settings.readSpaceSwipeEnabled(prefs);
     }
 
     public boolean isWordSeparator(final int code) {

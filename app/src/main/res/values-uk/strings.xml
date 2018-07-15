@@ -64,4 +64,5 @@
     <string name="hide_special_chars">Приховати спеціальні символи</string>
     <string name="hide_language_switch_key">Приховати клавішу зміни мови</string>
     <string name="show_number_row">Показувати рядок цифр</string>
+    <string name="space_swipe">Space swipe cursor move</string>
 </resources>

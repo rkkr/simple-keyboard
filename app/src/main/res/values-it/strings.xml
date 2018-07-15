@@ -64,4 +64,5 @@
     <string name="hide_special_chars">Nascondi caratteri speciali</string>
     <string name="hide_language_switch_key">Nascondi tasto cambia lingua</string>
     <string name="show_number_row">Mostra riga dei numeri separata</string>
+    <string name="space_swipe">Space swipe cursor move</string>
 </resources>

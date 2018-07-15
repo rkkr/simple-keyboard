@@ -618,9 +618,9 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
     private void onMoveEventInternal(final int x, final int y, final long eventTime) {
         final Key oldKey = mCurrentKey;
-        if (oldKey != null && oldKey.getCode() == Constants.CODE_SPACE) {
+        if (oldKey != null && oldKey.getCode() == Constants.CODE_SPACE && Settings.getInstance().getCurrent().mSpaceSwipeEnabled) {
             //Pointer slider
-            int steps = (x - mStartX) / sPointerStep;
+            int steps = (x - mStartX) / sPointerStep / (mCursorMoved ? 2 : 1);
             if (steps != 0) {
                 mCursorMoved = true;
                 mStartX += steps * sPointerStep;
