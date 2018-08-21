@@ -3769,6 +3769,150 @@ public final class KeyboardTextsTable {
         /* morekeys_cyrillic_ghe */ "\u0491",
     };
 
+    /* Locale ur: Urdu */
+    private static final String[] TEXTS_ur = {
+            /* morekeys_a ~ */
+            null, null, null, null,
+            /* ~ morekeys_u */
+            // Label for "switch to alphabetic" key.
+            // U+0627: "ا" ARABIC LETTER ALEF
+            // U+200C: ZERO WIDTH NON-JOINER
+            // U+0628: "ب" ARABIC LETTER BEH
+            // U+067E: "پ" ARABIC LETTER PEH
+            /* keylabel_to_alpha */ "\u0627\u200C\u0628\u200C\u067E",
+            /* morekeys_i ~ */
+            null, null, null, null, null, null,
+            /* ~ single_quotes */
+            // U+20A8: "₨" RUPEE SIGN
+            /* keyspec_currency */ "\u20A8",
+            /* morekeys_y ~ */
+            null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+            null, null, null, null, null,
+            /* ~ morekeys_cyrillic_soft_sign */
+            // U+06F1: "۱" EXTENDED ARABIC-INDIC DIGIT ONE
+            /* keyspec_symbols_1 */ "\u06F1",
+            // U+06F2: "۲" EXTENDED ARABIC-INDIC DIGIT TWO
+            /* keyspec_symbols_2 */ "\u06F2",
+            // U+06F3: "۳" EXTENDED ARABIC-INDIC DIGIT THREE
+            /* keyspec_symbols_3 */ "\u06F3",
+            // U+06F4: "۴" EXTENDED ARABIC-INDIC DIGIT FOUR
+            /* keyspec_symbols_4 */ "\u06F4",
+            // U+06F5: "۵" EXTENDED ARABIC-INDIC DIGIT FIVE
+            /* keyspec_symbols_5 */ "\u06F5",
+            // U+06F6: "۶" EXTENDED ARABIC-INDIC DIGIT SIX
+            /* keyspec_symbols_6 */ "\u06F6",
+            // U+06F7: "۷" EXTENDED ARABIC-INDIC DIGIT SEVEN
+            /* keyspec_symbols_7 */ "\u06F7",
+            // U+06F8: "۸" EXTENDED ARABIC-INDIC DIGIT EIGHT
+            /* keyspec_symbols_8 */ "\u06F8",
+            // U+06F9: "۹" EXTENDED ARABIC-INDIC DIGIT NINE
+            /* keyspec_symbols_9 */ "\u06F9",
+            // U+06F0: "۰" EXTENDED ARABIC-INDIC DIGIT ZERO
+            /* keyspec_symbols_0 */ "\u06F0",
+            // Label for "switch to symbols" key.
+            // U+061F: "؟" ARABIC QUESTION MARK
+            /* keylabel_to_symbol */ "\u06F3\u06F2\u06F1\u061F",
+            /* additional_morekeys_symbols_1 */ "1",
+            /* additional_morekeys_symbols_2 */ "2",
+            /* additional_morekeys_symbols_3 */ "3",
+            /* additional_morekeys_symbols_4 */ "4",
+            /* additional_morekeys_symbols_5 */ "5",
+            /* additional_morekeys_symbols_6 */ "6",
+            /* additional_morekeys_symbols_7 */ "7",
+            /* additional_morekeys_symbols_8 */ "8",
+            /* additional_morekeys_symbols_9 */ "9",
+            // U+066B: "٫" ARABIC DECIMAL SEPARATOR
+            // U+066C: "٬" ARABIC THOUSANDS SEPARATOR
+            /* additional_morekeys_symbols_0 */ "0,\u066B,\u066C",
+            /* morekeys_tablet_period */ "!text/morekeys_arabic_diacritics",
+            /* morekeys_nordic_row2_11 */ null,
+            /* morekeys_punctuation */ null,
+            // U+060C: "،" ARABIC COMMA
+            // U+061B: "؛" ARABIC SEMICOLON
+            // U+061F: "؟" ARABIC QUESTION MARK
+            // U+00AB: "«" LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
+            // U+00BB: "»" RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
+            /* keyspec_tablet_comma */ "\u060C",
+            /* keyspec_period */ "\u06D4",
+            /* morekeys_period */ "!text/morekeys_arabic_diacritics",
+            /* keyspec_tablet_period */ "\u06D4",
+            null, null, null, null, null, null,
+            /* ~ morekeys_swiss_row2_11 */
+            // U+2605: "★" BLACK STAR
+            // U+066D: "٭" ARABIC FIVE POINTED STAR
+            /* morekeys_star */ "\u2605,\u066D",
+            /* keyspec_left_parenthesis */ "(|)",
+            /* keyspec_right_parenthesis */ ")|(",
+            /* keyspec_left_square_bracket */ "[|]",
+            /* keyspec_right_square_bracket */ "]|[",
+            /* keyspec_left_curly_bracket */ "{|}",
+            /* keyspec_right_curly_bracket */ "}|{",
+            /* keyspec_less_than */ "<|>",
+            /* keyspec_greater_than */ ">|<",
+            /* keyspec_less_than_equal */ "\u2264|\u2265",
+            /* keyspec_greater_than_equal */ "\u2265|\u2264",
+            /* keyspec_left_double_angle_quote */ "\u00AB|\u00BB",
+            /* keyspec_right_double_angle_quote */ "\u00BB|\u00AB",
+            /* keyspec_left_single_angle_quote */ "\u2039|\u203A",
+            /* keyspec_right_single_angle_quote */ "\u203A|\u2039",
+            // U+060C: "،" ARABIC COMMA
+            /* keyspec_comma */ "\u060C",
+            /* morekeys_tablet_comma */ "!fixedColumnOrder!4,:,!,\u061F,\u061B,-,!text/keyspec_left_double_angle_quote,!text/keyspec_right_double_angle_quote",
+            // U+064B: "ً" ARABIC FATHATAN
+            /* keyhintlabel_period */ "\u064B",
+            // U+00BF: "¿" INVERTED QUESTION MARK
+            /* morekeys_question */ "?,\u00BF",
+            /* morekeys_h ~ */
+            null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+            /* ~ keyspec_spanish_row2_10 */
+            // U+266A: "♪" EIGHTH NOTE
+            /* morekeys_bullet */ "\u266A",
+            // The all letters need to be mirrored are found at
+            // http://www.unicode.org/Public/6.1.0/ucd/BidiMirroring.txt
+            // U+FD3E: "﴾" ORNATE LEFT PARENTHESIS
+            // U+FD3F: "﴿" ORNATE RIGHT PARENTHESIS
+            /* morekeys_left_parenthesis */ "!fixedColumnOrder!4,\uFD3E|\uFD3F,!text/keyspecs_left_parenthesis_more_keys",
+            /* morekeys_right_parenthesis */ "!fixedColumnOrder!4,\uFD3F|\uFD3E,!text/keyspecs_right_parenthesis_more_keys",
+            // U+061F: "؟" ARABIC QUESTION MARK
+            // U+0021: "!" EXCLAMATION MARK
+            // U+064F: "ُ" ARABIC DAMMA
+            // U+0650: "ِ" ARABIC KASRA
+            // U+064E: "َ" ARABIC FATHA
+            // U+0652: "ْ" ARABIC SUKUN
+            // U+0651: "ّ" ARABIC SHADDA
+            // U+064C: "ٌ" ARABIC DAMMATAN
+            // U+064D: "ٍ" ARABIC KASRATAN
+            // U+064B: "ً" ARABIC FATHATAN
+            // U+0658: "٘" ARABIC MARK NOON GHUNNA
+            // U+0654: "ٔ" ARABIC HAMZA ABOVE
+            // U+0657: "ٗ" ARABIC INVERTED DAMMA
+            // U+0656: "ٖ" ARABIC SUBSCRIPT ALEF
+            // U+0670: "ٰ" ARABIC LETTER SUPERSCRIPT ALEF
+            // Note: The space character is needed as a preceding letter to draw Arabic diacritics characters correctly.
+            /* morekeys_arabic_diacritics */ "!fixedColumnOrder!5,\u061F|\u061F,\u0021|\u0021, \u064F|\u064F, \u0650|\u0650, \u064E|\u064E, \u0652|\u0652, \u0651|\u0651, \u064C|\u064C, \u064D|\u064D, \u064B|\u064B, \u0658|\u0658, \u0654|\u0654, \u0657|\u0657, \u0656|\u0656, \u0670|\u0670",
+            /* keyhintlabel_tablet_comma */ "\u061F",
+            /* keyhintlabel_tablet_period */ "\u064B",
+            /* keyspec_symbols_question */ "\u061F",
+            /* keyspec_symbols_semicolon */ "\u061B",
+            // U+066A: "٪" ARABIC PERCENT SIGN
+            /* keyspec_symbols_percent */ "\u066A",
+            /* morekeys_symbols_semicolon */ ";",
+            // U+2030: "‰" PER MILLE SIGN
+            /* morekeys_symbols_percent */ "\\%,\u2030",
+            /* label_go_key ~ */
+            null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+            null, null, null, null, null, null,
+            /* ~ morekeys_plus */
+            // U+2264: "≤" LESS-THAN OR EQUAL TO
+            // U+2265: "≥" GREATER-THAN EQUAL TO
+            // U+00AB: "«" LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
+            // U+00BB: "»" RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
+            // U+2039: "‹" SINGLE LEFT-POINTING ANGLE QUOTATION MARK
+            // U+203A: "›" SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
+            /* morekeys_less_than */ "!fixedColumnOrder!3,!text/keyspec_left_single_angle_quote,!text/keyspec_less_than_equal,!text/keyspec_less_than",
+            /* morekeys_greater_than */ "!fixedColumnOrder!3,!text/keyspec_right_single_angle_quote,!text/keyspec_greater_than_equal,!text/keyspec_greater_than",
+    };
+
     /* Locale uz_UZ: Uzbek (Uzbekistan) */
     private static final String[] TEXTS_uz_UZ = {
         // This is the same as Turkish
@@ -4170,6 +4314,7 @@ public final class KeyboardTextsTable {
         "tl"     , TEXTS_tl,    /*   7/  8 Tagalog */
         "tr"     , TEXTS_tr,    /*  11/ 18 Turkish */
         "uk"     , TEXTS_uk,    /*  11/ 91 Ukrainian */
+        "ur"     , TEXTS_ur,    /*  58/133 Urdu */
         "uz_UZ"  , TEXTS_uz_UZ, /*  11/ 18 Uzbek (Uzbekistan) */
         "vi"     , TEXTS_vi,    /*   8/ 15 Vietnamese */
         "zu"     , TEXTS_zu,    /*   8/ 10 Zulu */
