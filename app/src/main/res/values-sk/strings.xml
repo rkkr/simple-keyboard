@@ -64,5 +64,5 @@
     <string name="hide_special_chars">Skryť špeciálne znaky</string>
     <string name="hide_language_switch_key">Skryť klávesu na prepínanie jazykov</string>
     <string name="show_number_row">Zobraziť samostatný číselný riadok</string>
-    <string name="space_swipe">Space swipe cursor move</string>
+    <string name="space_swipe">Hýb kurzorom šúchaním po medzerníku</string>
 </resources>
