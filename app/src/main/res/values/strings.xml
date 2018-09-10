@@ -79,6 +79,9 @@
     <!-- Description for English (US) keyboard subtype [CHAR LIMIT=25]
          (US) should be an abbreviation of United States to fit in the CHAR LIMIT. -->
     <string name="subtype_en_US">English (US)</string>
+    <!-- Description for English (HU) keyboard subtype [CHAR LIMIT=25]
+         (HU) should be an abbreviation of United States to fit in the CHAR LIMIT. -->
+    <string name="subtype_en_HU">English (HU, DE)</string>
     <!-- Description for Spanish (US) keyboard subtype [CHAR LIMIT=25]
          (US) should be an abbreviation of United States to fit in the CHAR LIMIT. -->
     <string name="subtype_es_US">Spanish (US)</string>

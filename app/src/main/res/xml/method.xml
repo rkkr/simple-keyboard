@@ -761,4 +761,11 @@
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,AsciiCapable,EnabledWhenDefaultIsNotAsciiCapable"
             android:isAsciiCapable="true"
     />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/subtype_en_HU"
+        android:imeSubtypeLocale="en_HU"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="TrySuppressingImeSwitcher,AsciiCapable"
+        android:isAsciiCapable="true"
+        />
 </input-method>

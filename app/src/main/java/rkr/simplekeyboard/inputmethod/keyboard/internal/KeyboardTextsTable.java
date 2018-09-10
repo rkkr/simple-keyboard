@@ -1165,6 +1165,31 @@ public final class KeyboardTextsTable {
         /* morekeys_s */ "\u00DF",
     };
 
+    /* Locale en: English */
+    private static final String[] TEXTS_en_HU = {
+            // U+00E1: "á" LATIN SMALL LETTER A WITH ACUTE
+            // U+00E4: "ä" LATIN SMALL LETTER A WITH DIAERESIS
+            /* morekeys_a */ "\u00E1,\u00E4",
+            // U+00F3: "ó" LATIN SMALL LETTER O WITH ACUTE
+            // U+00F6: "ö" LATIN SMALL LETTER O WITH DIAERESIS
+            // U+0151: "ő" LATIN SMALL LETTER O WITH DOUBLE ACUTE
+            /* morekeys_o */ "\u00F3,\u00F6,\u0151",
+            // U+00E9: "é" LATIN SMALL LETTER E WITH ACUTE
+            /* morekeys_e */ "\u00E9",
+            // U+00FA: "ú" LATIN SMALL LETTER U WITH ACUTE
+            // U+00FC: "ü" LATIN SMALL LETTER U WITH DIAERESIS
+            // U+0171: "ű" LATIN SMALL LETTER U WITH DOUBLE ACUTE
+            /* morekeys_u */ "\u00FA,\u00FC,\u0171",
+            /* keylabel_to_alpha */ null,
+            // U+00ED: "í" LATIN SMALL LETTER I WITH ACUTE
+            /* morekeys_i */ "\u00ED",
+            /* morekeys_n */ null,
+            /* morekeys_c */ null,
+            /* double_quotes */ null,
+            // U+00DF: "ß" LATIN SMALL LETTER SHARP S
+            /* morekeys_s */ "\u00DF",
+    };
+
     /* Locale eo: Esperanto */
     private static final String[] TEXTS_eo = {
         // U+00E1: "á" LATIN SMALL LETTER A WITH ACUTE
@@ -4263,6 +4288,7 @@ public final class KeyboardTextsTable {
         "de"     , TEXTS_de,    /*  16/ 66 German */
         "el"     , TEXTS_el,    /*   1/  5 Greek */
         "en"     , TEXTS_en,    /*   8/ 10 English */
+        "en_HU"  , TEXTS_en_HU, /*   8/ 10 English (Hungarian, German)*/
         "eo"     , TEXTS_eo,    /*  26/126 Esperanto */
         "es"     , TEXTS_es,    /*   8/ 56 Spanish */
         "et_EE"  , TEXTS_et_EE, /*  22/ 27 Estonian (Estonia) */
