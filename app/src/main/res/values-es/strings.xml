@@ -63,6 +63,6 @@
     <string name="keyboard_color">Establecer color de teclado personalizado</string>
     <string name="hide_special_chars">Ocultar caracteres especiales</string>
     <string name="hide_language_switch_key">Ocultar tecla de cambio de idioma</string>
-    <string name="show_number_row">Mostrar la fila de digitos separada</string>
+    <string name="show_number_row">Mostrar la fila de dígitos separada</string>
     <string name="space_swipe">Space swipe cursor move</string>
 </resources>
