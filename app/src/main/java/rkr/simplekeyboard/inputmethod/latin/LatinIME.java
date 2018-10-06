@@ -25,10 +25,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioManager;
-import android.os.Build;
 import android.os.Debug;
 import android.os.IBinder;
 import android.os.Message;
@@ -567,19 +565,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     @Override
-    public void onWindowShown() {
-        super.onWindowShown();
-        setNavigationBarVisibility(isInputViewShown());
-    }
-
-    @Override
     public void onWindowHidden() {
         super.onWindowHidden();
         final MainKeyboardView mainKeyboardView = mKeyboardSwitcher.getMainKeyboardView();
         if (mainKeyboardView != null) {
             mainKeyboardView.closing();
         }
-        setNavigationBarVisibility(false);
     }
 
     void onFinishInputInternal() {
@@ -1069,14 +1060,5 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
         final boolean overrideValue = mSettings.getCurrent().isLanguageSwitchKeyEnabled();
         return mRichImm.shouldOfferSwitchingToNextInputMethod(token) && overrideValue;
-    }
-
-    private void setNavigationBarVisibility(final boolean visible) {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            // For N and later, IMEs can specify Color.TRANSPARENT to make the navigation bar
-            // transparent.  For other colors the system uses the default color.
-            getWindow().getWindow().setNavigationBarColor(
-                    visible ? Color.BLACK : Color.TRANSPARENT);
-        }
     }
 }
