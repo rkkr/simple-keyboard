@@ -112,7 +112,7 @@
         </default>
     </switch>
     <switch>
-        <case latin:keyboardTheme="ICS|KLP">
+        <case latin:keyboardTheme="LXXLightBorder|LXXDarkBorder">
             <key-style
                 latin:styleName="customLabelActionKeyStyle"
                 latin:keySpec="dummy_label|!code/key_enter"

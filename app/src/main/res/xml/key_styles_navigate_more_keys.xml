@@ -22,7 +22,7 @@
     xmlns:latin="http://schemas.android.com/apk/res/rkr.simplekeyboard.inputmethod"
 >
     <switch>
-        <case latin:keyboardTheme="ICS|KLP">
+        <case latin:keyboardTheme="LXXLightBorder|LXXDarkBorder">
             <key-style
                 latin:styleName="navigateNextMoreKeysStyle"
                 latin:keyLabelFlags="hasPopupHint|preserveCase"

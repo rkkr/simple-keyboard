@@ -126,8 +126,8 @@
         <attr name="themeId" format="enum">
             <!-- This should be aligned with
                  {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
-            <enum name="ICS" value="0" />
-            <enum name="KLP" value="2" />
+            <enum name="LXXLightBorder" value="1" />
+            <enum name="LXXDarkBorder" value="2" />
             <enum name="LXXLight" value="3" />
             <enum name="LXXDark" value="4" />
         </attr>
@@ -363,8 +363,8 @@
         <!-- This should be aligned with Keyboard.themeId and
              {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
         <attr name="keyboardTheme" format="enum|string">
-            <enum name="ICS" value="0" />
-            <enum name="KLP" value="2" />
+            <enum name="LXXLightBorder" value="1" />
+            <enum name="LXXDarkBorder" value="2" />
             <enum name="LXXLight" value="3" />
             <enum name="LXXDark" value="4" />
         </attr>

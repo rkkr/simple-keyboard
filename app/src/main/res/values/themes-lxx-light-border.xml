@@ -19,32 +19,32 @@
 -->
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <style name="KeyboardTheme.ICS" parent="KeyboardIcons.LXX_Dark">
+    <style name="KeyboardTheme.LXX_Light_Border" parent="KeyboardIcons.LXX_Light">
         <item name="inputViewStyle">@style/InputView</item>
-        <item name="keyboardStyle">@style/Keyboard.ICS</item>
-        <item name="keyboardViewStyle">@style/KeyboardView.ICS</item>
-        <item name="mainKeyboardViewStyle">@style/MainKeyboardView.ICS</item>
-        <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.ICS</item>
+        <item name="keyboardStyle">@style/Keyboard.LXXLightBorder</item>
+        <item name="keyboardViewStyle">@style/KeyboardView.LXXLightBorder</item>
+        <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXXLightBorder</item>
+        <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXXLightBorder</item>
         <!-- Note: ICS theme uses the same style for both general more keys and action more keys. -->
-        <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.ICS</item>
-        <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.ICS</item>
+        <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXXLightBorder</item>
+        <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.LXXLightBorder</item>
     </style>
     <style
-        name="Keyboard.ICS"
+        name="Keyboard.LXXLightBorder"
         parent="Keyboard"
     >
         <!-- This should be aligned with KeyboardTheme.THEME_ID_* -->
-        <item name="themeId">ICS</item>
+        <item name="themeId">LXXLightBorder</item>
     </style>
     <style
-        name="KeyboardView.ICS"
+        name="KeyboardView.LXXLightBorder"
         parent="KeyboardView"
     >
-        <item name="android:background">@android:color/black</item>
-        <item name="keyBackground">@drawable/btn_keyboard_key_ics</item>
+        <item name="android:background">#ECEFF1</item>
+        <item name="keyBackground">@drawable/btn_keyboard_key_light_border</item>
         <item name="functionalKeyBackground">@drawable/btn_keyboard_key_functional_ics</item>
         <item name="spacebarBackground">@drawable/btn_keyboard_spacebar_ics</item>
-        <item name="keyTextColor">@color/key_text_color_holo</item>
+        <item name="keyTextColor">@color/key_text_color_lxx_light</item>
         <item name="keyTextInactivatedColor">@color/key_text_inactivated_color_holo</item>
         <item name="functionalTextColor">@color/key_text_color_holo</item>
         <item name="keyHintLetterColor">@color/key_hint_letter_color_holo</item>
@@ -54,8 +54,8 @@
         <item name="keyPreviewTextColor">@color/key_text_color_holo</item>
     </style>
     <style
-        name="MainKeyboardView.ICS"
-        parent="KeyboardView.ICS"
+        name="MainKeyboardView.LXXLightBorder"
+        parent="KeyboardView.LXXLightBorder"
     >
         <item name="moreKeysKeyboardForActionLayout">@layout/more_keys_keyboard_for_action_lxx</item>
         <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background_ics</item>
@@ -69,16 +69,16 @@
         <item name="languageOnSpacebarTextShadowColor">@color/spacebar_text_shadow_color_holo</item>
     </style>
     <style
-        name="MoreKeysKeyboard.ICS"
-        parent="Keyboard.ICS"
+        name="MoreKeysKeyboard.LXXLightBorder"
+        parent="Keyboard.LXXLightBorder"
     >
         <item name="keyboardTopPadding">0%p</item>
         <item name="keyboardBottomPadding">0%p</item>
         <item name="horizontalGap">0%p</item>
     </style>
     <style
-        name="MoreKeysKeyboardView.ICS"
-        parent="KeyboardView.ICS"
+        name="MoreKeysKeyboardView.LXXLightBorder"
+        parent="KeyboardView.LXXLightBorder"
     >
         <item name="android:background">@drawable/keyboard_popup_panel_background_ics</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_popup_ics</item>
