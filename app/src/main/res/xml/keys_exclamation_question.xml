@@ -18,9 +18,9 @@
 */
 -->
 
-<merge
-    xmlns:latin="http://schemas.android.com/apk/res/rkr.simplekeyboard.inputmethod"
->
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:latin="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource">
     <Key
         latin:keySpec="!"
         latin:moreKeys="!text/morekeys_exclamation"
