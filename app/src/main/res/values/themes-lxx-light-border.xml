@@ -21,69 +21,50 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="KeyboardTheme.LXX_Light_Border" parent="KeyboardIcons.LXX_Light">
         <item name="inputViewStyle">@style/InputView</item>
-        <item name="keyboardStyle">@style/Keyboard.LXXLightBorder</item>
-        <item name="keyboardViewStyle">@style/KeyboardView.LXXLightBorder</item>
-        <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXXLightBorder</item>
-        <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXXLightBorder</item>
-        <!-- Note: ICS theme uses the same style for both general more keys and action more keys. -->
-        <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXXLightBorder</item>
-        <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.LXXLightBorder</item>
+        <item name="keyboardStyle">@style/Keyboard.LXX_Light_Border</item>
+        <item name="keyboardViewStyle">@style/KeyboardView.LXX_Light_Border</item>
+        <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXX_Light_Border</item>
+        <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXX_Light</item>
+        <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Light</item>
+        <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.LXX_Light</item>
     </style>
     <style
-        name="Keyboard.LXXLightBorder"
+        name="Keyboard.LXX_Light_Border"
         parent="Keyboard"
     >
         <!-- This should be aligned with KeyboardTheme.THEME_ID_* -->
         <item name="themeId">LXXLightBorder</item>
     </style>
     <style
-        name="KeyboardView.LXXLightBorder"
+        name="KeyboardView.LXX_Light_Border"
         parent="KeyboardView"
     >
         <item name="android:background">#ECEFF1</item>
-        <item name="keyBackground">@drawable/btn_keyboard_key_light_border</item>
-        <item name="functionalKeyBackground">@drawable/btn_keyboard_key_functional_ics</item>
-        <item name="spacebarBackground">@drawable/btn_keyboard_spacebar_ics</item>
+        <item name="keyBackground">@drawable/btn_keyboard_key_lxx_light_border</item>
+        <item name="functionalKeyBackground">@drawable/btn_keyboard_key_functional_lxx_light_border</item>
+        <item name="spacebarBackground">@drawable/btn_keyboard_spacebar_lxx_light_border</item>
         <item name="keyTextColor">@color/key_text_color_lxx_light</item>
-        <item name="keyTextInactivatedColor">@color/key_text_inactivated_color_holo</item>
-        <item name="functionalTextColor">@color/key_text_color_holo</item>
-        <item name="keyHintLetterColor">@color/key_hint_letter_color_holo</item>
-        <item name="keyHintLabelColor">@color/key_hint_label_color_holo</item>
-        <item name="keyShiftedLetterHintInactivatedColor">@color/key_shifted_letter_hint_inactivated_color_holo</item>
-        <item name="keyShiftedLetterHintActivatedColor">@color/key_shifted_letter_hint_activated_color_holo</item>
-        <item name="keyPreviewTextColor">@color/key_text_color_holo</item>
+        <item name="keyTextInactivatedColor">@color/key_text_inactive_color_lxx_light</item>
+        <item name="functionalTextColor">@color/key_functional_text_color_lxx_light</item>
+        <item name="keyHintLetterColor">@color/key_hint_letter_color_lxx_light</item>
+        <item name="keyHintLabelColor">@color/key_text_inactive_color_lxx_light</item>
+        <item name="keyShiftedLetterHintInactivatedColor">@color/key_text_inactive_color_lxx_light</item>
+        <item name="keyShiftedLetterHintActivatedColor">@color/key_text_color_lxx_light</item>
+        <item name="keyPreviewTextColor">@color/key_text_color_lxx_light</item>
     </style>
     <style
-        name="MainKeyboardView.LXXLightBorder"
-        parent="KeyboardView.LXXLightBorder"
+        name="MainKeyboardView.LXX_Light_Border"
+        parent="KeyboardView.LXX_Light_Border"
     >
         <item name="moreKeysKeyboardForActionLayout">@layout/more_keys_keyboard_for_action_lxx</item>
-        <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background_ics</item>
+        <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background_lxx_light</item>
         <item name="keyPreviewHeight">@dimen/config_key_preview_height_lxx</item>
         <item name="keyPreviewOffset">@dimen/config_key_preview_offset_lxx</item>
         <item name="keyPreviewShowUpAnimator">@anim/key_preview_show_up_lxx</item>
         <item name="keyPreviewDismissAnimator">@anim/key_preview_dismiss_lxx</item>
-        <item name="slidingKeyInputPreviewColor">@color/highlight_translucent_color_ics</item>
-        <item name="languageOnSpacebarTextColor">@color/spacebar_text_color_holo</item>
-        <item name="languageOnSpacebarTextShadowRadius">1.0</item>
-        <item name="languageOnSpacebarTextShadowColor">@color/spacebar_text_shadow_color_holo</item>
-    </style>
-    <style
-        name="MoreKeysKeyboard.LXXLightBorder"
-        parent="Keyboard.LXXLightBorder"
-    >
-        <item name="keyboardTopPadding">0%p</item>
-        <item name="keyboardBottomPadding">0%p</item>
-        <item name="horizontalGap">0%p</item>
-    </style>
-    <style
-        name="MoreKeysKeyboardView.LXXLightBorder"
-        parent="KeyboardView.LXXLightBorder"
-    >
-        <item name="android:background">@drawable/keyboard_popup_panel_background_ics</item>
-        <item name="keyBackground">@drawable/btn_keyboard_key_popup_ics</item>
-        <item name="divider">@drawable/more_keys_divider</item>
-        <item name="keyTypeface">normal</item>
-        <item name="verticalCorrection">@dimen/config_more_keys_keyboard_vertical_correction_holo</item>
+        <item name="slidingKeyInputPreviewColor">@color/sliding_key_input_preview_color_lxx_light</item>
+        <item name="languageOnSpacebarTextColor">@color/language_on_spacebar_text_color_lxx_light</item>
+        <!-- A negative value to disable text shadow layer. -->
+        <item name="languageOnSpacebarTextShadowRadius">-1.0</item>
     </style>
 </resources>
