@@ -59,8 +59,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
  *
  * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarTextRatio
  * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarTextColor
- * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarTextShadowRadius
- * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarTextShadowColor
  * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarFinalAlpha
  * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarFadeoutAnimator
  * @attr ref R.styleable#MainKeyboardView_altCodeKeyWhileTypingFadeoutAnimator
@@ -113,9 +111,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     private final float mLanguageOnSpacebarTextRatio;
     private float mLanguageOnSpacebarTextSize;
     private final int mLanguageOnSpacebarTextColor;
-    private final float mLanguageOnSpacebarTextShadowRadius;
-    private final int mLanguageOnSpacebarTextShadowColor;
-    private static final float LANGUAGE_ON_SPACEBAR_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
     // The minimum x-scale to fit the language name on spacebar.
     private static final float MINIMUM_XSCALE_OF_LANGUAGE_NAME = 0.8f;
 
@@ -186,11 +181,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
                 R.styleable.MainKeyboardView_languageOnSpacebarTextRatio, 1, 1, 1.0f);
         mLanguageOnSpacebarTextColor = mainKeyboardViewAttr.getColor(
                 R.styleable.MainKeyboardView_languageOnSpacebarTextColor, 0);
-        mLanguageOnSpacebarTextShadowRadius = mainKeyboardViewAttr.getFloat(
-                R.styleable.MainKeyboardView_languageOnSpacebarTextShadowRadius,
-                LANGUAGE_ON_SPACEBAR_TEXT_SHADOW_RADIUS_DISABLED);
-        mLanguageOnSpacebarTextShadowColor = mainKeyboardViewAttr.getColor(
-                R.styleable.MainKeyboardView_languageOnSpacebarTextShadowColor, 0);
         mLanguageOnSpacebarFinalAlpha = mainKeyboardViewAttr.getInt(
                 R.styleable.MainKeyboardView_languageOnSpacebarFinalAlpha,
                 Constants.Color.ALPHA_OPAQUE);
@@ -700,12 +690,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         final float descent = paint.descent();
         final float textHeight = -paint.ascent() + descent;
         final float baseline = height / 2 + textHeight / 2;
-        if (mLanguageOnSpacebarTextShadowRadius > 0.0f) {
-            paint.setShadowLayer(mLanguageOnSpacebarTextShadowRadius, 0, 0,
-                    mLanguageOnSpacebarTextShadowColor);
-        } else {
-            paint.clearShadowLayer();
-        }
         paint.setColor(mLanguageOnSpacebarTextColor);
         paint.setAlpha(mLanguageOnSpacebarAnimAlpha);
         canvas.drawText(language, width / 2, baseline - descent, paint);

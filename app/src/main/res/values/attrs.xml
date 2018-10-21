@@ -66,8 +66,6 @@
         <!-- Size of the text for spacebar language label, in the proportion of key height. -->
         <attr name="languageOnSpacebarTextRatio" format="fraction" />
         <attr name="languageOnSpacebarTextColor" format="color" />
-        <attr name="languageOnSpacebarTextShadowRadius" format="float" />
-        <attr name="languageOnSpacebarTextShadowColor" format="color" />
         <!-- Fadeout animator for spacebar language label. -->
         <attr name="languageOnSpacebarFinalAlpha" format="integer" />
         <attr name="languageOnSpacebarFadeoutAnimator" format="reference" />
@@ -119,15 +117,14 @@
     </declare-styleable>
 
     <declare-styleable name="MoreKeysKeyboardView">
-        <attr name="divider" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="Keyboard">
         <attr name="themeId" format="enum">
             <!-- This should be aligned with
                  {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
-            <enum name="ICS" value="0" />
-            <enum name="KLP" value="2" />
+            <enum name="LXXLightBorder" value="1" />
+            <enum name="LXXDarkBorder" value="2" />
             <enum name="LXXLight" value="3" />
             <enum name="LXXDark" value="4" />
         </attr>
@@ -342,29 +339,12 @@
             <enum name="phone" value="7"  />
             <enum name="phoneSymbols" value="8"  />
             <enum name="number" value="9"  />
-            <enum name="emojiRecents" value="10" />
-            <enum name="emojiCategory1" value="11" />
-            <enum name="emojiCategory2" value="12" />
-            <enum name="emojiCategory3" value="13" />
-            <enum name="emojiCategory4" value="14" />
-            <enum name="emojiCategory5" value="15" />
-            <enum name="emojiCategory6" value="16" />
-            <enum name="emojiCategory7" value="17" />
-            <enum name="emojiCategory8" value="18" />
-            <enum name="emojiCategory9" value="19" />
-            <enum name="emojiCategory10" value="20" />
-            <enum name="emojiCategory11" value="21" />
-            <enum name="emojiCategory12" value="22" />
-            <enum name="emojiCategory13" value="23" />
-            <enum name="emojiCategory14" value="24" />
-            <enum name="emojiCategory15" value="25" />
-            <enum name="emojiCategory16" value="26" />
         </attr>
         <!-- This should be aligned with Keyboard.themeId and
              {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
         <attr name="keyboardTheme" format="enum|string">
-            <enum name="ICS" value="0" />
-            <enum name="KLP" value="2" />
+            <enum name="LXXLightBorder" value="1" />
+            <enum name="LXXDarkBorder" value="2" />
             <enum name="LXXLight" value="3" />
             <enum name="LXXDark" value="4" />
         </attr>

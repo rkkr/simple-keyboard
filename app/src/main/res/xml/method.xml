@@ -105,7 +105,6 @@
     vi: Vietnamese/qwerty
     zu: Zulu/qwerty
     zz: QWERTY/qwerty
-    (zz: Emoji/emoji)
     -->
 <!-- TODO: use <lang>_keyboard icon instead of a common keyboard icon. -->
 <!-- TODO: Remove "AsciiCapable" from the extra values when we can stop supporting JB-MR1 -->
@@ -145,7 +144,6 @@
             android:subtypeId="0x590dde40"
             android:imeSubtypeLocale="ar"
             android:imeSubtypeMode="keyboard"
-            android:imeSubtypeExtraValue="EmojiCapable"
             android:isAsciiCapable="false"
     />
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
@@ -427,7 +425,6 @@
             android:subtypeId="0x66fb18bd"
             android:imeSubtypeLocale="iw"
             android:imeSubtypeMode="keyboard"
-            android:imeSubtypeExtraValue="EmojiCapable"
             android:isAsciiCapable="false"
     />
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
@@ -611,7 +608,6 @@
             android:subtypeId="0x763a8752"
             android:imeSubtypeLocale="ru"
             android:imeSubtypeMode="keyboard"
-            android:imeSubtypeExtraValue="EmojiCapable"
             android:isAsciiCapable="false"
     />
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
@@ -635,7 +631,6 @@
             android:subtypeId="0x77c5196e"
             android:imeSubtypeLocale="sr"
             android:imeSubtypeMode="keyboard"
-            android:imeSubtypeExtraValue="EmojiCapable"
             android:isAsciiCapable="false"
     />
     <!-- TODO: This Serbian Latin keyboard is a preliminary layout.

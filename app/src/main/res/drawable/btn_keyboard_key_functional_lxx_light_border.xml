@@ -15,7 +15,8 @@
 -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Functional keys. -->
     <item android:state_pressed="true"
-          android:drawable="@drawable/btn_keyboard_key_pressed_ics_light" />
-    <item android:drawable="@drawable/btn_keyboard_key_normal_holo_light" />
+          android:drawable="@drawable/btn_keyboard_key_pressed_lxx_light_border" />
+    <item android:drawable="@drawable/btn_keyboard_key_function_lxx_light_border" />
 </selector>

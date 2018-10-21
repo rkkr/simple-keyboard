@@ -27,64 +27,39 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 
-public final class KeyboardTheme implements Comparable<KeyboardTheme> {
+public final class KeyboardTheme {
     private static final String TAG = KeyboardTheme.class.getSimpleName();
 
-    static final String KLP_KEYBOARD_THEME_KEY = "pref_keyboard_layout_20110916";
-    static final String LXX_KEYBOARD_THEME_KEY = "pref_keyboard_theme_20140509";
+    static final String KEYBOARD_THEME_KEY = "pref_keyboard_theme_20140509";
 
     // These should be aligned with Keyboard.themeId and Keyboard.Case.keyboardTheme
     // attributes' values in attrs.xml.
-    public static final int THEME_ID_ICS = 0;
-    public static final int THEME_ID_KLP = 2;
-    public static final int THEME_ID_LXX_LIGHT = 3;
-    public static final int THEME_ID_LXX_DARK = 4;
-    public static final int DEFAULT_THEME_ID = THEME_ID_KLP;
-
-    private static KeyboardTheme[] AVAILABLE_KEYBOARD_THEMES;
+    public static final int THEME_ID_LIGHT_BORDER = 1;
+    public static final int THEME_ID_DARK_BORDER = 2;
+    public static final int THEME_ID_LIGHT = 3;
+    public static final int THEME_ID_DARK = 4;
+    public static final int DEFAULT_THEME_ID = THEME_ID_LIGHT;
 
     /* package private for testing */
     static final KeyboardTheme[] KEYBOARD_THEMES = {
-        new KeyboardTheme(THEME_ID_ICS, "ICS", R.style.KeyboardTheme_ICS,
-                // This has never been selected because we support ICS or later.
-                VERSION_CODES.BASE),
-        new KeyboardTheme(THEME_ID_KLP, "KLP", R.style.KeyboardTheme_KLP,
-                // Default theme for ICS, JB, and KLP.
-                VERSION_CODES.ICE_CREAM_SANDWICH),
-        new KeyboardTheme(THEME_ID_LXX_LIGHT, "LXXLight", R.style.KeyboardTheme_LXX_Light,
-                // Default theme for LXX.
-                Build.VERSION_CODES.LOLLIPOP),
-        new KeyboardTheme(THEME_ID_LXX_DARK, "LXXDark", R.style.KeyboardTheme_LXX_Dark,
-                // This has never been selected as default theme.
-                VERSION_CODES.BASE),
+        new KeyboardTheme(THEME_ID_LIGHT, "LXXLight", R.style.KeyboardTheme_LXX_Light),
+        new KeyboardTheme(THEME_ID_DARK, "LXXDark", R.style.KeyboardTheme_LXX_Dark),
+        new KeyboardTheme(THEME_ID_LIGHT_BORDER, "LXXLightBorder", R.style.KeyboardTheme_LXX_Light_Border),
+        new KeyboardTheme(THEME_ID_DARK_BORDER, "LXXDarkBorder", R.style.KeyboardTheme_LXX_Dark_Border),
     };
-
-    static {
-        // Sort {@link #KEYBOARD_THEME} by descending order of {@link #mMinApiVersion}.
-        Arrays.sort(KEYBOARD_THEMES);
-    }
 
     public final int mThemeId;
     public final int mStyleId;
     public final String mThemeName;
-    public final int mMinApiVersion;
 
     // Note: The themeId should be aligned with "themeId" attribute of Keyboard style
     // in values/themes-<style>.xml.
-    private KeyboardTheme(final int themeId, final String themeName, final int styleId,
-            final int minApiVersion) {
+    private KeyboardTheme(final int themeId, final String themeName, final int styleId) {
         mThemeId = themeId;
         mThemeName = themeName;
         mStyleId = styleId;
-        mMinApiVersion = minApiVersion;
-    }
-
-    @Override
-    public int compareTo(final KeyboardTheme rhs) {
-        if (mMinApiVersion > rhs.mMinApiVersion) return -1;
-        if (mMinApiVersion < rhs.mMinApiVersion) return 1;
-        return 0;
     }
 
     @Override
@@ -99,10 +74,9 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     }
 
     /* package private for testing */
-    static KeyboardTheme searchKeyboardThemeById(final int themeId,
-            final KeyboardTheme[] availableThemeIds) {
+    static KeyboardTheme searchKeyboardThemeById(final int themeId) {
         // TODO: This search algorithm isn't optimal if there are many themes.
-        for (final KeyboardTheme theme : availableThemeIds) {
+        for (final KeyboardTheme theme : KEYBOARD_THEMES) {
             if (theme.mThemeId == themeId) {
                 return theme;
             }
@@ -111,104 +85,38 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     }
 
     /* package private for testing */
-    static KeyboardTheme getDefaultKeyboardTheme(final SharedPreferences prefs,
-            final int sdkVersion, final KeyboardTheme[] availableThemeArray) {
-        final String klpThemeIdString = prefs.getString(KLP_KEYBOARD_THEME_KEY, null);
-        if (klpThemeIdString != null) {
-            if (sdkVersion <= VERSION_CODES.KITKAT) {
-                try {
-                    final int themeId = Integer.parseInt(klpThemeIdString);
-                    final KeyboardTheme theme = searchKeyboardThemeById(themeId,
-                            availableThemeArray);
-                    if (theme != null) {
-                        return theme;
-                    }
-                    Log.w(TAG, "Unknown keyboard theme in KLP preference: " + klpThemeIdString);
-                } catch (final NumberFormatException e) {
-                    Log.w(TAG, "Illegal keyboard theme in KLP preference: " + klpThemeIdString, e);
-                }
-            }
-            // Remove old preference.
-            Log.i(TAG, "Remove KLP keyboard theme preference: " + klpThemeIdString);
-            prefs.edit().remove(KLP_KEYBOARD_THEME_KEY).apply();
-        }
-        // TODO: This search algorithm isn't optimal if there are many themes.
-        for (final KeyboardTheme theme : availableThemeArray) {
-            if (sdkVersion >= theme.mMinApiVersion) {
-                return theme;
-            }
-        }
-        return searchKeyboardThemeById(DEFAULT_THEME_ID, availableThemeArray);
+    static KeyboardTheme getDefaultKeyboardTheme() {
+        return searchKeyboardThemeById(DEFAULT_THEME_ID);
     }
 
     public static String getKeyboardThemeName(final int themeId) {
-        final KeyboardTheme theme = searchKeyboardThemeById(themeId, KEYBOARD_THEMES);
+        final KeyboardTheme theme = searchKeyboardThemeById(themeId);
+        Log.i("Getting theme ID", Integer.toString(themeId));
         return theme.mThemeName;
     }
 
     public static void saveKeyboardThemeId(final int themeId, final SharedPreferences prefs) {
-        saveKeyboardThemeId(themeId, prefs, Build.VERSION.SDK_INT);
-    }
-
-    /* package private for testing */
-    static String getPreferenceKey(final int sdkVersion) {
-        if (sdkVersion <= VERSION_CODES.KITKAT) {
-            return KLP_KEYBOARD_THEME_KEY;
-        }
-        return LXX_KEYBOARD_THEME_KEY;
-    }
-
-    /* package private for testing */
-    static void saveKeyboardThemeId(final int themeId, final SharedPreferences prefs,
-            final int sdkVersion) {
-        final String prefKey = getPreferenceKey(sdkVersion);
-        prefs.edit().putString(prefKey, Integer.toString(themeId)).apply();
+        prefs.edit().putString(KEYBOARD_THEME_KEY, Integer.toString(themeId)).apply();
     }
 
     public static KeyboardTheme getKeyboardTheme(final Context context) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        final KeyboardTheme[] availableThemeArray = getAvailableThemeArray(context);
-        return getKeyboardTheme(prefs, Build.VERSION.SDK_INT, availableThemeArray);
-    }
-
-    /* package private for testing */
-    static KeyboardTheme[] getAvailableThemeArray(final Context context) {
-        if (AVAILABLE_KEYBOARD_THEMES == null) {
-            final int[] availableThemeIdStringArray = context.getResources().getIntArray(
-                    R.array.keyboard_theme_ids);
-            final ArrayList<KeyboardTheme> availableThemeList = new ArrayList<>();
-            for (final int id : availableThemeIdStringArray) {
-                final KeyboardTheme theme = searchKeyboardThemeById(id, KEYBOARD_THEMES);
-                if (theme != null) {
-                    availableThemeList.add(theme);
-                }
-            }
-            AVAILABLE_KEYBOARD_THEMES = availableThemeList.toArray(
-                    new KeyboardTheme[availableThemeList.size()]);
-            Arrays.sort(AVAILABLE_KEYBOARD_THEMES);
-        }
-        return AVAILABLE_KEYBOARD_THEMES;
-    }
-
-    /* package private for testing */
-    static KeyboardTheme getKeyboardTheme(final SharedPreferences prefs, final int sdkVersion,
-            final KeyboardTheme[] availableThemeArray) {
-        final String lxxThemeIdString = prefs.getString(LXX_KEYBOARD_THEME_KEY, null);
-        if (lxxThemeIdString == null) {
-            return getDefaultKeyboardTheme(prefs, sdkVersion, availableThemeArray);
+        final String themeIdString = prefs.getString(KEYBOARD_THEME_KEY, null);
+        if (themeIdString == null) {
+            return searchKeyboardThemeById(THEME_ID_LIGHT);
         }
         try {
-            final int themeId = Integer.parseInt(lxxThemeIdString);
-            final KeyboardTheme theme = searchKeyboardThemeById(themeId, availableThemeArray);
+            final int themeId = Integer.parseInt(themeIdString);
+            final KeyboardTheme theme = searchKeyboardThemeById(themeId);
             if (theme != null) {
                 return theme;
             }
-            Log.w(TAG, "Unknown keyboard theme in LXX preference: " + lxxThemeIdString);
+            Log.w(TAG, "Unknown keyboard theme in preference: " + themeIdString);
         } catch (final NumberFormatException e) {
-            Log.w(TAG, "Illegal keyboard theme in LXX preference: " + lxxThemeIdString, e);
+            Log.w(TAG, "Illegal keyboard theme in preference: " + themeIdString, e);
         }
         // Remove preference that contains unknown or illegal theme id.
-        prefs.edit().remove(LXX_KEYBOARD_THEME_KEY).apply();
-        return getDefaultKeyboardTheme(prefs, sdkVersion, availableThemeArray);
+        prefs.edit().remove(KEYBOARD_THEME_KEY).remove(Settings.PREF_KEYBOARD_COLOR).apply();
+        return getDefaultKeyboardTheme();
     }
 }

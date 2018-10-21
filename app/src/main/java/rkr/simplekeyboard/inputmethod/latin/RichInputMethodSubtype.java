@@ -162,8 +162,7 @@ public class RichInputMethodSubtype {
     private static final String EXTRA_VALUE_OF_DUMMY_NO_LANGUAGE_SUBTYPE =
             "KeyboardLayoutSet=" + SubtypeLocaleUtils.QWERTY
             + "," + Constants.Subtype.ExtraValue.ASCII_CAPABLE
-            + "," + Constants.Subtype.ExtraValue.ENABLED_WHEN_DEFAULT_IS_NOT_ASCII_CAPABLE
-            + "," + Constants.Subtype.ExtraValue.EMOJI_CAPABLE;
+            + "," + Constants.Subtype.ExtraValue.ENABLED_WHEN_DEFAULT_IS_NOT_ASCII_CAPABLE;
     @NonNull
     private static final RichInputMethodSubtype DUMMY_NO_LANGUAGE_SUBTYPE =
             new RichInputMethodSubtype(InputMethodSubtypeCompatUtils.newInputMethodSubtype(
