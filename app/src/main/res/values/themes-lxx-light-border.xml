@@ -64,7 +64,5 @@
         <item name="keyPreviewDismissAnimator">@anim/key_preview_dismiss_lxx</item>
         <item name="slidingKeyInputPreviewColor">@color/sliding_key_input_preview_color_lxx_light</item>
         <item name="languageOnSpacebarTextColor">@color/language_on_spacebar_text_color_lxx_light</item>
-        <!-- A negative value to disable text shadow layer. -->
-        <item name="languageOnSpacebarTextShadowRadius">-1.0</item>
     </style>
 </resources>

@@ -177,8 +177,6 @@ are used to. This keyboard does not provide a dictionary, and it is not tied to 
 language among those that use the Latin alphabet. This keyboard is laid out in the QWERTY PC
 disposition that offers additional keys, but smaller keys compared to other common dispositions for
 mobile devices. [CHAR LIMIT=25] -->
-    <!-- Description for Emoji keyboard subtype [CHAR LIMIT=25] -->
-
     <!-- Title of the preference settings for switching keyboard theme [CHAR LIMIT=35] -->
     <!-- The keyboard theme name, Holo White. This is marked as translatable="false" because this is a proper name of system-wide UI Theme. -->
     <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>

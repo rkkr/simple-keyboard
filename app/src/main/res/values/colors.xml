@@ -19,19 +19,7 @@
 -->
 
 <resources>
-    <!-- Color resources for IceCreamSandwich theme. Base color = 33B5E5 -->
-    <!-- android:color/holo_blue_light value is #FF33B5E5 -->
-    <color name="highlight_translucent_color_ics">#9933B5E5</color>
-    <color name="key_text_color_holo">@android:color/white</color>
-    <color name="key_text_inactivated_color_holo">#66E0E4E5</color>
-    <color name="key_hint_letter_color_holo">#80FFFFFF</color>
-    <color name="key_hint_label_color_holo">#A0FFFFFF</color>
-    <color name="key_shifted_letter_hint_inactivated_color_holo">#66E0E4E5</color>
-    <color name="key_shifted_letter_hint_activated_color_holo">@android:color/white</color>
-    <color name="spacebar_text_color_holo">#FFC0C0C0</color>
-    <color name="spacebar_text_shadow_color_holo">#80000000</color>
-    <color name="highlight_translucent_color_klp">#99E0E0E0</color>
-    <!-- Color resources for LXX_Light theme.
+   <!-- Color resources for LXX_Light theme.
          15%:0x26 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6 -->
     <color name="key_text_color_lxx_light">#37474F</color>
     <color name="key_functional_text_color_lxx_light">#CC37474F</color>

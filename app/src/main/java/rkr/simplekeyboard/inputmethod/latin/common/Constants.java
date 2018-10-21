@@ -69,12 +69,6 @@ public final class Constants {
                     "EnabledWhenDefaultIsNotAsciiCapable";
 
             /**
-             * The subtype extra value used to indicate that this subtype is capable of
-             * entering emoji characters.
-             */
-            public static final String EMOJI_CAPABLE = "EmojiCapable";
-
-            /**
              * The subtype extra value used to indicate that the display name of this subtype
              * contains a "%s" for printf-like replacement and it should be replaced by
              * this extra value.

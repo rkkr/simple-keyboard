@@ -136,13 +136,11 @@ public class Key implements Comparable<Key> {
     private static final int MORE_KEYS_MODE_FIXED_COLUMN_WITH_FIXED_ORDER =
             (MORE_KEYS_FLAGS_FIXED_COLUMN | MORE_KEYS_FLAGS_FIXED_ORDER);
     private static final int MORE_KEYS_FLAGS_HAS_LABELS = 0x40000000;
-    private static final int MORE_KEYS_FLAGS_NEEDS_DIVIDERS = 0x20000000;
     private static final int MORE_KEYS_FLAGS_NO_PANEL_AUTO_MORE_KEY = 0x10000000;
     // TODO: Rename these specifiers to !autoOrder! and !fixedOrder! respectively.
     private static final String MORE_KEYS_AUTO_COLUMN_ORDER = "!autoColumnOrder!";
     private static final String MORE_KEYS_FIXED_COLUMN_ORDER = "!fixedColumnOrder!";
     private static final String MORE_KEYS_HAS_LABELS = "!hasLabels!";
-    private static final String MORE_KEYS_NEEDS_DIVIDERS = "!needsDividers!";
     private static final String MORE_KEYS_NO_PANEL_AUTO_MORE_KEY = "!noPanelAutoMoreKey!";
 
     /** Background type that represents different key background visual than normal one. */
@@ -304,9 +302,6 @@ public class Key implements Comparable<Key> {
         }
         if (MoreKeySpec.getBooleanValue(moreKeys, MORE_KEYS_HAS_LABELS)) {
             moreKeysColumnAndFlags |= MORE_KEYS_FLAGS_HAS_LABELS;
-        }
-        if (MoreKeySpec.getBooleanValue(moreKeys, MORE_KEYS_NEEDS_DIVIDERS)) {
-            moreKeysColumnAndFlags |= MORE_KEYS_FLAGS_NEEDS_DIVIDERS;
         }
         if (MoreKeySpec.getBooleanValue(moreKeys, MORE_KEYS_NO_PANEL_AUTO_MORE_KEY)) {
             moreKeysColumnAndFlags |= MORE_KEYS_FLAGS_NO_PANEL_AUTO_MORE_KEY;
@@ -750,10 +745,6 @@ public class Key implements Comparable<Key> {
                 ? LABEL_FLAGS_FOLLOW_KEY_LABEL_RATIO
                 : LABEL_FLAGS_FOLLOW_KEY_LETTER_RATIO;
         return labelSizeFlag | LABEL_FLAGS_AUTO_X_SCALE;
-    }
-
-    public final boolean needsDividersInMoreKeys() {
-        return (mMoreKeysColumnAndFlags & MORE_KEYS_FLAGS_NEEDS_DIVIDERS) != 0;
     }
 
     public final boolean hasNoPanelAutoMoreKey() {

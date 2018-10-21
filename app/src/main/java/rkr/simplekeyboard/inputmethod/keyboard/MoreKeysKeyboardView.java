@@ -38,7 +38,6 @@ import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
 public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel {
     private final int[] mCoordinates = CoordinateUtils.newInstance();
 
-    private final Drawable mDivider;
     protected final KeyDetector mKeyDetector;
     private Controller mController = EMPTY_CONTROLLER;
     protected KeyboardActionListener mListener;
@@ -57,11 +56,6 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
         super(context, attrs, defStyle);
         final TypedArray moreKeysKeyboardViewAttr = context.obtainStyledAttributes(attrs,
                 R.styleable.MoreKeysKeyboardView, defStyle, R.style.MoreKeysKeyboardView);
-        mDivider = moreKeysKeyboardViewAttr.getDrawable(R.styleable.MoreKeysKeyboardView_divider);
-        if (mDivider != null) {
-            // TODO: Drawable itself should have an alpha value.
-            mDivider.setAlpha(128);
-        }
         moreKeysKeyboardViewAttr.recycle();
         mKeyDetector = new MoreKeysDetector(getResources().getDimension(
                 R.dimen.config_more_keys_keyboard_slide_allowance));
@@ -77,23 +71,6 @@ public class MoreKeysKeyboardView extends KeyboardView implements MoreKeysPanel 
         } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
-    }
-
-    @Override
-    protected void onDrawKeyTopVisuals(final Key key, final Canvas canvas, final Paint paint,
-            final KeyDrawParams params) {
-        if (!key.isSpacer() || !(key instanceof MoreKeysKeyboard.MoreKeyDivider)
-                || mDivider == null) {
-            super.onDrawKeyTopVisuals(key, canvas, paint, params);
-            return;
-        }
-        final int keyWidth = key.getDrawWidth();
-        final int keyHeight = key.getHeight();
-        final int iconWidth = Math.min(mDivider.getIntrinsicWidth(), keyWidth);
-        final int iconHeight = mDivider.getIntrinsicHeight();
-        final int iconX = (keyWidth - iconWidth) / 2; // Align horizontally center
-        final int iconY = (keyHeight - iconHeight) / 2; // Align vertically center
-        drawIcon(canvas, mDivider, iconX, iconY, iconWidth, iconHeight);
     }
 
     @Override

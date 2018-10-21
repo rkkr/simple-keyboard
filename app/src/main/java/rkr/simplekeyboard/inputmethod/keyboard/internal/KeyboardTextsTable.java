@@ -188,14 +188,6 @@ public final class KeyboardTextsTable {
         /* 107: 2 */ "keyspec_symbols_percent",
         /* 108: 2 */ "morekeys_symbols_semicolon",
         /* 109: 2 */ "morekeys_symbols_percent",
-        /* 110: 2 */ "label_go_key",
-        /* 111: 2 */ "label_send_key",
-        /* 112: 2 */ "label_next_key",
-        /* 113: 2 */ "label_done_key",
-        /* 114: 2 */ "label_search_key",
-        /* 115: 2 */ "label_previous_key",
-        /* 116: 2 */ "label_pause_key",
-        /* 117: 2 */ "label_wait_key",
         /* 118: 1 */ "morekeys_v",
         /* 119: 1 */ "morekeys_j",
         /* 120: 1 */ "morekeys_q",
@@ -234,8 +226,6 @@ public final class KeyboardTextsTable {
         /* 153: 0 */ "keylabel_to_phone_symbols",
         /* 154: 0 */ "keylabel_time_am",
         /* 155: 0 */ "keylabel_time_pm",
-        /* 156: 0 */ "keyspec_popular_domain",
-        /* 157: 0 */ "morekeys_popular_domain",
         /* 158: 0 */ "keyspecs_left_parenthesis_more_keys",
         /* 159: 0 */ "keyspecs_right_parenthesis_more_keys",
         /* 160: 0 */ "single_laqm_raqm",
@@ -360,14 +350,6 @@ public final class KeyboardTextsTable {
         /* morekeys_symbols_semicolon */ EMPTY,
         // U+2030: "‰" PER MILLE SIGN
         /* morekeys_symbols_percent */ "\u2030",
-        /* label_go_key */ "!string/label_go_key",
-        /* label_send_key */ "!string/label_send_key",
-        /* label_next_key */ "!string/label_next_key",
-        /* label_done_key */ "!string/label_done_key",
-        /* label_search_key */ "!string/label_search_key",
-        /* label_previous_key */ "!string/label_previous_key",
-        /* label_pause_key */ "!string/label_pause_key",
-        /* label_wait_key */ "!string/label_wait_key",
         /* morekeys_v ~ */
         EMPTY, EMPTY, EMPTY, EMPTY,
         /* ~ morekeys_x */
@@ -419,8 +401,8 @@ public final class KeyboardTextsTable {
         /* morekeys_am_pm */ "!fixedColumnOrder!2,!hasLabels!,!text/keylabel_time_am,!text/keylabel_time_pm",
         /* keyspec_settings */ "!icon/settings_key|!code/key_settings",
         /* keyspec_shortcut */ "!icon/shortcut_key|!code/key_shortcut",
-        /* keyspec_action_next */ "!hasLabels!,!text/label_next_key|!code/key_action_next",
-        /* keyspec_action_previous */ "!hasLabels!,!text/label_previous_key|!code/key_action_previous",
+        /* keyspec_action_next */ "!code/key_action_next",
+        /* keyspec_action_previous */ "!code/key_action_previous",
         // Label for "switch to more symbol" modifier key ("= \ <"). Must be short to fit on key!
         /* keylabel_to_more_symbol */ "= \\\\ <",
         // Label for "switch to more symbol" modifier key on tablets.  Must be short to fit on key!
@@ -435,9 +417,6 @@ public final class KeyboardTextsTable {
         /* keylabel_time_am */ "AM",
         // Key label for "post meridiem"
         /* keylabel_time_pm */ "PM",
-        /* keyspec_popular_domain */ ".com",
-        // popular web domains for the locale - most popular, displayed on the keyboard
-        /* morekeys_popular_domain */ "!hasLabels!,.net,.org,.gov,.edu",
         /* keyspecs_left_parenthesis_more_keys */ "!text/keyspec_less_than,!text/keyspec_left_curly_bracket,!text/keyspec_left_square_bracket",
         /* keyspecs_right_parenthesis_more_keys */ "!text/keyspec_greater_than,!text/keyspec_right_curly_bracket,!text/keyspec_right_square_bracket",
         // The following characters don't need BIDI mirroring.
@@ -1665,8 +1644,7 @@ public final class KeyboardTextsTable {
         /* morekeys_symbols_semicolon */ ";",
         // U+2030: "‰" PER MILLE SIGN
         /* morekeys_symbols_percent */ "\\%,\u2030",
-        /* label_go_key ~ */
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null,
         null, null, null, null, null, null,
         /* ~ morekeys_plus */
         // U+2264: "≤" LESS-THAN OR EQUAL TO
@@ -1940,14 +1918,6 @@ public final class KeyboardTextsTable {
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null,
         /* ~ morekeys_symbols_percent */
-        /* label_go_key */ "Go",
-        /* label_send_key */ "Send",
-        /* label_next_key */ "Next",
-        /* label_done_key */ "Done",
-        /* label_search_key */ "Search",
-        /* label_previous_key */ "Prev",
-        /* label_pause_key */ "Pause",
-        /* label_wait_key */ "Wait",
     };
 
     /* Locale hr: Croatian */
@@ -3375,14 +3345,6 @@ public final class KeyboardTextsTable {
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null,
         /* ~ morekeys_symbols_percent */
-        /* label_go_key */ "Idi",
-        /* label_send_key */ "\u0160alji",
-        /* label_next_key */ "Sled",
-        /* label_done_key */ "Gotov",
-        /* label_search_key */ "Tra\u017Ei",
-        /* label_previous_key */ "Preth",
-        /* label_pause_key */ "Pauza",
-        /* label_wait_key */ "\u010Cekaj",
     };
 
     /* Locale sv: Swedish */
@@ -3899,8 +3861,7 @@ public final class KeyboardTextsTable {
             /* morekeys_symbols_semicolon */ ";",
             // U+2030: "‰" PER MILLE SIGN
             /* morekeys_symbols_percent */ "\\%,\u2030",
-            /* label_go_key ~ */
-            null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+            null, null, null, null, null, null, null,
             null, null, null, null, null, null,
             /* ~ morekeys_plus */
             // U+2264: "≤" LESS-THAN OR EQUAL TO

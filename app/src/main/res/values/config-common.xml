@@ -67,9 +67,6 @@
     <fraction name="config_keyboard_right_padding">0%p</fraction>
     <dimen name="config_keyboard_vertical_correction">0.0dp</dimen>
 
-    <!-- Common key top visual configuration. -->
-    <dimen name="config_key_popup_hint_letter_padding">2dp</dimen>
-
     <!-- Keyboard height -->
     <integer name="config_max_keyboar_height">150</integer>
     <integer name="config_min_keyboar_height">50</integer>
