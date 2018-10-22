@@ -80,8 +80,6 @@
         <item>qwerty</item>
         <item>en_GB:TrySuppressingImeSwitcher,AsciiCapable</item>
         <item>qwerty</item>
-        <item>ar</item>
-        <item>arabic</item>
         <item>cs:AsciiCapable</item>
         <item>qwertz</item>
         <item>da:AsciiCapable</item>
@@ -102,18 +100,12 @@
         <item>qwertz</item>
         <item>it:AsciiCapable</item>
         <item>qwerty</item>
-        <item>iw</item>
-        <item>hebrew</item>
         <item>nb:AsciiCapable</item>
         <item>nordic</item>
         <item>nl:AsciiCapable</item>
         <item>qwerty</item>
         <item>pl:AsciiCapable</item>
         <item>qwerty</item>
-        <item>ru</item>
-        <item>east_slavic</item>
-        <item>sr</item>
-        <item>south_slavic</item>
         <item>sv:AsciiCapable</item>
         <item>nordic</item>
         <item>tr:AsciiCapable</item>
