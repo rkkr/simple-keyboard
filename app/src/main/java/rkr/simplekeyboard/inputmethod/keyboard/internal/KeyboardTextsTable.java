@@ -1280,7 +1280,7 @@ public final class KeyboardTextsTable {
         // U+0135: "ĵ" LATIN SMALL LETTER J WITH CIRCUMFLEX
         /* keyspec_spanish_row2_10 */ "\u0135",
         /* morekeys_bullet ~ */
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null,
         null, null, null, null,
         /* ~ label_wait_key */
         // U+0175: "ŵ" LATIN SMALL LETTER W WITH CIRCUMFLEX
@@ -1649,7 +1649,6 @@ public final class KeyboardTextsTable {
         // U+2030: "‰" PER MILLE SIGN
         /* morekeys_symbols_percent */ "\\%,\u2030",
         null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null,
         /* ~ morekeys_plus */
         // U+2264: "≤" LESS-THAN OR EQUAL TO
         // U+2265: "≥" GREATER-THAN EQUAL TO
@@ -1912,18 +1911,7 @@ public final class KeyboardTextsTable {
         null, null, null, null, null, null, null, null, null, null, null,
         /* ~ single_quotes */
         // U+20B9: "₹" INDIAN RUPEE SIGN
-        /* keyspec_currency */ "\u20B9",
-        /* morekeys_y ~ */
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null,
-        /* ~ morekeys_symbols_percent */
-        /* label_pause_key */ "Pause",
-        /* label_wait_key */ "Wait",
+        /* keyspec_currency */ "\u20B9"
     };
 
     /* Locale hr: Croatian */
@@ -2067,8 +2055,7 @@ public final class KeyboardTextsTable {
         /* morekeys_h ~ */
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null,
+        null, null, null, null, null, null, null, null, null, null, null, null,
         /* ~ morekeys_greater_than */
         // U+055C: "՜" ARMENIAN EXCLAMATION MARK
         // U+00A1: "¡" INVERTED EXCLAMATION MARK
@@ -2248,8 +2235,7 @@ public final class KeyboardTextsTable {
         /* keyspec_comma ~ */
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null, null, null, null,
         /* ~ morekeys_currency_dollar */
         // U+00B1: "±" PLUS-MINUS SIGN
         // U+FB29: "﬩" HEBREW LETTER ALTERNATIVE PLUS SIGN
@@ -2322,8 +2308,7 @@ public final class KeyboardTextsTable {
         /* morekeys_cyrillic_o */ "\u04E9",
         /* morekeys_cyrillic_i ~ */
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null, null, null, null,
         /* ~ keyspec_x */
         // U+04BB: "һ" CYRILLIC SMALL LETTER SHHA
         /* morekeys_east_slavic_row2_11 */ "\u04BB",
@@ -2351,8 +2336,7 @@ public final class KeyboardTextsTable {
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null, null, null, null,
         /* ~ morekeys_cyrillic_a */
         // U+17DB: "៛" KHMER CURRENCY SYMBOL RIEL
         /* morekeys_currency_dollar */ "\u17DB,\u00A2,\u00A3,\u20AC,\u00A5,\u20B1",
@@ -3341,16 +3325,7 @@ public final class KeyboardTextsTable {
         // U+017E: "ž" LATIN SMALL LETTER Z WITH CARON
         /* morekeys_z */ "\u017E,%",
         // U+0111: "đ" LATIN SMALL LETTER D WITH STROKE
-        /* morekeys_d */ "\u0111,%",
-        /* morekeys_t ~ */
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null,
-        /* ~ morekeys_symbols_percent */
+        /* morekeys_d */ "\u0111,%"
     };
 
     /* Locale sv: Swedish */
@@ -3868,7 +3843,6 @@ public final class KeyboardTextsTable {
             // U+2030: "‰" PER MILLE SIGN
             /* morekeys_symbols_percent */ "\\%,\u2030",
             null, null, null, null, null, null, null, null, null,
-            null, null, null, null, null, null,
             /* ~ morekeys_plus */
             // U+2264: "≤" LESS-THAN OR EQUAL TO
             // U+2265: "≥" GREATER-THAN EQUAL TO
@@ -4206,7 +4180,7 @@ public final class KeyboardTextsTable {
         // U+0175: "ŵ" LATIN SMALL LETTER W WITH CIRCUMFLEX
         /* morekeys_w */ "\u0175",
         /* morekeys_east_slavic_row2_2 ~ */
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null,
         /* ~ morekeys_v */
