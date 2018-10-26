@@ -188,6 +188,8 @@ public final class KeyboardTextsTable {
         /* 107: 2 */ "keyspec_symbols_percent",
         /* 108: 2 */ "morekeys_symbols_semicolon",
         /* 109: 2 */ "morekeys_symbols_percent",
+        /* 116: 2 */ "label_pause_key",
+        /* 117: 2 */ "label_wait_key",
         /* 118: 1 */ "morekeys_v",
         /* 119: 1 */ "morekeys_j",
         /* 120: 1 */ "morekeys_q",
@@ -350,6 +352,8 @@ public final class KeyboardTextsTable {
         /* morekeys_symbols_semicolon */ EMPTY,
         // U+2030: "‰" PER MILLE SIGN
         /* morekeys_symbols_percent */ "\u2030",
+        /* label_pause_key */ "!string/label_pause_key",
+        /* label_wait_key */ "!string/label_wait_key",
         /* morekeys_v ~ */
         EMPTY, EMPTY, EMPTY, EMPTY,
         /* ~ morekeys_x */
@@ -1644,7 +1648,7 @@ public final class KeyboardTextsTable {
         /* morekeys_symbols_semicolon */ ";",
         // U+2030: "‰" PER MILLE SIGN
         /* morekeys_symbols_percent */ "\\%,\u2030",
-        null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null,
         /* ~ morekeys_plus */
         // U+2264: "≤" LESS-THAN OR EQUAL TO
@@ -1918,6 +1922,8 @@ public final class KeyboardTextsTable {
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null,
         /* ~ morekeys_symbols_percent */
+        /* label_pause_key */ "Pause",
+        /* label_wait_key */ "Wait",
     };
 
     /* Locale hr: Croatian */
@@ -3861,7 +3867,7 @@ public final class KeyboardTextsTable {
             /* morekeys_symbols_semicolon */ ";",
             // U+2030: "‰" PER MILLE SIGN
             /* morekeys_symbols_percent */ "\\%,\u2030",
-            null, null, null, null, null, null, null,
+            null, null, null, null, null, null, null, null, null,
             null, null, null, null, null, null,
             /* ~ morekeys_plus */
             // U+2264: "≤" LESS-THAN OR EQUAL TO
