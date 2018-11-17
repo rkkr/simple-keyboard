@@ -100,6 +100,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
     private int mLastY;
     private int mStartX;
     private int mStartY;
+    private long mStartTime;
     private boolean mCursorMoved = false;
 
     // true if keyboard layout has been changed.
@@ -520,6 +521,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             setPressedKeyGraphics(key);
             mStartX = x;
             mStartY = y;
+            mStartTime = System.currentTimeMillis();
         }
     }
 
@@ -620,8 +622,9 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         final Key oldKey = mCurrentKey;
         if (oldKey != null && oldKey.getCode() == Constants.CODE_SPACE && Settings.getInstance().getCurrent().mSpaceSwipeEnabled) {
             //Pointer slider
-            int steps = (x - mStartX) / sPointerStep / (mCursorMoved ? 2 : 1);
-            if (steps != 0) {
+            int steps = (x - mStartX) / sPointerStep;
+            final int longpressTimeout = Settings.getInstance().getCurrent().mKeyLongpressTimeout / MULTIPLIER_FOR_LONG_PRESS_TIMEOUT_IN_SLIDING_INPUT;
+            if (steps != 0 && mStartTime + longpressTimeout < System.currentTimeMillis()) {
                 mCursorMoved = true;
                 mStartX += steps * sPointerStep;
                 sListener.onMovePointer(steps);
