@@ -65,4 +65,5 @@
     <string name="hide_language_switch_key">Menyembunyikan kata kunci</string>
     <string name="show_number_row">Tampilkan garis pemisah</string>
     <string name="space_swipe">Geser untuk menggerakan kursor</string>
+    <string name="delete_swipe">Delete swipe</string>
 </resources>

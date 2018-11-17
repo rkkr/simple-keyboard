@@ -65,4 +65,5 @@
     <string name="hide_language_switch_key">Taste für Sprachwahl ausblenden</string>
     <string name="show_number_row">Zahlenreihe anzeigen</string>
     <string name="space_swipe">Cursor mit Wischen über die Leertaste steuern</string>
+    <string name="delete_swipe">Delete swipe</string>
 </resources>

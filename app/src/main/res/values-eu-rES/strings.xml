@@ -65,4 +65,5 @@
     <string name="hide_language_switch_key">Ezkutatu hizkuntza aldatzeko tekla</string>
     <string name="show_number_row">Erakutsi aparteko zenbakien errenkada</string>
     <string name="space_swipe">Espazioan hatza pasatzean mugitu kurtsorea</string>
+    <string name="delete_swipe">Delete swipe</string>
 </resources>

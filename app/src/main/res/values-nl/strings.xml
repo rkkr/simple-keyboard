@@ -65,4 +65,5 @@
     <string name="hide_language_switch_key">Verberg taalkeuze toets</string>
     <string name="show_number_row">Aparte nummer rij</string>
     <string name="space_swipe">Spatie-veeg beweegt cursor</string>
+    <string name="delete_swipe">Delete swipe</string>
 </resources>

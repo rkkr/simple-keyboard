@@ -65,4 +65,5 @@
     <string name="hide_language_switch_key">Masquer la touche de sélection de langue</string>
     <string name="show_number_row">Afficher la ligne de chiffres</string>
     <string name="space_swipe">Glisser sur Espace pour déplacer le curseur</string>
+    <string name="delete_swipe">Delete swipe</string>
 </resources>

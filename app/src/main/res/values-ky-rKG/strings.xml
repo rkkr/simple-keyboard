@@ -65,4 +65,5 @@
     <string name="hide_language_switch_key">Hide language switch key</string>
     <string name="show_number_row">Show separate number row</string>
     <string name="space_swipe">Space swipe cursor move</string>
+    <string name="delete_swipe">Delete swipe</string>
 </resources>

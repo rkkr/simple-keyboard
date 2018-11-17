@@ -65,4 +65,5 @@
     <string name="hide_language_switch_key">Ocultar tecla de cambio de idioma</string>
     <string name="show_number_row">Mostrar la fila de dígitos separada</string>
     <string name="space_swipe">Space swipe cursor move</string>
+    <string name="delete_swipe">Delete swipe</string>
 </resources>
