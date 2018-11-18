@@ -163,14 +163,6 @@ public class RichInputMethodSubtype {
             "KeyboardLayoutSet=" + SubtypeLocaleUtils.QWERTY
             + "," + Constants.Subtype.ExtraValue.ASCII_CAPABLE
             + "," + Constants.Subtype.ExtraValue.ENABLED_WHEN_DEFAULT_IS_NOT_ASCII_CAPABLE;
-    @NonNull
-    private static final RichInputMethodSubtype DUMMY_NO_LANGUAGE_SUBTYPE =
-            new RichInputMethodSubtype(InputMethodSubtypeCompatUtils.newInputMethodSubtype(
-                    R.string.subtype_no_language_qwerty, R.drawable.ic_ime_switcher_dark,
-                    SubtypeLocaleUtils.NO_LANGUAGE, KEYBOARD_MODE,
-                    EXTRA_VALUE_OF_DUMMY_NO_LANGUAGE_SUBTYPE,
-                    false /* isAuxiliary */, false /* overridesImplicitlyEnabledSubtype */,
-                    SUBTYPE_ID_OF_DUMMY_NO_LANGUAGE_SUBTYPE));
     private static RichInputMethodSubtype sNoLanguageSubtype;
 
     @NonNull
@@ -189,8 +181,18 @@ public class RichInputMethodSubtype {
             return noLanguageSubtype;
         }
         Log.w(TAG, "Can't find any language with QWERTY subtype");
-        Log.w(TAG, "No input method subtype found; returning dummy subtype: "
-                + DUMMY_NO_LANGUAGE_SUBTYPE);
-        return DUMMY_NO_LANGUAGE_SUBTYPE;
+        Log.w(TAG, "No input method subtype found; returning dummy subtype");
+
+        InputMethodSubtype.InputMethodSubtypeBuilder builder = new InputMethodSubtype.InputMethodSubtypeBuilder();
+
+        builder.setSubtypeNameResId(R.string.subtype_no_language_qwerty)
+                .setSubtypeIconResId(R.drawable.ic_ime_switcher_dark)
+                .setSubtypeLocale(SubtypeLocaleUtils.NO_LANGUAGE)
+                .setSubtypeMode(KEYBOARD_MODE)
+                .setSubtypeExtraValue(EXTRA_VALUE_OF_DUMMY_NO_LANGUAGE_SUBTYPE)
+                .setOverridesImplicitlyEnabledSubtype(false)
+                .setIsAuxiliary(false)
+                .setSubtypeId(SUBTYPE_ID_OF_DUMMY_NO_LANGUAGE_SUBTYPE);
+        return new RichInputMethodSubtype(builder.build());
     }
 }

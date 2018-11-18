@@ -300,7 +300,7 @@ final class CustomInputStylePreference extends DialogPreference
                             subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
                             SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
                 }
-                if (InputMethodSubtypeCompatUtils.isAsciiCapable(subtype)) {
+                if (subtype.isAsciiCapable()) {
                     items.add(new SubtypeLocaleItem(subtype));
                 }
             }

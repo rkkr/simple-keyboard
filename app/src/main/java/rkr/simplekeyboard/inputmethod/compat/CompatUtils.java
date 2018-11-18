@@ -64,19 +64,6 @@ public final class CompatUtils {
         return null;
     }
 
-    public static Constructor<?> getConstructor(final Class<?> targetClass,
-            final Class<?> ... types) {
-        if (targetClass == null || types == null) {
-            return null;
-        }
-        try {
-            return targetClass.getConstructor(types);
-        } catch (final SecurityException | NoSuchMethodException e) {
-            // ignore
-        }
-        return null;
-    }
-
     public static Object newInstance(final Constructor<?> constructor, final Object ... args) {
         if (constructor == null) {
             return null;

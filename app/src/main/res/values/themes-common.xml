@@ -76,6 +76,5 @@
     <style
         name="MainKeyboardView"
         parent="KeyboardView" />
-    <style name="MoreKeysKeyboard" />
     <style name="MoreKeysKeyboardView" />
 </resources>

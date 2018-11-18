@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Locale;
 
-import rkr.simplekeyboard.inputmethod.compat.CharacterCompat;
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.latin.common.CollectionUtils;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
@@ -127,7 +126,7 @@ public final class MoreKeySpec {
 
         public void addLetter(@NonNull final Key key) {
             final int code = key.getCode();
-            if (CharacterCompat.isAlphabetic(code)) {
+            if (Character.isAlphabetic(code)) {
                 mCodes.put(code, 0);
             } else if (code == Constants.CODE_OUTPUT_TEXT) {
                 mTexts.add(key.getOutputText());
@@ -136,7 +135,7 @@ public final class MoreKeySpec {
 
         public boolean contains(@NonNull final MoreKeySpec moreKey) {
             final int code = moreKey.mCode;
-            if (CharacterCompat.isAlphabetic(code) && mCodes.indexOfKey(code) >= 0) {
+            if (Character.isAlphabetic(code) && mCodes.indexOfKey(code) >= 0) {
                 return true;
             } else if (code == Constants.CODE_OUTPUT_TEXT && mTexts.contains(moreKey.mOutputText)) {
                 return true;

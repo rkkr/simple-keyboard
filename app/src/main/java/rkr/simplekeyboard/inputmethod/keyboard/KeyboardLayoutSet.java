@@ -36,9 +36,6 @@ import java.lang.ref.SoftReference;
 import java.util.HashMap;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.compat.EditorInfoCompatUtils;
-import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
-import rkr.simplekeyboard.inputmethod.compat.UserManagerCompatUtils;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardBuilder;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardParams;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.UniqueKeysCache;
@@ -47,7 +44,6 @@ import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.FORCE_ASCII;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.NO_SETTINGS_KEY;
 
 /**
@@ -229,16 +225,6 @@ public final class KeyboardLayoutSet {
             params.mEditorInfo = editorInfo;
             params.mNoSettingsKey = InputAttributes.inPrivateImeOptions(
                     mPackageName, NO_SETTINGS_KEY, editorInfo);
-
-            // When the device is still unlocked, features like showing the IME setting app need to
-            // be locked down.
-            // TODO: Switch to {@code UserManagerCompat.isUserUnlocked()} in the support-v4 library
-            // when it becomes publicly available.
-            @UserManagerCompatUtils.LockState
-            final int lockState = UserManagerCompatUtils.getUserLockState(context);
-            if (lockState == UserManagerCompatUtils.LOCK_STATE_LOCKED) {
-                params.mNoSettingsKey = true;
-            }
         }
 
         public Builder setKeyboardGeometry(final int keyboardWidth, final int keyboardHeight) {
@@ -248,20 +234,10 @@ public final class KeyboardLayoutSet {
         }
 
         public Builder setSubtype(@NonNull final RichInputMethodSubtype subtype) {
-            final boolean asciiCapable = InputMethodSubtypeCompatUtils.isAsciiCapable(subtype);
             // TODO: Consolidate with {@link InputAttributes}.
-            @SuppressWarnings("deprecation")
-            final boolean deprecatedForceAscii = InputAttributes.inPrivateImeOptions(
-                    mPackageName, FORCE_ASCII, mParams.mEditorInfo);
-            final boolean forceAscii = EditorInfoCompatUtils.hasFlagForceAscii(
-                    mParams.mEditorInfo.imeOptions)
-                    || deprecatedForceAscii;
-            final RichInputMethodSubtype keyboardSubtype = (forceAscii && !asciiCapable)
-                    ? RichInputMethodSubtype.getNoLanguageSubtype()
-                    : subtype;
-            mParams.mSubtype = keyboardSubtype;
+            mParams.mSubtype = subtype;
             mParams.mKeyboardLayoutSetName = KEYBOARD_LAYOUT_SET_RESOURCE_PREFIX
-                    + keyboardSubtype.getKeyboardLayoutSetName();
+                    + subtype.getKeyboardLayoutSetName();
             return this;
         }
 

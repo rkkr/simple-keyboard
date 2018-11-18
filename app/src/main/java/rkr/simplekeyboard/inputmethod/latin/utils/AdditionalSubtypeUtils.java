@@ -57,13 +57,17 @@ public final class AdditionalSubtypeUtils {
         final String platformVersionDependentExtraValues = getPlatformVersionDependentExtraValue(keyboardLayoutSetName, isAsciiCapable);
         final int platformVersionIndependentSubtypeId =
                 getPlatformVersionIndependentSubtypeId(localeString, keyboardLayoutSetName);
-        // NOTE: In KitKat and later, InputMethodSubtypeBuilder#setIsAsciiCapable is also available.
-        // TODO: Use InputMethodSubtypeBuilder#setIsAsciiCapable when appropriate.
-        return InputMethodSubtypeCompatUtils.newInputMethodSubtype(nameId,
-                R.drawable.ic_ime_switcher_dark, localeString, KEYBOARD_MODE,
-                platformVersionDependentExtraValues,
-                false /* isAuxiliary */, false /* overrideImplicitlyEnabledSubtype */,
-                platformVersionIndependentSubtypeId);
+        InputMethodSubtype.InputMethodSubtypeBuilder builder = new InputMethodSubtype.InputMethodSubtypeBuilder();
+
+        builder.setSubtypeNameResId(nameId)
+            .setSubtypeIconResId(R.drawable.ic_ime_switcher_dark)
+            .setSubtypeLocale(localeString)
+            .setSubtypeMode(KEYBOARD_MODE)
+            .setSubtypeExtraValue(platformVersionDependentExtraValues)
+            .setOverridesImplicitlyEnabledSubtype(false)
+            .setIsAuxiliary(false)
+            .setSubtypeId(platformVersionIndependentSubtypeId);
+        return builder.build();
     }
 
     public static InputMethodSubtype createDummyAdditionalSubtype(

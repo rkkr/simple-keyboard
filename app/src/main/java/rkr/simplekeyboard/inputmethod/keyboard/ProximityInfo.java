@@ -22,8 +22,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-
 public class ProximityInfo {
     // Must be equal to MAX_PROXIMITY_CHARS_SIZE in native/jni/src/defines.h
     /** Number of key widths from current touch point to search for nearest keys. */
