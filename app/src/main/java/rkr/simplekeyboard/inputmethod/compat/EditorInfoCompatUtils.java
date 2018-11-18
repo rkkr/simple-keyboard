@@ -16,15 +16,13 @@
 
 package rkr.simplekeyboard.inputmethod.compat;
 
+import android.os.Build;
+import android.os.LocaleList;
 import android.view.inputmethod.EditorInfo;
 
-import java.lang.reflect.Field;
 import java.util.Locale;
 
 public final class EditorInfoCompatUtils {
-    private static final Field FIELD_HINT_LOCALES = CompatUtils.getField(
-            EditorInfo.class, "hintLocales");
-
     private EditorInfoCompatUtils() {
         // This utility class is not publicly instantiable.
     }
@@ -57,13 +55,11 @@ public final class EditorInfoCompatUtils {
         if (editorInfo == null) {
             return null;
         }
-        final Object localeList = CompatUtils.getFieldValue(editorInfo, null, FIELD_HINT_LOCALES);
-        if (localeList == null) {
-            return null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            LocaleList localeList = editorInfo.hintLocales;
+            if (localeList != null && !localeList.isEmpty())
+                return localeList.get(0);
         }
-        if (LocaleListCompatUtils.isEmpty(localeList)) {
-            return null;
-        }
-        return LocaleListCompatUtils.get(localeList, 0);
+        return null;
     }
 }
