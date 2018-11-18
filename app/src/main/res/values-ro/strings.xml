@@ -65,5 +65,5 @@
     <string name="hide_language_switch_key">Ascunde butonul de schimbare limbă</string>
     <string name="show_number_row">Arată un rând separat cu cifre</string>
     <string name="space_swipe">Glisarea pe tasta Spațiu mută cursorul</string>
-    <string name="delete_swipe">Delete swipe</string>
+    <string name="delete_swipe">Ștergere glisare</string>
 </resources>
