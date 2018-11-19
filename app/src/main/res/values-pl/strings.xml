@@ -59,11 +59,11 @@
     <string name="prefs_keypress_sound_volume_settings">"Głośność przy naciśniętym klawiszu"</string>
     <string name="prefs_key_longpress_timeout_settings">"Opóźnienie przy długim naciśnięciu"</string>
     <string name="button_default">"Domyślne"</string>
-    <string name="prefs_keyboard_height_settings">Keyboard height</string>
-    <string name="keyboard_color">Set custom keyboard color</string>
-    <string name="hide_special_chars">Hide special characters</string>
-    <string name="hide_language_switch_key">Hide language switch key</string>
-    <string name="show_number_row">Show separate number row</string>
+    <string name="prefs_keyboard_height_settings">Wysokość klawiatury</string>
+    <string name="keyboard_color">Ustaw niestandardowy kolor klawiatury</string>
+    <string name="hide_special_chars">Ukryj specjalne znaki</string>
+    <string name="hide_language_switch_key">Ukryj znak zmiany języka</string>
+    <string name="show_number_row">Pokaż oddzielne wierszowe numery</string>
     <string name="space_swipe">Space swipe cursor move</string>
     <string name="delete_swipe">Delete swipe</string>
 </resources>
