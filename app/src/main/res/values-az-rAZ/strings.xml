@@ -65,5 +65,5 @@
     <string name="hide_language_switch_key">Dil dəyişmə düyməsini gizlət</string>
     <string name="show_number_row">Nömrə sırası göstər</string>
     <string name="space_swipe">Boşluq sürüşdürmə kursor hərəkəti</string>
-    <string name="delete_swipe">Delete swipe</string>
+    <string name="delete_swipe">Sürüşdürməni sil</string>
 </resources>
