@@ -59,11 +59,11 @@
     <string name="prefs_keypress_sound_volume_settings">"Ένταση ήχου πατήματος πλήκτρου"</string>
     <string name="prefs_key_longpress_timeout_settings">"Καθυστέρηση παρατεταμένου πατήματος"</string>
     <string name="button_default">"Προεπιλογή"</string>
-    <string name="prefs_keyboard_height_settings">Keyboard height</string>
-    <string name="keyboard_color">Set custom keyboard color</string>
-    <string name="hide_special_chars">Hide special characters</string>
-    <string name="hide_language_switch_key">Hide language switch key</string>
-    <string name="show_number_row">Show separate number row</string>
-    <string name="space_swipe">Space swipe cursor move</string>
-    <string name="delete_swipe">Delete swipe</string>
+    <string name="prefs_keyboard_height_settings">Ύψος πληκτρολογίου</string>
+    <string name="keyboard_color">Ορίστε προσαρμοσμένο χρώμα πληκτρολογίου</string>
+    <string name="hide_special_chars">Απόκρυψη ειδικών χαρακτήρων</string>
+    <string name="hide_language_switch_key">Απόκρυψη πλήκτρου εναλλαγής γλώσσας</string>
+    <string name="show_number_row">Εμφάνιση ξεχωριστής σειράς αριθμών</string>
+    <string name="space_swipe">Ολίσθηση στη γραμμή διαστήματος για μετακίνηση του δρομέα</string>
+    <string name="delete_swipe">Αφαίρεση της ολίσθησης</string>
 </resources>
