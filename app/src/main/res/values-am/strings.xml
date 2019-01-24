@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"መልክ እና አቀማመጦች"</string>
     <string name="settings_screen_advanced">"የላቀ"</string>
     <string name="settings_screen_theme">"ገፅታ"</string>
-    <string name="key_preview_popup_dismiss_delay">"የቁልፍ ብቅ ባይ መዘግየትን ያስወገዳል"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"የዘገየ የለም"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"ነባሪ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ሚሊሰከንድ"</string>
     <string name="settings_system_default">"የስርዓት ነባሪ"</string>
     <string name="auto_cap">"ራስ-ሰር አቢይ ማድረግ"</string>

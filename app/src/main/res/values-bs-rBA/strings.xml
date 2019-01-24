@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"Izgled i rasporedi tipki"</string>
     <string name="settings_screen_advanced">"Napredno"</string>
     <string name="settings_screen_theme">"Tema"</string>
-    <string name="key_preview_popup_dismiss_delay">"Odgoda odbijanja tipke"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"Bez odgode"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"Zadano"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"Sistemski zadano"</string>
     <string name="auto_cap">"Automatsko veliko slovo"</string>

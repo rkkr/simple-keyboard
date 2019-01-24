@@ -50,9 +50,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_HIDE_LANGUAGE_SWITCH_KEY =
             "pref_hide_language_switch_key";
     public static final String PREF_CUSTOM_INPUT_STYLES = "custom_input_styles";
-    // TODO: consolidate key preview dismiss delay with the key preview animation parameters.
-    public static final String PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY =
-            "pref_key_preview_popup_dismiss_delay";
     public static final String PREF_VIBRATION_DURATION_SETTINGS =
             "pref_vibration_duration_settings";
     public static final String PREF_KEYPRESS_SOUND_VOLUME = "pref_keypress_sound_volume";
@@ -164,13 +161,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             return defaultKeyPreviewPopup;
         }
         return prefs.getBoolean(PREF_POPUP_ON, defaultKeyPreviewPopup);
-    }
-
-    public static int readKeyPreviewPopupDismissDelay(final SharedPreferences prefs,
-            final Resources res) {
-        return Integer.parseInt(prefs.getString(PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY,
-                Integer.toString(res.getInteger(
-                        R.integer.config_key_preview_linger_timeout))));
     }
 
     public static boolean readShowsLanguageSwitchKey(final SharedPreferences prefs) {

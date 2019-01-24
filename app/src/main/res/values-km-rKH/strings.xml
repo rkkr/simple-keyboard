@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"រូបរាង &amp;amp ប្លង់"</string>
     <string name="settings_screen_advanced">"កម្រិត​ខ្ពស់"</string>
     <string name="settings_screen_theme">"រូបរាង"</string>
-    <string name="key_preview_popup_dismiss_delay">"​សោ​លេចឡើង​បោះបង់​ការ​​ពន្យារពេល​"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"គ្មាន​ការ​ពន្យារពេល"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"លំនាំដើម"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> មិល្លី​វិនាទី"</string>
     <string name="settings_system_default">"លំនាំ​ដើម​​​ប្រព័ន្ធ"</string>
     <string name="auto_cap">"ការ​សរសេរ​ជា​អក្សរ​ធំ​​ស្វ័យប្រវត្តិ​"</string>

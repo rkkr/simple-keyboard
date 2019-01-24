@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"外观和布局"</string>
     <string name="settings_screen_advanced">"高级"</string>
     <string name="settings_screen_theme">"主题背景"</string>
-    <string name="key_preview_popup_dismiss_delay">"弹出字符隐藏延迟"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"无延迟"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"默认"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>毫秒"</string>
     <string name="settings_system_default">"系统默认值"</string>
     <string name="auto_cap">"自动大写"</string>

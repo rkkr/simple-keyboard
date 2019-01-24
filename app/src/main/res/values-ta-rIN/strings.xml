@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"தோற்றம் &amp; தளவமைப்புகள்"</string>
     <string name="settings_screen_advanced">"மேம்பட்டவை"</string>
     <string name="settings_screen_theme">"தீம்"</string>
-    <string name="key_preview_popup_dismiss_delay">"விசை பாப்அப் விலக்கின் தாமதம்"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"தாமதம் வேண்டாம்"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"இயல்புநிலை"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>மி.வி."</string>
     <string name="settings_system_default">"அமைப்பின் இயல்புநிலை"</string>
     <string name="auto_cap">"தன்னியக்க பேரெழுத்தாக்கல்"</string>

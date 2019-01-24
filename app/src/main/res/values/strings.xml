@@ -46,13 +46,6 @@
     <!-- Option to show language switch key [CHAR LIMIT=30] -->
     <!-- Option summary for showing language switch key [CHAR LIMIT=65] -->
 
-    <!-- Option for the dismiss delay of the key popup [CHAR LIMIT=25] -->
-    <string name="key_preview_popup_dismiss_delay">Key popup dismiss delay</string>
-    <!-- Description for delay for dismissing a popup on keypress: no delay [CHAR LIMIT=15] -->
-    <string name="key_preview_popup_dismiss_no_delay">No delay</string>
-    <!-- Description for delay for dismissing a popup on screen: default value of the delay [CHAR LIMIT=15] -->
-    <string name="key_preview_popup_dismiss_default_delay">Default</string>
-
     <!-- Units abbreviation for the duration (milliseconds) [CHAR LIMIT=10] -->
     <string name="abbreviation_unit_milliseconds"><xliff:g id="MILLISECONDS">%s</xliff:g>ms</string>
     <!-- The text that represents the current settings value is the system default [CHAR LIMIT=25] -->

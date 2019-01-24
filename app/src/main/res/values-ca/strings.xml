@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"Aparença i disseny"</string>
     <string name="settings_screen_advanced">"Avançat"</string>
     <string name="settings_screen_theme">"Tema"</string>
-    <string name="key_preview_popup_dismiss_delay">"Retard en ampliar tecla"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"Sense retard"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"Predeterminat"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Predeterminat"</string>
     <string name="auto_cap">"Majúscules automàtiques"</string>

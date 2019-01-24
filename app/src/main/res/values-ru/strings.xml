@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"Вид и раскладки"</string>
     <string name="settings_screen_advanced">"Дополнительные настройки"</string>
     <string name="settings_screen_theme">"Тема"</string>
-    <string name="key_preview_popup_dismiss_delay">"Задержка закрытия"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"Без задержки"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"По умолчанию"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
     <string name="settings_system_default">"По умолчанию"</string>
     <string name="auto_cap">"Заглавные автоматически"</string>

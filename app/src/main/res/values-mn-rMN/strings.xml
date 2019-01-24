@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"Харагдах байдал &amp; Зураглал"</string>
     <string name="settings_screen_advanced">"Дэлгэрэнгүй"</string>
     <string name="settings_screen_theme">"Загвар"</string>
-    <string name="key_preview_popup_dismiss_delay">"Товчны попап арилах хугацаа"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"Хүлээхгүй"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"Үндсэн"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>мс"</string>
     <string name="settings_system_default">"Системийн үндсэн утга"</string>
     <string name="auto_cap">"Автоматаар томруулах"</string>

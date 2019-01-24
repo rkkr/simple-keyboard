@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"ظہور اور لے آؤٹس"</string>
     <string name="settings_screen_advanced">"جدید ترین"</string>
     <string name="settings_screen_theme">"تھیم"</string>
-    <string name="key_preview_popup_dismiss_delay">"کلید پاپ اپ رفع کی تاخیر"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"کوئی تاخیر نہیں"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"ڈیفالٹ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ملی سیکنڈ"</string>
     <string name="settings_system_default">"سسٹم ڈیفالٹ"</string>
     <string name="auto_cap">"بڑے حروف میں خودکار تبدیلی"</string>

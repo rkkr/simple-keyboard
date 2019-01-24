@@ -21,7 +21,6 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.preference.ListPreference;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet;
@@ -44,7 +43,6 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.prefs_screen_advanced);
 
-        final Resources res = getResources();
         final Context context = getActivity();
 
         // When we are called from the Settings application but we are not already running, some
@@ -52,34 +50,8 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         // initialization method of these classes here. See {@link LatinIME#onCreate()}.
         AudioAndHapticFeedbackManager.init(context);
 
-        final SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
-
         if (!AudioAndHapticFeedbackManager.getInstance().hasVibrator()) {
             removePreference(Settings.PREF_VIBRATION_DURATION_SETTINGS);
-        }
-
-        // TODO: consolidate key preview dismiss delay with the key preview animation parameters.
-        if (!Settings.readFromBuildConfigIfToShowKeyPreviewPopupOption(res)) {
-            removePreference(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
-        } else {
-            // TODO: Cleanup this setup.
-            final ListPreference keyPreviewPopupDismissDelay =
-                    (ListPreference) findPreference(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
-            final String popupDismissDelayDefaultValue = Integer.toString(res.getInteger(
-                    R.integer.config_key_preview_linger_timeout));
-            keyPreviewPopupDismissDelay.setEntries(new String[] {
-                    res.getString(R.string.key_preview_popup_dismiss_no_delay),
-                    res.getString(R.string.key_preview_popup_dismiss_default_delay),
-            });
-            keyPreviewPopupDismissDelay.setEntryValues(new String[] {
-                    "0",
-                    popupDismissDelayDefaultValue
-            });
-            if (null == keyPreviewPopupDismissDelay.getValue()) {
-                keyPreviewPopupDismissDelay.setValue(popupDismissDelayDefaultValue);
-            }
-            keyPreviewPopupDismissDelay.setEnabled(
-                    Settings.readKeyPreviewPopupEnabled(prefs, res));
         }
 
         setupKeypressVibrationDurationSettings();
@@ -91,22 +63,10 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        updateListPreferenceSummaryToCurrentValue(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
-    }
-
-    @Override
     public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        final Resources res = getResources();
-        if (key.equals(Settings.PREF_POPUP_ON)) {
-            setPreferenceEnabled(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY,
-                    Settings.readKeyPreviewPopupEnabled(prefs, res));
-        }
         if (key.equals(Settings.PREF_HIDE_SPECIAL_CHARS) ||
                 key.equals(Settings.PREF_SHOW_NUMBER_ROW))
             KeyboardLayoutSet.onKeyboardThemeChanged();
-        updateListPreferenceSummaryToCurrentValue(Settings.PREF_KEY_PREVIEW_POPUP_DISMISS_DELAY);
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
     }
 

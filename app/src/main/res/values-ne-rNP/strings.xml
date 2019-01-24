@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"आवरण तथा लेआउटहरू"</string>
     <string name="settings_screen_advanced">"उन्नत"</string>
     <string name="settings_screen_theme">"विषयवस्तु"</string>
-    <string name="key_preview_popup_dismiss_delay">"कि पपअप खारेजी ढिलाइ"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"ढिलाइ छैन"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"पूर्वनिर्धारित"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> मिलिसेकेन्ड"</string>
     <string name="settings_system_default">"पूर्वनिर्धारित प्रणाली"</string>
     <string name="auto_cap">"स्वतः क्यापिटलाइजेसन"</string>

@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"രൂപഭാവവും ലേഔട്ടുകളും"</string>
     <string name="settings_screen_advanced">"വിപുലം"</string>
     <string name="settings_screen_theme">"തീം"</string>
-    <string name="key_preview_popup_dismiss_delay">"കീ പോപ്പ്അപ്പ് നിരസിക്കൽ കാലതാമസം"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"കാലതാമസമില്ല"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"സ്ഥിരമായത്"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>മി.സെ"</string>
     <string name="settings_system_default">"സ്ഥിരമായ സിസ്റ്റം"</string>
     <string name="auto_cap">"സ്വയം വലിയക്ഷരമാക്കുക"</string>

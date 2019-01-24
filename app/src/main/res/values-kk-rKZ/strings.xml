@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"Сыртқы түр және орналасулар"</string>
     <string name="settings_screen_advanced">"Кеңейтілген"</string>
     <string name="settings_screen_theme">"Тақырып"</string>
-    <string name="key_preview_popup_dismiss_delay">"Перненің ұлғайған кескінін жабу"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"Кідіріс жоқ"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"Әдепкі"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>мс"</string>
     <string name="settings_system_default">"Жүйе әдепкісі"</string>
     <string name="auto_cap">"Авто бас әріптерге түрлендіру"</string>

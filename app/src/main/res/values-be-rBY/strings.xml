@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"Знешні выгляд і раскладкі"</string>
     <string name="settings_screen_advanced">"Дадатковыя"</string>
     <string name="settings_screen_theme">"Тэма"</string>
-    <string name="key_preview_popup_dismiss_delay">"Затрым. скр. падк. клав."</string>
-    <string name="key_preview_popup_dismiss_no_delay">"Няма затрымкі"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"Па змаўчанні"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
     <string name="settings_system_default">"Стандартныя сістэмныя"</string>
     <string name="auto_cap">"Аўтаматычна рабіць літары вялікімі"</string>

@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"Utseende och layouter"</string>
     <string name="settings_screen_advanced">"Avancerat"</string>
     <string name="settings_screen_theme">"Tema"</string>
-    <string name="key_preview_popup_dismiss_delay">"Ta bort popup-fördröjning"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"Fördröj inte"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"Standard"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> millisek."</string>
     <string name="settings_system_default">"Standardinställning"</string>
     <string name="auto_cap">"Automatiska versaler"</string>

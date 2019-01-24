@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"Pamja dhe struktura"</string>
     <string name="settings_screen_advanced">"I përparuar"</string>
     <string name="settings_screen_theme">"Tema"</string>
-    <string name="key_preview_popup_dismiss_delay">"Vonesa e heqjes së zmadhimit të tastit"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"Pa vonesë"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"I parazgjedhur"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> milisek."</string>
     <string name="settings_system_default">"Parazgjedhja e sistemit"</string>
     <string name="auto_cap">"Kapitalizim automatik"</string>

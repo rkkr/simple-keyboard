@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"Ulkoasu ja asettelut"</string>
     <string name="settings_screen_advanced">"Lisäasetukset"</string>
     <string name="settings_screen_theme">"Teema"</string>
-    <string name="key_preview_popup_dismiss_delay">"Näppäimen hylkäysviive"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"Ei viivettä"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"Oletus"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Järjestelmän oletusarvo"</string>
     <string name="auto_cap">"Automaattiset isot kirjaimet"</string>

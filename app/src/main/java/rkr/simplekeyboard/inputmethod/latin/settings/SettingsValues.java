@@ -68,12 +68,6 @@ public class SettingsValues {
     // Debug settings
     public final boolean mHasKeyboardResize;
     public final float mKeyboardHeightScale;
-    public final int mKeyPreviewShowUpDuration;
-    public final int mKeyPreviewDismissDuration;
-    public final float mKeyPreviewShowUpStartXScale;
-    public final float mKeyPreviewShowUpStartYScale;
-    public final float mKeyPreviewDismissEndXScale;
-    public final float mKeyPreviewDismissEndYScale;
 
     public SettingsValues(final SharedPreferences prefs, final Resources res,
             @NonNull final InputAttributes inputAttributes) {
@@ -96,19 +90,9 @@ public class SettingsValues {
         mKeyLongpressTimeout = Settings.readKeyLongpressTimeout(prefs, res);
         mKeypressVibrationDuration = Settings.readKeypressVibrationDuration(prefs, res);
         mKeypressSoundVolume = Settings.readKeypressSoundVolume(prefs, res);
-        mKeyPreviewPopupDismissDelay = Settings.readKeyPreviewPopupDismissDelay(prefs, res);
+        mKeyPreviewPopupDismissDelay = res.getInteger(R.integer.config_key_preview_linger_timeout);
         mHasKeyboardResize = true;
         mKeyboardHeightScale = Settings.readKeyboardHeight(prefs, DEFAULT_SIZE_SCALE);
-        mKeyPreviewShowUpDuration = res.getInteger(R.integer.config_key_preview_show_up_duration);
-        mKeyPreviewDismissDuration = res.getInteger(R.integer.config_key_preview_dismiss_duration);
-        final float defaultKeyPreviewShowUpStartScale = ResourceUtils.getFloatFromFraction(
-                res, R.fraction.config_key_preview_show_up_start_scale);
-        final float defaultKeyPreviewDismissEndScale = ResourceUtils.getFloatFromFraction(
-                res, R.fraction.config_key_preview_dismiss_end_scale);
-        mKeyPreviewShowUpStartXScale = defaultKeyPreviewShowUpStartScale;
-        mKeyPreviewShowUpStartYScale = defaultKeyPreviewShowUpStartScale;
-        mKeyPreviewDismissEndXScale = defaultKeyPreviewDismissEndScale;
-        mKeyPreviewDismissEndYScale = defaultKeyPreviewDismissEndScale;
         mDisplayOrientation = res.getConfiguration().orientation;
         mHideSpecialChars = Settings.readHideSpecialChars(prefs);
         mShowNumberRow = Settings.readShowNumberRow(prefs);

@@ -27,9 +27,6 @@
     <string name="settings_screen_appearance">"ಗೋಚರತೆ ಮತ್ತು ಲೇಔಟ್‌ಗಳು"</string>
     <string name="settings_screen_advanced">"ಸುಧಾರಿತ"</string>
     <string name="settings_screen_theme">"ಥೀಮ್"</string>
-    <string name="key_preview_popup_dismiss_delay">"ಕೀ ಪಾಪ್‌ಅಪ್‌ನ ವಜಾ ವಿಳಂಬ"</string>
-    <string name="key_preview_popup_dismiss_no_delay">"ಯಾವುದೇ ವಿಳಂಬವಿಲ್ಲ"</string>
-    <string name="key_preview_popup_dismiss_default_delay">"ಡಿಫಾಲ್ಟ್"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ಮಿ.ಸೆ."</string>
     <string name="settings_system_default">"ಸಿಸ್ಟಂ ಡಿಫಾಲ್ಟ್"</string>
     <string name="auto_cap">"ಸ್ವಯಂ-ದೊಡ್ಡಕ್ಷರ"</string>
