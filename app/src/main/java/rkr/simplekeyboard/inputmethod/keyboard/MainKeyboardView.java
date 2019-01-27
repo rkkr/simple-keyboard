@@ -76,7 +76,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
  * @attr ref R.styleable#MainKeyboardView_keyPreviewOffset
  * @attr ref R.styleable#MainKeyboardView_keyPreviewHeight
  * @attr ref R.styleable#MainKeyboardView_keyPreviewLingerTimeout
- * @attr ref R.styleable#MainKeyboardView_keyPreviewShowUpAnimator
  * @attr ref R.styleable#MainKeyboardView_keyPreviewDismissAnimator
  * @attr ref R.styleable#MainKeyboardView_moreKeysKeyboardLayout
  * @attr ref R.styleable#MainKeyboardView_moreKeysKeyboardForActionLayout

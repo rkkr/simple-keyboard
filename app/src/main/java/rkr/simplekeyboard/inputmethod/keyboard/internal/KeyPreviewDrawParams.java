@@ -21,7 +21,6 @@ import android.animation.AnimatorInflater;
 import android.content.res.TypedArray;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
 
 import rkr.simplekeyboard.inputmethod.R;
 
@@ -30,7 +29,6 @@ public final class KeyPreviewDrawParams {
     public final int mPreviewOffset;
     public final int mPreviewHeight;
     public final int mPreviewBackgroundResId;
-    private final int mShowUpAnimatorResId;
     private final int mDismissAnimatorResId;
     private int mLingerTimeout;
     private boolean mShowPopup = true;
@@ -69,8 +67,6 @@ public final class KeyPreviewDrawParams {
                 R.styleable.MainKeyboardView_keyPreviewBackground, 0);
         mLingerTimeout = mainKeyboardViewAttr.getInt(
                 R.styleable.MainKeyboardView_keyPreviewLingerTimeout, 0);
-        mShowUpAnimatorResId = mainKeyboardViewAttr.getResourceId(
-                R.styleable.MainKeyboardView_keyPreviewShowUpAnimator, 0);
         mDismissAnimatorResId = mainKeyboardViewAttr.getResourceId(
                 R.styleable.MainKeyboardView_keyPreviewDismissAnimator, 0);
     }
@@ -120,16 +116,6 @@ public final class KeyPreviewDrawParams {
 
     private static final AccelerateInterpolator ACCELERATE_INTERPOLATOR =
             new AccelerateInterpolator();
-    private static final DecelerateInterpolator DECELERATE_INTERPOLATOR =
-            new DecelerateInterpolator();
-
-    public Animator createShowUpAnimator(final View target) {
-        final Animator animator = AnimatorInflater.loadAnimator(
-                target.getContext(), mShowUpAnimatorResId);
-        animator.setTarget(target);
-        animator.setInterpolator(DECELERATE_INTERPOLATOR);
-        return animator;
-    }
 
     public Animator createDismissAnimator(final View target) {
         final Animator animator = AnimatorInflater.loadAnimator(

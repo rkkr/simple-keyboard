@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.ASCII_CAPABLE;

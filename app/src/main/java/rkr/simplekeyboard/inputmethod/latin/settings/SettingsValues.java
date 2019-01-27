@@ -27,7 +27,6 @@ import java.util.Locale;
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
-import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 
 /**
  * When you call the constructor of this class, you may want to change the current system locale by

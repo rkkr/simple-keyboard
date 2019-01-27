@@ -134,23 +134,10 @@ public final class KeyPreviewChoreographer {
         }
 
         // Show preview with animation.
-        final Animator showUpAnimator = createShowUpAnimator(key, keyPreviewView);
         final Animator dismissAnimator = createDismissAnimator(key, keyPreviewView);
-        final KeyPreviewAnimators animators = new KeyPreviewAnimators(
-                showUpAnimator, dismissAnimator);
+        final KeyPreviewAnimators animators = new KeyPreviewAnimators(dismissAnimator);
         keyPreviewView.setTag(animators);
-        animators.startShowUp();
-    }
-
-    public Animator createShowUpAnimator(final Key key, final KeyPreviewView keyPreviewView) {
-        final Animator showUpAnimator = mParams.createShowUpAnimator(keyPreviewView);
-        showUpAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationStart(final Animator animator) {
-                showKeyPreview(key, keyPreviewView, false /* withAnimation */);
-            }
-        });
-        return showUpAnimator;
+        showKeyPreview(key, keyPreviewView, false /* withAnimation */);
     }
 
     private Animator createDismissAnimator(final Key key, final KeyPreviewView keyPreviewView) {
@@ -165,28 +152,13 @@ public final class KeyPreviewChoreographer {
     }
 
     private static class KeyPreviewAnimators extends AnimatorListenerAdapter {
-        private final Animator mShowUpAnimator;
         private final Animator mDismissAnimator;
 
-        public KeyPreviewAnimators(final Animator showUpAnimator, final Animator dismissAnimator) {
-            mShowUpAnimator = showUpAnimator;
+        public KeyPreviewAnimators(final Animator dismissAnimator) {
             mDismissAnimator = dismissAnimator;
         }
 
-        public void startShowUp() {
-            mShowUpAnimator.start();
-        }
-
         public void startDismiss() {
-            if (mShowUpAnimator.isRunning()) {
-                mShowUpAnimator.addListener(this);
-                return;
-            }
-            mDismissAnimator.start();
-        }
-
-        @Override
-        public void onAnimationEnd(final Animator animator) {
             mDismissAnimator.start();
         }
     }
