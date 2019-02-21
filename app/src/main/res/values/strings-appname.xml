@@ -19,11 +19,7 @@
 -->
 
 <resources>
-    <!-- Application name for opensource Android keyboard. AOSP(Android Open Source Project) should not be translated.
-         This resource should be copied from msgid="8250992613616792321" -->
     <string name="english_ime_name" translatable="false">Simple Keyboard</string>
-
-    <!-- Title for Android Keyboard settings screen. AOSP(Android Open Source Project) should not be translated.
-         This resource should be copied from msgid="423615877174850267" -->
     <string name="english_ime_settings" translatable="false">Simple Keyboard Settings</string>
+    <string name="english_ime_setup" translatable="false">Setup Simple Keyboard</string>
 </resources>

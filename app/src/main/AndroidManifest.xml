@@ -19,34 +19,47 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <application android:label="@string/english_ime_name"
+    <application
+        android:allowBackup="true"
         android:icon="@drawable/ic_launcher_keyboard"
-        android:supportsRtl="true"
-        android:allowBackup="true">
+        android:label="@string/english_ime_name"
+        android:supportsRtl="true">
+        <activity
+            android:name=".keyboard.SetupActivity"
+            android:label="@string/english_ime_setup">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- Services -->
-        <service android:name=".latin.LatinIME"
+        <service
+            android:name=".latin.LatinIME"
             android:label="@string/english_ime_name"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
             </intent-filter>
-            <meta-data android:name="android.view.im" android:resource="@xml/method" />
+
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
         </service>
 
-        <activity android:name="rkr.simplekeyboard.inputmethod.latin.settings.SettingsActivity"
-            android:theme="@style/platformSettingsTheme"
-            android:label="@string/english_ime_settings">
+        <activity
+            android:name=".latin.settings.SettingsActivity"
+            android:label="@string/english_ime_settings"
+            android:theme="@style/platformSettingsTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
-        </activity>
-
-        <!-- Broadcast receivers -->
+        </activity> <!-- Broadcast receivers -->
         <receiver android:name=".latin.SystemBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.LOCALE_CHANGED" />
             </intent-filter>
         </receiver>
     </application>
+
 </manifest>
