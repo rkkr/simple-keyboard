@@ -56,11 +56,11 @@
     <string name="prefs_keypress_sound_volume_settings">"Geluidsvolume bij toetsgebruik"</string>
     <string name="prefs_key_longpress_timeout_settings">"Lengte toetsinvoer"</string>
     <string name="button_default">"Standaard"</string>
-    <string name="prefs_keyboard_height_settings">Toetsenbord hoogte</string>
-    <string name="keyboard_color">Kies aangepaste toetsenbord kleur</string>
+    <string name="prefs_keyboard_height_settings">Toetsenbordhoogte</string>
+    <string name="keyboard_color">Kies aangepaste toetsenbordkleur</string>
     <string name="hide_special_chars">Verberg speciale karakters</string>
-    <string name="hide_language_switch_key">Verberg taalkeuze toets</string>
-    <string name="show_number_row">Aparte nummer rij</string>
-    <string name="space_swipe">Spatie-veeg beweegt cursor</string>
-    <string name="delete_swipe">Delete swipe</string>
+    <string name="hide_language_switch_key">Verberg taalkeuzetoets</string>
+    <string name="show_number_row">Aparte nummerrij</string>
+    <string name="space_swipe">Spatie-swipe beweegt cursor</string>
+    <string name="delete_swipe">Verwijder swipe</string>
 </resources>
