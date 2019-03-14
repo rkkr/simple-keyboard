@@ -102,7 +102,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         final KeyboardLayoutSet.Builder builder = new KeyboardLayoutSet.Builder(
                 mThemeContext, editorInfo);
         final Resources res = mThemeContext.getResources();
-        final int keyboardWidth = ResourceUtils.getDefaultKeyboardWidth(res);
+        final int keyboardWidth = mLatinIME.getMaxWidth();
         final int keyboardHeight = ResourceUtils.getKeyboardHeight(res, settingsValues);
         builder.setKeyboardGeometry(keyboardWidth, keyboardHeight);
         builder.setSubtype(mRichImm.getCurrentSubtype());
@@ -383,6 +383,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
         mKeyboardView = (MainKeyboardView) mCurrentInputView.findViewById(R.id.keyboard_view);
         mKeyboardView.setKeyboardActionListener(mLatinIME);
+        Log.w("========", Integer.toString(mKeyboardView.getWidth()));
         return mCurrentInputView;
     }
 }

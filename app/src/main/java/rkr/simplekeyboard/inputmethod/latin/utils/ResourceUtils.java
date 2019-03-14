@@ -182,18 +182,12 @@ public final class ResourceUtils {
         return matchedAll;
     }
 
-    public static int getDefaultKeyboardWidth(final Resources res) {
-        final DisplayMetrics dm = res.getDisplayMetrics();
-        return dm.widthPixels;
-    }
-
     public static int getKeyboardHeight(final Resources res, final SettingsValues settingsValues) {
         final int defaultKeyboardHeight = getDefaultKeyboardHeight(res);
-        if (settingsValues.mHasKeyboardResize) {
-            // mKeyboardHeightScale Ranges from [.5,1.2], from xml/prefs_screen_debug.xml
-            return (int)(defaultKeyboardHeight * settingsValues.mKeyboardHeightScale);
-        }
-        return defaultKeyboardHeight;
+        float scale = settingsValues.mKeyboardHeightScale;
+        if (settingsValues.mShowNumberRow)
+            scale += 0.1;
+        return (int)(defaultKeyboardHeight * scale);
     }
 
     public static int getDefaultKeyboardHeight(final Resources res) {

@@ -65,7 +65,6 @@ public class SettingsValues {
     public final int mKeyPreviewPopupDismissDelay;
 
     // Debug settings
-    public final boolean mHasKeyboardResize;
     public final float mKeyboardHeightScale;
 
     public SettingsValues(final SharedPreferences prefs, final Resources res,
@@ -90,7 +89,6 @@ public class SettingsValues {
         mKeypressVibrationDuration = Settings.readKeypressVibrationDuration(prefs, res);
         mKeypressSoundVolume = Settings.readKeypressSoundVolume(prefs, res);
         mKeyPreviewPopupDismissDelay = res.getInteger(R.integer.config_key_preview_linger_timeout);
-        mHasKeyboardResize = true;
         mKeyboardHeightScale = Settings.readKeyboardHeight(prefs, DEFAULT_SIZE_SCALE);
         mDisplayOrientation = res.getConfiguration().orientation;
         mHideSpecialChars = Settings.readHideSpecialChars(prefs);
