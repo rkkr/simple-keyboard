@@ -5,9 +5,6 @@ Forked from https://android.googlesource.com/platform/packages/inputmethods/Lati
 <img src="images/screenshot-0.png"
       alt="closeup"
       width="500"/>
-<img src="images/screenshot-1.png"
-      alt="usage example"
-      width="250"/>
 
 You can contribute to translate the project to your language: [![Crowdin](https://d322cqt584bo4o.cloudfront.net/simple-keyboard/localized.svg)](https://crowdin.com/project/simple-keyboard)
 
