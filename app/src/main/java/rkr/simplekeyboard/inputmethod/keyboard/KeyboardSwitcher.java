@@ -383,7 +383,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
         mKeyboardView = (MainKeyboardView) mCurrentInputView.findViewById(R.id.keyboard_view);
         mKeyboardView.setKeyboardActionListener(mLatinIME);
-        Log.w("========", Integer.toString(mKeyboardView.getWidth()));
         return mCurrentInputView;
     }
 }
