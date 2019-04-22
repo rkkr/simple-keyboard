@@ -101,7 +101,7 @@ public final class AdditionalSubtypeUtils {
         final String[] prefSubtypeArray = prefSubtypes.split(PREF_SUBTYPE_SEPARATOR);
         final ArrayList<InputMethodSubtype> subtypesList = new ArrayList<>(prefSubtypeArray.length);
         for (final String prefSubtype : prefSubtypeArray) {
-            final String elems[] = prefSubtype.split(LOCALE_AND_LAYOUT_SEPARATOR);
+            final String[] elems = prefSubtype.split(LOCALE_AND_LAYOUT_SEPARATOR);
             if (elems.length != LENGTH_WITHOUT_EXTRA_VALUE
                     && elems.length != LENGTH_WITH_EXTRA_VALUE) {
                 Log.w(TAG, "Unknown additional subtype specified: " + prefSubtype + " in "
