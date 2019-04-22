@@ -56,11 +56,11 @@
     <string name="prefs_keypress_sound_volume_settings">"Volume audio a pressione tasto"</string>
     <string name="prefs_key_longpress_timeout_settings">"Ritardo pressione lunga tasti"</string>
     <string name="button_default">"Predefinito"</string>
-    <string name="prefs_keyboard_height_settings">Altezza della tastiera</string>
-    <string name="keyboard_color">Cambia colore alla tastiera</string>
+    <string name="prefs_keyboard_height_settings">Altezza tastiera</string>
+    <string name="keyboard_color">Cambia colore tastiera</string>
     <string name="hide_special_chars">Nascondi caratteri speciali</string>
-    <string name="hide_language_switch_key">Nascondi tasto cambia lingua</string>
-    <string name="show_number_row">Mostra riga dei numeri separata</string>
-    <string name="space_swipe">Movimento del cursore con lo swipe dello spazio</string>
-    <string name="delete_swipe">Elimina lo swipe</string>
+    <string name="hide_language_switch_key">Nascondi tasto per cambiare lingua</string>
+    <string name="show_number_row">Mostra riga numeri separata</string>
+    <string name="space_swipe">Muovi cursore scorrendo sulla barra spaziatrice</string>
+    <string name="delete_swipe">Cancella scorrendo sul tasto cancella</string>
 </resources>
