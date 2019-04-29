@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/simple-keyboard.iml" filepath="$PROJECT_DIR$/simple-keyboard.iml" />
+      <module fileurl="file:///media/emmanuel/26dc5b51-6410-481a-965e-5451b38e9d8f/home/emmanuel/Documentos/GitHub/simple-keyboard/app/app.iml" filepath="/media/emmanuel/26dc5b51-6410-481a-965e-5451b38e9d8f/home/emmanuel/Documentos/GitHub/simple-keyboard/app/app.iml" />
+      <module fileurl="file:///media/emmanuel/26dc5b51-6410-481a-965e-5451b38e9d8f/home/emmanuel/Documentos/GitHub/simple-keyboard/simple-keyboard.iml" filepath="/media/emmanuel/26dc5b51-6410-481a-965e-5451b38e9d8f/home/emmanuel/Documentos/GitHub/simple-keyboard/simple-keyboard.iml" />
     </modules>
   </component>
 </project>
