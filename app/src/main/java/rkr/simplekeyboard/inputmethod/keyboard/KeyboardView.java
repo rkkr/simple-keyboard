@@ -335,25 +335,11 @@ public class KeyboardView extends View {
             @NonNull final Drawable background) {
         final int keyWidth = key.getDrawWidth();
         final int keyHeight = key.getHeight();
-        final int bgWidth, bgHeight, bgX, bgY;
-        if (key.needsToKeepBackgroundAspectRatio(mDefaultKeyLabelFlags)
-                // HACK: To disable expanding normal/functional key background.
-                && !key.hasCustomActionLabel()) {
-            final int intrinsicWidth = background.getIntrinsicWidth();
-            final int intrinsicHeight = background.getIntrinsicHeight();
-            final float minScale = Math.min(
-                    keyWidth / (float)intrinsicWidth, keyHeight / (float)intrinsicHeight);
-            bgWidth = (int)(intrinsicWidth * minScale);
-            bgHeight = (int)(intrinsicHeight * minScale);
-            bgX = (keyWidth - bgWidth) / 2;
-            bgY = (keyHeight - bgHeight) / 2;
-        } else {
-            final Rect padding = mKeyBackgroundPadding;
-            bgWidth = keyWidth + padding.left + padding.right;
-            bgHeight = keyHeight + padding.top + padding.bottom;
-            bgX = -padding.left;
-            bgY = -padding.top;
-        }
+        final Rect padding = mKeyBackgroundPadding;
+        final int bgWidth = keyWidth + padding.left + padding.right;
+        final int bgHeight = keyHeight + padding.top + padding.bottom;
+        final int bgX = -padding.left;
+        final int bgY = -padding.top;
         final Rect bounds = background.getBounds();
         if (bgWidth != bounds.right || bgHeight != bounds.bottom) {
             background.setBounds(0, 0, bgWidth, bgHeight);

@@ -26,7 +26,7 @@
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXX_Dark_Border</item>
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXX_Dark</item>
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Dark</item>
-        <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.LXX_Dark</item>
+        <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.LXX_Dark.Action</item>
     </style>
     <style
         name="Keyboard.LXX_Dark_Border"

@@ -26,7 +26,7 @@
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXX_Light_Border</item>
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXX_Light</item>
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Light</item>
-        <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.LXX_Light</item>
+        <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.LXX_Light.Action</item>
     </style>
     <style
         name="Keyboard.LXX_Light_Border"
