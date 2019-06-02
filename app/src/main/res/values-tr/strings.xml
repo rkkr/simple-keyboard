@@ -56,11 +56,11 @@
     <string name="prefs_keypress_sound_volume_settings">"Tuşa basma ses seviyesi"</string>
     <string name="prefs_key_longpress_timeout_settings">"Tuşa uzun basma gecikmesi"</string>
     <string name="button_default">"Varsayılan"</string>
-    <string name="prefs_keyboard_height_settings">Keyboard height</string>
-    <string name="keyboard_color">Set custom keyboard color</string>
-    <string name="hide_special_chars">Hide special characters</string>
-    <string name="hide_language_switch_key">Hide language switch key</string>
-    <string name="show_number_row">Show separate number row</string>
-    <string name="space_swipe">Space swipe cursor move</string>
-    <string name="delete_swipe">Delete swipe</string>
+    <string name="prefs_keyboard_height_settings">Klavye yüksekliği</string>
+    <string name="keyboard_color">Özel klavye rengi ayarla</string>
+    <string name="hide_special_chars">Özel karakterleri gizle</string>
+    <string name="hide_language_switch_key">Dil değiştirme tuşunu gizle</string>
+    <string name="show_number_row">Ayrık rakam satırını göster</string>
+    <string name="space_swipe">Boşluk tuşunda kaydırarak imleci taşı</string>
+    <string name="delete_swipe">Sil tuşu kaydırması</string>
 </resources>
