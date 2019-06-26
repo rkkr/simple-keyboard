@@ -62,5 +62,5 @@
     <string name="hide_language_switch_key">پنهان کردن کلید تغییر زبان</string>
     <string name="show_number_row">نمایش جداگانه ی شماره ردیف</string>
     <string name="space_swipe">حرکت مکان نما توسط سوایپ کلید فاصله</string>
-    <string name="delete_swipe">Delete swipe</string>
+    <string name="delete_swipe">حذف سوایپ</string>
 </resources>
