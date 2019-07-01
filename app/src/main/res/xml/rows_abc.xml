@@ -18,24 +18,34 @@
 */
 -->
 
-<merge
-    xmlns:latin="http://schemas.android.com/apk/res-auto"
->
+<merge xmlns:latin="http://schemas.android.com/apk/res-auto">
+    <Row
+        latin:keyWidth="10%p"
+    >
+        <include
+            latin:keyboardLayout="@xml/rowkeys_abc1" />
+    </Row>
+    <Row
+        latin:keyWidth="10%p"
+    >
+        <include
+            latin:keyboardLayout="@xml/rowkeys_abc2"
+            latin:keyXPos="5%p" />
+    </Row>
     <Row
         latin:keyWidth="10%p"
     >
         <Key
-            latin:keyStyle="toSymbolKeyStyle"
-            latin:keyWidth="15%p" />
+            latin:keyStyle="shiftKeyStyle"
+            latin:keyWidth="15%p"
+            latin:visualInsetsRight="1%p" />
         <include
-            latin:keyboardLayout="@xml/key_comma" />
-        <include
-            latin:keyXPos="25%p"
-            latin:keyboardLayout="@xml/key_space_5kw" />
-        <include
-            latin:keyboardLayout="@xml/key_period" />
+            latin:keyboardLayout="@xml/rowkeys_abc3" />
         <Key
-            latin:keyStyle="enterKeyStyle"
-            latin:keyWidth="fillRight" />
+            latin:keyStyle="deleteKeyStyle"
+            latin:keyWidth="fillRight"
+            latin:visualInsetsLeft="1%p" />
     </Row>
+    <include
+        latin:keyboardLayout="@xml/row_qwerty4" />
 </merge>

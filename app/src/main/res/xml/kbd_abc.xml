@@ -24,14 +24,14 @@
 
     <switch>
         <case latin:showNumberRow="true">
-            <include latin:keyboardLayout="@xml/rowkeys_alphabet0" />
+            <include latin:keyboardLayout="@xml/rowkeys_qwerty0" />
 
             <include
-                latin:keyboardLayout="@xml/rows_alphabet"
+                latin:keyboardLayout="@xml/rows_abc"
                 latin:rowHeight="21.25%p" />
         </case>
         <default>
-            <include latin:keyboardLayout="@xml/rows_alphabet" />
+            <include latin:keyboardLayout="@xml/rows_abc" />
         </default>
     </switch>
 </Keyboard>
