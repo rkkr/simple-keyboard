@@ -60,6 +60,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_SHOW_NUMBER_ROW = "pref_show_number_row";
     public static final String PREF_SPACE_SWIPE = "pref_space_swipe";
     public static final String PREF_DELETE_SWIPE = "pref_delete_swipe";
+    public static final String PREF_KEY_SWIPE = "pref_key_swipe";
 
     private static final float UNDEFINED_PREFERENCE_VALUE_FLOAT = -1.0f;
     private static final int UNDEFINED_PREFERENCE_VALUE_INT = -1;
@@ -181,6 +182,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static boolean readDeleteSwipeEnabled(final SharedPreferences prefs) {
         return prefs.getBoolean(PREF_DELETE_SWIPE, true);
+    }
+
+    public static boolean readKeySwipeEnabled(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_KEY_SWIPE, true);
     }
 
     public static String readPrefAdditionalSubtypes(final SharedPreferences prefs,

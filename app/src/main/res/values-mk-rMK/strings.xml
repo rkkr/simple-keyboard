@@ -63,4 +63,5 @@
     <string name="show_number_row">Покажи одделен ред со броеви</string>
     <string name="space_swipe">Помеси го курсорот преку лентата за празно место</string>
     <string name="delete_swipe">Delete swipe</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

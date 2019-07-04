@@ -63,4 +63,5 @@
     <string name="show_number_row">Vis separat tallrad</string>
     <string name="space_swipe">Mellomrom-sveip flytter markør</string>
     <string name="delete_swipe">Slette-sveip</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

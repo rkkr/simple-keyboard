@@ -63,4 +63,5 @@
     <string name="show_number_row">Mostrar números em linha distinta</string>
     <string name="space_swipe">Space swipe cursor move</string>
     <string name="delete_swipe">Delete swipe</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

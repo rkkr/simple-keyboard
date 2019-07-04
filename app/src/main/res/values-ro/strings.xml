@@ -63,4 +63,5 @@
     <string name="show_number_row">Arată un rând separat cu cifre</string>
     <string name="space_swipe">Glisarea pe tasta Spațiu mută cursorul</string>
     <string name="delete_swipe">Ștergere glisare</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

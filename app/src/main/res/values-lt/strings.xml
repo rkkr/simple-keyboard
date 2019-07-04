@@ -63,4 +63,5 @@
     <string name="show_number_row">Rodyti skaičių eilutę</string>
     <string name="space_swipe">Judinti kursorių tarpo klavišu</string>
     <string name="delete_swipe">Trynimo klavišo braukimas</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

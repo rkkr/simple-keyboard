@@ -63,4 +63,5 @@
     <string name="show_number_row">نمایش جداگانه ی شماره ردیف</string>
     <string name="space_swipe">حرکت مکان نما توسط سوایپ کلید فاصله</string>
     <string name="delete_swipe">حذف سوایپ</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

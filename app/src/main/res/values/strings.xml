@@ -222,6 +222,7 @@ mobile devices. [CHAR LIMIT=25] -->
     <string name="show_number_row">Show separate number row</string>
     <string name="space_swipe">Space swipe cursor move</string>
     <string name="delete_swipe">Delete swipe</string>
+    <string name="key_swipe">Advanced key swipes</string>
 
     <!-- Standard message to dismiss a dialog box -->
     <!-- Title of the button in a dialog box. The button takes the user to the keyboard settings. [CHAR LIMIT=15] -->

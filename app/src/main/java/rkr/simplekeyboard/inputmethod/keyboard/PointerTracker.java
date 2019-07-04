@@ -124,6 +124,9 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
     // true if dragging finger is allowed.
     private boolean mIsAllowedDraggingFinger;
 
+    //
+    private boolean mIsAllowedKeySwipeOpition;
+
     // TODO: Add PointerTrackerFactory singleton and move some class static methods into it.
     public static void init(final TypedArray mainKeyboardViewAttr, final TimerProxy timerProxy,
             final DrawingProxy drawingProxy) {
@@ -505,6 +508,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         mIsAllowedDraggingFinger = sParams.mKeySelectionByDraggingFinger
                 || (key != null && key.isModifier())
                 || mKeyDetector.alwaysAllowsKeySelectionByDraggingFinger();
+        mIsAllowedKeySwipeOpition = Settings.getInstance().getCurrent().mKeySwipeEnabled;
         mKeyboardLayoutHasBeenChanged = false;
         mIsTrackingForActionDisabled = false;
         resetKeySelectionByDraggingFinger();
@@ -578,6 +582,10 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         sTimerProxy.cancelKeyTimersOf(this);
     }
 
+    private void processKeySwipeEvent() {
+
+    }
+
     private void dragFingerFromOldKeyToNewKey(final Key key, final int x, final int y,
             final long eventTime, final Key oldKey) {
         // The pointer has been slid in to the new key from the previous key, we must call
@@ -587,6 +595,8 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         startRepeatKey(key);
         if (mIsAllowedDraggingFinger) {
             processDraggingFingerInToNewKey(key, x, y);
+        } else if (mIsAllowedKeySwipeOpition) {
+            processKeySwipeEvent();
         }
         // HACK: If there are currently multiple touches, register the key even if the finger
         // slides off the key. This defends against noise from some touch panels when there are
@@ -613,6 +623,8 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         processDraggingFingerOutFromOldKey(oldKey);
         if (mIsAllowedDraggingFinger) {
             onMoveToNewKey(null, x, y);
+        } else if (mIsAllowedKeySwipeOpition) {
+            processKeySwipeEvent();
         } else {
             cancelTrackingForAction();
         }
@@ -620,6 +632,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
     private void onMoveEventInternal(final int x, final int y, final long eventTime) {
         final Key oldKey = mCurrentKey;
+
         if (oldKey != null && oldKey.getCode() == Constants.CODE_SPACE && Settings.getInstance().getCurrent().mSpaceSwipeEnabled) {
             //Pointer slider
             int steps = (x - mStartX) / sPointerStep;

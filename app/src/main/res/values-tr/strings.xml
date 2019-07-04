@@ -63,4 +63,5 @@
     <string name="show_number_row">Ayrık rakam satırını göster</string>
     <string name="space_swipe">Boşluk tuşunda kaydırarak imleci taşı</string>
     <string name="delete_swipe">Sil tuşu kaydırması</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

@@ -63,4 +63,5 @@
     <string name="show_number_row">Mostrar la fila de dígitos separada</string>
     <string name="space_swipe">Desplazamiento del cursor del espacio</string>
     <string name="delete_swipe">Eliminar deslizar</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

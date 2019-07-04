@@ -54,6 +54,7 @@ public class SettingsValues {
     public final boolean mShowNumberRow;
     public final boolean mSpaceSwipeEnabled;
     public final boolean mDeleteSwipeEnabled;
+    public final boolean mKeySwipeEnabled;
 
     // From the input box
     @NonNull
@@ -95,6 +96,7 @@ public class SettingsValues {
         mShowNumberRow = Settings.readShowNumberRow(prefs);
         mSpaceSwipeEnabled = Settings.readSpaceSwipeEnabled(prefs);
         mDeleteSwipeEnabled = Settings.readDeleteSwipeEnabled(prefs);
+        mKeySwipeEnabled = Settings.readKeySwipeEnabled(prefs);
     }
 
     public boolean isWordSeparator(final int code) {
