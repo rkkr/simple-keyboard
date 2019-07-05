@@ -125,7 +125,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
     private boolean mIsAllowedDraggingFinger;
 
     //
-    private boolean mIsAllowedKeySwipeOpition;
+    private boolean mIsAllowedKeySwipeOption;
 
     // TODO: Add PointerTrackerFactory singleton and move some class static methods into it.
     public static void init(final TypedArray mainKeyboardViewAttr, final TimerProxy timerProxy,
@@ -508,7 +508,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         mIsAllowedDraggingFinger = sParams.mKeySelectionByDraggingFinger
                 || (key != null && key.isModifier())
                 || mKeyDetector.alwaysAllowsKeySelectionByDraggingFinger();
-        mIsAllowedKeySwipeOpition = Settings.getInstance().getCurrent().mKeySwipeEnabled;
+        mIsAllowedKeySwipeOption = Settings.getInstance().getCurrent().mKeySwipeEnabled;
         mKeyboardLayoutHasBeenChanged = false;
         mIsTrackingForActionDisabled = false;
         resetKeySelectionByDraggingFinger();
@@ -582,10 +582,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         sTimerProxy.cancelKeyTimersOf(this);
     }
 
-    private void processKeySwipeEvent() {
-
-    }
-
     private void dragFingerFromOldKeyToNewKey(final Key key, final int x, final int y,
             final long eventTime, final Key oldKey) {
         // The pointer has been slid in to the new key from the previous key, we must call
@@ -621,8 +617,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         processDraggingFingerOutFromOldKey(oldKey);
         if (mIsAllowedDraggingFinger) {
             onMoveToNewKey(null, x, y);
-        } else if (mIsAllowedKeySwipeOpition) {
-            processKeySwipeEvent();
         } else {
             cancelTrackingForAction();
         }
@@ -630,6 +624,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
     private void onMoveEventInternal(final int x, final int y, final long eventTime) {
         final Key oldKey = mCurrentKey;
+        final Key newKey = onMoveKey(x, y);
 
         if (oldKey != null && oldKey.getCode() == Constants.CODE_SPACE && Settings.getInstance().getCurrent().mSpaceSwipeEnabled) {
             //Pointer slider
@@ -660,11 +655,37 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             return;
         }
 
-        final Key newKey = onMoveKey(x, y);
+        if (oldKey != null &&  isMajorEnoughMoveToBeOnNewKey(x, y, newKey) && mIsAllowedKeySwipeOption) {
+            final int movementDirection = getMovementDirection(x, y);
+            switch (movementDirection) {
+                case Key.MOVEMENT_DIRECTION_NORTH:
+
+                    break;
+                case Key.MOVEMENT_DIRECTION_NORTHEAST:
+                    break;
+                case Key.MOVEMENT_DIRECTION_EAST:
+                    break;
+                case Key.MOVEMENT_DIRECTION_SOUTHEAST:
+                    break;
+                case Key.MOVEMENT_DIRECTION_SOUTH:
+
+                    break;
+                case Key.MOVEMENT_DIRECTION_SOUTHWEST:
+                    break;
+                case Key.MOVEMENT_DIRECTION_WEST:
+                    break;
+                case Key.MOVEMENT_DIRECTION_NORTHWEST:
+                    break;
+                case 0:
+                    break;
+            }
+            dragFingerOutFromOldKey(oldKey, x, y);
+            return;
+        }
+
         if (newKey != null) {
             if (oldKey != null && isMajorEnoughMoveToBeOnNewKey(x, y, newKey)) {
                 dragFingerFromOldKeyToNewKey(newKey, x, y, eventTime, oldKey);
-                getMovementDirection(x, y);
             } else if (oldKey == null) {
                 // The pointer has been slid in to the new key, but the finger was not on any keys.
                 // In this case, we must call onPress() to notify that the new key is being pressed.
@@ -673,7 +694,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         } else { // newKey == null
             if (oldKey != null && isMajorEnoughMoveToBeOnNewKey(x, y, newKey)) {
                 dragFingerOutFromOldKey(oldKey, x, y);
-                getMovementDirection(x, y);
             }
         }
     }
@@ -711,6 +731,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         sTimerProxy.cancelKeyTimersOf(this);
         final boolean isInDraggingFinger = mIsInDraggingFinger;
         final boolean isInSlidingKeyInput = mIsInSlidingKeyInput;
+        final boolean isKeySwipeInput = mIsAllowedKeySwipeOption;
         resetKeySelectionByDraggingFinger();
         final Key currentKey = mCurrentKey;
         mCurrentKey = null;

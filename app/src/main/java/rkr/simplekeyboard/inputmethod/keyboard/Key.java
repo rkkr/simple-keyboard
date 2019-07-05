@@ -156,14 +156,14 @@ public class Key implements Comparable<Key> {
     private static final int ACTION_FLAGS_ALT_CODE_WHILE_TYPING = 0x04;
     private static final int ACTION_FLAGS_ENABLE_LONG_PRESS = 0x08;
 
-    private static final int MOVEMENT_DIRECTION_NORTH = 1;
-    private static final int MOVEMENT_DIRECTION_NORTHEAST = 2;
-    private static final int MOVEMENT_DIRECTION_EAST = 3;
-    private static final int MOVEMENT_DIRECTION_SOUTHEAST = 4;
-    private static final int MOVEMENT_DIRECTION_SOUTH = 5;
-    private static final int MOVEMENT_DIRECTION_SOUTHWEST = 6;
-    private static final int MOVEMENT_DIRECTION_WEST = 7;
-    private static final int MOVEMENT_DIRECTION_NORTHWEST = 8;
+    public static final int MOVEMENT_DIRECTION_NORTH = 1;
+    public static final int MOVEMENT_DIRECTION_NORTHEAST = 2;
+    public static final int MOVEMENT_DIRECTION_EAST = 3;
+    public static final int MOVEMENT_DIRECTION_SOUTHEAST = 4;
+    public static final int MOVEMENT_DIRECTION_SOUTH = 5;
+    public static final int MOVEMENT_DIRECTION_SOUTHWEST = 6;
+    public static final int MOVEMENT_DIRECTION_WEST = 7;
+    public static final int MOVEMENT_DIRECTION_NORTHWEST = 8;
 
     @Nullable
     private final KeyVisualAttributes mKeyVisualAttributes;
