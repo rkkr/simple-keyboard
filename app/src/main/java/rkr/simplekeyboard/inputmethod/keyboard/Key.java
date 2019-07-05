@@ -156,15 +156,6 @@ public class Key implements Comparable<Key> {
     private static final int ACTION_FLAGS_ALT_CODE_WHILE_TYPING = 0x04;
     private static final int ACTION_FLAGS_ENABLE_LONG_PRESS = 0x08;
 
-    public static final int MOVEMENT_DIRECTION_NORTH = 1;
-    public static final int MOVEMENT_DIRECTION_NORTHEAST = 2;
-    public static final int MOVEMENT_DIRECTION_EAST = 3;
-    public static final int MOVEMENT_DIRECTION_SOUTHEAST = 4;
-    public static final int MOVEMENT_DIRECTION_SOUTH = 5;
-    public static final int MOVEMENT_DIRECTION_SOUTHWEST = 6;
-    public static final int MOVEMENT_DIRECTION_WEST = 7;
-    public static final int MOVEMENT_DIRECTION_NORTHWEST = 8;
-
     @Nullable
     private final KeyVisualAttributes mKeyVisualAttributes;
     @Nullable
@@ -885,38 +876,6 @@ public class Key implements Comparable<Key> {
         final int dx = x - edgeX;
         final int dy = y - edgeY;
         return dx * dx + dy * dy;
-    }
-
-    public int movementDirection(final int x, final int y) {
-        final int left = getX();
-        final int right = left + mWidth;
-        final int top = getY();
-        final int bottom = top + mHeight;
-        final int lPart = left + mWidth / 4;
-        final int rPart = right - mWidth / 4;
-        final int tPart = top + mHeight / 4;
-        final int bPart = bottom - mHeight / 4;
-        final int directionX = x < lPart ? x - lPart : (x > rPart ? x - rPart : 0);
-        final int directionY = y < tPart ? y - tPart : (y > bPart ? y - bPart : 0);
-        if (directionX < 0 && directionY < 0) {
-            return MOVEMENT_DIRECTION_NORTHWEST;
-        } else if (directionX == 0 && directionY < 0) {
-            return MOVEMENT_DIRECTION_NORTH;
-        } else if (directionX > 0 && directionY < 0) {
-            return MOVEMENT_DIRECTION_NORTHEAST;
-        } else if (directionX > 0 && directionY == 0) {
-            return MOVEMENT_DIRECTION_EAST;
-        } else if (directionX > 0 && directionY > 0) {
-            return MOVEMENT_DIRECTION_SOUTHEAST;
-        } else if (directionX == 0 && directionY > 0) {
-            return MOVEMENT_DIRECTION_SOUTH;
-        } else if (directionX < 0 && directionY > 0) {
-            return MOVEMENT_DIRECTION_SOUTHWEST;
-        } else if (directionX < 0 && directionY == 0) {
-            return MOVEMENT_DIRECTION_WEST;
-        } else  {
-            return 0;
-        }
     }
 
     static class KeyBackgroundState {
