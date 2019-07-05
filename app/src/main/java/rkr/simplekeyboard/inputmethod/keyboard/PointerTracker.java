@@ -42,6 +42,15 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
     private static final boolean DEBUG_LISTENER = false;
     private static boolean DEBUG_MODE = DebugFlags.DEBUG_ENABLED || DEBUG_EVENT;
 
+    public static final int MOVEMENT_DIRECTION_NORTH = 1;
+    public static final int MOVEMENT_DIRECTION_NORTHEAST = 2;
+    public static final int MOVEMENT_DIRECTION_EAST = 3;
+    public static final int MOVEMENT_DIRECTION_SOUTHEAST = 4;
+    public static final int MOVEMENT_DIRECTION_SOUTH = 5;
+    public static final int MOVEMENT_DIRECTION_SOUTHWEST = 6;
+    public static final int MOVEMENT_DIRECTION_WEST = 7;
+    public static final int MOVEMENT_DIRECTION_NORTHWEST = 8;
+
     static final class PointerTrackerParams {
         public final boolean mKeySelectionByDraggingFinger;
         public final int mTouchNoiseThresholdTime;
@@ -658,23 +667,25 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         if (oldKey != null &&  isMajorEnoughMoveToBeOnNewKey(x, y, newKey) && mIsAllowedKeySwipeOption) {
             final int movementDirection = getMovementDirection(x, y);
             switch (movementDirection) {
-                case Key.MOVEMENT_DIRECTION_NORTH:
+                case MOVEMENT_DIRECTION_NORTH:
 
+                    onMoveToNewKey(oldKey, x, y);
                     break;
-                case Key.MOVEMENT_DIRECTION_NORTHEAST:
+                case MOVEMENT_DIRECTION_NORTHEAST:
                     break;
-                case Key.MOVEMENT_DIRECTION_EAST:
+                case MOVEMENT_DIRECTION_EAST:
                     break;
-                case Key.MOVEMENT_DIRECTION_SOUTHEAST:
+                case MOVEMENT_DIRECTION_SOUTHEAST:
                     break;
-                case Key.MOVEMENT_DIRECTION_SOUTH:
+                case MOVEMENT_DIRECTION_SOUTH:
 
+                    onMoveToNewKey(oldKey, x, y);
                     break;
-                case Key.MOVEMENT_DIRECTION_SOUTHWEST:
+                case MOVEMENT_DIRECTION_SOUTHWEST:
                     break;
-                case Key.MOVEMENT_DIRECTION_WEST:
+                case MOVEMENT_DIRECTION_WEST:
                     break;
-                case Key.MOVEMENT_DIRECTION_NORTHWEST:
+                case MOVEMENT_DIRECTION_NORTHWEST:
                     break;
                 case 0:
                     break;
@@ -879,8 +890,37 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
     private int getMovementDirection(final int x, final int y) {
         final Key curKey = mCurrentKey;
-        final int movementDirection = curKey.movementDirection(x, y);
-        return movementDirection;
+        final int left = curKey.getX();
+        final int width = curKey.getWidth();
+        final int right = left + width;
+        final int top = curKey.getY();
+        final int height = curKey.getHeight();
+        final int bottom = top + height;
+        final int lPart = left + width / 4;
+        final int rPart = right - width / 4;
+        final int tPart = top + height / 4;
+        final int bPart = bottom - height / 4;
+        final int directionX = x < lPart ? x - lPart : (x > rPart ? x - rPart : 0);
+        final int directionY = y < tPart ? y - tPart : (y > bPart ? y - bPart : 0);
+        if (directionX < 0 && directionY < 0) {
+            return MOVEMENT_DIRECTION_NORTHWEST;
+        } else if (directionX == 0 && directionY < 0) {
+            return MOVEMENT_DIRECTION_NORTH;
+        } else if (directionX > 0 && directionY < 0) {
+            return MOVEMENT_DIRECTION_NORTHEAST;
+        } else if (directionX > 0 && directionY == 0) {
+            return MOVEMENT_DIRECTION_EAST;
+        } else if (directionX > 0 && directionY > 0) {
+            return MOVEMENT_DIRECTION_SOUTHEAST;
+        } else if (directionX == 0 && directionY > 0) {
+            return MOVEMENT_DIRECTION_SOUTH;
+        } else if (directionX < 0 && directionY > 0) {
+            return MOVEMENT_DIRECTION_SOUTHWEST;
+        } else if (directionX < 0 && directionY == 0) {
+            return MOVEMENT_DIRECTION_WEST;
+        } else  {
+            return 0;
+        }
     }
 
     private void startLongPressTimer(final Key key) {
