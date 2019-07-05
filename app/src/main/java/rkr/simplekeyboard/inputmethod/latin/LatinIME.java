@@ -769,13 +769,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
     }
 
-    @Override
-    public void onMoveUpDownFromKey(int steps) {
-        for (;steps < 0; steps++)
-            mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_LEFT);
-        for (;steps > 0; steps--)
-            mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_RIGHT);
-    }
     private boolean isShowingOptionDialog() {
         return mOptionsDialog != null && mOptionsDialog.isShowing();
     }

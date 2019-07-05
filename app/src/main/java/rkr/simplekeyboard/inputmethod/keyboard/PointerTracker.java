@@ -595,8 +595,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         startRepeatKey(key);
         if (mIsAllowedDraggingFinger) {
             processDraggingFingerInToNewKey(key, x, y);
-        } else if (mIsAllowedKeySwipeOpition) {
-            processKeySwipeEvent();
         }
         // HACK: If there are currently multiple touches, register the key even if the finger
         // slides off the key. This defends against noise from some touch panels when there are
@@ -666,6 +664,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         if (newKey != null) {
             if (oldKey != null && isMajorEnoughMoveToBeOnNewKey(x, y, newKey)) {
                 dragFingerFromOldKeyToNewKey(newKey, x, y, eventTime, oldKey);
+                getMovementDirection(x, y);
             } else if (oldKey == null) {
                 // The pointer has been slid in to the new key, but the finger was not on any keys.
                 // In this case, we must call onPress() to notify that the new key is being pressed.
@@ -674,6 +673,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         } else { // newKey == null
             if (oldKey != null && isMajorEnoughMoveToBeOnNewKey(x, y, newKey)) {
                 dragFingerOutFromOldKey(oldKey, x, y);
+                getMovementDirection(x, y);
             }
         }
     }
@@ -854,6 +854,12 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             return true;
         }
         return false;
+    }
+
+    private int getMovementDirection(final int x, final int y) {
+        final Key curKey = mCurrentKey;
+        final int movementDirection = curKey.movementDirection(x, y);
+        return movementDirection;
     }
 
     private void startLongPressTimer(final Key key) {
