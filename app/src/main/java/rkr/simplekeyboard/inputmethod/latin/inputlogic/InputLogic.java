@@ -17,11 +17,12 @@
 package rkr.simplekeyboard.inputmethod.latin.inputlogic;
 
 import android.os.SystemClock;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
+
+import androidx.annotation.NonNull;
 
 import java.util.TreeSet;
 

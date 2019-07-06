@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.0'
     defaultConfig {
         applicationId "rkr.simplekeyboard.inputmethod"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 29
         versionCode 49
         versionName "3.2"
     }
@@ -19,5 +19,5 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:support-annotations:27.1.1'
+    implementation 'androidx.annotation:annotation:1.1.0'
 }

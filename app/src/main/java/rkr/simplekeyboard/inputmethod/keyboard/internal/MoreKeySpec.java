@@ -16,10 +16,12 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
 import android.text.TextUtils;
 import android.util.SparseIntArray;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -52,7 +54,7 @@ public final class MoreKeySpec {
     public final int mIconId;
 
     public MoreKeySpec(@NonNull final String moreKeySpec, boolean needsToUpperCase,
-            @NonNull final Locale locale) {
+                       @NonNull final Locale locale) {
         if (moreKeySpec.isEmpty()) {
             throw new KeySpecParser.KeySpecParserError("Empty more key spec");
         }

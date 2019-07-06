@@ -16,8 +16,9 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
-import android.support.annotation.NonNull;
 import android.view.inputmethod.InputMethodSubtype;
+
+import androidx.annotation.NonNull;
 
 import java.util.Collections;
 import java.util.List;

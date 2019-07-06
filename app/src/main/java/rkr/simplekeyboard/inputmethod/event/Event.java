@@ -16,7 +16,7 @@
 
 package rkr.simplekeyboard.inputmethod.event;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;

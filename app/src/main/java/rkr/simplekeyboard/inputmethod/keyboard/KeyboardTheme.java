@@ -18,13 +18,8 @@ package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
-import android.os.Build.VERSION_CODES;
 import android.preference.PreferenceManager;
 import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;

@@ -19,8 +19,9 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
 import android.view.inputmethod.EditorInfo;
+
+import androidx.annotation.NonNull;
 
 import java.util.Locale;
 

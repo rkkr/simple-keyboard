@@ -16,8 +16,10 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.keyboard.MoreKeysPanel;

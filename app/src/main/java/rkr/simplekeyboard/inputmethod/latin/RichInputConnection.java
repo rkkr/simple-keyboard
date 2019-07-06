@@ -18,7 +18,6 @@ package rkr.simplekeyboard.inputmethod.latin;
 
 import android.inputmethodservice.InputMethodService;
 import android.os.SystemClock;
-import android.support.annotation.Nullable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.CharacterStyle;
@@ -27,6 +26,8 @@ import android.view.KeyEvent;
 import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
+
+import androidx.annotation.Nullable;
 
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;

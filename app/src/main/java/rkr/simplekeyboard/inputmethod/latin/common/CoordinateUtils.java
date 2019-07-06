@@ -16,7 +16,8 @@
 
 package rkr.simplekeyboard.inputmethod.latin.common;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 public final class CoordinateUtils {
     private static final int INDEX_X = 0;

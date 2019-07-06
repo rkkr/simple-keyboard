@@ -17,9 +17,10 @@
 package rkr.simplekeyboard.inputmethod.compat;
 
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.inputmethod.InputMethodSubtype;
+
+import androidx.annotation.NonNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;

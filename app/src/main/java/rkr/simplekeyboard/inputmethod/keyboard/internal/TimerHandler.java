@@ -17,8 +17,9 @@
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.view.ViewConfiguration;
+
+import androidx.annotation.NonNull;
 
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.keyboard.PointerTracker;
