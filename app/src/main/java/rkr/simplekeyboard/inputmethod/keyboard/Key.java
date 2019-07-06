@@ -542,6 +542,11 @@ public class Key implements Comparable<Key> {
     }
 
     @Nullable
+    public int getHintCode() {
+        return KeySpecParser.getCode(getHintLabel());
+    }
+
+    @Nullable
     public MoreKeySpec[] getMoreKeys() {
         return mMoreKeys;
     }
