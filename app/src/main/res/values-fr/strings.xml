@@ -63,4 +63,5 @@
     <string name="show_number_row">Afficher la ligne de chiffres</string>
     <string name="space_swipe">Glisser sur Espace pour déplacer le curseur</string>
     <string name="delete_swipe">Supprimer le glissement</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

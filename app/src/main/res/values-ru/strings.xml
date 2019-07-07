@@ -19,11 +19,11 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Настройки"</string>
+    <string name="english_ime_input_options">Меню</string>
     <string name="vibrate_on_keypress">"Виброотклик клавиш"</string>
     <string name="sound_on_keypress">"Звук клавиш"</string>
     <string name="popup_on_keypress">"Увеличивать при нажатии"</string>
-    <string name="settings_screen_preferences">"Настройки"</string>
+    <string name="settings_screen_preferences">Свойства клавиатуры</string>
     <string name="settings_screen_appearance">"Вид и раскладки"</string>
     <string name="settings_screen_advanced">"Дополнительные настройки"</string>
     <string name="settings_screen_theme">"Тема"</string>
@@ -33,8 +33,8 @@
     <string name="auto_cap_summary">"Писать первое слово предложения с прописной буквы"</string>
     <string name="language_selection_title">"Выберите язык"</string>
     <string name="select_language">"Язык"</string>
-    <string name="subtype_en_GB">"английский (Великобритания)"</string>
-    <string name="subtype_en_US">"английский (США)"</string>
+    <string name="subtype_en_GB">Английский (Великобритания)</string>
+    <string name="subtype_en_US">Английский (США)</string>
     <string name="subtype_es_US">"Испанский (США)"</string>
     <string name="subtype_sr_ZZ">"Сербский (латиница)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (классическая)"</string>
@@ -64,4 +64,7 @@
     <string name="space_swipe">Перемещать курсор пробелом</string>
     <string name="delete_swipe">Удаление перемещением курсора</string>
     <string name="key_swipe">Дополнительные жесты для клавиш</string>
+    <string name="subtype_in_root_locale_sr_ZZ">Сербский</string>
+    <string name="subtype_in_root_locale_hi_ZZ">Хинглиш</string>
+    <string name="english_ime_settings" translatable="false">Настройки</string>
 </resources>

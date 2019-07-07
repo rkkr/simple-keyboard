@@ -239,7 +239,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             final int y, final boolean isKeyRepeat) {
         final boolean ignoreModifierKey = mIsInDraggingFinger && key.isModifier();
         final boolean altersCode = key.altCodeWhileTyping() && sTimerProxy.isTypingState();
-        final int code = isKeySwiped() ? getNewCodeOnSwipedKey(key):
+        final int code = isKeySwiped() && !key.isSpecialKey() ? getNewCodeOnSwipedKey(key):
                 altersCode ? key.getAltCode() : primaryCode;
         if (DEBUG_LISTENER) {
             final String output = code == Constants.CODE_OUTPUT_TEXT

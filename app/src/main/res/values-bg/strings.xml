@@ -63,4 +63,5 @@
     <string name="show_number_row">Показвай отделен ред с цифри</string>
     <string name="space_swipe">Местене на курсора с плъзгане върху интервал</string>
     <string name="delete_swipe">Изтриване с плъзгане</string>
+    <string name="key_swipe">Допълнителни ключови жестове</string>
 </resources>

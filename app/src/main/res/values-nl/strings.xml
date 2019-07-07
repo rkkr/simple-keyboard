@@ -63,4 +63,5 @@
     <string name="show_number_row">Aparte nummerrij</string>
     <string name="space_swipe">Spatie-swipe beweegt cursor</string>
     <string name="delete_swipe">Verwijder swipe</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

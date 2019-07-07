@@ -63,4 +63,5 @@
     <string name="show_number_row">Zahlenreihe anzeigen</string>
     <string name="space_swipe">Cursor mit Wischen über die Leertaste steuern</string>
     <string name="delete_swipe">Durch Wischen löschen</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

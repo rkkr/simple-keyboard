@@ -63,4 +63,5 @@
     <string name="show_number_row">Εμφάνιση ξεχωριστής σειράς αριθμών</string>
     <string name="space_swipe">Ολίσθηση στη γραμμή διαστήματος για μετακίνηση του δρομέα</string>
     <string name="delete_swipe">Αφαίρεση της ολίσθησης</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

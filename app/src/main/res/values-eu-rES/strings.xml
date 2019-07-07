@@ -63,4 +63,5 @@
     <string name="show_number_row">Erakutsi aparteko zenbakien errenkada</string>
     <string name="space_swipe">Espazioan hatza pasatzean mugitu kurtsorea</string>
     <string name="delete_swipe">Ezabatzeko keinua</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

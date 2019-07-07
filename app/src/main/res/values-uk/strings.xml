@@ -63,5 +63,5 @@
     <string name="show_number_row">Показувати рядок цифр</string>
     <string name="space_swipe">Space swipe cursor move</string>
     <string name="delete_swipe">Delete swipe</string>
-    <string name="key_swipe">Advanced key swipes</string>
+    <string name="key_swipe">Додаткові жести для клавіш</string>
 </resources>

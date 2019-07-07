@@ -63,4 +63,5 @@
     <string name="show_number_row">Prikaži zaseban red brojeva</string>
     <string name="space_swipe">Pomiči pokazivač potezom preko razmaknice</string>
     <string name="delete_swipe">Brisanje potezima preko tipkovnice</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

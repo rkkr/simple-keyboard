@@ -40,6 +40,7 @@ import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
 import static rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardIconsSet.ICON_UNDEFINED;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_LANGUAGE_SWITCH;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_OUTPUT_TEXT;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_SHIFT;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_SWITCH_ALPHA_SYMBOL;
@@ -566,20 +567,22 @@ public class Key implements Comparable<Key> {
         return this instanceof Spacer;
     }
 
-    public final boolean isActionKey() {
-        return mBackgroundType == BACKGROUND_TYPE_ACTION;
-    }
+    public final boolean isActionKey() { return mBackgroundType == BACKGROUND_TYPE_ACTION; }
 
     public final boolean isShift() {
         return mCode == CODE_SHIFT;
     }
 
-    public final boolean isModifier() {
-        return mCode == CODE_SHIFT || mCode == CODE_SWITCH_ALPHA_SYMBOL;
-    }
+    public final boolean isModifier() { return mCode == CODE_SHIFT || mCode == CODE_SWITCH_ALPHA_SYMBOL; }
 
     public final boolean isRepeatable() {
         return (mActionFlags & ACTION_FLAGS_IS_REPEATABLE) != 0;
+    }
+
+    public final boolean isLangaugeKey() { return mCode == CODE_LANGUAGE_SWITCH; }
+
+    public final boolean isSpecialKey() {
+        return isActionKey() || isModifier() || isSpacer() || isLangaugeKey();
     }
 
     public final boolean noKeyPreview() {

@@ -63,4 +63,5 @@
     <string name="show_number_row">Nömrə sırası göstər</string>
     <string name="space_swipe">Boşluq sürüşdürmə kursor hərəkəti</string>
     <string name="delete_swipe">Sürüşdürməni sil</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>

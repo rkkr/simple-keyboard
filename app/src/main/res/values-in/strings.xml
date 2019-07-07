@@ -63,4 +63,5 @@
     <string name="show_number_row">Tampilkan garis pemisah</string>
     <string name="space_swipe">Geser untuk menggerakan kursor</string>
     <string name="delete_swipe">Hapus dengan menggeser</string>
+    <string name="key_swipe">Advanced key swipes</string>
 </resources>
