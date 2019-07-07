@@ -125,6 +125,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
     private boolean mIsAllowedDraggingFinger;
 
     //
+    private boolean mKeySwiped = false;
     private int mMovementDirection;
     public static final int MOVEMENT_DIRECTION_NORTH = 1;
     public static final int MOVEMENT_DIRECTION_NORTHEAST = 2;
@@ -238,7 +239,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             final int y, final boolean isKeyRepeat) {
         final boolean ignoreModifierKey = mIsInDraggingFinger && key.isModifier();
         final boolean altersCode = key.altCodeWhileTyping() && sTimerProxy.isTypingState();
-        final int code = isKeySwipeDown() ? key.getHintCode():
+        final int code = isKeySwiped() ? getNewCodeOnSwipedKey(key):
                 altersCode ? key.getAltCode() : primaryCode;
         if (DEBUG_LISTENER) {
             final String output = code == Constants.CODE_OUTPUT_TEXT
@@ -631,6 +632,41 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         }
     }
 
+    private void dragFingerOutFromKeyToSwipe(final Key oldKey, final int x, final int y,  final long eventTime) {
+        // Key swipe actions. Detecting direction.
+        processDraggingFingerOutFromOldKey(oldKey);
+        setReleasedKeyGraphics(oldKey, true /* withAnimation */);
+        getMovementDirection(x, y);
+        switch (mMovementDirection) {
+            case MOVEMENT_DIRECTION_NORTH:
+                // Key swipe up action. Type capitalized key
+                // TODO: Change KeyGraphics to new
+                onUpEvent(x, y, eventTime);
+                break;
+            case MOVEMENT_DIRECTION_NORTHEAST:
+                break;
+            case MOVEMENT_DIRECTION_EAST:
+                break;
+            case MOVEMENT_DIRECTION_SOUTHEAST:
+                break;
+            case MOVEMENT_DIRECTION_SOUTH:
+                // Key swipe down action. Type hint special key.
+                // TODO: Change KeyGraphics to new
+                onUpEvent(x, y, eventTime);
+                break;
+            case MOVEMENT_DIRECTION_SOUTHWEST:
+                break;
+            case MOVEMENT_DIRECTION_WEST:
+                break;
+            case MOVEMENT_DIRECTION_NORTHWEST:
+                break;
+            case 0:
+                break;
+        }
+        cancelTrackingForAction();
+        resetMovementDirection();
+    }
+
     private void onMoveEventInternal(final int x, final int y, final long eventTime) {
         final Key oldKey = mCurrentKey;
         final Key newKey = onMoveKey(x, y);
@@ -665,37 +701,8 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         }
 
         if (oldKey != null &&  isMajorEnoughMoveToBeOnNewKey(x, y, newKey) && isAllowedKeySwipeOption()) {
-            // Key swipe actions. Detecting direction.
-            getMovementDirection(x, y);
-            switch (mMovementDirection) {
-                case MOVEMENT_DIRECTION_NORTH:
-                    // Key swipe up action. Type capitalized key
-                    // TODO: Complete this
-                    break;
-                case MOVEMENT_DIRECTION_NORTHEAST:
-                    break;
-                case MOVEMENT_DIRECTION_EAST:
-                    break;
-                case MOVEMENT_DIRECTION_SOUTHEAST:
-                    break;
-                case MOVEMENT_DIRECTION_SOUTH:
-                    // Key swipe down action. Type hint special key.
-                    // TODO: Change KeyGraphics to new
-                    onUpEvent(x, y, eventTime);
-                    break;
-                case MOVEMENT_DIRECTION_SOUTHWEST:
-                    break;
-                case MOVEMENT_DIRECTION_WEST:
-                    break;
-                case MOVEMENT_DIRECTION_NORTHWEST:
-                    break;
-                case 0:
-                    break;
-            }
-            processDraggingFingerOutFromOldKey(oldKey);
-            cancelTrackingForAction();
-            setReleasedKeyGraphics(oldKey, true /* withAnimation */);
-            resetMovementDirection();
+            //Swipe on key
+            dragFingerOutFromKeyToSwipe(oldKey, x, y, eventTime);
             return;
         }
 
@@ -892,53 +899,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         return false;
     }
 
-    private boolean isAllowedKeySwipeOption() {
-        return Settings.getInstance().getCurrent().mKeySwipeEnabled;
-    }
-
-    private  boolean isKeySwipeDown() {
-        return mMovementDirection == MOVEMENT_DIRECTION_SOUTH;
-    }
-
-    private void getMovementDirection(final int x, final int y) {
-        final Key curKey = mCurrentKey;
-        final int left = curKey.getX();
-        final int width = curKey.getWidth();
-        final int right = left + width;
-        final int top = curKey.getY();
-        final int height = curKey.getHeight();
-        final int bottom = top + height;
-        final int lPart = left + width / 8;
-        final int rPart = right - width / 8;
-        final int tPart = top + height / 6;
-        final int bPart = bottom - height / 6;
-        final int directionX = x < lPart ? x - lPart : (x > rPart ? x - rPart : 0);
-        final int directionY = y < tPart ? y - tPart : (y > bPart ? y - bPart : 0);
-        if (directionX < 0 && directionY < 0) {
-            mMovementDirection = MOVEMENT_DIRECTION_NORTHWEST;
-        } else if (directionX == 0 && directionY < 0) {
-            mMovementDirection = MOVEMENT_DIRECTION_NORTH;
-        } else if (directionX > 0 && directionY < 0) {
-            mMovementDirection = MOVEMENT_DIRECTION_NORTHEAST;
-        } else if (directionX > 0 && directionY == 0) {
-            mMovementDirection = MOVEMENT_DIRECTION_EAST;
-        } else if (directionX > 0 && directionY > 0) {
-            mMovementDirection = MOVEMENT_DIRECTION_SOUTHEAST;
-        } else if (directionX == 0 && directionY > 0) {
-            mMovementDirection = MOVEMENT_DIRECTION_SOUTH;
-        } else if (directionX < 0 && directionY > 0) {
-            mMovementDirection = MOVEMENT_DIRECTION_SOUTHWEST;
-        } else if (directionX < 0 && directionY == 0) {
-            mMovementDirection = MOVEMENT_DIRECTION_WEST;
-        } else  {
-            mMovementDirection = 0;
-        }
-    }
-
-    private void resetMovementDirection() {
-        mMovementDirection = 0;
-    }
-
     private void startLongPressTimer(final Key key) {
         // Note that we need to cancel all active long press shift key timers if any whenever we
         // start a new long press timer for both non-shift and shift keys.
@@ -1015,5 +975,83 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         final String code = (key == null ? "none" : Constants.printableCode(key.getCode()));
         Log.d(TAG, String.format("[%d]%s%s %4d %4d %5d %s", mPointerId,
                 (mIsTrackingForActionDisabled ? "-" : " "), title, x, y, eventTime, code));
+    }
+
+    private int getNewCodeOnSwipedKey(final Key key) {
+        int code = 0;
+        switch (mMovementDirection) {
+            case MOVEMENT_DIRECTION_NORTH:
+                // Key swipe up action. Type capitalized key
+                code = key.getCode(key.getLabel().toUpperCase());
+                break;
+            case MOVEMENT_DIRECTION_NORTHEAST:
+                break;
+            case MOVEMENT_DIRECTION_EAST:
+                break;
+            case MOVEMENT_DIRECTION_SOUTHEAST:
+                break;
+            case MOVEMENT_DIRECTION_SOUTH:
+                // Key swipe down action. Type hint special key.
+                code = key.getHintLabelCode();
+                break;
+            case MOVEMENT_DIRECTION_SOUTHWEST:
+                break;
+            case MOVEMENT_DIRECTION_WEST:
+                break;
+            case MOVEMENT_DIRECTION_NORTHWEST:
+                break;
+            case 0:
+                break;
+        }
+        return code;
+    }
+
+    private void getMovementDirection(final int x, final int y) {
+        final Key curKey = mCurrentKey;
+        final int left = curKey.getX();
+        final int width = curKey.getWidth();
+        final int right = left + width;
+        final int top = curKey.getY();
+        final int height = curKey.getHeight();
+        final int bottom = top + height;
+        final int lPart = left + width / 8;
+        final int rPart = right - width / 8;
+        final int tPart = top + height / 6;
+        final int bPart = bottom - height / 6;
+        final int directionX = x < lPart ? x - lPart : (x > rPart ? x - rPart : 0);
+        final int directionY = y < tPart ? y - tPart : (y > bPart ? y - bPart : 0);
+        if (directionX < 0 && directionY < 0) {
+            mMovementDirection = MOVEMENT_DIRECTION_NORTHWEST;
+        } else if (directionX == 0 && directionY < 0) {
+            mMovementDirection = MOVEMENT_DIRECTION_NORTH;
+        } else if (directionX > 0 && directionY < 0) {
+            mMovementDirection = MOVEMENT_DIRECTION_NORTHEAST;
+        } else if (directionX > 0 && directionY == 0) {
+            mMovementDirection = MOVEMENT_DIRECTION_EAST;
+        } else if (directionX > 0 && directionY > 0) {
+            mMovementDirection = MOVEMENT_DIRECTION_SOUTHEAST;
+        } else if (directionX == 0 && directionY > 0) {
+            mMovementDirection = MOVEMENT_DIRECTION_SOUTH;
+        } else if (directionX < 0 && directionY > 0) {
+            mMovementDirection = MOVEMENT_DIRECTION_SOUTHWEST;
+        } else if (directionX < 0 && directionY == 0) {
+            mMovementDirection = MOVEMENT_DIRECTION_WEST;
+        } else  {
+            mMovementDirection = 0;
+        }
+        mKeySwiped = true;
+    }
+
+    private void resetMovementDirection() {
+        mMovementDirection = 0;
+        mKeySwiped = false;
+    }
+
+    private boolean isAllowedKeySwipeOption() {
+        return Settings.getInstance().getCurrent().mKeySwipeEnabled;
+    }
+
+    private  boolean isKeySwiped() {
+        return mKeySwiped;
     }
 }

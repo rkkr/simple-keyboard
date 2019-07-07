@@ -531,25 +531,20 @@ public class Key implements Comparable<Key> {
         return mCode;
     }
 
-    @Nullable
-    public String getLabel() {
-        return mLabel;
-    }
+    // TODO: Maybe need some checks of label
+    public int getCode(final String label) {  return KeySpecParser.getCode(label); }
 
     @Nullable
-    public String getHintLabel() {
-        return mHintLabel;
-    }
+    public String getLabel() { return mLabel; }
 
     @Nullable
-    public int getHintCode() {
-        return KeySpecParser.getCode(getHintLabel());
-    }
+    public String getHintLabel() { return mHintLabel; }
 
     @Nullable
-    public MoreKeySpec[] getMoreKeys() {
-        return mMoreKeys;
-    }
+    public int getHintLabelCode() { return KeySpecParser.getCode(getHintLabel()); }
+
+    @Nullable
+    public MoreKeySpec[] getMoreKeys() { return mMoreKeys; }
 
     public void markAsLeftEdge(final KeyboardParams params) {
         mHitBox.left = params.mLeftPadding;
