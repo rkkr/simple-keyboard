@@ -1,5 +1,16 @@
 # Simple Keyboard
 
+Forked from https://github.com/rkkr/simple-keyboard
+
+Я хочу добавить несколько дополнительных приятных мелочей и подучиться в программировании на Andriod.  
+
+I want to add a few extra nice little things and learn some programming on Andriod.  
+  
+
+  
+  
+Original README from rkkr/simple-keyboard
+---
 Forked from https://android.googlesource.com/platform/packages/inputmethods/LatinIME/
 
 <img src="images/screenshot-0.png"
