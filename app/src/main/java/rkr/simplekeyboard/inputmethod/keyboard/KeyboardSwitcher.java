@@ -18,7 +18,6 @@ package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -131,8 +130,8 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     }
 
     private void setKeyboard(
-            @NonNull final int keyboardId,
-            @NonNull final KeyboardSwitchState toggleState) {
+            final int keyboardId,
+            final KeyboardSwitchState toggleState) {
         final SettingsValues currentSettingsValues = Settings.getInstance().getCurrent();
         setMainKeyboardFrame(currentSettingsValues, toggleState);
         // TODO: pass this object to setKeyboard instead of getting the current values.
@@ -244,14 +243,14 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     }
 
     public boolean isImeSuppressedByHardwareKeyboard(
-            @NonNull final SettingsValues settingsValues,
-            @NonNull final KeyboardSwitchState toggleState) {
+            final SettingsValues settingsValues,
+            final KeyboardSwitchState toggleState) {
         return settingsValues.mHasHardwareKeyboard && toggleState == KeyboardSwitchState.HIDDEN;
     }
 
     private void setMainKeyboardFrame(
-            @NonNull final SettingsValues settingsValues,
-            @NonNull final KeyboardSwitchState toggleState) {
+            final SettingsValues settingsValues,
+            final KeyboardSwitchState toggleState) {
         final int visibility =  isImeSuppressedByHardwareKeyboard(settingsValues, toggleState)
                 ? View.GONE : View.VISIBLE;
         mKeyboardView.setVisibility(visibility);
@@ -338,7 +337,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mState.onEvent(event, currentAutoCapsState, currentRecapitalizeState);
     }
 
-    public boolean isShowingKeyboardId(@NonNull int... keyboardIds) {
+    public boolean isShowingKeyboardId(int... keyboardIds) {
         if (mKeyboardView == null || !mKeyboardView.isShown()) {
             return false;
         }

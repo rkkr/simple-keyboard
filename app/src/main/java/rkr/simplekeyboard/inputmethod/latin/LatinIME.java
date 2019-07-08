@@ -33,7 +33,6 @@ import android.os.Debug;
 import android.os.IBinder;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.text.InputType;
 import android.util.Log;
 import android.util.PrintWriterPrinter;
@@ -53,7 +52,6 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.compat.EditorInfoCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils.InsetsUpdater;
@@ -97,7 +95,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private InsetsUpdater mInsetsUpdater;
 
     private RichInputMethodManager mRichImm;
-    @UsedForTesting final KeyboardSwitcher mKeyboardSwitcher;
+    final KeyboardSwitcher mKeyboardSwitcher;
     private final SubtypeState mSubtypeState = new SubtypeState();
 
     private AlertDialog mOptionsDialog;
@@ -117,7 +115,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
         private int mDelayInMillisecondsToUpdateShiftState;
 
-        public UIHandler(@NonNull final LatinIME ownerInstance) {
+        public UIHandler(final LatinIME ownerInstance) {
             super(ownerInstance);
         }
 
@@ -355,9 +353,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         packageManager.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
     }
 
-    // Has to be package-visible for unit tests
-    @UsedForTesting
-    void loadSettings() {
+    private void loadSettings() {
         final Locale locale = mRichImm.getCurrentSubtypeLocale();
         final EditorInfo editorInfo = getCurrentInputEditorInfo();
         final InputAttributes inputAttributes = new InputAttributes(editorInfo, isFullscreenMode());
@@ -821,7 +817,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     // This method is public for testability of LatinIME, but also in the future it should
     // completely replace #onCodeInput.
-    public void onEvent(@NonNull final Event event) {
+    public void onEvent(final Event event) {
         if (Constants.CODE_SHORTCUT == event.mKeyCode) {
             mRichImm.switchToShortcutIme(this);
         }
@@ -834,7 +830,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     // A helper method to split the code point and the key code. Ultimately, they should not be
     // squashed into the same variable, and this method should be removed.
     // public for testing, as we don't want to copy the same logic into test code
-    @NonNull
     public static Event createSoftwareKeypressEvent(final int keyCodeOrCodePoint, final int keyX,
              final int keyY, final boolean isKeyRepeat) {
         final int keyCode;
@@ -868,9 +863,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 getCurrentRecapitalizeState());
     }
 
-    // Outside LatinIME, only used by the {@link InputTestsBase} test suite.
-    @UsedForTesting
-    void loadKeyboard() {
+    private void loadKeyboard() {
         // Since we are switching languages, the most urgent thing is to let the keyboard graphics
         // update. LoadKeyboard does that, but we need to wait for buffer flip for it to be on
         // the screen. Anything we do right now will delay this, so wait until the next frame

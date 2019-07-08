@@ -22,7 +22,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.Locale;
@@ -112,7 +111,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     }
 
     public void loadSettings(final Context context, final Locale locale,
-            @NonNull final InputAttributes inputAttributes) {
+            final InputAttributes inputAttributes) {
         mSettingsValuesLock.lock();
         mContext = context;
         try {

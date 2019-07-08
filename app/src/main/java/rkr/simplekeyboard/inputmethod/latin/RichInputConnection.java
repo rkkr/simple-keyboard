@@ -18,7 +18,6 @@ package rkr.simplekeyboard.inputmethod.latin;
 
 import android.inputmethodservice.InputMethodService;
 import android.os.SystemClock;
-import android.support.annotation.Nullable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.CharacterStyle;
@@ -286,7 +285,6 @@ public final class RichInputConnection {
         }
     }
 
-    @Nullable
     public CharSequence getSelectedText(final int flags) {
         return isConnected() ?  mIC.getSelectedText(flags) : null;
     }

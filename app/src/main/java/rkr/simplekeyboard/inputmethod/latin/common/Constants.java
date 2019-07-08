@@ -16,8 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.latin.common;
 
-import android.support.annotation.NonNull;
-
 public final class Constants {
 
     public static final class Color {
@@ -182,7 +180,6 @@ public final class Constants {
         return code >= CODE_SPACE;
     }
 
-    @NonNull
     public static String printableCode(final int code) {
         switch (code) {
         case CODE_SHIFT: return "shift";

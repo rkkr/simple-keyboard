@@ -17,8 +17,6 @@
 package rkr.simplekeyboard.inputmethod.latin;
 
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
 
@@ -52,14 +50,11 @@ public class RichInputMethodSubtype {
         return map;
     }
 
-    @NonNull
     private final InputMethodSubtype mSubtype;
-    @NonNull
     private final Locale mLocale;
-    @NonNull
     private final Locale mOriginalLocale;
 
-    public RichInputMethodSubtype(@NonNull final InputMethodSubtype subtype) {
+    public RichInputMethodSubtype(final InputMethodSubtype subtype) {
         mSubtype = subtype;
         mOriginalLocale = InputMethodSubtypeCompatUtils.getLocaleObject(mSubtype);
         final Locale mappedLocale = sLocaleMap.get(mOriginalLocale);
@@ -68,7 +63,7 @@ public class RichInputMethodSubtype {
 
     // Extra values are determined by the primary subtype. This is probably right, but
     // we may have to revisit this later.
-    public String getExtraValueOf(@NonNull final String key) {
+    public String getExtraValueOf(final String key) {
         return mSubtype.getExtraValueOf(key);
     }
 
@@ -98,7 +93,6 @@ public class RichInputMethodSubtype {
     //  en_US azerty  T  English   English (US)
     //  zz    azerty  T  AZERTY    AZERTY
     // Get the RichInputMethodSubtype's full display name in its locale.
-    @NonNull
     public String getFullDisplayName() {
         if (isNoLanguage()) {
             return SubtypeLocaleUtils.getKeyboardLayoutSetDisplayName(mSubtype);
@@ -107,7 +101,6 @@ public class RichInputMethodSubtype {
     }
 
     // Get the RichInputMethodSubtype's middle display name in its locale.
-    @NonNull
     public String getMiddleDisplayName() {
         if (isNoLanguage()) {
             return SubtypeLocaleUtils.getKeyboardLayoutSetDisplayName(mSubtype);
@@ -134,22 +127,19 @@ public class RichInputMethodSubtype {
         return "Multi-lingual subtype: " + mSubtype + ", " + mLocale;
     }
 
-    @NonNull
     public Locale getLocale() {
         return mLocale;
     }
 
     // TODO: remove this method
-    @NonNull
     public InputMethodSubtype getRawSubtype() { return mSubtype; }
 
-    @NonNull
     public String getKeyboardLayoutSetName() {
         return SubtypeLocaleUtils.getKeyboardLayoutSetName(mSubtype);
     }
 
     public static RichInputMethodSubtype getRichInputMethodSubtype(
-            @Nullable final InputMethodSubtype subtype) {
+            final InputMethodSubtype subtype) {
         if (subtype == null) {
             return getNoLanguageSubtype();
         } else {
@@ -165,7 +155,6 @@ public class RichInputMethodSubtype {
             + "," + Constants.Subtype.ExtraValue.ENABLED_WHEN_DEFAULT_IS_NOT_ASCII_CAPABLE;
     private static RichInputMethodSubtype sNoLanguageSubtype;
 
-    @NonNull
     public static RichInputMethodSubtype getNoLanguageSubtype() {
         RichInputMethodSubtype noLanguageSubtype = sNoLanguageSubtype;
         if (noLanguageSubtype == null) {

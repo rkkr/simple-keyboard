@@ -16,8 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard;
 
-import android.support.annotation.NonNull;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +24,6 @@ public class ProximityInfo {
     // Must be equal to MAX_PROXIMITY_CHARS_SIZE in native/jni/src/defines.h
     /** Number of key widths from current touch point to search for nearest keys. */
     private static final float SEARCH_DISTANCE = 1.2f;
-    @NonNull
     private static final List<Key> EMPTY_KEY_LIST = Collections.emptyList();
 
     private final int mGridWidth;
@@ -38,15 +35,13 @@ public class ProximityInfo {
     private final int mKeyboardMinWidth;
     private final int mKeyboardHeight;
     private final int mMostCommonKeyWidth;
-    @NonNull
     private final List<Key> mSortedKeys;
-    @NonNull
     private final List<Key>[] mGridNeighbors;
 
     @SuppressWarnings("unchecked")
     ProximityInfo(final int gridWidth, final int gridHeight, final int minWidth, final int height,
             final int mostCommonKeyWidth,
-            @NonNull final List<Key> sortedKeys) {
+            final List<Key> sortedKeys) {
         mGridWidth = gridWidth;
         mGridHeight = gridHeight;
         mGridSize = mGridWidth * mGridHeight;
@@ -189,7 +184,6 @@ y |---+---+---+---+-v-+-|-+---+---+---+---+---|          | thresholdBase and get
         }
     }
 
-    @NonNull
     public List<Key> getNearestKeys(final int x, final int y) {
         if (x >= 0 && x < mKeyboardMinWidth && y >= 0 && y < mKeyboardHeight) {
             int index = (y / mCellHeight) * mGridWidth + (x / mCellWidth);

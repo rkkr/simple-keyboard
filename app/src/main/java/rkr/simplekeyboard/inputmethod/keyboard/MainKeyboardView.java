@@ -26,8 +26,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,7 +36,6 @@ import android.view.ViewGroup;
 import java.util.WeakHashMap;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.annotations.ExternallyReferenced;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.DrawingPreviewPlacerView;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.DrawingProxy;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyDrawParams;
@@ -271,7 +268,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         }
     }
 
-    @ExternallyReferenced
     public void setLanguageOnSpacebarAnimAlpha(final int alpha) {
         mLanguageOnSpacebarAnimAlpha = alpha;
         invalidateKey(mSpaceKey);
@@ -348,7 +344,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
 
     // Implements {@link DrawingProxy#onKeyPressed(Key,boolean)}.
     @Override
-    public void onKeyPressed(@NonNull final Key key, final boolean withPreview) {
+    public void onKeyPressed(final Key key, final boolean withPreview) {
         key.onPressed();
         invalidateKey(key);
         if (withPreview && !key.noKeyPreview()) {
@@ -356,7 +352,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         }
     }
 
-    private void showKeyPreview(@NonNull final Key key) {
+    private void showKeyPreview(final Key key) {
         final Keyboard keyboard = getKeyboard();
         if (keyboard == null) {
             return;
@@ -373,14 +369,14 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
                 mOriginCoords, mDrawingPreviewPlacerView, isHardwareAccelerated());
     }
 
-    private void dismissKeyPreviewWithoutDelay(@NonNull final Key key) {
+    private void dismissKeyPreviewWithoutDelay(final Key key) {
         mKeyPreviewChoreographer.dismissKeyPreview(key, false /* withAnimation */);
         invalidateKey(key);
     }
 
     // Implements {@link DrawingProxy#onKeyReleased(Key,boolean)}.
     @Override
-    public void onKeyReleased(@NonNull final Key key, final boolean withAnimation) {
+    public void onKeyReleased(final Key key, final boolean withAnimation) {
         key.onReleased();
         invalidateKey(key);
         if (!key.noKeyPreview()) {
@@ -392,7 +388,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         }
     }
 
-    private void dismissKeyPreview(@NonNull final Key key) {
+    private void dismissKeyPreview(final Key key) {
         if (isHardwareAccelerated()) {
             mKeyPreviewChoreographer.dismissKeyPreview(key, true /* withAnimation */);
             return;
@@ -415,9 +411,8 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
 
     // Implements {@link DrawingProxy@showMoreKeysKeyboard(Key,PointerTracker)}.
     //@Override
-    @Nullable
-    public MoreKeysPanel showMoreKeysKeyboard(@NonNull final Key key,
-            @NonNull final PointerTracker tracker) {
+    public MoreKeysPanel showMoreKeysKeyboard(final Key key,
+            final PointerTracker tracker) {
         final MoreKeySpec[] moreKeys = key.getMoreKeys();
         if (moreKeys == null) {
             return null;

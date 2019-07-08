@@ -20,8 +20,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.util.Log;
 import android.util.SparseArray;
@@ -63,7 +61,6 @@ public final class KeyboardLayoutSet {
     private static final String KEYBOARD_LAYOUT_SET_RESOURCE_PREFIX = "keyboard_layout_set_";
 
     private final Context mContext;
-    @NonNull
     private final Params mParams;
 
     // How many layouts we forcibly keep in cache. This only includes ALPHABET (default) and
@@ -76,7 +73,6 @@ public final class KeyboardLayoutSet {
     private static final Keyboard[] sForcibleKeyboardCache = new Keyboard[FORCIBLE_CACHE_SIZE];
     private static final HashMap<KeyboardId, SoftReference<Keyboard>> sKeyboardCache =
             new HashMap<>();
-    @NonNull
     private static final UniqueKeysCache sUniqueKeysCache = UniqueKeysCache.newInstance();
 
     @SuppressWarnings("serial")
@@ -125,12 +121,11 @@ public final class KeyboardLayoutSet {
         sUniqueKeysCache.clear();
     }
 
-    KeyboardLayoutSet(final Context context, @NonNull final Params params) {
+    KeyboardLayoutSet(final Context context, final Params params) {
         mContext = context;
         mParams = params;
     }
 
-    @NonNull
     public Keyboard getKeyboard(final int baseKeyboardLayoutSetElementId) {
         final int keyboardLayoutSetElementId;
         switch (mParams.mMode) {
@@ -167,7 +162,6 @@ public final class KeyboardLayoutSet {
         return getKeyboard(elementParams, id);
     }
 
-    @NonNull
     private Keyboard getKeyboard(final ElementParams elementParams, final KeyboardId id) {
         final SoftReference<Keyboard> ref = sKeyboardCache.get(id);
         final Keyboard cachedKeyboard = (ref == null) ? null : ref.get();
@@ -213,7 +207,7 @@ public final class KeyboardLayoutSet {
 
         private static final EditorInfo EMPTY_EDITOR_INFO = new EditorInfo();
 
-        public Builder(final Context context, @Nullable final EditorInfo ei) {
+        public Builder(final Context context, final EditorInfo ei) {
             mContext = context;
             mPackageName = context.getPackageName();
             mResources = context.getResources();
@@ -233,7 +227,7 @@ public final class KeyboardLayoutSet {
             return this;
         }
 
-        public Builder setSubtype(@NonNull final RichInputMethodSubtype subtype) {
+        public Builder setSubtype(final RichInputMethodSubtype subtype) {
             // TODO: Consolidate with {@link InputAttributes}.
             mParams.mSubtype = subtype;
             mParams.mKeyboardLayoutSetName = KEYBOARD_LAYOUT_SET_RESOURCE_PREFIX

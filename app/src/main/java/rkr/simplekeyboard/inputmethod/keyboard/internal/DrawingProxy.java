@@ -16,9 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.keyboard.MoreKeysPanel;
 import rkr.simplekeyboard.inputmethod.keyboard.PointerTracker;
@@ -29,14 +26,14 @@ public interface DrawingProxy {
      * @param key the {@link Key} that is being pressed.
      * @param withPreview true if key popup preview should be displayed.
      */
-    void onKeyPressed(@NonNull Key key, boolean withPreview);
+    void onKeyPressed(Key key, boolean withPreview);
 
     /**
      * Called when a key is being released.
      * @param key the {@link Key} that is being released.
      * @param withAnimation when true, key popup preview should be dismissed with animation.
      */
-    void onKeyReleased(@NonNull Key key, boolean withAnimation);
+    void onKeyReleased(Key key, boolean withAnimation);
 
     /**
      * Start showing more keys keyboard of a key that is being long pressed.
@@ -45,8 +42,7 @@ public interface DrawingProxy {
      * @return {@link MoreKeysPanel} that is being shown. null if there is no need to show more keys
      *     keyboard.
      */
-    @Nullable
-    MoreKeysPanel showMoreKeysKeyboard(@NonNull Key key, @NonNull PointerTracker tracker);
+    MoreKeysPanel showMoreKeysKeyboard(Key key, PointerTracker tracker);
 
     /**
      * Start a while-typing-animation.

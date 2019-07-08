@@ -17,22 +17,19 @@
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.content.res.TypedArray;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 public abstract class KeyStyle {
     private final KeyboardTextsSet mTextsSet;
 
-    public abstract @Nullable String[] getStringArray(TypedArray a, int index);
-    public abstract @Nullable String getString(TypedArray a, int index);
+    public abstract String[] getStringArray(TypedArray a, int index);
+    public abstract String getString(TypedArray a, int index);
     public abstract int getInt(TypedArray a, int index, int defaultValue);
     public abstract int getFlags(TypedArray a, int index);
 
-    protected KeyStyle(@NonNull final KeyboardTextsSet textsSet) {
+    protected KeyStyle(final KeyboardTextsSet textsSet) {
         mTextsSet = textsSet;
     }
 
-    @Nullable
     protected String parseString(final TypedArray a, final int index) {
         if (a.hasValue(index)) {
             return mTextsSet.resolveTextReference(a.getString(index));
@@ -40,7 +37,6 @@ public abstract class KeyStyle {
         return null;
     }
 
-    @Nullable
     protected String[] parseStringArray(final TypedArray a, final int index) {
         if (a.hasValue(index)) {
             final String text = mTextsSet.resolveTextReference(a.getString(index));

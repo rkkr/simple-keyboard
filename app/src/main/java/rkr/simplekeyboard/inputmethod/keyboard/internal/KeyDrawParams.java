@@ -17,13 +17,10 @@
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 
 public final class KeyDrawParams {
-    @NonNull
     public Typeface mTypeface = Typeface.DEFAULT;
 
     public int mLetterSize;
@@ -52,7 +49,7 @@ public final class KeyDrawParams {
 
     public KeyDrawParams() {}
 
-    private KeyDrawParams(@NonNull final KeyDrawParams copyFrom) {
+    private KeyDrawParams(final KeyDrawParams copyFrom) {
         mTypeface = copyFrom.mTypeface;
 
         mLetterSize = copyFrom.mLetterSize;
@@ -80,7 +77,7 @@ public final class KeyDrawParams {
         mAnimAlpha = copyFrom.mAnimAlpha;
     }
 
-    public void updateParams(final int keyHeight, @Nullable final KeyVisualAttributes attr) {
+    public void updateParams(final int keyHeight, final KeyVisualAttributes attr) {
         if (attr == null) {
             return;
         }
@@ -120,9 +117,8 @@ public final class KeyDrawParams {
                 attr.mHintLabelOffCenterRatio, mHintLabelOffCenterRatio);
     }
 
-    @NonNull
     public KeyDrawParams mayCloneAndUpdateParams(final int keyHeight,
-            @Nullable final KeyVisualAttributes attr) {
+            final KeyVisualAttributes attr) {
         if (attr == null) {
             return this;
         }

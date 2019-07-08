@@ -18,8 +18,6 @@ package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.MotionEvent;
 
@@ -86,7 +84,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
     private final BogusMoveEventDetector mBogusMoveEventDetector = new BogusMoveEventDetector();
 
     // The position and time at which first down event occurred.
-    @NonNull
     private int[] mDownCoordinates = CoordinateUtils.newInstance();
 
     // The current key where this pointer is.
@@ -300,7 +297,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         return mIsInDraggingFinger;
     }
 
-    @Nullable
     public Key getKey() {
         return mCurrentKey;
     }
@@ -314,7 +310,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         return mKeyDetector.detectHitKey(x, y);
     }
 
-    private void setReleasedKeyGraphics(@Nullable final Key key, final boolean withAnimation) {
+    private void setReleasedKeyGraphics(final Key key, final boolean withAnimation) {
         if (key == null) {
             return;
         }
@@ -343,7 +339,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         }
     }
 
-    private void setPressedKeyGraphics(@Nullable final Key key) {
+    private void setPressedKeyGraphics(final Key key) {
         if (key == null) {
             return;
         }
@@ -379,7 +375,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         }
     }
 
-    public void getLastCoordinates(@NonNull final int[] outCoords) {
+    public void getLastCoordinates(final int[] outCoords) {
         CoordinateUtils.set(outCoords, mLastX, mLastY);
     }
 

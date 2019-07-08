@@ -22,7 +22,6 @@ import android.text.TextUtils;
 
 import java.util.Locale;
 
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.utils.RunInLocale;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
@@ -48,7 +47,6 @@ public final class KeyboardTextsSet {
         setLocale(locale, res, resourcePackageName);
     }
 
-    @UsedForTesting
     public void setLocale(final Locale locale, final Resources res,
             final String resourcePackageName) {
         mResources = res;

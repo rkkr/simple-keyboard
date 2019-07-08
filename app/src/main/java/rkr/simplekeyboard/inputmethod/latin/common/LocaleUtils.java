@@ -16,8 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.latin.common;
 
-import android.support.annotation.NonNull;
-
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -47,8 +45,7 @@ public final class LocaleUtils {
      * @param localeString a string specification of a locale, in a format of "ll_cc_variant" where
      * "ll" is a language code, "cc" is a country code.
      */
-    @NonNull
-    public static Locale constructLocaleFromString(@NonNull final String localeString) {
+    public static Locale constructLocaleFromString(final String localeString) {
         synchronized (sLocaleCache) {
             if (sLocaleCache.containsKey(localeString)) {
                 return sLocaleCache.get(localeString);

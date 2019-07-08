@@ -19,7 +19,6 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
 import android.view.inputmethod.EditorInfo;
 
 import java.util.Locale;
@@ -56,7 +55,6 @@ public class SettingsValues {
     public final boolean mDeleteSwipeEnabled;
 
     // From the input box
-    @NonNull
     public final InputAttributes mInputAttributes;
 
     // Deduced settings
@@ -68,7 +66,7 @@ public class SettingsValues {
     public final float mKeyboardHeightScale;
 
     public SettingsValues(final SharedPreferences prefs, final Resources res,
-            @NonNull final InputAttributes inputAttributes) {
+            final InputAttributes inputAttributes) {
         mLocale = res.getConfiguration().locale;
         // Get the resources
         mSpacingAndPunctuations = new SpacingAndPunctuations(res);

@@ -29,7 +29,6 @@ import java.util.HashMap;
 import java.util.regex.PatternSyntaxException;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 
 public final class ResourceUtils {
@@ -119,10 +118,8 @@ public final class ResourceUtils {
      * @param conditionConstantArray an array of "condition,constant" elements to be searched.
      * @return the constant part of the matched "condition,constant" element. Returns null if no
      * condition matches.
-     * @see rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtilsTests#testFindConstantForKeyValuePairsRegexp()
      */
-    @UsedForTesting
-    static String findConstantForKeyValuePairs(final HashMap<String, String> keyValuePairs,
+    private static String findConstantForKeyValuePairs(final HashMap<String, String> keyValuePairs,
             final String[] conditionConstantArray) {
         if (conditionConstantArray == null || keyValuePairs == null) {
             return null;

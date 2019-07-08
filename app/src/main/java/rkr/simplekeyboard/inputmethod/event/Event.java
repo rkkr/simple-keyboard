@@ -16,8 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.event;
 
-import android.support.annotation.NonNull;
-
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
@@ -110,7 +108,6 @@ public class Event {
         mNextEvent = next;
     }
 
-    @NonNull
     public static Event createSoftwareKeypressEvent(final int codePoint, final int keyCode,
             final int x, final int y, final boolean isKeyRepeat) {
         return new Event(EVENT_TYPE_INPUT_KEYPRESS, null, codePoint, keyCode, x, y,
@@ -125,7 +122,6 @@ public class Event {
      * @param keyCode the key code, or NOT_A_KEYCODE if not applicable.
      * @return an event for this text.
      */
-    @NonNull
     public static Event createSoftwareTextEvent(final CharSequence text, final int keyCode) {
         return new Event(EVENT_TYPE_SOFTWARE_GENERATED_STRING, text, NOT_A_CODE_POINT, keyCode,
                 Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE,

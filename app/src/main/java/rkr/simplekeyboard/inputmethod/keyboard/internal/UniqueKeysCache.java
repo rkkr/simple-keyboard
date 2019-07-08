@@ -16,8 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
-import android.support.annotation.NonNull;
-
 import java.util.HashMap;
 
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
@@ -25,9 +23,8 @@ import rkr.simplekeyboard.inputmethod.keyboard.Key;
 public abstract class UniqueKeysCache {
     public abstract void setEnabled(boolean enabled);
     public abstract void clear();
-    public abstract @NonNull Key getUniqueKey(@NonNull Key key);
+    public abstract Key getUniqueKey(Key key);
 
-    @NonNull
     public static final UniqueKeysCache NO_CACHE = new UniqueKeysCache() {
         @Override
         public void setEnabled(boolean enabled) {}
@@ -39,7 +36,6 @@ public abstract class UniqueKeysCache {
         public Key getUniqueKey(Key key) { return key; }
     };
 
-    @NonNull
     public static UniqueKeysCache newInstance() {
         return new UniqueKeysCacheImpl();
     }

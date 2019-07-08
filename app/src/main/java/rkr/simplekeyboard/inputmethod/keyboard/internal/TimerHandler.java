@@ -17,7 +17,6 @@
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.view.ViewConfiguration;
 
 import rkr.simplekeyboard.inputmethod.keyboard.Key;
@@ -38,7 +37,7 @@ public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
 
     private final int mIgnoreAltCodeKeyTimeout;
 
-    public TimerHandler(@NonNull final DrawingProxy ownerInstance, final int ignoreAltCodeKeyTimeout) {
+    public TimerHandler(final DrawingProxy ownerInstance, final int ignoreAltCodeKeyTimeout) {
         super(ownerInstance);
         mIgnoreAltCodeKeyTimeout = ignoreAltCodeKeyTimeout;
     }
@@ -67,7 +66,7 @@ public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
     }
 
     @Override
-    public void startKeyRepeatTimerOf(@NonNull final PointerTracker tracker, final int repeatCount,
+    public void startKeyRepeatTimerOf(final PointerTracker tracker, final int repeatCount,
             final int delay) {
         final Key key = tracker.getKey();
         if (key == null || delay == 0) {
@@ -91,7 +90,7 @@ public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
     }
 
     @Override
-    public void startLongPressTimerOf(@NonNull final PointerTracker tracker, final int delay) {
+    public void startLongPressTimerOf(final PointerTracker tracker, final int delay) {
         final Key key = tracker.getKey();
         if (key == null) {
             return;
@@ -104,7 +103,7 @@ public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
     }
 
     @Override
-    public void cancelLongPressTimersOf(@NonNull final PointerTracker tracker) {
+    public void cancelLongPressTimersOf(final PointerTracker tracker) {
         removeMessages(MSG_LONGPRESS_KEY, tracker);
         removeMessages(MSG_LONGPRESS_SHIFT_KEY, tracker);
     }
@@ -120,7 +119,7 @@ public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
     }
 
     @Override
-    public void startTypingStateTimer(@NonNull final Key typedKey) {
+    public void startTypingStateTimer(final Key typedKey) {
         if (typedKey.isModifier() || typedKey.altCodeWhileTyping()) {
             return;
         }
@@ -171,7 +170,7 @@ public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
     }
 
     @Override
-    public void cancelKeyTimersOf(@NonNull final PointerTracker tracker) {
+    public void cancelKeyTimersOf(final PointerTracker tracker) {
         cancelKeyRepeatTimerOf(tracker);
         cancelLongPressTimersOf(tracker);
     }
@@ -182,7 +181,7 @@ public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
     }
 
     @Override
-    public void cancelUpdateBatchInputTimer(@NonNull final PointerTracker tracker) {
+    public void cancelUpdateBatchInputTimer(final PointerTracker tracker) {
         removeMessages(MSG_UPDATE_BATCH_INPUT, tracker);
     }
 
@@ -191,7 +190,7 @@ public final class TimerHandler extends LeakGuardHandlerWrapper<DrawingProxy>
         removeMessages(MSG_UPDATE_BATCH_INPUT);
     }
 
-    public void postDismissKeyPreview(@NonNull final Key key, final long delay) {
+    public void postDismissKeyPreview(final Key key, final long delay) {
         sendMessageDelayed(obtainMessage(MSG_DISMISS_KEY_PREVIEW, key), delay);
     }
 

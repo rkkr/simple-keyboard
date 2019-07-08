@@ -16,8 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.SparseIntArray;
 
 import java.util.ArrayList;
@@ -48,7 +46,6 @@ public class KeyboardParams {
     public int mLeftPadding;
     public int mRightPadding;
 
-    @Nullable
     public KeyVisualAttributes mKeyVisualAttributes;
 
     public int mDefaultRowHeight;
@@ -63,20 +60,13 @@ public class KeyboardParams {
     public int GRID_HEIGHT;
 
     // Keys are sorted from top-left to bottom-right order.
-    @NonNull
     public final SortedSet<Key> mSortedKeys = new TreeSet<>(ROW_COLUMN_COMPARATOR);
-    @NonNull
     public final ArrayList<Key> mShiftKeys = new ArrayList<>();
-    @NonNull
     public final ArrayList<Key> mAltCodeKeysWhileTyping = new ArrayList<>();
-    @NonNull
     public final KeyboardIconsSet mIconsSet = new KeyboardIconsSet();
-    @NonNull
     public final KeyboardTextsSet mTextsSet = new KeyboardTextsSet();
-    @NonNull
     public final KeyStylesSet mKeyStyles = new KeyStylesSet(mTextsSet);
 
-    @NonNull
     private final UniqueKeysCache mUniqueKeysCache;
     public boolean mAllowRedundantMoreKeys;
 
@@ -99,11 +89,11 @@ public class KeyboardParams {
         this(UniqueKeysCache.NO_CACHE);
     }
 
-    public KeyboardParams(@NonNull final UniqueKeysCache keysCache) {
+    public KeyboardParams(final UniqueKeysCache keysCache) {
         mUniqueKeysCache = keysCache;
     }
 
-    public void onAddKey(@NonNull final Key newKey) {
+    public void onAddKey(final Key newKey) {
         final Key key = mUniqueKeysCache.getUniqueKey(newKey);
         final boolean isSpacer = key.isSpacer();
         if (isSpacer && key.getWidth() == 0) {

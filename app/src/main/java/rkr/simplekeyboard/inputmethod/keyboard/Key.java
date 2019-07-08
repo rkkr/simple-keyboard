@@ -20,8 +20,6 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.util.Arrays;
@@ -113,11 +111,9 @@ public class Key implements Comparable<Key> {
     /** Y coordinate of the top-left corner of the key in the keyboard layout, excluding the gap. */
     private final int mY;
     /** Hit bounding box of the key */
-    @NonNull
     private final Rect mHitBox = new Rect();
 
     /** More keys. It is guaranteed that this is null or an array of one or more elements */
-    @Nullable
     private final MoreKeySpec[] mMoreKeys;
     /** More keys column number and flags */
     private final int mMoreKeysColumnAndFlags;
@@ -156,9 +152,7 @@ public class Key implements Comparable<Key> {
     private static final int ACTION_FLAGS_ALT_CODE_WHILE_TYPING = 0x04;
     private static final int ACTION_FLAGS_ENABLE_LONG_PRESS = 0x08;
 
-    @Nullable
     private final KeyVisualAttributes mKeyVisualAttributes;
-    @Nullable
     private final OptionalAttributes mOptionalAttributes;
 
     private static final class OptionalAttributes {
@@ -180,7 +174,6 @@ public class Key implements Comparable<Key> {
             mVisualInsetsRight = visualInsetsRight;
         }
 
-        @Nullable
         public static OptionalAttributes newInstance(final String outputText, final int altCode,
                 final int disabledIconId, final int visualInsetsLeft, final int visualInsetsRight) {
             if (outputText == null && altCode == CODE_UNSPECIFIED
@@ -204,8 +197,8 @@ public class Key implements Comparable<Key> {
      * Constructor for a key on <code>MoreKeyKeyboard</code>, on <code>MoreSuggestions</code>,
      * and in a <GridRows/>.
      */
-    public Key(@Nullable final String label, final int iconId, final int code,
-            @Nullable final String outputText, @Nullable final String hintLabel,
+    public Key(final String label, final int iconId, final int code,
+            final String outputText, final String hintLabel,
             final int labelFlags, final int backgroundType, final int x, final int y,
             final int width, final int height, final int horizontalGap, final int verticalGap) {
         mWidth = width - horizontalGap;
@@ -245,9 +238,9 @@ public class Key implements Comparable<Key> {
      * @param row the row that this key belongs to. row's x-coordinate will be the right edge of
      *        this key.
      */
-    public Key(@Nullable final String keySpec, @NonNull final TypedArray keyAttr,
-            @NonNull final KeyStyle style, @NonNull final KeyboardParams params,
-            @NonNull final KeyboardRow row) {
+    public Key(final String keySpec, final TypedArray keyAttr,
+            final KeyStyle style, final KeyboardParams params,
+            final KeyboardRow row) {
         mHorizontalGap = isSpacer() ? 0 : params.mHorizontalGap;
         mVerticalGap = params.mVerticalGap;
 
@@ -401,11 +394,11 @@ public class Key implements Comparable<Key> {
      *
      * @param key the original key.
      */
-    protected Key(@NonNull final Key key) {
+    protected Key(final Key key) {
         this(key, key.mMoreKeys);
     }
 
-    private Key(@NonNull final Key key, @Nullable final MoreKeySpec[] moreKeys) {
+    private Key(final Key key,final MoreKeySpec[] moreKeys) {
         // Final attributes.
         mCode = key.mCode;
         mLabel = key.mLabel;
@@ -431,9 +424,8 @@ public class Key implements Comparable<Key> {
         mEnabled = key.mEnabled;
     }
 
-    @NonNull
-    public static Key removeRedundantMoreKeys(@NonNull final Key key,
-            @NonNull final MoreKeySpec.LettersOnBaseLayout lettersOnBaseLayout) {
+    public static Key removeRedundantMoreKeys(final Key key,
+            final MoreKeySpec.LettersOnBaseLayout lettersOnBaseLayout) {
         final MoreKeySpec[] moreKeys = key.getMoreKeys();
         final MoreKeySpec[] filteredMoreKeys = MoreKeySpec.removeRedundantMoreKeys(
                 moreKeys, lettersOnBaseLayout);
@@ -531,17 +523,14 @@ public class Key implements Comparable<Key> {
         return mCode;
     }
 
-    @Nullable
     public String getLabel() {
         return mLabel;
     }
 
-    @Nullable
     public String getHintLabel() {
         return mHintLabel;
     }
 
-    @Nullable
     public MoreKeySpec[] getMoreKeys() {
         return mMoreKeys;
     }
@@ -600,7 +589,6 @@ public class Key implements Comparable<Key> {
         return mKeyVisualAttributes;
     }
 
-    @NonNull
     public final Typeface selectTypeface(final KeyDrawParams params) {
         switch (mLabelFlags & LABEL_FLAGS_FONT_MASK) {
         case LABEL_FLAGS_FONT_NORMAL:
@@ -673,7 +661,6 @@ public class Key implements Comparable<Key> {
         return params.mLetterSize;
     }
 
-    @NonNull
     public Typeface selectPreviewTypeface(final KeyDrawParams params) {
         if (previewHasLetterSize()) {
             return selectTypeface(params);
@@ -746,7 +733,6 @@ public class Key implements Comparable<Key> {
         return (mMoreKeysColumnAndFlags & MORE_KEYS_FLAGS_NO_PANEL_AUTO_MORE_KEY) != 0;
     }
 
-    @Nullable
     public final String getOutputText() {
         final OptionalAttributes attrs = mOptionalAttributes;
         return (attrs != null) ? attrs.mOutputText : null;
@@ -761,7 +747,6 @@ public class Key implements Comparable<Key> {
         return mIconId;
     }
 
-    @Nullable
     public Drawable getIcon(final KeyboardIconsSet iconSet, final int alpha) {
         final OptionalAttributes attrs = mOptionalAttributes;
         final int disabledIconId = (attrs != null) ? attrs.mDisabledIconId : ICON_UNDEFINED;
@@ -773,7 +758,6 @@ public class Key implements Comparable<Key> {
         return icon;
     }
 
-    @Nullable
     public Drawable getPreviewIcon(final KeyboardIconsSet iconSet) {
         return iconSet.getIconDrawable(getIconId());
     }
@@ -915,10 +899,9 @@ public class Key implements Comparable<Key> {
      * @return the background drawable of the key.
      * @see android.graphics.drawable.StateListDrawable#setState(int[])
      */
-    @NonNull
-    public final Drawable selectBackgroundDrawable(@NonNull final Drawable keyBackground,
-            @NonNull final Drawable functionalKeyBackground,
-            @NonNull final Drawable spacebarBackground) {
+    public final Drawable selectBackgroundDrawable(final Drawable keyBackground,
+            final Drawable functionalKeyBackground,
+            final Drawable spacebarBackground) {
         final Drawable background;
         if (mBackgroundType == BACKGROUND_TYPE_FUNCTIONAL) {
             background = functionalKeyBackground;

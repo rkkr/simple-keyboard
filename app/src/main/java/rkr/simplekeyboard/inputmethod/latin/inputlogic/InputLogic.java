@@ -17,7 +17,6 @@
 package rkr.simplekeyboard.inputmethod.latin.inputlogic;
 
 import android.os.SystemClock;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -129,7 +128,7 @@ public final class InputLogic {
      * @param event the event to handle.
      * @return the complete transaction object
      */
-    public InputTransaction onCodeInput(final SettingsValues settingsValues, @NonNull final Event event) {
+    public InputTransaction onCodeInput(final SettingsValues settingsValues, final Event event) {
         final InputTransaction inputTransaction = new InputTransaction(settingsValues);
         mConnection.beginBatchEdit();
 

@@ -16,8 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.SparseArray;
 
 import java.util.ArrayList;
@@ -48,7 +46,6 @@ import rkr.simplekeyboard.inputmethod.latin.common.Constants;
  * </pre>
  */
 public class Keyboard {
-    @NonNull
     public final KeyboardId mId;
     public final int mThemeId;
 
@@ -80,21 +77,16 @@ public class Keyboard {
     public final int mMaxMoreKeysKeyboardColumn;
 
     /** List of keys in this keyboard */
-    @NonNull
     private final List<Key> mSortedKeys;
-    @NonNull
     public final List<Key> mShiftKeys;
-    @NonNull
     public final List<Key> mAltCodeKeysWhileTyping;
-    @NonNull
     public final KeyboardIconsSet mIconsSet;
 
     private final SparseArray<Key> mKeyCache = new SparseArray<>();
 
-    @NonNull
     private final ProximityInfo mProximityInfo;
 
-    public Keyboard(@NonNull final KeyboardParams params) {
+    public Keyboard(final KeyboardParams params) {
         mId = params.mId;
         mThemeId = params.mThemeId;
         mOccupiedHeight = params.mOccupiedHeight;
@@ -125,12 +117,10 @@ public class Keyboard {
      * The list may contain {@link Key.Spacer} object as well.
      * @return the sorted unmodifiable list of {@link Key}s of this keyboard.
      */
-    @NonNull
     public List<Key> getSortedKeys() {
         return mSortedKeys;
     }
 
-    @Nullable
     public Key getKey(final int code) {
         if (code == Constants.CODE_UNSPECIFIED) {
             return null;
@@ -152,7 +142,7 @@ public class Keyboard {
         }
     }
 
-    public boolean hasKey(@NonNull final Key aKey) {
+    public boolean hasKey(final Key aKey) {
         if (mKeyCache.indexOfValue(aKey) >= 0) {
             return true;
         }
@@ -178,7 +168,6 @@ public class Keyboard {
      * @return the list of the nearest keys to the given point. If the given
      * point is out of range, then an array of size zero is returned.
      */
-    @NonNull
     public List<Key> getNearestKeys(final int x, final int y) {
         // Avoid dead pixels at edges of the keyboard
         final int adjustedX = Math.max(0, Math.min(x, mOccupiedWidth - 1));

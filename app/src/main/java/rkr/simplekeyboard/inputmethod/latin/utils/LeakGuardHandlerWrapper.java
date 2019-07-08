@@ -18,24 +18,21 @@ package rkr.simplekeyboard.inputmethod.latin.utils;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 
 public class LeakGuardHandlerWrapper<T> extends Handler {
     private final WeakReference<T> mOwnerInstanceRef;
 
-    public LeakGuardHandlerWrapper(@NonNull final T ownerInstance) {
+    public LeakGuardHandlerWrapper(final T ownerInstance) {
         this(ownerInstance, Looper.myLooper());
     }
 
-    public LeakGuardHandlerWrapper(@NonNull final T ownerInstance, final Looper looper) {
+    public LeakGuardHandlerWrapper(final T ownerInstance, final Looper looper) {
         super(looper);
         mOwnerInstanceRef = new WeakReference<>(ownerInstance);
     }
 
-    @Nullable
     public T getOwnerInstance() {
         return mOwnerInstanceRef.get();
     }

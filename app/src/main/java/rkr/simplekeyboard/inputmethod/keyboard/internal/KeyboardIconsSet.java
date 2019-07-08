@@ -19,8 +19,6 @@ package rkr.simplekeyboard.inputmethod.keyboard.internal;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.util.SparseIntArray;
 
@@ -121,7 +119,6 @@ public final class KeyboardIconsSet {
         return iconId >= 0 && iconId < ICON_NAMES.length;
     }
 
-    @NonNull
     public static String getIconName(final int iconId) {
         return isValidIconId(iconId) ? ICON_NAMES[iconId] : "unknown<" + iconId + ">";
     }
@@ -134,7 +131,6 @@ public final class KeyboardIconsSet {
         throw new RuntimeException("unknown icon name: " + name);
     }
 
-    @Nullable
     public Drawable getIconDrawable(final int iconId) {
         if (isValidIconId(iconId)) {
             return mIcons[iconId];

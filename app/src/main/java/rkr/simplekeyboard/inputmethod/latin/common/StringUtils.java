@@ -16,15 +16,11 @@
 
 package rkr.simplekeyboard.inputmethod.latin.common;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
 public final class StringUtils {
-    @NonNull
     private static final String EMPTY_STRING = "";
 
     private StringUtils() {
@@ -38,7 +34,7 @@ public final class StringUtils {
      * @param str the string to be examined
      * @return true if str is null or zero length
      */
-    public static boolean isEmpty(@Nullable final CharSequence str) {
+    public static boolean isEmpty(final CharSequence str) {
         return (str == null || str.length() == 0);
     }
 
@@ -49,9 +45,8 @@ public final class StringUtils {
      * @param tokens an array objects to be joined. Strings will be formed from
      *     the objects by calling object.toString().
      */
-    @NonNull
-    public static String join(@NonNull final CharSequence delimiter,
-            @NonNull final Iterable<?> tokens) {
+    public static String join(final CharSequence delimiter,
+            final Iterable<?> tokens) {
         final StringBuilder sb = new StringBuilder();
         boolean firstTime = true;
         for (final Object token: tokens) {
@@ -65,14 +60,13 @@ public final class StringUtils {
         return sb.toString();
     }
 
-    public static int codePointCount(@Nullable final CharSequence text) {
+    public static int codePointCount(final CharSequence text) {
         if (isEmpty(text)) {
             return 0;
         }
         return Character.codePointCount(text, 0, text.length());
     }
 
-    @NonNull
     public static String newSingleCodePointString(final int codePoint) {
         if (Character.charCount(codePoint) == 1) {
             // Optimization: avoid creating a temporary array for characters that are
@@ -83,8 +77,8 @@ public final class StringUtils {
         return new String(Character.toChars(codePoint));
     }
 
-    public static boolean containsInArray(@NonNull final String text,
-            @NonNull final String[] array) {
+    public static boolean containsInArray(final String text,
+            final String[] array) {
         for (final String element : array) {
             if (text.equals(element)) {
                 return true;
@@ -98,20 +92,18 @@ public final class StringUtils {
      * Unlike CSV, Comma-Splittable Text has no escaping mechanism, so that the text can't contain
      * a comma character in it.
      */
-    @NonNull
     private static final String SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT = ",";
 
-    public static boolean containsInCommaSplittableText(@NonNull final String text,
-            @Nullable final String extraValues) {
+    public static boolean containsInCommaSplittableText(final String text,
+            final String extraValues) {
         if (isEmpty(extraValues)) {
             return false;
         }
         return containsInArray(text, extraValues.split(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT));
     }
 
-    @NonNull
-    public static String removeFromCommaSplittableTextIfExists(@NonNull final String text,
-            @Nullable final String extraValues) {
+    public static String removeFromCommaSplittableTextIfExists(final String text,
+            final String extraValues) {
         if (isEmpty(extraValues)) {
             return EMPTY_STRING;
         }
@@ -128,9 +120,8 @@ public final class StringUtils {
         return join(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT, result);
     }
 
-    @NonNull
-    public static String capitalizeFirstCodePoint(@NonNull final String s,
-            @NonNull final Locale locale) {
+    public static String capitalizeFirstCodePoint(final String s,
+            final Locale locale) {
         if (s.length() <= 1) {
             return s.toUpperCase(getLocaleUsedForToTitleCase(locale));
         }
@@ -141,12 +132,10 @@ public final class StringUtils {
                 + s.substring(cutoff);
     }
 
-    @NonNull
-    public static int[] toCodePointArray(@NonNull final CharSequence charSequence) {
+    public static int[] toCodePointArray(final CharSequence charSequence) {
         return toCodePointArray(charSequence, 0, charSequence.length());
     }
 
-    @NonNull
     private static final int[] EMPTY_CODEPOINTS = {};
 
     /**
@@ -156,8 +145,7 @@ public final class StringUtils {
      * @param endIndex the end index inside the string in java chars, exclusive.
      * @return a new array of code points. At most endIndex - startIndex, but possibly less.
      */
-    @NonNull
-    public static int[] toCodePointArray(@NonNull final CharSequence charSequence,
+    public static int[] toCodePointArray(final CharSequence charSequence,
             final int startIndex, final int endIndex) {
         final int length = charSequence.length();
         if (length <= 0) {
@@ -188,8 +176,8 @@ public final class StringUtils {
      * @param downCase if this is true, code points will be downcased before being copied.
      * @return the number of copied code points.
      */
-    public static int copyCodePointsAndReturnCodePointCount(@NonNull final int[] destination,
-            @NonNull final CharSequence charSequence, final int startIndex, final int endIndex,
+    public static int copyCodePointsAndReturnCodePointCount(final int[] destination,
+            final CharSequence charSequence, final int startIndex, final int endIndex,
             final boolean downCase) {
         int destIndex = 0;
         for (int index = startIndex; index < endIndex;
@@ -203,14 +191,13 @@ public final class StringUtils {
         return destIndex;
     }
 
-    @NonNull
-    public static int[] toSortedCodePointArray(@NonNull final String string) {
+    public static int[] toSortedCodePointArray(final String string) {
         final int[] codePoints = toCodePointArray(string);
         Arrays.sort(codePoints);
         return codePoints;
     }
 
-    public static boolean isIdenticalAfterUpcase(@NonNull final String text) {
+    public static boolean isIdenticalAfterUpcase(final String text) {
         final int length = text.length();
         int i = 0;
         while (i < length) {
@@ -223,7 +210,7 @@ public final class StringUtils {
         return true;
     }
 
-    public static boolean isIdenticalAfterDowncase(@NonNull final String text) {
+    public static boolean isIdenticalAfterDowncase(final String text) {
         final int length = text.length();
         int i = 0;
         while (i < length) {
@@ -236,8 +223,8 @@ public final class StringUtils {
         return true;
     }
 
-    public static boolean isIdenticalAfterCapitalizeEachWord(@NonNull final String text,
-            @NonNull final int[] sortedSeparators) {
+    public static boolean isIdenticalAfterCapitalizeEachWord(final String text,
+            final int[] sortedSeparators) {
         boolean needsCapsNext = true;
         final int len = text.length();
         for (int i = 0; i < len; i = text.offsetByCodePoints(i, 1)) {
@@ -256,9 +243,8 @@ public final class StringUtils {
 
     // TODO: like capitalizeFirst*, this does not work perfectly for Dutch because of the IJ digraph
     // which should be capitalized together in *some* cases.
-    @NonNull
-    public static String capitalizeEachWord(@NonNull final String text,
-            @NonNull final int[] sortedSeparators, @NonNull final Locale locale) {
+    public static String capitalizeEachWord(final String text,
+            final int[] sortedSeparators, final Locale locale) {
         final StringBuilder builder = new StringBuilder();
         boolean needsCapsNext = true;
         final int len = text.length();
@@ -277,8 +263,7 @@ public final class StringUtils {
 
     private static final String LANGUAGE_GREEK = "el";
 
-    @NonNull
-    private static Locale getLocaleUsedForToTitleCase(@NonNull final Locale locale) {
+    private static Locale getLocaleUsedForToTitleCase(final Locale locale) {
         // In Greek locale {@link String#toUpperCase(Locale)} eliminates accents from its result.
         // In order to get accented upper case letter, {@link Locale#ROOT} should be used.
         if (LANGUAGE_GREEK.equals(locale.getLanguage())) {
@@ -287,16 +272,15 @@ public final class StringUtils {
         return locale;
     }
 
-    @Nullable
-    public static String toTitleCaseOfKeyLabel(@Nullable final String label,
-            @NonNull final Locale locale) {
+    public static String toTitleCaseOfKeyLabel(final String label,
+            final Locale locale) {
         if (label == null) {
             return label;
         }
         return label.toUpperCase(getLocaleUsedForToTitleCase(locale));
     }
 
-    public static int toTitleCaseOfKeyCode(final int code, @NonNull final Locale locale) {
+    public static int toTitleCaseOfKeyCode(final int code, final Locale locale) {
         if (!Constants.isLetterCode(code)) {
             return code;
         }

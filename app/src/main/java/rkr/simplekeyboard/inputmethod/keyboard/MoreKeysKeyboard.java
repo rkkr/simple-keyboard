@@ -18,10 +18,8 @@ package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.content.Context;
 import android.graphics.Paint;
-import android.support.annotation.NonNull;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.annotations.UsedForTesting;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardBuilder;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardParams;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.MoreKeySpec;
@@ -40,7 +38,6 @@ public final class MoreKeysKeyboard extends Keyboard {
         return mDefaultKeyCoordX;
     }
 
-    @UsedForTesting
     static class MoreKeysKeyboardParams extends KeyboardParams {
         public boolean mIsMoreKeysFixedOrder;
         /* package */int mTopRowAdjustment;
@@ -318,7 +315,6 @@ public final class MoreKeysKeyboard extends Keyboard {
         }
 
         @Override
-        @NonNull
         public MoreKeysKeyboard build() {
             final MoreKeysKeyboardParams params = mParams;
             final int moreKeyFlags = mParentKey.getMoreKeyLabelFlags();

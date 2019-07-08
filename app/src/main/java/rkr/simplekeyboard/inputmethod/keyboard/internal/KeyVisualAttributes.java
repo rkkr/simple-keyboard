@@ -18,15 +18,12 @@ package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.SparseIntArray;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 
 public final class KeyVisualAttributes {
-    @Nullable
     public final Typeface mTypeface;
 
     public final float mLetterRatio;
@@ -84,8 +81,7 @@ public final class KeyVisualAttributes {
         }
     }
 
-    @Nullable
-    public static KeyVisualAttributes newInstance(@NonNull final TypedArray keyAttr) {
+    public static KeyVisualAttributes newInstance(final TypedArray keyAttr) {
         final int indexCount = keyAttr.getIndexCount();
         for (int i = 0; i < indexCount; i++) {
             final int attrId = keyAttr.getIndex(i);
@@ -97,7 +93,7 @@ public final class KeyVisualAttributes {
         return null;
     }
 
-    private KeyVisualAttributes(@NonNull final TypedArray keyAttr) {
+    private KeyVisualAttributes(final TypedArray keyAttr) {
         if (keyAttr.hasValue(R.styleable.Keyboard_Key_keyTypeface)) {
             mTypeface = Typeface.defaultFromStyle(
                     keyAttr.getInt(R.styleable.Keyboard_Key_keyTypeface, Typeface.NORMAL));
