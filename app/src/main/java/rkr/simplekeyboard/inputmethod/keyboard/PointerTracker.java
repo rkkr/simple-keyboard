@@ -630,17 +630,17 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
         if (oldKey != null && oldKey.getCode() == Constants.CODE_DELETE && Settings.getInstance().getCurrent().mDeleteSwipeEnabled) {
             //Delete slider
-            if (x > mStartX) {
-                //Swiped back
-                mStartX = x;
-                return;
-            }
-            int steps = (mStartX - x) / sPointerStep;
-            if (steps > 0) {
+            int steps = (x - mStartX) / sPointerStep;
+            if(steps != 0) {
                 sTimerProxy.cancelKeyTimersOf(this);
                 mCursorMoved = true;
-                mStartX -= steps * sPointerStep;
-                sListener.onDeletePointer(steps);
+                mStartX += steps * sPointerStep;
+
+                if (steps > 0) {
+                    sListener.onMoveDeletePointerLeft(steps);
+                } else if (steps < 0) {
+                    sListener.onMoveDeletePointerRight(-steps);
+                }
             }
             return;
         }
@@ -701,6 +701,10 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         mCurrentRepeatingKeyCode = Constants.NOT_A_CODE;
         // Release the last pressed key.
         setReleasedKeyGraphics(currentKey, true /* withAnimation */);
+
+        if(currentKey.getCode() == Constants.CODE_DELETE) {
+            sListener.onUpWithDeletePointerActive();
+        }
 
         if (isShowingMoreKeysPanel()) {
             if (!mIsTrackingForActionDisabled) {
