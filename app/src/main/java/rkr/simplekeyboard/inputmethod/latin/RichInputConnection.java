@@ -445,20 +445,25 @@ public final class RichInputConnection {
                 mExpectedSelEnd = mExpectedSelStart;
                 break;
             case KeyEvent.KEYCODE_DEL:
-                if (0 == mComposingText.length()) {
-                    if (mCommittedTextBeforeComposingText.length() > 0) {
-                        mCommittedTextBeforeComposingText.delete(
-                                mCommittedTextBeforeComposingText.length() - 1,
-                                mCommittedTextBeforeComposingText.length());
-                    }
+                if(hasSelection()) {
+                    deleteSelection();
                 } else {
-                    mComposingText.delete(mComposingText.length() - 1, mComposingText.length());
+                    if (0 == mComposingText.length()) {
+                        if (mCommittedTextBeforeComposingText.length() > 0) {
+                            mCommittedTextBeforeComposingText.delete(
+                                    mCommittedTextBeforeComposingText.length() - 1,
+                                    mCommittedTextBeforeComposingText.length());
+                        }
+                    } else {
+                        mComposingText.delete(mComposingText.length() - 1, mComposingText.length());
+                    }
+
+                    if (mExpectedSelStart > 0 && mExpectedSelStart == mExpectedSelEnd) {
+                        // TODO: Handle surrogate pairs.
+                        mExpectedSelStart -= 1;
+                    }
+                    mExpectedSelEnd = mExpectedSelStart;
                 }
-                if (mExpectedSelStart > 0 && mExpectedSelStart == mExpectedSelEnd) {
-                    // TODO: Handle surrogate pairs.
-                    mExpectedSelStart -= 1;
-                }
-                mExpectedSelEnd = mExpectedSelStart;
                 break;
             case KeyEvent.KEYCODE_UNKNOWN:
                 if (null != keyEvent.getCharacters()) {
@@ -478,6 +483,19 @@ public final class RichInputConnection {
         if (isConnected()) {
             mIC.sendKeyEvent(keyEvent);
         }
+    }
+
+    public void  deleteSelection() {
+        if(hasSelection()) {
+            mIC.setSelection(getExpectedSelectionStart(), getExpectedSelectionStart());
+            mIC.deleteSurroundingText(0, getExpectedSelectionEnd() - getCursorPosition());
+
+            reloadTextCache();
+        }
+    }
+
+    public int getCursorPosition() {
+        return mCommittedTextBeforeComposingText.length();
     }
 
     /**
@@ -505,6 +523,18 @@ public final class RichInputConnection {
                 return false;
             }
         }
+        return reloadTextCache();
+    }
+
+    public boolean resetSelection() {
+        if (isConnected()) {
+            final boolean isIcValid = mIC.setSelection(getCursorPosition(), getCursorPosition());
+            if (!isIcValid) {
+                return false;
+            }
+        }
+        mExpectedSelStart = INVALID_CURSOR_POSITION;
+        mExpectedSelEnd = INVALID_CURSOR_POSITION;
         return reloadTextCache();
     }
 
