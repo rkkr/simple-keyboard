@@ -534,10 +534,6 @@ public final class InputLogic {
                 KeyEvent.FLAG_SOFT_KEYBOARD | KeyEvent.FLAG_KEEP_TOUCH_MODE));
     }
 
-    public void deleteSelection() {
-        mConnection.deleteSelection();
-    }
-
     /**
      * Sends a code point to the editor, using the most appropriate method.
      *

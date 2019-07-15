@@ -631,16 +631,10 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         if (oldKey != null && oldKey.getCode() == Constants.CODE_DELETE && Settings.getInstance().getCurrent().mDeleteSwipeEnabled) {
             //Delete slider
             int steps = (x - mStartX) / sPointerStep;
-            if(steps != 0) {
+            if (steps < 0 || mCursorMoved) {
                 sTimerProxy.cancelKeyTimersOf(this);
                 mCursorMoved = true;
-                mStartX += steps * sPointerStep;
-
-                if (steps > 0) {
-                    sListener.onMoveDeletePointerLeft(steps);
-                } else if (steps < 0) {
-                    sListener.onMoveDeletePointerRight(-steps);
-                }
+                sListener.onMoveDeletePointer(-steps);
             }
             return;
         }

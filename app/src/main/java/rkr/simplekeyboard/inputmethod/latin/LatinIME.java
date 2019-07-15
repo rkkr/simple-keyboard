@@ -760,26 +760,18 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     @Override
-    public void onMoveDeletePointerRight(int steps) {
-        RichInputConnection connection = mInputLogic.mConnection;
-        connection.setSelection(connection.getCursorPosition()-steps,
-                connection.getExpectedSelectionEnd());
-    }
+    public void onMoveDeletePointer(int steps) {
+        if (steps < 0)
+            return;
 
-    @Override
-    public void onMoveDeletePointerLeft(int steps) {
-        RichInputConnection connection = mInputLogic.mConnection;
-        int start = connection.getCursorPosition()+steps;
-        int end = connection.getExpectedSelectionEnd();
-
-        if(start <= end) {
-            connection.setSelection(start, end);
-        }
+        int end = mInputLogic.mConnection.getExpectedSelectionEnd();
+        int start = end - steps;
+        mInputLogic.mConnection.setSelection(start, end);
     }
 
     @Override
     public void onUpWithDeletePointerActive() {
-        mInputLogic.deleteSelection();
+        mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
     }
 
     private boolean isShowingOptionDialog() {
