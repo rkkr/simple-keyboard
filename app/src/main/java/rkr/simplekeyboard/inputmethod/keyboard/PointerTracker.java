@@ -633,7 +633,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             int steps = (x - mStartX) / sPointerStep;
             if (steps < 0 || mCursorMoved) {
                 sTimerProxy.cancelKeyTimersOf(this);
-                mCursorMoved = true;
+                mCursorMoved = steps < 0;
                 sListener.onMoveDeletePointer(-steps);
             }
             return;
@@ -696,7 +696,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         // Release the last pressed key.
         setReleasedKeyGraphics(currentKey, true /* withAnimation */);
 
-        if(currentKey.getCode() == Constants.CODE_DELETE) {
+        if(mCursorMoved && currentKey.getCode() == Constants.CODE_DELETE) {
             sListener.onUpWithDeletePointerActive();
         }
 
