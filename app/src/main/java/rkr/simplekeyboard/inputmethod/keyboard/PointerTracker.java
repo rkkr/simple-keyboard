@@ -96,7 +96,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
     private int mLastX;
     private int mLastY;
     private int mStartX;
-    private int mStartY;
+    //private int mStartY;
     private long mStartTime;
     private boolean mCursorMoved = false;
 
@@ -516,7 +516,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             startLongPressTimer(key);
             setPressedKeyGraphics(key);
             mStartX = x;
-            mStartY = y;
+            //mStartY = y;
             mStartTime = System.currentTimeMillis();
         }
     }
@@ -616,6 +616,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
     private void onMoveEventInternal(final int x, final int y, final long eventTime) {
         final Key oldKey = mCurrentKey;
+
         if (oldKey != null && oldKey.getCode() == Constants.CODE_SPACE && Settings.getInstance().getCurrent().mSpaceSwipeEnabled) {
             //Pointer slider
             int steps = (x - mStartX) / sPointerStep;

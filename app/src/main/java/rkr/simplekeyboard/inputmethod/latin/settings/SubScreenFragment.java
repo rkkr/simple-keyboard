@@ -21,7 +21,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
@@ -50,29 +49,12 @@ public abstract class SubScreenFragment extends PreferenceFragment
         }
     }
 
-    static void updateListPreferenceSummaryToCurrentValue(final String prefKey,
-            final PreferenceScreen screen) {
-        // Because the "%s" summary trick of {@link ListPreference} doesn't work properly before
-        // KitKat, we need to update the summary programmatically.
-        final ListPreference listPreference = (ListPreference)screen.findPreference(prefKey);
-        if (listPreference == null) {
-            return;
-        }
-        final CharSequence entries[] = listPreference.getEntries();
-        final int entryIndex = listPreference.findIndexOfValue(listPreference.getValue());
-        listPreference.setSummary(entryIndex < 0 ? null : entries[entryIndex]);
-    }
-
     final void setPreferenceEnabled(final String prefKey, final boolean enabled) {
         setPreferenceEnabled(prefKey, enabled, getPreferenceScreen());
     }
 
     final void removePreference(final String prefKey) {
         removePreference(prefKey, getPreferenceScreen());
-    }
-
-    final void updateListPreferenceSummaryToCurrentValue(final String prefKey) {
-        updateListPreferenceSummaryToCurrentValue(prefKey, getPreferenceScreen());
     }
 
     final SharedPreferences getSharedPreferences() {
