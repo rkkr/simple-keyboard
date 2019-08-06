@@ -27,8 +27,11 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Debug;
 import android.os.IBinder;
 import android.os.Message;
@@ -73,6 +76,7 @@ import rkr.simplekeyboard.inputmethod.latin.utils.ApplicationUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
+import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 
 /**
@@ -461,6 +465,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mRichImm.refreshSubtypeCaches();
         final KeyboardSwitcher switcher = mKeyboardSwitcher;
         switcher.updateKeyboardTheme();
+        setNavigationBarColor();
         final MainKeyboardView mainKeyboardView = switcher.getMainKeyboardView();
         // If we are starting input in a different text field from before, we'll have to reload
         // settings, so currentSettingsValues can't be final.
@@ -1074,5 +1079,26 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
         final boolean overrideValue = mSettings.getCurrent().isLanguageSwitchKeyEnabled();
         return mRichImm.shouldOfferSwitchingToNextInputMethod(token) && overrideValue;
+    }
+
+    private void setNavigationBarColor() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            final int keyboardColor = Settings.readKeyboardColor(prefs, this);
+            final Window window = getWindow().getWindow();
+            if (window == null) {
+                return;
+            }
+            final View view = window.getDecorView();
+            int flags = view.getSystemUiVisibility();
+            if (ResourceUtils.isBrightColor(keyboardColor)) {
+                flags |= View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
+                window.setNavigationBarColor(Color.WHITE);
+            } else {
+                flags &= ~View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
+                window.setNavigationBarColor(Color.BLACK);
+            }
+            view.setSystemUiVisibility(flags);
+        }
     }
 }
