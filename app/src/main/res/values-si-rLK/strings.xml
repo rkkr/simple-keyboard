@@ -56,11 +56,11 @@
     <string name="prefs_keypress_sound_volume_settings">"යතුරු එබීම් හඬ තීව්‍රතාවය"</string>
     <string name="prefs_key_longpress_timeout_settings">"යතුරු දිගු එබීම් ප්‍රමාදය"</string>
     <string name="button_default">"සුපුරුදු"</string>
-    <string name="prefs_keyboard_height_settings">Keyboard height</string>
-    <string name="keyboard_color">Set custom keyboard color</string>
-    <string name="hide_special_chars">Hide special characters</string>
-    <string name="hide_language_switch_key">Hide language switch key</string>
-    <string name="show_number_row">Show separate number row</string>
+    <string name="prefs_keyboard_height_settings">කීබෝඩයේ උස</string>
+    <string name="keyboard_color">කැමති පාටක් යොදන්න</string>
+    <string name="hide_special_chars">විශේශ අක්ශර සඟවන්න</string>
+    <string name="hide_language_switch_key">භාෂාව මාරුකරන යතුර සඟවන්න</string>
+    <string name="show_number_row">වෙනමම අංක පේලියක් පෙන්වන්න</string>
     <string name="space_swipe">Space swipe cursor move</string>
     <string name="delete_swipe">Delete swipe</string>
 </resources>
