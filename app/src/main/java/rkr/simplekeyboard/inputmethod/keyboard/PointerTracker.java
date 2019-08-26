@@ -66,7 +66,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
     // Parameters for pointer handling.
     private static PointerTrackerParams sParams;
-    private static int sPointerStep = (int)(10.0 * Resources.getSystem().getDisplayMetrics().density);
+    private static int sPointerStep = (int)(20.0 * Resources.getSystem().getDisplayMetrics().density);
 
     private static final ArrayList<PointerTracker> sTrackers = new ArrayList<>();
     private static final PointerTrackerQueue sPointerTrackerQueue = new PointerTrackerQueue();
