@@ -62,5 +62,5 @@
     <string name="hide_language_switch_key">زبان تبدیل کرنے کی کلید کو چُھپائیں</string>
     <string name="show_number_row">اعداد کے لیے علاحدہ قطار دکھائیں</string>
     <string name="space_swipe">سپیس کلید پر سوائپ سے کرسر کی حرکت</string>
-    <string name="delete_swipe">Delete swipe</string>
+    <string name="delete_swipe">سوائپ حذف کریں</string>
 </resources>
