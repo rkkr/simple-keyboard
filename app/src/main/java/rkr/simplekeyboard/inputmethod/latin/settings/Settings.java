@@ -55,6 +55,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEY_LONGPRESS_TIMEOUT = "pref_key_longpress_timeout";
     public static final String PREF_KEYBOARD_HEIGHT = "pref_keyboard_height";
     public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
+    public static final String PREF_KEYBOARD_ACCENT_COLOR = "pref_keyboard_accent_color";
     public static final String PREF_HIDE_SPECIAL_CHARS = "pref_hide_special_chars";
     public static final String PREF_SHOW_NUMBER_ROW = "pref_show_number_row";
     public static final String PREF_SPACE_SWIPE = "pref_space_swipe";
@@ -258,12 +259,33 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return Color.LTGRAY;
     }
 
+    public static int readKeyboardAccentDefaultColor(final Context context) {
+        final int[] keyboardAccentThemeColors = context.getResources().getIntArray(R.array.keyboard_accent_theme_colors);
+        final int[] keyboardThemeIds = context.getResources().getIntArray(R.array.keyboard_theme_ids);
+        final int themeId = KeyboardTheme.getKeyboardTheme(context).mThemeId;
+        for (int index = 0; index < keyboardThemeIds.length; index++) {
+            if (themeId == keyboardThemeIds[index]) {
+                return keyboardAccentThemeColors[index];
+            }
+        }
+
+        return Color.DKGRAY;
+    }
+
     public static int readKeyboardColor(final SharedPreferences prefs, final Context context) {
         return prefs.getInt(PREF_KEYBOARD_COLOR, readKeyboardDefaultColor(context));
     }
 
     public static void removeKeyboardColor(final SharedPreferences prefs) {
         prefs.edit().remove(PREF_KEYBOARD_COLOR).apply();
+    }
+
+    public static int readKeyboardAccentColor(final SharedPreferences prefs, final Context context) {
+        return prefs.getInt(PREF_KEYBOARD_ACCENT_COLOR, readKeyboardAccentDefaultColor(context));
+    }
+
+    public static void removeKeyboardAccentColor(final SharedPreferences prefs) {
+        prefs.edit().remove(PREF_KEYBOARD_ACCENT_COLOR).apply();
     }
 
     public static boolean readUseFullscreenMode(final Resources res) {

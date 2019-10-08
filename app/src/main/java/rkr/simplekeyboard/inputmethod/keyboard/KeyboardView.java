@@ -20,6 +20,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.BlendMode;
+import android.graphics.BlendModeColorFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -29,6 +31,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.View;
@@ -91,6 +94,7 @@ public class KeyboardView extends View {
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
     public int mCustomColor = 0;
+    public int mCustomAccentColor = 0;
 
     // The maximum key label width in the proportion to the key width.
     private static final float MAX_LABEL_RATIO = 0.90f;
@@ -173,6 +177,7 @@ public class KeyboardView extends View {
         mKeyDrawParams.updateParams(keyHeight, keyboard.mKeyVisualAttributes);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         mCustomColor = Settings.readKeyboardColor(prefs, getContext());
+        mCustomAccentColor = Settings.readKeyboardAccentColor(prefs, getContext());
         invalidateAllKeys();
         requestLayout();
     }
@@ -335,6 +340,15 @@ public class KeyboardView extends View {
         final Rect bounds = background.getBounds();
         if (bgWidth != bounds.right || bgHeight != bounds.bottom) {
             background.setBounds(0, 0, bgWidth, bgHeight);
+        }
+        if (key.isActionKey()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                background.setColorFilter(new BlendModeColorFilter(mCustomAccentColor, BlendMode.SRC_ATOP));
+            } else {
+                background.setColorFilter(mCustomAccentColor, PorterDuff.Mode.SRC_ATOP);
+            }
+        } else {
+            background.clearColorFilter();
         }
         canvas.translate(bgX, bgY);
         background.draw(canvas);

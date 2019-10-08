@@ -60,6 +60,7 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         setupKeyboardHeightSettings();
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
         setupKeyboardColorSettings();
+        setupKeyboardAccentColorSettings();
     }
 
     @Override
@@ -292,6 +293,32 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
             @Override
             public void writeDefaultValue(final String key) {
                 Settings.removeKeyboardColor(prefs);
+            }
+        });
+    }
+
+    private void setupKeyboardAccentColorSettings() {
+        final ColorDialogPreference pref = (ColorDialogPreference)findPreference(
+                Settings.PREF_KEYBOARD_ACCENT_COLOR);
+        if (pref == null) {
+            return;
+        }
+        final SharedPreferences prefs = getSharedPreferences();
+        final Context context = this.getActivity().getApplicationContext();
+        pref.setInterface(new ColorDialogPreference.ValueProxy() {
+            @Override
+            public void writeValue(final int value, final String key) {
+                prefs.edit().putInt(key, value).apply();
+            }
+
+            @Override
+            public int readValue(final String key) {
+                return Settings.readKeyboardAccentColor(prefs, context);
+            }
+
+            @Override
+            public void writeDefaultValue(final String key) {
+                Settings.removeKeyboardAccentColor(prefs);
             }
         });
     }

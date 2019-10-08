@@ -217,6 +217,7 @@ mobile devices. [CHAR LIMIT=25] -->
 
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
+    <string name="keyboard_accent_color">Set custom keyboard accent color</string>
     <string name="hide_special_chars">Hide special characters</string>
     <string name="hide_language_switch_key">Hide language switch key</string>
     <string name="show_number_row">Show separate number row</string>

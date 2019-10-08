@@ -40,4 +40,11 @@
         <item>#ECEFF1</item>
         <item>#263238</item>
     </array>
+
+    <array name="keyboard_accent_theme_colors" translatable="false">
+        <item>#5CB5AB</item>
+        <item>#80CBC4</item>
+        <item>#5CB5AB</item>
+        <item>#80CBC4</item>
+    </array>
 </resources>
