@@ -26,6 +26,7 @@
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXX_Dark_Border</item>
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXX_Dark</item>
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Dark</item>
+        <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.LXX_Dark.Action</item>
     </style>
     <style
         name="Keyboard.LXX_Dark_Border"
@@ -55,6 +56,7 @@
         name="MainKeyboardView.LXX_Dark_Border"
         parent="KeyboardView.LXX_Dark_Border"
     >
+        <item name="moreKeysKeyboardForActionLayout">@layout/more_keys_keyboard_for_action_lxx</item>
         <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background_lxx_dark</item>
         <item name="keyPreviewHeight">@dimen/config_key_preview_height_lxx</item>
         <item name="keyPreviewOffset">@dimen/config_key_preview_offset_lxx</item>

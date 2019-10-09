@@ -26,6 +26,7 @@
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXX_Dark</item>
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXX_Dark</item>
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Dark</item>
+        <item name="moreKeysKeyboardViewForActionStyle">@style/MoreKeysKeyboardView.LXX_Dark.Action</item>
     </style>
     <style
         name="Keyboard.LXX_Dark"
@@ -55,6 +56,7 @@
         name="MainKeyboardView.LXX_Dark"
         parent="KeyboardView.LXX_Dark"
     >
+        <item name="moreKeysKeyboardForActionLayout">@layout/more_keys_keyboard_for_action_lxx</item>
         <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background_lxx_dark</item>
         <item name="keyPreviewHeight">@dimen/config_key_preview_height_lxx</item>
         <item name="keyPreviewOffset">@dimen/config_key_preview_offset_lxx</item>
@@ -78,5 +80,12 @@
         <item name="keyBackground">@drawable/btn_keyboard_key_popup_lxx_dark</item>
         <item name="keyTypeface">normal</item>
         <item name="verticalCorrection">@dimen/config_more_keys_keyboard_vertical_correction_holo</item>
+    </style>
+    <style
+        name="MoreKeysKeyboardView.LXX_Dark.Action"
+        parent="MoreKeysKeyboardView.LXX_Dark"
+    >
+        <item name="android:background">@android:color/transparent</item>
+        <item name="keyBackground">@drawable/btn_keyboard_key_popup_action_lxx_dark</item>
     </style>
 </resources>
