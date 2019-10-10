@@ -92,6 +92,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     static final long DELAY_DEALLOCATE_MEMORY_MILLIS = TimeUnit.SECONDS.toMillis(10);
 
     final Settings mSettings;
+    private int mOriginalNavBarColor = 0;
+    private int mOriginalNavBarFlags = 0;
     final InputLogic mInputLogic = new InputLogic(this /* LatinIME */);
 
     // TODO: Move these {@link View}s to {@link KeyboardSwitcher}.
@@ -465,7 +467,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mRichImm.refreshSubtypeCaches();
         final KeyboardSwitcher switcher = mKeyboardSwitcher;
         switcher.updateKeyboardTheme();
-        setNavigationBarColor();
         final MainKeyboardView mainKeyboardView = switcher.getMainKeyboardView();
         // If we are starting input in a different text field from before, we'll have to reload
         // settings, so currentSettingsValues can't be final.
@@ -574,12 +575,20 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     @Override
+    public void onWindowShown() {
+        super.onWindowShown();
+        if (isInputViewShown())
+            setNavigationBarColor();
+    }
+
+    @Override
     public void onWindowHidden() {
         super.onWindowHidden();
         final MainKeyboardView mainKeyboardView = mKeyboardSwitcher.getMainKeyboardView();
         if (mainKeyboardView != null) {
             mainKeyboardView.closing();
         }
+        clearNavigationBarColor();
     }
 
     void onFinishInputInternal() {
@@ -1082,23 +1091,40 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void setNavigationBarColor() {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M && mSettings.getCurrent().mUseMatchingNavbarColor) {
             final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
             final int keyboardColor = Settings.readKeyboardColor(prefs, this);
             final Window window = getWindow().getWindow();
             if (window == null) {
                 return;
             }
-            final View view = window.getDecorView();
-            int flags = view.getSystemUiVisibility();
-            if (mSettings.getCurrent().mUseMatchingNavbarColor && ResourceUtils.isBrightColor(keyboardColor)) {
-                flags |= View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
-                window.setNavigationBarColor(Color.WHITE);
-            } else {
-                flags &= ~View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
-                window.setNavigationBarColor(Color.BLACK);
+            mOriginalNavBarColor = window.getNavigationBarColor();
+            window.setNavigationBarColor(keyboardColor);
+
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+                final View view = window.getDecorView();
+                mOriginalNavBarFlags = view.getSystemUiVisibility();
+                if (ResourceUtils.isBrightColor(keyboardColor)) {
+                    view.setSystemUiVisibility(mOriginalNavBarFlags | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+                } else {
+                    view.setSystemUiVisibility(mOriginalNavBarFlags & ~View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+                }
             }
-            view.setSystemUiVisibility(flags);
+        }
+    }
+
+    private void clearNavigationBarColor() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M && mSettings.getCurrent().mUseMatchingNavbarColor) {
+            final Window window = getWindow().getWindow();
+            if (window == null) {
+                return;
+            }
+            window.setNavigationBarColor(mOriginalNavBarColor);
+
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+                final View view = window.getDecorView();
+                view.setSystemUiVisibility(mOriginalNavBarFlags);
+            }
         }
     }
 }
