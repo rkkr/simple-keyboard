@@ -61,6 +61,6 @@
     <string name="hide_special_chars">Приховати спеціальні символи</string>
     <string name="hide_language_switch_key">Приховати клавішу зміни мови</string>
     <string name="show_number_row">Показувати рядок цифр</string>
-    <string name="space_swipe">Space swipe cursor move</string>
-    <string name="delete_swipe">Delete swipe</string>
+    <string name="space_swipe">Переміщати курсор ковзанням по пробілу</string>
+    <string name="delete_swipe">Видаляти ковзанням</string>
 </resources>
