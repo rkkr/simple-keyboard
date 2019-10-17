@@ -16,14 +16,18 @@
 
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet;
+import rkr.simplekeyboard.inputmethod.keyboard.SetupActivity;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 
 /**
@@ -53,6 +57,9 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         if (!AudioAndHapticFeedbackManager.getInstance().hasVibrator()) {
             removePreference(Settings.PREF_VIBRATION_DURATION_SETTINGS);
         }
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O) {
+            removePreference(Settings.PREF_MATCHING_NAVBAR_COLOR);
+        }
 
         setupKeypressVibrationDurationSettings();
         setupKeypressSoundVolumeSettings();
@@ -67,6 +74,14 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         if (key.equals(Settings.PREF_HIDE_SPECIAL_CHARS) ||
                 key.equals(Settings.PREF_SHOW_NUMBER_ROW))
             KeyboardLayoutSet.onKeyboardThemeChanged();
+
+        if (key.equals(Settings.PREF_HIDE_LAUNCHER)) {
+            int targetState = prefs.getBoolean(Settings.PREF_HIDE_LAUNCHER, false) ? PackageManager.COMPONENT_ENABLED_STATE_DISABLED : PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
+            PackageManager packageManager = getActivity().getPackageManager();
+            ComponentName componentName = new ComponentName(getActivity(), SetupActivity.class);
+            packageManager.setComponentEnabledSetting(componentName, targetState, PackageManager.DONT_KILL_APP);
+        }
+
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
     }
 

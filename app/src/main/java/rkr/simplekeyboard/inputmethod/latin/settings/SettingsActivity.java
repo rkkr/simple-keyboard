@@ -17,13 +17,18 @@
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.app.ActionBar;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 
+import rkr.simplekeyboard.inputmethod.keyboard.SetupActivity;
 import rkr.simplekeyboard.inputmethod.latin.utils.FragmentUtils;
 
-public final class SettingsActivity extends PreferenceActivity {
+public class SettingsActivity extends PreferenceActivity {
     private static final String DEFAULT_FRAGMENT = SettingsFragment.class.getName();
 
     @Override
@@ -34,6 +39,13 @@ public final class SettingsActivity extends PreferenceActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
         }
+
+        PackageManager packageManager = getPackageManager();
+        ComponentName componentName = new ComponentName(this, SetupActivity.class);
+        boolean hideLauncher = packageManager.getComponentEnabledSetting(componentName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (prefs.getBoolean(Settings.PREF_HIDE_LAUNCHER, false) != hideLauncher)
+            prefs.edit().putBoolean(Settings.PREF_HIDE_LAUNCHER, hideLauncher).apply();
     }
 
     @Override

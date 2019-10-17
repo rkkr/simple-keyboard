@@ -26,7 +26,7 @@
         android:supportsRtl="true">
         <activity
             android:name=".keyboard.SetupActivity"
-            android:label="@string/english_ime_setup">
+            android:label="@string/english_ime_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

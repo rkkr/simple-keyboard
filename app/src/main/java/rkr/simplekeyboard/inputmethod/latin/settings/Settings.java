@@ -60,6 +60,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_SPACE_SWIPE = "pref_space_swipe";
     public static final String PREF_DELETE_SWIPE = "pref_delete_swipe";
     public static final String PREF_MATCHING_NAVBAR_COLOR = "pref_matching_navbar_color";
+    public static final String PREF_HIDE_LAUNCHER = "pref_hide_launcher";
 
     private static final float UNDEFINED_PREFERENCE_VALUE_FLOAT = -1.0f;
     private static final int UNDEFINED_PREFERENCE_VALUE_INT = -1;

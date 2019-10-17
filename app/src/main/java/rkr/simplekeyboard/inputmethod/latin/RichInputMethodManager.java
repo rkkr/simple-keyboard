@@ -115,6 +115,10 @@ public class RichInputMethodManager {
         return mImmService;
     }
 
+    public boolean isInputMethodOfThisImeEnabled() {
+        return mInputMethodInfoCache.isInputMethodOfThisImeEnabled();
+    }
+
     public List<InputMethodSubtype> getMyEnabledInputMethodSubtypeList(
             boolean allowsImplicitlySelectedSubtypes) {
         return getEnabledInputMethodSubtypeList(
@@ -232,6 +236,15 @@ public class RichInputMethodManager {
             mImePackageName = imePackageName;
             mCachedSubtypeListWithImplicitlySelected = new HashMap<>();
             mCachedSubtypeListOnlyExplicitlySelected = new HashMap<>();
+        }
+
+        public synchronized boolean isInputMethodOfThisImeEnabled() {
+            for (final InputMethodInfo imi : mImm.getEnabledInputMethodList()) {
+                if (imi.getPackageName().equals(mImePackageName)) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public synchronized InputMethodInfo getInputMethodOfThisIme() {

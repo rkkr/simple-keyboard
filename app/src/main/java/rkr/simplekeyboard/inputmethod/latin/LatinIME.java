@@ -65,7 +65,6 @@ import rkr.simplekeyboard.inputmethod.keyboard.KeyboardActionListener;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardId;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardSwitcher;
 import rkr.simplekeyboard.inputmethod.keyboard.MainKeyboardView;
-import rkr.simplekeyboard.inputmethod.keyboard.SetupActivity;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.define.DebugFlags;
 import rkr.simplekeyboard.inputmethod.latin.inputlogic.InputLogic;
@@ -352,11 +351,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         final IntentFilter filter = new IntentFilter();
         filter.addAction(AudioManager.RINGER_MODE_CHANGED_ACTION);
         registerReceiver(mRingerModeChangeReceiver, filter);
-
-        //Hide the launcher icon on first start
-        PackageManager packageManager = getPackageManager();
-        ComponentName componentName = new ComponentName(this, SetupActivity.class);
-        packageManager.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
     }
 
     private void loadSettings() {

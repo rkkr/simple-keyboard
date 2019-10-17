@@ -43,6 +43,10 @@
         android:key="pref_keyboard_color"
         android:title="@string/keyboard_color" />
     <CheckBoxPreference
+        android:key="pref_hide_launcher"
+        android:title="@string/hide_launcher"
+        android:defaultValue="false" />
+    <CheckBoxPreference
         android:key="pref_matching_navbar_color"
         android:title="@string/matching_navbar_color"
         android:defaultValue="false" />
