@@ -26,7 +26,8 @@
         android:supportsRtl="true">
         <activity
             android:name=".keyboard.SetupActivity"
-            android:label="@string/english_ime_name">
+            android:label="@string/english_ime_name"
+            android:theme="@style/platformSettingsTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
