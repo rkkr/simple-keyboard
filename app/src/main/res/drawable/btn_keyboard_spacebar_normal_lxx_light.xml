@@ -4,8 +4,7 @@
         android:top="8dp"
         android:bottom="8dp">
 
-        <shape xmlns:android="http://schemas.android.com/apk/res/android"
-            android:shape="rectangle">
+        <shape android:shape="rectangle">
             <solid android:color="#26080B0C" />
             <corners android:radius="2dp" />
         </shape>

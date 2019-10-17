@@ -56,11 +56,4 @@
     <string name="prefs_keypress_sound_volume_settings">"की दाबल्यावर आवाजाची तीव्रता"</string>
     <string name="prefs_key_longpress_timeout_settings">"की जास्त दाबण्यात विलंब"</string>
     <string name="button_default">"डीफॉल्ट"</string>
-    <string name="prefs_keyboard_height_settings">Keyboard height</string>
-    <string name="keyboard_color">Set custom keyboard color</string>
-    <string name="hide_special_chars">Hide special characters</string>
-    <string name="hide_language_switch_key">Hide language switch key</string>
-    <string name="show_number_row">Show separate number row</string>
-    <string name="space_swipe">Space swipe cursor move</string>
-    <string name="delete_swipe">Delete swipe</string>
 </resources>

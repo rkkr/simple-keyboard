@@ -18,17 +18,14 @@ package rkr.simplekeyboard.inputmethod.latin;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioManager;
 import android.os.Build;
@@ -1085,7 +1082,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void setNavigationBarColor() {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M && mSettings.getCurrent().mUseMatchingNavbarColor) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O && mSettings.getCurrent().mUseMatchingNavbarColor) {
             final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
             final int keyboardColor = Settings.readKeyboardColor(prefs, this);
             final Window window = getWindow().getWindow();
@@ -1095,30 +1092,25 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             mOriginalNavBarColor = window.getNavigationBarColor();
             window.setNavigationBarColor(keyboardColor);
 
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
-                final View view = window.getDecorView();
-                mOriginalNavBarFlags = view.getSystemUiVisibility();
-                if (ResourceUtils.isBrightColor(keyboardColor)) {
-                    view.setSystemUiVisibility(mOriginalNavBarFlags | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
-                } else {
-                    view.setSystemUiVisibility(mOriginalNavBarFlags & ~View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
-                }
+            final View view = window.getDecorView();
+            mOriginalNavBarFlags = view.getSystemUiVisibility();
+            if (ResourceUtils.isBrightColor(keyboardColor)) {
+                view.setSystemUiVisibility(mOriginalNavBarFlags | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+            } else {
+                view.setSystemUiVisibility(mOriginalNavBarFlags & ~View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
             }
         }
     }
 
     private void clearNavigationBarColor() {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M && mSettings.getCurrent().mUseMatchingNavbarColor) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O && mSettings.getCurrent().mUseMatchingNavbarColor) {
             final Window window = getWindow().getWindow();
             if (window == null) {
                 return;
             }
             window.setNavigationBarColor(mOriginalNavBarColor);
-
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
-                final View view = window.getDecorView();
-                view.setSystemUiVisibility(mOriginalNavBarFlags);
-            }
+            final View view = window.getDecorView();
+            view.setSystemUiVisibility(mOriginalNavBarFlags);
         }
     }
 }

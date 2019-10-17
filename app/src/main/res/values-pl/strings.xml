@@ -61,6 +61,4 @@
     <string name="hide_special_chars">Ukryj specjalne znaki</string>
     <string name="hide_language_switch_key">Ukryj znak zmiany języka</string>
     <string name="show_number_row">Pokaż oddzielne wierszowe numery</string>
-    <string name="space_swipe">Space swipe cursor move</string>
-    <string name="delete_swipe">Delete swipe</string>
 </resources>

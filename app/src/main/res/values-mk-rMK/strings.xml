@@ -62,5 +62,4 @@
     <string name="hide_language_switch_key">Сокриј го копчето за промена на јазик</string>
     <string name="show_number_row">Покажи одделен ред со броеви</string>
     <string name="space_swipe">Помеси го курсорот преку лентата за празно место</string>
-    <string name="delete_swipe">Delete swipe</string>
 </resources>
