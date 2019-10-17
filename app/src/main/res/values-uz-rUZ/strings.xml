@@ -55,5 +55,5 @@
     <string name="prefs_keypress_vibration_duration_settings">"Tugma bosilganda tebranish vaqti"</string>
     <string name="prefs_keypress_sound_volume_settings">"Tugma bosilgandagi ovoz"</string>
     <string name="prefs_key_longpress_timeout_settings">"Tugmani bosib turish"</string>
-    <string name="button_default">"Standart"</string>ng>
+    <string name="button_default">"Standart"</string>
 </resources>
