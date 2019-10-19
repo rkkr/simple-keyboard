@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.view.MenuItem;
 
 import rkr.simplekeyboard.inputmethod.keyboard.SetupActivity;
 import rkr.simplekeyboard.inputmethod.latin.utils.FragmentUtils;
@@ -46,6 +47,15 @@ public class SettingsActivity extends PreferenceActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (prefs.getBoolean(Settings.PREF_HIDE_LAUNCHER, false) != hideLauncher)
             prefs.edit().putBoolean(Settings.PREF_HIDE_LAUNCHER, hideLauncher).apply();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
