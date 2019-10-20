@@ -63,4 +63,7 @@
     <string name="show_number_row">Mostrar la fila de dígitos separada</string>
     <string name="space_swipe">Desplazamiento del cursor del espacio</string>
     <string name="delete_swipe">Eliminar deslizar</string>
+    <string name="matching_navbar_color">Usar el color correspondiente de la barra de navegación</string>
+    <string name="setup_message">Simple Keyboard no está habilitado. Haga clic en OK para abrir Idiomas &amp; Ajustes de entrada. Necesitará seleccionar Simple Keyboard en su teclado actual para usarlo.</string>
+    <string name="hide_launcher">Ocultar icono</string>
 </resources>
