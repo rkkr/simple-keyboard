@@ -63,4 +63,7 @@
     <string name="show_number_row">Tampilkan garis pemisah</string>
     <string name="space_swipe">Geser untuk menggerakan kursor</string>
     <string name="delete_swipe">Hapus dengan menggeser</string>
+    <string name="matching_navbar_color">Samakan dengan warna bilah navigasi</string>
+    <string name="setup_message">Simple Keyboard belum diaktifkan. Klik OKE untuk membuka setelan Bahasa &amp; Masukan. Anda perlu memilih Simple Keyboard di dalam setelan keyboard untuk menggunakannya.</string>
+    <string name="hide_launcher">Sembunyikan ikon peluncur</string>
 </resources>
