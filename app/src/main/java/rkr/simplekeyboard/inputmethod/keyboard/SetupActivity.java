@@ -16,10 +16,16 @@ public class SetupActivity extends SettingsActivity {
     protected void onStart() {
         super.onStart();
 
-        InputMethodManager immService = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-        RichInputMethodManager.InputMethodInfoCache inputMethodInfoCache = new RichInputMethodManager.InputMethodInfoCache(immService, getPackageName());
+        boolean enabled = false;
 
-        if (!inputMethodInfoCache.isInputMethodOfThisImeEnabled()) {
+        try {
+            InputMethodManager immService = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            RichInputMethodManager.InputMethodInfoCache inputMethodInfoCache = new RichInputMethodManager.InputMethodInfoCache(immService, getPackageName());
+            enabled = inputMethodInfoCache.isInputMethodOfThisImeEnabled();
+        }
+        catch (Exception e) {}
+
+        if (!enabled) {
             final Context context = this;
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.setup_message);
