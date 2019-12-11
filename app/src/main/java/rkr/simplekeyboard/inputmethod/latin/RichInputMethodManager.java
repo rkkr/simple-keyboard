@@ -221,7 +221,7 @@ public class RichInputMethodManager {
         return true;
     }
 
-    private static class InputMethodInfoCache {
+    public static class InputMethodInfoCache {
         private final InputMethodManager mImm;
         private final String mImePackageName;
 

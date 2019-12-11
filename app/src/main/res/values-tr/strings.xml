@@ -64,6 +64,6 @@
     <string name="space_swipe">Boşluk tuşunda kaydırarak imleci taşı</string>
     <string name="delete_swipe">Sil tuşu kaydırması</string>
     <string name="matching_navbar_color">Eşleşen gezinti çubuğu rengini kullan</string>
-    <string name="setup_message">Simple Keyboard etkin değil. Diller &amp; Giriş ayarlarını açmak için Tamam\'ı tıklayın. Kullanmak için geçerli klavyenizde Simple Keyboard'u seçmeniz gerekmektedir.</string>
+    <string name="setup_message">Simple Keyboard etkin değil. Diller &amp; Giriş ayarlarını açmak için Tamam\'ı tıklayın. Kullanmak için geçerli klavyenizde Simple Keyboard\'u seçmeniz gerekmektedir.</string>
     <string name="hide_launcher">Başlatıcı simgesini gizle</string>
 </resources>

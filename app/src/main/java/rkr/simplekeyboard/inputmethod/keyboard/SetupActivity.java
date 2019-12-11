@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.inputmethod.InputMethodManager;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
@@ -15,9 +16,10 @@ public class SetupActivity extends SettingsActivity {
     protected void onStart() {
         super.onStart();
 
-        RichInputMethodManager.init(this);
+        InputMethodManager immService = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        RichInputMethodManager.InputMethodInfoCache inputMethodInfoCache = new RichInputMethodManager.InputMethodInfoCache(immService, getPackageName());
 
-        if (!RichInputMethodManager.getInstance().isInputMethodOfThisImeEnabled()) {
+        if (!inputMethodInfoCache.isInputMethodOfThisImeEnabled()) {
             final Context context = this;
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.setup_message);
