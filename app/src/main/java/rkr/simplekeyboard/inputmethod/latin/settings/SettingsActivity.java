@@ -17,20 +17,59 @@
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.app.ActionBar;
-import android.content.ComponentName;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 
-import rkr.simplekeyboard.inputmethod.keyboard.SetupActivity;
+import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.utils.FragmentUtils;
 
 public class SettingsActivity extends PreferenceActivity {
     private static final String DEFAULT_FRAGMENT = SettingsFragment.class.getName();
+    private static final String TAG = SettingsActivity.class.getSimpleName();
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        boolean enabled = false;
+        try {
+            InputMethodManager immService = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            RichInputMethodManager.InputMethodInfoCache inputMethodInfoCache = new RichInputMethodManager.InputMethodInfoCache(immService, getPackageName());
+            enabled = inputMethodInfoCache.isInputMethodOfThisImeEnabled();
+        } catch (Exception e) {
+            Log.e(TAG, "Exception in check if input method is enabled", e);
+        }
+
+        if (!enabled) {
+            final Context context = this;
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.setup_message);
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Intent intent = new Intent(android.provider.Settings.ACTION_INPUT_METHOD_SETTINGS);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                    dialog.dismiss();
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    finish();
+                }
+            });
+            builder.setCancelable(false);
+
+            builder.create().show();
+        }
+    }
 
     @Override
     protected void onCreate(final Bundle savedState) {
@@ -40,13 +79,6 @@ public class SettingsActivity extends PreferenceActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
         }
-
-        PackageManager packageManager = getPackageManager();
-        ComponentName componentName = new ComponentName(this, SetupActivity.class);
-        boolean hideLauncher = packageManager.getComponentEnabledSetting(componentName) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (prefs.getBoolean(Settings.PREF_HIDE_LAUNCHER, false) != hideLauncher)
-            prefs.edit().putBoolean(Settings.PREF_HIDE_LAUNCHER, hideLauncher).apply();
     }
 
     @Override

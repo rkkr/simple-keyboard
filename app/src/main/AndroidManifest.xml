@@ -24,16 +24,6 @@
         android:icon="@drawable/ic_launcher_keyboard"
         android:label="@string/english_ime_name"
         android:supportsRtl="true">
-        <activity
-            android:name=".keyboard.SetupActivity"
-            android:label="@string/english_ime_name"
-            android:theme="@style/platformSettingsTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <!-- Services -->
         <service
             android:name=".latin.LatinIME"
@@ -50,10 +40,11 @@
 
         <activity
             android:name=".latin.settings.SettingsActivity"
-            android:label="@string/english_ime_settings"
+            android:label="@string/english_ime_name"
             android:theme="@style/platformSettingsTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- Broadcast receivers -->
         <receiver android:name=".latin.SystemBroadcastReceiver">

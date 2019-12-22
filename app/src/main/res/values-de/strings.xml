@@ -65,5 +65,4 @@
     <string name="delete_swipe">Durch Wischen löschen</string>
     <string name="matching_navbar_color">Passende Farbe der Navigationsleiste verwenden</string>
     <string name="setup_message">Simple Keyboard ist nicht aktiviert. Klicken Sie auf OK, um die Sprache &amp; Eingabe Einstellungen zu öffnen. Sie müssen Simple Keyboard in Ihrer aktuellen Tastatur auswählen, um sie zu verwenden.</string>
-    <string name="hide_launcher">App-Icon ausblenden</string>
 </resources>
