@@ -63,4 +63,7 @@
     <string name="show_number_row">Εμφάνιση ξεχωριστής σειράς αριθμών</string>
     <string name="space_swipe">Ολίσθηση στη γραμμή διαστήματος για μετακίνηση του δρομέα</string>
     <string name="delete_swipe">Αφαίρεση της ολίσθησης</string>
+    <string name="matching_navbar_color">Χρήση αντίστοιχου χρώματος γραμμής πλοήγησης</string>
+    <string name="setup_message">Το Simple Keyboard δεν είναι ενεργοποιημένο. Πατήστε OK για να ανοίξετε τις ρυθμίσεις Γλώσσας &amp; Εισαγωγής. Θα πρέπει να επιλέξετε το Simple Keyboard ως τρέχον πληκτρολόγιο ώστε να μπορείτε να το χρησιμοποιήσετε.</string>
+    <string name="hide_launcher">Απόκρυψη εικονιδίου εκκινητή</string>
 </resources>
