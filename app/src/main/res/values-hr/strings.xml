@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"Srpski (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicionalni)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktna)"</string>
-    <string name="subtype_no_language">"Nema jezika (abeceda)"</string>
-    <string name="subtype_no_language_qwerty">"abeceda (QWERTY)"</string>
     <string name="custom_input_styles_title">"Pril. stilovi unosa"</string>
     <string name="add_style">"Dodaj stil"</string>
     <string name="add">"Dodaj"</string>

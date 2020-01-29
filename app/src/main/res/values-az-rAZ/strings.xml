@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"Serb (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Ənənəvi)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Kompakt)"</string>
-    <string name="subtype_no_language">"Dil yoxdur (Əlifba)"</string>
-    <string name="subtype_no_language_qwerty">"Əlifba (QWERTY)"</string>
     <string name="custom_input_styles_title">"Xüsusi daxiletmə üslubları"</string>
     <string name="add_style">"Stil əlavə et"</string>
     <string name="add">"Əlavə et"</string>

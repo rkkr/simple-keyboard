@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"塞尔维亚语（<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>布局）"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>（传统）"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>（紧凑型）"</string>
-    <string name="subtype_no_language">"无语言（字母）"</string>
-    <string name="subtype_no_language_qwerty">"字母 (QWERTY)"</string>
     <string name="custom_input_styles_title">"自定义输入样式"</string>
     <string name="add_style">"添加样式"</string>
     <string name="add">"添加"</string>

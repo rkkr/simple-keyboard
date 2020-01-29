@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"세르비아어(<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>(번체)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>(컴팩트)"</string>
-    <string name="subtype_no_language">"언어 없음(알파벳)"</string>
-    <string name="subtype_no_language_qwerty">"알파벳(QWERTY)"</string>
     <string name="custom_input_styles_title">"맞춤 입력 스타일"</string>
     <string name="add_style">"스타일 추가"</string>
     <string name="add">"추가"</string>

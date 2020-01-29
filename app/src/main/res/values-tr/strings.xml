@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"Sırpça (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Geleneksel)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Kompakt)"</string>
-    <string name="subtype_no_language">"Dil yok (Alfabe)"</string>
-    <string name="subtype_no_language_qwerty">"Alfabe (QWERTY)"</string>
     <string name="custom_input_styles_title">"Özel giriş stilleri"</string>
     <string name="add_style">"Stil ekle"</string>
     <string name="add">"Ekle"</string>

@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"serbialainen (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (perinteinen)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tiivis)"</string>
-    <string name="subtype_no_language">"Ei kieltä (aakkoset)"</string>
-    <string name="subtype_no_language_qwerty">"aakkoset (QWERTY)"</string>
     <string name="custom_input_styles_title">"Muokatut syöttötyylit"</string>
     <string name="add_style">"Lisää tyyli"</string>
     <string name="add">"Lisää"</string>

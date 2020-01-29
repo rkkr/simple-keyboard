@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"Serbisk (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradisjonelt)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompakt)"</string>
-    <string name="subtype_no_language">"Ingen språk (alfabet)"</string>
-    <string name="subtype_no_language_qwerty">"alfabet (QWERTY)"</string>
     <string name="custom_input_styles_title">"Egendefinerte inndata"</string>
     <string name="add_style">"Legg til stil"</string>
     <string name="add">"Legg til"</string>

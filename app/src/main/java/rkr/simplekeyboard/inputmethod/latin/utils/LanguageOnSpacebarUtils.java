@@ -41,9 +41,6 @@ public final class LanguageOnSpacebarUtils {
 
     public static int getLanguageOnSpacebarFormatType(
             final RichInputMethodSubtype subtype) {
-        if (subtype.isNoLanguage()) {
-            return FORMAT_TYPE_FULL_LOCALE;
-        }
         // Only this subtype is enabled and equals to the system locale.
         if (sEnabledSubtypes.size() < 2 && sIsSystemLanguageSameAsInputLanguage) {
             return FORMAT_TYPE_NONE;

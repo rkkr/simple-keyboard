@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"સર્બિયન (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (પરંપરાગત)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (કોમ્પેક્ટ)"</string>
-    <string name="subtype_no_language">"ભાષા નથી (આલ્ફાબેટ)"</string>
-    <string name="subtype_no_language_qwerty">"આલ્ફાબેટ (QWERTY)"</string>
     <string name="custom_input_styles_title">"કસ્ટમ ઇનપુટ શૈલીઓ"</string>
     <string name="add_style">"શૈલી ઉમેરો"</string>
     <string name="add">"ઉમેરો"</string>

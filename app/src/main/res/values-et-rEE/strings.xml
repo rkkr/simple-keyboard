@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"Serbia (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditsiooniline)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktne)"</string>
-    <string name="subtype_no_language">"Keel puudub (tähestik)"</string>
-    <string name="subtype_no_language_qwerty">"Tähestik (QWERTY)"</string>
     <string name="custom_input_styles_title">"Kohandage sisendlaadid"</string>
     <string name="add_style">"Lisage laad"</string>
     <string name="add">"Lisa"</string>

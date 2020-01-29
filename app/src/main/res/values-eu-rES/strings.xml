@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"Serbiarra (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradizionala)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (trinkoa)"</string>
-    <string name="subtype_no_language">"Ez dago hizkuntzarik (alfabetoa)"</string>
-    <string name="subtype_no_language_qwerty">"alfabetoa (QWERTY)"</string>
     <string name="custom_input_styles_title">"Idazketa-estilo pertsonalizatuak"</string>
     <string name="add_style">"Gehitu estiloa"</string>
     <string name="add">"Gehitu"</string>

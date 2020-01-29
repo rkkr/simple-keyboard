@@ -95,27 +95,6 @@
     <!-- Description for "LANGUAGE_NAME" (Compact) keyboard subtype [CHAR LIMIT=25]
          (Compact) can be an abbreviation to fit in the CHAR LIMIT. -->
     <string name="subtype_generic_compact"><xliff:g id="LANGUAGE_NAME" example="Hindi">%s</xliff:g> (Compact)</string>
-    <!-- This string is displayed in a language list that allows to choose a language for
-suggestions in a software keyboard. This setting won't give suggestions in any particular
-language, hence "No language".
-As for the "alphabet" mention, it refers specifically to the Latin alphabet, as opposed to
-Cyrillic, Arabic, Hebrew or other scripts. This keyboard offers no suggestions, but it will
-be a QWERTY, or AZERTY, or any other disposition that only offers Latin characters, so
-you wouldn't be able to type, say, Arabic on it. Please translate it in a way that "alphabet"
-would be understood to mean specifically the Latin alphabet, rather than any other
-alphabet. [CHAR LIMIT=29] -->
-    <string name="subtype_no_language">No language (Alphabet)</string>
-    <!-- This string is displayed in the description for a keyboard type. It refers specifically to
-the Latin alphabet, as opposed to Cyrillic, Arabic, Hebrew or other scripts.
-When the device is configured to use a language using a script other than the Latin alphabet, the
-user still needs a keyboard that can input Latin characters for passwords or login names for
-example, and a way to switch to this Latin alphabet keyboard. This string is the description for
-this keyboard, so users of other scripts should understand when they read this that it represents a
-keyboard that is meant for them to be able to enter Latin characters as opposed to the script they
-are used to. This keyboard does not provide a dictionary, and it is not tied to any specific
-language among those that use the Latin alphabet. This keyboard is laid out in the QWERTY
-disposition rather than other common dispositions for Latin languages. [CHAR LIMIT=25] -->
-    <string name="subtype_no_language_qwerty">Alphabet (QWERTY)</string>
 
     <!-- The keyboard theme name, Holo White. This is marked as translatable="false" because this is a proper name of system-wide UI Theme. -->
     <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>

@@ -51,7 +51,7 @@ public final class KeyboardTextsSet {
             final String resourcePackageName) {
         mResources = res;
         // Null means the current system locale.
-        mResourceLocale = SubtypeLocaleUtils.NO_LANGUAGE.equals(locale.toString()) ? null : locale;
+        mResourceLocale = locale;
         mResourcePackageName = resourcePackageName;
         mTextsTable = KeyboardTextsTable.getTextsTable(locale);
     }

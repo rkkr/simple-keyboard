@@ -335,9 +335,7 @@ final class CustomInputStylePreference extends DialogPreference
             // TODO: Should filter out already existing combinations of locale and layout.
             for (final String layout : predefinedKeyboardLayoutSet) {
                 // This is a dummy subtype with NO_LANGUAGE, only for display.
-                final InputMethodSubtype subtype =
-                        AdditionalSubtypeUtils.createDummyAdditionalSubtype(
-                                SubtypeLocaleUtils.NO_LANGUAGE, layout);
+                final InputMethodSubtype subtype = AdditionalSubtypeUtils.createDummyAdditionalSubtype("en_US", layout);
                 add(new KeyboardLayoutSetItem(subtype));
             }
         }

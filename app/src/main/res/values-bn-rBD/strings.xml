@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"সার্বিয়ান (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ঐতিহ্যবাহি)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (কম্প্যাক্ট)"</string>
-    <string name="subtype_no_language">"কোনো ভাষা নয় (বর্ণমালা)"</string>
-    <string name="subtype_no_language_qwerty">"বর্ণমালা (QWERTY)"</string>
     <string name="custom_input_styles_title">"কাস্টম ইনপুট শৈলীগুলি"</string>
     <string name="add_style">"শৈলী জুড়ুন"</string>
     <string name="add">"জুড়ুন"</string>

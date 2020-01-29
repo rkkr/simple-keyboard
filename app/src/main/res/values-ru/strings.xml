@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"Сербский (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (классическая)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактная раскладка)"</string>
-    <string name="subtype_no_language">"Язык не определен (латиница)"</string>
-    <string name="subtype_no_language_qwerty">"Латиница (QWERTY)"</string>
     <string name="custom_input_styles_title">"Свои стили ввода"</string>
     <string name="add_style">"Добавить стиль"</string>
     <string name="add">"Добавить"</string>

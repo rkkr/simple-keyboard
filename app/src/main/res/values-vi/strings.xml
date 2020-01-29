@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"Tiếng Serbia (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Truyền thống)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Viết tắt)"</string>
-    <string name="subtype_no_language">"Không ngôn ngữ nào (Bảng chữ cái)"</string>
-    <string name="subtype_no_language_qwerty">"Bảng chữ cái (QWERTY)"</string>
     <string name="custom_input_styles_title">"Kiểu nhập tùy chỉnh"</string>
     <string name="add_style">"Thêm kiểu"</string>
     <string name="add">"Thêm"</string>

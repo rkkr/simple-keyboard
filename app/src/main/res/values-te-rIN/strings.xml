@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"సెర్బియన్ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (సాంప్రదాయకం)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (కాంపాక్ట్)"</string>
-    <string name="subtype_no_language">"భాష లేదు (ఆల్ఫాబెట్)"</string>
-    <string name="subtype_no_language_qwerty">"ఆల్ఫాబెట్ (QWERTY)"</string>
     <string name="custom_input_styles_title">"అనుకూల ఇన్‌పుట్ శైలులు"</string>
     <string name="add_style">"శైలిని జోడించండి"</string>
     <string name="add">"జోడించండి"</string>

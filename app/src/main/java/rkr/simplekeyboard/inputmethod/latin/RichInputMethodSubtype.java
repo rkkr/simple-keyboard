@@ -17,15 +17,13 @@
 package rkr.simplekeyboard.inputmethod.latin;
 
 import android.os.Build;
-import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
 
 import java.util.HashMap;
 import java.util.Locale;
 
-import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
+import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
@@ -37,8 +35,6 @@ import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYB
  */
 // non final for easy mocking.
 public class RichInputMethodSubtype {
-    private static final String TAG = RichInputMethodSubtype.class.getSimpleName();
-
     private static final HashMap<Locale, Locale> sLocaleMap = initializeLocaleMap();
     private static final HashMap<Locale, Locale> initializeLocaleMap() {
         final HashMap<Locale, Locale> map = new HashMap<>();
@@ -67,10 +63,6 @@ public class RichInputMethodSubtype {
         return mSubtype.getExtraValueOf(key);
     }
 
-    public boolean isNoLanguage() {
-        return SubtypeLocaleUtils.NO_LANGUAGE.equals(mSubtype.getLocale());
-    }
-
     public String getNameForLogging() {
         return toString();
     }
@@ -94,17 +86,11 @@ public class RichInputMethodSubtype {
     //  zz    azerty  T  AZERTY    AZERTY
     // Get the RichInputMethodSubtype's full display name in its locale.
     public String getFullDisplayName() {
-        if (isNoLanguage()) {
-            return SubtypeLocaleUtils.getKeyboardLayoutSetDisplayName(mSubtype);
-        }
         return SubtypeLocaleUtils.getSubtypeLocaleDisplayName(mSubtype.getLocale());
     }
 
     // Get the RichInputMethodSubtype's middle display name in its locale.
     public String getMiddleDisplayName() {
-        if (isNoLanguage()) {
-            return SubtypeLocaleUtils.getKeyboardLayoutSetDisplayName(mSubtype);
-        }
         return SubtypeLocaleUtils.getSubtypeLanguageDisplayName(mSubtype.getLocale());
     }
 
@@ -138,50 +124,10 @@ public class RichInputMethodSubtype {
         return SubtypeLocaleUtils.getKeyboardLayoutSetName(mSubtype);
     }
 
-    public static RichInputMethodSubtype getRichInputMethodSubtype(
-            final InputMethodSubtype subtype) {
+    public static RichInputMethodSubtype getRichInputMethodSubtype(InputMethodSubtype subtype) {
         if (subtype == null) {
-            return getNoLanguageSubtype();
-        } else {
-            return new RichInputMethodSubtype(subtype);
+            subtype = AdditionalSubtypeUtils.createDummyAdditionalSubtype("en_US", SubtypeLocaleUtils.QWERTY);
         }
-    }
-
-    // Dummy no language QWERTY subtype. See {@link R.xml.method}.
-    private static final int SUBTYPE_ID_OF_DUMMY_NO_LANGUAGE_SUBTYPE = 0xdde0bfd3;
-    private static final String EXTRA_VALUE_OF_DUMMY_NO_LANGUAGE_SUBTYPE =
-            "KeyboardLayoutSet=" + SubtypeLocaleUtils.QWERTY
-            + "," + Constants.Subtype.ExtraValue.ASCII_CAPABLE
-            + "," + Constants.Subtype.ExtraValue.ENABLED_WHEN_DEFAULT_IS_NOT_ASCII_CAPABLE;
-    private static RichInputMethodSubtype sNoLanguageSubtype;
-
-    public static RichInputMethodSubtype getNoLanguageSubtype() {
-        RichInputMethodSubtype noLanguageSubtype = sNoLanguageSubtype;
-        if (noLanguageSubtype == null) {
-            final InputMethodSubtype rawNoLanguageSubtype = RichInputMethodManager.getInstance()
-                    .findSubtypeByLocaleAndKeyboardLayoutSet(
-                            SubtypeLocaleUtils.NO_LANGUAGE, SubtypeLocaleUtils.QWERTY);
-            if (rawNoLanguageSubtype != null) {
-                noLanguageSubtype = new RichInputMethodSubtype(rawNoLanguageSubtype);
-            }
-        }
-        if (noLanguageSubtype != null) {
-            sNoLanguageSubtype = noLanguageSubtype;
-            return noLanguageSubtype;
-        }
-        Log.w(TAG, "Can't find any language with QWERTY subtype");
-        Log.w(TAG, "No input method subtype found; returning dummy subtype");
-
-        InputMethodSubtype.InputMethodSubtypeBuilder builder = new InputMethodSubtype.InputMethodSubtypeBuilder();
-
-        builder.setSubtypeNameResId(R.string.subtype_no_language_qwerty)
-                .setSubtypeIconResId(R.drawable.ic_ime_switcher_dark)
-                .setSubtypeLocale(SubtypeLocaleUtils.NO_LANGUAGE)
-                .setSubtypeMode(KEYBOARD_MODE)
-                .setSubtypeExtraValue(EXTRA_VALUE_OF_DUMMY_NO_LANGUAGE_SUBTYPE)
-                .setOverridesImplicitlyEnabledSubtype(false)
-                .setIsAuxiliary(false)
-                .setSubtypeId(SUBTYPE_ID_OF_DUMMY_NO_LANGUAGE_SUBTYPE);
-        return new RichInputMethodSubtype(builder.build());
+        return new RichInputMethodSubtype(subtype);
     }
 }

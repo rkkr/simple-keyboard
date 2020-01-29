@@ -104,7 +104,6 @@
     uz_UZ: Uzbek (Uzbekistan)/uzbek # This is a preliminary keyboard layout.
     vi: Vietnamese/qwerty
     zu: Zulu/qwerty
-    zz: QWERTY/qwerty
     -->
 <!-- TODO: use <lang>_keyboard icon instead of a common keyboard icon. -->
 <!-- TODO: Remove "AsciiCapable" from the extra values when we can stop supporting JB-MR1 -->
@@ -750,14 +749,6 @@
             android:imeSubtypeLocale="zu"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,AsciiCapable"
-            android:isAsciiCapable="true"
-    />
-    <subtype android:icon="@drawable/ic_ime_switcher_dark"
-            android:label="@string/subtype_no_language_qwerty"
-            android:subtypeId="0xa239ebad"
-            android:imeSubtypeLocale="zz"
-            android:imeSubtypeMode="keyboard"
-            android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,AsciiCapable,EnabledWhenDefaultIsNotAsciiCapable"
             android:isAsciiCapable="true"
     />
 </input-method>

@@ -60,13 +60,6 @@ public final class Constants {
             public static final String ASCII_CAPABLE = "AsciiCapable";
 
             /**
-             * The subtype extra value used to indicate that this subtype is enabled
-             * when the default subtype is not marked as ascii capable.
-             */
-            public static final String ENABLED_WHEN_DEFAULT_IS_NOT_ASCII_CAPABLE =
-                    "EnabledWhenDefaultIsNotAsciiCapable";
-
-            /**
              * The subtype extra value used to indicate that the display name of this subtype
              * contains a "%s" for printf-like replacement and it should be replaced by
              * this extra value.

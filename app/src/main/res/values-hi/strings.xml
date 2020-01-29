@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"सर्बियाई (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (पारंपरिक)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (संक्षिप्त)"</string>
-    <string name="subtype_no_language">"भाषा उपलब्ध नहीं है (लैटिन वर्णाक्षर)"</string>
-    <string name="subtype_no_language_qwerty">"वर्णाक्षर (QWERTY)"</string>
     <string name="custom_input_styles_title">"कस्‍टम इनपुट शैलियां"</string>
     <string name="add_style">"शैली जोड़ें"</string>
     <string name="add">"जोड़ें"</string>

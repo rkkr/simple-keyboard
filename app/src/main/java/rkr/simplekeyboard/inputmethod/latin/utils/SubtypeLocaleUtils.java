@@ -41,8 +41,6 @@ public final class SubtypeLocaleUtils {
     // This reference class {@link R} must be located in the same package as LatinIME.java.
     private static final String RESOURCE_PACKAGE_NAME = R.class.getPackage().getName();
 
-    // Special language code to represent "no language".
-    public static final String NO_LANGUAGE = "zz";
     public static final String QWERTY = "qwerty";
     public static final int UNKNOWN_KEYBOARD_LAYOUT = R.string.subtype_generic;
 
@@ -67,8 +65,6 @@ public final class SubtypeLocaleUtils {
             "string/subtype_generic_";
     private static final String SUBTYPE_NAME_RESOURCE_WITH_LAYOUT_PREFIX =
             "string/subtype_with_layout_";
-    private static final String SUBTYPE_NAME_RESOURCE_NO_LANGUAGE_PREFIX =
-            "string/subtype_no_language_";
     private static final String SUBTYPE_NAME_RESOURCE_IN_ROOT_LOCALE_PREFIX =
             "string/subtype_in_root_locale_";
     // Keyboard layout set name for the subtypes that don't have a keyboardLayoutSet extra value.
@@ -103,12 +99,6 @@ public final class SubtypeLocaleUtils {
             final String resourceName = SUBTYPE_NAME_RESOURCE_GENERIC_PREFIX + layoutName;
             final int resId = res.getIdentifier(resourceName, null, RESOURCE_PACKAGE_NAME);
             sKeyboardLayoutToNameIdsMap.put(layoutName, resId);
-            // Register subtype name resource id of "No language" with key "zz_<layout>"
-            final String noLanguageResName = SUBTYPE_NAME_RESOURCE_NO_LANGUAGE_PREFIX + layoutName;
-            final int noLanguageResId = res.getIdentifier(
-                    noLanguageResName, null, RESOURCE_PACKAGE_NAME);
-            final String key = getNoLanguageLayoutKey(layoutName);
-            sKeyboardLayoutToNameIdsMap.put(key, noLanguageResId);
         }
 
         final String[] exceptionalLocaleInRootLocale = res.getStringArray(
@@ -147,25 +137,15 @@ public final class SubtypeLocaleUtils {
         return sExceptionalLocaleToNameIdsMap.containsKey(localeString);
     }
 
-    private static final String getNoLanguageLayoutKey(final String keyboardLayoutName) {
-        return NO_LANGUAGE + "_" + keyboardLayoutName;
-    }
-
     public static int getSubtypeNameId(final String localeString, final String keyboardLayoutName) {
         if (isExceptionalLocale(localeString)) {
             return sExceptionalLocaleToWithLayoutNameIdsMap.get(localeString);
         }
-        final String key = NO_LANGUAGE.equals(localeString)
-                ? getNoLanguageLayoutKey(keyboardLayoutName)
-                : keyboardLayoutName;
-        final Integer nameId = sKeyboardLayoutToNameIdsMap.get(key);
+        final Integer nameId = sKeyboardLayoutToNameIdsMap.get(keyboardLayoutName);
         return nameId == null ? UNKNOWN_KEYBOARD_LAYOUT : nameId;
     }
 
     public static Locale getDisplayLocaleOfSubtypeLocale(final String localeString) {
-        if (NO_LANGUAGE.equals(localeString)) {
-            return sResources.getConfiguration().locale;
-        }
         if (sExceptionalLocaleDisplayedInRootLocale.containsKey(localeString)) {
             return Locale.ROOT;
         }
@@ -196,10 +176,6 @@ public final class SubtypeLocaleUtils {
 
     private static String getSubtypeLocaleDisplayNameInternal(final String localeString,
             final Locale displayLocale) {
-        if (NO_LANGUAGE.equals(localeString)) {
-            // No language subtype should be displayed in system locale.
-            return sResources.getString(R.string.subtype_no_language);
-        }
         final Integer exceptionalNameResId;
         if (displayLocale.equals(Locale.ROOT)
                 && sExceptionalLocaleDisplayedInRootLocale.containsKey(localeString)) {

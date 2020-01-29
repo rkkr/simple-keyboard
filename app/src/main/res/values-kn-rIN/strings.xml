@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"ಸರ್ಬಿಯನ್ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ಸಾಂಪ್ರದಾಯಿಕ)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ಕಾಂಪ್ಯಾಕ್ಟ್‌‌)"</string>
-    <string name="subtype_no_language">"ಯಾವುದೇ ಭಾಷೆಯಿಲ್ಲ (ವರ್ಣಮಾಲೆ)"</string>
-    <string name="subtype_no_language_qwerty">"ವರ್ಣಮಾಲೆ (QWERTY)"</string>
     <string name="custom_input_styles_title">"ಕಸ್ಟಮ್ ಇನ್‌ಪುಟ್ ಶೈಲಿ"</string>
     <string name="add_style">"ಶೈಲಿ ಸೇರಿಸು"</string>
     <string name="add">"ಸೇರಿಸು"</string>

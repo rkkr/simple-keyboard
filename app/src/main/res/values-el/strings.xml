@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"Σερβικά (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Παραδοσιακά)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Συμπαγές)"</string>
-    <string name="subtype_no_language">"Καμία γλώσσα (Αλφάβητο)"</string>
-    <string name="subtype_no_language_qwerty">"Αλφάβητο (QWERTY)"</string>
     <string name="custom_input_styles_title">"Στυλ εισαγωγής"</string>
     <string name="add_style">"Προσθ. στυλ"</string>
     <string name="add">"Προσθήκη"</string>

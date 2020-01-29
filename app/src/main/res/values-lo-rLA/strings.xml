@@ -45,8 +45,6 @@
     <string name="subtype_with_layout_sr_ZZ">"ເຊີ​ບຽນ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ດັ້ງ​ເດີມ)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ກະ​ທັດ​ຮັດ)"</string>
-    <string name="subtype_no_language">"ບໍ່ມີພາສາ (ໂຕອັກສອນ)"</string>
-    <string name="subtype_no_language_qwerty">"ໂຕອັກສອນ (QWERTY)"</string>
     <string name="custom_input_styles_title">"ຮູບແບບການປ້ອນຂໍ້ມູນສ່ວນຕົວ"</string>
     <string name="add_style">"ເພີ່ມຮູບແບບ"</string>
     <string name="add">"ເພີ່ມ"</string>
