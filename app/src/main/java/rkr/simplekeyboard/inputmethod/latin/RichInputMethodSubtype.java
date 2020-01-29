@@ -126,7 +126,7 @@ public class RichInputMethodSubtype {
 
     public static RichInputMethodSubtype getRichInputMethodSubtype(InputMethodSubtype subtype) {
         if (subtype == null) {
-            subtype = AdditionalSubtypeUtils.createDummyAdditionalSubtype("en_US", SubtypeLocaleUtils.QWERTY);
+            subtype = AdditionalSubtypeUtils.createAdditionalSubtype("en_US", SubtypeLocaleUtils.QWERTY);
         }
         return new RichInputMethodSubtype(subtype);
     }

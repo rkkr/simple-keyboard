@@ -20,7 +20,7 @@
 <resources>
     <!-- Predefined subtypes (language:layout[:extraValue]) -->
     <string-array name="predefined_subtypes" translatable="false">
-        <item>de:qwerty:AsciiCapable</item>
-        <item>fr:qwertz:AsciiCapable</item>
+        <item>de:qwerty</item>
+        <item>fr:qwertz</item>
     </string-array>
 </resources>

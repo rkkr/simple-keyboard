@@ -25,27 +25,6 @@ public final class Constants {
         public final static int ALPHA_OPAQUE = 255;
     }
 
-    public static final class ImeOption {
-        /**
-         * The private IME option used to indicate that no settings key should be shown for a given
-         * text field.
-         */
-        public static final String NO_SETTINGS_KEY = "noSettingsKey";
-
-        /**
-         * The private IME option used to indicate that the given text field needs ASCII code points
-         * input.
-         *
-         * @deprecated Use EditorInfo#IME_FLAG_FORCE_ASCII.
-         */
-        @SuppressWarnings("dep-ann")
-        public static final String FORCE_ASCII = "forceAscii";
-
-        private ImeOption() {
-            // This utility class is not publicly instantiable.
-        }
-    }
-
     public static final class Subtype {
         /**
          * The subtype mode used to indicate that the subtype is a keyboard.
@@ -53,12 +32,6 @@ public final class Constants {
         public static final String KEYBOARD_MODE = "keyboard";
 
         public static final class ExtraValue {
-            /**
-             * The subtype extra value used to indicate that this subtype is capable of
-             * entering ASCII characters.
-             */
-            public static final String ASCII_CAPABLE = "AsciiCapable";
-
             /**
              * The subtype extra value used to indicate that the display name of this subtype
              * contains a "%s" for printf-like replacement and it should be replaced by

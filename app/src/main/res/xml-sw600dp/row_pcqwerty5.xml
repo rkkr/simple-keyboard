@@ -24,9 +24,9 @@
     <Row
         latin:keyWidth="7.0%p"
     >
-        <include
+        <Key
             latin:keyWidth="9.0%p"
-            latin:keyboardLayout="@xml/key_settings" />
+            latin:keyStyle="settingsKeyStyle" />
         <switch>
             <case
                 latin:languageSwitchKeyEnabled="true"

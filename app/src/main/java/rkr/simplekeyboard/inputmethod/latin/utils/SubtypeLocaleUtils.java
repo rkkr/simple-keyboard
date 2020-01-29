@@ -288,8 +288,7 @@ public final class SubtypeLocaleUtils {
             // This subtype doesn't have a keyboardLayoutSet extra value, so lookup its keyboard
             // layout set in sLocaleAndExtraValueToKeyboardLayoutSetMap to keep it compatible with
             // pre-JellyBean.
-            final String key = subtype.getLocale() + ":" + subtype.getExtraValue();
-            keyboardLayoutSet = sLocaleAndExtraValueToKeyboardLayoutSetMap.get(key);
+            keyboardLayoutSet = sLocaleAndExtraValueToKeyboardLayoutSetMap.get(subtype.getLocale());
         }
         // TODO: Remove this null check when InputMethodManager.getCurrentInputMethodSubtype is
         // fixed.

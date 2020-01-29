@@ -26,7 +26,6 @@ import java.util.Arrays;
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.ASCII_CAPABLE;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.IS_ADDITIONAL_SUBTYPE;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
@@ -50,11 +49,10 @@ public final class AdditionalSubtypeUtils {
     private static final String PREF_SUBTYPE_SEPARATOR = ";";
 
     private static InputMethodSubtype createAdditionalSubtypeInternal(
-            final String localeString, final String keyboardLayoutSetName,
-            final boolean isAsciiCapable) {
+            final String localeString, final String keyboardLayoutSetName) {
         final int nameId = SubtypeLocaleUtils.getSubtypeNameId(localeString, keyboardLayoutSetName);
         final String platformVersionDependentExtraValues = getPlatformVersionDependentExtraValue(
-                localeString, keyboardLayoutSetName, isAsciiCapable);
+                localeString, keyboardLayoutSetName);
         final int platformVersionIndependentSubtypeId =
                 getPlatformVersionIndependentSubtypeId(localeString, keyboardLayoutSetName);
         InputMethodSubtype.InputMethodSubtypeBuilder builder = new InputMethodSubtype.InputMethodSubtypeBuilder();
@@ -70,16 +68,9 @@ public final class AdditionalSubtypeUtils {
         return builder.build();
     }
 
-    public static InputMethodSubtype createDummyAdditionalSubtype(
+    public static InputMethodSubtype createAdditionalSubtype(
             final String localeString, final String keyboardLayoutSetName) {
-        return createAdditionalSubtypeInternal(localeString, keyboardLayoutSetName,
-                false /* isAsciiCapable */);
-    }
-
-    public static InputMethodSubtype createAsciiEmojiCapableAdditionalSubtype(
-            final String localeString, final String keyboardLayoutSetName) {
-        return createAdditionalSubtypeInternal(localeString, keyboardLayoutSetName,
-                true /* isAsciiCapable */);
+        return createAdditionalSubtypeInternal(localeString, keyboardLayoutSetName);
     }
 
     public static String getPrefSubtype(final InputMethodSubtype subtype) {
@@ -113,7 +104,7 @@ public final class AdditionalSubtypeUtils {
             final String keyboardLayoutSetName = elems[INDEX_OF_KEYBOARD_LAYOUT];
             // Here we assume that all the additional subtypes have AsciiCapable and EmojiCapable.
             // This is actually what the setting dialog for additional subtype is doing.
-            final InputMethodSubtype subtype = createAsciiEmojiCapableAdditionalSubtype(
+            final InputMethodSubtype subtype = createAdditionalSubtype(
                     localeString, keyboardLayoutSetName);
             if (subtype.getNameResId() == SubtypeLocaleUtils.UNKNOWN_KEYBOARD_LAYOUT) {
                 // Skip unknown keyboard layout subtype. This may happen when predefined keyboard
@@ -162,16 +153,12 @@ public final class AdditionalSubtypeUtils {
      * regenerate the extra value on the fly instead.
      * </p>
      * @param keyboardLayoutSetName the keyboard layout set name (e.g., "dvorak").
-     * @param isAsciiCapable true when ASCII characters are supported with this layout.
      * @return extra value that is optimized for the running OS.
      * @see #getPlatformVersionIndependentSubtypeId(String, String)
      */
-    private static String getPlatformVersionDependentExtraValue(final String localeString, final String keyboardLayoutSetName, final boolean isAsciiCapable) {
+    private static String getPlatformVersionDependentExtraValue(final String localeString, final String keyboardLayoutSetName) {
         final ArrayList<String> extraValueItems = new ArrayList<>();
         extraValueItems.add(KEYBOARD_LAYOUT_SET + "=" + keyboardLayoutSetName);
-        if (isAsciiCapable) {
-            extraValueItems.add(ASCII_CAPABLE);
-        }
         if (SubtypeLocaleUtils.isExceptionalLocale(localeString)) {
             extraValueItems.add(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME + "=" +
                     SubtypeLocaleUtils.getKeyboardLayoutSetDisplayName(keyboardLayoutSetName));
@@ -206,7 +193,6 @@ public final class AdditionalSubtypeUtils {
         // - isAdditionalSubtype
         final ArrayList<String> compatibilityExtraValueItems = new ArrayList<>();
         compatibilityExtraValueItems.add(KEYBOARD_LAYOUT_SET + "=" + keyboardLayoutSetName);
-        compatibilityExtraValueItems.add(ASCII_CAPABLE);
         if (SubtypeLocaleUtils.isExceptionalLocale(localeString)) {
             compatibilityExtraValueItems.add(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME + "=" +
                     SubtypeLocaleUtils.getKeyboardLayoutSetDisplayName(keyboardLayoutSetName));

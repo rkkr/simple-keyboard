@@ -77,39 +77,39 @@
 
     <!-- Compatibility map from subtypeLocale:subtypeExtraValue to keyboardLayoutSet -->
     <string-array name="locale_and_extra_value_to_keyboard_layout_set_map">
-        <item>en_US:TrySuppressingImeSwitcher,AsciiCapable</item>
+        <item>en_US</item>
         <item>qwerty</item>
-        <item>en_GB:TrySuppressingImeSwitcher,AsciiCapable</item>
+        <item>en_GB</item>
         <item>qwerty</item>
-        <item>cs:AsciiCapable</item>
+        <item>cs</item>
         <item>qwertz</item>
-        <item>da:AsciiCapable</item>
+        <item>da</item>
         <item>nordic</item>
-        <item>de:AsciiCapable</item>
+        <item>de</item>
         <item>qwertz</item>
-        <item>es:AsciiCapable</item>
+        <item>es</item>
         <item>spanish</item>
-        <item>fi:AsciiCapable</item>
+        <item>fi</item>
         <item>nordic</item>
-        <item>fr:AsciiCapable</item>
+        <item>fr</item>
         <item>azerty</item>
-        <item>fr_CA:AsciiCapable</item>
+        <item>fr_CA</item>
         <item>qwerty</item>
-        <item>hr:AsciiCapable</item>
+        <item>hr</item>
         <item>qwertz</item>
-        <item>hu:AsciiCapable</item>
+        <item>hu</item>
         <item>qwertz</item>
-        <item>it:AsciiCapable</item>
+        <item>it</item>
         <item>qwerty</item>
-        <item>nb:AsciiCapable</item>
+        <item>nb</item>
         <item>nordic</item>
-        <item>nl:AsciiCapable</item>
+        <item>nl</item>
         <item>qwerty</item>
-        <item>pl:AsciiCapable</item>
+        <item>pl</item>
         <item>qwerty</item>
-        <item>sv:AsciiCapable</item>
+        <item>sv</item>
         <item>nordic</item>
-        <item>tr:AsciiCapable</item>
+        <item>tr</item>
         <item>qwerty</item>
     </string-array>
 </resources>

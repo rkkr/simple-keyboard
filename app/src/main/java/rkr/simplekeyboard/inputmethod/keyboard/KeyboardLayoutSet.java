@@ -37,12 +37,9 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardBuilder;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardParams;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.UniqueKeysCache;
-import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils;
-
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.ImeOption.NO_SETTINGS_KEY;
 
 /**
  * This class represents a set of keyboard layouts. Each of them represents a different keyboard
@@ -96,7 +93,6 @@ public final class KeyboardLayoutSet {
         int mMode;
         // TODO: Use {@link InputAttributes} instead of these variables.
         EditorInfo mEditorInfo;
-        boolean mNoSettingsKey;
         boolean mLanguageSwitchKeyEnabled;
         RichInputMethodSubtype mSubtype;
         int mKeyboardWidth;
@@ -200,7 +196,6 @@ public final class KeyboardLayoutSet {
 
     public static final class Builder {
         private final Context mContext;
-        private final String mPackageName;
         private final Resources mResources;
 
         private final Params mParams = new Params();
@@ -209,7 +204,6 @@ public final class KeyboardLayoutSet {
 
         public Builder(final Context context, final EditorInfo ei) {
             mContext = context;
-            mPackageName = context.getPackageName();
             mResources = context.getResources();
             final Params params = mParams;
 
@@ -217,8 +211,6 @@ public final class KeyboardLayoutSet {
             params.mMode = getKeyboardMode(editorInfo);
             // TODO: Consolidate those with {@link InputAttributes}.
             params.mEditorInfo = editorInfo;
-            params.mNoSettingsKey = InputAttributes.inPrivateImeOptions(
-                    mPackageName, NO_SETTINGS_KEY, editorInfo);
         }
 
         public Builder setKeyboardGeometry(final int keyboardWidth, final int keyboardHeight) {

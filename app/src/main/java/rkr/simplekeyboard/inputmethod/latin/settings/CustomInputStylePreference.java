@@ -181,7 +181,7 @@ final class CustomInputStylePreference extends DialogPreference
                 final KeyboardLayoutSetItem layout =
                         (KeyboardLayoutSetItem) mKeyboardLayoutSetSpinner.getSelectedItem();
                 final InputMethodSubtype subtype =
-                        AdditionalSubtypeUtils.createAsciiEmojiCapableAdditionalSubtype(
+                        AdditionalSubtypeUtils.createAdditionalSubtype(
                                 locale.mLocaleString, layout.mLayoutName);
                 setSubtype(subtype);
                 notifyChanged();
@@ -335,7 +335,7 @@ final class CustomInputStylePreference extends DialogPreference
             // TODO: Should filter out already existing combinations of locale and layout.
             for (final String layout : predefinedKeyboardLayoutSet) {
                 // This is a dummy subtype with NO_LANGUAGE, only for display.
-                final InputMethodSubtype subtype = AdditionalSubtypeUtils.createDummyAdditionalSubtype("en_US", layout);
+                final InputMethodSubtype subtype = AdditionalSubtypeUtils.createAdditionalSubtype("en_US", layout);
                 add(new KeyboardLayoutSetItem(subtype));
             }
         }
