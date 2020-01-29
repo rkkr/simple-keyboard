@@ -36,7 +36,13 @@
     <string name="subtype_en_GB">"İngilizce (BK)"</string>
     <string name="subtype_en_US">"İngilizce (ABD)"</string>
     <string name="subtype_es_US">"İspanyolca (ABD)"</string>
+    <string name="subtype_hi_ZZ">"Hingilizce"</string>
     <string name="subtype_sr_ZZ">"Sırpça (Latin alfabesi)"</string>
+    <string name="subtype_with_layout_en_GB">"İngilizce (İngiltere) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_en_US">"İngilizce (ABD) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_es_US">"İspanyolca (ABD) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_hi_ZZ">"Hingilizce (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_sr_ZZ">"Sırpça (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Geleneksel)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Kompakt)"</string>
     <string name="subtype_no_language">"Dil yok (Alfabe)"</string>

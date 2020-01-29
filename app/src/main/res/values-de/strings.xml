@@ -36,7 +36,13 @@
     <string name="subtype_en_GB">"Englisch (UK)"</string>
     <string name="subtype_en_US">"Englisch (USA)"</string>
     <string name="subtype_es_US">"Spanisch (USA)"</string>
+    <string name="subtype_hi_ZZ">"Hinglish"</string>
     <string name="subtype_sr_ZZ">"Serbisch (Lateinisch)"</string>
+    <string name="subtype_with_layout_en_GB">"Englisch (GB) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_en_US">"Englisch (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_es_US">"Spanisch (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_sr_ZZ">"Serbisch (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditionell)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompakt)"</string>
     <string name="subtype_no_language">"Keine Sprache (lat. Alphabet)"</string>

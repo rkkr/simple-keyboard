@@ -36,7 +36,13 @@
     <string name="subtype_en_GB">"Inglise (UK)"</string>
     <string name="subtype_en_US">"Inglise (USA)"</string>
     <string name="subtype_es_US">"hispaania (USA)"</string>
+    <string name="subtype_hi_ZZ">"Hindi-inglise"</string>
     <string name="subtype_sr_ZZ">"Serbia (ladina)"</string>
+    <string name="subtype_with_layout_en_GB">"Inglise (Ühendk.) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_en_US">"Inglise (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_es_US">"Hispaania (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_hi_ZZ">"Hindi-inglise (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_sr_ZZ">"Serbia (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditsiooniline)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktne)"</string>
     <string name="subtype_no_language">"Keel puudub (tähestik)"</string>

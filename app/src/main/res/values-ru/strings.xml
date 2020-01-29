@@ -36,7 +36,13 @@
     <string name="subtype_en_GB">"английский (Великобритания)"</string>
     <string name="subtype_en_US">"английский (США)"</string>
     <string name="subtype_es_US">"Испанский (США)"</string>
+    <string name="subtype_hi_ZZ">"Хинглиш"</string>
     <string name="subtype_sr_ZZ">"Сербский (латиница)"</string>
+    <string name="subtype_with_layout_en_GB">"Английский (Великобритания, <xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_en_US">"Английский (США, <xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_es_US">"Испанский (США, <xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_hi_ZZ">"Хинглиш (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_sr_ZZ">"Сербский (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (классическая)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактная раскладка)"</string>
     <string name="subtype_no_language">"Язык не определен (латиница)"</string>

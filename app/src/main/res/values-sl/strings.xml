@@ -36,7 +36,13 @@
     <string name="subtype_en_GB">"angleščina (Združeno kraljestvo)"</string>
     <string name="subtype_en_US">"angleščina (ZDA)"</string>
     <string name="subtype_es_US">"španščina (ZDA)"</string>
+    <string name="subtype_hi_ZZ">"Hindujska angleščina"</string>
     <string name="subtype_sr_ZZ">"Srbščina (latinica)"</string>
+    <string name="subtype_with_layout_en_GB">"angleščina (VB) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_en_US">"angleščina (ZDA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_es_US">"španščina (ZDA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_hi_ZZ">"Hindujska angleščina (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_sr_ZZ">"Srbščina (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicionalna)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktna)"</string>
     <string name="subtype_no_language">"Brez jezika (latinice)"</string>

@@ -53,7 +53,8 @@ public final class AdditionalSubtypeUtils {
             final String localeString, final String keyboardLayoutSetName,
             final boolean isAsciiCapable) {
         final int nameId = SubtypeLocaleUtils.getSubtypeNameId(localeString, keyboardLayoutSetName);
-        final String platformVersionDependentExtraValues = getPlatformVersionDependentExtraValue(keyboardLayoutSetName, isAsciiCapable);
+        final String platformVersionDependentExtraValues = getPlatformVersionDependentExtraValue(
+                localeString, keyboardLayoutSetName, isAsciiCapable);
         final int platformVersionIndependentSubtypeId =
                 getPlatformVersionIndependentSubtypeId(localeString, keyboardLayoutSetName);
         InputMethodSubtype.InputMethodSubtypeBuilder builder = new InputMethodSubtype.InputMethodSubtypeBuilder();
@@ -165,11 +166,15 @@ public final class AdditionalSubtypeUtils {
      * @return extra value that is optimized for the running OS.
      * @see #getPlatformVersionIndependentSubtypeId(String, String)
      */
-    private static String getPlatformVersionDependentExtraValue(final String keyboardLayoutSetName, final boolean isAsciiCapable) {
+    private static String getPlatformVersionDependentExtraValue(final String localeString, final String keyboardLayoutSetName, final boolean isAsciiCapable) {
         final ArrayList<String> extraValueItems = new ArrayList<>();
         extraValueItems.add(KEYBOARD_LAYOUT_SET + "=" + keyboardLayoutSetName);
         if (isAsciiCapable) {
             extraValueItems.add(ASCII_CAPABLE);
+        }
+        if (SubtypeLocaleUtils.isExceptionalLocale(localeString)) {
+            extraValueItems.add(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME + "=" +
+                    SubtypeLocaleUtils.getKeyboardLayoutSetDisplayName(keyboardLayoutSetName));
         }
         extraValueItems.add(IS_ADDITIONAL_SUBTYPE);
         return TextUtils.join(",", extraValueItems);
