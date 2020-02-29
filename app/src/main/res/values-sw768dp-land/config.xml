@@ -34,7 +34,7 @@
 
     <fraction name="config_key_letter_ratio_lxx">50%</fraction>
     <dimen name="config_key_preview_offset_lxx">75dp</dimen>
-    <dimen name="config_key_preview_width_lxx">108dp</dimen>
+    <dimen name="config_key_preview_width_lxx">112dp</dimen>
     <fraction name="config_key_large_letter_ratio_lxx">60%</fraction>
     <fraction name="config_key_label_ratio_lxx">32%</fraction>
     <fraction name="config_key_hint_letter_ratio_lxx">23%</fraction>
