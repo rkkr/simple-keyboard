@@ -38,6 +38,8 @@
     <dimen name="config_more_keys_keyboard_slide_allowance">98.3dp</dimen>
 
     <fraction name="config_key_preview_text_ratio">50%</fraction>
+    <dimen name="config_key_preview_offset_lxx">68dp</dimen>
+    <dimen name="config_key_preview_width_lxx">68dp</dimen>
     <fraction name="config_key_letter_ratio_lxx">50%</fraction>
     <fraction name="config_key_large_letter_ratio_lxx">60%</fraction>
     <fraction name="config_key_label_ratio_lxx">32%</fraction>

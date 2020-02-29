@@ -40,6 +40,7 @@
     <fraction name="config_key_horizontal_gap_holo">1.565%p</fraction>
 
     <fraction name="config_key_preview_text_ratio">50%</fraction>
+    <dimen name="config_key_preview_offset_lxx">65dp</dimen>
     <fraction name="config_key_letter_ratio_lxx">50%</fraction>
     <fraction name="config_key_large_letter_ratio_lxx">60%</fraction>
     <fraction name="config_key_label_ratio_lxx">32%</fraction>

@@ -53,9 +53,6 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
         if (!AudioAndHapticFeedbackManager.getInstance().hasVibrator()) {
             removePreference(Settings.PREF_VIBRATE_ON);
         }
-        if (!Settings.readFromBuildConfigIfToShowKeyPreviewPopupOption(res)) {
-            removePreference(Settings.PREF_POPUP_ON);
-        }
 
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
     }

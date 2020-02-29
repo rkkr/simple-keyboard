@@ -41,6 +41,7 @@
     <dimen name="config_more_keys_keyboard_vertical_correction_holo">-22.4dp</dimen>
     <dimen name="config_key_preview_offset_lxx">43.6dp</dimen>
     <dimen name="config_key_preview_height_lxx">122dp</dimen>
+    <dimen name="config_key_preview_width_lxx">61dp</dimen>
     <fraction name="config_key_preview_text_ratio">90%</fraction>
     <fraction name="config_key_letter_ratio_lxx">65%</fraction>
     <fraction name="config_key_large_letter_ratio_lxx">90%</fraction>

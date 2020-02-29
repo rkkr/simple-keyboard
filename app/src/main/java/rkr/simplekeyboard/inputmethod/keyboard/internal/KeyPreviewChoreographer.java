@@ -106,7 +106,7 @@ public final class KeyPreviewChoreographer {
         keyPreviewView.measure(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mParams.setGeometry(keyPreviewView);
-        final int previewWidth = keyPreviewView.getMeasuredWidth();
+        final int previewWidth = Math.max(keyPreviewView.getMeasuredWidth(), mParams.mMinPreviewWidth);
         final int previewHeight = mParams.mPreviewHeight;
         final int keyDrawWidth = key.getDrawWidth();
         // The key preview is horizontally aligned with the center of the visible part of the

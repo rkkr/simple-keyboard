@@ -28,6 +28,7 @@ public final class KeyPreviewDrawParams {
     // XML attributes of {@link MainKeyboardView}.
     public final int mPreviewOffset;
     public final int mPreviewHeight;
+    public final int mMinPreviewWidth;
     public final int mPreviewBackgroundResId;
     private final int mDismissAnimatorResId;
     private int mLingerTimeout;
@@ -63,6 +64,8 @@ public final class KeyPreviewDrawParams {
                 R.styleable.MainKeyboardView_keyPreviewOffset, 0);
         mPreviewHeight = mainKeyboardViewAttr.getDimensionPixelSize(
                 R.styleable.MainKeyboardView_keyPreviewHeight, 0);
+        mMinPreviewWidth = mainKeyboardViewAttr.getDimensionPixelSize(
+                R.styleable.MainKeyboardView_keyPreviewWidth, 0);
         mPreviewBackgroundResId = mainKeyboardViewAttr.getResourceId(
                 R.styleable.MainKeyboardView_keyPreviewBackground, 0);
         mLingerTimeout = mainKeyboardViewAttr.getInt(
@@ -80,13 +83,13 @@ public final class KeyPreviewDrawParams {
     }
 
     public void setGeometry(final View previewTextView) {
-        final int previewWidth = previewTextView.getMeasuredWidth();
-        final int previewHeight = mPreviewHeight;
+        final int previewWidth = Math.max(previewTextView.getMeasuredWidth(), mMinPreviewWidth);
+
         // The width and height of visible part of the key preview background. The content marker
         // of the background 9-patch have to cover the visible part of the background.
         mVisibleWidth = previewWidth - previewTextView.getPaddingLeft()
                 - previewTextView.getPaddingRight();
-        mVisibleHeight = previewHeight - previewTextView.getPaddingTop()
+        mVisibleHeight = mPreviewHeight - previewTextView.getPaddingTop()
                 - previewTextView.getPaddingBottom();
         // The distance between the top edge of the parent key and the bottom of the visible part
         // of the key preview background.

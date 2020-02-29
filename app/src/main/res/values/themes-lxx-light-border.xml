@@ -57,6 +57,7 @@
     >
         <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background_lxx_light</item>
         <item name="keyPreviewHeight">@dimen/config_key_preview_height_lxx</item>
+        <item name="keyPreviewWidth">@dimen/config_key_preview_width_lxx</item>
         <item name="keyPreviewOffset">@dimen/config_key_preview_offset_lxx</item>
         <item name="keyPreviewDismissAnimator">@anim/key_preview_dismiss_lxx</item>
         <item name="slidingKeyInputPreviewColor">@color/sliding_key_input_preview_color_lxx_light</item>

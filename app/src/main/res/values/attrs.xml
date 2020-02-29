@@ -98,6 +98,8 @@
         <attr name="keyPreviewOffset" format="dimension" />
         <!-- Height of the key press feedback popup. -->
         <attr name="keyPreviewHeight" format="dimension" />
+        <!-- Min width of the key press feedback popup. -->
+        <attr name="keyPreviewWidth" format="dimension" />
         <!-- TODO: consolidate key preview linger timeout with the key preview animation parameters. -->
         <!-- Delay after key releasing and key press feedback dismissing in millisecond -->
         <attr name="keyPreviewLingerTimeout" format="integer" />
