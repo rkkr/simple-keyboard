@@ -60,4 +60,13 @@
     <string name="prefs_keypress_sound_volume_settings">"按键音量"</string>
     <string name="prefs_key_longpress_timeout_settings">"按键长按延迟"</string>
     <string name="button_default">"默认"</string>
+    <string name="prefs_keyboard_height_settings">键盘高度</string>
+    <string name="keyboard_color">设置自定义键盘颜色</string>
+    <string name="hide_special_chars">隐藏特殊字符</string>
+    <string name="hide_language_switch_key">隐藏语言转换键</string>
+    <string name="show_number_row">显示单独的数字行</string>
+    <string name="space_swipe">空格滑动光标移动</string>
+    <string name="delete_swipe">删除滑动</string>
+    <string name="matching_navbar_color">使用匹配的导航栏颜色</string>
+    <string name="setup_message">Simple Keyboard未被启用。点击OK打开语言&amp;输入设定。您需要在当前键盘中选择“Simple Keynoard”来使用它。</string>
 </resources>
