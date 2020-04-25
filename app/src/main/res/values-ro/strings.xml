@@ -67,4 +67,6 @@
     <string name="show_number_row">Arată un rând separat cu cifre</string>
     <string name="space_swipe">Glisarea pe tasta Spațiu mută cursorul</string>
     <string name="delete_swipe">Ștergere glisare</string>
+    <string name="matching_navbar_color">Utilizează o culoare potrivită pentru bara de navigare</string>
+    <string name="setup_message">Simple Keyboard nu este activată. Atingeți OK pentru a deschide setările de Limbă și metode de introducere. Va trebui să selectați Simple Keyboard în lista de tastaturi pentru a o putea folosi.</string>
 </resources>
