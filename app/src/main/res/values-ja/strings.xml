@@ -60,4 +60,13 @@
     <string name="prefs_keypress_sound_volume_settings">"キー操作音の音量"</string>
     <string name="prefs_key_longpress_timeout_settings">"キーの長押し時間"</string>
     <string name="button_default">"デフォルト"</string>
+    <string name="prefs_keyboard_height_settings">キーボードの高さ</string>
+    <string name="keyboard_color">カスタムキーボードの色を設定する</string>
+    <string name="hide_special_chars">特殊文字を隠す</string>
+    <string name="hide_language_switch_key">言語切り替えキーを非表示</string>
+    <string name="show_number_row">別の番号行を表示</string>
+    <string name="space_swipe">スペーススワイプカーソル移動</string>
+    <string name="delete_swipe">スワイプを削除</string>
+    <string name="matching_navbar_color">一致するナビゲーションバーの色を使用する</string>
+    <string name="setup_message">シンプルキーボードが有効になっていません. [OK]をクリックして言語を開きます. 入力設定. 使用するには、現在のキーボードでシンプルキーボードを選択する必要があります</string>
 </resources>
