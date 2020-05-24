@@ -522,11 +522,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 // mLastSelection{Start,End} are reset later in this method, no need to do it here
                 needToCallLoadKeyboardLater = true;
             } else {
-                // When rotating, and when input is starting again in a field from where the focus
-                // didn't move (the keyboard having been closed with the back key),
-                // initialSelStart and initialSelEnd sometimes are lying. Make a best effort to
-                // work around this bug.
-                mInputLogic.mConnection.tryFixLyingCursorPosition();
                 needToCallLoadKeyboardLater = false;
             }
         } else {
@@ -758,19 +753,30 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public void onMovePointer(int steps) {
-        for (;steps < 0; steps++)
-            mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_LEFT);
-        for (;steps > 0; steps--)
-            mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_RIGHT);
+        if (mInputLogic.mConnection.hasCursorPosition()) {
+            final int end = mInputLogic.mConnection.getExpectedSelectionEnd() + steps;
+            final int start = mInputLogic.mConnection.hasSelection() ? mInputLogic.mConnection.getExpectedSelectionStart() : end;
+            mInputLogic.mConnection.setSelection(start, end);
+        } else {
+            for (; steps < 0; steps++)
+                mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_LEFT);
+            for (; steps > 0; steps--)
+                mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_RIGHT);
+        }
     }
 
     @Override
     public void onMoveDeletePointer(int steps) {
-        int end = mInputLogic.mConnection.getExpectedSelectionEnd();
-        int start = mInputLogic.mConnection.getExpectedSelectionStart() + steps;
-        if (start > end)
-            return;
-        mInputLogic.mConnection.setSelection(start, end);
+        if (mInputLogic.mConnection.hasCursorPosition()) {
+            final int end = mInputLogic.mConnection.getExpectedSelectionEnd();
+            final int start = mInputLogic.mConnection.getExpectedSelectionStart() + steps;
+            if (start > end)
+                return;
+            mInputLogic.mConnection.setSelection(start, end);
+        } else {
+            for (; steps < 0; steps++)
+                mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
+        }
     }
 
     @Override

@@ -65,9 +65,6 @@ public final class InputLogic {
     public void startInput() {
         mRecapitalizeStatus.disable(); // Do not perform recapitalize until the cursor is moved once
         mCurrentlyPressedHardwareKeys.clear();
-        // In some cases (namely, after rotation of the device) editorInfo.initialSelStart is lying
-        // so we try using some heuristics to find out about these and fix them.
-        mConnection.tryFixLyingCursorPosition();
     }
 
     /**
@@ -576,7 +573,6 @@ public final class InputLogic {
             // If remainingTries is 0, we should stop waiting for new tries, however we'll still
             // return true as we need to perform other tasks (for example, loading the keyboard).
         }
-        mConnection.tryFixLyingCursorPosition();
         return true;
     }
 }

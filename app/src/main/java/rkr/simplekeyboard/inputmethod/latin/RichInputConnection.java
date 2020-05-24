@@ -54,8 +54,7 @@ public final class RichInputConnection {
      */
     private static final long SLOW_INPUT_CONNECTION_ON_FULL_RELOAD_MS = 1000;
     /**
-     * The amount of time a {@link #getTextBeforeCursor} or {@link #getTextAfterCursor} call needs
-     * to take for the keyboard to enter the {@link #hasSlowInputConnection} state.
+     * The amount of time a {@link #getTextBeforeCursor} call needs
      */
     private static final long SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS = 200;
 
@@ -75,12 +74,12 @@ public final class RichInputConnection {
      * It's not really the selection start position: the selection start may not be there yet, and
      * in some cases, it may never arrive there.
      */
-    public int mExpectedSelStart = INVALID_CURSOR_POSITION; // in chars, not code points
+    private int mExpectedSelStart = INVALID_CURSOR_POSITION; // in chars, not code points
     /**
      * The expected selection end.  Only differs from mExpectedSelStart if a non-empty selection is
      * expected.  The same caveats as mExpectedSelStart apply.
      */
-    public int mExpectedSelEnd = INVALID_CURSOR_POSITION; // in chars, not code points
+    private int mExpectedSelEnd = INVALID_CURSOR_POSITION; // in chars, not code points
     /**
      * This contains the committed text immediately preceding the cursor and the composing
      * text, if any. It is refreshed when the cursor moves by calling upon the TextView.
@@ -256,8 +255,10 @@ public final class RichInputConnection {
         // TODO: the following is exceedingly error-prone. Right now when the cursor is in the
         // middle of the composing word mComposingText only holds the part of the composing text
         // that is before the cursor, so this actually works, but it's terribly confusing. Fix this.
-        mExpectedSelStart += text.length() - mComposingText.length();
-        mExpectedSelEnd = mExpectedSelStart;
+        if (hasCursorPosition()) {
+            mExpectedSelStart += text.length() - mComposingText.length();
+            mExpectedSelEnd = mExpectedSelStart;
+        }
         mComposingText.setLength(0);
         if (isConnected()) {
             mTempObjectForCommitText.clear();
@@ -441,8 +442,10 @@ public final class RichInputConnection {
             switch (keyEvent.getKeyCode()) {
             case KeyEvent.KEYCODE_ENTER:
                 mCommittedTextBeforeComposingText.append("\n");
-                mExpectedSelStart += 1;
-                mExpectedSelEnd = mExpectedSelStart;
+                if (hasCursorPosition()) {
+                    mExpectedSelStart += 1;
+                    mExpectedSelEnd = mExpectedSelStart;
+                }
                 break;
             case KeyEvent.KEYCODE_DEL:
                 if (0 == mComposingText.length()) {
@@ -464,15 +467,19 @@ public final class RichInputConnection {
             case KeyEvent.KEYCODE_UNKNOWN:
                 if (null != keyEvent.getCharacters()) {
                     mCommittedTextBeforeComposingText.append(keyEvent.getCharacters());
-                    mExpectedSelStart += keyEvent.getCharacters().length();
-                    mExpectedSelEnd = mExpectedSelStart;
+                    if (hasCursorPosition()) {
+                        mExpectedSelStart += keyEvent.getCharacters().length();
+                        mExpectedSelEnd = mExpectedSelStart;
+                    }
                 }
                 break;
             default:
                 final String text = StringUtils.newSingleCodePointString(keyEvent.getUnicodeChar());
                 mCommittedTextBeforeComposingText.append(text);
-                mExpectedSelStart += text.length();
-                mExpectedSelEnd = mExpectedSelStart;
+                if (hasCursorPosition()) {
+                    mExpectedSelStart += text.length();
+                    mExpectedSelEnd = mExpectedSelStart;
+                }
                 break;
             }
         }
@@ -509,56 +516,6 @@ public final class RichInputConnection {
         return reloadTextCache();
     }
 
-    /**
-     * Try to get the text from the editor to expose lies the framework may have been
-     * telling us. Concretely, when the device rotates and when the keyboard reopens in the same
-     * text field after having been closed with the back key, the frameworks tells us about where
-     * the cursor used to be initially in the editor at the time it first received the focus; this
-     * may be completely different from the place it is upon rotation. Since we don't have any
-     * means to get the real value, try at least to ask the text view for some characters and
-     * detect the most damaging cases: when the cursor position is declared to be much smaller
-     * than it really is.
-     */
-    public void tryFixLyingCursorPosition() {
-        mIC = mParent.getCurrentInputConnection();
-        final CharSequence textBeforeCursor = getTextBeforeCursor(
-                Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
-        final CharSequence selectedText = isConnected() ? mIC.getSelectedText(0 /* flags */) : null;
-        if (null == textBeforeCursor ||
-                (!TextUtils.isEmpty(selectedText) && mExpectedSelEnd == mExpectedSelStart)) {
-            // If textBeforeCursor is null, we have no idea what kind of text field we have or if
-            // thinking about the "cursor position" actually makes any sense. In this case we
-            // remember a meaningless cursor position. Contrast this with an empty string, which is
-            // valid and should mean the cursor is at the start of the text.
-            // Also, if we expect we don't have a selection but we DO have non-empty selected text,
-            // then the framework lied to us about the cursor position. In this case, we should just
-            // revert to the most basic behavior possible for the next action (backspace in
-            // particular comes to mind), so we remember a meaningless cursor position which should
-            // result in degraded behavior from the next input.
-            // Interestingly, in either case, chances are any action the user takes next will result
-            // in a call to onUpdateSelection, which should set things right.
-            mExpectedSelStart = mExpectedSelEnd = Constants.NOT_A_CURSOR_POSITION;
-        } else {
-            final int textLength = textBeforeCursor.length();
-            if (textLength < Constants.EDITOR_CONTENTS_CACHE_SIZE
-                    && (textLength > mExpectedSelStart
-                            ||  mExpectedSelStart < Constants.EDITOR_CONTENTS_CACHE_SIZE)) {
-                // It should not be possible to have only one of those variables be
-                // NOT_A_CURSOR_POSITION, so if they are equal, either the selection is zero-sized
-                // (simple cursor, no selection) or there is no cursor/we don't know its pos
-                final boolean wasEqual = mExpectedSelStart == mExpectedSelEnd;
-                mExpectedSelStart = textLength;
-                // We can't figure out the value of mLastSelectionEnd :(
-                // But at least if it's smaller than mLastSelectionStart something is wrong,
-                // and if they used to be equal we also don't want to make it look like there is a
-                // selection.
-                if (wasEqual || mExpectedSelStart > mExpectedSelEnd) {
-                    mExpectedSelEnd = mExpectedSelStart;
-                }
-            }
-        }
-    }
-
     public int getExpectedSelectionStart() {
         return mExpectedSelStart;
     }
@@ -572,5 +529,9 @@ public final class RichInputConnection {
      */
     public boolean hasSelection() {
         return mExpectedSelEnd != mExpectedSelStart;
+    }
+
+    public boolean hasCursorPosition() {
+        return mExpectedSelStart != INVALID_CURSOR_POSITION && mExpectedSelEnd != INVALID_CURSOR_POSITION;
     }
 }
