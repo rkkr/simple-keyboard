@@ -19,7 +19,7 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Opcje wprowadzania"</string
+    <string name="english_ime_input_options">"Opcje wprowadzania"</string>
     <string name="vibrate_on_keypress">"Wibracja przy naciśnięciu"</string>
     <string name="sound_on_keypress">"Dźwięk przy naciśnięciu"</string>
     <string name="popup_on_keypress">"Powiększ przy naciśnięciu"</string>
