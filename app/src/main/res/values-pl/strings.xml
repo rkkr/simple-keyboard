@@ -19,10 +19,10 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Opcje wprowadzania"</string>
+    <string name="english_ime_input_options">"Opcje wprowadzania"</string
     <string name="vibrate_on_keypress">"Wibracja przy naciśnięciu"</string>
     <string name="sound_on_keypress">"Dźwięk przy naciśnięciu"</string>
-    <string name="popup_on_keypress">"Powiększ po naciśnięciu"</string>
+    <string name="popup_on_keypress">"Powiększ przy naciśnięciu"</string>
     <string name="settings_screen_preferences">"Ustawienia"</string>
     <string name="settings_screen_appearance">"Wygląd i układy"</string>
     <string name="settings_screen_advanced">"Zaawansowane"</string>
@@ -36,23 +36,23 @@
     <string name="subtype_en_GB">"angielski (Wielka Brytania)"</string>
     <string name="subtype_en_US">"angielski (Stany Zjednoczone)"</string>
     <string name="subtype_es_US">"hiszpański (USA)"</string>
-    <string name="subtype_hi_ZZ">"Hinglish"</string>
+    <string name="subtype_hi_ZZ">"hinglish"</string>
     <string name="subtype_sr_ZZ">"serbski (alfabet łaciński)"</string>
-    <string name="subtype_with_layout_en_GB">"Angielski (Wielka Brytania) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"Angielski (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"Hiszpański (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_en_GB">"angielski (Wielka Brytania) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_en_US">"angielski (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_es_US">"hiszpański (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_with_layout_hi_ZZ">"hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"serbski (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradycyjny)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktowa)"</string>
-    <string name="custom_input_styles_title">"Style niestandardowe"</string>
+    <string name="custom_input_styles_title">"Niestandardowe style wprowadzania"</string>
     <string name="add_style">"Dodaj styl"</string>
     <string name="add">"Dodaj"</string>
     <string name="remove">"Usuń"</string>
     <string name="save">"Zapisz"</string>
     <string name="subtype_locale">"Język"</string>
     <string name="keyboard_layout_set">"Układ"</string>
-    <string name="custom_input_style_note_message">"Niestandardowy styl wprowadzania trzeba przed użyciem włączyć. Zrobić to teraz?"</string>
+    <string name="custom_input_style_note_message">"Niestandardowy styl wprowadzania należy włączyć przed użyciem. Zrobić to teraz?"</string>
     <string name="enable">"Włącz"</string>
     <string name="not_now">"Nie teraz"</string>
     <string name="custom_input_style_already_exists">"Taki styl wprowadzania już istnieje: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
@@ -64,5 +64,9 @@
     <string name="keyboard_color">Ustaw niestandardowy kolor klawiatury</string>
     <string name="hide_special_chars">Ukryj specjalne znaki</string>
     <string name="hide_language_switch_key">Ukryj znak zmiany języka</string>
-    <string name="show_number_row">Pokaż oddzielne wierszowe numery</string>
+    <string name="show_number_row">Pokaż oddzielny rząd z numerami</string>
+    <string name="space_swipe">Przesuń kursor przeciągając spację</string>
+    <string name="delete_swipe">Usuń poprzez przesunięcie</string>
+    <string name="matching_navbar_color">Używaj pasującego koloru paska nawigacji</string>
+    <string name="setup_message">Simple Keyboard nie jest wlączona. Kliknij OK, żeby otworzyć ustawienia języka i wprowadzania. Następnie wybierz Simple Keyboard w ustawieniach klawiatury.</string>
 </resources>
