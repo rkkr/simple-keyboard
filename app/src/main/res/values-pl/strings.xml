@@ -68,5 +68,5 @@
     <string name="space_swipe">Przesuń kursor przeciągając spację</string>
     <string name="delete_swipe">Usuń poprzez przesunięcie</string>
     <string name="matching_navbar_color">Używaj pasującego koloru paska nawigacji</string>
-    <string name="setup_message">Simple Keyboard nie jest wlączona. Kliknij OK, żeby otworzyć ustawienia języka i wprowadzania. Następnie wybierz Simple Keyboard w ustawieniach klawiatury.</string>
+    <string name="setup_message">Simple Keyboard nie jest włączona. Kliknij OK, żeby otworzyć ustawienia języka i wprowadzania. Następnie wybierz Simple Keyboard w ustawieniach klawiatury.</string>
 </resources>
