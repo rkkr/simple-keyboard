@@ -34,6 +34,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.PrintWriterPrinter;
 import android.util.Printer;
@@ -754,6 +755,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public void onMovePointer(int steps) {
         if (mInputLogic.mConnection.hasCursorPosition()) {
+            if (TextUtils.getLayoutDirectionFromLocale(mSettings.getCurrent().mLocale) == View.LAYOUT_DIRECTION_RTL)
+                steps = -steps;
+
             final int end = mInputLogic.mConnection.getExpectedSelectionEnd() + steps;
             final int start = mInputLogic.mConnection.hasSelection() ? mInputLogic.mConnection.getExpectedSelectionStart() : end;
             mInputLogic.mConnection.setSelection(start, end);
