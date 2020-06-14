@@ -17,9 +17,15 @@
 ** limitations under the License.
 */
 -->
-
-<resources>
-    <style name="platformSettingsTheme" parent="@android:style/Theme.DeviceDefault.Settings" />
-    <style name="platformDialogTheme" parent="@android:style/Theme.DeviceDefault.Light.Dialog" />
-    <style name="platformViewTheme" parent="@android:style/Theme.Material.Light" />
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- An element must be a keyboard theme id of
+         {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
+    <integer-array name="keyboard_theme_ids" translatable="false" tools:ignore="InconsistentArrays">
+        <item>3</item>
+        <item>4</item>
+        <item>1</item>
+        <item>2</item>
+        <item>5</item>
+        <item>6</item>
+    </integer-array>
 </resources>
