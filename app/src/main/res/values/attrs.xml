@@ -124,6 +124,7 @@
             <enum name="LXXLight" value="3" />
             <enum name="LXXDark" value="4" />
             <enum name="LXXSystem" value="5" />
+            <enum name="LXXSystemBorder" value="6" />
         </attr>
         <!-- Keyboard top, bottom, left, right edges paddings, in propotion of keyboard height. -->
         <attr name="keyboardTopPadding" format="fraction" />
@@ -343,6 +344,7 @@
             <enum name="LXXLight" value="3" />
             <enum name="LXXDark" value="4" />
             <enum name="LXXSystem" value="5" />
+            <enum name="LXXSystemBorder" value="6" />
         </attr>
         <!-- This should be aligned with
              {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardId#MODE_TEXT} etc. -->

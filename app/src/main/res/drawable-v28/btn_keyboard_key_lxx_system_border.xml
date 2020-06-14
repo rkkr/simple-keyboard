@@ -23,19 +23,22 @@
 
     <!-- Toggle keys. Use checkable/checked state. -->
     <item android:state_checkable="true" android:state_checked="true" android:state_pressed="true"
-          android:drawable="@android:color/transparent" />
+          android:drawable="@drawable/btn_keyboard_key_normal_lxx_system" />
     <item android:state_checkable="true" android:state_pressed="true"
           android:drawable="@drawable/btn_keyboard_key_pressed_lxx_system_border" />
     <item android:state_checkable="true" android:state_checked="true"
           android:drawable="@drawable/btn_keyboard_key_pressed_lxx_system_border" />
     <item android:state_checkable="true"
-          android:drawable="@android:color/transparent" />
+          android:drawable="@drawable/btn_keyboard_key_normal_lxx_system" />
 
     <!-- Empty background keys. -->
     <item android:state_empty="true" android:state_pressed="true"
           android:drawable="@drawable/btn_keyboard_key_pressed_lxx_system_border" />
+    <item android:state_empty="true"
+          android:drawable="@android:color/transparent" />
 
     <!-- Normal keys. -->
     <item android:state_pressed="true"
           android:drawable="@drawable/btn_keyboard_key_pressed_lxx_system_border" />
+    <item android:drawable="@drawable/btn_keyboard_key_normal_lxx_system" />
 </selector>
