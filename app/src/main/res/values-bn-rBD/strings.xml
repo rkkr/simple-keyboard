@@ -60,4 +60,14 @@
     <string name="prefs_keypress_sound_volume_settings">"কীপ্রেস সাউন্ড ভলিউম"</string>
     <string name="prefs_key_longpress_timeout_settings">"কী প্রেসে দীর্ঘ বিলম্ব"</string>
     <string name="button_default">"ডিফল্ট"</string>
+    <string name="prefs_keyboard_height_settings">কীবোর্ডের উচ্চতা</string>
+    <string name="keyboard_color">কীবোর্ডের ভিন্ন রং নির্ধারণ করো</string>
+    <string name="hide_special_chars">বিশেষ চিহ্ন লুকাও</string>
+    <string name="hide_language_switch_key">ভাষা পরিবর্তনের কী লুকাও</string>
+    <string name="show_number_row">আলাদা নম্বরের সারি দেখাও</string>
+    <string name="space_swipe">স্পেস সোয়াইপ দিয়ে কার্সর সরাও</string>
+    <string name="delete_swipe">সোয়াইপ মুছো</string>
+    <string name="matching_navbar_color">ন্যাভিগেশন বারে মানানসই রং ব্যবহার করো</string>
+    <string name="setup_message">সিম্পল কিবোর্ড সক্রিয় করা নেই। ভাষা সেটিংস &amp; পরিবর্তন করতে OK/আচ্ছা টিপ দাও। তোমার কীবোর্ডে সিম্পল কীবোর্ড বা Simple Keyboard টিপ দিতে হবে।</string>
+
 </resources>

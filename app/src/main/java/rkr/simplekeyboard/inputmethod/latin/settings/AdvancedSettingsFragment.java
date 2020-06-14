@@ -25,6 +25,7 @@ import android.os.Bundle;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet;
+import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 
 /**
@@ -57,12 +58,12 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             removePreference(Settings.PREF_MATCHING_NAVBAR_COLOR);
         }
+        refreshEnablingsOfSettings();
 
         setupKeypressVibrationDurationSettings();
         setupKeypressSoundVolumeSettings();
         setupKeyLongpressTimeoutSettings();
         setupKeyboardHeightSettings();
-        refreshEnablingsOfKeypressSoundAndVibrationSettings();
         setupKeyboardColorSettings();
     }
 
@@ -72,16 +73,20 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
                 key.equals(Settings.PREF_SHOW_NUMBER_ROW))
             KeyboardLayoutSet.onKeyboardThemeChanged();
 
-        refreshEnablingsOfKeypressSoundAndVibrationSettings();
+        refreshEnablingsOfSettings();
     }
 
-    private void refreshEnablingsOfKeypressSoundAndVibrationSettings() {
+    private void refreshEnablingsOfSettings() {
         final SharedPreferences prefs = getSharedPreferences();
         final Resources res = getResources();
         setPreferenceEnabled(Settings.PREF_VIBRATION_DURATION_SETTINGS,
                 Settings.readVibrationEnabled(prefs, res));
         setPreferenceEnabled(Settings.PREF_KEYPRESS_SOUND_VOLUME,
                 Settings.readKeypressSoundEnabled(prefs, res));
+        final KeyboardTheme theme = KeyboardTheme.getKeyboardTheme(prefs);
+        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR,
+                theme.mThemeId != KeyboardTheme.THEME_ID_SYSTEM
+                        && theme.mThemeId != KeyboardTheme.THEME_ID_SYSTEM_BORDER);
     }
 
     private void setupKeypressVibrationDurationSettings() {

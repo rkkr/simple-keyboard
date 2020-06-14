@@ -35,6 +35,8 @@ public final class KeyboardTheme {
     public static final int THEME_ID_DARK_BORDER = 2;
     public static final int THEME_ID_LIGHT = 3;
     public static final int THEME_ID_DARK = 4;
+    public static final int THEME_ID_SYSTEM = 5;
+    public static final int THEME_ID_SYSTEM_BORDER = 6;
     public static final int DEFAULT_THEME_ID = THEME_ID_LIGHT;
 
     /* package private for testing */
@@ -43,6 +45,8 @@ public final class KeyboardTheme {
         new KeyboardTheme(THEME_ID_DARK, "LXXDark", R.style.KeyboardTheme_LXX_Dark),
         new KeyboardTheme(THEME_ID_LIGHT_BORDER, "LXXLightBorder", R.style.KeyboardTheme_LXX_Light_Border),
         new KeyboardTheme(THEME_ID_DARK_BORDER, "LXXDarkBorder", R.style.KeyboardTheme_LXX_Dark_Border),
+        new KeyboardTheme(THEME_ID_SYSTEM, "LXXSystem", R.style.KeyboardTheme_LXX_System),
+        new KeyboardTheme(THEME_ID_SYSTEM_BORDER, "LXXSystemBorder", R.style.KeyboardTheme_LXX_System_Border),
     };
 
     public final int mThemeId;
@@ -96,6 +100,10 @@ public final class KeyboardTheme {
 
     public static KeyboardTheme getKeyboardTheme(final Context context) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return getKeyboardTheme(prefs);
+    }
+
+    public static KeyboardTheme getKeyboardTheme(final SharedPreferences prefs) {
         final String themeIdString = prefs.getString(KEYBOARD_THEME_KEY, null);
         if (themeIdString == null) {
             return searchKeyboardThemeById(THEME_ID_LIGHT);

@@ -49,7 +49,7 @@ public final class ThemeSettingsFragment extends SubScreenFragment
         final KeyboardTheme keyboardTheme = KeyboardTheme.getKeyboardTheme(context);
         final String[] keyboardThemeNames = res.getStringArray(R.array.keyboard_theme_names);
         final int[] keyboardThemeIds = res.getIntArray(R.array.keyboard_theme_ids);
-        for (int index = 0; index < keyboardThemeNames.length; index++) {
+        for (int index = 0; index < keyboardThemeIds.length; index++) {
             if (keyboardTheme.mThemeId == keyboardThemeIds[index]) {
                 pref.setSummary(keyboardThemeNames[index]);
                 return;
@@ -66,7 +66,7 @@ public final class ThemeSettingsFragment extends SubScreenFragment
         final Resources res = getResources();
         final String[] keyboardThemeNames = res.getStringArray(R.array.keyboard_theme_names);
         final int[] keyboardThemeIds = res.getIntArray(R.array.keyboard_theme_ids);
-        for (int index = 0; index < keyboardThemeNames.length; index++) {
+        for (int index = 0; index < keyboardThemeIds.length; index++) {
             final KeyboardThemePreference pref = new KeyboardThemePreference(
                     context, keyboardThemeNames[index], keyboardThemeIds[index]);
             screen.addPreference(pref);

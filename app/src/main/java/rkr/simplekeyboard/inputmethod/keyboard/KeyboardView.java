@@ -259,7 +259,7 @@ public class KeyboardView extends View {
 
         final Paint paint = mPaint;
         final Drawable background = getBackground();
-        if (keyboard.getKey(Constants.CODE_SPACE) != null) {
+        if (Color.alpha(mCustomColor) > 0 && keyboard.getKey(Constants.CODE_SPACE) != null) {
             setBackgroundColor(mCustomColor);
         }
         // Calculate clip region and set.

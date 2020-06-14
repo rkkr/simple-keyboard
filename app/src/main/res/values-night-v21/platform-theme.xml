@@ -20,6 +20,6 @@
 
 <resources>
     <style name="platformSettingsTheme" parent="@android:style/Theme.DeviceDefault.Settings" />
-    <style name="platformDialogTheme" parent="@android:style/Theme.DeviceDefault.Light.Dialog" />
-    <style name="platformViewTheme" parent="@android:style/Theme.Material.Light" />
+    <style name="platformDialogTheme" parent="@android:style/Theme.DeviceDefault.Dialog" />
+    <style name="platformViewTheme" parent="@android:style/Theme.Material" />
 </resources>
