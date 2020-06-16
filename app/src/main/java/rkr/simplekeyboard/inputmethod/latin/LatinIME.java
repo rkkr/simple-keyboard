@@ -383,12 +383,15 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // have a change in hardware keyboard configuration.
             loadSettings();
         }
+
+        mKeyboardSwitcher.updateKeyboardTheme(conf.uiMode);
+
         super.onConfigurationChanged(conf);
     }
 
     @Override
     public View onCreateInputView() {
-        return mKeyboardSwitcher.onCreateInputView();
+        return mKeyboardSwitcher.onCreateInputView(getResources().getConfiguration().uiMode);
     }
 
     @Override
@@ -450,7 +453,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mHandler.postSwitchLanguage(newSubtype);
     }
 
-    @SuppressWarnings("deprecation")
     void onStartInputViewInternal(final EditorInfo editorInfo, final boolean restarting) {
         super.onStartInputView(editorInfo, restarting);
 
@@ -458,7 +460,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // also wouldn't be consuming gesture data.
         mRichImm.refreshSubtypeCaches();
         final KeyboardSwitcher switcher = mKeyboardSwitcher;
-        switcher.updateKeyboardTheme();
+        switcher.updateKeyboardTheme(getResources().getConfiguration().uiMode);
         final MainKeyboardView mainKeyboardView = switcher.getMainKeyboardView();
         // If we are starting input in a different text field from before, we'll have to reload
         // settings, so currentSettingsValues can't be final.
