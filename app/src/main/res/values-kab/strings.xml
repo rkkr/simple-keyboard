@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="select_language">Tutlayin</string>
+    <string name="language_selection_title">Tutlayin</string>
+    <string name="settings_screen_theme">Agrudem</string>
+    <string name="settings_screen_advanced">Talqayt</string>
+</resources>
