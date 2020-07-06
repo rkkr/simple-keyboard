@@ -140,9 +140,6 @@ public final class InputLogic {
             }
             currentEvent = currentEvent.mNextEvent;
         }
-        if (event.mKeyCode != Constants.CODE_SHIFT
-                && event.mKeyCode != Constants.CODE_CAPSLOCK
-                && event.mKeyCode != Constants.CODE_SWITCH_ALPHA_SYMBOL)
         mConnection.endBatchEdit();
         return inputTransaction;
     }
