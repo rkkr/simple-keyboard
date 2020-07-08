@@ -99,6 +99,7 @@ public final class CapsModeUtils {
                 break;
             }
         }
+        final int newCapIndex = i;
 
         // We are now on the character that precedes any starting punctuation, so in the most
         // frequent case this will be whitespace or a letter, although it may occasionally be a
@@ -108,23 +109,24 @@ public final class CapsModeUtils {
         // we go back over any space or tab char sitting there. We find the start of a paragraph
         // if the first char that's not a space or tab is a start of line (as in \n, start of text,
         // or some other similar characters).
-        int j = i;
         char prevChar = Constants.CODE_SPACE;
-        while (j > 0) {
-            prevChar = cs.charAt(j - 1);
-            if (!Character.isSpaceChar(prevChar) && prevChar != Constants.CODE_TAB) break;
-            j--;
+        while (i > 0) {
+            prevChar = cs.charAt(i - 1);
+            if (!Character.isSpaceChar(prevChar) && prevChar != Constants.CODE_TAB) {
+                break;
+            }
+            i--;
         }
-        if (j <= 0 || Character.isWhitespace(prevChar)) {
+        if (i <= 0 || Character.isWhitespace(prevChar)) {
             if (spacingAndPunctuations.mUsesGermanRules) {
                 // In German typography rules, there is a specific case that the first character
                 // of a new line should not be capitalized if the previous line ends in a comma.
                 boolean hasNewLine = false;
-                while (--j >= 0 && Character.isWhitespace(prevChar)) {
+                while (--i >= 0 && Character.isWhitespace(prevChar)) {
                     if (Constants.CODE_ENTER == prevChar) {
                         hasNewLine = true;
                     }
-                    prevChar = cs.charAt(j);
+                    prevChar = cs.charAt(i);
                 }
                 if (Constants.CODE_COMMA == prevChar && hasNewLine) {
                     return (TextUtils.CAP_MODE_CHARACTERS | TextUtils.CAP_MODE_WORDS) & reqModes;
@@ -136,15 +138,18 @@ public final class CapsModeUtils {
             return (TextUtils.CAP_MODE_CHARACTERS | TextUtils.CAP_MODE_WORDS
                     | TextUtils.CAP_MODE_SENTENCES) & reqModes;
         }
-        if (i == j) {
-            // If we don't have whitespace before index i, it means neither MODE_WORDS
+        if (newCapIndex == i) {
+            if (spacingAndPunctuations.isWordSeparator(prevChar)) {
+                return (TextUtils.CAP_MODE_CHARACTERS | TextUtils.CAP_MODE_WORDS) & reqModes;
+            }
+            // If we don't have whitespace before newCapIndex, it means neither MODE_WORDS
             // nor mode sentences should be on so we can return right away.
             return TextUtils.CAP_MODE_CHARACTERS & reqModes;
         }
         if ((reqModes & TextUtils.CAP_MODE_SENTENCES) == 0) {
             // Here we know we have whitespace before the cursor (if not, we returned in the above
-            // if i == j clause), so we need MODE_WORDS to be on. And we don't need to evaluate
-            // MODE_SENTENCES so we can return right away.
+            // if newCapIndex == i clause), so we need MODE_WORDS to be on. And we don't need to
+            // evaluate MODE_SENTENCES so we can return right away.
             return (TextUtils.CAP_MODE_CHARACTERS | TextUtils.CAP_MODE_WORDS) & reqModes;
         }
         // Please note that because of the reqModes & CAP_MODE_SENTENCES test a few lines above,
@@ -159,11 +164,11 @@ public final class CapsModeUtils {
         // mark as the exact thing quoted and handling the surrounding punctuation independently,
         // e.g. <<Did he say, "let's go home"?>>
         if (spacingAndPunctuations.mUsesAmericanTypography) {
-            for (; j > 0; j--) {
+            for (; i > 0; i--) {
                 // Here we look to go over any closing punctuation. This is because in dominant
                 // variants of English, the final period is placed within double quotes and maybe
                 // other closing punctuation signs. This is generally not true in other languages.
-                final char c = cs.charAt(j - 1);
+                final char c = cs.charAt(i - 1);
                 if (c != Constants.CODE_DOUBLE_QUOTE && c != Constants.CODE_SINGLE_QUOTE
                         && Character.getType(c) != Character.END_PUNCTUATION) {
                     break;
@@ -171,8 +176,10 @@ public final class CapsModeUtils {
             }
         }
 
-        if (j <= 0) return TextUtils.CAP_MODE_CHARACTERS & reqModes;
-        char c = cs.charAt(--j);
+        if (i <= 0) {
+            return TextUtils.CAP_MODE_CHARACTERS & reqModes;
+        }
+        char c = cs.charAt(--i);
 
         // We found the next interesting chunk of text ; next we need to determine if it's the
         // end of a sentence. If we have a sentence terminator (typically a question mark or an
@@ -191,7 +198,7 @@ public final class CapsModeUtils {
         // point as the abbreviation marker.
         // If it's a symbol or something that does not terminate the sentence, then we need to
         // return caps for MODE_CHARACTERS and MODE_WORDS, but not for MODE_SENTENCES.
-        if (!spacingAndPunctuations.isSentenceSeparator(c) || j <= 0) {
+        if (!spacingAndPunctuations.isSentenceSeparator(c) || i <= 0) {
             return (TextUtils.CAP_MODE_CHARACTERS | TextUtils.CAP_MODE_WORDS) & reqModes;
         }
 
@@ -235,8 +242,8 @@ public final class CapsModeUtils {
                 | TextUtils.CAP_MODE_SENTENCES) & reqModes;
         final int noCaps = (TextUtils.CAP_MODE_CHARACTERS | TextUtils.CAP_MODE_WORDS) & reqModes;
         int state = START;
-        while (j > 0) {
-            c = cs.charAt(--j);
+        while (i > 0) {
+            c = cs.charAt(--i);
             switch (state) {
             case START:
                 if (Character.isLetter(c)) {
