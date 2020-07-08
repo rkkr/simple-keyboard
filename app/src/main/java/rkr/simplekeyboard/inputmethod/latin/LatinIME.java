@@ -527,6 +527,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             } else {
                 needToCallLoadKeyboardLater = false;
             }
+
+            mInputLogic.onUpdateSelection(editorInfo.initialSelStart, editorInfo.initialSelEnd);
         } else {
             // If we have a hardware keyboard we don't need to call loadKeyboard later anyway.
             needToCallLoadKeyboardLater = false;
