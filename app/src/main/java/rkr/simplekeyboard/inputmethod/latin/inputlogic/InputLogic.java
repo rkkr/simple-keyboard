@@ -65,10 +65,6 @@ public final class InputLogic {
     public void startInput() {
         mRecapitalizeStatus.disable(); // Do not perform recapitalize until the cursor is moved once
         mCurrentlyPressedHardwareKeys.clear();
-        if (mConnection.hasCursorPosition()) {
-            onUpdateSelection(mConnection.getExpectedSelectionStart(),
-                    mConnection.getExpectedSelectionEnd());
-        }
     }
 
     /**
