@@ -140,9 +140,6 @@ public final class InputLogic {
             }
             currentEvent = currentEvent.mNextEvent;
         }
-        if (event.mKeyCode != Constants.CODE_SHIFT
-                && event.mKeyCode != Constants.CODE_CAPSLOCK
-                && event.mKeyCode != Constants.CODE_SWITCH_ALPHA_SYMBOL)
         mConnection.endBatchEdit();
         return inputTransaction;
     }
@@ -403,9 +400,7 @@ public final class InputLogic {
             final CharSequence selectedText =
                     mConnection.getSelectedText(0 /* flags, 0 for no styles */);
             if (TextUtils.isEmpty(selectedText)) return; // Race condition with the input connection
-            mRecapitalizeStatus.start(selectionStart, selectionEnd, selectedText.toString(),
-                    settingsValues.mLocale,
-                    settingsValues.mSpacingAndPunctuations.mSortedWordSeparators);
+            mRecapitalizeStatus.start(selectionStart, selectionEnd, selectedText.toString(), settingsValues.mLocale);
             // We trim leading and trailing whitespace.
             mRecapitalizeStatus.trim();
         }

@@ -223,8 +223,7 @@ public final class StringUtils {
         return true;
     }
 
-    public static boolean isIdenticalAfterCapitalizeEachWord(final String text,
-            final int[] sortedSeparators) {
+    public static boolean isIdenticalAfterCapitalizeEachWord(final String text) {
         boolean needsCapsNext = true;
         final int len = text.length();
         for (int i = 0; i < len; i = text.offsetByCodePoints(i, 1)) {
@@ -235,16 +234,15 @@ public final class StringUtils {
                     return false;
                 }
             }
-            // We need a capital letter next if this is a separator.
-            needsCapsNext = (Arrays.binarySearch(sortedSeparators, codePoint) >= 0);
+            // We need a capital letter next if this is a whitespace.
+            needsCapsNext = Character.isWhitespace(codePoint);
         }
         return true;
     }
 
     // TODO: like capitalizeFirst*, this does not work perfectly for Dutch because of the IJ digraph
     // which should be capitalized together in *some* cases.
-    public static String capitalizeEachWord(final String text,
-            final int[] sortedSeparators, final Locale locale) {
+    public static String capitalizeEachWord(final String text, final Locale locale) {
         final StringBuilder builder = new StringBuilder();
         boolean needsCapsNext = true;
         final int len = text.length();
@@ -255,8 +253,8 @@ public final class StringUtils {
             } else {
                 builder.append(nextChar.toLowerCase(locale));
             }
-            // We need a capital letter next if this is a separator.
-            needsCapsNext = (Arrays.binarySearch(sortedSeparators, nextChar.codePointAt(0)) >= 0);
+            // We need a capital letter next if this is a whitespace.
+            needsCapsNext = Character.isWhitespace(nextChar.codePointAt(0));
         }
         return builder.toString();
     }
