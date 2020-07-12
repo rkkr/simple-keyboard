@@ -16,6 +16,8 @@
 
 package rkr.simplekeyboard.inputmethod.latin.common;
 
+import android.text.TextUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
@@ -27,41 +29,8 @@ public final class StringUtils {
         // This utility class is not publicly instantiable.
     }
 
-    // Taken from android.text.TextUtils. We are extensively using this method in many places,
-    // some of which don't have the android libraries available.
-    /**
-     * Returns true if the string is null or 0-length.
-     * @param str the string to be examined
-     * @return true if str is null or zero length
-     */
-    public static boolean isEmpty(final CharSequence str) {
-        return (str == null || str.length() == 0);
-    }
-
-    // Taken from android.text.TextUtils to cut the dependency to the Android framework.
-    /**
-     * Returns a string containing the tokens joined by delimiters.
-     * @param delimiter the delimiter
-     * @param tokens an array objects to be joined. Strings will be formed from
-     *     the objects by calling object.toString().
-     */
-    public static String join(final CharSequence delimiter,
-            final Iterable<?> tokens) {
-        final StringBuilder sb = new StringBuilder();
-        boolean firstTime = true;
-        for (final Object token: tokens) {
-            if (firstTime) {
-                firstTime = false;
-            } else {
-                sb.append(delimiter);
-            }
-            sb.append(token);
-        }
-        return sb.toString();
-    }
-
     public static int codePointCount(final CharSequence text) {
-        if (isEmpty(text)) {
+        if (TextUtils.isEmpty(text)) {
             return 0;
         }
         return Character.codePointCount(text, 0, text.length());
@@ -96,7 +65,7 @@ public final class StringUtils {
 
     public static boolean containsInCommaSplittableText(final String text,
             final String extraValues) {
-        if (isEmpty(extraValues)) {
+        if (TextUtils.isEmpty(extraValues)) {
             return false;
         }
         return containsInArray(text, extraValues.split(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT));
@@ -104,7 +73,7 @@ public final class StringUtils {
 
     public static String removeFromCommaSplittableTextIfExists(final String text,
             final String extraValues) {
-        if (isEmpty(extraValues)) {
+        if (TextUtils.isEmpty(extraValues)) {
             return EMPTY_STRING;
         }
         final String[] elements = extraValues.split(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT);
@@ -117,7 +86,7 @@ public final class StringUtils {
                 result.add(element);
             }
         }
-        return join(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT, result);
+        return TextUtils.join(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT, result);
     }
 
     public static String capitalizeFirstCodePoint(final String s,
