@@ -139,7 +139,9 @@ public final class CapsModeUtils {
                     | TextUtils.CAP_MODE_SENTENCES) & reqModes;
         }
         if (newCapIndex == i) {
-            if (spacingAndPunctuations.isWordSeparator(prevChar)) {
+            // The last character is all that really needs to be checked to determine if a new word
+            // is being started.
+            if (spacingAndPunctuations.isWordSeparator(cs.charAt(cs.length() - 1))) {
                 return (TextUtils.CAP_MODE_CHARACTERS | TextUtils.CAP_MODE_WORDS) & reqModes;
             }
             // If we don't have whitespace before newCapIndex, it means neither MODE_WORDS
