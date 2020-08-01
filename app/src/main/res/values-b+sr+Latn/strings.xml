@@ -60,4 +60,13 @@
     <string name="prefs_keypress_sound_volume_settings">"Jačina zvuka pri pritisku"</string>
     <string name="prefs_key_longpress_timeout_settings">"Odlaganje pri dugom pritisku"</string>
     <string name="button_default">"Podrazumevano"</string>
+    <string name="prefs_keyboard_height_settings">Visina tastature</string>
+    <string name="keyboard_color">Postavi boju tastature</string>
+    <string name="hide_special_chars">Sakrij specijalne karaktere</string>
+    <string name="hide_language_switch_key">Sakrij dugme za promenu jezika</string>
+    <string name="show_number_row">Prikaži odvojeni red sa brojevima</string>
+    <string name="space_swipe">Prevlačenjem preko razmaka pomera se selektor</string>
+    <string name="delete_swipe">Brisanje prevlačenjem</string>
+    <string name="matching_navbar_color">Koristi boju navigacione trake</string>
+    <string name="setup_message">Simple Keyboard nije omogućena. Kliknite OK da otvorite podešavanja jezika i unosa. Treba da selektujete Simple Keyboard kao vašu podrazumevanu tastaturu da biste je koristili.</string>
 </resources>
