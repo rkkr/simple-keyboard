@@ -302,7 +302,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         mMoreKeysKeyboardCache.clear();
 
         mSpaceKey = keyboard.getKey(Constants.CODE_SPACE);
-        final int keyHeight = keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap;
+        final int keyHeight = keyboard.mMostCommonKeyHeight - Math.round(keyboard.mVerticalGap);
         mLanguageOnSpacebarTextSize = keyHeight * mLanguageOnSpacebarTextRatio;
     }
 
@@ -353,7 +353,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         }
         final KeyPreviewDrawParams previewParams = mKeyPreviewDrawParams;
         if (!previewParams.isPopupEnabled()) {
-            previewParams.setVisibleOffset(-keyboard.mVerticalGap);
+            previewParams.setVisibleOffset(-Math.round(keyboard.mVerticalGap));
             return;
         }
 

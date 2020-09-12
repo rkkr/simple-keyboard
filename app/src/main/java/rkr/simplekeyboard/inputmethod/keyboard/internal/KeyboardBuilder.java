@@ -231,32 +231,35 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             final int width = params.mId.mWidth;
             params.mOccupiedHeight = height;
             params.mOccupiedWidth = width;
-            params.mTopPadding = (int)keyboardAttr.getFraction(
+            params.mTopPadding = keyboardAttr.getFraction(
                     R.styleable.Keyboard_keyboardTopPadding, height, height, 0);
-            params.mBottomPadding = (int)keyboardAttr.getFraction(
+            params.mBottomPadding = keyboardAttr.getFraction(
                     R.styleable.Keyboard_keyboardBottomPadding, height, height, 0);
-            params.mLeftPadding = (int)keyboardAttr.getFraction(
+            params.mLeftPadding = keyboardAttr.getFraction(
                     R.styleable.Keyboard_keyboardLeftPadding, width, width, 0);
-            params.mRightPadding = (int)keyboardAttr.getFraction(
+            params.mRightPadding = keyboardAttr.getFraction(
                     R.styleable.Keyboard_keyboardRightPadding, width, width, 0);
 
-            final int baseWidth =
+            final float baseWidth =
                     params.mOccupiedWidth - params.mLeftPadding - params.mRightPadding;
             params.mBaseWidth = baseWidth;
-            params.mDefaultKeyWidth = (int)keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
-                    baseWidth, baseWidth, baseWidth / DEFAULT_KEYBOARD_COLUMNS);
-            params.mHorizontalGap = (int)keyboardAttr.getFraction(
-                    R.styleable.Keyboard_horizontalGap, baseWidth, baseWidth, 0);
+            params.mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
+                    (int)(baseWidth * 100), (int)(baseWidth * 100),
+                    baseWidth * 100 / DEFAULT_KEYBOARD_COLUMNS) / 100;
+            params.mHorizontalGap = keyboardAttr.getFraction(
+                    R.styleable.Keyboard_horizontalGap, (int)(baseWidth * 100),
+                    (int)(baseWidth * 100), 0) / 100;
             // TODO: Fix keyboard geometry calculation clearer. Historically vertical gap between
             // rows are determined based on the entire keyboard height including top and bottom
             // paddings.
-            params.mVerticalGap = (int)keyboardAttr.getFraction(
+            params.mVerticalGap = keyboardAttr.getFraction(
                     R.styleable.Keyboard_verticalGap, height, height, 0);
-            final int baseHeight = params.mOccupiedHeight - params.mTopPadding
+            final float baseHeight = params.mOccupiedHeight - params.mTopPadding
                     - params.mBottomPadding + params.mVerticalGap;
             params.mBaseHeight = baseHeight;
-            params.mDefaultRowHeight = (int)ResourceUtils.getDimensionOrFraction(keyboardAttr,
-                    R.styleable.Keyboard_rowHeight, baseHeight, baseHeight / DEFAULT_KEYBOARD_ROWS);
+            params.mDefaultRowHeight = ResourceUtils.getDimensionOrFraction(keyboardAttr,
+                    R.styleable.Keyboard_rowHeight, (int)(baseHeight * 100),
+                    baseHeight * 100 / DEFAULT_KEYBOARD_ROWS) / 100;
 
             params.mKeyVisualAttributes = KeyVisualAttributes.newInstance(keyAttr);
 
@@ -430,12 +433,11 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                 final int labelFlags = row.getDefaultKeyLabelFlags();
                 // TODO: Should be able to assign default keyActionFlags as well.
                 final int backgroundType = row.getDefaultBackgroundType();
-                final int x = (int)row.getKeyX(null);
-                final int y = row.getKeyY();
-                final int width = (int)keyWidth;
-                final int height = row.getRowHeight();
+                final float x = row.getKeyX(null);
+                final float y = row.getKeyY();
+                final float height = row.getRowHeight();
                 final Key key = new Key(label, KeyboardIconsSet.ICON_UNDEFINED, code, outputText,
-                        null /* hintLabel */, labelFlags, backgroundType, x, y, width, height,
+                        null /* hintLabel */, labelFlags, backgroundType, x, y, keyWidth, height,
                         mParams.mHorizontalGap, mParams.mVerticalGap);
                 endKey(key);
                 row.advanceXPos(keyWidth);
@@ -509,8 +511,9 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                 attr, R.styleable.Keyboard_Include);
         final TypedArray includeAttr = mResources.obtainAttributes(
                 attr, R.styleable.Keyboard);
-        mParams.mDefaultRowHeight = (int)ResourceUtils.getDimensionOrFraction(includeAttr,
-                R.styleable.Keyboard_rowHeight, mParams.mBaseHeight, mParams.mDefaultRowHeight);
+        mParams.mDefaultRowHeight = ResourceUtils.getDimensionOrFraction(includeAttr,
+                R.styleable.Keyboard_rowHeight, (int)(mParams.mBaseHeight * 100),
+                mParams.mDefaultRowHeight * 100) / 100;
 
         final TypedArray keyAttr = mResources.obtainAttributes(attr, R.styleable.Keyboard_Key);
         int keyboardLayout = 0;
@@ -812,7 +815,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         mParams.removeRedundantMoreKeys();
         // {@link #parseGridRows(XmlPullParser,boolean)} may populate keyboard rows higher than
         // previously expected.
-        final int actualHeight = mCurrentY - mParams.mVerticalGap + mParams.mBottomPadding;
+        final int actualHeight = Math.round(mCurrentY - mParams.mVerticalGap + mParams.mBottomPadding);
         mParams.mOccupiedHeight = Math.max(mParams.mOccupiedHeight, actualHeight);
     }
 

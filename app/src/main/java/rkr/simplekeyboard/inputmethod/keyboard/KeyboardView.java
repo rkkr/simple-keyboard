@@ -168,7 +168,7 @@ public class KeyboardView extends View {
      */
     public void setKeyboard(final Keyboard keyboard) {
         mKeyboard = keyboard;
-        final int keyHeight = keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap;
+        final int keyHeight = keyboard.mMostCommonKeyHeight - Math.round(keyboard.mVerticalGap);
         mKeyDrawParams.updateParams(keyHeight, mKeyVisualAttributes);
         mKeyDrawParams.updateParams(keyHeight, keyboard.mKeyVisualAttributes);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());

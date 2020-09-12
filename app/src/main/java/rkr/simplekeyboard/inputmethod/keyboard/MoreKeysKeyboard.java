@@ -31,7 +31,7 @@ public final class MoreKeysKeyboard extends Keyboard {
 
     MoreKeysKeyboard(final MoreKeysKeyboardParams params) {
         super(params);
-        mDefaultKeyCoordX = params.getDefaultKeyCoordX() + params.mDefaultKeyWidth / 2;
+        mDefaultKeyCoordX = Math.round(params.getDefaultKeyCoordX() + params.mDefaultKeyWidth / 2);
     }
 
     public int getDefaultCoordX() {
@@ -46,7 +46,7 @@ public final class MoreKeysKeyboard extends Keyboard {
         public int mTopKeys;
         public int mLeftKeys;
         public int mRightKeys; // includes default key.
-        public int mColumnWidth;
+        public float mColumnWidth;
 
         public MoreKeysKeyboardParams() {
             super();
@@ -68,8 +68,8 @@ public final class MoreKeysKeyboard extends Keyboard {
          *   the more keys' specification. Otherwise the order of more keys is automatically
          *   determined.
          */
-        public void setParameters(final int numKeys, final int numColumn, final int keyWidth,
-                final int rowHeight, final int coordXInParent, final int parentKeyboardWidth,
+        public void setParameters(final int numKeys, final int numColumn, final float keyWidth,
+                final float rowHeight, final int coordXInParent, final int parentKeyboardWidth,
                 final boolean isMoreKeysFixedColumn, final boolean isMoreKeysFixedOrder) {
             mIsMoreKeysFixedOrder = isMoreKeysFixedOrder;
             if (parentKeyboardWidth / keyWidth < Math.min(numKeys, numColumn)) {
@@ -90,8 +90,8 @@ public final class MoreKeysKeyboard extends Keyboard {
             final int numLeftKeys = (numColumns - 1) / 2;
             final int numRightKeys = numColumns - numLeftKeys; // including default key.
             // Maximum number of keys we can layout both side of the parent key
-            final int maxLeftKeys = coordXInParent / keyWidth;
-            final int maxRightKeys = (parentKeyboardWidth - coordXInParent) / keyWidth;
+            final int maxLeftKeys = (int)(coordXInParent / keyWidth);
+            final int maxRightKeys = (int)((parentKeyboardWidth - coordXInParent) / keyWidth);
             int leftKeys, rightKeys;
             if (numLeftKeys > maxLeftKeys) {
                 leftKeys = maxLeftKeys;
@@ -122,10 +122,12 @@ public final class MoreKeysKeyboard extends Keyboard {
             mTopRowAdjustment = isMoreKeysFixedOrder ? getFixedOrderTopRowAdjustment()
                     : getAutoOrderTopRowAdjustment();
             mColumnWidth = mDefaultKeyWidth;
-            mBaseWidth = mOccupiedWidth = mNumColumns * mColumnWidth;
+            mBaseWidth = mNumColumns * mColumnWidth;
+            mOccupiedWidth = Math.round(mBaseWidth);
             // Need to subtract the bottom row's gutter only.
-            mBaseHeight = mOccupiedHeight = mNumRows * mDefaultRowHeight - mVerticalGap
-                    + mTopPadding + mBottomPadding;
+            mBaseHeight = mNumRows * mDefaultRowHeight - mVerticalGap + mTopPadding
+                    + mBottomPadding;
+            mOccupiedHeight = Math.round(mBaseHeight);
         }
 
         private int getFixedOrderTopRowAdjustment() {
@@ -219,19 +221,19 @@ public final class MoreKeysKeyboard extends Keyboard {
             return numColumns;
         }
 
-        public int getDefaultKeyCoordX() {
+        public float getDefaultKeyCoordX() {
             return mLeftKeys * mColumnWidth + mLeftPadding;
         }
 
-        public int getX(final int n, final int row) {
-            final int x = getColumnPos(n) * mColumnWidth + getDefaultKeyCoordX();
+        public float getX(final int n, final int row) {
+            final float x = getColumnPos(n) * mColumnWidth + getDefaultKeyCoordX();
             if (isTopRow(row)) {
                 return x + mTopRowAdjustment * (mColumnWidth / 2);
             }
             return x;
         }
 
-        public int getY(final int row) {
+        public float getY(final int row) {
             return (mNumRows - 1 - row) * mDefaultRowHeight + mTopPadding;
         }
 
@@ -275,7 +277,7 @@ public final class MoreKeysKeyboard extends Keyboard {
             // This {@link MoreKeysKeyboard} is invoked from the <code>key</code>.
             mParentKey = key;
 
-            final int keyWidth, rowHeight;
+            final float keyWidth, rowHeight;
             if (isSingleMoreKeyWithPreview) {
                 // Use pre-computed width and height if this more keys keyboard has only one key to
                 // mitigate visual flicker between key preview and more keys keyboard.
@@ -300,15 +302,15 @@ public final class MoreKeysKeyboard extends Keyboard {
                     key.isMoreKeysFixedColumn(), key.isMoreKeysFixedOrder());
         }
 
-        private static int getMaxKeyWidth(final Key parentKey, final int minKeyWidth,
+        private static float getMaxKeyWidth(final Key parentKey, final float minKeyWidth,
                 final float padding, final Paint paint) {
-            int maxWidth = minKeyWidth;
+            float maxWidth = minKeyWidth;
             for (final MoreKeySpec spec : parentKey.getMoreKeys()) {
                 final String label = spec.mLabel;
                 // If the label is single letter, minKeyWidth is enough to hold the label.
                 if (label != null && StringUtils.codePointCount(label) > 1) {
                     maxWidth = Math.max(maxWidth,
-                            (int)(TypefaceUtils.getStringWidth(label, paint) + padding));
+                            TypefaceUtils.getStringWidth(label, paint) + padding);
                 }
             }
             return maxWidth;
@@ -322,8 +324,8 @@ public final class MoreKeysKeyboard extends Keyboard {
             for (int n = 0; n < moreKeys.length; n++) {
                 final MoreKeySpec moreKeySpec = moreKeys[n];
                 final int row = n / params.mNumColumns;
-                final int x = params.getX(n, row);
-                final int y = params.getY(row);
+                final float x = params.getX(n, row);
+                final float y = params.getY(row);
                 final Key key = moreKeySpec.buildKey(x, y, moreKeyFlags, params);
                 params.markAsEdgeKey(key, row);
                 params.onAddKey(key);

@@ -197,14 +197,21 @@ public class Key implements Comparable<Key> {
      * Constructor for a key on <code>MoreKeyKeyboard</code>, on <code>MoreSuggestions</code>,
      * and in a <GridRows/>.
      */
-    public Key(final String label, final int iconId, final int code,
-            final String outputText, final String hintLabel,
-            final int labelFlags, final int backgroundType, final int x, final int y,
-            final int width, final int height, final int horizontalGap, final int verticalGap) {
-        mWidth = width - horizontalGap;
-        mHeight = height - verticalGap;
-        mHorizontalGap = horizontalGap;
-        mVerticalGap = verticalGap;
+    public Key(final String label, final int iconId, final int code, final String outputText,
+               final String hintLabel, final int labelFlags, final int backgroundType,
+               final float x, final float y, final float width, final float rowHeight,
+               final float horizontalGap, final float verticalGap) {
+        final float keyHeight = rowHeight - verticalGap;
+        mHitBox.set(Math.round(x), Math.round(y), Math.round(x + width), Math.round(y + rowHeight));
+        // Horizontal gap is divided equally to both sides of the key.
+        mX = Math.round(x + horizontalGap / 2);
+        mY = mHitBox.top;
+        final int leftGap = mX - mHitBox.left;
+        final int rightGap = mHitBox.right - Math.round(x + width - horizontalGap / 2);
+        mHorizontalGap = leftGap + rightGap;
+        mWidth = mHitBox.width() - mHorizontalGap;
+        mHeight = Math.round(y + keyHeight) - mHitBox.top;
+        mVerticalGap = mHitBox.height() - mHeight;
         mHintLabel = hintLabel;
         mLabelFlags = labelFlags;
         mBackgroundType = backgroundType;
@@ -218,10 +225,6 @@ public class Key implements Comparable<Key> {
         mCode = code;
         mEnabled = (code != CODE_UNSPECIFIED);
         mIconId = iconId;
-        // Horizontal gap is divided equally to both sides of the key.
-        mX = x + mHorizontalGap / 2;
-        mY = y;
-        mHitBox.set(x, y, x + width + 1, y + height);
         mKeyVisualAttributes = null;
 
         mHashCode = computeHashCode(this);
@@ -241,30 +244,34 @@ public class Key implements Comparable<Key> {
     public Key(final String keySpec, final TypedArray keyAttr,
             final KeyStyle style, final KeyboardParams params,
             final KeyboardRow row) {
-        mHorizontalGap = isSpacer() ? 0 : params.mHorizontalGap;
-        mVerticalGap = params.mVerticalGap;
-
-        final float horizontalGapFloat = mHorizontalGap;
-        final int rowHeight = row.getRowHeight();
-        mHeight = rowHeight - mVerticalGap;
+        final float horizontalGap = isSpacer() ? 0 : params.mHorizontalGap;
+        final float rowHeight = row.getRowHeight();
 
         final float keyXPos = row.getKeyX(keyAttr);
-        final float keyWidth = row.getKeyWidth(keyAttr, keyXPos);
-        final int keyYPos = row.getKeyY();
+        final float keyFullWidth = row.getKeyWidth(keyAttr, keyXPos);
+        final float keyYPos = row.getKeyY();
 
+        final float keyHeight = rowHeight - params.mVerticalGap;
+
+        mHitBox.set(Math.round(keyXPos), Math.round(keyYPos), Math.round(keyXPos + keyFullWidth),
+                Math.round(keyYPos + rowHeight));
         // Horizontal gap is divided equally to both sides of the key.
-        mX = Math.round(keyXPos + horizontalGapFloat / 2);
-        mY = keyYPos;
-        mWidth = Math.round(keyWidth - horizontalGapFloat);
-        mHitBox.set(Math.round(keyXPos), keyYPos, Math.round(keyXPos + keyWidth) + 1,
-                keyYPos + rowHeight);
+        mX = Math.round(keyXPos + horizontalGap / 2);
+        mY = mHitBox.top;
+        final int leftGap = mX - mHitBox.left;
+        final int rightGap = mHitBox.right - Math.round(keyXPos + keyFullWidth - horizontalGap / 2);
+        mHorizontalGap = leftGap + rightGap;
+        mWidth = mHitBox.width() - mHorizontalGap;
+        mHeight = Math.round(keyYPos + keyHeight) - mHitBox.top;
+        mVerticalGap = mHitBox.height() - mHeight;
         // Update row to have current x coordinate.
-        row.setXPos(keyXPos + keyWidth);
+        row.setXPos(keyXPos + keyFullWidth);
 
         mBackgroundType = style.getInt(keyAttr,
                 R.styleable.Keyboard_Key_backgroundType, row.getDefaultBackgroundType());
 
-        final int baseWidth = params.mBaseWidth;
+        // truncate to be safe since the padding might not be a round number
+        final int baseWidth = (int)params.mBaseWidth;
         final int visualInsetsLeft = Math.round(keyAttr.getFraction(
                 R.styleable.Keyboard_Key_visualInsetsLeft, baseWidth, baseWidth, 0));
         final int visualInsetsRight = Math.round(keyAttr.getFraction(
@@ -536,19 +543,19 @@ public class Key implements Comparable<Key> {
     }
 
     public void markAsLeftEdge(final KeyboardParams params) {
-        mHitBox.left = params.mLeftPadding;
+        mHitBox.left = Math.round(params.mLeftPadding);
     }
 
     public void markAsRightEdge(final KeyboardParams params) {
-        mHitBox.right = params.mOccupiedWidth - params.mRightPadding;
+        mHitBox.right = params.mOccupiedWidth - Math.round(params.mRightPadding);
     }
 
     public void markAsTopEdge(final KeyboardParams params) {
-        mHitBox.top = params.mTopPadding;
+        mHitBox.top = Math.round(params.mTopPadding);
     }
 
     public void markAsBottomEdge(final KeyboardParams params) {
-        mHitBox.bottom = params.mOccupiedHeight + params.mBottomPadding;
+        mHitBox.bottom = params.mOccupiedHeight - Math.round(params.mBottomPadding);
     }
 
     public final boolean isSpacer() {
@@ -920,8 +927,8 @@ public class Key implements Comparable<Key> {
         /**
          * This constructor is being used only for divider in more keys keyboard.
          */
-        protected Spacer(final KeyboardParams params, final int x, final int y, final int width,
-                final int height) {
+        protected Spacer(final KeyboardParams params, final float x, final float y,
+                         final float width, final float height) {
             super(null /* label */, ICON_UNDEFINED, CODE_UNSPECIFIED, null /* outputText */,
                     null /* hintLabel */, 0 /* labelFlags */, BACKGROUND_TYPE_EMPTY, x, y, width,
                     height, params.mHorizontalGap, params.mVerticalGap);

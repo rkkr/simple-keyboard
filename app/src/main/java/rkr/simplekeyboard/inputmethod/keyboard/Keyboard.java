@@ -55,14 +55,14 @@ public class Keyboard {
     public final int mOccupiedWidth;
 
     /** Base height of the keyboard, used to calculate rows' height */
-    public final int mBaseHeight;
+    public final float mBaseHeight;
     /** Base width of the keyboard, used to calculate keys' width */
-    public final int mBaseWidth;
+    public final float mBaseWidth;
 
     /** The padding above the keyboard */
-    public final int mTopPadding;
+    public final float mTopPadding;
     /** Default gap between rows */
-    public final int mVerticalGap;
+    public final float mVerticalGap;
 
     /** Per keyboard key visual parameters */
     public final KeyVisualAttributes mKeyVisualAttributes;

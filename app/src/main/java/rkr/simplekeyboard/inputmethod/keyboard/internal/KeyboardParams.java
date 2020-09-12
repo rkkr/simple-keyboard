@@ -38,20 +38,20 @@ public class KeyboardParams {
     /** Base height and width of the keyboard used to calculate rows' or keys' heights and
      *  widths
      */
-    public int mBaseHeight;
-    public int mBaseWidth;
+    public float mBaseHeight;
+    public float mBaseWidth;
 
-    public int mTopPadding;
-    public int mBottomPadding;
-    public int mLeftPadding;
-    public int mRightPadding;
+    public float mTopPadding;
+    public float mBottomPadding;
+    public float mLeftPadding;
+    public float mRightPadding;
 
     public KeyVisualAttributes mKeyVisualAttributes;
 
-    public int mDefaultRowHeight;
-    public int mDefaultKeyWidth;
-    public int mHorizontalGap;
-    public int mVerticalGap;
+    public float mDefaultRowHeight;
+    public float mDefaultKeyWidth;
+    public float mHorizontalGap;
+    public float mVerticalGap;
 
     public int mMoreKeysTemplate;
     public int mMaxMoreKeysKeyboardColumn;
@@ -143,14 +143,14 @@ public class KeyboardParams {
     }
 
     private void updateHistogram(final Key key) {
-        final int height = key.getHeight() + mVerticalGap;
+        final int height = key.getHeight() + Math.round(mVerticalGap);
         final int heightCount = updateHistogramCounter(mHeightHistogram, height);
         if (heightCount > mMaxHeightCount) {
             mMaxHeightCount = heightCount;
             mMostCommonKeyHeight = height;
         }
 
-        final int width = key.getWidth() + mHorizontalGap;
+        final int width = key.getWidth() + Math.round(mHorizontalGap);
         final int widthCount = updateHistogramCounter(mWidthHistogram, width);
         if (widthCount > mMaxWidthCount) {
             mMaxWidthCount = widthCount;

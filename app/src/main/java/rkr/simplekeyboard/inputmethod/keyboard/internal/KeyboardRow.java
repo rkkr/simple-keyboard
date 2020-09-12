@@ -41,7 +41,7 @@ public final class KeyboardRow {
 
     private final KeyboardParams mParams;
     /** The height of this row. */
-    private final int mRowHeight;
+    private final float mRowHeight;
 
     private final ArrayDeque<RowAttributes> mRowAttributesStack = new ArrayDeque<>();
 
@@ -62,9 +62,10 @@ public final class KeyboardRow {
          * @param keyboardWidth the keyboard width that is required to calculate keyWidth attribute.
          */
         public RowAttributes(final TypedArray keyAttr, final float defaultKeyWidth,
-                final int keyboardWidth) {
+                final float keyboardWidth) {
             mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
-                    keyboardWidth, keyboardWidth, defaultKeyWidth);
+                    (int)(keyboardWidth * 100), (int)(keyboardWidth * 100),
+                    defaultKeyWidth * 100) / 100;
             mDefaultKeyLabelFlags = keyAttr.getInt(R.styleable.Keyboard_Key_keyLabelFlags, 0);
             mDefaultBackgroundType = keyAttr.getInt(R.styleable.Keyboard_Key_backgroundType,
                     Key.BACKGROUND_TYPE_NORMAL);
@@ -79,9 +80,10 @@ public final class KeyboardRow {
          * @param keyboardWidth the keyboard width that is required to calculate keyWidth attribute.
          */
         public RowAttributes(final TypedArray keyAttr, final RowAttributes defaultRowAttr,
-                final int keyboardWidth) {
+                final float keyboardWidth) {
             mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
-                    keyboardWidth, keyboardWidth, defaultRowAttr.mDefaultKeyWidth);
+                    (int)(keyboardWidth * 100), (int)(keyboardWidth * 100),
+                    defaultRowAttr.mDefaultKeyWidth * 100) / 100;
             mDefaultKeyLabelFlags = keyAttr.getInt(R.styleable.Keyboard_Key_keyLabelFlags, 0)
                     | defaultRowAttr.mDefaultKeyLabelFlags;
             mDefaultBackgroundType = keyAttr.getInt(R.styleable.Keyboard_Key_backgroundType,
@@ -89,17 +91,18 @@ public final class KeyboardRow {
         }
     }
 
-    private final int mCurrentY;
+    private final float mCurrentY;
     // Will be updated by {@link Key}'s constructor.
     private float mCurrentX;
 
     public KeyboardRow(final Resources res, final KeyboardParams params,
-            final XmlPullParser parser, final int y) {
+            final XmlPullParser parser, final float y) {
         mParams = params;
         final TypedArray keyboardAttr = res.obtainAttributes(Xml.asAttributeSet(parser),
                 R.styleable.Keyboard);
-        mRowHeight = (int)ResourceUtils.getDimensionOrFraction(keyboardAttr,
-                R.styleable.Keyboard_rowHeight, params.mBaseHeight, params.mDefaultRowHeight);
+        mRowHeight = ResourceUtils.getDimensionOrFraction(keyboardAttr,
+                R.styleable.Keyboard_rowHeight, (int)(params.mBaseHeight * 100),
+                params.mDefaultRowHeight * 100) / 100;
         keyboardAttr.recycle();
         final TypedArray keyAttr = res.obtainAttributes(Xml.asAttributeSet(parser),
                 R.styleable.Keyboard_Key);
@@ -111,7 +114,7 @@ public final class KeyboardRow {
         mCurrentX = 0.0f;
     }
 
-    public int getRowHeight() {
+    public float getRowHeight() {
         return mRowHeight;
     }
 
@@ -145,7 +148,7 @@ public final class KeyboardRow {
         mCurrentX += width;
     }
 
-    public int getKeyY() {
+    public float getKeyY() {
         return mCurrentY;
     }
 
@@ -154,7 +157,7 @@ public final class KeyboardRow {
             return mCurrentX;
         }
         final float keyXPos = keyAttr.getFraction(R.styleable.Keyboard_Key_keyXPos,
-                mParams.mBaseWidth, mParams.mBaseWidth, 0);
+                (int)(mParams.mBaseWidth * 100), (int)(mParams.mBaseWidth * 100), 0) / 100;
         if (keyXPos >= 0) {
             return keyXPos + mParams.mLeftPadding;
         }
@@ -163,7 +166,7 @@ public final class KeyboardRow {
         // keyXPos shouldn't be less than mCurrentX because drawable area for this
         // key starts at mCurrentX. Or, this key will overlaps the adjacent key on
         // its left hand side.
-        final int keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
+        final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
         return Math.max(keyXPos + keyboardRightEdge, mCurrentX);
     }
 
@@ -177,11 +180,12 @@ public final class KeyboardRow {
         case KEYWIDTH_FILL_RIGHT:
             // If keyWidth is fillRight, the actual key width will be determined to fill
             // out the area up to the right edge of the keyboard.
-            final int keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
+            final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
             return keyboardRightEdge - keyXPos;
         default: // KEYWIDTH_NOT_ENUM
             return keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
-                    mParams.mBaseWidth, mParams.mBaseWidth, getDefaultKeyWidth());
+                    (int)(mParams.mBaseWidth * 100), (int)(mParams.mBaseWidth * 100),
+                    getDefaultKeyWidth() * 100) / 100;
         }
     }
 }
