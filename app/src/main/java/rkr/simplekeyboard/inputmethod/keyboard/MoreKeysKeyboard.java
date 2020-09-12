@@ -72,7 +72,7 @@ public final class MoreKeysKeyboard extends Keyboard {
                 final float rowHeight, final int coordXInParent, final int parentKeyboardWidth,
                 final boolean isMoreKeysFixedColumn, final boolean isMoreKeysFixedOrder) {
             mIsMoreKeysFixedOrder = isMoreKeysFixedOrder;
-            if (parentKeyboardWidth / keyWidth < Math.min(numKeys, numColumn)) {
+            if (parentKeyboardWidth < Math.round(Math.min(numKeys, numColumn) * keyWidth)) {
                 throw new IllegalArgumentException("Keyboard is too small to hold more keys: "
                         + parentKeyboardWidth + " " + keyWidth + " " + numKeys + " " + numColumn);
             }
@@ -90,8 +90,14 @@ public final class MoreKeysKeyboard extends Keyboard {
             final int numLeftKeys = (numColumns - 1) / 2;
             final int numRightKeys = numColumns - numLeftKeys; // including default key.
             // Maximum number of keys we can layout both side of the parent key
-            final int maxLeftKeys = (int)(coordXInParent / keyWidth);
-            final int maxRightKeys = (int)((parentKeyboardWidth - coordXInParent) / keyWidth);
+            int maxLeftKeys = Math.round(coordXInParent / keyWidth);
+            if (Math.round(maxLeftKeys * keyWidth) > coordXInParent) {
+                maxLeftKeys--;
+            }
+            int maxRightKeys = Math.round((parentKeyboardWidth - coordXInParent) / keyWidth);
+            if (Math.round(maxRightKeys * keyWidth) > (parentKeyboardWidth - coordXInParent)) {
+                maxRightKeys--;
+            }
             int leftKeys, rightKeys;
             if (numLeftKeys > maxLeftKeys) {
                 leftKeys = maxLeftKeys;
