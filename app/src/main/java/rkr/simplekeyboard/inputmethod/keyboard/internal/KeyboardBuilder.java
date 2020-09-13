@@ -231,14 +231,14 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             final int width = params.mId.mWidth;
             params.mOccupiedHeight = height;
             params.mOccupiedWidth = width;
-            params.mTopPadding = keyboardAttr.getFraction(
-                    R.styleable.Keyboard_keyboardTopPadding, height, height, 0);
-            params.mBottomPadding = keyboardAttr.getFraction(
-                    R.styleable.Keyboard_keyboardBottomPadding, height, height, 0);
-            params.mLeftPadding = keyboardAttr.getFraction(
-                    R.styleable.Keyboard_keyboardLeftPadding, width, width, 0);
-            params.mRightPadding = keyboardAttr.getFraction(
-                    R.styleable.Keyboard_keyboardRightPadding, width, width, 0);
+            params.mTopPadding = ResourceUtils.getDimensionOrFraction(keyboardAttr,
+                    R.styleable.Keyboard_keyboardTopPadding, height, 0);
+            params.mBottomPadding = ResourceUtils.getDimensionOrFraction(keyboardAttr,
+                    R.styleable.Keyboard_keyboardBottomPadding, height, 0);
+            params.mLeftPadding = ResourceUtils.getDimensionOrFraction(keyboardAttr,
+                    R.styleable.Keyboard_keyboardLeftPadding, width, 0);
+            params.mRightPadding = ResourceUtils.getDimensionOrFraction(keyboardAttr,
+                    R.styleable.Keyboard_keyboardRightPadding, width, 0);
 
             final float baseWidth =
                     params.mOccupiedWidth - params.mLeftPadding - params.mRightPadding;

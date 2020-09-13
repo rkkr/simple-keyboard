@@ -28,6 +28,7 @@ import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
 
 public final class MoreKeysKeyboard extends Keyboard {
     private final int mDefaultKeyCoordX;
+    private static final float FLOAT_THRESHOLD = 0.0001f;
 
     MoreKeysKeyboard(final MoreKeysKeyboardParams params) {
         super(params);
@@ -69,13 +70,9 @@ public final class MoreKeysKeyboard extends Keyboard {
          *   determined.
          */
         public void setParameters(final int numKeys, final int numColumn, final float keyWidth,
-                final float rowHeight, final int coordXInParent, final int parentKeyboardWidth,
+                final float rowHeight, final float coordXInParent, final int parentKeyboardWidth,
                 final boolean isMoreKeysFixedColumn, final boolean isMoreKeysFixedOrder) {
             mIsMoreKeysFixedOrder = isMoreKeysFixedOrder;
-            if (parentKeyboardWidth < Math.round(Math.min(numKeys, numColumn) * keyWidth)) {
-                throw new IllegalArgumentException("Keyboard is too small to hold more keys: "
-                        + parentKeyboardWidth + " " + keyWidth + " " + numKeys + " " + numColumn);
-            }
             mDefaultKeyWidth = keyWidth;
             mDefaultRowHeight = rowHeight;
 
@@ -83,19 +80,27 @@ public final class MoreKeysKeyboard extends Keyboard {
             mNumRows = numRows;
             final int numColumns = isMoreKeysFixedColumn ? Math.min(numKeys, numColumn)
                     : getOptimizedColumns(numKeys, numColumn);
+            if (Math.round(parentKeyboardWidth - mLeftPadding - mRightPadding) < Math.round(
+                    Math.min(numKeys, numColumns) * keyWidth)) {
+                throw new IllegalArgumentException("Keyboard is too small to hold more keys: "
+                        + parentKeyboardWidth + " " + keyWidth + " " + numKeys + " " + numColumns);
+            }
             mNumColumns = numColumns;
             final int topKeys = numKeys % numColumns;
             mTopKeys = topKeys == 0 ? numColumns : topKeys;
 
             final int numLeftKeys = (numColumns - 1) / 2;
             final int numRightKeys = numColumns - numLeftKeys; // including default key.
-            // Maximum number of keys we can layout both side of the parent key
-            int maxLeftKeys = Math.round(coordXInParent / keyWidth);
-            if (Math.round(maxLeftKeys * keyWidth) > coordXInParent) {
+            // Maximum number of keys we can layout both side of the parent key's left edge
+            final float leftWidth = Math.max(coordXInParent - mLeftPadding - keyWidth / 2, 0);
+            int maxLeftKeys = Math.round(leftWidth / keyWidth);
+            if (maxLeftKeys * keyWidth > leftWidth + FLOAT_THRESHOLD) {
                 maxLeftKeys--;
             }
-            int maxRightKeys = Math.round((parentKeyboardWidth - coordXInParent) / keyWidth);
-            if (Math.round(maxRightKeys * keyWidth) > (parentKeyboardWidth - coordXInParent)) {
+            final float rightWidth = Math.max(
+                    parentKeyboardWidth - coordXInParent + keyWidth / 2 - mRightPadding, 0);
+            int maxRightKeys = Math.round(rightWidth / keyWidth);
+            if (maxRightKeys * keyWidth > rightWidth + FLOAT_THRESHOLD) {
                 maxRightKeys--;
             }
             int leftKeys, rightKeys;
@@ -129,11 +134,10 @@ public final class MoreKeysKeyboard extends Keyboard {
                     : getAutoOrderTopRowAdjustment();
             mColumnWidth = mDefaultKeyWidth;
             mBaseWidth = mNumColumns * mColumnWidth;
-            mOccupiedWidth = Math.round(mBaseWidth);
+            mOccupiedWidth = Math.round(mBaseWidth + mLeftPadding + mRightPadding);
             // Need to subtract the bottom row's gutter only.
-            mBaseHeight = mNumRows * mDefaultRowHeight - mVerticalGap + mTopPadding
-                    + mBottomPadding;
-            mOccupiedHeight = Math.round(mBaseHeight);
+            mBaseHeight = mNumRows * mDefaultRowHeight;
+            mOccupiedHeight = Math.round(mBaseHeight + mTopPadding + mBottomPadding - mVerticalGap);
         }
 
         private int getFixedOrderTopRowAdjustment() {
@@ -304,7 +308,7 @@ public final class MoreKeysKeyboard extends Keyboard {
             }
             final MoreKeySpec[] moreKeys = key.getMoreKeys();
             mParams.setParameters(moreKeys.length, key.getMoreKeysColumnNumber(), keyWidth,
-                    rowHeight, key.getX() + key.getWidth() / 2, keyboard.mId.mWidth,
+                    rowHeight, key.getX() + key.getWidth() / 2f, keyboard.mId.mWidth,
                     key.isMoreKeysFixedColumn(), key.isMoreKeysFixedOrder());
         }
 

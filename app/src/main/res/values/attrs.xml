@@ -126,11 +126,12 @@
             <enum name="LXXSystem" value="5" />
             <enum name="LXXSystemBorder" value="6" />
         </attr>
-        <!-- Keyboard top, bottom, left, right edges paddings, in propotion of keyboard height. -->
-        <attr name="keyboardTopPadding" format="fraction" />
-        <attr name="keyboardBottomPadding" format="fraction" />
-        <attr name="keyboardLeftPadding" format="fraction" />
-        <attr name="keyboardRightPadding" format="fraction" />
+        <!-- Keyboard top, bottom, left, right edges paddings, in pixels or in the propotion of
+             keyboard height. -->
+        <attr name="keyboardTopPadding" format="dimension|fraction" />
+        <attr name="keyboardBottomPadding" format="dimension|fraction" />
+        <attr name="keyboardLeftPadding" format="dimension|fraction" />
+        <attr name="keyboardRightPadding" format="dimension|fraction" />
         <!-- Default height of a row (key height + vertical gap), in pixels or in the proportion of
              keyboard height. -->
         <attr name="rowHeight" format="dimension|fraction" />

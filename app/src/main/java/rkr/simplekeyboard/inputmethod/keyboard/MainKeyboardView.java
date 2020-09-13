@@ -449,7 +449,8 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         // aligned with the bottom edge of the visible part of the key preview.
         // {@code mPreviewVisibleOffset} has been set appropriately in
         // {@link KeyboardView#showKeyPreview(PointerTracker)}.
-        final int pointY = key.getY() + mKeyPreviewDrawParams.getVisibleOffset();
+        final int pointY = key.getY() + mKeyPreviewDrawParams.getVisibleOffset()
+                + Math.round(moreKeysKeyboard.mBottomPadding);
         moreKeysKeyboardView.showMoreKeysPanel(this, this, pointX, pointY, mKeyboardActionListener);
         return moreKeysKeyboardView;
     }

@@ -61,6 +61,8 @@ public class Keyboard {
 
     /** The padding above the keyboard */
     public final float mTopPadding;
+    /** The padding below the keyboard */
+    public final float mBottomPadding;
     /** Default gap between rows */
     public final float mVerticalGap;
 
@@ -99,6 +101,7 @@ public class Keyboard {
         mMaxMoreKeysKeyboardColumn = params.mMaxMoreKeysKeyboardColumn;
         mKeyVisualAttributes = params.mKeyVisualAttributes;
         mTopPadding = params.mTopPadding;
+        mBottomPadding = params.mBottomPadding;
         mVerticalGap = params.mVerticalGap;
 
         mSortedKeys = Collections.unmodifiableList(new ArrayList<>(params.mSortedKeys));
