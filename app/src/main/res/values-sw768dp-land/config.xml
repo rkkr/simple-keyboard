@@ -27,6 +27,8 @@
 
     <fraction name="config_keyboard_top_padding_holo">1.896%p</fraction>
     <fraction name="config_keyboard_bottom_padding_holo">0.0%p</fraction>
+    <fraction name="config_keyboard_left_padding">0.515%p</fraction>
+    <fraction name="config_keyboard_right_padding">0.515%p</fraction>
     <fraction name="config_key_vertical_gap_holo">3.690%p</fraction>
     <fraction name="config_key_horizontal_gap_holo">1.030%p</fraction>
 

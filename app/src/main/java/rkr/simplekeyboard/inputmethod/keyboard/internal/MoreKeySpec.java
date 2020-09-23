@@ -70,11 +70,12 @@ public final class MoreKeySpec {
         mIconId = KeySpecParser.getIconId(moreKeySpec);
     }
 
-    public Key buildKey(final float x, final float y, final int labelFlags,
-            final KeyboardParams params) {
+    public Key buildKey(final float x, final float y, final float width, final float height,
+                        final float leftGap, final float rightGap, final float topGap,
+                        final float bottomGap, final int labelFlags) {
         return new Key(mLabel, mIconId, mCode, mOutputText, null /* hintLabel */, labelFlags,
-                Key.BACKGROUND_TYPE_NORMAL, x, y, params.mDefaultKeyWidth, params.mDefaultRowHeight,
-                params.mHorizontalGap, params.mVerticalGap);
+                Key.BACKGROUND_TYPE_NORMAL, x, y, width, height, leftGap, rightGap,
+                topGap, bottomGap);
     }
 
     @Override

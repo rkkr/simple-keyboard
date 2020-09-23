@@ -32,7 +32,8 @@ public final class MoreKeysKeyboard extends Keyboard {
 
     MoreKeysKeyboard(final MoreKeysKeyboardParams params) {
         super(params);
-        mDefaultKeyCoordX = Math.round(params.getDefaultKeyCoordX() + params.mDefaultKeyWidth / 2);
+        mDefaultKeyCoordX = Math.round(params.getDefaultKeyCoordX()
+                + (params.mDefaultKeyWidth - params.mHorizontalGap) / 2);
     }
 
     public int getDefaultCoordX() {
@@ -134,7 +135,7 @@ public final class MoreKeysKeyboard extends Keyboard {
                     : getAutoOrderTopRowAdjustment();
             mColumnWidth = mDefaultKeyWidth;
             mBaseWidth = mNumColumns * mColumnWidth;
-            mOccupiedWidth = Math.round(mBaseWidth + mLeftPadding + mRightPadding);
+            mOccupiedWidth = Math.round(mBaseWidth + mLeftPadding + mRightPadding - mHorizontalGap);
             // Need to subtract the bottom row's gutter only.
             mBaseHeight = mNumRows * mDefaultRowHeight;
             mOccupiedHeight = Math.round(mBaseHeight + mTopPadding + mBottomPadding - mVerticalGap);
@@ -296,7 +297,7 @@ public final class MoreKeysKeyboard extends Keyboard {
                 // left/right/top paddings. The bottom paddings of both backgrounds don't need to
                 // be considered because the vertical positions of both backgrounds were already
                 // adjusted with their bottom paddings deducted.
-                keyWidth = keyPreviewVisibleWidth;
+                keyWidth = keyPreviewVisibleWidth + mParams.mHorizontalGap;
                 rowHeight = keyPreviewVisibleHeight + mParams.mVerticalGap;
             } else {
                 final float padding = context.getResources().getDimension(
@@ -336,7 +337,20 @@ public final class MoreKeysKeyboard extends Keyboard {
                 final int row = n / params.mNumColumns;
                 final float x = params.getX(n, row);
                 final float y = params.getY(row);
-                final Key key = moreKeySpec.buildKey(x, y, moreKeyFlags, params);
+                final float width = params.mDefaultKeyWidth - params.mHorizontalGap;
+                final float height = params.mDefaultRowHeight - params.mVerticalGap;
+                final float leftGap = x < params.mLeftPadding + FLOAT_THRESHOLD
+                        ? params.mLeftPadding : params.mHorizontalGap / 2;
+                final float rightGap = x + width > params.mOccupiedWidth - params.mRightPadding
+                        - FLOAT_THRESHOLD
+                        ? params.mRightPadding : params.mHorizontalGap / 2;
+                final float topGap = y < params.mTopPadding + FLOAT_THRESHOLD
+                        ? params.mTopPadding : params.mVerticalGap / 2;
+                final float bottomGap = y + height > params.mOccupiedHeight - params.mBottomPadding
+                        - FLOAT_THRESHOLD
+                        ? params.mBottomPadding : params.mVerticalGap / 2;
+                final Key key = moreKeySpec.buildKey(x, y, width, height, leftGap, rightGap,
+                        topGap, bottomGap, moreKeyFlags);
                 params.markAsEdgeKey(key, row);
                 params.onAddKey(key);
             }

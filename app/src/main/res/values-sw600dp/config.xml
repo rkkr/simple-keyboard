@@ -36,6 +36,8 @@
 
     <fraction name="config_keyboard_top_padding_holo">2.335%p</fraction>
     <fraction name="config_keyboard_bottom_padding_holo">4.0%p</fraction>
+    <fraction name="config_keyboard_left_padding">0.783%p</fraction>
+    <fraction name="config_keyboard_right_padding">0.783%p</fraction>
     <fraction name="config_key_vertical_gap_holo">4.5%p</fraction>
     <fraction name="config_key_horizontal_gap_holo">1.565%p</fraction>
 

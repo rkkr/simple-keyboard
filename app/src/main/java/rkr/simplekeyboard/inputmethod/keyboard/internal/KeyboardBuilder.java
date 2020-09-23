@@ -140,11 +140,12 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
     protected final Context mContext;
     protected final Resources mResources;
 
-    private int mCurrentY = 0;
+    private float mCurrentY = 0;
     private KeyboardRow mCurrentRow = null;
     private boolean mLeftEdge;
     private boolean mTopEdge;
     private Key mRightEdgeKey = null;
+    private Key mPreviousKeyInRow = null;
 
     public KeyboardBuilder(final Context context, final KP params) {
         mContext = context;
@@ -240,15 +241,14 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             params.mRightPadding = ResourceUtils.getDimensionOrFraction(keyboardAttr,
                     R.styleable.Keyboard_keyboardRightPadding, width, 0);
 
-            final float baseWidth =
-                    params.mOccupiedWidth - params.mLeftPadding - params.mRightPadding;
+            params.mHorizontalGap = keyboardAttr.getFraction(
+                    R.styleable.Keyboard_horizontalGap, width, width, 0);
+            final float baseWidth = params.mOccupiedWidth - params.mLeftPadding
+                    - params.mRightPadding + params.mHorizontalGap;
             params.mBaseWidth = baseWidth;
             params.mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
                     (int)(baseWidth * 100), (int)(baseWidth * 100),
                     baseWidth * 100 / DEFAULT_KEYBOARD_COLUMNS) / 100;
-            params.mHorizontalGap = keyboardAttr.getFraction(
-                    R.styleable.Keyboard_horizontalGap, (int)(baseWidth * 100),
-                    (int)(baseWidth * 100), 0) / 100;
             // TODO: Fix keyboard geometry calculation clearer. Historically vertical gap between
             // rows are determined based on the entire keyboard height including top and bottom
             // paddings.
@@ -774,15 +774,14 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
     }
 
     private void startKeyboard() {
-        mCurrentY += mParams.mTopPadding;
         mTopEdge = true;
     }
 
     private void startRow(final KeyboardRow row) {
-        addEdgeSpace(mParams.mLeftPadding, row);
         mCurrentRow = row;
         mLeftEdge = true;
         mRightEdgeKey = null;
+        mPreviousKeyInRow = null;
     }
 
     private void endRow(final KeyboardRow row) {
@@ -793,7 +792,10 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             mRightEdgeKey.markAsRightEdge(mParams);
             mRightEdgeKey = null;
         }
-        addEdgeSpace(mParams.mRightPadding, row);
+        if (mPreviousKeyInRow != null) {
+            mPreviousKeyInRow.setRightEdge(mParams.mOccupiedWidth);
+            mPreviousKeyInRow = null;
+        }
         mCurrentY += row.getRowHeight();
         mCurrentRow = null;
         mTopEdge = false;
@@ -808,6 +810,16 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         if (mTopEdge) {
             key.markAsTopEdge(mParams);
         }
+        if (mPreviousKeyInRow != null) {
+            final int previousEndX = mPreviousKeyInRow.getX() + mPreviousKeyInRow.getWidth();
+            final int middle = Math.round((key.getX() - previousEndX) / 2f) + previousEndX;
+            Log.w("KeyboardBuilder", "endKey set edge previousEndX=" + previousEndX + ", keyX=" + key.getX() + ", middle=" + middle);
+            mPreviousKeyInRow.setRightEdge(middle);
+            key.setLeftEdge(middle);
+        } else {
+            key.setLeftEdge(0);
+        }
+        mPreviousKeyInRow = key;
         mRightEdgeKey = key;
     }
 
@@ -815,13 +827,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         mParams.removeRedundantMoreKeys();
         // {@link #parseGridRows(XmlPullParser,boolean)} may populate keyboard rows higher than
         // previously expected.
-        final int actualHeight = Math.round(mCurrentY - mParams.mVerticalGap + mParams.mBottomPadding);
+        final int actualHeight = Math.round(mCurrentY);
         mParams.mOccupiedHeight = Math.max(mParams.mOccupiedHeight, actualHeight);
-    }
-
-    private void addEdgeSpace(final float width, final KeyboardRow row) {
-        row.advanceXPos(width);
-        mLeftEdge = false;
-        mRightEdgeKey = null;
     }
 }

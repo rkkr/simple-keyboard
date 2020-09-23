@@ -35,6 +35,8 @@ import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
  * defines.
  */
 public final class KeyboardRow {
+    private static final float FLOAT_THRESHOLD = 0.0001f;
+
     // keyWidth enum constants
     private static final int KEYWIDTH_NOT_ENUM = 0;
     private static final int KEYWIDTH_FILL_RIGHT = -1;
@@ -42,6 +44,9 @@ public final class KeyboardRow {
     private final KeyboardParams mParams;
     /** The height of this row. */
     private final float mRowHeight;
+
+    private final float mTopPadding;
+    private final float mBottomPadding;
 
     private final ArrayDeque<RowAttributes> mRowAttributesStack = new ArrayDeque<>();
 
@@ -100,9 +105,28 @@ public final class KeyboardRow {
         mParams = params;
         final TypedArray keyboardAttr = res.obtainAttributes(Xml.asAttributeSet(parser),
                 R.styleable.Keyboard);
-        mRowHeight = ResourceUtils.getDimensionOrFraction(keyboardAttr,
+        if (y < FLOAT_THRESHOLD) {
+            // the top row should use the keyboard's top padding instead of the vertical gap
+            mTopPadding = params.mTopPadding;
+        } else {
+            mTopPadding = params.mVerticalGap / 2;
+        }
+        final float baseRowHeight = ResourceUtils.getDimensionOrFraction(keyboardAttr,
                 R.styleable.Keyboard_rowHeight, (int)(params.mBaseHeight * 100),
                 params.mDefaultRowHeight * 100) / 100;
+        final float keyHeight = baseRowHeight - params.mVerticalGap;
+        final float rowEndY = y + mTopPadding + keyHeight + params.mVerticalGap / 2;
+        if (rowEndY > params.mOccupiedHeight - params.mBottomPadding - FLOAT_THRESHOLD) {
+            // the bottom row's padding should go to the bottom of the keyboard (this might be
+            // slightly more than the keyboard's bottom padding if the rows don't add up to 100%)
+            // we'll consider it the bottom row as long as the row's normal bottom padding overlaps
+            // with the keyboard's bottom padding any amount
+            final float keyEndY = y + mTopPadding + keyHeight;
+            mBottomPadding = Math.max(params.mOccupiedHeight - keyEndY, params.mBottomPadding);
+        } else {
+            mBottomPadding = params.mVerticalGap / 2;
+        }
+        mRowHeight = mTopPadding + keyHeight + mBottomPadding;
         keyboardAttr.recycle();
         final TypedArray keyAttr = res.obtainAttributes(Xml.asAttributeSet(parser),
                 R.styleable.Keyboard_Key);
@@ -111,11 +135,19 @@ public final class KeyboardRow {
         keyAttr.recycle();
 
         mCurrentY = y;
-        mCurrentX = 0.0f;
+        mCurrentX = params.mLeftPadding;
     }
 
     public float getRowHeight() {
         return mRowHeight;
+    }
+
+    public float getTopPadding() {
+        return mTopPadding;
+    }
+
+    public float getBottomPadding() {
+        return mBottomPadding;
     }
 
     public void pushRowAttributes(final TypedArray keyAttr) {
@@ -181,7 +213,7 @@ public final class KeyboardRow {
             // If keyWidth is fillRight, the actual key width will be determined to fill
             // out the area up to the right edge of the keyboard.
             final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
-            return keyboardRightEdge - keyXPos;
+            return keyboardRightEdge - keyXPos + mParams.mHorizontalGap;
         default: // KEYWIDTH_NOT_ENUM
             return keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
                     (int)(mParams.mBaseWidth * 100), (int)(mParams.mBaseWidth * 100),
