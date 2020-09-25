@@ -183,19 +183,8 @@ public class Key implements Comparable<Key> {
     /** Key is enabled and responds on press */
     private boolean mEnabled = true;
 
-    public Key(final String label, final int iconId, final int code, final String outputText,
-               final String hintLabel, final int labelFlags, final int backgroundType,
-               final float x, final float y, final float width, final float rowHeight,
-               final float horizontalGap, final float verticalGap) {
-        this(label, iconId, code, outputText,
-                hintLabel, labelFlags, backgroundType,
-                x, y, width-horizontalGap, rowHeight-verticalGap,
-                horizontalGap/2, horizontalGap/2, verticalGap/2,
-                verticalGap/2);
-    }
     /**
-     * Constructor for a key on <code>MoreKeyKeyboard</code>, on <code>MoreSuggestions</code>,
-     * and in a <GridRows/>.
+     * Constructor for a key on <code>MoreKeyKeyboard</code>.
      */
     public Key(final String label, final int iconId, final int code, final String outputText,
                final String hintLabel, final int labelFlags, final int backgroundType,
@@ -932,16 +921,6 @@ public class Key implements Comparable<Key> {
         public Spacer(final TypedArray keyAttr, final KeyStyle keyStyle,
                 final KeyboardParams params, final KeyboardRow row) {
             super(null /* keySpec */, keyAttr, keyStyle, params, row);
-        }
-
-        /**
-         * This constructor is being used only for divider in more keys keyboard.
-         */
-        protected Spacer(final KeyboardParams params, final float x, final float y,
-                         final float width, final float height) {
-            super(null /* label */, ICON_UNDEFINED, CODE_UNSPECIFIED, null /* outputText */,
-                    null /* hintLabel */, 0 /* labelFlags */, BACKGROUND_TYPE_EMPTY, x, y, width,
-                    height, params.mHorizontalGap, params.mVerticalGap);
         }
     }
 }

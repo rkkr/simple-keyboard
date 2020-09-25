@@ -162,11 +162,6 @@
         <attr name="iconZwjKey" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="Keyboard_GridRows">
-        <attr name="codesArray" format="reference" />
-        <attr name="textsArray" format="reference" />
-    </declare-styleable>
-
     <declare-styleable name="Keyboard_Key">
         <!-- The alternate unicode value that this key outputs while typing.
              Code value represented in hexadecimal prefixed with "0x" or code value reference using
