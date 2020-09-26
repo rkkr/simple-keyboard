@@ -42,11 +42,34 @@ public final class KeyboardRow {
     private static final int KEYWIDTH_FILL_RIGHT = -1;
 
     private final KeyboardParams mParams;
-    /** The height of this row. */
-    private final float mRowHeight;
 
+    /** The y coordinate of the top edge of the row and all keys in it, including the top padding. */
+    private final float mY;
+    /** The height of this row (and all keys in it including the top and bottom padding). */
+    private final float mRowHeight;
+    /** The top padding of all of the keys in the row. */
     private final float mTopPadding;
+    /** The bottom padding of all of the keys in the row. */
     private final float mBottomPadding;
+
+    /** The left-most coordinate that isn't already occupied by a key in the row. */
+    private float mNextAvailableX;
+    /** A tracker for where the next key should start, excluding padding. */
+    private float mNextKeyXPos;
+
+    /** The x coordinate of the left edge of the current key, including the left padding. */
+    private float mCurrentX;
+    /** The width of the current key including the left and right padding. */
+    private float mCurrentCellWidth;
+    /** The left padding of the current key. */
+    private float mCurrentLeftPadding;
+    /** The right padding of the current key. */
+    private float mCurrentRightPadding;
+
+    /** Flag indicating whether the previous key in the row was a spacer. */
+    private boolean mLastKeyWasSpacer = false;
+    /** The x coordinate of the right edge of the previous key, excluding the right padding. */
+    private float mLastKeyRightEdge = 0;
 
     private final ArrayDeque<RowAttributes> mRowAttributesStack = new ArrayDeque<>();
 
@@ -96,10 +119,6 @@ public final class KeyboardRow {
         }
     }
 
-    private final float mCurrentY;
-    // Will be updated by {@link Key}'s constructor.
-    private float mCurrentX;
-
     public KeyboardRow(final Resources res, final KeyboardParams params,
             final XmlPullParser parser, final float y) {
         mParams = params;
@@ -134,20 +153,9 @@ public final class KeyboardRow {
                 keyAttr, params.mDefaultKeyWidth, params.mBaseWidth));
         keyAttr.recycle();
 
-        mCurrentY = y;
-        mCurrentX = params.mLeftPadding;
-    }
-
-    public float getRowHeight() {
-        return mRowHeight;
-    }
-
-    public float getTopPadding() {
-        return mTopPadding;
-    }
-
-    public float getBottomPadding() {
-        return mBottomPadding;
+        mY = y;
+        mNextAvailableX = 0;
+        mNextKeyXPos = params.mLeftPadding;
     }
 
     public void pushRowAttributes(final TypedArray keyAttr) {
@@ -160,7 +168,7 @@ public final class KeyboardRow {
         mRowAttributesStack.pop();
     }
 
-    public float getDefaultKeyWidth() {
+    private float getDefaultKeyWidth() {
         return mRowAttributesStack.peek().mDefaultKeyWidth;
     }
 
@@ -172,52 +180,118 @@ public final class KeyboardRow {
         return mRowAttributesStack.peek().mDefaultBackgroundType;
     }
 
-    public void setXPos(final float keyXPos) {
-        mCurrentX = keyXPos;
-    }
-
-    public void advanceXPos(final float width) {
-        mCurrentX += width;
-    }
-
-    public float getKeyY() {
-        return mCurrentY;
-    }
-
-    public float getKeyX(final TypedArray keyAttr) {
+    public void updateXPos(final TypedArray keyAttr) {
         if (keyAttr == null || !keyAttr.hasValue(R.styleable.Keyboard_Key_keyXPos)) {
-            return mCurrentX;
+            return;
         }
+
         final float keyXPos = keyAttr.getFraction(R.styleable.Keyboard_Key_keyXPos,
                 (int)(mParams.mBaseWidth * 100), (int)(mParams.mBaseWidth * 100), 0) / 100;
+
         if (keyXPos >= 0) {
-            return keyXPos + mParams.mLeftPadding;
+            mNextKeyXPos = keyXPos + mParams.mLeftPadding;
+        } else {
+            // If keyXPos is negative, the actual x-coordinate will be
+            // keyboardWidth + keyXPos.
+            // keyXPos shouldn't be less than mNextAvailableX because drawable area for this
+            // key starts at mNextAvailableX. Or this key will overlaps the adjacent key on
+            // its left hand side.
+            final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
+            mNextKeyXPos = Math.max(keyXPos + keyboardRightEdge, mNextAvailableX);
         }
-        // If keyXPos is negative, the actual x-coordinate will be
-        // keyboardWidth + keyXPos.
-        // keyXPos shouldn't be less than mCurrentX because drawable area for this
-        // key starts at mCurrentX. Or, this key will overlaps the adjacent key on
-        // its left hand side.
-        final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
-        return Math.max(keyXPos + keyboardRightEdge, mCurrentX);
     }
 
-    public float getKeyWidth(final TypedArray keyAttr, final float keyXPos) {
+    public void setCurrentKey(final TypedArray keyAttr, final boolean isSpacer) {
+        // split gap on both sides of key
+        final float defaultGap = mParams.mHorizontalGap / 2;
+
+        updateXPos(keyAttr);
+        final float keyWidth;
+        if (isSpacer) {
+            final float leftGap = Math.min(mNextKeyXPos - mNextAvailableX, defaultGap);
+            // spacers don't have horizontal gaps but should include that space in its width
+            mCurrentX = mNextKeyXPos - leftGap;
+            keyWidth = getKeyWidth(keyAttr) + leftGap + defaultGap;
+            mCurrentLeftPadding = 0;
+            mCurrentRightPadding = 0;
+        } else {
+            if (mLastKeyRightEdge < FLOAT_THRESHOLD) {
+                // first key in row
+                mCurrentX = 0;
+                mCurrentLeftPadding = mNextKeyXPos;
+            } else if (mLastKeyWasSpacer) {
+                // the key next to a spacer should have a horizontal gap that spans the distance
+                mCurrentX = mNextAvailableX;
+                mCurrentLeftPadding = mNextKeyXPos - mNextAvailableX;
+            } else {
+                // split the gap between the adjacent keys
+                mCurrentLeftPadding = (mNextKeyXPos - mLastKeyRightEdge) / 2;
+                mCurrentX = mLastKeyRightEdge + mCurrentLeftPadding;
+            }
+            keyWidth = getKeyWidth(keyAttr);
+            // we can't know this before seeing the next key, so just use the default. the key can
+            // be updated later
+            mCurrentRightPadding = defaultGap;
+        }
+
+        mCurrentCellWidth = keyWidth + mCurrentLeftPadding + mCurrentRightPadding;
+
+        // calculations for the current key are done. prep for the next key
+        mLastKeyRightEdge = mCurrentX + mCurrentCellWidth - mCurrentRightPadding;
+        mLastKeyWasSpacer = isSpacer;
+        mNextAvailableX = mCurrentX + mCurrentCellWidth;
+        // set the next key's default position
+        mNextKeyXPos = mNextAvailableX + defaultGap;
+    }
+
+    private float getKeyWidth(final TypedArray keyAttr) {
         if (keyAttr == null) {
-            return getDefaultKeyWidth();
+            return getDefaultKeyWidth() - mParams.mHorizontalGap;
         }
         final int widthType = ResourceUtils.getEnumValue(keyAttr,
                 R.styleable.Keyboard_Key_keyWidth, KEYWIDTH_NOT_ENUM);
         switch (widthType) {
-        case KEYWIDTH_FILL_RIGHT:
-            // If keyWidth is fillRight, the actual key width will be determined to fill
-            // out the area up to the right edge of the keyboard.
-            final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
-            return keyboardRightEdge - keyXPos + mParams.mHorizontalGap;
-        default: // KEYWIDTH_NOT_ENUM
-            return keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
-                    (int)(mParams.mBaseWidth * 100), (int)(mParams.mBaseWidth * 100),
-                    getDefaultKeyWidth() * 100) / 100;
+            case KEYWIDTH_FILL_RIGHT:
+                // If keyWidth is fillRight, the actual key width will be determined to fill
+                // out the area up to the right edge of the keyboard.
+                final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
+                return keyboardRightEdge - mCurrentX - mCurrentLeftPadding;
+            default: // KEYWIDTH_NOT_ENUM
+                return keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
+                        (int)(mParams.mBaseWidth * 100), (int)(mParams.mBaseWidth * 100),
+                        getDefaultKeyWidth() * 100) / 100 - mParams.mHorizontalGap;
         }
+    }
+
+    public float getRowY() {
+        return mY;
+    }
+
+    public float getCellX() {
+        return mCurrentX;
+    }
+
+    public float getRowHeight() {
+        return mRowHeight;
+    }
+
+    public float getCellWidth() {
+        return mCurrentCellWidth;
+    }
+
+    public float getCellTopPadding() {
+        return mTopPadding;
+    }
+
+    public float getCellBottomPadding() {
+        return mBottomPadding;
+    }
+
+    public float getCellLeftPadding() {
+        return mCurrentLeftPadding;
+    }
+
+    public float getCellRightPadding() {
+        return mCurrentRightPadding;
     }
 }

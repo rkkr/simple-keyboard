@@ -20,7 +20,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -39,7 +38,6 @@ import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.keyboard.Keyboard;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardId;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
-import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils;
@@ -141,9 +139,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
 
     private float mCurrentY = 0;
     private KeyboardRow mCurrentRow = null;
-    private boolean mLeftEdge;
-    private boolean mTopEdge;
-    private Key mRightEdgeKey = null;
     private Key mPreviousKeyInRow = null;
 
     public KeyboardBuilder(final Context context, final KP params) {
@@ -387,7 +382,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     key, Arrays.toString(key.getMoreKeys()));
         }
         XmlParseUtils.checkEndTag(TAG_KEY, parser);
-        endKey(key);
+        endKey(key, row);
     }
 
     private void parseSpacer(final XmlPullParser parser, final KeyboardRow row, final boolean skip)
@@ -404,7 +399,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         keyAttr.recycle();
         if (DEBUG) startEndTag("<%s />", TAG_SPACER);
         XmlParseUtils.checkEndTag(TAG_SPACER, parser);
-        endKey(spacer);
+        endKey(spacer, row);
     }
 
     private void parseIncludeKeyboardContent(final XmlPullParser parser, final boolean skip)
@@ -443,7 +438,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     R.styleable.Keyboard_Include_keyboardLayout, 0);
             if (row != null) {
                 // Override current x coordinate.
-                row.setXPos(row.getKeyX(keyAttr));
+                row.updateXPos(keyAttr);
                 // Push current Row attributes and update with new attributes.
                 row.pushRowAttributes(keyAttr);
             }
@@ -692,13 +687,11 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
     }
 
     private void startKeyboard() {
-        mTopEdge = true;
+
     }
 
     private void startRow(final KeyboardRow row) {
         mCurrentRow = row;
-        mLeftEdge = true;
-        mRightEdgeKey = null;
         mPreviousKeyInRow = null;
     }
 
@@ -706,38 +699,23 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         if (mCurrentRow == null) {
             throw new RuntimeException("orphan end row tag");
         }
-        if (mRightEdgeKey != null) {
-            mRightEdgeKey.markAsRightEdge(mParams);
-            mRightEdgeKey = null;
-        }
-        if (mPreviousKeyInRow != null) {
+        if (mPreviousKeyInRow != null && !mPreviousKeyInRow.isSpacer()) {
             mPreviousKeyInRow.setRightEdge(mParams.mOccupiedWidth);
             mPreviousKeyInRow = null;
         }
         mCurrentY += row.getRowHeight();
         mCurrentRow = null;
-        mTopEdge = false;
     }
 
-    private void endKey(final Key key) {
+    private void endKey(final Key key, final KeyboardRow row) {
         mParams.onAddKey(key);
-        if (mLeftEdge) {
-            key.markAsLeftEdge(mParams);
-            mLeftEdge = false;
-        }
-        if (mTopEdge) {
-            key.markAsTopEdge(mParams);
-        }
-        if (mPreviousKeyInRow != null) {
-            final int previousEndX = mPreviousKeyInRow.getX() + mPreviousKeyInRow.getWidth();
-            final int middle = Math.round((key.getX() - previousEndX) / 2f) + previousEndX;
-            mPreviousKeyInRow.setRightEdge(middle);
-            key.setLeftEdge(middle);
-        } else {
-            key.setLeftEdge(0);
+        if (mPreviousKeyInRow != null && !mPreviousKeyInRow.isSpacer()) {
+            // make the last key span the gap so there isn't un-clickable space. the current key's
+            // left edge is based on the previous key, so this will make the gap between them split
+            // evenly
+            mPreviousKeyInRow.setRightEdge(Math.round(row.getCellX()));
         }
         mPreviousKeyInRow = key;
-        mRightEdgeKey = key;
     }
 
     private void endKeyboard() {

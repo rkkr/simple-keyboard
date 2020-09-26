@@ -248,13 +248,6 @@ public final class MoreKeysKeyboard extends Keyboard {
             return (mNumRows - 1 - row) * mDefaultRowHeight + mTopPadding;
         }
 
-        public void markAsEdgeKey(final Key key, final int row) {
-            if (row == 0)
-                key.markAsTopEdge(this);
-            if (isTopRow(row))
-                key.markAsBottomEdge(this);
-        }
-
         private boolean isTopRow(final int rowCount) {
             return mNumRows > 1 && rowCount == mNumRows - 1;
         }
@@ -351,7 +344,6 @@ public final class MoreKeysKeyboard extends Keyboard {
                         ? params.mBottomPadding : params.mVerticalGap / 2;
                 final Key key = moreKeySpec.buildKey(x, y, width, height, leftGap, rightGap,
                         topGap, bottomGap, moreKeyFlags);
-                params.markAsEdgeKey(key, row);
                 params.onAddKey(key);
             }
             return new MoreKeysKeyboard(params);
