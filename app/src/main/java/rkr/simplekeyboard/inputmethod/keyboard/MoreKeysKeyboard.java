@@ -18,6 +18,7 @@ package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.util.Log;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardBuilder;
@@ -27,6 +28,7 @@ import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
 
 public final class MoreKeysKeyboard extends Keyboard {
+    private static final String TAG = MoreKeysKeyboard.class.getSimpleName();
     private final int mDefaultKeyCoordX;
     private static final float FLOAT_THRESHOLD = 0.0001f;
 
@@ -73,44 +75,71 @@ public final class MoreKeysKeyboard extends Keyboard {
         public void setParameters(final int numKeys, final int numColumn, final float keyWidth,
                 final float rowHeight, final float coordXInParent, final int parentKeyboardWidth,
                 final boolean isMoreKeysFixedColumn, final boolean isMoreKeysFixedOrder) {
+            // Add the horizontal padding because there is no horizontal gap on the outside edge,
+            // but it is included in the key width, so this compensates for simple division and
+            // comparison.
+            final float availableWidth = parentKeyboardWidth - mLeftPadding - mRightPadding
+                    + mHorizontalGap;
+            if (availableWidth < keyWidth) {
+                throw new IllegalArgumentException("Keyboard is too small to hold more keys: "
+                        + availableWidth + " " + keyWidth);
+            }
             mIsMoreKeysFixedOrder = isMoreKeysFixedOrder;
             mDefaultKeyWidth = keyWidth;
             mDefaultRowHeight = rowHeight;
 
-            final int numRows = (numKeys + numColumn - 1) / numColumn;
-            mNumRows = numRows;
-            final int numColumns = isMoreKeysFixedColumn ? Math.min(numKeys, numColumn)
-                    : getOptimizedColumns(numKeys, numColumn);
-            if (Math.round(parentKeyboardWidth - mLeftPadding - mRightPadding) < Math.round(
-                    Math.min(numKeys, numColumns) * keyWidth)) {
-                throw new IllegalArgumentException("Keyboard is too small to hold more keys: "
-                        + parentKeyboardWidth + " " + keyWidth + " " + numKeys + " " + numColumns);
+            final int maxColumns = getMaxKeys(availableWidth, keyWidth);
+            if (isMoreKeysFixedColumn) {
+                int requestedNumColumns = Math.min(numKeys, numColumn);
+                if (maxColumns < requestedNumColumns) {
+                    Log.e(TAG, "Keyboard is too small to hold the requested more keys columns: "
+                            + availableWidth + " " + keyWidth + " " + numKeys + " "
+                            + requestedNumColumns + ". The number of columns was reduced.");
+                    mNumColumns = maxColumns;
+                } else {
+                    mNumColumns = requestedNumColumns;
+                }
+                mNumRows = getNumRows(numKeys, mNumColumns);
+            } else {
+                int defaultNumColumns = Math.min(maxColumns, numColumn);
+                mNumRows = getNumRows(numKeys, defaultNumColumns);
+                mNumColumns = getOptimizedColumns(numKeys, defaultNumColumns, mNumRows);
             }
-            mNumColumns = numColumns;
-            final int topKeys = numKeys % numColumns;
-            mTopKeys = topKeys == 0 ? numColumns : topKeys;
+            final int topKeys = numKeys % mNumColumns;
+            mTopKeys = topKeys == 0 ? mNumColumns : topKeys;
 
-            final int numLeftKeys = (numColumns - 1) / 2;
-            final int numRightKeys = numColumns - numLeftKeys; // including default key.
-            // Maximum number of keys we can layout both side of the parent key's left edge
-            final float leftWidth = Math.max(coordXInParent - mLeftPadding - keyWidth / 2, 0);
-            int maxLeftKeys = Math.round(leftWidth / keyWidth);
-            if (maxLeftKeys * keyWidth > leftWidth + FLOAT_THRESHOLD) {
-                maxLeftKeys--;
+            final int numLeftKeys = (mNumColumns - 1) / 2;
+            final int numRightKeys = mNumColumns - numLeftKeys; // including default key.
+            // Maximum number of keys we can lay out on both side of the left edge of a key
+            // centered on the parent key. Also, account for horizontal padding because there is no
+            // horizontal gap on the outside edge.
+            final float leftWidth = Math.max(coordXInParent - mLeftPadding - keyWidth / 2
+                    + mHorizontalGap / 2, 0);
+            final float rightWidth = Math.max(parentKeyboardWidth - coordXInParent + keyWidth / 2
+                    - mRightPadding + mHorizontalGap / 2, 0);
+            int maxLeftKeys = getMaxKeys(leftWidth, keyWidth);
+            int maxRightKeys = getMaxKeys(rightWidth, keyWidth);
+            // handle the case where the number of columns fits but doesn't have enough room
+            // for the default key to be centered on the parent key
+            if (numKeys >= mNumColumns && mNumColumns == maxColumns
+                    && maxLeftKeys + maxRightKeys < maxColumns) {
+                final float extraLeft = leftWidth - maxLeftKeys * keyWidth;
+                final float extraRight = rightWidth - maxRightKeys * keyWidth;
+                // put the extra key on whatever side has more space
+                if (extraLeft > extraRight) {
+                    maxLeftKeys++;
+                } else {
+                    maxRightKeys++;
+                }
             }
-            final float rightWidth = Math.max(
-                    parentKeyboardWidth - coordXInParent + keyWidth / 2 - mRightPadding, 0);
-            int maxRightKeys = Math.round(rightWidth / keyWidth);
-            if (maxRightKeys * keyWidth > rightWidth + FLOAT_THRESHOLD) {
-                maxRightKeys--;
-            }
+
             int leftKeys, rightKeys;
             if (numLeftKeys > maxLeftKeys) {
                 leftKeys = maxLeftKeys;
-                rightKeys = numColumns - leftKeys;
+                rightKeys = mNumColumns - leftKeys;
             } else if (numRightKeys > maxRightKeys + 1) {
                 rightKeys = maxRightKeys + 1; // include default key
-                leftKeys = numColumns - rightKeys;
+                leftKeys = mNumColumns - rightKeys;
             } else {
                 leftKeys = numLeftKeys;
                 rightKeys = numRightKeys;
@@ -224,12 +253,25 @@ public final class MoreKeysKeyboard extends Keyboard {
             return remainings == 0 ? 0 : numColumns - remainings;
         }
 
-        private int getOptimizedColumns(final int numKeys, final int maxColumns) {
+        private static int getOptimizedColumns(final int numKeys, final int maxColumns,
+                                               final int numRows) {
             int numColumns = Math.min(numKeys, maxColumns);
-            while (getTopRowEmptySlots(numKeys, numColumns) >= mNumRows) {
+            while (getTopRowEmptySlots(numKeys, numColumns) >= numRows) {
                 numColumns--;
             }
             return numColumns;
+        }
+
+        private static int getNumRows(final int numKeys, final int numColumn) {
+            return (numKeys + numColumn - 1) / numColumn;
+        }
+
+        private static int getMaxKeys(final float keyboardWidth, final float keyWidth) {
+            final int maxKeys = Math.round(keyboardWidth / keyWidth);
+            if (maxKeys * keyWidth > keyboardWidth + FLOAT_THRESHOLD) {
+                return maxKeys - 1;
+            }
+            return maxKeys;
         }
 
         public float getDefaultKeyCoordX() {
