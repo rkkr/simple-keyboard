@@ -65,6 +65,8 @@ public class Keyboard {
     public final float mBottomPadding;
     /** Default gap between rows */
     public final float mVerticalGap;
+    /** Default gap between columns */
+    public final float mHorizontalGap;
 
     /** Per keyboard key visual parameters */
     public final KeyVisualAttributes mKeyVisualAttributes;
@@ -103,6 +105,7 @@ public class Keyboard {
         mTopPadding = params.mTopPadding;
         mBottomPadding = params.mBottomPadding;
         mVerticalGap = params.mVerticalGap;
+        mHorizontalGap = params.mHorizontalGap;
 
         mSortedKeys = Collections.unmodifiableList(new ArrayList<>(params.mSortedKeys));
         mShiftKeys = Collections.unmodifiableList(params.mShiftKeys);
@@ -110,7 +113,7 @@ public class Keyboard {
         mIconsSet = params.mIconsSet;
 
         mProximityInfo = new ProximityInfo(params.GRID_WIDTH, params.GRID_HEIGHT,
-                mOccupiedWidth, mOccupiedHeight, mMostCommonKeyWidth,
+                mOccupiedWidth, mOccupiedHeight, mMostCommonKeyWidth + Math.round(mHorizontalGap),
                 mSortedKeys);
     }
 

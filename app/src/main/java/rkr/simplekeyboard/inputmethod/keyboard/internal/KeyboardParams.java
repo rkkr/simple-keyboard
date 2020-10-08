@@ -143,14 +143,14 @@ public class KeyboardParams {
     }
 
     private void updateHistogram(final Key key) {
-        final int height = key.getHeight() + Math.round(mVerticalGap);
+        final int height = Math.round(key.getDefinedHeight());
         final int heightCount = updateHistogramCounter(mHeightHistogram, height);
         if (heightCount > mMaxHeightCount) {
             mMaxHeightCount = heightCount;
             mMostCommonKeyHeight = height;
         }
 
-        final int width = key.getWidth() + Math.round(mHorizontalGap);
+        final int width = Math.round(key.getDefinedWidth());
         final int widthCount = updateHistogramCounter(mWidthHistogram, width);
         if (widthCount > mMaxWidthCount) {
             mMaxWidthCount = widthCount;

@@ -284,8 +284,8 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         mKeyboard = keyboard;
         // Mark that keyboard layout has been changed.
         mKeyboardLayoutHasBeenChanged = true;
-        final int keyWidth = mKeyboard.mMostCommonKeyWidth;
-        final int keyHeight = mKeyboard.mMostCommonKeyHeight;
+        final int keyWidth = mKeyboard.mMostCommonKeyWidth + Math.round(mKeyboard.mHorizontalGap);
+        final int keyHeight = mKeyboard.mMostCommonKeyHeight + Math.round(mKeyboard.mVerticalGap);
         // Keep {@link #mCurrentKey} that comes from previous keyboard. The key preview of
         // {@link #mCurrentKey} will be dismissed by {@setReleasedKeyGraphics(Key)} via
         // {@link onMoveEventInternal(int,int,long)} or {@link #onUpEventInternal(int,int,long)}.
@@ -818,7 +818,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         if (distanceFromKeyEdgeSquared >= keyHysteresisDistanceSquared) {
             if (DEBUG_MODE) {
                 final float distanceToEdgeRatio = (float)Math.sqrt(distanceFromKeyEdgeSquared)
-                        / mKeyboard.mMostCommonKeyWidth;
+                        / (mKeyboard.mMostCommonKeyWidth + mKeyboard.mHorizontalGap);
                 Log.d(TAG, String.format("[%d] isMajorEnoughMoveToBeOnNewKey:"
                         +" %.2f key width from key edge", mPointerId, distanceToEdgeRatio));
             }
@@ -827,7 +827,8 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         if (!mIsAllowedDraggingFinger && mBogusMoveEventDetector.hasTraveledLongDistance(x, y)) {
             if (DEBUG_MODE) {
                 final float keyDiagonal = (float)Math.hypot(
-                        mKeyboard.mMostCommonKeyWidth, mKeyboard.mMostCommonKeyHeight);
+                        mKeyboard.mMostCommonKeyWidth + mKeyboard.mHorizontalGap,
+                        mKeyboard.mMostCommonKeyHeight + mKeyboard.mVerticalGap);
                 final float lengthFromDownRatio =
                         mBogusMoveEventDetector.getAccumulatedDistanceFromDownKey() / keyDiagonal;
                 Log.d(TAG, String.format("[%d] isMajorEnoughMoveToBeOnNewKey:"

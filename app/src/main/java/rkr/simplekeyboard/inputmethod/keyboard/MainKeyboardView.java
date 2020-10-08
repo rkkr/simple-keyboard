@@ -302,7 +302,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         mMoreKeysKeyboardCache.clear();
 
         mSpaceKey = keyboard.getKey(Constants.CODE_SPACE);
-        final int keyHeight = keyboard.mMostCommonKeyHeight - Math.round(keyboard.mVerticalGap);
+        final int keyHeight = keyboard.mMostCommonKeyHeight;
         mLanguageOnSpacebarTextSize = keyHeight * mLanguageOnSpacebarTextRatio;
     }
 

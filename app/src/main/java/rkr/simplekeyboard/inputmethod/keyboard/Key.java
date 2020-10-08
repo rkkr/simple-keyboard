@@ -96,6 +96,10 @@ public class Key implements Comparable<Key> {
     private final int mWidth;
     /** Height of the key, excluding the padding */
     private final int mHeight;
+    /** Exact theoretical width of the key, excluding the padding */
+    private final float mDefinedWidth;
+    /** Exact theoretical height of the key, excluding the padding */
+    private final float mDefinedHeight;
     /** X coordinate of the top-left corner of the key in the keyboard layout, excluding the
      *  padding. */
     private final int mX;
@@ -199,6 +203,8 @@ public class Key implements Comparable<Key> {
         mY = Math.round(y);
         mWidth = Math.round(x + width) - mX;
         mHeight = Math.round(y + height) - mY;
+        mDefinedWidth = width;
+        mDefinedHeight = height;
         mHintLabel = hintLabel;
         mLabelFlags = labelFlags;
         mBackgroundType = backgroundType;
@@ -253,6 +259,9 @@ public class Key implements Comparable<Key> {
         mY = Math.round(keyYPos + topPadding);
         mWidth = Math.round(keyXPos + leftPadding + keyWidth) - mX;
         mHeight = Math.round(keyYPos + topPadding + keyHeight) - mY;
+
+        mDefinedHeight = keyHeight;
+        mDefinedWidth = keyWidth;
 
         mBackgroundType = style.getInt(keyAttr,
                 R.styleable.Keyboard_Key_backgroundType, row.getDefaultBackgroundType());
@@ -401,6 +410,8 @@ public class Key implements Comparable<Key> {
         mIconId = key.mIconId;
         mWidth = key.mWidth;
         mHeight = key.mHeight;
+        mDefinedWidth = key.mDefinedWidth;
+        mDefinedHeight = key.mDefinedHeight;
         mX = key.mX;
         mY = key.mY;
         mHitBox.set(key.mHitBox);
@@ -750,6 +761,28 @@ public class Key implements Comparable<Key> {
      */
     public int getHeight() {
         return mHeight;
+    }
+
+    /**
+     * Gets the theoretical width of the key in pixels, excluding the padding. This is the exact
+     * width that the key was defined to be, but this will likely differ from the actual drawn width
+     * because the normal (drawn/functional) width was determined by rounding the left and right
+     * edge to fit evenly in a pixel.
+     * @return The defined width of the key in pixels, excluding the padding.
+     */
+    public float getDefinedWidth() {
+        return mDefinedWidth;
+    }
+
+    /**
+     * Gets the theoretical height of the key in pixels, excluding the padding. This is the exact
+     * height that the key was defined to be, but this will likely differ from the actual drawn
+     * height because the normal (drawn/functional) width was determined by rounding the top and
+     * bottom edge to fit evenly in a pixel.
+     * @return The defined width of the key in pixels, excluding the padding.
+     */
+    public float getDefinedHeight() {
+        return mDefinedHeight;
     }
 
     /**

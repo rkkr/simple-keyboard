@@ -340,7 +340,7 @@ public final class MoreKeysKeyboard extends Keyboard {
                         + (key.hasLabelsInMoreKeys()
                                 ? mParams.mDefaultKeyWidth * LABEL_PADDING_RATIO : 0.0f);
                 keyWidth = getMaxKeyWidth(key, mParams.mDefaultKeyWidth, padding, paintToMeasure);
-                rowHeight = keyboard.mMostCommonKeyHeight;
+                rowHeight = keyboard.mMostCommonKeyHeight + keyboard.mVerticalGap;
             }
             final MoreKeySpec[] moreKeys = key.getMoreKeys();
             mParams.setParameters(moreKeys.length, key.getMoreKeysColumnNumber(), keyWidth,
