@@ -34,7 +34,7 @@ public final class MoreKeysKeyboard extends Keyboard {
 
     MoreKeysKeyboard(final MoreKeysKeyboardParams params) {
         super(params);
-        mDefaultKeyCoordX = Math.round(params.getDefaultKeyCoordX()
+        mDefaultKeyCoordX = Math.round(params.getDefaultKeyCoordX() + params.mOffsetX
                 + (params.mDefaultKeyWidth - params.mHorizontalGap) / 2);
     }
 
@@ -51,6 +51,7 @@ public final class MoreKeysKeyboard extends Keyboard {
         public int mLeftKeys;
         public int mRightKeys; // includes default key.
         public float mColumnWidth;
+        public float mOffsetX;
 
         public MoreKeysKeyboardParams() {
             super();
@@ -331,9 +332,25 @@ public final class MoreKeysKeyboard extends Keyboard {
                 // of both backgrounds and the keyboard were already adjusted with their bottom
                 // paddings deducted. The keyboard's left/right/top paddings do need to be deducted
                 // so the key including the paddings matches the key preview.
-                keyWidth = keyPreviewVisibleWidth + mParams.mHorizontalGap - mParams.mLeftPadding
-                        - mParams.mRightPadding;
-                rowHeight = keyPreviewVisibleHeight + mParams.mVerticalGap - mParams.mTopPadding;
+                final float horizontalPadding = mParams.mLeftPadding + mParams.mRightPadding;
+                final float baseKeyWidth = keyPreviewVisibleWidth + mParams.mHorizontalGap;
+                if (horizontalPadding > baseKeyWidth - FLOAT_THRESHOLD) {
+                    // if the padding doesn't fit we'll just add it outside of the key preview
+                    keyWidth = baseKeyWidth;
+                } else {
+                    keyWidth = baseKeyWidth - horizontalPadding;
+                    // keep the more keys keyboard with uneven padding lined up with the key
+                    // preview rather than centering the more keys keyboard's key with the parent
+                    // key
+                    mParams.mOffsetX = (mParams.mRightPadding - mParams.mLeftPadding) / 2;
+                }
+                final float baseRowHeight = keyPreviewVisibleHeight + mParams.mVerticalGap;
+                if (mParams.mTopPadding > baseRowHeight - FLOAT_THRESHOLD) {
+                    // if the padding doesn't fit we'll just add it outside of the key preview
+                    rowHeight = baseRowHeight;
+                } else {
+                    rowHeight = baseRowHeight - mParams.mTopPadding;
+                }
             } else {
                 final float padding = context.getResources().getDimension(
                         R.dimen.config_more_keys_keyboard_key_horizontal_padding)
