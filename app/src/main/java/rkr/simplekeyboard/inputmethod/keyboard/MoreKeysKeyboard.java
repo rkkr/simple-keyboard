@@ -327,13 +327,13 @@ public final class MoreKeysKeyboard extends Keyboard {
             if (isSingleMoreKeyWithPreview) {
                 // Use pre-computed width and height if this more keys keyboard has only one key to
                 // mitigate visual flicker between key preview and more keys keyboard.
-                // Caveats for the visual assets: To achieve this effect, both the key preview
-                // backgrounds and the more keys keyboard panel background have the exact same
-                // left/right/top paddings. The bottom paddings of both backgrounds don't need to
-                // be considered because the vertical positions of both backgrounds were already
-                // adjusted with their bottom paddings deducted.
-                keyWidth = keyPreviewVisibleWidth + mParams.mHorizontalGap;
-                rowHeight = keyPreviewVisibleHeight + mParams.mVerticalGap;
+                // The bottom paddings don't need to be considered because the vertical positions
+                // of both backgrounds and the keyboard were already adjusted with their bottom
+                // paddings deducted. The keyboard's left/right/top paddings do need to be deducted
+                // so the key including the paddings matches the key preview.
+                keyWidth = keyPreviewVisibleWidth + mParams.mHorizontalGap - mParams.mLeftPadding
+                        - mParams.mRightPadding;
+                rowHeight = keyPreviewVisibleHeight + mParams.mVerticalGap - mParams.mTopPadding;
             } else {
                 final float padding = context.getResources().getDimension(
                         R.dimen.config_more_keys_keyboard_key_horizontal_padding)
