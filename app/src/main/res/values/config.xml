@@ -58,10 +58,10 @@
     <dimen name="config_key_hint_letter_padding">1dp</dimen>
     <dimen name="config_key_shifted_letter_hint_padding">2dp</dimen>
 
-    <dimen name="config_more_keys_keyboard_top_padding">5dp</dimen>
-    <dimen name="config_more_keys_keyboard_bottom_padding">5dp</dimen>
-    <dimen name="config_more_keys_keyboard_left_padding">5dp</dimen>
-    <dimen name="config_more_keys_keyboard_right_padding">5dp</dimen>
+    <dimen name="config_more_keys_keyboard_top_padding">0dp</dimen>
+    <dimen name="config_more_keys_keyboard_bottom_padding">0dp</dimen>
+    <dimen name="config_more_keys_keyboard_left_padding">0dp</dimen>
+    <dimen name="config_more_keys_keyboard_right_padding">0dp</dimen>
 
     <!-- For 5-row keyboard -->
     <fraction name="config_key_vertical_gap_5row">3.20%p</fraction>
