@@ -26,12 +26,12 @@
     <fraction name="config_max_keyboard_height">46%p</fraction>
     <fraction name="config_min_keyboard_height">-35.0%p</fraction>
 
-    <fraction name="config_keyboard_top_padding_holo">2.335%p</fraction>
-    <fraction name="config_keyboard_bottom_padding_holo">0.0%p</fraction>
+    <fraction name="config_keyboard_top_padding">2.335%p</fraction>
+    <fraction name="config_keyboard_bottom_padding">0.0%p</fraction>
     <fraction name="config_keyboard_left_padding">0.533%p</fraction>
     <fraction name="config_keyboard_right_padding">0.533%p</fraction>
-    <fraction name="config_key_vertical_gap_holo">3.312%p</fraction>
-    <fraction name="config_key_horizontal_gap_holo">1.066%p</fraction>
+    <fraction name="config_key_vertical_gap">3.312%p</fraction>
+    <fraction name="config_key_horizontal_gap">1.066%p</fraction>
 
     <dimen name="config_more_keys_keyboard_key_height">63.0dp</dimen>
     <dimen name="config_more_keys_keyboard_key_horizontal_padding">12dp</dimen>

@@ -24,10 +24,10 @@
     <!-- Default theme values -->
     <style name="Keyboard">
         <item name="rowHeight">25%p</item>
-        <item name="horizontalGap">@fraction/config_key_horizontal_gap_holo</item>
-        <item name="verticalGap">@fraction/config_key_vertical_gap_holo</item>
-        <item name="keyboardTopPadding">@fraction/config_keyboard_top_padding_holo</item>
-        <item name="keyboardBottomPadding">@fraction/config_keyboard_bottom_padding_holo</item>
+        <item name="horizontalGap">@fraction/config_key_horizontal_gap</item>
+        <item name="verticalGap">@fraction/config_key_vertical_gap</item>
+        <item name="keyboardTopPadding">@fraction/config_keyboard_top_padding</item>
+        <item name="keyboardBottomPadding">@fraction/config_keyboard_bottom_padding</item>
         <item name="keyboardLeftPadding">@fraction/config_keyboard_left_padding</item>
         <item name="keyboardRightPadding">@fraction/config_keyboard_right_padding</item>
         <item name="moreKeysTemplate">@xml/kbd_more_keys_keyboard_template</item>
