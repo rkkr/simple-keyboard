@@ -113,8 +113,7 @@ public class Keyboard {
         mIconsSet = params.mIconsSet;
 
         mProximityInfo = new ProximityInfo(params.GRID_WIDTH, params.GRID_HEIGHT,
-                mOccupiedWidth, mOccupiedHeight, mMostCommonKeyWidth + Math.round(mHorizontalGap),
-                mSortedKeys);
+                mOccupiedWidth, mOccupiedHeight, mSortedKeys);
     }
 
     /**
