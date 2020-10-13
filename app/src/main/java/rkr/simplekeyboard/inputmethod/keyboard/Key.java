@@ -874,14 +874,31 @@ public class Key implements Comparable<Key> {
      * @return the square of the distance of the point from the nearest edge of the key
      */
     public int squaredDistanceToEdge(final int x, final int y) {
-        final int left = getX();
-        final int right = left + mWidth;
-        final int top = getY();
-        final int bottom = top + mHeight;
-        final int edgeX = x < left ? left : (x > right ? right : x);
-        final int edgeY = y < top ? top : (y > bottom ? bottom : y);
+        final int left = mHitBox.left;
+        // the hit box right is exclusive
+        final int right = mHitBox.right - 1;
+        final int top = mHitBox.top;
+        // the hit box bottom is exclusive
+        final int bottom = mHitBox.bottom - 1;
+        final int edgeX = x < left ? left : Math.min(x, right);
+        final int edgeY = y < top ? top : Math.min(y, bottom);
         final int dx = x - edgeX;
         final int dy = y - edgeY;
+        return dx * dx + dy * dy;
+    }
+
+    /**
+     * Returns the square of the distance to the center of the key (excluding padding) and the
+     * given point.
+     * @param x the x-coordinate of the point
+     * @param y the y-coordinate of the point
+     * @return the square of the distance of the point from the key's center
+     */
+    public int squaredDistanceToCenter(final int x, final int y) {
+        final int centerX = getX() + getWidth() / 2;
+        final int centerY = getY() + getHeight() / 2;
+        final int dx = x - centerX;
+        final int dy = y - centerY;
         return dx * dx + dy * dy;
     }
 

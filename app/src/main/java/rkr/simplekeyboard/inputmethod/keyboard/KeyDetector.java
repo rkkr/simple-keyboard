@@ -95,12 +95,14 @@ public class KeyDetector {
         int minDistance = Integer.MAX_VALUE;
         Key primaryKey = null;
         for (final Key key: mKeyboard.getNearestKeys(touchX, touchY)) {
-            // An edge key always has its enlarged hitbox to respond to an event that occurred in
-            // the empty area around the key. (@see Key#markAsLeftEdge(KeyboardParams)} etc.)
             if (!key.isOnKey(touchX, touchY)) {
                 continue;
             }
-            final int distance = key.squaredDistanceToEdge(touchX, touchY);
+            // Compare the distance to the center of the keys as the primary tie-breaker for
+            // overlapping keys. This works better than just comparing how far the touch point is
+            // in the key because it helps prioritize smaller keys (harder to click) and it handles
+            // the extreme case of a the majority of a key overlapping another.
+            final int distance = key.squaredDistanceToCenter(touchX, touchY);
             if (distance > minDistance) {
                 continue;
             }
