@@ -112,7 +112,7 @@ public class Keyboard {
         mAltCodeKeysWhileTyping = Collections.unmodifiableList(params.mAltCodeKeysWhileTyping);
         mIconsSet = params.mIconsSet;
 
-        mProximityInfo = new ProximityInfo(params.GRID_WIDTH, params.GRID_HEIGHT,
+        mProximityInfo = new ProximityInfo(params.mGridWidth, params.mGridHeight,
                 mOccupiedWidth, mOccupiedHeight, mSortedKeys);
     }
 

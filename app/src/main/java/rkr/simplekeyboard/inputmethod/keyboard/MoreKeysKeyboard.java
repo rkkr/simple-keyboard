@@ -169,6 +169,9 @@ public final class MoreKeysKeyboard extends Keyboard {
             // Need to subtract the bottom row's gutter only.
             mBaseHeight = mNumRows * mDefaultRowHeight;
             mOccupiedHeight = Math.round(mBaseHeight + mTopPadding + mBottomPadding - mVerticalGap);
+
+            mGridWidth = Math.min(mGridWidth, mNumColumns);
+            mGridHeight = Math.min(mGridHeight, mNumRows);
         }
 
         private int getFixedOrderTopRowAdjustment() {

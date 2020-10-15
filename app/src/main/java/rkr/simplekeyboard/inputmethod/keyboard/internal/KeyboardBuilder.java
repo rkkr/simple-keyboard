@@ -148,8 +148,8 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
 
         mParams = params;
 
-        params.GRID_WIDTH = res.getInteger(R.integer.config_keyboard_grid_width);
-        params.GRID_HEIGHT = res.getInteger(R.integer.config_keyboard_grid_height);
+        params.mGridWidth = res.getInteger(R.integer.config_keyboard_grid_width);
+        params.mGridHeight = res.getInteger(R.integer.config_keyboard_grid_height);
     }
 
     public void setAllowRedundantMoreKes(final boolean enabled) {

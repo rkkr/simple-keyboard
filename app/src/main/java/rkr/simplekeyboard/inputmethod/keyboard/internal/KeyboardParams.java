@@ -56,8 +56,8 @@ public class KeyboardParams {
     public int mMoreKeysTemplate;
     public int mMaxMoreKeysKeyboardColumn;
 
-    public int GRID_WIDTH;
-    public int GRID_HEIGHT;
+    public int mGridWidth;
+    public int mGridHeight;
 
     // Keys are sorted from top-left to bottom-right order.
     public final SortedSet<Key> mSortedKeys = new TreeSet<>(ROW_COLUMN_COMPARATOR);
