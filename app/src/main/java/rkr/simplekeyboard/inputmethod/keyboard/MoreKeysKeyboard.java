@@ -140,31 +140,20 @@ public final class MoreKeysKeyboard extends Keyboard {
             if (numLeftKeys > maxLeftKeys) {
                 leftKeys = maxLeftKeys;
                 rightKeys = mNumColumns - leftKeys;
-            } else if (numRightKeys > maxRightKeys + 1) {
-                rightKeys = maxRightKeys + 1; // include default key
+            } else if (numRightKeys > maxRightKeys) {
+                // make sure the default key is included even if it doesn't exactly fit (the default
+                // key just won't be completely centered on the parent key)
+                rightKeys = Math.max(maxRightKeys, 1);
                 leftKeys = mNumColumns - rightKeys;
             } else {
                 leftKeys = numLeftKeys;
                 rightKeys = numRightKeys;
             }
-            // If the left keys fill the left side of the parent key, entire more keys keyboard
-            // should be shifted to the right unless the parent key is on the left edge.
-            if (maxLeftKeys == leftKeys && leftKeys > 0) {
-                leftKeys--;
-                rightKeys++;
-            }
-            // If the right keys fill the right side of the parent key, entire more keys
-            // should be shifted to the left unless the parent key is on the right edge.
-            if (maxRightKeys == rightKeys - 1 && rightKeys > 1) {
-                leftKeys++;
-                rightKeys--;
-            }
             mLeftKeys = leftKeys;
             mRightKeys = rightKeys;
 
             // Adjustment of the top row.
-            mTopRowAdjustment = isMoreKeysFixedOrder ? getFixedOrderTopRowAdjustment()
-                    : getAutoOrderTopRowAdjustment();
+            mTopRowAdjustment = getTopRowAdjustment();
             mColumnWidth = mDefaultKeyPaddedWidth;
             mBaseWidth = mNumColumns * mColumnWidth;
             mOccupiedWidth = Math.round(mBaseWidth + mLeftPadding + mRightPadding - mHorizontalGap);
@@ -176,17 +165,12 @@ public final class MoreKeysKeyboard extends Keyboard {
             mGridHeight = Math.min(mGridHeight, mNumRows);
         }
 
-        private int getFixedOrderTopRowAdjustment() {
-            if (mNumRows == 1 || mTopKeys % 2 == 1 || mTopKeys == mNumColumns
-                    || mLeftKeys == 0  || mRightKeys == 1) {
-                return 0;
-            }
-            return -1;
-        }
-
-        private int getAutoOrderTopRowAdjustment() {
-            if (mNumRows == 1 || mTopKeys == 1 || mNumColumns % 2 == mTopKeys % 2
-                    || mLeftKeys == 0 || mRightKeys == 1) {
+        private int getTopRowAdjustment() {
+            final int numOffCenterKeys = Math.abs(mRightKeys - 1 - mLeftKeys);
+            // don't center if there are more keys in the top row than can be centered around the
+            // default more key or if there is an odd number of keys in the top row (already will
+            // be centered)
+            if (mTopKeys > mNumColumns - numOffCenterKeys || mTopKeys % 2 == 1) {
                 return 0;
             }
             return -1;
