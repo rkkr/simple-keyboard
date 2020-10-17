@@ -240,7 +240,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             final float baseWidth = params.mOccupiedWidth - params.mLeftPadding
                     - params.mRightPadding + params.mHorizontalGap;
             params.mBaseWidth = baseWidth;
-            params.mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
+            params.mDefaultKeyPaddedWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
                     (int)(baseWidth * 100), (int)(baseWidth * 100),
                     baseWidth * 100 / DEFAULT_KEYBOARD_COLUMNS) / 100;
             // TODO: Fix keyboard geometry calculation clearer. Historically vertical gap between
@@ -713,7 +713,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             // make the last key span the gap so there isn't un-clickable space. the current key's
             // left edge is based on the previous key, so this will make the gap between them split
             // evenly
-            mPreviousKeyInRow.setRightEdge(Math.round(row.getCellX()));
+            mPreviousKeyInRow.setRightEdge(Math.round(row.getCurrentX()));
         }
         mPreviousKeyInRow = key;
     }

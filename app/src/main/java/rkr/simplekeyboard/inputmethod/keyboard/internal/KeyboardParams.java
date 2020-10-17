@@ -49,7 +49,7 @@ public class KeyboardParams {
     public KeyVisualAttributes mKeyVisualAttributes;
 
     public float mDefaultRowHeight;
-    public float mDefaultKeyWidth;
+    public float mDefaultKeyPaddedWidth;
     public float mHorizontalGap;
     public float mVerticalGap;
 

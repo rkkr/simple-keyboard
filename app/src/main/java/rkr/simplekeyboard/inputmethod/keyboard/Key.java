@@ -240,21 +240,21 @@ public class Key implements Comparable<Key> {
         // update the row to work with the new key
         row.setCurrentKey(keyAttr, isSpacer());
 
-        final float rowHeight = row.getRowHeight();
-        final float cellWidth = row.getCellWidth();
+        final float paddedHeight = row.getRowHeight();
+        final float paddedWidth = row.getKeyPaddedWidth();
 
-        final float keyXPos = row.getCellX();
+        final float keyXPos = row.getCurrentX();
         final float keyYPos = row.getRowY();
 
-        final float topPadding = row.getCellTopPadding();
-        final float bottomPadding = row.getCellBottomPadding();
-        final float keyHeight = rowHeight - topPadding - bottomPadding;
-        final float leftPadding = row.getCellLeftPadding();
-        final float rightPadding = row.getCellRightPadding();
-        final float keyWidth = cellWidth - leftPadding - rightPadding;
+        final float topPadding = row.getKeyTopPadding();
+        final float bottomPadding = row.getKeyBottomPadding();
+        final float keyHeight = paddedHeight - topPadding - bottomPadding;
+        final float leftPadding = row.getKeyLeftPadding();
+        final float rightPadding = row.getKeyRightPadding();
+        final float keyWidth = paddedWidth - leftPadding - rightPadding;
 
-        mHitBox.set(Math.round(keyXPos), Math.round(keyYPos), Math.round(keyXPos + cellWidth),
-                Math.round(keyYPos + rowHeight));
+        mHitBox.set(Math.round(keyXPos), Math.round(keyYPos), Math.round(keyXPos + paddedWidth),
+                Math.round(keyYPos + paddedHeight));
         mX = Math.round(keyXPos + leftPadding);
         mY = Math.round(keyYPos + topPadding);
         mWidth = Math.round(keyXPos + leftPadding + keyWidth) - mX;

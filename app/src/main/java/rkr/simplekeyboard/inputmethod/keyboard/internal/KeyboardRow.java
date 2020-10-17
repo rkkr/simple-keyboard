@@ -43,14 +43,14 @@ public final class KeyboardRow {
 
     private final KeyboardParams mParams;
 
-    /** The y coordinate of the top edge of the row and all keys in it, including the top padding. */
+    /** The y coordinate of the row's top edge and all keys in it, including the top padding. */
     private final float mY;
-    /** The height of this row (and all keys in it including the top and bottom padding). */
+    /** The height of this row and all keys in it, including the top and bottom padding. */
     private final float mRowHeight;
     /** The top padding of all of the keys in the row. */
-    private final float mTopPadding;
+    private final float mKeyTopPadding;
     /** The bottom padding of all of the keys in the row. */
-    private final float mBottomPadding;
+    private final float mKeyBottomPadding;
 
     /** The left-most coordinate that isn't already occupied by a key in the row. */
     private float mNextAvailableX;
@@ -60,11 +60,11 @@ public final class KeyboardRow {
     /** The x coordinate of the left edge of the current key, including the left padding. */
     private float mCurrentX;
     /** The width of the current key including the left and right padding. */
-    private float mCurrentCellWidth;
+    private float mCurrentKeyPaddedWidth;
     /** The left padding of the current key. */
-    private float mCurrentLeftPadding;
+    private float mCurrentKeyLeftPadding;
     /** The right padding of the current key. */
-    private float mCurrentRightPadding;
+    private float mCurrentKeyRightPadding;
 
     /** Flag indicating whether the previous key in the row was a spacer. */
     private boolean mLastKeyWasSpacer = false;
@@ -75,8 +75,8 @@ public final class KeyboardRow {
 
     // TODO: Add keyActionFlags.
     private static class RowAttributes {
-        /** Default width of a key in this row. */
-        public final float mDefaultKeyWidth;
+        /** Default padded width of a key in this row. */
+        public final float mDefaultKeyPaddedWidth;
         /** Default keyLabelFlags in this row. */
         public final int mDefaultKeyLabelFlags;
         /** Default backgroundType for this row */
@@ -86,14 +86,14 @@ public final class KeyboardRow {
          * Parse and create key attributes. This constructor is used to parse Row tag.
          *
          * @param keyAttr an attributes array of Row tag.
-         * @param defaultKeyWidth a default key width.
+         * @param defaultKeyPaddedWidth a default padded key width.
          * @param keyboardWidth the keyboard width that is required to calculate keyWidth attribute.
          */
-        public RowAttributes(final TypedArray keyAttr, final float defaultKeyWidth,
+        public RowAttributes(final TypedArray keyAttr, final float defaultKeyPaddedWidth,
                 final float keyboardWidth) {
-            mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
+            mDefaultKeyPaddedWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
                     (int)(keyboardWidth * 100), (int)(keyboardWidth * 100),
-                    defaultKeyWidth * 100) / 100;
+                    defaultKeyPaddedWidth * 100) / 100;
             mDefaultKeyLabelFlags = keyAttr.getInt(R.styleable.Keyboard_Key_keyLabelFlags, 0);
             mDefaultBackgroundType = keyAttr.getInt(R.styleable.Keyboard_Key_backgroundType,
                     Key.BACKGROUND_TYPE_NORMAL);
@@ -109,9 +109,9 @@ public final class KeyboardRow {
          */
         public RowAttributes(final TypedArray keyAttr, final RowAttributes defaultRowAttr,
                 final float keyboardWidth) {
-            mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
+            mDefaultKeyPaddedWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
                     (int)(keyboardWidth * 100), (int)(keyboardWidth * 100),
-                    defaultRowAttr.mDefaultKeyWidth * 100) / 100;
+                    defaultRowAttr.mDefaultKeyPaddedWidth * 100) / 100;
             mDefaultKeyLabelFlags = keyAttr.getInt(R.styleable.Keyboard_Key_keyLabelFlags, 0)
                     | defaultRowAttr.mDefaultKeyLabelFlags;
             mDefaultBackgroundType = keyAttr.getInt(R.styleable.Keyboard_Key_backgroundType,
@@ -126,31 +126,31 @@ public final class KeyboardRow {
                 R.styleable.Keyboard);
         if (y < FLOAT_THRESHOLD) {
             // the top row should use the keyboard's top padding instead of the vertical gap
-            mTopPadding = params.mTopPadding;
+            mKeyTopPadding = params.mTopPadding;
         } else {
-            mTopPadding = params.mVerticalGap / 2;
+            mKeyTopPadding = params.mVerticalGap / 2;
         }
         final float baseRowHeight = ResourceUtils.getDimensionOrFraction(keyboardAttr,
                 R.styleable.Keyboard_rowHeight, (int)(params.mBaseHeight * 100),
                 params.mDefaultRowHeight * 100) / 100;
         final float keyHeight = baseRowHeight - params.mVerticalGap;
-        final float rowEndY = y + mTopPadding + keyHeight + params.mVerticalGap / 2;
+        final float rowEndY = y + mKeyTopPadding + keyHeight + params.mVerticalGap / 2;
         if (rowEndY > params.mOccupiedHeight - params.mBottomPadding - FLOAT_THRESHOLD) {
             // the bottom row's padding should go to the bottom of the keyboard (this might be
             // slightly more than the keyboard's bottom padding if the rows don't add up to 100%)
             // we'll consider it the bottom row as long as the row's normal bottom padding overlaps
             // with the keyboard's bottom padding any amount
-            final float keyEndY = y + mTopPadding + keyHeight;
-            mBottomPadding = Math.max(params.mOccupiedHeight - keyEndY, params.mBottomPadding);
+            final float keyEndY = y + mKeyTopPadding + keyHeight;
+            mKeyBottomPadding = Math.max(params.mOccupiedHeight - keyEndY, params.mBottomPadding);
         } else {
-            mBottomPadding = params.mVerticalGap / 2;
+            mKeyBottomPadding = params.mVerticalGap / 2;
         }
-        mRowHeight = mTopPadding + keyHeight + mBottomPadding;
+        mRowHeight = mKeyTopPadding + keyHeight + mKeyBottomPadding;
         keyboardAttr.recycle();
         final TypedArray keyAttr = res.obtainAttributes(Xml.asAttributeSet(parser),
                 R.styleable.Keyboard_Key);
         mRowAttributesStack.push(new RowAttributes(
-                keyAttr, params.mDefaultKeyWidth, params.mBaseWidth));
+                keyAttr, params.mDefaultKeyPaddedWidth, params.mBaseWidth));
         keyAttr.recycle();
 
         mY = y;
@@ -168,8 +168,8 @@ public final class KeyboardRow {
         mRowAttributesStack.pop();
     }
 
-    private float getDefaultKeyWidth() {
-        return mRowAttributesStack.peek().mDefaultKeyWidth;
+    private float getDefaultKeyPaddedWidth() {
+        return mRowAttributesStack.peek().mDefaultKeyPaddedWidth;
     }
 
     public int getDefaultKeyLabelFlags() {
@@ -212,41 +212,41 @@ public final class KeyboardRow {
             // spacers don't have horizontal gaps but should include that space in its width
             mCurrentX = mNextKeyXPos - leftGap;
             keyWidth = getKeyWidth(keyAttr) + leftGap + defaultGap;
-            mCurrentLeftPadding = 0;
-            mCurrentRightPadding = 0;
+            mCurrentKeyLeftPadding = 0;
+            mCurrentKeyRightPadding = 0;
         } else {
             if (mLastKeyRightEdge < FLOAT_THRESHOLD) {
                 // first key in row
                 mCurrentX = 0;
-                mCurrentLeftPadding = mNextKeyXPos;
+                mCurrentKeyLeftPadding = mNextKeyXPos;
             } else if (mLastKeyWasSpacer) {
                 // the key next to a spacer should have a horizontal gap that spans the distance
                 mCurrentX = mNextAvailableX;
-                mCurrentLeftPadding = mNextKeyXPos - mNextAvailableX;
+                mCurrentKeyLeftPadding = mNextKeyXPos - mNextAvailableX;
             } else {
                 // split the gap between the adjacent keys
-                mCurrentLeftPadding = (mNextKeyXPos - mLastKeyRightEdge) / 2;
-                mCurrentX = mLastKeyRightEdge + mCurrentLeftPadding;
+                mCurrentKeyLeftPadding = (mNextKeyXPos - mLastKeyRightEdge) / 2;
+                mCurrentX = mLastKeyRightEdge + mCurrentKeyLeftPadding;
             }
             keyWidth = getKeyWidth(keyAttr);
             // we can't know this before seeing the next key, so just use the default. the key can
             // be updated later
-            mCurrentRightPadding = defaultGap;
+            mCurrentKeyRightPadding = defaultGap;
         }
 
-        mCurrentCellWidth = keyWidth + mCurrentLeftPadding + mCurrentRightPadding;
+        mCurrentKeyPaddedWidth = keyWidth + mCurrentKeyLeftPadding + mCurrentKeyRightPadding;
 
         // calculations for the current key are done. prep for the next key
-        mLastKeyRightEdge = mCurrentX + mCurrentCellWidth - mCurrentRightPadding;
+        mLastKeyRightEdge = mCurrentX + mCurrentKeyPaddedWidth - mCurrentKeyRightPadding;
         mLastKeyWasSpacer = isSpacer;
-        mNextAvailableX = mCurrentX + mCurrentCellWidth;
+        mNextAvailableX = mCurrentX + mCurrentKeyPaddedWidth;
         // set the next key's default position
         mNextKeyXPos = mNextAvailableX + defaultGap;
     }
 
     private float getKeyWidth(final TypedArray keyAttr) {
         if (keyAttr == null) {
-            return getDefaultKeyWidth() - mParams.mHorizontalGap;
+            return getDefaultKeyPaddedWidth() - mParams.mHorizontalGap;
         }
         final int widthType = ResourceUtils.getEnumValue(keyAttr,
                 R.styleable.Keyboard_Key_keyWidth, KEYWIDTH_NOT_ENUM);
@@ -255,11 +255,11 @@ public final class KeyboardRow {
                 // If keyWidth is fillRight, the actual key width will be determined to fill
                 // out the area up to the right edge of the keyboard.
                 final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
-                return keyboardRightEdge - mCurrentX - mCurrentLeftPadding;
+                return keyboardRightEdge - mCurrentX - mCurrentKeyLeftPadding;
             default: // KEYWIDTH_NOT_ENUM
                 return keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
                         (int)(mParams.mBaseWidth * 100), (int)(mParams.mBaseWidth * 100),
-                        getDefaultKeyWidth() * 100) / 100 - mParams.mHorizontalGap;
+                        getDefaultKeyPaddedWidth() * 100) / 100 - mParams.mHorizontalGap;
         }
     }
 
@@ -267,7 +267,7 @@ public final class KeyboardRow {
         return mY;
     }
 
-    public float getCellX() {
+    public float getCurrentX() {
         return mCurrentX;
     }
 
@@ -275,23 +275,23 @@ public final class KeyboardRow {
         return mRowHeight;
     }
 
-    public float getCellWidth() {
-        return mCurrentCellWidth;
+    public float getKeyPaddedWidth() {
+        return mCurrentKeyPaddedWidth;
     }
 
-    public float getCellTopPadding() {
-        return mTopPadding;
+    public float getKeyTopPadding() {
+        return mKeyTopPadding;
     }
 
-    public float getCellBottomPadding() {
-        return mBottomPadding;
+    public float getKeyBottomPadding() {
+        return mKeyBottomPadding;
     }
 
-    public float getCellLeftPadding() {
-        return mCurrentLeftPadding;
+    public float getKeyLeftPadding() {
+        return mCurrentKeyLeftPadding;
     }
 
-    public float getCellRightPadding() {
-        return mCurrentRightPadding;
+    public float getKeyRightPadding() {
+        return mCurrentKeyRightPadding;
     }
 }

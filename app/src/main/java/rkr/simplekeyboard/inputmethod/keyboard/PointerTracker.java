@@ -284,12 +284,14 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         mKeyboard = keyboard;
         // Mark that keyboard layout has been changed.
         mKeyboardLayoutHasBeenChanged = true;
-        final int keyWidth = mKeyboard.mMostCommonKeyWidth + Math.round(mKeyboard.mHorizontalGap);
-        final int keyHeight = mKeyboard.mMostCommonKeyHeight + Math.round(mKeyboard.mVerticalGap);
+        final int keyPaddedWidth = mKeyboard.mMostCommonKeyWidth
+                + Math.round(mKeyboard.mHorizontalGap);
+        final int keyPaddedHeight = mKeyboard.mMostCommonKeyHeight
+                + Math.round(mKeyboard.mVerticalGap);
         // Keep {@link #mCurrentKey} that comes from previous keyboard. The key preview of
         // {@link #mCurrentKey} will be dismissed by {@setReleasedKeyGraphics(Key)} via
         // {@link onMoveEventInternal(int,int,long)} or {@link #onUpEventInternal(int,int,long)}.
-        mBogusMoveEventDetector.setKeyboardGeometry(keyWidth, keyHeight);
+        mBogusMoveEventDetector.setKeyboardGeometry(keyPaddedWidth, keyPaddedHeight);
     }
 
     @Override
