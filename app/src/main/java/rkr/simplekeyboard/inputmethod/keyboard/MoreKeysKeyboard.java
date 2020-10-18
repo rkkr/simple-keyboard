@@ -353,7 +353,7 @@ public final class MoreKeysKeyboard extends Keyboard {
             }
             final MoreKeySpec[] moreKeys = key.getMoreKeys();
             mParams.setParameters(moreKeys.length, key.getMoreKeysColumnNumber(), keyPaddedWidth,
-                    rowHeight, key.getX() + key.getWidth() / 2f, keyboard.mId.mWidth,
+                    rowHeight, key.getDrawX() + key.getDrawWidth() / 2f, keyboard.mId.mWidth,
                     key.isMoreKeysFixedColumn(), key.isMoreKeysFixedOrder());
         }
 
