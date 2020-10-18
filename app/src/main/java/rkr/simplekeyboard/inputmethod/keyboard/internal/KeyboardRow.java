@@ -18,6 +18,7 @@ package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.util.Log;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -35,6 +36,7 @@ import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
  * defines.
  */
 public final class KeyboardRow {
+    private static final String TAG = KeyboardRow.class.getSimpleName();
     private static final float FLOAT_THRESHOLD = 0.0001f;
 
     // keyWidth enum constants
@@ -188,16 +190,24 @@ public final class KeyboardRow {
         final float keyXPos = keyAttr.getFraction(R.styleable.Keyboard_Key_keyXPos,
                 (int)(mParams.mBaseWidth * 100), (int)(mParams.mBaseWidth * 100), 0) / 100;
 
+        final float nextKeyXPos;
         if (keyXPos >= 0) {
-            mNextKeyXPos = keyXPos + mParams.mLeftPadding;
+            nextKeyXPos = keyXPos + mParams.mLeftPadding;
         } else {
             // If keyXPos is negative, the actual x-coordinate will be
             // keyboardWidth + keyXPos.
-            // keyXPos shouldn't be less than mNextAvailableX because drawable area for this
-            // key starts at mNextAvailableX. Or this key will overlaps the adjacent key on
-            // its left hand side.
             final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
-            mNextKeyXPos = Math.max(keyXPos + keyboardRightEdge, mNextAvailableX);
+            nextKeyXPos = keyXPos + keyboardRightEdge;
+        }
+        // keyXPos shouldn't be less than mNextAvailableX because drawable area for this
+        // key starts at mNextAvailableX. Or this key will overlaps the adjacent key on
+        // its left hand side.
+        if (nextKeyXPos + FLOAT_THRESHOLD < mNextAvailableX) {
+            Log.e(TAG, "The specified keyXPos (" + nextKeyXPos
+                    + ") is smaller than the next available x position (" + mNextAvailableX
+                    + "). The x position was not changed to avoid overlapping keys.");
+        } else {
+            mNextKeyXPos = nextKeyXPos;
         }
     }
 
