@@ -192,12 +192,16 @@ public final class KeyboardRow {
 
         final float nextKeyXPos;
         if (keyXPos >= 0) {
+            // We don't need to add the horizontal padding because that is included
             nextKeyXPos = keyXPos + mParams.mLeftPadding;
         } else {
             // If keyXPos is negative, the actual x-coordinate will be
             // keyboardWidth + keyXPos.
             final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
-            nextKeyXPos = keyXPos + keyboardRightEdge;
+            // The horizontal gap needs to be added because when working from the right side, the
+            // horizontal gap that is included actually points this to the theoretical previous
+            // key's right edge, so it need to be adjusted to point to the start of the next key
+            nextKeyXPos = keyXPos + keyboardRightEdge + mParams.mHorizontalGap;
         }
         // keyXPos shouldn't be less than mNextAvailableX because drawable area for this
         // key starts at mNextAvailableX. Or this key will overlaps the adjacent key on
