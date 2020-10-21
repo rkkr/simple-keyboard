@@ -243,9 +243,6 @@
         <attr name="keyIconDisabled" format="string" />
         <!-- The key style to specify a set of key attributes defined by <key_style/> -->
         <attr name="keyStyle" format="string" />
-        <!-- Visual insets, in the proportion of keyboard width. -->
-        <attr name="visualInsetsLeft" format="fraction" />
-        <attr name="visualInsetsRight" format="fraction" />
         <!-- Width of the key, in the proportion of keyboard width.
              If the value is fillRight, the actual key width will be determined to fill out the
              area up to the right edge of the keyboard. -->

@@ -443,7 +443,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         // keys keyboard is placed at the touch point of the parent key.
         final int pointX = (mConfigShowMoreKeysKeyboardAtTouchedPoint && !keyPreviewEnabled)
                 ? CoordinateUtils.x(lastCoords)
-                : key.getDrawX() + key.getDrawWidth() / 2;
+                : key.getX() + key.getWidth() / 2;
         // The more keys keyboard is usually vertically aligned with the top edge of the parent key
         // (plus vertical gap). If the key preview is enabled, the more keys keyboard is vertically
         // aligned with the bottom edge of the visible part of the key preview.
@@ -647,7 +647,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         if (keyboard == null) {
             return;
         }
-        final int width = key.getDrawWidth();
+        final int width = key.getWidth();
         final int height = key.getHeight();
         paint.setTextAlign(Align.CENTER);
         paint.setTypeface(Typeface.DEFAULT);

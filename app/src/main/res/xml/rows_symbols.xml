@@ -43,14 +43,14 @@
     >
         <Key
             latin:keyStyle="toMoreSymbolKeyStyle"
-            latin:keyWidth="15%p"
-            latin:visualInsetsRight="1%p" />
+            latin:keyWidth="14%p" />
         <include
+            latin:keyXPos="15%p"
             latin:keyboardLayout="@xml/rowkeys_symbols3" />
         <Key
             latin:keyStyle="deleteKeyStyle"
-            latin:keyWidth="fillRight"
-            latin:visualInsetsLeft="1%p" />
+            latin:keyXPos="86%p"
+            latin:keyWidth="14%p" />
     </Row>
     <Row
         latin:keyWidth="10%p"

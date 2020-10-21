@@ -157,28 +157,21 @@ public class Key implements Comparable<Key> {
         public final int mAltCode;
         /** Icon for disabled state */
         public final int mDisabledIconId;
-        /** The visual insets */
-        public final int mVisualInsetsLeft;
-        public final int mVisualInsetsRight;
 
         private OptionalAttributes(final String outputText, final int altCode,
-                final int disabledIconId, final int visualInsetsLeft, final int visualInsetsRight) {
+                final int disabledIconId) {
             mOutputText = outputText;
             mAltCode = altCode;
             mDisabledIconId = disabledIconId;
-            mVisualInsetsLeft = visualInsetsLeft;
-            mVisualInsetsRight = visualInsetsRight;
         }
 
         public static OptionalAttributes newInstance(final String outputText, final int altCode,
-                final int disabledIconId, final int visualInsetsLeft, final int visualInsetsRight) {
+                final int disabledIconId) {
             if (outputText == null && altCode == CODE_UNSPECIFIED
-                    && disabledIconId == ICON_UNDEFINED && visualInsetsLeft == 0
-                    && visualInsetsRight == 0) {
+                    && disabledIconId == ICON_UNDEFINED) {
                 return null;
             }
-            return new OptionalAttributes(outputText, altCode, disabledIconId, visualInsetsLeft,
-                    visualInsetsRight);
+            return new OptionalAttributes(outputText, altCode, disabledIconId);
         }
     }
 
@@ -214,7 +207,7 @@ public class Key implements Comparable<Key> {
         mMoreKeysColumnAndFlags = 0;
         mLabel = label;
         mOptionalAttributes = OptionalAttributes.newInstance(outputText, CODE_UNSPECIFIED,
-                ICON_UNDEFINED, 0 /* visualInsetsLeft */, 0 /* visualInsetsRight */);
+                ICON_UNDEFINED);
         mCode = code;
         mEnabled = (code != CODE_UNSPECIFIED);
         mIconId = iconId;
@@ -265,13 +258,6 @@ public class Key implements Comparable<Key> {
 
         mBackgroundType = style.getInt(keyAttr,
                 R.styleable.Keyboard_Key_backgroundType, row.getDefaultBackgroundType());
-
-        // truncate to be safe since the padding might not be a round number
-        final int baseWidth = (int)params.mBaseWidth;
-        final int visualInsetsLeft = Math.round(keyAttr.getFraction(
-                R.styleable.Keyboard_Key_visualInsetsLeft, baseWidth, baseWidth, 0));
-        final int visualInsetsRight = Math.round(keyAttr.getFraction(
-                R.styleable.Keyboard_Key_visualInsetsRight, baseWidth, baseWidth, 0));
 
         mLabelFlags = style.getFlags(keyAttr, R.styleable.Keyboard_Key_keyLabelFlags)
                 | row.getDefaultKeyLabelFlags();
@@ -386,8 +372,7 @@ public class Key implements Comparable<Key> {
         final int altCode = needsToUpcase
                 ? StringUtils.toTitleCaseOfKeyCode(altCodeInAttr, localeForUpcasing)
                 : altCodeInAttr;
-        mOptionalAttributes = OptionalAttributes.newInstance(outputText, altCode,
-                disabledIconId, visualInsetsLeft, visualInsetsRight);
+        mOptionalAttributes = OptionalAttributes.newInstance(outputText, altCode, disabledIconId);
         mKeyVisualAttributes = KeyVisualAttributes.newInstance(keyAttr);
         mHashCode = computeHashCode(this);
     }
@@ -467,8 +452,6 @@ public class Key implements Comparable<Key> {
                 // key.mOptionalAttributes.mAltCode,
                 // key.mOptionalAttributes.mDisabledIconId,
                 // key.mOptionalAttributes.mPreviewIconId,
-                // key.mOptionalAttributes.mVisualInsetLeft,
-                // key.mOptionalAttributes.mVisualInsetRight,
                 // key.mMaxMoreKeysColumn,
         });
     }
@@ -815,18 +798,6 @@ public class Key implements Comparable<Key> {
 
     public int getRightPadding() {
         return mHitBox.right - mX - mWidth;
-    }
-
-    public final int getDrawX() {
-        final int x = getX();
-        final OptionalAttributes attrs = mOptionalAttributes;
-        return (attrs == null) ? x : x + attrs.mVisualInsetsLeft;
-    }
-
-    public final int getDrawWidth() {
-        final OptionalAttributes attrs = mOptionalAttributes;
-        return (attrs == null) ? mWidth
-                : mWidth - attrs.mVisualInsetsLeft - attrs.mVisualInsetsRight;
     }
 
     /**

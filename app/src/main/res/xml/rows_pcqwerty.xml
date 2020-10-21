@@ -43,22 +43,22 @@
             latin:keyXPos="3.846%p" />
         <Key
             latin:keyStyle="deleteKeyStyle"
-            latin:keyWidth="fillRight"
-            latin:visualInsetsLeft="1%p" />
+            latin:keyXPos="89.458%p"
+            latin:keyWidth="10.542%p" />
     </Row>
     <Row
         latin:keyWidth="7.692%p"
     >
         <Key
             latin:keyStyle="shiftKeyStyle"
-            latin:keyWidth="11.538%p"
-            latin:visualInsetsRight="1%p" />
+            latin:keyWidth="10.538%p" />
         <include
+            latin:keyXPos="11.538%p"
             latin:keyboardLayout="@xml/rowkeys_pcqwerty4" />
         <Key
             latin:keyStyle="shiftKeyStyle"
-            latin:keyWidth="fillRight"
-            latin:visualInsetsLeft="1%p" />
+            latin:keyXPos="89.458%p"
+            latin:keyWidth="10.542%p" />
     </Row>
     <include
         latin:keyboardLayout="@xml/row_pcqwerty5" />
