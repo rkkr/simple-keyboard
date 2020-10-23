@@ -51,10 +51,14 @@ public final class KeyPreviewChoreographer {
     public KeyPreviewView getKeyPreviewView(final Key key, final ViewGroup placerView) {
         KeyPreviewView keyPreviewView = mShowingKeyPreviewViews.remove(key);
         if (keyPreviewView != null) {
+            keyPreviewView.setScaleX(1);
+            keyPreviewView.setScaleY(1);
             return keyPreviewView;
         }
         keyPreviewView = mFreeKeyPreviewViews.poll();
         if (keyPreviewView != null) {
+            keyPreviewView.setScaleX(1);
+            keyPreviewView.setScaleY(1);
             return keyPreviewView;
         }
         final Context context = placerView.getContext();
