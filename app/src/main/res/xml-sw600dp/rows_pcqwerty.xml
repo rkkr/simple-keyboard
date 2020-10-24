@@ -62,8 +62,7 @@
             latin:keyboardLayout="@xml/rowkeys_pcqwerty4" />
         <Key
             latin:keyStyle="shiftKeyStyle"
-            latin:keyXPos="-15.0%p"
-            latin:keyWidth="fillRight" />
+            latin:keyWidth="15.0%p" />
     </Row>
     <include
         latin:keyboardLayout="@xml/row_pcqwerty5" />

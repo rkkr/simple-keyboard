@@ -32,10 +32,11 @@
             latin:keyboardLayout="@xml/key_comma" />
         <!-- Space key. -->
         <include
-            latin:keyXPos="19.0%p"
             latin:keyboardLayout="@xml/key_space_7kw"
             latin:backgroundType="normal" />
         <include
             latin:keyboardLayout="@xml/key_period" />
+        <Spacer
+            latin:keyWidth="9%p" />
     </Row>
 </merge>
