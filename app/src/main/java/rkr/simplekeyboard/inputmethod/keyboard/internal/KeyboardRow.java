@@ -144,9 +144,13 @@ public final class KeyboardRow {
             // we'll consider it the bottom row as long as the row's normal bottom padding overlaps
             // with the keyboard's bottom padding any amount
             final float keyEndY = y + mKeyTopPadding + keyHeight;
-            if (keyEndY > keyboardBottomEdge + FLOAT_THRESHOLD) {
-                Log.e(TAG, "The row is " + (keyEndY - keyboardBottomEdge)
-                        + " px too tall to fit in the keyboard. The height was reduced to fit.");
+            final float keyOverflow = keyEndY - keyboardBottomEdge;
+            if (keyOverflow > FLOAT_THRESHOLD) {
+                if (Math.round(keyOverflow) > 0) {
+                    // only bother logging an error when expected rounding wouldn't resolve this
+                    Log.e(TAG, "The row is too tall to fit in the keyboard (" + keyOverflow
+                            + " px). The height was reduced to fit.");
+                }
                 keyHeight = Math.max(keyboardBottomEdge - y - mKeyTopPadding, 0);
             }
             mKeyBottomPadding = Math.max(params.mOccupiedHeight - keyEndY, params.mBottomPadding);
@@ -247,10 +251,14 @@ public final class KeyboardRow {
             mCurrentKeyRightPadding = defaultGap;
         }
         final float keyLeftEdge = mCurrentX + mCurrentKeyLeftPadding;
-        if (keyLeftEdge + keyWidth > keyboardRightEdge + FLOAT_THRESHOLD) {
-            Log.e(TAG, "The " + (isSpacer ? "spacer" : "key") + " is "
-                    + (keyLeftEdge + keyWidth - keyboardRightEdge)
-                    + " px too wide to fit in the keyboard. The width was reduced to fit.");
+        final float keyOverflow = keyLeftEdge + keyWidth - keyboardRightEdge;
+        if (keyOverflow > FLOAT_THRESHOLD) {
+            if (Math.round(keyOverflow) > 0) {
+                // only bother logging an error when expected rounding wouldn't resolve this
+                Log.e(TAG, "The " + (isSpacer ? "spacer" : "key")
+                        + " is too wide to fit in the keyboard (" + keyOverflow
+                        + " px). The width was reduced to fit.");
+            }
             keyWidth = Math.max(keyboardRightEdge - keyLeftEdge, 0);
         }
 
