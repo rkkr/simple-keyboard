@@ -135,14 +135,20 @@ public final class KeyboardRow {
         final float baseRowHeight = ResourceUtils.getDimensionOrFraction(keyboardAttr,
                 R.styleable.Keyboard_rowHeight, (int)(params.mBaseHeight * 100),
                 params.mDefaultRowHeight * 100) / 100;
-        final float keyHeight = baseRowHeight - params.mVerticalGap;
+        float keyHeight = baseRowHeight - params.mVerticalGap;
         final float rowEndY = y + mKeyTopPadding + keyHeight + params.mVerticalGap / 2;
-        if (rowEndY > params.mOccupiedHeight - params.mBottomPadding - FLOAT_THRESHOLD) {
+        final float keyboardBottomEdge = params.mOccupiedHeight - params.mBottomPadding;
+        if (rowEndY > keyboardBottomEdge - FLOAT_THRESHOLD) {
             // the bottom row's padding should go to the bottom of the keyboard (this might be
             // slightly more than the keyboard's bottom padding if the rows don't add up to 100%)
             // we'll consider it the bottom row as long as the row's normal bottom padding overlaps
             // with the keyboard's bottom padding any amount
             final float keyEndY = y + mKeyTopPadding + keyHeight;
+            if (keyEndY > keyboardBottomEdge + FLOAT_THRESHOLD) {
+                Log.e(TAG, "The row is " + (keyEndY - keyboardBottomEdge)
+                        + " px too tall to fit in the keyboard. The height was reduced to fit.");
+                keyHeight = Math.max(keyboardBottomEdge - y - mKeyTopPadding, 0);
+            }
             mKeyBottomPadding = Math.max(params.mOccupiedHeight - keyEndY, params.mBottomPadding);
         } else {
             mKeyBottomPadding = params.mVerticalGap / 2;
@@ -220,12 +226,17 @@ public final class KeyboardRow {
         final float defaultGap = mParams.mHorizontalGap / 2;
 
         updateXPos(keyAttr);
-        final float keyWidth;
+        final float keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
+        float keyWidth;
         if (isSpacer) {
             final float leftGap = Math.min(mNextKeyXPos - mNextAvailableX, defaultGap);
             // spacers don't have horizontal gaps but should include that space in its width
             mCurrentX = mNextKeyXPos - leftGap;
-            keyWidth = getKeyWidth(keyAttr) + leftGap + defaultGap;
+            keyWidth = getKeyWidth(keyAttr) + leftGap;
+            if (mCurrentX + keyWidth + FLOAT_THRESHOLD < keyboardRightEdge) {
+                // add what is normally the default right gap for non-edge spacers
+                keyWidth += defaultGap;
+            }
             mCurrentKeyLeftPadding = 0;
             mCurrentKeyRightPadding = 0;
         } else {
@@ -246,6 +257,13 @@ public final class KeyboardRow {
             // we can't know this before seeing the next key, so just use the default. the key can
             // be updated later
             mCurrentKeyRightPadding = defaultGap;
+        }
+        final float keyLeftEdge = mCurrentX + mCurrentKeyLeftPadding;
+        if (keyLeftEdge + keyWidth > keyboardRightEdge + FLOAT_THRESHOLD) {
+            Log.e(TAG, "The " + (isSpacer ? "spacer" : "key") + " is "
+                    + (keyLeftEdge + keyWidth - keyboardRightEdge)
+                    + " px too wide to fit in the keyboard. The width was reduced to fit.");
+            keyWidth = Math.max(keyboardRightEdge - keyLeftEdge, 0);
         }
 
         mCurrentKeyPaddedWidth = keyWidth + mCurrentKeyLeftPadding + mCurrentKeyRightPadding;

@@ -720,11 +720,5 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
 
     private void endKeyboard() {
         mParams.removeRedundantMoreKeys();
-        final int actualHeight = Math.round(mCurrentY);
-        if (actualHeight > mParams.mOccupiedHeight) {
-            // this should only happen if the keyboard xml is configured incorrectly and the rows
-            // add up to more than 100%
-            Log.e(BUILDER_TAG, "The keyboard was defined to be taller than what is allowed");
-        }
     }
 }
