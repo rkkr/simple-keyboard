@@ -41,7 +41,7 @@
         <Key
             latin:keyStyle="shiftKeyStyle"
             latin:keyWidth="fillRight"
-            latin:keyXPos="-10.0%p" />
+            latin:keyXPos="90.0%p" />
     </Row>
     <include latin:keyboardLayout="@xml/row_qwerty4" />
 </merge>

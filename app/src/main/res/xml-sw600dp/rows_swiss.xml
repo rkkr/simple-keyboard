@@ -55,7 +55,7 @@
             latin:keyboardLayout="@xml/keys_exclamation_question" />
         <Key
             latin:keyStyle="shiftKeyStyle"
-            latin:keyXPos="-10.0%p"
+            latin:keyXPos="90.0%p"
             latin:keyWidth="fillRight" />
     </Row>
     <include
