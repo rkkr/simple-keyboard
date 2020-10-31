@@ -379,22 +379,34 @@ public final class MoreKeysKeyboard extends Keyboard {
             for (int n = 0; n < moreKeys.length; n++) {
                 final MoreKeySpec moreKeySpec = moreKeys[n];
                 final int row = n / params.mNumColumns;
-                final float x = params.getX(n, row);
-                final float y = params.getY(row);
                 final float width = params.mDefaultKeyPaddedWidth - params.mHorizontalGap;
                 final float height = params.mDefaultRowHeight - params.mVerticalGap;
-                final float leftGap = x < params.mLeftPadding + FLOAT_THRESHOLD
-                        ? params.mLeftPadding : params.mHorizontalGap / 2;
-                final float rightGap = x + width > params.mOccupiedWidth - params.mRightPadding
-                        - FLOAT_THRESHOLD
-                        ? params.mRightPadding : params.mHorizontalGap / 2;
-                final float topGap = y < params.mTopPadding + FLOAT_THRESHOLD
-                        ? params.mTopPadding : params.mVerticalGap / 2;
-                final float bottomGap = y + height > params.mOccupiedHeight - params.mBottomPadding
-                        - FLOAT_THRESHOLD
-                        ? params.mBottomPadding : params.mVerticalGap / 2;
-                final Key key = moreKeySpec.buildKey(x, y, width, height, leftGap, rightGap,
-                        topGap, bottomGap, moreKeyFlags);
+                final float keyLeftEdge = params.getX(n, row);
+                final float keyTopEdge = params.getY(row);
+                final float keyRightEdge = keyLeftEdge + width;
+                final float keyBottomEdge = keyTopEdge + height;
+
+                final float keyboardLeftEdge = params.mLeftPadding;
+                final float keyboardRightEdge = params.mOccupiedWidth - params.mRightPadding;
+                final float keyboardTopEdge = params.mTopPadding;
+                final float keyboardBottomEdge = params.mOccupiedHeight - params.mBottomPadding;
+
+                final float keyLeftPadding = Math.min(params.mMaxKeyHitboxPadding,
+                        keyLeftEdge < keyboardLeftEdge + FLOAT_THRESHOLD
+                                ? params.mLeftPadding : params.mHorizontalGap / 2);
+                final float keyRightPadding = Math.min(params.mMaxKeyHitboxPadding,
+                        keyRightEdge > keyboardRightEdge - FLOAT_THRESHOLD
+                                ? params.mRightPadding : params.mHorizontalGap / 2);
+                final float keyTopPadding = Math.min(params.mMaxKeyHitboxPadding,
+                        keyTopEdge < keyboardTopEdge + FLOAT_THRESHOLD
+                                ? params.mTopPadding : params.mVerticalGap / 2);
+                final float keyBottomPadding = Math.min(params.mMaxKeyHitboxPadding,
+                        keyBottomEdge > keyboardBottomEdge - FLOAT_THRESHOLD
+                                ? params.mBottomPadding : params.mVerticalGap / 2);
+
+                final Key key = moreKeySpec.buildKey(keyLeftEdge, keyTopEdge, width, height,
+                        keyLeftPadding, keyRightPadding, keyTopPadding, keyBottomPadding,
+                        moreKeyFlags);
                 params.onAddKey(key);
             }
             return new MoreKeysKeyboard(params);

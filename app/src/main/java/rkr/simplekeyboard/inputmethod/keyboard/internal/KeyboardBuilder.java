@@ -150,6 +150,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
 
         params.mGridWidth = res.getInteger(R.integer.config_keyboard_grid_width);
         params.mGridHeight = res.getInteger(R.integer.config_keyboard_grid_height);
+        params.mMaxKeyHitboxPadding = res.getDimension(R.dimen.config_max_key_hitbox_padding);
     }
 
     public void setAllowRedundantMoreKes(final boolean enabled) {
@@ -700,7 +701,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             throw new RuntimeException("orphan end row tag");
         }
         if (mPreviousKeyInRow != null && !mPreviousKeyInRow.isSpacer()) {
-            mPreviousKeyInRow.setRightEdge(mParams.mOccupiedWidth);
+            setKeyHitboxRightEdge(mPreviousKeyInRow, mParams.mOccupiedWidth);
             mPreviousKeyInRow = null;
         }
         mCurrentY += row.getRowHeight();
@@ -711,11 +712,18 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         mParams.onAddKey(key);
         if (mPreviousKeyInRow != null && !mPreviousKeyInRow.isSpacer()) {
             // make the last key span the gap so there isn't un-clickable space. the current key's
-            // left edge is based on the previous key, so this will make the gap between them split
-            // evenly
-            mPreviousKeyInRow.setRightEdge(Math.round(row.getCurrentX()));
+            // hitbox left edge is based on the previous key, so this will make the gap between
+            // them split evenly
+            setKeyHitboxRightEdge(mPreviousKeyInRow, row.getKeyX() - row.getKeyLeftPadding());
         }
         mPreviousKeyInRow = key;
+    }
+
+    private void setKeyHitboxRightEdge(final Key key, final float xPos) {
+        final int keyRight = key.getX() + key.getWidth();
+        final float padding = xPos - keyRight;
+        key.setHitboxRightEdge(Math.round(Math.min(padding, mParams.mMaxKeyHitboxPadding))
+                + keyRight);
     }
 
     private void endKeyboard() {

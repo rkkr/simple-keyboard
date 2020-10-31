@@ -71,11 +71,11 @@ public final class MoreKeySpec {
     }
 
     public Key buildKey(final float x, final float y, final float width, final float height,
-                        final float leftGap, final float rightGap, final float topGap,
-                        final float bottomGap, final int labelFlags) {
+                        final float leftPadding, final float rightPadding, final float topPadding,
+                        final float bottomPadding, final int labelFlags) {
         return new Key(mLabel, mIconId, mCode, mOutputText, null /* hintLabel */, labelFlags,
-                Key.BACKGROUND_TYPE_NORMAL, x, y, width, height, leftGap, rightGap,
-                topGap, bottomGap);
+                Key.BACKGROUND_TYPE_NORMAL, x, y, width, height, leftPadding, rightPadding,
+                topPadding, bottomPadding);
     }
 
     @Override

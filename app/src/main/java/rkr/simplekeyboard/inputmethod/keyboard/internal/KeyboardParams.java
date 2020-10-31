@@ -59,6 +59,8 @@ public class KeyboardParams {
     public int mGridWidth;
     public int mGridHeight;
 
+    public float mMaxKeyHitboxPadding;
+
     // Keys are sorted from top-left to bottom-right order.
     public final SortedSet<Key> mSortedKeys = new TreeSet<>(ROW_COLUMN_COMPARATOR);
     public final ArrayList<Key> mShiftKeys = new ArrayList<>();

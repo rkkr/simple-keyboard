@@ -107,7 +107,7 @@ public class Key implements Comparable<Key> {
      *  padding. */
     private final int mY;
     /** Hit bounding box of the key */
-    private final Rect mHitBox = new Rect();
+    private final Rect mHitbox = new Rect();
 
     /** More keys. It is guaranteed that this is null or an array of one or more elements */
     private final MoreKeySpec[] mMoreKeys;
@@ -190,7 +190,7 @@ public class Key implements Comparable<Key> {
                final float x, final float y, final float width, final float height,
                final float leftPadding, final float rightPadding, final float topPadding,
                final float bottomPadding) {
-        mHitBox.set(Math.round(x - leftPadding), Math.round(y - topPadding),
+        mHitbox.set(Math.round(x - leftPadding), Math.round(y - topPadding),
                 Math.round(x + width + rightPadding), Math.round(y + height + bottomPadding));
         mX = Math.round(x);
         mY = Math.round(y);
@@ -233,25 +233,25 @@ public class Key implements Comparable<Key> {
         // update the row to work with the new key
         row.setCurrentKey(keyAttr, isSpacer());
 
-        final float paddedHeight = row.getRowHeight();
-        final float paddedWidth = row.getKeyPaddedWidth();
+        final float keyWidth = row.getKeyWidth();
+        final float keyHeight = row.getKeyHeight();
 
-        final float keyXPos = row.getCurrentX();
-        final float keyYPos = row.getRowY();
+        final float keyLeft = row.getKeyX();
+        final float keyTop = row.getKeyY();
+        final float keyRight = keyLeft + keyWidth;
+        final float keyBottom = keyTop + keyHeight;
 
-        final float topPadding = row.getKeyTopPadding();
-        final float bottomPadding = row.getKeyBottomPadding();
-        final float keyHeight = paddedHeight - topPadding - bottomPadding;
         final float leftPadding = row.getKeyLeftPadding();
+        final float topPadding = row.getKeyTopPadding();
         final float rightPadding = row.getKeyRightPadding();
-        final float keyWidth = paddedWidth - leftPadding - rightPadding;
+        final float bottomPadding = row.getKeyBottomPadding();
 
-        mHitBox.set(Math.round(keyXPos), Math.round(keyYPos), Math.round(keyXPos + paddedWidth),
-                Math.round(keyYPos + paddedHeight));
-        mX = Math.round(keyXPos + leftPadding);
-        mY = Math.round(keyYPos + topPadding);
-        mWidth = Math.round(keyXPos + leftPadding + keyWidth) - mX;
-        mHeight = Math.round(keyYPos + topPadding + keyHeight) - mY;
+        mHitbox.set(Math.round(keyLeft - leftPadding), Math.round(keyTop - topPadding),
+                Math.round(keyRight + rightPadding), Math.round(keyBottom + bottomPadding));
+        mX = Math.round(keyLeft);
+        mY = Math.round(keyTop);
+        mWidth = Math.round(keyRight) - mX;
+        mHeight = Math.round(keyBottom) - mY;
 
         mDefinedHeight = keyHeight;
         mDefinedWidth = keyWidth;
@@ -399,7 +399,7 @@ public class Key implements Comparable<Key> {
         mDefinedHeight = key.mDefinedHeight;
         mX = key.mX;
         mY = key.mY;
-        mHitBox.set(key.mHitBox);
+        mHitbox.set(key.mHitbox);
         mMoreKeys = moreKeys;
         mMoreKeysColumnAndFlags = key.mMoreKeysColumnAndFlags;
         mBackgroundType = key.mBackgroundType;
@@ -519,8 +519,8 @@ public class Key implements Comparable<Key> {
         return mMoreKeys;
     }
 
-    public void setRightEdge(final int right) {
-        mHitBox.right = right;
+    public void setHitboxRightEdge(final int right) {
+        mHitbox.right = right;
     }
 
     public final boolean isSpacer() {
@@ -785,19 +785,19 @@ public class Key implements Comparable<Key> {
     }
 
     public int getTopPadding() {
-        return mY - mHitBox.top;
+        return mY - mHitbox.top;
     }
 
     public int getBottomPadding() {
-        return mHitBox.bottom - mY - mHeight;
+        return mHitbox.bottom - mY - mHeight;
     }
 
     public int getLeftPadding() {
-        return mX - mHitBox.left;
+        return mX - mHitbox.left;
     }
 
     public int getRightPadding() {
-        return mHitBox.right - mX - mWidth;
+        return mHitbox.right - mX - mWidth;
     }
 
     /**
@@ -835,22 +835,23 @@ public class Key implements Comparable<Key> {
      * to adjacent keys.
      */
     public boolean isOnKey(final int x, final int y) {
-        return mHitBox.contains(x, y);
+        return mHitbox.contains(x, y);
     }
 
     /**
-     * Returns the square of the distance to the nearest edge of the key and the given point.
+     * Returns the square of the distance to the nearest clickable edge of the key and the given
+     * point.
      * @param x the x-coordinate of the point
      * @param y the y-coordinate of the point
      * @return the square of the distance of the point from the nearest edge of the key
      */
-    public int squaredDistanceToEdge(final int x, final int y) {
-        final int left = mHitBox.left;
+    public int squaredDistanceToHitboxEdge(final int x, final int y) {
+        final int left = mHitbox.left;
         // the hit box right is exclusive
-        final int right = mHitBox.right - 1;
-        final int top = mHitBox.top;
+        final int right = mHitbox.right - 1;
+        final int top = mHitbox.top;
         // the hit box bottom is exclusive
-        final int bottom = mHitBox.bottom - 1;
+        final int bottom = mHitbox.bottom - 1;
         final int edgeX = x < left ? left : Math.min(x, right);
         final int edgeY = y < top ? top : Math.min(y, bottom);
         final int dx = x - edgeX;

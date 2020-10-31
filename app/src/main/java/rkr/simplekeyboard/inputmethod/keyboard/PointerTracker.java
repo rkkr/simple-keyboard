@@ -816,7 +816,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         // Here curKey points to the different key from newKey.
         final int keyHysteresisDistanceSquared = mKeyDetector.getKeyHysteresisDistanceSquared(
                 mIsInSlidingKeyInput);
-        final int distanceFromKeyEdgeSquared = curKey.squaredDistanceToEdge(x, y);
+        final int distanceFromKeyEdgeSquared = curKey.squaredDistanceToHitboxEdge(x, y);
         if (distanceFromKeyEdgeSquared >= keyHysteresisDistanceSquared) {
             if (DEBUG_MODE) {
                 final float distanceToEdgeRatio = (float)Math.sqrt(distanceFromKeyEdgeSquared)
