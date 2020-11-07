@@ -230,16 +230,16 @@ public class Key implements Comparable<Key> {
     public Key(final String keySpec, final TypedArray keyAttr,
             final KeyStyle style, final KeyboardParams params,
             final KeyboardRow row) {
-        // update the row to work with the new key
+        // Update the row to work with the new key
         row.setCurrentKey(keyAttr, isSpacer());
 
-        final float keyWidth = row.getKeyWidth();
-        final float keyHeight = row.getKeyHeight();
+        mDefinedWidth = row.getKeyWidth();
+        mDefinedHeight = row.getKeyHeight();
 
         final float keyLeft = row.getKeyX();
         final float keyTop = row.getKeyY();
-        final float keyRight = keyLeft + keyWidth;
-        final float keyBottom = keyTop + keyHeight;
+        final float keyRight = keyLeft + mDefinedWidth;
+        final float keyBottom = keyTop + mDefinedHeight;
 
         final float leftPadding = row.getKeyLeftPadding();
         final float topPadding = row.getKeyTopPadding();
@@ -252,9 +252,6 @@ public class Key implements Comparable<Key> {
         mY = Math.round(keyTop);
         mWidth = Math.round(keyRight) - mX;
         mHeight = Math.round(keyBottom) - mY;
-
-        mDefinedHeight = keyHeight;
-        mDefinedWidth = keyWidth;
 
         mBackgroundType = style.getInt(keyAttr,
                 R.styleable.Keyboard_Key_backgroundType, row.getDefaultBackgroundType());
@@ -453,6 +450,8 @@ public class Key implements Comparable<Key> {
                 // key.mOptionalAttributes.mDisabledIconId,
                 // key.mOptionalAttributes.mPreviewIconId,
                 // key.mMaxMoreKeysColumn,
+                // key.mDefinedHeight,
+                // key.mDefinedWidth,
         });
     }
 
@@ -784,18 +783,34 @@ public class Key implements Comparable<Key> {
         return mY;
     }
 
+    /**
+     * Gets the amount of padding for the hitbox above the key's visible position.
+     * @return The hitbox padding above the key.
+     */
     public int getTopPadding() {
         return mY - mHitbox.top;
     }
 
+    /**
+     * Gets the amount of padding for the hitbox below the key's visible position.
+     * @return The hitbox padding below the key.
+     */
     public int getBottomPadding() {
         return mHitbox.bottom - mY - mHeight;
     }
 
+    /**
+     * Gets the amount of padding for the hitbox to the left of the key's visible position.
+     * @return The hitbox padding to the left of the key.
+     */
     public int getLeftPadding() {
         return mX - mHitbox.left;
     }
 
+    /**
+     * Gets the amount of padding for the hitbox to the right of the key's visible position.
+     * @return The hitbox padding to the right of the key.
+     */
     public int getRightPadding() {
         return mHitbox.right - mX - mWidth;
     }
@@ -830,9 +845,9 @@ public class Key implements Comparable<Key> {
      * Detects if a point falls on this key.
      * @param x the x-coordinate of the point
      * @param y the y-coordinate of the point
-     * @return whether or not the point falls on the key. This includes all points between the key
-     * and the keyboard edge for keys attached to an edge and all points between the key and halfway
-     * to adjacent keys.
+     * @return whether or not the point falls on the key. This generally includes all points
+     * between the key and the keyboard edge for keys attached to an edge and all points between
+     * the key and halfway to adjacent keys.
      */
     public boolean isOnKey(final int x, final int y) {
         return mHitbox.contains(x, y);
@@ -847,10 +862,10 @@ public class Key implements Comparable<Key> {
      */
     public int squaredDistanceToHitboxEdge(final int x, final int y) {
         final int left = mHitbox.left;
-        // the hit box right is exclusive
+        // The hit box right is exclusive
         final int right = mHitbox.right - 1;
         final int top = mHitbox.top;
-        // the hit box bottom is exclusive
+        // The hit box bottom is exclusive
         final int bottom = mHitbox.bottom - 1;
         final int edgeX = x < left ? left : Math.min(x, right);
         final int edgeY = y < top ? top : Math.min(y, bottom);

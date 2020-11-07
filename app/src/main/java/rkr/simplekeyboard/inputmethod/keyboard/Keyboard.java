@@ -47,20 +47,12 @@ import rkr.simplekeyboard.inputmethod.latin.common.Constants;
  */
 public class Keyboard {
     public final KeyboardId mId;
-    public final int mThemeId;
 
     /** Total height of the keyboard, including the padding and keys */
     public final int mOccupiedHeight;
     /** Total width of the keyboard, including the padding and keys */
     public final int mOccupiedWidth;
 
-    /** Base height of the keyboard, used to calculate rows' height */
-    public final float mBaseHeight;
-    /** Base width of the keyboard, used to calculate keys' width */
-    public final float mBaseWidth;
-
-    /** The padding above the keyboard */
-    public final float mTopPadding;
     /** The padding below the keyboard */
     public final float mBottomPadding;
     /** Default gap between rows */
@@ -77,9 +69,6 @@ public class Keyboard {
     /** More keys keyboard template */
     public final int mMoreKeysTemplate;
 
-    /** Maximum column for more keys keyboard */
-    public final int mMaxMoreKeysKeyboardColumn;
-
     /** List of keys in this keyboard */
     private final List<Key> mSortedKeys;
     public final List<Key> mShiftKeys;
@@ -92,17 +81,12 @@ public class Keyboard {
 
     public Keyboard(final KeyboardParams params) {
         mId = params.mId;
-        mThemeId = params.mThemeId;
         mOccupiedHeight = params.mOccupiedHeight;
         mOccupiedWidth = params.mOccupiedWidth;
-        mBaseHeight = params.mBaseHeight;
-        mBaseWidth = params.mBaseWidth;
         mMostCommonKeyHeight = params.mMostCommonKeyHeight;
         mMostCommonKeyWidth = params.mMostCommonKeyWidth;
         mMoreKeysTemplate = params.mMoreKeysTemplate;
-        mMaxMoreKeysKeyboardColumn = params.mMaxMoreKeysKeyboardColumn;
         mKeyVisualAttributes = params.mKeyVisualAttributes;
-        mTopPadding = params.mTopPadding;
         mBottomPadding = params.mBottomPadding;
         mVerticalGap = params.mVerticalGap;
         mHorizontalGap = params.mHorizontalGap;

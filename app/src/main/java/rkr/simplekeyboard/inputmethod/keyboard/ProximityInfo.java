@@ -71,8 +71,8 @@ public class ProximityInfo {
         for (final Key key : mSortedKeys) {
             if (key.isSpacer()) continue;
 
-            // iterate through all of the cells that overlap with the clickable region of the
-            // current key and add the key as a neighbor
+            // Iterate through all of the cells that overlap with the clickable region of the
+            // current key and add the key as a neighbor.
             final int keyX = key.getX();
             final int keyY = key.getY();
             final int keyTop = keyY - key.getTopPadding();

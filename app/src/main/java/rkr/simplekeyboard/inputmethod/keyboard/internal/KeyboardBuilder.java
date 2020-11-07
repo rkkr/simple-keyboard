@@ -241,9 +241,9 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             final float baseWidth = params.mOccupiedWidth - params.mLeftPadding
                     - params.mRightPadding + params.mHorizontalGap;
             params.mBaseWidth = baseWidth;
-            params.mDefaultKeyPaddedWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
-                    (int)(baseWidth * 100), (int)(baseWidth * 100),
-                    baseWidth * 100 / DEFAULT_KEYBOARD_COLUMNS) / 100;
+            params.mDefaultKeyPaddedWidth = ResourceUtils.getFraction(keyAttr,
+                    R.styleable.Keyboard_Key_keyWidth, baseWidth,
+                    baseWidth / DEFAULT_KEYBOARD_COLUMNS);
             // TODO: Fix keyboard geometry calculation clearer. Historically vertical gap between
             // rows are determined based on the entire keyboard height including top and bottom
             // paddings.
@@ -253,8 +253,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     - params.mBottomPadding + params.mVerticalGap;
             params.mBaseHeight = baseHeight;
             params.mDefaultRowHeight = ResourceUtils.getDimensionOrFraction(keyboardAttr,
-                    R.styleable.Keyboard_rowHeight, (int)(baseHeight * 100),
-                    baseHeight * 100 / DEFAULT_KEYBOARD_ROWS) / 100;
+                    R.styleable.Keyboard_rowHeight, baseHeight, baseHeight / DEFAULT_KEYBOARD_ROWS);
 
             params.mKeyVisualAttributes = KeyVisualAttributes.newInstance(keyAttr);
 
@@ -426,8 +425,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         final TypedArray includeAttr = mResources.obtainAttributes(
                 attr, R.styleable.Keyboard);
         mParams.mDefaultRowHeight = ResourceUtils.getDimensionOrFraction(includeAttr,
-                R.styleable.Keyboard_rowHeight, (int)(mParams.mBaseHeight * 100),
-                mParams.mDefaultRowHeight * 100) / 100;
+                R.styleable.Keyboard_rowHeight, mParams.mBaseHeight, mParams.mDefaultRowHeight);
 
         final TypedArray keyAttr = mResources.obtainAttributes(attr, R.styleable.Keyboard_Key);
         int keyboardLayout = 0;
@@ -711,9 +709,9 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
     private void endKey(final Key key, final KeyboardRow row) {
         mParams.onAddKey(key);
         if (mPreviousKeyInRow != null && !mPreviousKeyInRow.isSpacer()) {
-            // make the last key span the gap so there isn't un-clickable space. the current key's
+            // Make the last key span the gap so there isn't un-clickable space. The current key's
             // hitbox left edge is based on the previous key, so this will make the gap between
-            // them split evenly
+            // them split evenly.
             setKeyHitboxRightEdge(mPreviousKeyInRow, row.getKeyX() - row.getKeyLeftPadding());
         }
         mPreviousKeyInRow = key;
