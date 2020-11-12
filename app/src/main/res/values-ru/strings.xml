@@ -66,4 +66,6 @@
     <string name="hide_language_switch_key">Скрыть клавишу переключения языка</string>
     <string name="show_number_row">Показать ряд цифр</string>
     <string name="space_swipe">Перемещать курсор пробелом</string>
+    <string name="delete_swipe">Удалить свайпом</string>
+    <string name="matching_navbar_color">Simple Keyboard не включен. Нажмите "ОК", чтобы выбрать языки &amp; в настройках ввода. Вам нужо будет выбрать приложение Simple Keyboard текущей клавиатурой, чтобы использовать её.</string>
 </resources>

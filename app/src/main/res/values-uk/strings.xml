@@ -67,4 +67,6 @@
     <string name="show_number_row">Показувати рядок цифр</string>
     <string name="space_swipe">Переміщати курсор ковзанням по пробілу</string>
     <string name="delete_swipe">Видаляти ковзанням</string>
+    <string name="matching_navbar_color">Автопідбір кольору для навігаційної панелі</string>
+    <string name="setup_message">Simple Keyboard не увімкнута. Нажміть ОК для відкриття налаштувань Мови та введення. Виберіть Simple Keyboard вашою поточною клавіатурою, щоб використовувати її.</string>
 </resources>
