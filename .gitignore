@@ -2,6 +2,7 @@
 *.apk
 *.ap_
 output.json
+output-metadata.json
 
 # Files for the ART/Dalvik VM
 *.dex
