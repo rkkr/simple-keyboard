@@ -40,6 +40,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
@@ -94,7 +95,7 @@ public final class CustomInputStyleSettingsFragment extends PreferenceFragment
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mPrefs = getPreferenceManager().getSharedPreferences();
+        mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(getActivity());
         RichInputMethodManager.init(getActivity());
         mRichImm = RichInputMethodManager.getInstance();
         addPreferencesFromResource(R.xml.additional_subtype_settings);

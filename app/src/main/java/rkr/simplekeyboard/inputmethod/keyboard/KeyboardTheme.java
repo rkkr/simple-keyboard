@@ -18,10 +18,10 @@ package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 
 public final class KeyboardTheme {
@@ -99,7 +99,7 @@ public final class KeyboardTheme {
     }
 
     public static KeyboardTheme getKeyboardTheme(final Context context) {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(context);
         return getKeyboardTheme(prefs);
     }
 

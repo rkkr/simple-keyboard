@@ -20,6 +20,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
+import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
+
 /**
  * This is a helper class for an IME's settings preference activity. It's recommended for every
  * IME to have its own settings preference activity which inherits this class.
@@ -31,7 +33,7 @@ public abstract class InputMethodSettingsActivity extends PreferenceActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setPreferenceScreen(getPreferenceManager().createPreferenceScreen(this));
+        setPreferenceScreen(getPreferenceManager().createPreferenceScreen(PreferenceManagerCompat.getDeviceContext(this)));
         mSettings.init(this, getPreferenceScreen());
     }
 

@@ -20,11 +20,14 @@ import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+
+import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 
 /**
  * A base abstract class for a {@link PreferenceFragment} that implements a nested
@@ -58,7 +61,7 @@ public abstract class SubScreenFragment extends PreferenceFragment
     }
 
     final SharedPreferences getSharedPreferences() {
-        return getPreferenceManager().getSharedPreferences();
+        return PreferenceManagerCompat.getDeviceSharedPreferences(getActivity());
     }
 
     @Override
@@ -71,6 +74,9 @@ public abstract class SubScreenFragment extends PreferenceFragment
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            super.getPreferenceManager().setStorageDeviceProtected();
+        }
         mSharedPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
