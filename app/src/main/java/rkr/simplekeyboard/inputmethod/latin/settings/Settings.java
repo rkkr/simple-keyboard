@@ -169,11 +169,11 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     }
 
     public static boolean readSpaceSwipeEnabled(final SharedPreferences prefs) {
-        return prefs.getBoolean(PREF_SPACE_SWIPE, true);
+        return prefs.getBoolean(PREF_SPACE_SWIPE, false);
     }
 
     public static boolean readDeleteSwipeEnabled(final SharedPreferences prefs) {
-        return prefs.getBoolean(PREF_DELETE_SWIPE, true);
+        return prefs.getBoolean(PREF_DELETE_SWIPE, false);
     }
 
     public static String readPrefAdditionalSubtypes(final SharedPreferences prefs,
