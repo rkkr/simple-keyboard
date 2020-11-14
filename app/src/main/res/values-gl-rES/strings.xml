@@ -60,4 +60,13 @@
     <string name="prefs_keypress_sound_volume_settings">"Volume do son ao premer teclas"</string>
     <string name="prefs_key_longpress_timeout_settings">"Retraso de pulsación prolongada"</string>
     <string name="button_default">"Predeterminado"</string>
+    <string name="prefs_keyboard_height_settings">Altura do teclado</string>
+    <string name="keyboard_color">Establecer cor personalizada do teclado</string>
+    <string name="hide_special_chars">Ocultar caracteres especiais</string>
+    <string name="hide_language_switch_key">Ocultar tecla de cambio de idioma</string>
+    <string name="show_number_row">Mostrar a ringleira de díxitos separada</string>
+    <string name="space_swipe">Desprazamento do cursor do espacio</string>
+    <string name="delete_swipe">Eliminar deslizar</string>
+    <string name="matching_navbar_color">Usar a cor correspondente da barra de navegación</string>
+    <string name="setup_message">Simple Keyboard non está habilitado. Prema OK para abrir Idiomas &amp; Axustes de entrada. Necesitará escoller Simple Keyboard no seu teclado actual para usalo.</string>
 </resources>
