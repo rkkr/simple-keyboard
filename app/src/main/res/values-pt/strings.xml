@@ -61,10 +61,10 @@
     <string name="prefs_key_longpress_timeout_settings">"Atraso ao pressionar teclas"</string>
     <string name="button_default">"Padrão"</string>
     <string name="prefs_keyboard_height_settings">Altura do teclado</string>
-    <string name="keyboard_color">Definir cor personalizada</string>
+    <string name="keyboard_color">Personalizar cor do teclado</string>
     <string name="hide_special_chars">Ocultar caracteres especiais</string>
-    <string name="hide_language_switch_key">Ocultar tecla para trocar idiomas</string>
-    <string name="show_number_row">Mostrar números em linha distinta</string>
+    <string name="hide_language_switch_key">Ocultar tecla de mudança de idioma</string>
+    <string name="show_number_row">Mostrar números em linha separada</string>
     <string name="space_swipe">Deslizar a barra de espaço para mover o cursor</string>
     <string name="delete_swipe">Deslizar para excluir</string>
     <string name="matching_navbar_color">Usar cor correspondente à barra de navegação</string>
