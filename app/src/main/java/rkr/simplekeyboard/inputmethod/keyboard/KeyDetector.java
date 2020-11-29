@@ -95,9 +95,6 @@ public class KeyDetector {
         int minDistance = Integer.MAX_VALUE;
         Key primaryKey = null;
         for (final Key key: mKeyboard.getNearestKeys(touchX, touchY)) {
-            if (!key.isOnKey(touchX, touchY)) {
-                continue;
-            }
             // Compare the distance to the center of the keys as the primary tie-breaker for
             // overlapping keys. This works better than just comparing how far the touch point is
             // in the key because it helps prioritize smaller keys (harder to click) and it handles
