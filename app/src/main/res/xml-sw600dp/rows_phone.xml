@@ -51,7 +51,7 @@
             latin:keyStyle="num3KeyStyle" />
         <Key
             latin:keyStyle="deleteKeyStyle"
-            latin:keyXPos="-14%p"
+            latin:keyXPos="86%p"
             latin:keyWidth="fillRight" />
     </Row>
     <Row>
@@ -80,7 +80,7 @@
             latin:keyStyle="num6KeyStyle" />
         <Key
             latin:keyStyle="enterKeyStyle"
-            latin:keyXPos="-14%p"
+            latin:keyXPos="86%p"
             latin:keyWidth="fillRight" />
     </Row>
     <Row>
@@ -124,5 +124,7 @@
         <Key
             latin:keySpec="\#"
             latin:keyStyle="numSymbolKeyStyle" />
+        <!-- Note: This Spacer prevents the above key from being marked as a right edge key. -->
+        <Spacer />
     </Row>
 </merge>

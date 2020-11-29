@@ -18,6 +18,7 @@ package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.util.Log;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardBuilder;
@@ -27,11 +28,14 @@ import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
 
 public final class MoreKeysKeyboard extends Keyboard {
+    private static final String TAG = MoreKeysKeyboard.class.getSimpleName();
     private final int mDefaultKeyCoordX;
+    private static final float FLOAT_THRESHOLD = 0.0001f;
 
     MoreKeysKeyboard(final MoreKeysKeyboardParams params) {
         super(params);
-        mDefaultKeyCoordX = params.getDefaultKeyCoordX() + params.mDefaultKeyWidth / 2;
+        mDefaultKeyCoordX = Math.round(params.getDefaultKeyCoordX() + params.mOffsetX
+                + (params.mDefaultKeyPaddedWidth - params.mHorizontalGap) / 2);
     }
 
     public int getDefaultCoordX() {
@@ -46,7 +50,8 @@ public final class MoreKeysKeyboard extends Keyboard {
         public int mTopKeys;
         public int mLeftKeys;
         public int mRightKeys; // includes default key.
-        public int mColumnWidth;
+        public float mColumnWidth;
+        public float mOffsetX;
 
         public MoreKeysKeyboardParams() {
             super();
@@ -57,7 +62,7 @@ public final class MoreKeysKeyboard extends Keyboard {
          *
          * @param numKeys number of keys in this more keys keyboard.
          * @param numColumn number of columns of this more keys keyboard.
-         * @param keyWidth more keys keyboard key width in pixel, including horizontal gap.
+         * @param keyPaddedWidth more keys keyboard key width in pixel, including horizontal gap.
          * @param rowHeight more keys keyboard row height in pixel, including vertical gap.
          * @param coordXInParent coordinate x of the key preview in parent keyboard.
          * @param parentKeyboardWidth parent keyboard width in pixel.
@@ -68,77 +73,107 @@ public final class MoreKeysKeyboard extends Keyboard {
          *   the more keys' specification. Otherwise the order of more keys is automatically
          *   determined.
          */
-        public void setParameters(final int numKeys, final int numColumn, final int keyWidth,
-                final int rowHeight, final int coordXInParent, final int parentKeyboardWidth,
-                final boolean isMoreKeysFixedColumn, final boolean isMoreKeysFixedOrder) {
-            mIsMoreKeysFixedOrder = isMoreKeysFixedOrder;
-            if (parentKeyboardWidth / keyWidth < Math.min(numKeys, numColumn)) {
+        public void setParameters(final int numKeys, final int numColumn,
+                                  final float keyPaddedWidth, final float rowHeight,
+                                  final float coordXInParent, final int parentKeyboardWidth,
+                                  final boolean isMoreKeysFixedColumn,
+                                  final boolean isMoreKeysFixedOrder) {
+            // Add the horizontal padding because there is no horizontal gap on the outside edge,
+            // but it is included in the key width, so this compensates for simple division and
+            // comparison.
+            final float availableWidth = parentKeyboardWidth - mLeftPadding - mRightPadding
+                    + mHorizontalGap;
+            if (availableWidth < keyPaddedWidth) {
                 throw new IllegalArgumentException("Keyboard is too small to hold more keys: "
-                        + parentKeyboardWidth + " " + keyWidth + " " + numKeys + " " + numColumn);
+                        + availableWidth + " " + keyPaddedWidth);
             }
-            mDefaultKeyWidth = keyWidth;
+            mIsMoreKeysFixedOrder = isMoreKeysFixedOrder;
+            mDefaultKeyPaddedWidth = keyPaddedWidth;
             mDefaultRowHeight = rowHeight;
 
-            final int numRows = (numKeys + numColumn - 1) / numColumn;
-            mNumRows = numRows;
-            final int numColumns = isMoreKeysFixedColumn ? Math.min(numKeys, numColumn)
-                    : getOptimizedColumns(numKeys, numColumn);
-            mNumColumns = numColumns;
-            final int topKeys = numKeys % numColumns;
-            mTopKeys = topKeys == 0 ? numColumns : topKeys;
+            final int maxColumns = getMaxKeys(availableWidth, keyPaddedWidth);
+            if (isMoreKeysFixedColumn) {
+                int requestedNumColumns = Math.min(numKeys, numColumn);
+                if (maxColumns < requestedNumColumns) {
+                    Log.e(TAG, "Keyboard is too small to hold the requested more keys columns: "
+                            + availableWidth + " " + keyPaddedWidth + " " + numKeys + " "
+                            + requestedNumColumns + ". The number of columns was reduced.");
+                    mNumColumns = maxColumns;
+                } else {
+                    mNumColumns = requestedNumColumns;
+                }
+                mNumRows = getNumRows(numKeys, mNumColumns);
+            } else {
+                int defaultNumColumns = Math.min(maxColumns, numColumn);
+                mNumRows = getNumRows(numKeys, defaultNumColumns);
+                mNumColumns = getOptimizedColumns(numKeys, defaultNumColumns, mNumRows);
+            }
+            final int topKeys = numKeys % mNumColumns;
+            mTopKeys = topKeys == 0 ? mNumColumns : topKeys;
 
-            final int numLeftKeys = (numColumns - 1) / 2;
-            final int numRightKeys = numColumns - numLeftKeys; // including default key.
-            // Maximum number of keys we can layout both side of the parent key
-            final int maxLeftKeys = coordXInParent / keyWidth;
-            final int maxRightKeys = (parentKeyboardWidth - coordXInParent) / keyWidth;
+            final int numLeftKeys = (mNumColumns - 1) / 2;
+            final int numRightKeys = mNumColumns - numLeftKeys; // including default key.
+            // Determine the maximum number of keys we can lay out on both side of the left edge of
+            // a key centered on the parent key. Also, account for horizontal padding because there
+            // is no horizontal gap on the outside edge.
+            final float leftWidth = Math.max(coordXInParent - mLeftPadding - keyPaddedWidth / 2
+                    + mHorizontalGap / 2, 0);
+            final float rightWidth = Math.max(parentKeyboardWidth - coordXInParent
+                    + keyPaddedWidth / 2 - mRightPadding + mHorizontalGap / 2, 0);
+            int maxLeftKeys = getMaxKeys(leftWidth, keyPaddedWidth);
+            int maxRightKeys = getMaxKeys(rightWidth, keyPaddedWidth);
+            // Handle the case where the number of columns fits but doesn't have enough room
+            // for the default key to be centered on the parent key.
+            if (numKeys >= mNumColumns && mNumColumns == maxColumns
+                    && maxLeftKeys + maxRightKeys < maxColumns) {
+                final float extraLeft = leftWidth - maxLeftKeys * keyPaddedWidth;
+                final float extraRight = rightWidth - maxRightKeys * keyPaddedWidth;
+                // Put the extra key on whatever side has more space
+                if (extraLeft > extraRight) {
+                    maxLeftKeys++;
+                } else {
+                    maxRightKeys++;
+                }
+            }
+
             int leftKeys, rightKeys;
             if (numLeftKeys > maxLeftKeys) {
                 leftKeys = maxLeftKeys;
-                rightKeys = numColumns - leftKeys;
-            } else if (numRightKeys > maxRightKeys + 1) {
-                rightKeys = maxRightKeys + 1; // include default key
-                leftKeys = numColumns - rightKeys;
+                rightKeys = mNumColumns - leftKeys;
+            } else if (numRightKeys > maxRightKeys) {
+                // Make sure the default key is included even if it doesn't exactly fit (the default
+                // key just won't be completely centered on the parent key)
+                rightKeys = Math.max(maxRightKeys, 1);
+                leftKeys = mNumColumns - rightKeys;
             } else {
                 leftKeys = numLeftKeys;
                 rightKeys = numRightKeys;
-            }
-            // If the left keys fill the left side of the parent key, entire more keys keyboard
-            // should be shifted to the right unless the parent key is on the left edge.
-            if (maxLeftKeys == leftKeys && leftKeys > 0) {
-                leftKeys--;
-                rightKeys++;
-            }
-            // If the right keys fill the right side of the parent key, entire more keys
-            // should be shifted to the left unless the parent key is on the right edge.
-            if (maxRightKeys == rightKeys - 1 && rightKeys > 1) {
-                leftKeys++;
-                rightKeys--;
             }
             mLeftKeys = leftKeys;
             mRightKeys = rightKeys;
 
             // Adjustment of the top row.
-            mTopRowAdjustment = isMoreKeysFixedOrder ? getFixedOrderTopRowAdjustment()
-                    : getAutoOrderTopRowAdjustment();
-            mColumnWidth = mDefaultKeyWidth;
-            mBaseWidth = mOccupiedWidth = mNumColumns * mColumnWidth;
+            mTopRowAdjustment = getTopRowAdjustment();
+            mColumnWidth = mDefaultKeyPaddedWidth;
+            mBaseWidth = mNumColumns * mColumnWidth;
+            // Need to subtract the right most column's gutter only.
+            mOccupiedWidth = Math.round(mBaseWidth + mLeftPadding + mRightPadding - mHorizontalGap);
+            mBaseHeight = mNumRows * mDefaultRowHeight;
             // Need to subtract the bottom row's gutter only.
-            mBaseHeight = mOccupiedHeight = mNumRows * mDefaultRowHeight - mVerticalGap
-                    + mTopPadding + mBottomPadding;
+            mOccupiedHeight = Math.round(mBaseHeight + mTopPadding + mBottomPadding - mVerticalGap);
+
+            // The proximity grid size can be reduced because the more keys keyboard is probably
+            // smaller and doesn't need extra precision from smaller cells.
+            mGridWidth = Math.min(mGridWidth, mNumColumns);
+            mGridHeight = Math.min(mGridHeight, mNumRows);
         }
 
-        private int getFixedOrderTopRowAdjustment() {
-            if (mNumRows == 1 || mTopKeys % 2 == 1 || mTopKeys == mNumColumns
-                    || mLeftKeys == 0  || mRightKeys == 1) {
-                return 0;
-            }
-            return -1;
-        }
-
-        private int getAutoOrderTopRowAdjustment() {
-            if (mNumRows == 1 || mTopKeys == 1 || mNumColumns % 2 == mTopKeys % 2
-                    || mLeftKeys == 0 || mRightKeys == 1) {
+        private int getTopRowAdjustment() {
+            final int numOffCenterKeys = Math.abs(mRightKeys - 1 - mLeftKeys);
+            // Don't center if there are more keys in the top row than can be centered around the
+            // default more key or if there is an odd number of keys in the top row (already will
+            // be centered).
+            if (mTopKeys > mNumColumns - numOffCenterKeys || mTopKeys % 2 == 1) {
                 return 0;
             }
             return -1;
@@ -211,35 +246,46 @@ public final class MoreKeysKeyboard extends Keyboard {
             return remainings == 0 ? 0 : numColumns - remainings;
         }
 
-        private int getOptimizedColumns(final int numKeys, final int maxColumns) {
+        private static int getOptimizedColumns(final int numKeys, final int maxColumns,
+                                               final int numRows) {
             int numColumns = Math.min(numKeys, maxColumns);
-            while (getTopRowEmptySlots(numKeys, numColumns) >= mNumRows) {
+            while (getTopRowEmptySlots(numKeys, numColumns) >= numRows) {
                 numColumns--;
             }
             return numColumns;
         }
 
-        public int getDefaultKeyCoordX() {
+        private static int getNumRows(final int numKeys, final int numColumn) {
+            return (numKeys + numColumn - 1) / numColumn;
+        }
+
+        private static int getMaxKeys(final float keyboardWidth, final float keyPaddedWidth) {
+            // This is effectively the same as returning (int)(keyboardWidth / keyPaddedWidth)
+            // except this handles floating point errors better since rounding in the wrong
+            // directing here doesn't cause an issue, but truncating incorrectly from an error
+            // could be a problem (eg: the keyboard width is an exact multiple of the key width
+            // could return one less than the expected number).
+            final int maxKeys = Math.round(keyboardWidth / keyPaddedWidth);
+            if (maxKeys * keyPaddedWidth > keyboardWidth + FLOAT_THRESHOLD) {
+                return maxKeys - 1;
+            }
+            return maxKeys;
+        }
+
+        public float getDefaultKeyCoordX() {
             return mLeftKeys * mColumnWidth + mLeftPadding;
         }
 
-        public int getX(final int n, final int row) {
-            final int x = getColumnPos(n) * mColumnWidth + getDefaultKeyCoordX();
+        public float getX(final int n, final int row) {
+            final float x = getColumnPos(n) * mColumnWidth + getDefaultKeyCoordX();
             if (isTopRow(row)) {
                 return x + mTopRowAdjustment * (mColumnWidth / 2);
             }
             return x;
         }
 
-        public int getY(final int row) {
+        public float getY(final int row) {
             return (mNumRows - 1 - row) * mDefaultRowHeight + mTopPadding;
-        }
-
-        public void markAsEdgeKey(final Key key, final int row) {
-            if (row == 0)
-                key.markAsTopEdge(this);
-            if (isTopRow(row))
-                key.markAsBottomEdge(this);
         }
 
         private boolean isTopRow(final int rowCount) {
@@ -275,40 +321,60 @@ public final class MoreKeysKeyboard extends Keyboard {
             // This {@link MoreKeysKeyboard} is invoked from the <code>key</code>.
             mParentKey = key;
 
-            final int keyWidth, rowHeight;
+            final float keyPaddedWidth, rowHeight;
             if (isSingleMoreKeyWithPreview) {
                 // Use pre-computed width and height if this more keys keyboard has only one key to
                 // mitigate visual flicker between key preview and more keys keyboard.
-                // Caveats for the visual assets: To achieve this effect, both the key preview
-                // backgrounds and the more keys keyboard panel background have the exact same
-                // left/right/top paddings. The bottom paddings of both backgrounds don't need to
-                // be considered because the vertical positions of both backgrounds were already
-                // adjusted with their bottom paddings deducted.
-                keyWidth = keyPreviewVisibleWidth;
-                rowHeight = keyPreviewVisibleHeight + mParams.mVerticalGap;
+                // The bottom paddings don't need to be considered because the vertical positions
+                // of both backgrounds and the keyboard were already adjusted with their bottom
+                // paddings deducted. The keyboard's left/right/top paddings do need to be deducted
+                // so the key including the paddings matches the key preview.
+                final float keyboardHorizontalPadding = mParams.mLeftPadding
+                        + mParams.mRightPadding;
+                final float baseKeyPaddedWidth = keyPreviewVisibleWidth + mParams.mHorizontalGap;
+                if (keyboardHorizontalPadding > baseKeyPaddedWidth - FLOAT_THRESHOLD) {
+                    // If the padding doesn't fit we'll just add it outside of the key preview.
+                    keyPaddedWidth = baseKeyPaddedWidth;
+                } else {
+                    keyPaddedWidth = baseKeyPaddedWidth - keyboardHorizontalPadding;
+                    // Keep the more keys keyboard with uneven padding lined up with the key
+                    // preview rather than centering the more keys keyboard's key with the parent
+                    // key.
+                    mParams.mOffsetX = (mParams.mRightPadding - mParams.mLeftPadding) / 2;
+                }
+                final float baseKeyPaddedHeight = keyPreviewVisibleHeight + mParams.mVerticalGap;
+                if (mParams.mTopPadding > baseKeyPaddedHeight - FLOAT_THRESHOLD) {
+                    // If the padding doesn't fit we'll just add it outside of the key preview.
+                    rowHeight = baseKeyPaddedHeight;
+                } else {
+                    rowHeight = baseKeyPaddedHeight - mParams.mTopPadding;
+                }
             } else {
+                final float defaultKeyWidth = mParams.mDefaultKeyPaddedWidth
+                        - mParams.mHorizontalGap;
                 final float padding = context.getResources().getDimension(
                         R.dimen.config_more_keys_keyboard_key_horizontal_padding)
                         + (key.hasLabelsInMoreKeys()
-                                ? mParams.mDefaultKeyWidth * LABEL_PADDING_RATIO : 0.0f);
-                keyWidth = getMaxKeyWidth(key, mParams.mDefaultKeyWidth, padding, paintToMeasure);
-                rowHeight = keyboard.mMostCommonKeyHeight;
+                        ? defaultKeyWidth * LABEL_PADDING_RATIO : 0.0f);
+                keyPaddedWidth = getMaxKeyWidth(key, defaultKeyWidth, padding, paintToMeasure)
+                        + mParams.mHorizontalGap;
+                rowHeight = keyboard.mMostCommonKeyHeight + keyboard.mVerticalGap;
             }
             final MoreKeySpec[] moreKeys = key.getMoreKeys();
-            mParams.setParameters(moreKeys.length, key.getMoreKeysColumnNumber(), keyWidth,
-                    rowHeight, key.getX() + key.getWidth() / 2, keyboard.mId.mWidth,
+            mParams.setParameters(moreKeys.length, key.getMoreKeysColumnNumber(), keyPaddedWidth,
+                    rowHeight, key.getX() + key.getWidth() / 2f, keyboard.mId.mWidth,
                     key.isMoreKeysFixedColumn(), key.isMoreKeysFixedOrder());
         }
 
-        private static int getMaxKeyWidth(final Key parentKey, final int minKeyWidth,
+        private static float getMaxKeyWidth(final Key parentKey, final float minKeyWidth,
                 final float padding, final Paint paint) {
-            int maxWidth = minKeyWidth;
+            float maxWidth = minKeyWidth;
             for (final MoreKeySpec spec : parentKey.getMoreKeys()) {
                 final String label = spec.mLabel;
                 // If the label is single letter, minKeyWidth is enough to hold the label.
                 if (label != null && StringUtils.codePointCount(label) > 1) {
                     maxWidth = Math.max(maxWidth,
-                            (int)(TypefaceUtils.getStringWidth(label, paint) + padding));
+                            TypefaceUtils.getStringWidth(label, paint) + padding);
                 }
             }
             return maxWidth;
@@ -322,10 +388,34 @@ public final class MoreKeysKeyboard extends Keyboard {
             for (int n = 0; n < moreKeys.length; n++) {
                 final MoreKeySpec moreKeySpec = moreKeys[n];
                 final int row = n / params.mNumColumns;
-                final int x = params.getX(n, row);
-                final int y = params.getY(row);
-                final Key key = moreKeySpec.buildKey(x, y, moreKeyFlags, params);
-                params.markAsEdgeKey(key, row);
+                final float width = params.mDefaultKeyPaddedWidth - params.mHorizontalGap;
+                final float height = params.mDefaultRowHeight - params.mVerticalGap;
+                final float keyLeftEdge = params.getX(n, row);
+                final float keyTopEdge = params.getY(row);
+                final float keyRightEdge = keyLeftEdge + width;
+                final float keyBottomEdge = keyTopEdge + height;
+
+                final float keyboardLeftEdge = params.mLeftPadding;
+                final float keyboardRightEdge = params.mOccupiedWidth - params.mRightPadding;
+                final float keyboardTopEdge = params.mTopPadding;
+                final float keyboardBottomEdge = params.mOccupiedHeight - params.mBottomPadding;
+
+                final float keyLeftPadding = Math.min(params.mMaxKeyHitboxPadding,
+                        keyLeftEdge < keyboardLeftEdge + FLOAT_THRESHOLD
+                                ? params.mLeftPadding : params.mHorizontalGap / 2);
+                final float keyRightPadding = Math.min(params.mMaxKeyHitboxPadding,
+                        keyRightEdge > keyboardRightEdge - FLOAT_THRESHOLD
+                                ? params.mRightPadding : params.mHorizontalGap / 2);
+                final float keyTopPadding = Math.min(params.mMaxKeyHitboxPadding,
+                        keyTopEdge < keyboardTopEdge + FLOAT_THRESHOLD
+                                ? params.mTopPadding : params.mVerticalGap / 2);
+                final float keyBottomPadding = Math.min(params.mMaxKeyHitboxPadding,
+                        keyBottomEdge > keyboardBottomEdge - FLOAT_THRESHOLD
+                                ? params.mBottomPadding : params.mVerticalGap / 2);
+
+                final Key key = moreKeySpec.buildKey(keyLeftEdge, keyTopEdge, width, height,
+                        keyLeftPadding, keyRightPadding, keyTopPadding, keyBottomPadding,
+                        moreKeyFlags);
                 params.onAddKey(key);
             }
             return new MoreKeysKeyboard(params);

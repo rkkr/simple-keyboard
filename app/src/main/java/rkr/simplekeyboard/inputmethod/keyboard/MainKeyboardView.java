@@ -302,7 +302,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         mMoreKeysKeyboardCache.clear();
 
         mSpaceKey = keyboard.getKey(Constants.CODE_SPACE);
-        final int keyHeight = keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap;
+        final int keyHeight = keyboard.mMostCommonKeyHeight;
         mLanguageOnSpacebarTextSize = keyHeight * mLanguageOnSpacebarTextRatio;
     }
 
@@ -353,7 +353,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         }
         final KeyPreviewDrawParams previewParams = mKeyPreviewDrawParams;
         if (!previewParams.isPopupEnabled()) {
-            previewParams.setVisibleOffset(-keyboard.mVerticalGap);
+            previewParams.setVisibleOffset(-Math.round(keyboard.mVerticalGap));
             return;
         }
 
@@ -449,7 +449,8 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         // aligned with the bottom edge of the visible part of the key preview.
         // {@code mPreviewVisibleOffset} has been set appropriately in
         // {@link KeyboardView#showKeyPreview(PointerTracker)}.
-        final int pointY = key.getY() + mKeyPreviewDrawParams.getVisibleOffset();
+        final int pointY = key.getY() + mKeyPreviewDrawParams.getVisibleOffset()
+                + Math.round(moreKeysKeyboard.mBottomPadding);
         moreKeysKeyboardView.showMoreKeysPanel(this, this, pointX, pointY, mKeyboardActionListener);
         return moreKeysKeyboardView;
     }

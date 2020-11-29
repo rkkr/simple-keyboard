@@ -126,11 +126,12 @@
             <enum name="LXXSystem" value="5" />
             <enum name="LXXSystemBorder" value="6" />
         </attr>
-        <!-- Keyboard top, bottom, left, right edges paddings, in propotion of keyboard height. -->
-        <attr name="keyboardTopPadding" format="fraction" />
-        <attr name="keyboardBottomPadding" format="fraction" />
-        <attr name="keyboardLeftPadding" format="fraction" />
-        <attr name="keyboardRightPadding" format="fraction" />
+        <!-- Keyboard top, bottom, left, right edges paddings, in pixels or in the propotion of
+             keyboard height. -->
+        <attr name="keyboardTopPadding" format="dimension|fraction" />
+        <attr name="keyboardBottomPadding" format="dimension|fraction" />
+        <attr name="keyboardLeftPadding" format="dimension|fraction" />
+        <attr name="keyboardRightPadding" format="dimension|fraction" />
         <!-- Default height of a row (key height + vertical gap), in pixels or in the proportion of
              keyboard height. -->
         <attr name="rowHeight" format="dimension|fraction" />
@@ -159,11 +160,6 @@
         <attr name="iconLanguageSwitchKey" format="reference" />
         <attr name="iconZwnjKey" format="reference" />
         <attr name="iconZwjKey" format="reference" />
-    </declare-styleable>
-
-    <declare-styleable name="Keyboard_GridRows">
-        <attr name="codesArray" format="reference" />
-        <attr name="textsArray" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="Keyboard_Key">
@@ -247,9 +243,6 @@
         <attr name="keyIconDisabled" format="string" />
         <!-- The key style to specify a set of key attributes defined by <key_style/> -->
         <attr name="keyStyle" format="string" />
-        <!-- Visual insets, in the proportion of keyboard width. -->
-        <attr name="visualInsetsLeft" format="fraction" />
-        <attr name="visualInsetsRight" format="fraction" />
         <!-- Width of the key, in the proportion of keyboard width.
              If the value is fillRight, the actual key width will be determined to fill out the
              area up to the right edge of the keyboard. -->

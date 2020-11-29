@@ -168,7 +168,7 @@ public class KeyboardView extends View {
      */
     public void setKeyboard(final Keyboard keyboard) {
         mKeyboard = keyboard;
-        final int keyHeight = keyboard.mMostCommonKeyHeight - keyboard.mVerticalGap;
+        final int keyHeight = keyboard.mMostCommonKeyHeight;
         mKeyDrawParams.updateParams(keyHeight, mKeyVisualAttributes);
         mKeyDrawParams.updateParams(keyHeight, keyboard.mKeyVisualAttributes);
         final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(getContext());
@@ -302,7 +302,7 @@ public class KeyboardView extends View {
 
     private void onDrawKey(final Key key, final Canvas canvas,
             final Paint paint) {
-        final int keyDrawX = key.getDrawX() + getPaddingLeft();
+        final int keyDrawX = key.getX() + getPaddingLeft();
         final int keyDrawY = key.getY() + getPaddingTop();
         canvas.translate(keyDrawX, keyDrawY);
 
@@ -325,7 +325,7 @@ public class KeyboardView extends View {
     // Draw key background.
     protected void onDrawKeyBackground(final Key key, final Canvas canvas,
             final Drawable background) {
-        final int keyWidth = key.getDrawWidth();
+        final int keyWidth = key.getWidth();
         final int keyHeight = key.getHeight();
         final Rect padding = mKeyBackgroundPadding;
         final int bgWidth = keyWidth + padding.left + padding.right;
@@ -344,7 +344,7 @@ public class KeyboardView extends View {
     // Draw key top visuals.
     protected void onDrawKeyTopVisuals(final Key key,final Canvas canvas,
             final Paint paint, final KeyDrawParams params) {
-        final int keyWidth = key.getDrawWidth();
+        final int keyWidth = key.getWidth();
         final int keyHeight = key.getHeight();
         final float centerX = keyWidth * 0.5f;
         final float centerY = keyHeight * 0.5f;

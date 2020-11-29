@@ -92,26 +92,22 @@ public class Key implements Comparable<Key> {
     /** Icon to display instead of a label. Icon takes precedence over a label */
     private final int mIconId;
 
-    /** Width of the key, excluding the gap */
+    /** Width of the key, excluding the padding */
     private final int mWidth;
-    /** Height of the key, excluding the gap */
+    /** Height of the key, excluding the padding */
     private final int mHeight;
-    /**
-     * The combined width in pixels of the horizontal gaps belonging to this key, both to the left
-     * and to the right. I.e., mWidth + mHorizontalGap = total width belonging to the key.
-     */
-    private final int mHorizontalGap;
-    /**
-     * The combined height in pixels of the vertical gaps belonging to this key, both above and
-     * below. I.e., mHeight + mVerticalGap = total height belonging to the key.
-     */
-    private final int mVerticalGap;
-    /** X coordinate of the top-left corner of the key in the keyboard layout, excluding the gap. */
+    /** Exact theoretical width of the key, excluding the padding */
+    private final float mDefinedWidth;
+    /** Exact theoretical height of the key, excluding the padding */
+    private final float mDefinedHeight;
+    /** X coordinate of the top-left corner of the key in the keyboard layout, excluding the
+     *  padding. */
     private final int mX;
-    /** Y coordinate of the top-left corner of the key in the keyboard layout, excluding the gap. */
+    /** Y coordinate of the top-left corner of the key in the keyboard layout, excluding the
+     *  padding. */
     private final int mY;
     /** Hit bounding box of the key */
-    private final Rect mHitBox = new Rect();
+    private final Rect mHitbox = new Rect();
 
     /** More keys. It is guaranteed that this is null or an array of one or more elements */
     private final MoreKeySpec[] mMoreKeys;
@@ -161,28 +157,21 @@ public class Key implements Comparable<Key> {
         public final int mAltCode;
         /** Icon for disabled state */
         public final int mDisabledIconId;
-        /** The visual insets */
-        public final int mVisualInsetsLeft;
-        public final int mVisualInsetsRight;
 
         private OptionalAttributes(final String outputText, final int altCode,
-                final int disabledIconId, final int visualInsetsLeft, final int visualInsetsRight) {
+                final int disabledIconId) {
             mOutputText = outputText;
             mAltCode = altCode;
             mDisabledIconId = disabledIconId;
-            mVisualInsetsLeft = visualInsetsLeft;
-            mVisualInsetsRight = visualInsetsRight;
         }
 
         public static OptionalAttributes newInstance(final String outputText, final int altCode,
-                final int disabledIconId, final int visualInsetsLeft, final int visualInsetsRight) {
+                final int disabledIconId) {
             if (outputText == null && altCode == CODE_UNSPECIFIED
-                    && disabledIconId == ICON_UNDEFINED && visualInsetsLeft == 0
-                    && visualInsetsRight == 0) {
+                    && disabledIconId == ICON_UNDEFINED) {
                 return null;
             }
-            return new OptionalAttributes(outputText, altCode, disabledIconId, visualInsetsLeft,
-                    visualInsetsRight);
+            return new OptionalAttributes(outputText, altCode, disabledIconId);
         }
     }
 
@@ -194,17 +183,21 @@ public class Key implements Comparable<Key> {
     private boolean mEnabled = true;
 
     /**
-     * Constructor for a key on <code>MoreKeyKeyboard</code>, on <code>MoreSuggestions</code>,
-     * and in a <GridRows/>.
+     * Constructor for a key on <code>MoreKeyKeyboard</code>.
      */
-    public Key(final String label, final int iconId, final int code,
-            final String outputText, final String hintLabel,
-            final int labelFlags, final int backgroundType, final int x, final int y,
-            final int width, final int height, final int horizontalGap, final int verticalGap) {
-        mWidth = width - horizontalGap;
-        mHeight = height - verticalGap;
-        mHorizontalGap = horizontalGap;
-        mVerticalGap = verticalGap;
+    public Key(final String label, final int iconId, final int code, final String outputText,
+               final String hintLabel, final int labelFlags, final int backgroundType,
+               final float x, final float y, final float width, final float height,
+               final float leftPadding, final float rightPadding, final float topPadding,
+               final float bottomPadding) {
+        mHitbox.set(Math.round(x - leftPadding), Math.round(y - topPadding),
+                Math.round(x + width + rightPadding), Math.round(y + height + bottomPadding));
+        mX = Math.round(x);
+        mY = Math.round(y);
+        mWidth = Math.round(x + width) - mX;
+        mHeight = Math.round(y + height) - mY;
+        mDefinedWidth = width;
+        mDefinedHeight = height;
         mHintLabel = hintLabel;
         mLabelFlags = labelFlags;
         mBackgroundType = backgroundType;
@@ -214,14 +207,10 @@ public class Key implements Comparable<Key> {
         mMoreKeysColumnAndFlags = 0;
         mLabel = label;
         mOptionalAttributes = OptionalAttributes.newInstance(outputText, CODE_UNSPECIFIED,
-                ICON_UNDEFINED, 0 /* visualInsetsLeft */, 0 /* visualInsetsRight */);
+                ICON_UNDEFINED);
         mCode = code;
         mEnabled = (code != CODE_UNSPECIFIED);
         mIconId = iconId;
-        // Horizontal gap is divided equally to both sides of the key.
-        mX = x + mHorizontalGap / 2;
-        mY = y;
-        mHitBox.set(x, y, x + width + 1, y + height);
         mKeyVisualAttributes = null;
 
         mHashCode = computeHashCode(this);
@@ -241,34 +230,31 @@ public class Key implements Comparable<Key> {
     public Key(final String keySpec, final TypedArray keyAttr,
             final KeyStyle style, final KeyboardParams params,
             final KeyboardRow row) {
-        mHorizontalGap = isSpacer() ? 0 : params.mHorizontalGap;
-        mVerticalGap = params.mVerticalGap;
+        // Update the row to work with the new key
+        row.setCurrentKey(keyAttr, isSpacer());
 
-        final float horizontalGapFloat = mHorizontalGap;
-        final int rowHeight = row.getRowHeight();
-        mHeight = rowHeight - mVerticalGap;
+        mDefinedWidth = row.getKeyWidth();
+        mDefinedHeight = row.getKeyHeight();
 
-        final float keyXPos = row.getKeyX(keyAttr);
-        final float keyWidth = row.getKeyWidth(keyAttr, keyXPos);
-        final int keyYPos = row.getKeyY();
+        final float keyLeft = row.getKeyX();
+        final float keyTop = row.getKeyY();
+        final float keyRight = keyLeft + mDefinedWidth;
+        final float keyBottom = keyTop + mDefinedHeight;
 
-        // Horizontal gap is divided equally to both sides of the key.
-        mX = Math.round(keyXPos + horizontalGapFloat / 2);
-        mY = keyYPos;
-        mWidth = Math.round(keyWidth - horizontalGapFloat);
-        mHitBox.set(Math.round(keyXPos), keyYPos, Math.round(keyXPos + keyWidth) + 1,
-                keyYPos + rowHeight);
-        // Update row to have current x coordinate.
-        row.setXPos(keyXPos + keyWidth);
+        final float leftPadding = row.getKeyLeftPadding();
+        final float topPadding = row.getKeyTopPadding();
+        final float rightPadding = row.getKeyRightPadding();
+        final float bottomPadding = row.getKeyBottomPadding();
+
+        mHitbox.set(Math.round(keyLeft - leftPadding), Math.round(keyTop - topPadding),
+                Math.round(keyRight + rightPadding), Math.round(keyBottom + bottomPadding));
+        mX = Math.round(keyLeft);
+        mY = Math.round(keyTop);
+        mWidth = Math.round(keyRight) - mX;
+        mHeight = Math.round(keyBottom) - mY;
 
         mBackgroundType = style.getInt(keyAttr,
                 R.styleable.Keyboard_Key_backgroundType, row.getDefaultBackgroundType());
-
-        final int baseWidth = params.mBaseWidth;
-        final int visualInsetsLeft = Math.round(keyAttr.getFraction(
-                R.styleable.Keyboard_Key_visualInsetsLeft, baseWidth, baseWidth, 0));
-        final int visualInsetsRight = Math.round(keyAttr.getFraction(
-                R.styleable.Keyboard_Key_visualInsetsRight, baseWidth, baseWidth, 0));
 
         mLabelFlags = style.getFlags(keyAttr, R.styleable.Keyboard_Key_keyLabelFlags)
                 | row.getDefaultKeyLabelFlags();
@@ -383,8 +369,7 @@ public class Key implements Comparable<Key> {
         final int altCode = needsToUpcase
                 ? StringUtils.toTitleCaseOfKeyCode(altCodeInAttr, localeForUpcasing)
                 : altCodeInAttr;
-        mOptionalAttributes = OptionalAttributes.newInstance(outputText, altCode,
-                disabledIconId, visualInsetsLeft, visualInsetsRight);
+        mOptionalAttributes = OptionalAttributes.newInstance(outputText, altCode, disabledIconId);
         mKeyVisualAttributes = KeyVisualAttributes.newInstance(keyAttr);
         mHashCode = computeHashCode(this);
     }
@@ -407,11 +392,11 @@ public class Key implements Comparable<Key> {
         mIconId = key.mIconId;
         mWidth = key.mWidth;
         mHeight = key.mHeight;
-        mHorizontalGap = key.mHorizontalGap;
-        mVerticalGap = key.mVerticalGap;
+        mDefinedWidth = key.mDefinedWidth;
+        mDefinedHeight = key.mDefinedHeight;
         mX = key.mX;
         mY = key.mY;
-        mHitBox.set(key.mHitBox);
+        mHitbox.set(key.mHitbox);
         mMoreKeys = moreKeys;
         mMoreKeysColumnAndFlags = key.mMoreKeysColumnAndFlags;
         mBackgroundType = key.mBackgroundType;
@@ -464,11 +449,9 @@ public class Key implements Comparable<Key> {
                 // key.mOptionalAttributes.mAltCode,
                 // key.mOptionalAttributes.mDisabledIconId,
                 // key.mOptionalAttributes.mPreviewIconId,
-                // key.mHorizontalGap,
-                // key.mVerticalGap,
-                // key.mOptionalAttributes.mVisualInsetLeft,
-                // key.mOptionalAttributes.mVisualInsetRight,
                 // key.mMaxMoreKeysColumn,
+                // key.mDefinedHeight,
+                // key.mDefinedWidth,
         });
     }
 
@@ -535,20 +518,8 @@ public class Key implements Comparable<Key> {
         return mMoreKeys;
     }
 
-    public void markAsLeftEdge(final KeyboardParams params) {
-        mHitBox.left = params.mLeftPadding;
-    }
-
-    public void markAsRightEdge(final KeyboardParams params) {
-        mHitBox.right = params.mOccupiedWidth - params.mRightPadding;
-    }
-
-    public void markAsTopEdge(final KeyboardParams params) {
-        mHitBox.top = params.mTopPadding;
-    }
-
-    public void markAsBottomEdge(final KeyboardParams params) {
-        mHitBox.bottom = params.mOccupiedHeight + params.mBottomPadding;
+    public void setHitboxRightEdge(final int right) {
+        mHitbox.right = right;
     }
 
     public final boolean isSpacer() {
@@ -759,47 +730,89 @@ public class Key implements Comparable<Key> {
     }
 
     /**
-     * Gets the width of the key in pixels, excluding the gap.
-     * @return The width of the key in pixels, excluding the gap.
+     * Gets the width of the key in pixels, excluding the padding.
+     * @return The width of the key in pixels, excluding the padding.
      */
     public int getWidth() {
         return mWidth;
     }
 
     /**
-     * Gets the height of the key in pixels, excluding the gap.
-     * @return The height of the key in pixels, excluding the gap.
+     * Gets the height of the key in pixels, excluding the padding.
+     * @return The height of the key in pixels, excluding the padding.
      */
     public int getHeight() {
         return mHeight;
     }
 
     /**
-     * Gets the x-coordinate of the top-left corner of the key in pixels, excluding the gap.
-     * @return The x-coordinate of the top-left corner of the key in pixels, excluding the gap.
+     * Gets the theoretical width of the key in pixels, excluding the padding. This is the exact
+     * width that the key was defined to be, but this will likely differ from the actual drawn width
+     * because the normal (drawn/functional) width was determined by rounding the left and right
+     * edge to fit evenly in a pixel.
+     * @return The defined width of the key in pixels, excluding the padding.
+     */
+    public float getDefinedWidth() {
+        return mDefinedWidth;
+    }
+
+    /**
+     * Gets the theoretical height of the key in pixels, excluding the padding. This is the exact
+     * height that the key was defined to be, but this will likely differ from the actual drawn
+     * height because the normal (drawn/functional) width was determined by rounding the top and
+     * bottom edge to fit evenly in a pixel.
+     * @return The defined width of the key in pixels, excluding the padding.
+     */
+    public float getDefinedHeight() {
+        return mDefinedHeight;
+    }
+
+    /**
+     * Gets the x-coordinate of the top-left corner of the key in pixels, excluding the padding.
+     * @return The x-coordinate of the top-left corner of the key in pixels, excluding the padding.
      */
     public int getX() {
         return mX;
     }
 
     /**
-     * Gets the y-coordinate of the top-left corner of the key in pixels, excluding the gap.
-     * @return The y-coordinate of the top-left corner of the key in pixels, excluding the gap.
+     * Gets the y-coordinate of the top-left corner of the key in pixels, excluding the padding.
+     * @return The y-coordinate of the top-left corner of the key in pixels, excluding the padding.
      */
     public int getY() {
         return mY;
     }
 
-    public final int getDrawX() {
-        final int x = getX();
-        final OptionalAttributes attrs = mOptionalAttributes;
-        return (attrs == null) ? x : x + attrs.mVisualInsetsLeft;
+    /**
+     * Gets the amount of padding for the hitbox above the key's visible position.
+     * @return The hitbox padding above the key.
+     */
+    public int getTopPadding() {
+        return mY - mHitbox.top;
     }
 
-    public final int getDrawWidth() {
-        final OptionalAttributes attrs = mOptionalAttributes;
-        return (attrs == null) ? mWidth
-                : mWidth - attrs.mVisualInsetsLeft - attrs.mVisualInsetsRight;
+    /**
+     * Gets the amount of padding for the hitbox below the key's visible position.
+     * @return The hitbox padding below the key.
+     */
+    public int getBottomPadding() {
+        return mHitbox.bottom - mY - mHeight;
+    }
+
+    /**
+     * Gets the amount of padding for the hitbox to the left of the key's visible position.
+     * @return The hitbox padding to the left of the key.
+     */
+    public int getLeftPadding() {
+        return mX - mHitbox.left;
+    }
+
+    /**
+     * Gets the amount of padding for the hitbox to the right of the key's visible position.
+     * @return The hitbox padding to the right of the key.
+     */
+    public int getRightPadding() {
+        return mHitbox.right - mX - mWidth;
     }
 
     /**
@@ -832,29 +845,47 @@ public class Key implements Comparable<Key> {
      * Detects if a point falls on this key.
      * @param x the x-coordinate of the point
      * @param y the y-coordinate of the point
-     * @return whether or not the point falls on the key. If the key is attached to an edge, it
-     * will assume that all points between the key and the edge are considered to be on the key.
-     * @see #markAsLeftEdge(KeyboardParams) etc.
+     * @return whether or not the point falls on the key. This generally includes all points
+     * between the key and the keyboard edge for keys attached to an edge and all points between
+     * the key and halfway to adjacent keys.
      */
     public boolean isOnKey(final int x, final int y) {
-        return mHitBox.contains(x, y);
+        return mHitbox.contains(x, y);
     }
 
     /**
-     * Returns the square of the distance to the nearest edge of the key and the given point.
+     * Returns the square of the distance to the nearest clickable edge of the key and the given
+     * point.
      * @param x the x-coordinate of the point
      * @param y the y-coordinate of the point
      * @return the square of the distance of the point from the nearest edge of the key
      */
-    public int squaredDistanceToEdge(final int x, final int y) {
-        final int left = getX();
-        final int right = left + mWidth;
-        final int top = getY();
-        final int bottom = top + mHeight;
-        final int edgeX = x < left ? left : (x > right ? right : x);
-        final int edgeY = y < top ? top : (y > bottom ? bottom : y);
+    public int squaredDistanceToHitboxEdge(final int x, final int y) {
+        final int left = mHitbox.left;
+        // The hit box right is exclusive
+        final int right = mHitbox.right - 1;
+        final int top = mHitbox.top;
+        // The hit box bottom is exclusive
+        final int bottom = mHitbox.bottom - 1;
+        final int edgeX = x < left ? left : Math.min(x, right);
+        final int edgeY = y < top ? top : Math.min(y, bottom);
         final int dx = x - edgeX;
         final int dy = y - edgeY;
+        return dx * dx + dy * dy;
+    }
+
+    /**
+     * Returns the square of the distance to the center of the key (excluding padding) and the
+     * given point.
+     * @param x the x-coordinate of the point
+     * @param y the y-coordinate of the point
+     * @return the square of the distance of the point from the key's center
+     */
+    public int squaredDistanceToCenter(final int x, final int y) {
+        final int centerX = getX() + getWidth() / 2;
+        final int centerY = getY() + getHeight() / 2;
+        final int dx = x - centerX;
+        final int dy = y - centerY;
         return dx * dx + dy * dy;
     }
 
@@ -915,16 +946,6 @@ public class Key implements Comparable<Key> {
         public Spacer(final TypedArray keyAttr, final KeyStyle keyStyle,
                 final KeyboardParams params, final KeyboardRow row) {
             super(null /* keySpec */, keyAttr, keyStyle, params, row);
-        }
-
-        /**
-         * This constructor is being used only for divider in more keys keyboard.
-         */
-        protected Spacer(final KeyboardParams params, final int x, final int y, final int width,
-                final int height) {
-            super(null /* label */, ICON_UNDEFINED, CODE_UNSPECIFIED, null /* outputText */,
-                    null /* hintLabel */, 0 /* labelFlags */, BACKGROUND_TYPE_EMPTY, x, y, width,
-                    height, params.mHorizontalGap, params.mVerticalGap);
         }
     }
 }

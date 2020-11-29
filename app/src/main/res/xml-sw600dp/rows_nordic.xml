@@ -43,15 +43,14 @@
         <Key
             latin:keyStyle="shiftKeyStyle"
             latin:keyWidth="10.0%p" />
-        <Spacer
-            latin:keyWidth="3.181%p" />
         <include
+            latin:keyXPos="13.181%p"
             latin:keyboardLayout="@xml/rowkeys_qwerty3" />
         <include
             latin:keyboardLayout="@xml/keys_exclamation_question" />
         <Key
             latin:keyStyle="shiftKeyStyle"
-            latin:keyXPos="-10.0%p"
+            latin:keyXPos="90.0%p"
             latin:keyWidth="fillRight" />
     </Row>
     <include

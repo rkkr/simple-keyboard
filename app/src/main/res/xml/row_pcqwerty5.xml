@@ -31,25 +31,28 @@
             <case
                 latin:languageSwitchKeyEnabled="true"
             >
+                <Spacer
+                    latin:keyWidth="7.692%p" />
                 <Key
                     latin:keyStyle="languageSwitchKeyStyle"
-                    latin:keyXPos="19.231%p"
                     latin:keyWidth="11.538%p" />
                 <Key
                     latin:keyStyle="spaceKeyStyle"
-                    latin:keyWidth="42.308%p" />
+                    latin:keyWidth="42.306%p" />
             </case>
             <!-- languageSwitchKeyEnabled="false" -->
             <default>
+                <Spacer
+                    latin:keyWidth="15.384%p" />
                 <Key
                     latin:keyStyle="spaceKeyStyle"
-                    latin:keyXPos="26.923%p"
-                    latin:keyWidth="46.154%p" />
+                    latin:keyWidth="46.152%p" />
             </default>
         </switch>
+        <Spacer
+            latin:keyWidth="7.692%p" />
         <Key
             latin:keyStyle="enterKeyStyle"
-            latin:keyXPos="-19.231%p"
-            latin:keyWidth="fillRight" />
+            latin:keyWidth="19.234%p" />
     </Row>
 </merge>

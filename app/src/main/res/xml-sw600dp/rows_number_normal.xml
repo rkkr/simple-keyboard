@@ -49,7 +49,7 @@
             latin:keyStyle="numKeyStyle" />
         <Key
             latin:keyStyle="deleteKeyStyle"
-            latin:keyXPos="-14%p"
+            latin:keyXPos="86%p"
             latin:keyWidth="fillRight" />
     </Row>
     <Row>
@@ -96,7 +96,7 @@
             latin:keyStyle="numKeyStyle" />
         <Key
             latin:keyStyle="enterKeyStyle"
-            latin:keyXPos="-14%p"
+            latin:keyXPos="86%p"
             latin:keyWidth="fillRight" />
     </Row>
     <Row>

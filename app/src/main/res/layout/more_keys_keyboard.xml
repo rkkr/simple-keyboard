@@ -28,5 +28,6 @@
         android:id="@+id/more_keys_keyboard_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="0dp"
         style="?attr/moreKeysKeyboardViewStyle" />
 </LinearLayout>

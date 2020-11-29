@@ -284,12 +284,14 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         mKeyboard = keyboard;
         // Mark that keyboard layout has been changed.
         mKeyboardLayoutHasBeenChanged = true;
-        final int keyWidth = mKeyboard.mMostCommonKeyWidth;
-        final int keyHeight = mKeyboard.mMostCommonKeyHeight;
+        final int keyPaddedWidth = mKeyboard.mMostCommonKeyWidth
+                + Math.round(mKeyboard.mHorizontalGap);
+        final int keyPaddedHeight = mKeyboard.mMostCommonKeyHeight
+                + Math.round(mKeyboard.mVerticalGap);
         // Keep {@link #mCurrentKey} that comes from previous keyboard. The key preview of
         // {@link #mCurrentKey} will be dismissed by {@setReleasedKeyGraphics(Key)} via
         // {@link onMoveEventInternal(int,int,long)} or {@link #onUpEventInternal(int,int,long)}.
-        mBogusMoveEventDetector.setKeyboardGeometry(keyWidth, keyHeight);
+        mBogusMoveEventDetector.setKeyboardGeometry(keyPaddedWidth, keyPaddedHeight);
     }
 
     @Override
@@ -814,11 +816,11 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         // Here curKey points to the different key from newKey.
         final int keyHysteresisDistanceSquared = mKeyDetector.getKeyHysteresisDistanceSquared(
                 mIsInSlidingKeyInput);
-        final int distanceFromKeyEdgeSquared = curKey.squaredDistanceToEdge(x, y);
+        final int distanceFromKeyEdgeSquared = curKey.squaredDistanceToHitboxEdge(x, y);
         if (distanceFromKeyEdgeSquared >= keyHysteresisDistanceSquared) {
             if (DEBUG_MODE) {
                 final float distanceToEdgeRatio = (float)Math.sqrt(distanceFromKeyEdgeSquared)
-                        / mKeyboard.mMostCommonKeyWidth;
+                        / (mKeyboard.mMostCommonKeyWidth + mKeyboard.mHorizontalGap);
                 Log.d(TAG, String.format("[%d] isMajorEnoughMoveToBeOnNewKey:"
                         +" %.2f key width from key edge", mPointerId, distanceToEdgeRatio));
             }
@@ -827,7 +829,8 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         if (!mIsAllowedDraggingFinger && mBogusMoveEventDetector.hasTraveledLongDistance(x, y)) {
             if (DEBUG_MODE) {
                 final float keyDiagonal = (float)Math.hypot(
-                        mKeyboard.mMostCommonKeyWidth, mKeyboard.mMostCommonKeyHeight);
+                        mKeyboard.mMostCommonKeyWidth + mKeyboard.mHorizontalGap,
+                        mKeyboard.mMostCommonKeyHeight + mKeyboard.mVerticalGap);
                 final float lengthFromDownRatio =
                         mBogusMoveEventDetector.getAccumulatedDistanceFromDownKey() / keyDiagonal;
                 Log.d(TAG, String.format("[%d] isMajorEnoughMoveToBeOnNewKey:"

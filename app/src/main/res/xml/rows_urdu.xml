@@ -40,9 +40,10 @@
     >
         <Key
             latin:keyStyle="shiftKeyStyle"
-            latin:keyWidth="15%p"
-            latin:visualInsetsRight="1%p" />
-        <include latin:keyboardLayout="@xml/rowkeys_urdu3" />
+            latin:keyWidth="14%p" />
+        <include
+            latin:keyXPos="15%p"
+            latin:keyboardLayout="@xml/rowkeys_urdu3" />
         <Key
             latin:keyStyle="deleteKeyStyle"
             latin:keyWidth="fillRight" />
