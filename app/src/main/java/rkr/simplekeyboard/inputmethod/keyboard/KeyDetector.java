@@ -99,7 +99,7 @@ public class KeyDetector {
             // overlapping keys. This works better than just comparing how far the touch point is
             // in the key because it helps prioritize smaller keys (harder to click) and it handles
             // the extreme case of a the majority of a key overlapping another.
-            final int distance = key.squaredDistanceToCenter(touchX, touchY);
+            final int distance = key.squaredDistanceToHitboxEdge(touchX, touchY);
             if (distance > minDistance) {
                 continue;
             }
