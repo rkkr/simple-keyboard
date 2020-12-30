@@ -92,24 +92,11 @@ public class KeyDetector {
         final int touchX = getTouchX(x);
         final int touchY = getTouchY(y);
 
-        int minDistance = Integer.MAX_VALUE;
-        Key primaryKey = null;
         for (final Key key: mKeyboard.getNearestKeys(touchX, touchY)) {
-            // Compare the distance to the center of the keys as the primary tie-breaker for
-            // overlapping keys. This works better than just comparing how far the touch point is
-            // in the key because it helps prioritize smaller keys (harder to click) and it handles
-            // the extreme case of a the majority of a key overlapping another.
-            final int distance = key.squaredDistanceToHitboxEdge(touchX, touchY);
-            if (distance > minDistance) {
-                continue;
-            }
-            // To take care of hitbox overlaps, we compare key's code here too.
-            if (primaryKey == null || distance < minDistance
-                    || key.getCode() > primaryKey.getCode()) {
-                minDistance = distance;
-                primaryKey = key;
+            if (key.isOnKey(touchX, touchY)) {
+                return key;
             }
         }
-        return primaryKey;
+        return null;
     }
 }

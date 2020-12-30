@@ -842,6 +842,18 @@ public class Key implements Comparable<Key> {
     }
 
     /**
+     * Detects if a point falls on this key.
+     * @param x the x-coordinate of the point
+     * @param y the y-coordinate of the point
+     * @return whether or not the point falls on the key. This generally includes all points
+     * between the key and the keyboard edge for keys attached to an edge and all points between
+     * the key and halfway to adjacent keys.
+     */
+    public boolean isOnKey(final int x, final int y) {
+        return mHitbox.contains(x, y);
+    }
+
+    /**
      * Returns the square of the distance to the nearest clickable edge of the key and the given
      * point.
      * @param x the x-coordinate of the point
