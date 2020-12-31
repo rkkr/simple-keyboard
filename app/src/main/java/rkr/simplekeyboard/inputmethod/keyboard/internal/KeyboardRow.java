@@ -127,12 +127,14 @@ public final class KeyboardRow {
             // The top row should use the keyboard's top padding instead of the vertical gap
             mKeyTopPadding = params.mTopPadding;
         } else {
-            mKeyTopPadding = params.mVerticalGap / 2;
+            // All of the vertical gap will be used as bottom padding rather than split between the
+            // top and bottom because it is probably more likely for users to click below a key
+            mKeyTopPadding = 0;
         }
         final float baseRowHeight = ResourceUtils.getDimensionOrFraction(keyboardAttr,
                 R.styleable.Keyboard_rowHeight, params.mBaseHeight, params.mDefaultRowHeight);
         float keyHeight = baseRowHeight - params.mVerticalGap;
-        final float rowEndY = y + mKeyTopPadding + keyHeight + params.mVerticalGap / 2;
+        final float rowEndY = y + mKeyTopPadding + keyHeight + params.mVerticalGap;
         final float keyboardBottomEdge = params.mOccupiedHeight - params.mBottomPadding;
         if (rowEndY > keyboardBottomEdge - FLOAT_THRESHOLD) {
             // The bottom row's padding should go to the bottom of the keyboard (this might be
@@ -151,7 +153,7 @@ public final class KeyboardRow {
             }
             mKeyBottomPadding = Math.max(params.mOccupiedHeight - keyEndY, 0);
         } else {
-            mKeyBottomPadding = params.mVerticalGap / 2;
+            mKeyBottomPadding = params.mVerticalGap;
         }
         mRowHeight = mKeyTopPadding + keyHeight + mKeyBottomPadding;
         keyboardAttr.recycle();
