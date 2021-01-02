@@ -54,11 +54,15 @@
                     <Key
                         latin:keySpec=":" />
                 </case>
-                <default>
+                <case latin:showExtraChars="true">
                     <Key
                         latin:keySpec=";"
                         latin:keyHintLabel=":"
                         latin:additionalMoreKeys=":" />
+                </case>
+                <default>
+                    <Key
+                        latin:keySpec=";" />
                 </default>
             </switch>
         </case>
@@ -114,12 +118,18 @@
                         latin:keyHintLabel="0"
                         latin:additionalMoreKeys="0" />
                 </case>
-                <default>
+                <case latin:showExtraChars="true">
                     <Key
                         latin:keySpec=";"
                         latin:keyHintLabel="0"
                         latin:additionalMoreKeys="0"
                         latin:moreKeys=":" />
+                </case>
+                <default>
+                    <Key
+                        latin:keySpec=";"
+                        latin:keyHintLabel="0"
+                        latin:additionalMoreKeys="0" />
                 </default>
             </switch>
         </default>
