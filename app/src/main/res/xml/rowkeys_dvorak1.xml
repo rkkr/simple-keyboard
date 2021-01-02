@@ -24,6 +24,43 @@
     <include
         latin:keyboardLayout="@xml/keys_dvorak_123" />
     <switch>
+        <case
+            latin:showNumberRow="true"
+            latin:showExtraChars="true">
+            <Key
+                latin:keySpec="p"
+                latin:keyHintLabel="="
+                latin:additionalMoreKeys="=" />
+            <Key
+                latin:keySpec="y"
+                latin:keyHintLabel="["
+                latin:additionalMoreKeys="!text/keyspec_left_square_bracket"
+                latin:moreKeys="!text/morekeys_y" />
+            <Key
+                latin:keySpec="f"
+                latin:keyHintLabel="]"
+                latin:additionalMoreKeys="!text/keyspec_right_square_bracket" />
+            <Key
+                latin:keySpec="g"
+                latin:keyHintLabel="&lt;"
+                latin:additionalMoreKeys="!text/keyspec_less_than"
+                latin:moreKeys="!text/morekeys_g" />
+            <Key
+                latin:keySpec="c"
+                latin:keyHintLabel="&gt;"
+                latin:additionalMoreKeys="!text/keyspec_greater_than"
+                latin:moreKeys="!text/morekeys_c" />
+            <Key
+                latin:keySpec="r"
+                latin:keyHintLabel="{"
+                latin:additionalMoreKeys="!text/keyspec_left_curly_bracket"
+                latin:moreKeys="!text/morekeys_r" />
+            <Key
+                latin:keySpec="l"
+                latin:keyHintLabel="}"
+                latin:additionalMoreKeys="!text/keyspec_right_curly_bracket"
+                latin:moreKeys="!text/morekeys_l" />
+        </case>
         <case latin:showNumberRow="true">
             <Key
                 latin:keySpec="p" />

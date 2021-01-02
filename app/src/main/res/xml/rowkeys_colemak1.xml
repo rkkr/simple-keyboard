@@ -22,6 +22,68 @@
     xmlns:latin="http://schemas.android.com/apk/res-auto"
 >
     <switch>
+        <case
+            latin:showNumberRow="true"
+            latin:showExtraChars="true">
+            <Key
+                latin:keySpec="q"
+                latin:keyHintLabel="_"
+                latin:additionalMoreKeys="_" />
+            <Key
+                latin:keySpec="w"
+                latin:keyHintLabel="\\"
+                latin:additionalMoreKeys="\\\\"
+                latin:moreKeys="!text/morekeys_w" />
+            <Key
+                latin:keySpec="f"
+                latin:keyHintLabel="|"
+                latin:additionalMoreKeys="\\|" />
+            <Key
+                latin:keySpec="p"
+                latin:keyHintLabel="="
+                latin:additionalMoreKeys="=" />
+            <Key
+                latin:keySpec="g"
+                latin:keyHintLabel="["
+                latin:additionalMoreKeys="!text/keyspec_left_square_bracket"
+                latin:moreKeys="!text/morekeys_g" />
+            <Key
+                latin:keySpec="j"
+                latin:keyHintLabel="]"
+                latin:additionalMoreKeys="!text/keyspec_right_square_bracket"
+                latin:moreKeys="!text/morekeys_j" />
+            <Key
+                latin:keySpec="l"
+                latin:keyHintLabel="&lt;"
+                latin:additionalMoreKeys="!text/keyspec_less_than"
+                latin:moreKeys="!text/morekeys_l" />
+            <Key
+                latin:keySpec="u"
+                latin:keyHintLabel="&gt;"
+                latin:additionalMoreKeys="!text/keyspec_greater_than"
+                latin:moreKeys="!text/morekeys_u" />
+            <Key
+                latin:keySpec="y"
+                latin:keyHintLabel="{"
+                latin:additionalMoreKeys="!text/keyspec_left_curly_bracket"
+                latin:moreKeys="!text/morekeys_y" />
+            <switch>
+                <case
+                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted"
+                    >
+                    <Key
+                        latin:keySpec=":"
+                        latin:keyHintLabel="}"
+                        latin:additionalMoreKeys="!text/keyspec_right_curly_bracket" />
+                </case>
+                <default>
+                    <Key
+                        latin:keySpec=";"
+                        latin:keyHintLabel="}"
+                        latin:additionalMoreKeys="!text/keyspec_right_curly_bracket,:" />
+                </default>
+            </switch>
+        </case>
         <case latin:showNumberRow="true">
             <Key
                 latin:keySpec="q" />
@@ -53,12 +115,6 @@
                 >
                     <Key
                         latin:keySpec=":" />
-                </case>
-                <case latin:showExtraChars="true">
-                    <Key
-                        latin:keySpec=";"
-                        latin:keyHintLabel=":"
-                        latin:additionalMoreKeys=":" />
                 </case>
                 <default>
                     <Key

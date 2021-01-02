@@ -22,6 +22,69 @@
     xmlns:latin="http://schemas.android.com/apk/res-auto"
 >
     <switch>
+        <case
+            latin:showNumberRow="true"
+            latin:showExtraChars="true">
+            <switch>
+                <case
+                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted"
+                    >
+                    <Key
+                        latin:keySpec="&quot;"
+                        latin:keyHintLabel="_"
+                        latin:additionalMoreKeys="_" />
+                </case>
+                <case
+                    latin:mode="url"
+                    >
+                    <Key
+                        latin:keySpec="/"
+                        latin:keyHintLabel="_"
+                        latin:additionalMoreKeys="_" />
+                </case>
+                <case
+                    latin:mode="email"
+                    >
+                    <Key
+                        latin:keySpec="\@"
+                        latin:keyHintLabel="_"
+                        latin:additionalMoreKeys="_" />
+                </case>
+                <default>
+                    <Key
+                        latin:keySpec="\'"
+                        latin:keyHintLabel="_"
+                        latin:additionalMoreKeys="_"
+                        latin:moreKeys="!,&quot;" />
+                </default>
+            </switch>
+            <switch>
+                <case
+                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted"
+                    >
+                    <Key
+                        latin:keySpec="&lt;"
+                        latin:keyHintLabel="\\"
+                        latin:additionalMoreKeys="\\\\" />
+                    <Key
+                        latin:keySpec="&gt;"
+                        latin:keyHintLabel="|"
+                        latin:additionalMoreKeys="\\|" />
+                </case>
+                <default>
+                    <Key
+                        latin:keySpec=","
+                        latin:keyHintLabel="\\"
+                        latin:additionalMoreKeys="\\\\"
+                        latin:moreKeys="\?,&lt;" />
+                    <Key
+                        latin:keySpec="."
+                        latin:keyHintLabel="|"
+                        latin:additionalMoreKeys="\\|"
+                        latin:moreKeys="&gt;" />
+                </default>
+            </switch>
+        </case>
         <case latin:showNumberRow="true">
             <switch>
                 <case
