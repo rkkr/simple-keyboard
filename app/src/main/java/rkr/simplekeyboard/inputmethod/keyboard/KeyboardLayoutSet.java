@@ -95,6 +95,7 @@ public final class KeyboardLayoutSet {
         EditorInfo mEditorInfo;
         boolean mLanguageSwitchKeyEnabled;
         RichInputMethodSubtype mSubtype;
+        int mKeyboardThemeId;
         int mKeyboardWidth;
         int mKeyboardHeight;
         boolean mShowMoreKeys;
@@ -211,6 +212,11 @@ public final class KeyboardLayoutSet {
             params.mMode = getKeyboardMode(editorInfo);
             // TODO: Consolidate those with {@link InputAttributes}.
             params.mEditorInfo = editorInfo;
+        }
+
+        public Builder setKeyboardTheme(final int themeId) {
+            mParams.mKeyboardThemeId = themeId;
+            return this;
         }
 
         public Builder setKeyboardGeometry(final int keyboardWidth, final int keyboardHeight) {

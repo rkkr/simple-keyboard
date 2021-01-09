@@ -31,8 +31,6 @@
         name="Keyboard.LXX_Light_Border"
         parent="Keyboard"
     >
-        <!-- This should be aligned with KeyboardTheme.THEME_ID_* -->
-        <item name="themeId">LXXLightBorder</item>
     </style>
     <style
         name="KeyboardView.LXX_Light_Border"

@@ -116,16 +116,6 @@
     </declare-styleable>
 
     <declare-styleable name="Keyboard">
-        <attr name="themeId" format="enum">
-            <!-- This should be aligned with
-                 {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
-            <enum name="LXXLightBorder" value="1" />
-            <enum name="LXXDarkBorder" value="2" />
-            <enum name="LXXLight" value="3" />
-            <enum name="LXXDark" value="4" />
-            <enum name="LXXSystem" value="5" />
-            <enum name="LXXSystemBorder" value="6" />
-        </attr>
         <!-- Keyboard top, bottom, left, right edges paddings, in pixels or in the propotion of
              keyboard height. -->
         <attr name="keyboardTopPadding" format="dimension|fraction" />
@@ -329,7 +319,7 @@
             <enum name="phoneSymbols" value="8"  />
             <enum name="number" value="9"  />
         </attr>
-        <!-- This should be aligned with Keyboard.themeId and
+        <!-- This should be aligned with
              {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
         <attr name="keyboardTheme" format="enum|string">
             <enum name="LXXLightBorder" value="1" />

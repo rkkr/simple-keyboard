@@ -30,6 +30,9 @@ public final class XmlParseUtils {
 
     @SuppressWarnings("serial")
     public static class ParseException extends XmlPullParserException {
+        public ParseException(final String msg) {
+            super(msg);
+        }
         public ParseException(final String msg, final XmlPullParser parser) {
             super(msg + " at " + parser.getPositionDescription());
         }

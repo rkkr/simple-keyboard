@@ -55,6 +55,7 @@ public final class KeyboardId {
     public static final int ELEMENT_NUMBER = 9;
 
     public final RichInputMethodSubtype mSubtype;
+    public final int mThemeId;
     public final int mWidth;
     public final int mHeight;
     public final int mMode;
@@ -69,6 +70,7 @@ public final class KeyboardId {
 
     public KeyboardId(final int elementId, final KeyboardLayoutSet.Params params) {
         mSubtype = params.mSubtype;
+        mThemeId = params.mKeyboardThemeId;
         mWidth = params.mKeyboardWidth;
         mHeight = params.mKeyboardHeight;
         mMode = params.mMode;
@@ -97,6 +99,7 @@ public final class KeyboardId {
                 id.navigateNext(),
                 id.navigatePrevious(),
                 id.mSubtype,
+                id.mThemeId
         });
     }
 
@@ -114,7 +117,8 @@ public final class KeyboardId {
                 && TextUtils.equals(other.mCustomActionLabel, mCustomActionLabel)
                 && other.navigateNext() == navigateNext()
                 && other.navigatePrevious() == navigatePrevious()
-                && other.mSubtype.equals(mSubtype);
+                && other.mSubtype.equals(mSubtype)
+                && other.mThemeId == mThemeId;
     }
 
     private static boolean isAlphabetKeyboard(final int elementId) {
@@ -165,7 +169,7 @@ public final class KeyboardId {
 
     @Override
     public String toString() {
-        return String.format(Locale.ROOT, "[%s %s:%s %dx%d %s %s%s%s%s%s%s%s%s%s]",
+        return String.format(Locale.ROOT, "[%s %s:%s %dx%d %s %s%s%s%s%s%s %s]",
                 elementIdToName(mElementId),
                 mSubtype.getLocale(),
                 mSubtype.getExtraValueOf(KEYBOARD_LAYOUT_SET),
@@ -176,7 +180,8 @@ public final class KeyboardId {
                 (navigatePrevious() ? " navigatePrevious" : ""),
                 (passwordInput() ? " passwordInput" : ""),
                 (mLanguageSwitchKeyEnabled ? " languageSwitchKeyEnabled" : ""),
-                (isMultiLine() ? " isMultiLine" : "")
+                (isMultiLine() ? " isMultiLine" : ""),
+                KeyboardTheme.getKeyboardThemeName(mThemeId)
         );
     }
 

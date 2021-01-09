@@ -29,7 +29,6 @@ import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 
 public class KeyboardParams {
     public KeyboardId mId;
-    public int mThemeId;
 
     /** Total height and width of the keyboard, including the paddings and keys */
     public int mOccupiedHeight;
