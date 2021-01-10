@@ -246,7 +246,11 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             final KeyboardParams params = mParams;
             final int height = params.mId.mHeight;
             final int width = params.mId.mWidth;
-            params.mOccupiedHeight = height;
+            // The bonus height isn't used to determine the other dimensions (gap/padding) to allow
+            // those to stay consistent between layouts with and without the bonus height added.
+            final int bonusHeight = mParams.mId.mShowNumberRow ? Math.round(mResources.getFraction(
+                    R.fraction.config_key_bonus_height_5row, height, height)) : 0;
+            params.mOccupiedHeight = height + bonusHeight;
             params.mOccupiedWidth = width;
             params.mTopPadding = ResourceUtils.getDimensionOrFraction(keyboardAttr,
                     R.styleable.Keyboard_keyboardTopPadding, height, 0);

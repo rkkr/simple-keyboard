@@ -19,9 +19,7 @@
 -->
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
-    <Row
-        latin:rowHeight="15%p"
-        >
+    <Row>
         <Key
             latin:keySpec="1" />
         <Key
