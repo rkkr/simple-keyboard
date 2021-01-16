@@ -24,7 +24,7 @@
             latin:verticalGap="@fraction/config_key_vertical_gap_5row"
             latin:rowHeight="20%p">
             <include latin:keyboardLayout="@xml/key_styles_common" />
-            <include latin:keyboardLayout="@xml/rowkeys_qwerty0" />
+            <include latin:keyboardLayout="@xml/row_qwerty0" />
             <include latin:keyboardLayout="@xml/rows_malayalam" />
         </Keyboard>
     </case>
