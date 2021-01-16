@@ -400,18 +400,14 @@ public final class MoreKeysKeyboard extends Keyboard {
                 final float keyboardTopEdge = params.mTopPadding;
                 final float keyboardBottomEdge = params.mOccupiedHeight - params.mBottomPadding;
 
-                final float keyLeftPadding = Math.min(params.mMaxKeyHitboxPadding,
-                        keyLeftEdge < keyboardLeftEdge + FLOAT_THRESHOLD
-                                ? params.mLeftPadding : params.mHorizontalGap / 2);
-                final float keyRightPadding = Math.min(params.mMaxKeyHitboxPadding,
-                        keyRightEdge > keyboardRightEdge - FLOAT_THRESHOLD
-                                ? params.mRightPadding : params.mHorizontalGap / 2);
-                final float keyTopPadding = Math.min(params.mMaxKeyHitboxPadding,
-                        keyTopEdge < keyboardTopEdge + FLOAT_THRESHOLD
-                                ? params.mTopPadding : params.mVerticalGap / 2);
-                final float keyBottomPadding = Math.min(params.mMaxKeyHitboxPadding,
-                        keyBottomEdge > keyboardBottomEdge - FLOAT_THRESHOLD
-                                ? params.mBottomPadding : params.mVerticalGap / 2);
+                final float keyLeftPadding = keyLeftEdge < keyboardLeftEdge + FLOAT_THRESHOLD
+                                ? params.mLeftPadding : params.mHorizontalGap / 2;
+                final float keyRightPadding = keyRightEdge > keyboardRightEdge - FLOAT_THRESHOLD
+                                ? params.mRightPadding : params.mHorizontalGap / 2;
+                final float keyTopPadding = keyTopEdge < keyboardTopEdge + FLOAT_THRESHOLD
+                                ? params.mTopPadding : params.mVerticalGap / 2;
+                final float keyBottomPadding = keyBottomEdge > keyboardBottomEdge - FLOAT_THRESHOLD
+                                ? params.mBottomPadding : params.mVerticalGap / 2;
 
                 final Key key = moreKeySpec.buildKey(keyLeftEdge, keyTopEdge, width, height,
                         keyLeftPadding, keyRightPadding, keyTopPadding, keyBottomPadding,

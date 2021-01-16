@@ -49,7 +49,6 @@
     <integer name="config_sliding_key_input_preview_body_ratio">100</integer>
     <integer name="config_sliding_key_input_preview_shadow_ratio">-1</integer>
     <dimen name="config_key_hysteresis_distance_for_sliding_modifier">8.0dp</dimen>
-    <dimen name="config_max_key_hitbox_padding">70.0dp</dimen>
 
     <integer name="config_language_on_spacebar_final_alpha">128</integer>
     <dimen name="config_language_on_spacebar_horizontal_margin">1dp</dimen>

@@ -150,7 +150,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
 
         params.mGridWidth = res.getInteger(R.integer.config_keyboard_grid_width);
         params.mGridHeight = res.getInteger(R.integer.config_keyboard_grid_height);
-        params.mMaxKeyHitboxPadding = res.getDimension(R.dimen.config_max_key_hitbox_padding);
     }
 
     public void setAllowRedundantMoreKes(final boolean enabled) {
@@ -720,8 +719,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
     private void setKeyHitboxRightEdge(final Key key, final float xPos) {
         final int keyRight = key.getX() + key.getWidth();
         final float padding = xPos - keyRight;
-        key.setHitboxRightEdge(Math.round(Math.min(padding, mParams.mMaxKeyHitboxPadding))
-                + keyRight);
+        key.setHitboxRightEdge(Math.round(padding) + keyRight);
     }
 
     private void endKeyboard() {

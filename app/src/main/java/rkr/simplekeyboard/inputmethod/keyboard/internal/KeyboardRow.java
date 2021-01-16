@@ -315,18 +315,18 @@ public final class KeyboardRow {
     }
 
     public float getKeyTopPadding() {
-        return Math.min(mKeyTopPadding, mParams.mMaxKeyHitboxPadding);
+        return mKeyTopPadding;
     }
 
     public float getKeyBottomPadding() {
-        return Math.min(mKeyBottomPadding, mParams.mMaxKeyHitboxPadding);
+        return mKeyBottomPadding;
     }
 
     public float getKeyLeftPadding() {
-        return Math.min(mCurrentKeyLeftPadding, mParams.mMaxKeyHitboxPadding);
+        return mCurrentKeyLeftPadding;
     }
 
     public float getKeyRightPadding() {
-        return Math.min(mCurrentKeyRightPadding, mParams.mMaxKeyHitboxPadding);
+        return mCurrentKeyRightPadding;
     }
 }

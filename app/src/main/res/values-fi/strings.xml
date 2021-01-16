@@ -60,4 +60,13 @@
     <string name="prefs_keypress_sound_volume_settings">"Näppäinpainalluksen äänenvoimakkuus"</string>
     <string name="prefs_key_longpress_timeout_settings">"Pitkän painalluksen viive"</string>
     <string name="button_default">"Oletusarvot"</string>
+    <string name="prefs_keyboard_height_settings">Näppäimistön korkeus</string>
+    <string name="keyboard_color">Laita mukautettu näppäimistön väri</string>
+    <string name="hide_special_chars">Piilota erikoismerkit</string>
+    <string name="hide_language_switch_key">Piilota kielen vaihtonappula</string>
+    <string name="show_number_row">Näytä erillinen numerorivi</string>
+    <string name="space_swipe">Liikuta kursoria pyyhkäisemällä välilyöntiä</string>
+    <string name="delete_swipe">Poista pyyhkäisemällä</string>
+    <string name="matching_navbar_color">Käytä samaa navigointipalkin väriä</string>
+    <string name="setup_message">Simple Keyboard ei ole käytössä. Paina OK avataksesi Kielten ja syöttötapojen asetukset. Sinun pitää valita Simple Keyboard nykyisessä näppäimistössä käyttääksesi sitä.</string>
 </resources>
