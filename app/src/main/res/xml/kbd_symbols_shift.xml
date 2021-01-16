@@ -18,9 +18,34 @@
 */
 -->
 
-<Keyboard
-    xmlns:latin="http://schemas.android.com/apk/res-auto"
->
-    <include
-        latin:keyboardLayout="@xml/rows_symbols_shift" />
-</Keyboard>
+<switch xmlns:latin="http://schemas.android.com/apk/res-auto">
+    <case latin:languageCode="bn|fa|ur">
+        <!-- The bengali, bengali_akkhor, farsi, and urdu keyboards currently don't support a
+             separate number row. -->
+        <Keyboard>
+            <include
+                latin:keyboardLayout="@xml/rows_symbols_shift" />
+        </Keyboard>
+    </case>
+    <case latin:showNumberRow="true">
+        <Keyboard
+            latin:bonusHeight="@fraction/config_key_bonus_height_5row">
+            <include
+                latin:keyboardLayout="@xml/rows_symbols_shift" />
+        </Keyboard>
+    </case>
+    <case latin:languageCode="hy|km|lo|th">
+        <!-- The armenian_phonetic, khmer, lao, and thai keyboards always have 5 rows. -->
+        <Keyboard
+            latin:bonusHeight="@fraction/config_key_bonus_height_5row">
+            <include
+                latin:keyboardLayout="@xml/rows_symbols_shift" />
+        </Keyboard>
+    </case>
+    <default>
+        <Keyboard>
+            <include
+                latin:keyboardLayout="@xml/rows_symbols_shift" />
+        </Keyboard>
+    </default>
+</switch>
