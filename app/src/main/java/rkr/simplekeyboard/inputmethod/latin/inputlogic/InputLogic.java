@@ -422,10 +422,14 @@ public final class InputLogic {
      * needs to know auto caps state to display the right layout.
      *
      * @param settingsValues the relevant settings values
+     * @param layoutSetName the name of the current keyboard layout set
      * @return a caps mode from TextUtils.CAP_MODE_* or Constants.TextUtils.CAP_MODE_OFF.
      */
-    public int getCurrentAutoCapsState(final SettingsValues settingsValues) {
-        if (!settingsValues.mAutoCap) return Constants.TextUtils.CAP_MODE_OFF;
+    public int getCurrentAutoCapsState(final SettingsValues settingsValues,
+                                       final String layoutSetName) {
+        if (!settingsValues.mAutoCap || !layoutUsesAutoCaps(layoutSetName)) {
+            return Constants.TextUtils.CAP_MODE_OFF;
+        }
 
         final EditorInfo ei = getCurrentInputEditorInfo();
         if (ei == null) return Constants.TextUtils.CAP_MODE_OFF;
@@ -433,6 +437,33 @@ public final class InputLogic {
         // Warning: this depends on mSpaceState, which may not be the most current value. If
         // mSpaceState gets updated later, whoever called this may need to be told about it.
         return mConnection.getCursorCapsMode(inputType, settingsValues.mSpacingAndPunctuations);
+    }
+
+    private boolean layoutUsesAutoCaps(final String layoutSetName) {
+        switch (layoutSetName) {
+            case "arabic":
+            case "bengali":
+            case "bengali_akkhor":
+            case "farsi":
+            case "georgian":
+            case "hebrew":
+            case "hindi":
+            case "hindi_compact":
+            case "kannada":
+            case "khmer":
+            case "lao":
+            case "malayalam":
+            case "marathi":
+            case "nepali_romanized":
+            case "nepali_traditional":
+            case "tamil":
+            case "telugu":
+            case "thai":
+            case "urdu":
+                return false;
+            default:
+                return true;
+        }
     }
 
     public int getCurrentRecapitalizeState() {
