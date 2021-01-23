@@ -24,10 +24,9 @@ public final class AlphabetShiftState {
 
     private static final int UNSHIFTED = 0;
     private static final int MANUAL_SHIFTED = 1;
-    private static final int MANUAL_SHIFTED_FROM_AUTO = 2;
-    private static final int AUTOMATIC_SHIFTED = 3;
-    private static final int SHIFT_LOCKED = 4;
-    private static final int SHIFT_LOCK_SHIFTED = 5;
+    private static final int AUTOMATIC_SHIFTED = 2;
+    private static final int SHIFT_LOCKED = 3;
+    private static final int SHIFT_LOCK_SHIFTED = 4;
 
     private int mState = UNSHIFTED;
 
@@ -38,9 +37,6 @@ public final class AlphabetShiftState {
             case UNSHIFTED:
                 mState = MANUAL_SHIFTED;
                 break;
-            case AUTOMATIC_SHIFTED:
-                mState = MANUAL_SHIFTED_FROM_AUTO;
-                break;
             case SHIFT_LOCKED:
                 mState = SHIFT_LOCK_SHIFTED;
                 break;
@@ -48,7 +44,6 @@ public final class AlphabetShiftState {
         } else {
             switch (oldState) {
             case MANUAL_SHIFTED:
-            case MANUAL_SHIFTED_FROM_AUTO:
             case AUTOMATIC_SHIFTED:
                 mState = UNSHIFTED;
                 break;
@@ -67,7 +62,6 @@ public final class AlphabetShiftState {
             switch (oldState) {
             case UNSHIFTED:
             case MANUAL_SHIFTED:
-            case MANUAL_SHIFTED_FROM_AUTO:
             case AUTOMATIC_SHIFTED:
                 mState = SHIFT_LOCKED;
                 break;
@@ -101,12 +95,7 @@ public final class AlphabetShiftState {
     }
 
     public boolean isManualShifted() {
-        return mState == MANUAL_SHIFTED || mState == MANUAL_SHIFTED_FROM_AUTO
-                || mState == SHIFT_LOCK_SHIFTED;
-    }
-
-    public boolean isManualShiftedFromAutomaticShifted() {
-        return mState == MANUAL_SHIFTED_FROM_AUTO;
+        return mState == MANUAL_SHIFTED || mState == SHIFT_LOCK_SHIFTED;
     }
 
     @Override
@@ -118,7 +107,6 @@ public final class AlphabetShiftState {
         switch (state) {
         case UNSHIFTED: return "UNSHIFTED";
         case MANUAL_SHIFTED: return "MANUAL_SHIFTED";
-        case MANUAL_SHIFTED_FROM_AUTO: return "MANUAL_SHIFTED_FROM_AUTO";
         case AUTOMATIC_SHIFTED: return "AUTOMATIC_SHIFTED";
         case SHIFT_LOCKED: return "SHIFT_LOCKED";
         case SHIFT_LOCK_SHIFTED: return "SHIFT_LOCK_SHIFTED";
