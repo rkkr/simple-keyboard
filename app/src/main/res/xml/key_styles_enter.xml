@@ -36,7 +36,7 @@
         <!-- Shift + Enter in textMultiLine field. -->
         <case
             latin:isMultiLine="true"
-            latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted"
+            latin:keyboardLayoutSetElement="alphabetManualShifted"
         >
             <key-style
                 latin:styleName="enterKeyStyle"

@@ -20,7 +20,7 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <switch>
-        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted">
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
             <!-- U+0601: "؁" ARABIC SIGN SANAH -->
             <Key latin:keySpec="&#x0601;" />
             <!-- U+0600: "" ARABIC NUMBER SIGN -->

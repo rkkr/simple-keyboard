@@ -41,7 +41,7 @@
                 latin:additionalMoreKeys="\\|"
                 latin:keyStyle="hasShiftedLetterHintStyle" />
         </case>
-        <!-- keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted" -->
+        <!-- keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked" -->
         <default>
             <Key
                 latin:keySpec="{" />

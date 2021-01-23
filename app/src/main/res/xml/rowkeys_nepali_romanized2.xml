@@ -20,7 +20,7 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <switch>
-        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted">
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
             <!-- U+0906: "आ" DEVANAGARI LETTER AA -->
             <Key latin:keySpec="&#x0906;" />
             <!-- U+0936: "श" DEVANAGARI LETTER SHA -->

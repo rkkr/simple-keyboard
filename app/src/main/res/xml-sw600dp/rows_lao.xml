@@ -53,7 +53,7 @@
             latin:keyWidth="10.0%p" />
         <include latin:keyboardLayout="@xml/rowkeys_lao4" />
         <switch>
-            <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted">
+            <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
                 <Spacer />
             </case>
             <default>

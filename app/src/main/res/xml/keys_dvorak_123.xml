@@ -27,7 +27,7 @@
             latin:showExtraChars="true">
             <switch>
                 <case
-                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted"
+                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked"
                     >
                     <Key
                         latin:keySpec="&quot;"
@@ -60,7 +60,7 @@
             </switch>
             <switch>
                 <case
-                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted"
+                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked"
                     >
                     <Key
                         latin:keySpec="&lt;"
@@ -88,7 +88,7 @@
         <case latin:showNumberRow="true">
             <switch>
                 <case
-                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted"
+                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked"
                     >
                     <Key
                         latin:keySpec="&quot;" />
@@ -113,7 +113,7 @@
             </switch>
             <switch>
                 <case
-                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted"
+                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked"
                     >
                     <Key
                         latin:keySpec="&lt;" />
@@ -133,7 +133,7 @@
         <default>
             <switch>
                 <case
-                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted"
+                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked"
                 >
                     <Key
                         latin:keySpec="&quot;"
@@ -166,7 +166,7 @@
             </switch>
             <switch>
                 <case
-                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted"
+                    latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked"
                 >
                     <Key
                         latin:keySpec="&lt;"

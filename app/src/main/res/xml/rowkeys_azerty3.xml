@@ -73,7 +73,7 @@
     </switch>
     <switch>
         <case
-            latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted"
+            latin:keyboardLayoutSetElement="alphabetManualShifted"
         >
             <Key
                 latin:keySpec="\?" />

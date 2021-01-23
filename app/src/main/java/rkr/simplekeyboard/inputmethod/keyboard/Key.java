@@ -423,7 +423,6 @@ public class Key implements Comparable<Key> {
         case KeyboardId.ELEMENT_ALPHABET_MANUAL_SHIFTED:
         case KeyboardId.ELEMENT_ALPHABET_AUTOMATIC_SHIFTED:
         case KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCKED:
-        case KeyboardId.ELEMENT_ALPHABET_SHIFT_LOCK_SHIFTED:
             return true;
         default:
             return false;

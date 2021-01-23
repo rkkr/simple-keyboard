@@ -48,7 +48,6 @@ public final class KeyboardState {
         void setAlphabetManualShiftedKeyboard();
         void setAlphabetAutomaticShiftedKeyboard();
         void setAlphabetShiftLockedKeyboard();
-        void setAlphabetShiftLockShiftedKeyboard();
         void setSymbolsKeyboard();
         void setSymbolsShiftedKeyboard();
 
@@ -204,7 +203,7 @@ public final class KeyboardState {
             break;
         case MANUAL_SHIFT:
             mAlphabetShiftState.setShifted(true);
-            if (shiftMode != prevShiftMode) {
+            if (shiftMode != prevShiftMode && prevShiftMode != AUTOMATIC_SHIFT) {
                 mSwitchActions.setAlphabetManualShiftedKeyboard();
             }
             break;
@@ -216,7 +215,6 @@ public final class KeyboardState {
             break;
         case SHIFT_LOCK_SHIFTED:
             mAlphabetShiftState.setShifted(true);
-            mSwitchActions.setAlphabetShiftLockShiftedKeyboard();
             break;
         }
     }

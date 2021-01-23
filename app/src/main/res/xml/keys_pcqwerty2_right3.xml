@@ -35,7 +35,7 @@
                 latin:keySpec="\\"
                 latin:additionalMoreKeys="\\|" />
         </case>
-        <!-- keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted" -->
+        <!-- keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked" -->
         <default>
             <Key
                 latin:keySpec="{" />

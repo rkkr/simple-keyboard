@@ -47,7 +47,6 @@ public final class KeyboardId {
     public static final int ELEMENT_ALPHABET_MANUAL_SHIFTED = 1;
     public static final int ELEMENT_ALPHABET_AUTOMATIC_SHIFTED = 2;
     public static final int ELEMENT_ALPHABET_SHIFT_LOCKED = 3;
-    public static final int ELEMENT_ALPHABET_SHIFT_LOCK_SHIFTED = 4;
     public static final int ELEMENT_SYMBOLS = 5;
     public static final int ELEMENT_SYMBOLS_SHIFTED = 6;
     public static final int ELEMENT_PHONE = 7;
@@ -194,7 +193,6 @@ public final class KeyboardId {
         case ELEMENT_ALPHABET_MANUAL_SHIFTED: return "alphabetManualShifted";
         case ELEMENT_ALPHABET_AUTOMATIC_SHIFTED: return "alphabetAutomaticShifted";
         case ELEMENT_ALPHABET_SHIFT_LOCKED: return "alphabetShiftLocked";
-        case ELEMENT_ALPHABET_SHIFT_LOCK_SHIFTED: return "alphabetShiftLockShifted";
         case ELEMENT_SYMBOLS: return "symbols";
         case ELEMENT_SYMBOLS_SHIFTED: return "symbolsShifted";
         case ELEMENT_PHONE: return "phone";

@@ -36,7 +36,7 @@
                 latin:additionalMoreKeys="\?"
                 latin:moreKeys="!text/morekeys_question" />
         </case>
-        <!-- keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted" -->
+        <!-- keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked" -->
         <default>
             <!-- U+2039: "‹" SINGLE LEFT-POINTING ANGLE QUOTATION MARK
                  U+203A: "›" SINGLE RIGHT-POINTING ANGLE QUOTATION MARK

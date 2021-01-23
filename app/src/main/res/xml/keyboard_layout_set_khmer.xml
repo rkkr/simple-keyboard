@@ -38,9 +38,6 @@
         latin:elementName="alphabetShiftLocked"
         latin:elementKeyboard="@xml/kbd_khmer" />
     <Element
-        latin:elementName="alphabetShiftLockShifted"
-        latin:elementKeyboard="@xml/kbd_khmer" />
-    <Element
         latin:elementName="symbols"
         latin:elementKeyboard="@xml/kbd_symbols" />
     <Element

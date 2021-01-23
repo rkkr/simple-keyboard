@@ -20,7 +20,7 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <switch>
-        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted">
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
             <!-- U+0EBB/U+0EC9: "" LAO VOWEL SIGN MAI KON/LAO TONE MAI THO -->
             <Key
                 latin:keySpec="&#x0EBB;&#x0EC9;"
