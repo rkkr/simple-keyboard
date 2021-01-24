@@ -183,8 +183,6 @@ public final class ResourceUtils {
     public static int getKeyboardHeight(final Resources res, final SettingsValues settingsValues) {
         final int defaultKeyboardHeight = getDefaultKeyboardHeight(res);
         float scale = settingsValues.mKeyboardHeightScale;
-        if (settingsValues.mShowNumberRow)
-            scale += 0.1;
         return (int)(defaultKeyboardHeight * scale);
     }
 

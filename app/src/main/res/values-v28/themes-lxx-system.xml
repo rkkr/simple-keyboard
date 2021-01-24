@@ -31,8 +31,6 @@
         name="Keyboard.LXX_System"
         parent="Keyboard"
     >
-        <!-- This should be aligned with KeyboardTheme.THEME_ID_* -->
-        <item name="themeId">LXXSystem</item>
     </style>
     <style
         name="KeyboardView.LXX_System"

@@ -105,6 +105,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         final Resources res = mThemeContext.getResources();
         final int keyboardWidth = mLatinIME.getMaxWidth();
         final int keyboardHeight = ResourceUtils.getKeyboardHeight(res, settingsValues);
+        builder.setKeyboardTheme(mKeyboardTheme.mThemeId);
         builder.setKeyboardGeometry(keyboardWidth, keyboardHeight);
         builder.setSubtype(mRichImm.getCurrentSubtype());
         builder.setLanguageSwitchKeyEnabled(mLatinIME.shouldShowLanguageSwitchKey());

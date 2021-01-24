@@ -54,4 +54,9 @@
     <dimen name="config_key_shifted_letter_hint_padding">3dp</dimen>
 
     <!-- For 5-row keyboard -->
+    <!-- config_key_vertical_gap_5row should match config_key_vertical_gap -->
+    <fraction name="config_key_vertical_gap_5row">4.5%p</fraction>
+    <!-- config_key_bonus_height_5row is calculated to be the extra height necessary to keep the 5
+         and 4 row keyboards' keys the same height. -->
+    <fraction name="config_key_bonus_height_5row">25.096%p</fraction>
 </resources>

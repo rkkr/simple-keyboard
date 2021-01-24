@@ -37,10 +37,10 @@
     <dimen name="config_more_keys_keyboard_key_horizontal_padding">8dp</dimen>
 
     <fraction name="config_keyboard_top_padding">2.335%p</fraction>
-    <fraction name="config_keyboard_bottom_padding">4.669%p</fraction>
+    <fraction name="config_keyboard_bottom_padding">2.335%p</fraction>
     <fraction name="config_keyboard_left_padding">0.870%p</fraction>
     <fraction name="config_keyboard_right_padding">0.870%p</fraction>
-    <fraction name="config_key_vertical_gap">6.127%p</fraction>
+    <fraction name="config_key_vertical_gap">6.905%p</fraction>
     <fraction name="config_key_horizontal_gap">1.739%p</fraction>
     <!-- config_more_keys_keyboard_key_height x -0.5 -->
     <dimen name="config_more_keys_keyboard_vertical_correction">-26.4dp</dimen>
@@ -64,7 +64,14 @@
     <dimen name="config_more_keys_keyboard_right_padding">0dp</dimen>
 
     <!-- For 5-row keyboard -->
-    <fraction name="config_key_vertical_gap_5row">3.20%p</fraction>
+    <!-- config_key_vertical_gap_5row is calculated to match config_key_horizontal_gap (assuming
+         the height is based on config_min_keyboard_height which is true except for very small
+         devices) to have a general guideline for a minimum gap between keys. For a 5 row keyboard,
+         we shouldn't waste unnecessary space on the gap. -->
+    <fraction name="config_key_vertical_gap_5row">2.814%p</fraction>
+    <!-- config_key_bonus_height_5row is calculated to be the extra height necessary to keep the 5
+         and 4 row keyboards' keys the same height. -->
+    <fraction name="config_key_bonus_height_5row">9.194%p</fraction>
     <fraction name="config_key_letter_ratio_5row">55%</fraction>
     <fraction name="config_key_shifted_letter_hint_ratio_5row">41%</fraction>
 </resources>
