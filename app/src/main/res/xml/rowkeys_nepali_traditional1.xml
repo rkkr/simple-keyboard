@@ -20,7 +20,7 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <switch>
-        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted">
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
             <!-- U+0924/U+094D/U+0924: "त्त" DEVANAGARI LETTER TA/DEVANAGARI SIGN VIRAMA/DEVANAGARI LETTER TA
                  U+091E: "ञ" DEVANAGARI LETTER NYA
                  U+091C/U+094D/U+091E: "ज्ञ" DEVANAGARI LETTER JA/DEVANAGARI SIGN VIRAMA/DEVANAGARI LETTER NYA

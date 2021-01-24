@@ -37,9 +37,6 @@
         latin:elementKeyboard="@xml/kbd_bengali_akkhor"
         latin:elementName="alphabetShiftLocked" />
     <Element
-        latin:elementKeyboard="@xml/kbd_bengali_akkhor"
-        latin:elementName="alphabetShiftLockShifted" />
-    <Element
         latin:elementKeyboard="@xml/kbd_symbols"
         latin:elementName="symbols" />
     <Element

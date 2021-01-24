@@ -23,7 +23,7 @@
 >
     <switch>
         <case
-            latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted"
+            latin:keyboardLayoutSetElement="alphabetManualShifted"
         >
             <!-- U+10EB: "ძ" GEORGIAN LETTER JIL -->
             <Key

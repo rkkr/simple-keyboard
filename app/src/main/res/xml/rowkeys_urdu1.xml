@@ -20,7 +20,7 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <switch>
-        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted">
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
             <!-- U+0654: "ٔ" ARABIC HAMZA ABOVE -->
             <Key latin:keySpec="&#x0654;" />
             <!-- U+0652: "ْ" ARABIC SUKUN -->

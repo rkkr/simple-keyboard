@@ -48,7 +48,6 @@ public final class KeyboardState {
         void setAlphabetManualShiftedKeyboard();
         void setAlphabetAutomaticShiftedKeyboard();
         void setAlphabetShiftLockedKeyboard();
-        void setAlphabetShiftLockShiftedKeyboard();
         void setSymbolsKeyboard();
         void setSymbolsShiftedKeyboard();
 
@@ -215,7 +214,6 @@ public final class KeyboardState {
             break;
         case SHIFT_LOCK_SHIFTED:
             mAlphabetShiftState.setShifted(true);
-            mSwitchActions.setAlphabetShiftLockShiftedKeyboard();
             break;
         }
     }
@@ -353,7 +351,8 @@ public final class KeyboardState {
             // shifted mode.
             if (!isSinglePointer && mIsAlphabetMode
                     && autoCapsFlags != TextUtils.CAP_MODE_CHARACTERS) {
-                final boolean needsToResetAutoCaps = mAlphabetShiftState.isAutomaticShifted()
+                final boolean needsToResetAutoCaps =
+                        (mAlphabetShiftState.isAutomaticShifted() && !mShiftKeyState.isChording())
                         || (mAlphabetShiftState.isManualShifted() && mShiftKeyState.isReleasing());
                 if (needsToResetAutoCaps) {
                     mSwitchActions.setAlphabetKeyboard();
@@ -485,9 +484,8 @@ public final class KeyboardState {
                     setShifted(SHIFT_LOCK_SHIFTED);
                     mShiftKeyState.onPress();
                 } else if (mAlphabetShiftState.isAutomaticShifted()) {
-                    // Shift key is pressed while automatic shifted, we have to move to manual
-                    // shifted.
-                    setShifted(MANUAL_SHIFT);
+                    // Shift key pressed while automatic shifted isn't considered a manual shift
+                    // since it doesn't change the keyboard into a shifted state.
                     mShiftKeyState.onPress();
                 } else if (mAlphabetShiftState.isShiftedOrShiftLocked()) {
                     // In manual shifted state, we just record shift key has been pressing while
@@ -545,10 +543,9 @@ public final class KeyboardState {
                 // Shift has been pressed without chording while shifted state.
                 setShifted(UNSHIFT);
                 mIsInAlphabetUnshiftedFromShifted = true;
-            } else if (mAlphabetShiftState.isManualShiftedFromAutomaticShifted()
-                    && mShiftKeyState.isPressing() && !withSliding) {
-                // Shift has been pressed without chording while manual shifted transited from
-                // automatic shifted
+            } else if (mAlphabetShiftState.isAutomaticShifted() && mShiftKeyState.isPressing()
+                    && !withSliding) {
+                // Shift has been pressed without chording while automatic shifted
                 setShifted(UNSHIFT);
                 mIsInAlphabetUnshiftedFromShifted = true;
             }

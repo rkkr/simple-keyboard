@@ -20,7 +20,7 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <switch>
-        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted">
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
             <!-- U+178D: "ឍ" KHMER LETTER TTHO -->
             <Key latin:keySpec="&#x178D;" />
             <!-- U+1783: "ឃ" KHMER LETTER KHO -->

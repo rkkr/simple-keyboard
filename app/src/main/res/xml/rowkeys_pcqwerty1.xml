@@ -83,7 +83,7 @@
                 latin:additionalMoreKeys="+"
                 latin:moreKeys="!fixedColumnOrder!4,&#x221E;,&#x2260;,&#x2248;,%" />
         </case>
-        <!-- keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted" -->
+        <!-- keyboardLayoutSetElement="alphabetManualShifted" -->
         <default>
             <include
                  latin:keyboardLayout="@xml/rowkeys_pcqwerty1_shift" />

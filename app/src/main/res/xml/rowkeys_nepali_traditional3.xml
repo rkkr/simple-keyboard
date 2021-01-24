@@ -20,7 +20,7 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <switch>
-        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked|alphabetShiftLockShifted">
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
             <!-- U+0915/U+094D: "क्" DEVANAGARI LETTER KA/DEVANAGARI SIGN VIRAMA -->
             <Key
                 latin:keySpec="&#x0915;&#x094D;"

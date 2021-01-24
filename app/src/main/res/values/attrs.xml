@@ -322,7 +322,6 @@
             <enum name="alphabetManualShifted" value="1" />
             <enum name="alphabetAutomaticShifted" value="2" />
             <enum name="alphabetShiftLocked" value="3" />
-            <enum name="alphabetShiftLockShifted" value="4" />
             <enum name="symbols" value="5" />
             <enum name="symbolsShifted" value="6"  />
             <enum name="phone" value="7"  />
@@ -391,7 +390,6 @@
             <enum name="alphabetManualShifted" value="1" />
             <enum name="alphabetAutomaticShifted" value="2" />
             <enum name="alphabetShiftLocked" value="3" />
-            <enum name="alphabetShiftLockShifted" value="4" />
             <enum name="symbols" value="5" />
             <enum name="symbolsShifted" value="6"  />
             <enum name="phone" value="7"  />
