@@ -203,7 +203,7 @@ public final class KeyboardState {
             break;
         case MANUAL_SHIFT:
             mAlphabetShiftState.setShifted(true);
-            if (shiftMode != prevShiftMode && prevShiftMode != AUTOMATIC_SHIFT) {
+            if (shiftMode != prevShiftMode) {
                 mSwitchActions.setAlphabetManualShiftedKeyboard();
             }
             break;
