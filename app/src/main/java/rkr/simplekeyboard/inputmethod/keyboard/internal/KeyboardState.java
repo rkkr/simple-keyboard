@@ -77,7 +77,6 @@ public final class KeyboardState {
     private static final int SWITCH_STATE_SYMBOL = 2;
     private static final int SWITCH_STATE_MOMENTARY_ALPHA_AND_SYMBOL = 3;
     private static final int SWITCH_STATE_MOMENTARY_SYMBOL_AND_MORE = 4;
-    private static final int SWITCH_STATE_MOMENTARY_ALPHA_SHIFT = 5;
     private int mSwitchState = SWITCH_STATE_ALPHA;
 
     private boolean mIsAlphabetMode;
@@ -534,12 +533,6 @@ public final class KeyboardState {
                 mShiftKeyState.onRelease();
                 mSwitchActions.requestUpdatingShiftState(autoCapsFlags, recapitalizeMode);
                 return;
-            } else if (mAlphabetShiftState.isShiftLockShifted() && withSliding) {
-                // In shift locked state, shift has been pressed and slid out to other key.
-                setShiftLocked(true);
-            } else if (mAlphabetShiftState.isManualShifted() && withSliding) {
-                // Shift has been pressed and slid out to other key.
-                mSwitchState = SWITCH_STATE_MOMENTARY_ALPHA_SHIFT;
             } else if (isShiftLocked && !mAlphabetShiftState.isShiftLockShifted()
                     && (mShiftKeyState.isPressing() || mShiftKeyState.isPressingOnShifted())
                     && !withSliding) {
@@ -580,9 +573,6 @@ public final class KeyboardState {
             break;
         case SWITCH_STATE_MOMENTARY_SYMBOL_AND_MORE:
             toggleShiftInSymbols();
-            break;
-        case SWITCH_STATE_MOMENTARY_ALPHA_SHIFT:
-            setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
             break;
         }
     }
@@ -654,7 +644,6 @@ public final class KeyboardState {
         case SWITCH_STATE_SYMBOL: return "SYMBOL";
         case SWITCH_STATE_MOMENTARY_ALPHA_AND_SYMBOL: return "MOMENTARY-ALPHA-SYMBOL";
         case SWITCH_STATE_MOMENTARY_SYMBOL_AND_MORE: return "MOMENTARY-SYMBOL-MORE";
-        case SWITCH_STATE_MOMENTARY_ALPHA_SHIFT: return "MOMENTARY-ALPHA_SHIFT";
         default: return null;
         }
     }
