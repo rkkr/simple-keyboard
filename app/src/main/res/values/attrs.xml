@@ -129,6 +129,8 @@
         <attr name="horizontalGap" format="fraction" />
         <!-- Default vertical gap between rows of keys, in the proportion of keyboard height. -->
         <attr name="verticalGap" format="fraction" />
+        <!-- Extra height used for rows. This doesn't impact the size of paddings or gap. -->
+        <attr name="bonusHeight" format="fraction" />
         <!-- More keys keyboard layout template -->
         <attr name="moreKeysTemplate" format="reference" />
         <!-- Icon set for key top and key preview. These should be aligned with
