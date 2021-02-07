@@ -726,7 +726,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     int getCurrentAutoCapsState() {
-        return mInputLogic.getCurrentAutoCapsState(mSettings.getCurrent());
+        return mInputLogic.getCurrentAutoCapsState(mSettings.getCurrent(),
+                mRichImm.getCurrentSubtype().getKeyboardLayoutSetName());
     }
 
     int getCurrentRecapitalizeState() {
