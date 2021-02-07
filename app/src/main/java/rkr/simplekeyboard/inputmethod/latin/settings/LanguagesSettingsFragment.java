@@ -24,6 +24,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
@@ -38,7 +40,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodSubtype;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -65,6 +69,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     private String[] mEntryValues;
     private ViewGroup mContainer;
     private AlertDialog mAlertDialog;
+    private View mView;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -81,9 +86,9 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
-        final View view = super.onCreateView(inflater, container, savedInstanceState);
+        mView = super.onCreateView(inflater, container, savedInstanceState);
         mContainer = container;
-        return view;
+        return mView;
     }
 
     @Override
@@ -107,6 +112,33 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     @Override
     public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
         inflater.inflate(R.menu.add_style, menu);//TODO: rename this file
+
+        // make the icon match the color of the text in the action bar
+        TextView textView = findActionBarTitleView();
+        if (textView != null) {
+            setIconColor(menu, textView.getCurrentTextColor());
+        }
+    }
+
+    private TextView findActionBarTitleView() {
+        ArrayList<View> views = new ArrayList<>();
+        mView.getRootView().findViewsWithText(views, getActivity().getActionBar().getTitle(),
+                View.FIND_VIEWS_WITH_TEXT);
+        if (views.size() == 1 && views.get(0) instanceof TextView) {
+            return (TextView)views.get(0);
+        }
+        return null;
+    }
+
+    private void setIconColor(final Menu menu, final int color) {
+        MenuItem menuItem = menu.findItem(R.id.action_add_style);
+        if (menuItem != null) {
+            Drawable drawable = menuItem.getIcon();
+            if (drawable != null) {
+                drawable.mutate();
+                drawable.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+            }
+        }
     }
 
     @Override
