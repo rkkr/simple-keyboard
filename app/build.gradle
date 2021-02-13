@@ -7,8 +7,8 @@ android {
         applicationId "rkr.simplekeyboard.inputmethod"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 79
-        versionName "4.4"
+        versionCode 80
+        versionName "4.5"
     }
     buildTypes {
         release {
