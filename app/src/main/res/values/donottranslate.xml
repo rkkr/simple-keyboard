@@ -49,6 +49,7 @@
         <item>azerty</item>
         <item>dvorak</item>
         <item>colemak</item>
+        <item>workman</item>
         <item>pcqwerty</item>
         <item>abc</item>
     </string-array>
@@ -59,6 +60,7 @@
         <item>AZERTY</item>
         <item>Dvorak</item>
         <item>Colemak</item>
+        <item>Workman</item>
         <item>PC</item>
         <item>ABC</item>-->
     </string-array>
@@ -69,6 +71,7 @@
     <string name="subtype_generic_azerty">%s (AZERTY)</string>
     <string name="subtype_generic_dvorak">%s (Dvorak)</string>
     <string name="subtype_generic_colemak">%s (Colemak)</string>
+    <string name="subtype_generic_workman">%s (Workman)</string>
     <string name="subtype_generic_pcqwerty">%s (PC)</string>
     <string name="subtype_generic_abc">%s (ABC)</string>
 
