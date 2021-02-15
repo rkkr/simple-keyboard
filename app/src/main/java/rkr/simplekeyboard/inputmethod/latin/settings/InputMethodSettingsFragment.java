@@ -18,6 +18,7 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceFragment;
 
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
@@ -29,6 +30,14 @@ import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 public abstract class InputMethodSettingsFragment extends PreferenceFragment
         implements InputMethodSettingsInterface {
     private final InputMethodSettingsImpl mSettings = new InputMethodSettingsImpl();
+    private final Handler handler =new Handler();
+    private final Runnable refreshSubtypeRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mSettings.updateSubtypeEnabler();
+        }
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +93,12 @@ public abstract class InputMethodSettingsFragment extends PreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        mSettings.updateSubtypeEnabler();
+        handler.postDelayed(refreshSubtypeRunnable, 1000);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        handler.removeCallbacksAndMessages(null);
     }
 }
