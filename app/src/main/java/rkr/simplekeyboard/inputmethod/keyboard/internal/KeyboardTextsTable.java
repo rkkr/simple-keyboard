@@ -3084,8 +3084,9 @@ public final class KeyboardTextsTable {
         /* double_quotes */ "!text/double_9qm_lqm",
         /* morekeys_s */ null,
         /* single_quotes */ "!text/single_9qm_lqm",
-        /* keyspec_currency ~ */
-        null, null, null, null, null, null, null, null, null, null, null,
+        // U+20BD ₽ RUBLE SIGN
+        /* keyspec_currency */ "\u20BD",
+        null, null, null, null, null, null, null, null, null, null,
         /* ~ morekeys_k */
         // U+0451: "ё" CYRILLIC SMALL LETTER IO
         // U+0463: "ѣ" CYRILLIC SMALL LETTER YAT
