@@ -63,8 +63,8 @@
     <string name="prefs_keyboard_height_settings">Atur Ketinggian Keyboard</string>
     <string name="keyboard_color">Ganti warna keyboard</string>
     <string name="hide_special_chars">Sembunyikan karakter spesial</string>
-    <string name="hide_language_switch_key">Menyembunyikan kata kunci</string>
-    <string name="show_number_row">Tampilkan garis pemisah</string>
+    <string name="hide_language_switch_key">Sembunyikan tombol ganti bahasa</string>
+    <string name="show_number_row">Tampilkan tombol angka terpisah</string>
     <string name="space_swipe">Geser untuk menggerakan kursor</string>
     <string name="delete_swipe">Hapus dengan menggeser</string>
     <string name="matching_navbar_color">Samakan dengan warna bilah navigasi</string>
