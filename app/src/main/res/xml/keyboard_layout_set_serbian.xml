@@ -22,7 +22,7 @@
     xmlns:latin="http://schemas.android.com/apk/res-auto">
     <Element
         latin:elementName="alphabet"
-        latin:elementKeyboard="@xml/kbd_south_slavic"
+        latin:elementKeyboard="@xml/kbd_serbian"
         latin:enableProximityCharsCorrection="true" />
     <Element
         latin:elementName="symbols"

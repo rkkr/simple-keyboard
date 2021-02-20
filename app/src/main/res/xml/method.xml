@@ -482,7 +482,7 @@
             android:subtypeId="0xaf50ab7c"
             android:imeSubtypeLocale="mk"
             android:imeSubtypeMode="keyboard"
-            android:imeSubtypeExtraValue="KeyboardLayoutSet=south_slavic"
+            android:imeSubtypeExtraValue="KeyboardLayoutSet=macedonian"
             android:isAsciiCapable="false"
     />
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
@@ -615,7 +615,7 @@
             android:subtypeId="0x77c5196e"
             android:imeSubtypeLocale="sr"
             android:imeSubtypeMode="keyboard"
-            android:imeSubtypeExtraValue="KeyboardLayoutSet=south_slavic"
+            android:imeSubtypeExtraValue="KeyboardLayoutSet=serbian"
             android:isAsciiCapable="false"
     />
     <!-- TODO: This Serbian Latin keyboard is a preliminary layout.
