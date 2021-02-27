@@ -43,11 +43,9 @@ import android.view.inputmethod.InputMethodSubtype;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Locale;
-import java.util.Set;
 import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -242,7 +240,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     }
 
     private TreeSet<Locale> getUnusedLocales(final InputMethodInfo imi,
-                                             final Set<Locale> usedLocales,
+                                             final TreeSet<Locale> usedLocales,
                                              final Comparator<Locale> comparator) {
         final TreeSet<Locale> locales = new TreeSet<>(comparator);
         final int count = imi.getSubtypeCount();
@@ -264,9 +262,9 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         return locales;
     }
 
-    private void createLanguagePreferences(final Set<Locale> locales,
-                                           final Set<InputMethodSubtype> prefSubtypes,
-                                           final Set<InputMethodSubtype> enabledSubtypes,
+    private void createLanguagePreferences(final TreeSet<Locale> locales,
+                                           final HashSet<InputMethodSubtype> prefSubtypes,
+                                           final HashSet<InputMethodSubtype> enabledSubtypes,
                                            final PreferenceGroup group, final Context context) {
         for (Locale locale : locales) {
             final SingleLanguagePreference pref =
@@ -279,8 +277,8 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     }
 
     private boolean subtypesNeedEnabling(final String locale,
-                                         final Collection<InputMethodSubtype> prefSubtypes,
-                                         final Collection<InputMethodSubtype> enabledSubtypes) {
+                                         final HashSet<InputMethodSubtype> prefSubtypes,
+                                         final HashSet<InputMethodSubtype> enabledSubtypes) {
         for (InputMethodSubtype subtype : prefSubtypes) {
             if (!locale.equals(subtype.getLocale())) {
                 continue;
@@ -292,7 +290,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         return false;
     }
 
-    private void setAdditionalLocaleEntries(final Set<Locale> locales) {
+    private void setAdditionalLocaleEntries(final TreeSet<Locale> locales) {
         mEntries = new CharSequence[locales.size()];
         mEntryValues = new String[locales.size()];
         int i = 0;
