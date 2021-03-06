@@ -992,7 +992,7 @@ public final class KeyboardTextsTable {
         /* morekeys_nordic_row2_10 */ "\u00E4",
         /* keyspec_east_slavic_row1_9 ~ */
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null, null, null,
         /* ~ morekeys_tablet_period */
         // U+00F6: "ö" LATIN SMALL LETTER O WITH DIAERESIS
         /* morekeys_nordic_row2_11 */ "\u00F6",
@@ -1050,7 +1050,7 @@ public final class KeyboardTextsTable {
         /* morekeys_r ~ */
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null,
         /* ~ keyspec_tablet_period */
         // U+00FC: "ü" LATIN SMALL LETTER U WITH DIAERESIS
         /* keyspec_swiss_row1_11 */ "\u00FC",
@@ -1253,7 +1253,7 @@ public final class KeyboardTextsTable {
         // U+0175: "ŵ" LATIN SMALL LETTER W WITH CIRCUMFLEX
         /* morekeys_w */ "w,\u0175",
         /* morekeys_east_slavic_row2_2 ~ */
-        null, null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null,
         /* ~ morekeys_tablet_punctuation */
         // U+0135: "ĵ" LATIN SMALL LETTER J WITH CIRCUMFLEX
         /* keyspec_spanish_row2_10 */ "\u0135",
@@ -1332,7 +1332,7 @@ public final class KeyboardTextsTable {
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-        null,
+        null, null,
         /* ~ morekeys_nordic_row2_11 */
         // U+00A1: "¡" INVERTED EXCLAMATION MARK
         // U+00BF: "¿" INVERTED QUESTION MARK
@@ -1590,7 +1590,7 @@ public final class KeyboardTextsTable {
         // U+00BF: "¿" INVERTED QUESTION MARK
         /* morekeys_question */ "?,\u00BF",
         /* morekeys_h ~ */
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null, null, null, null,
         /* ~ keyspec_spanish_row2_10 */
         // U+266A: "♪" EIGHTH NOTE
         /* morekeys_bullet */ "\u266A",
@@ -4246,6 +4246,11 @@ public final class KeyboardTextsTable {
             final String locale = (String)LOCALES_AND_TEXTS[i];
             final String[] textsTable = (String[])LOCALES_AND_TEXTS[i + 1];
             sLocaleToTextsTableMap.put(locale, textsTable);
+
+            // Uncomment to log locales where text is in range
+            //int textToCheck = 95;
+            //if (textsTable.length > textToCheck)
+            //    Log.i("LocaleIndexCheck", textToCheck + " is used in " + locale);
         }
     }
 }
