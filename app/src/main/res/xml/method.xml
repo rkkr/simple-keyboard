@@ -607,7 +607,7 @@
             android:subtypeId="0x8ea2eb94"
             android:imeSubtypeLocale="sl"
             android:imeSubtypeMode="keyboard"
-            android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty"
+            android:imeSubtypeExtraValue="KeyboardLayoutSet=qwertz"
             android:isAsciiCapable="true"
     />
     <subtype android:icon="@drawable/ic_ime_switcher_dark"

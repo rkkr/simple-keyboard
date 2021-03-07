@@ -4250,7 +4250,7 @@ public final class KeyboardTextsTable {
             // Uncomment to log locales where text is in range
             //int textToCheck = 95;
             //if (textsTable.length > textToCheck)
-            //    Log.i("LocaleIndexCheck", textToCheck + " is used in " + locale);
+            //    Log.i("LocaleIndexCheck", textToCheck + " is used in " + locale + " total length: " + textsTable.length);
         }
     }
 }
