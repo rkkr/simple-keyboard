@@ -51,6 +51,7 @@ import java.util.TreeSet;
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
+import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 import static rkr.simplekeyboard.inputmethod.latin.settings.SingleLanguageSettingsFragment.LOCALE_BUNDLE_KEY;
@@ -224,7 +225,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                         subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
                         SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
             }
-            locales.add(getLocale(subtype.getLocale()));
+            locales.add(LocaleUtils.constructLocaleFromString(subtype.getLocale()));
         }
 
         for (final InputMethodSubtype subtype: prefSubtypes) {
@@ -233,7 +234,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                         subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
                         SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
             }
-            locales.add(getLocale(subtype.getLocale()));
+            locales.add(LocaleUtils.constructLocaleFromString(subtype.getLocale()));
         }
 
         return locales;
@@ -246,7 +247,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         final int count = imi.getSubtypeCount();
         for (int i = 0; i < count; i++) {
             final InputMethodSubtype subtype = imi.getSubtypeAt(i);
-            final Locale locale = getLocale(subtype.getLocale());
+            final Locale locale = LocaleUtils.constructLocaleFromString(subtype.getLocale());
             if (usedLocales.contains(locale)) {
                 continue;
             }
@@ -267,9 +268,10 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                                            final HashSet<InputMethodSubtype> enabledSubtypes,
                                            final PreferenceGroup group, final Context context) {
         for (Locale locale : locales) {
+            final String localeString = LocaleUtils.getLocaleString(locale);
             final SingleLanguagePreference pref =
-                    new SingleLanguagePreference(context, getLocaleString(locale));
-            if (subtypesNeedEnabling(getLocaleString(locale), prefSubtypes, enabledSubtypes)) {
+                    new SingleLanguagePreference(context, localeString);
+            if (subtypesNeedEnabling(localeString, prefSubtypes, enabledSubtypes)) {
                 pref.setSummary("Some layouts still need to be enabled");
             }
             group.addPreference(pref);
@@ -295,32 +297,12 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         mEntryValues = new String[locales.size()];
         int i = 0;
         for (Locale locale : locales) {
-            final String localeString = getLocaleString(locale);
+            final String localeString = LocaleUtils.getLocaleString(locale);
             mEntryValues[i] = localeString;
             mEntries[i] =
                     SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(localeString);
             i++;
         }
-    }
-
-    //TODO: move somewhere common
-    public static Locale getLocale(final String localeString) {
-        final String[] localeParts = localeString.split("_");
-        final Locale locale;
-        if (localeParts.length < 2) {
-            locale = new Locale(localeParts[0]);
-        } else {
-            locale = new Locale(localeParts[0], localeParts[1]);
-        }
-        return locale;
-    }
-
-    //TODO: move somewhere common
-    public static String getLocaleString(final Locale locale) {
-        if (TextUtils.isEmpty(locale.getCountry())) {
-            return locale.getLanguage();
-        }
-        return locale.getLanguage() + "_" + locale.getCountry();
     }
 
     private void showLanguagePopup() {
@@ -386,9 +368,9 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                 }
             }
             final String aDisplay = SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(
-                    getLocaleString(a));
+                    LocaleUtils.getLocaleString(a));
             final String bDisplay = SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(
-                    getLocaleString(b));
+                    LocaleUtils.getLocaleString(b));
             return aDisplay.compareToIgnoreCase(bDisplay);
         }
     }

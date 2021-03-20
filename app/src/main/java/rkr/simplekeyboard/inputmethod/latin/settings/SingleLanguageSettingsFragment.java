@@ -232,6 +232,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                 InputMethodSubtype genericSubtype =
                         AdditionalSubtypeUtils.createAdditionalSubtype(locale, layout);
 
+                //TODO: maybe use SubtypeLocaleUtils.getKeyboardLayoutSetName
                 if (isDuplicateSubtype(genericSubtype, localeSubtypes)) {
                     continue;
                 }
@@ -257,8 +258,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
 
     private void createSubtypePreference(final InputMethodSubtype subtype, final boolean isChecked, final boolean isEnabled, final PreferenceGroup group, final Context context) {
         final SubtypePreference pref = new SubtypePreference(context, subtype);
-        //TODO: the displayed name probably shouldn't include the language - it seems redundant
-        pref.setTitle(SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype));
+        pref.setTitle(SubtypeLocaleUtils.getKeyboardLayoutDisplayName(subtype, context));
         pref.setChecked(isChecked);
         pref.setEnabled(isEnabled);
         group.addPreference(pref);
