@@ -16,25 +16,24 @@
 
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
+import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet;
 
 /**
  * "Preferences" settings sub screen.
  *
  * This settings sub screen handles the following input preferences.
  * - Auto-capitalization
- * - Double-space period
- * - Vibrate on keypress
- * - Sound on keypress
- * - Popup on keypress
- * - Voice input key
+ * - Show separate number row
+ * - Hide special characters
+ * - Hide language switch key
+ * - Switch to other keyboards
+ * - Space swipe cursor move
+ * - Delete swipe
  */
 public final class PreferencesSettingsFragment extends SubScreenFragment {
     @Override
@@ -42,32 +41,16 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.prefs_screen_preferences);
 
-        final Resources res = getResources();
-        final Context context = getActivity();
-
-        // When we are called from the Settings application but we are not already running, some
-        // singleton and utility classes may not have been initialized.  We have to call
-        // initialization method of these classes here. See {@link LatinIME#onCreate()}.
-        RichInputMethodManager.init(context);
-
-        if (!AudioAndHapticFeedbackManager.getInstance().hasVibrator()) {
-            removePreference(Settings.PREF_VIBRATE_ON);
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+            removePreference(Settings.PREF_ENABLE_IME_SWITCH);
         }
-
-        refreshEnablingsOfKeypressSoundAndVibrationSettings();
     }
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        refreshEnablingsOfKeypressSoundAndVibrationSettings();
-    }
-
-    private void refreshEnablingsOfKeypressSoundAndVibrationSettings() {
-        final SharedPreferences prefs = getSharedPreferences();
-        final Resources res = getResources();
-        setPreferenceEnabled(Settings.PREF_VIBRATION_DURATION_SETTINGS,
-                Settings.readVibrationEnabled(prefs, res));
-        setPreferenceEnabled(Settings.PREF_KEYPRESS_SOUND_VOLUME,
-                Settings.readKeypressSoundEnabled(prefs, res));
+        if (key.equals(Settings.PREF_HIDE_SPECIAL_CHARS) ||
+                key.equals(Settings.PREF_SHOW_NUMBER_ROW)) {
+            KeyboardLayoutSet.onKeyboardThemeChanged();
+        }
     }
 }

@@ -21,11 +21,11 @@
         android:title="@string/settings_screen_preferences"
         android:key="screen_preferences" />
     <PreferenceScreen
+        android:fragment="rkr.simplekeyboard.inputmethod.latin.settings.KeyPressSettingsFragment"
+        android:title="@string/settings_screen_key_press"
+        android:key="screen_key_press" />
+    <PreferenceScreen
         android:fragment="rkr.simplekeyboard.inputmethod.latin.settings.AppearanceSettingsFragment"
         android:title="@string/settings_screen_appearance"
         android:key="screen_appearance" />
-    <PreferenceScreen
-        android:fragment="rkr.simplekeyboard.inputmethod.latin.settings.AdvancedSettingsFragment"
-        android:title="@string/settings_screen_advanced"
-        android:key="screen_advanced" />
 </PreferenceScreen>
