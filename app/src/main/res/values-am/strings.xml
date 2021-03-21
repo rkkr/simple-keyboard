@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"በቁልፍ መጫን ላይ የሚወጣ ድምፅ"</string>
     <string name="popup_on_keypress">"ቁልፍ ጫን ላይ ብቅ ባይ"</string>
     <string name="settings_screen_preferences">"ምርጫዎች"</string>
-    <string name="settings_screen_appearance">"መልክ እና አቀማመጦች"</string>
     <string name="settings_screen_theme">"ገፅታ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ሚሊሰከንድ"</string>
     <string name="settings_system_default">"የስርዓት ነባሪ"</string>

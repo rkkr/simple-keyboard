@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Hangjelzés gombnyomásra"</string>
     <string name="popup_on_keypress">"Nagyobb billentyű gombnyomásra"</string>
     <string name="settings_screen_preferences">"Beállítások"</string>
-    <string name="settings_screen_appearance">"Megjelenés és elrendezés"</string>
     <string name="settings_screen_theme">"Téma"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Alapértelmezett"</string>

@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Som ao tocar a tecla"</string>
     <string name="popup_on_keypress">"Exibir pop-up ao digitar"</string>
     <string name="settings_screen_preferences">"Preferências"</string>
-    <string name="settings_screen_appearance">"Aparência e layouts"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Padrão do sistema"</string>

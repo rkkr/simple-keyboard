@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"কীপ্রেস এর সময়ের শব্দ"</string>
     <string name="popup_on_keypress">"কীপ্রেস এর ফলে পপআপ"</string>
     <string name="settings_screen_preferences">"পছন্দসমূহ"</string>
-    <string name="settings_screen_appearance">"প্রদর্শন ও লেআউটগুলি"</string>
     <string name="settings_screen_theme">"থিম"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>মিলি.সে."</string>
     <string name="settings_system_default">"সিস্টেম ডিফল্ট"</string>

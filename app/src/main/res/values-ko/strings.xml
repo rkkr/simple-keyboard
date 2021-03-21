@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"키를 누를 때 소리 발생"</string>
     <string name="popup_on_keypress">"키를 누를 때 팝업"</string>
     <string name="settings_screen_preferences">"환경설정"</string>
-    <string name="settings_screen_appearance">"모양 및 레이아웃"</string>
     <string name="settings_screen_theme">"테마"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"시스템 기본값"</string>

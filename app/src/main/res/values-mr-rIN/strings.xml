@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"की दाबताना आवाज"</string>
     <string name="popup_on_keypress">"की दाबताना पॉपअप"</string>
     <string name="settings_screen_preferences">"प्राधान्ये"</string>
-    <string name="settings_screen_appearance">"स्वरूप आणि लेआउट"</string>
     <string name="settings_screen_theme">"थीम"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>मिसे"</string>
     <string name="settings_system_default">"सिस्टम डीफॉल्ट"</string>

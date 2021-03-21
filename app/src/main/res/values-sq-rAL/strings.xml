@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Lësho tingull kur shtyp tastin"</string>
     <string name="popup_on_keypress">"Zmadhim germe kur shtyp"</string>
     <string name="settings_screen_preferences">"Preferencat"</string>
-    <string name="settings_screen_appearance">"Pamja dhe struktura"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> milisek."</string>
     <string name="settings_system_default">"Parazgjedhja e sistemit"</string>

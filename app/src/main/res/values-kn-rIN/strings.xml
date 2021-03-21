@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"ಕೀಪ್ರೆಸ್ ಶಬ್ದ"</string>
     <string name="popup_on_keypress">"ಕೀಪ್ರೆಸ್‌ನಲ್ಲಿ ಪಾಪ್ಅಪ್"</string>
     <string name="settings_screen_preferences">"ಪ್ರಾಶಸ್ತ್ಯಗಳು"</string>
-    <string name="settings_screen_appearance">"ಗೋಚರತೆ ಮತ್ತು ಲೇಔಟ್‌ಗಳು"</string>
     <string name="settings_screen_theme">"ಥೀಮ್"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ಮಿ.ಸೆ."</string>
     <string name="settings_system_default">"ಸಿಸ್ಟಂ ಡಿಫಾಲ್ಟ್"</string>

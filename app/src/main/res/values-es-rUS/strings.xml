@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Sonar al pulsar las teclas"</string>
     <string name="popup_on_keypress">"Aviso emergente al pulsar tecla"</string>
     <string name="settings_screen_preferences">"Preferencias"</string>
-    <string name="settings_screen_appearance">"Apariencia y diseños"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Predeterminado/a"</string>

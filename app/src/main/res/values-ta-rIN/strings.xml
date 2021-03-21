@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"விசையழுத்தத்தின்போது ஒலியெழுப்பு"</string>
     <string name="popup_on_keypress">"விழை அழுத்தத்தின்போது பாப்அப் செய்"</string>
     <string name="settings_screen_preferences">"விருப்பங்கள்"</string>
-    <string name="settings_screen_appearance">"தோற்றம் &amp; தளவமைப்புகள்"</string>
     <string name="settings_screen_theme">"தீம்"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>மி.வி."</string>
     <string name="settings_system_default">"அமைப்பின் இயல்புநிலை"</string>

@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Dźwięk przy naciśnięciu"</string>
     <string name="popup_on_keypress">"Powiększ przy naciśnięciu"</string>
     <string name="settings_screen_preferences">"Ustawienia"</string>
-    <string name="settings_screen_appearance">"Wygląd i układy"</string>
     <string name="settings_screen_theme">"Motyw"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Ustawienie domyślne"</string>

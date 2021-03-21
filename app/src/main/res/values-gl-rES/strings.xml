@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Son ao premer as teclas"</string>
     <string name="popup_on_keypress">"Ventás emerxentes ao premer as teclas"</string>
     <string name="settings_screen_preferences">"Preferencias"</string>
-    <string name="settings_screen_appearance">"Aparencia e deseños"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Predeterminado do sistema"</string>

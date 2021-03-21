@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Ήχος πλήκτρων"</string>
     <string name="popup_on_keypress">"Εμφάνιση με το πάτημα πλήκτρου"</string>
     <string name="settings_screen_preferences">"Προτιμήσεις"</string>
-    <string name="settings_screen_appearance">"Εμφάνιση και διάταξη"</string>
     <string name="settings_screen_theme">"Θέμα"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>χλστ. δ."</string>
     <string name="settings_system_default">"Προεπιλογή"</string>

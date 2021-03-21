@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Bunyi pada tekanan kekunci"</string>
     <string name="popup_on_keypress">"Pop timbul pada tekanan kunci"</string>
     <string name="settings_screen_preferences">"Pilihan"</string>
-    <string name="settings_screen_appearance">"Penampilan &amp; Bentangan"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"Tetapan asal sistem"</string>

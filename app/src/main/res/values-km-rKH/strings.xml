@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"សំឡេង​នៅ​ពេល​ចុច​គ្រាប់ចុច"</string>
     <string name="popup_on_keypress">"លេច​ឡើង​នៅ​​ពេល​ចុច​គ្រាប់​ចុច"</string>
     <string name="settings_screen_preferences">"ចំណូលចិត្ត"</string>
-    <string name="settings_screen_appearance">"រូបរាង &amp;amp ប្លង់"</string>
     <string name="settings_screen_theme">"រូបរាង"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> មិល្លី​វិនាទី"</string>
     <string name="settings_system_default">"លំនាំ​ដើម​​​ប្រព័ន្ធ"</string>

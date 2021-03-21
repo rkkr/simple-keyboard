@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Soinua teklak sakatzean"</string>
     <string name="popup_on_keypress">"Handitu teklak, sakatzean"</string>
     <string name="settings_screen_preferences">"Hobespenak"</string>
-    <string name="settings_screen_appearance">"Itxura eta diseinuak"</string>
     <string name="settings_screen_theme">"Gaia"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Sistemaren lehenespena"</string>
