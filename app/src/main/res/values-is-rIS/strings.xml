@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Stækkaðir stafir við innslátt"</string>
     <string name="settings_screen_preferences">"Kjörstillingar"</string>
     <string name="settings_screen_appearance">"Útlit og uppsetning"</string>
-    <string name="settings_screen_advanced">"Ítarlegt"</string>
     <string name="settings_screen_theme">"Þema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms."</string>
     <string name="settings_system_default">"Sjálfgildi kerfis"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Serbneskt (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (hefðbundið)"</string>
+    <string name="subtype_traditional">"hefðbundið"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (lítið)"</string>
-    <string name="custom_input_styles_title">"Sérsniðnar innsláttaraðferðir"</string>
-    <string name="add_style">"Bæta stíl við"</string>
-    <string name="add">"Bæta við"</string>
-    <string name="remove">"Fjarlægja"</string>
-    <string name="save">"Vista"</string>
-    <string name="subtype_locale">"Tungumál"</string>
-    <string name="keyboard_layout_set">"Skipan"</string>
-    <string name="custom_input_style_note_message">"Gera þarf sérsniðnu innsláttaraðferðina virka áður en þú tekur hana í notkun. Viltu virkja hana núna?"</string>
+    <string name="subtype_compact">"lítið"</string>
     <string name="enable">"Kveikja"</string>
     <string name="not_now">"Ekki núna"</string>
     <string name="custom_input_style_already_exists">"Sama innsláttaraðferð er þegar fyrir hendi: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

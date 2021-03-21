@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"ป๊อปอัปเมื่อกดแป้น"</string>
     <string name="settings_screen_preferences">"ค่ากำหนด"</string>
     <string name="settings_screen_appearance">"ลักษณะที่ปรากฏและการจัดวาง"</string>
-    <string name="settings_screen_advanced">"ขั้นสูง"</string>
     <string name="settings_screen_theme">"ธีม"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> มิลลิวิ"</string>
     <string name="settings_system_default">"ค่าเริ่มต้นของระบบ"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"ภาษาอังกฤษผสมกับฮินดู (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"เซอร์เบีย (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ดั้งเดิม)"</string>
+    <string name="subtype_traditional">"ดั้งเดิม"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (แบบกะทัดรัด)"</string>
-    <string name="custom_input_styles_title">"รูปแบบอินพุตกำหนดเอง"</string>
-    <string name="add_style">"เพิ่มสไตล์"</string>
-    <string name="add">"เพิ่ม"</string>
-    <string name="remove">"ลบ"</string>
-    <string name="save">"บันทึก"</string>
-    <string name="subtype_locale">"ภาษา"</string>
-    <string name="keyboard_layout_set">"การจัดวาง"</string>
-    <string name="custom_input_style_note_message">"ต้องเปิดใช้รูปแบบอินพุตที่กำหนดเองก่อน เปิดใช้เลยไหม"</string>
+    <string name="subtype_compact">"แบบกะทัดรัด"</string>
     <string name="enable">"เปิดใช้งาน"</string>
     <string name="not_now">"ข้ามไปก่อน"</string>
     <string name="custom_input_style_already_exists">"รูปแบบการป้อนข้อมูลเดียวกันนี้มีอยู่แล้ว: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

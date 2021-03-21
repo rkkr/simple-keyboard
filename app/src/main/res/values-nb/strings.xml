@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Forgrunnsvindu ved tastetrykk"</string>
     <string name="settings_screen_preferences">"Innstillinger"</string>
     <string name="settings_screen_appearance">"Utseende og utforming"</string>
-    <string name="settings_screen_advanced">"Avansert"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Systemstandard"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Serbisk (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradisjonelt)"</string>
+    <string name="subtype_traditional">"tradisjonelt"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompakt)"</string>
-    <string name="custom_input_styles_title">"Egendefinerte inndata"</string>
-    <string name="add_style">"Legg til stil"</string>
-    <string name="add">"Legg til"</string>
-    <string name="remove">"Fjern"</string>
-    <string name="save">"Lagre"</string>
-    <string name="subtype_locale">"Språk"</string>
-    <string name="keyboard_layout_set">"Oppsett"</string>
-    <string name="custom_input_style_note_message">"Tilpasset inndatastil må aktiveres før bruk. Vil du aktivere nå?"</string>
+    <string name="subtype_compact">"kompakt"</string>
     <string name="enable">"Slå på"</string>
     <string name="not_now">"Ikke nå"</string>
     <string name="custom_input_style_already_exists">"Inndatastilen finnes allerede: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

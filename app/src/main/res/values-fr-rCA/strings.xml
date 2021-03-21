@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Agrandir les caractères"</string>
     <string name="settings_screen_preferences">"Préférences"</string>
     <string name="settings_screen_appearance">"Apparence et dispositions"</string>
-    <string name="settings_screen_advanced">"Avancés"</string>
     <string name="settings_screen_theme">"Thème"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Paramètres par défaut"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Serbe (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditionnel)"</string>
+    <string name="subtype_traditional">"traditionnel"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (compact)"</string>
-    <string name="custom_input_styles_title">"Styles saisie personnalisés"</string>
-    <string name="add_style">"Ajouter style"</string>
-    <string name="add">"Ajouter"</string>
-    <string name="remove">"Supprimer"</string>
-    <string name="save">"Enregistrer"</string>
-    <string name="subtype_locale">"Langue"</string>
-    <string name="keyboard_layout_set">"Disposition"</string>
-    <string name="custom_input_style_note_message">"Vous devez activer votre style de saisie personnalisé avant de l\'utiliser. Voulez-vous le faire maintenant ?"</string>
+    <string name="subtype_compact">"compact"</string>
     <string name="enable">"Activer"</string>
     <string name="not_now">"Pas maintenant"</string>
     <string name="custom_input_style_already_exists">"Le style de saisie suivant existe déjà : <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>."</string>

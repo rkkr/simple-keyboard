@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"ကီးနှိပ်လိုက်သည်နှင့် ပေါ်လာရန်"</string>
     <string name="settings_screen_preferences">"ရွေးချယ်စရာများ"</string>
     <string name="settings_screen_appearance">"ပုံပန်းသွင်ပြင် &amp; အပြင်အဆင်များ"</string>
-    <string name="settings_screen_advanced">"အဆင့်မြင့်"</string>
     <string name="settings_screen_theme">"အပြင်အဆင်"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"စနစ်ပုံသေ"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"ဟင်ဂလိပ် (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"ဆားဘီယား (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ရိုးရာ)"</string>
+    <string name="subtype_traditional">"ရိုးရာ"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ကျစ်လစ်သော)"</string>
-    <string name="custom_input_styles_title">"စိတ်ကြိုက် ထည့်သွင်းမှုစတိုင်လ်"</string>
-    <string name="add_style">"စတိုင်လ်ထည့်ရန်"</string>
-    <string name="add">"ထည့်ရန်"</string>
-    <string name="remove">"ဖယ်ရှားပါ"</string>
-    <string name="save">"သိမ်းရန်"</string>
-    <string name="subtype_locale">"ဘာသာစကား"</string>
-    <string name="keyboard_layout_set">"အဆင်အပြင်"</string>
-    <string name="custom_input_style_note_message">"သင့်စိတ်ကြိုက် ထည့်သွင်းမှုစတိုင်လ်အား စတင် အသုံးမပြုမှီ ဖွင့်ရပါမည်။ ၎င်းအားယခု ဖွင့်လိုပါသလား?"</string>
+    <string name="subtype_compact">"ကျစ်လစ်သော"</string>
     <string name="enable">"ဖွင့်ရန်"</string>
     <string name="not_now">"ယခု မဟုတ်"</string>
     <string name="custom_input_style_already_exists">"တူညီသည့် ထည့်သွင်းရန် စတိုင်လ် ရှိပြီးဖြစ်: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

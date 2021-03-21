@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Изск. прозорец при натискане на клавиш"</string>
     <string name="settings_screen_preferences">"Предпочитания"</string>
     <string name="settings_screen_appearance">"Облик и оформления"</string>
-    <string name="settings_screen_advanced">"Разширени"</string>
     <string name="settings_screen_theme">"Тема"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> милисек"</string>
     <string name="settings_system_default">"Станд. за системата"</string>
@@ -44,15 +43,11 @@
     <string name="subtype_with_layout_hi_ZZ">"Хинглиш (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Сръбска (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (традиционна клавиатура)"</string>
+    <string name="subtype_traditional">"традиционна клавиатура"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактна)"</string>
-    <string name="custom_input_styles_title">"Персон. стилове за въвежд."</string>
-    <string name="add_style">"+ стил"</string>
-    <string name="add">"Добавяне"</string>
-    <string name="remove">"Премахване"</string>
-    <string name="save">"Запазване"</string>
-    <string name="subtype_locale">"Език"</string>
-    <string name="keyboard_layout_set">"Подредба"</string>
-    <string name="custom_input_style_note_message">"Персонализираният ви стил за въвеждане трябва да се активира, преди да започнете да го използвате. Искате ли да го направите сега?"</string>
+    <string name="subtype_compact">"компактна"</string>
+    <string name="subtype_bulgarian_bds">"<xliff:g id="LANGUAGE_NAME" example="Bulgarian">%s</xliff:g> (БДС)"</string>
+    <string name="subtype_bds">"БДС"</string>
     <string name="enable">"Активиране"</string>
     <string name="not_now">"Не сега"</string>
     <string name="custom_input_style_already_exists">"Същият стил на въвеждане вече съществува: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

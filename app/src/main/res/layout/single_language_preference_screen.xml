@@ -9,10 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
-    <!-- TODO: tokenize -->
     <Button
         android:id="@+id/input_style_enable_prompt"
-        android:text="Input styles still need to be enabled"
+        android:text="@string/subtypes_need_enabling"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="15dp"
         android:layout_marginBottom="5dp"

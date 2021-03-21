@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Ponnahdusikkuna painalluksella"</string>
     <string name="settings_screen_preferences">"Asetukset"</string>
     <string name="settings_screen_appearance">"Ulkoasu ja asettelut"</string>
-    <string name="settings_screen_advanced">"Lisäasetukset"</string>
     <string name="settings_screen_theme">"Teema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Järjestelmän oletusarvo"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hindienglanti (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"serbialainen (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (perinteinen)"</string>
+    <string name="subtype_traditional">"perinteinen"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tiivis)"</string>
-    <string name="custom_input_styles_title">"Muokatut syöttötyylit"</string>
-    <string name="add_style">"Lisää tyyli"</string>
-    <string name="add">"Lisää"</string>
-    <string name="remove">"Poista"</string>
-    <string name="save">"Tallenna"</string>
-    <string name="subtype_locale">"Kieli"</string>
-    <string name="keyboard_layout_set">"Asettelu"</string>
-    <string name="custom_input_style_note_message">"Muokattua syöttötyyliä ei ole otettu käyttöön. Haluatko ottaa sen käyttöön nyt?"</string>
+    <string name="subtype_compact">"tiivis"</string>
     <string name="enable">"Ota käyttöön"</string>
     <string name="not_now">"Ei nyt"</string>
     <string name="custom_input_style_already_exists">"Syöttötyyli on jo olemassa: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

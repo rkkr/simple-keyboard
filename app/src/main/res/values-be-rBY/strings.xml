@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Па націску на клавішы ўсплывае акно"</string>
     <string name="settings_screen_preferences">"Параметры"</string>
     <string name="settings_screen_appearance">"Знешні выгляд і раскладкі"</string>
-    <string name="settings_screen_advanced">"Дадатковыя"</string>
     <string name="settings_screen_theme">"Тэма"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
     <string name="settings_system_default">"Стандартныя сістэмныя"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Хінгліш (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Сербская (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (традыцыйная)"</string>
+    <string name="subtype_traditional">"традыцыйная"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (кампактная)"</string>
-    <string name="custom_input_styles_title">"Карыстальніцкія стылі ўводу"</string>
-    <string name="add_style">"Дадаць стыль"</string>
-    <string name="add">"Дадаць"</string>
-    <string name="remove">"Выдаліць"</string>
-    <string name="save">"Захаваць"</string>
-    <string name="subtype_locale">"Мова"</string>
-    <string name="keyboard_layout_set">"Раскладка"</string>
-    <string name="custom_input_style_note_message">"Карыстальніцкі метад уводу павінен быць уключаны, перш чым пачаць выкарыстоўваць яго. Жадаеце ўключыць яго зараз?"</string>
+    <string name="subtype_compact">"кампактная"</string>
     <string name="enable">"Уключыць"</string>
     <string name="not_now">"Не цяпер"</string>
     <string name="custom_input_style_already_exists">"Такі метад уводу ўжо існуе: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

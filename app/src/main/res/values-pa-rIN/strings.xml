@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"ਕੁੰਜੀ ਦਬਾਉਣ ’ਤੇ ਪੌਪਅੱਪ ਕਰੋ"</string>
     <string name="settings_screen_preferences">"ਤਰਜੀਹਾਂ"</string>
     <string name="settings_screen_appearance">"ਪ੍ਰਗਟਾਅ &amp; ਲੇਆਉਟਸ"</string>
-    <string name="settings_screen_advanced">"ਉੱਨਤ"</string>
     <string name="settings_screen_theme">"ਵਿਸ਼ਾ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"ਸਿਸਟਮ ਡਿਫੌਲਟ"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"ਹਿੰਗਲਿਸ਼(<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"ਸਰਬੀਅਨ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ਪਰੰਪਰਿਕ)"</string>
+    <string name="subtype_traditional">"ਪਰੰਪਰਿਕ"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ਕੰਪੈਕਟ)"</string>
-    <string name="custom_input_styles_title">"ਕਸਟਮ ਇਨਪੁਟ ਸਟਾਈਲ"</string>
-    <string name="add_style">"ਸਟਾਈਲ ਜੋੜੋ"</string>
-    <string name="add">"ਜੋੜੋ"</string>
-    <string name="remove">"ਹਟਾਓ"</string>
-    <string name="save">"ਰੱਖਿਅਤ ਕਰੋ"</string>
-    <string name="subtype_locale">"ਭਾਸ਼ਾ"</string>
-    <string name="keyboard_layout_set">"ਲੇਆਉਟ"</string>
-    <string name="custom_input_style_note_message">"ਇਸਤੋਂ ਪਹਿਲਾਂ ਕਿ ਤੁਸੀਂ ਆਪਣਾ ਕਸਟਮ ਇਨਪੁਟ ਸਟਾਈਲ ਵਰਤਣਾ ਸ਼ੁਰੂ ਕਰੋ ਤੁਹਾਨੂੰ ਇਸਨੂੰ ਸਮਰੱਥ ਬਣਾਉਣ ਦੀ ਲੋੜ ਹੈ। ਕੀ ਤੁਸੀਂ ਹੁਣ ਇਸਨੂੰ ਸਮਰੱਥ ਬਣਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"</string>
+    <string name="subtype_compact">"ਕੰਪੈਕਟ"</string>
     <string name="enable">"ਸਮਰੱਥ ਬਣਾਓ"</string>
     <string name="not_now">"ਅਜੇ ਨਹੀਂ"</string>
     <string name="custom_input_style_already_exists">"ਸਮਾਨ ਇਨਪੁਟ ਸਟਾਈਲ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

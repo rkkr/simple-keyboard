@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"キー押下時ポップアップ"</string>
     <string name="settings_screen_preferences">"設定"</string>
     <string name="settings_screen_appearance">"外観とレイアウト"</string>
-    <string name="settings_screen_advanced">"詳細設定"</string>
     <string name="settings_screen_theme">"テーマ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ミリ秒"</string>
     <string name="settings_system_default">"システムのデフォルト"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"ヒングリッシュ（<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>）"</string>
     <string name="subtype_with_layout_sr_ZZ">"セルビア語（<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>）"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>（伝統言語）"</string>
+    <string name="subtype_traditional">"伝統言語"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>（コンパクト）"</string>
-    <string name="custom_input_styles_title">"カスタム入力スタイル"</string>
-    <string name="add_style">"スタイル追加"</string>
-    <string name="add">"追加"</string>
-    <string name="remove">"削除"</string>
-    <string name="save">"保存"</string>
-    <string name="subtype_locale">"言語"</string>
-    <string name="keyboard_layout_set">"レイアウト"</string>
-    <string name="custom_input_style_note_message">"カスタム入力スタイルは、使用を開始する前に有効にする必要があります。今すぐ有効にしますか？"</string>
+    <string name="subtype_compact">"コンパクト"</string>
     <string name="enable">"有効にする"</string>
     <string name="not_now">"後で行う"</string>
     <string name="custom_input_style_already_exists">"同じ入力スタイルが既に存在します: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

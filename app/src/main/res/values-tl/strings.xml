@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Mag-popup sa keypress"</string>
     <string name="settings_screen_preferences">"Mga Kagustuhan"</string>
     <string name="settings_screen_appearance">"Hitsura at Mga Layout"</string>
-    <string name="settings_screen_advanced">"Advanced"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"Default ng system"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Serbian (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Traditional)"</string>
+    <string name="subtype_traditional">"Traditional"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Compact)"</string>
-    <string name="custom_input_styles_title">"Custom style ng input"</string>
-    <string name="add_style">"Mag-add ng style"</string>
-    <string name="add">"Idagdag"</string>
-    <string name="remove">"Alisin"</string>
-    <string name="save">"I-save"</string>
-    <string name="subtype_locale">"Wika"</string>
-    <string name="keyboard_layout_set">"Layout"</string>
-    <string name="custom_input_style_note_message">"Kailangan pinagana ang custom na istilo ng input bago simulang gamitin. Nais itong paganahin?"</string>
+    <string name="subtype_compact">"Compact"</string>
     <string name="enable">"Paganahin"</string>
     <string name="not_now">"Hindi ngayon"</string>
     <string name="custom_input_style_already_exists">"Umiiral na ang parehong estilo ng input: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

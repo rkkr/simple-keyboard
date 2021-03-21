@@ -37,9 +37,6 @@
     <!-- Settings screen title for accounts and privacy preferences [CHAR LIMIT=33]-->
     <!-- Settings screen title for appearance & layouts preferences [CHAR LIMIT=33] -->
     <string name="settings_screen_appearance">Appearance &amp; Layouts</string>
-    <!-- Settings screen title for gesture typing preferences [CHAR_LIMIT=33] -->
-    <!-- Settings screen title for advanced settings [CHAR LIMIT=33] -->
-    <string name="settings_screen_advanced">Advanced</string>
     <!-- Settings screen title for keyboard theme settings [CHAR LIMIT=33] -->
     <string name="settings_screen_theme">Theme</string>
 
@@ -82,7 +79,7 @@
          This should be identical to subtype_en_US aside from the trailing (%s). -->
     <string name="subtype_with_layout_en_US">English (US) (<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
     <!-- Description for Spanish (US) keyboard subtype with explicit keyboard layout [CHAR LIMIT=25]
-         (US) should be an abbreviation of United Statesn to fit in the CHAR LIMIT.
+         (US) should be an abbreviation of United States to fit in the CHAR LIMIT.
          This should be identical to subtype_es_US aside from the trailing (%s). -->
     <string name="subtype_with_layout_es_US">Spanish (US) (<xliff:g id="KEYBOARD_LAYOUT" example="QWERTY">%s</xliff:g>)</string>
     <!-- Description for Hinglish (https://en.wikipedia.org/wiki/Hinglish) keyboard subtype with explicit keyboard layout [CHAR LIMIT=25]
@@ -94,9 +91,14 @@
     <!-- Description for "LANGUAGE_NAME" (Traditional) keyboard subtype [CHAR LIMIT=25]
          (Traditional) can be an abbreviation to fit in the CHAR LIMIT. -->
     <string name="subtype_generic_traditional"><xliff:g id="LANGUAGE_NAME" example="Nepali">%s</xliff:g> (Traditional)</string>
+    <string name="subtype_traditional">Traditional</string>
     <!-- Description for "LANGUAGE_NAME" (Compact) keyboard subtype [CHAR LIMIT=25]
          (Compact) can be an abbreviation to fit in the CHAR LIMIT. -->
     <string name="subtype_generic_compact"><xliff:g id="LANGUAGE_NAME" example="Hindi">%s</xliff:g> (Compact)</string>
+    <string name="subtype_compact">Compact</string>
+    <!-- Description for Bulgarian (BDS) subtype. -->
+    <string name="subtype_bulgarian_bds"><xliff:g id="LANGUAGE_NAME" example="Bulgarian">%s</xliff:g> (BDS)</string>
+    <string name="subtype_bds">BDS</string>
 
     <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
     <string name="keyboard_theme_light_border" translatable="false">Material Light Border</string>
@@ -105,22 +107,6 @@
     <string name="keyboard_theme_system" translatable="false">System Default</string>
     <string name="keyboard_theme_system_border" translatable="false">System Default Border</string>
 
-    <!-- Title of the preference settings for custom input styles (language and keyboard layout pairs) [CHAR LIMIT=35]-->
-    <string name="custom_input_styles_title">Custom input styles</string>
-    <!-- Title of the option menu to add a new style entry in the preference settings [CHAR LIMIT=16] -->
-    <string name="add_style">Add style</string>
-    <!-- Title of the button to add custom style entry in the settings dialog [CHAR LIMIT=15] -->
-    <string name="add">Add</string>
-    <!-- Title of the button to remove a custom style entry in the settings dialog [CHAR LIMIT=15] -->
-    <string name="remove">Remove</string>
-    <!-- Title of the button to save a custom style entry in the settings dialog [CHAR LIMIT=15] -->
-    <string name="save">Save</string>
-    <!-- Title of the spinner for choosing a language of custom style in the settings dialog [CHAR LIMIT=15] -->
-    <string name="subtype_locale">Language</string>
-    <!-- Title of the spinner for choosing a keyboard layout of custom style in the settings dialog [CHAR LIMIT=15] -->
-    <string name="keyboard_layout_set">Layout</string>
-    <!-- The message of the dialog to note that a custom input style needs to be enabled. [CHAR LIMIT=130] -->
-    <string name="custom_input_style_note_message">"Your custom input style needs to be enabled before you start using it. Do you want to enable it now?"</string>
     <!-- Title of the button to enable a custom input style entry in the settings dialog [CHAR LIMIT=15] -->
     <string name="enable">Enable</string>
     <!-- Title of the button to postpone enabling a custom input style entry in the settings dialog [CHAR LIMIT=15] -->
@@ -150,4 +136,9 @@
     <string name="delete_swipe">Delete swipe</string>
     <string name="matching_navbar_color">Use matching navigation bar color</string>
     <string name="setup_message">Simple Keyboard is not enabled. Click OK to open Languages &amp; Input settings. You will need to select Simple Keyboard in your current keyboard to use it.</string>
+    <string name="subtypes_need_enabling">Input styles still need to be enabled</string>
+    <string name="enable_subtypes">Enable languages and layouts</string>
+    <string name="enable_subtypes_details">Keyboard languages and layouts need to be enabled in the system before they can be used</string>
+    <string name="user_languages">Your keyboard languages</string>
+    <string name="add_language">Add language</string>
 </resources>

@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Detail znaku při stisku klávesy"</string>
     <string name="settings_screen_preferences">"Předvolby"</string>
     <string name="settings_screen_appearance">"Vzhled a rozvržení"</string>
-    <string name="settings_screen_advanced">"Rozšířená nastavení"</string>
     <string name="settings_screen_theme">"Motiv"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Výchozí nastavení"</string>
@@ -44,15 +43,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"srbština (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradiční)"</string>
+    <string name="subtype_traditional">"tradiční"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktní)"</string>
-    <string name="custom_input_styles_title">"Vlastní styl zadávání"</string>
-    <string name="add_style">"Přidat styl"</string>
-    <string name="add">"Přidat"</string>
-    <string name="remove">"Odebrat"</string>
-    <string name="save">"Uložit"</string>
-    <string name="subtype_locale">"Jazyk"</string>
-    <string name="keyboard_layout_set">"Rozvržení"</string>
-    <string name="custom_input_style_note_message">"Vlastní styl zadávání musíte nejdříve povolit. Povolit?"</string>
+    <string name="subtype_compact">"kompaktní"</string>
     <string name="enable">"Povolit"</string>
     <string name="not_now">"Teď ne"</string>
     <string name="custom_input_style_already_exists">"Tento styl zadávání již existuje: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
