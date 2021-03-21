@@ -77,7 +77,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         RichInputMethodManager.init(getActivity());
         mRichImm = RichInputMethodManager.getInstance();
 
-        addPreferencesFromResource(R.xml.additional_subtype_settings);//TODO: rename this file
+        addPreferencesFromResource(R.xml.empty_settings);
 
         setHasOptionsMenu(true);
     }

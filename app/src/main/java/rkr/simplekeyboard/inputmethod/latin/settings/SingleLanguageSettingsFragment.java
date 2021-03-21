@@ -68,7 +68,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(getActivity());
         RichInputMethodManager.init(getActivity());
         mRichImm = RichInputMethodManager.getInstance();
-        addPreferencesFromResource(R.xml.additional_subtype_settings);
+        addPreferencesFromResource(R.xml.empty_settings);
     }
 
     @Override
