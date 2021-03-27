@@ -23,14 +23,12 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -43,26 +41,25 @@ import android.view.inputmethod.InputMethodSubtype;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 import static rkr.simplekeyboard.inputmethod.latin.settings.SingleLanguageSettingsFragment.LOCALE_BUNDLE_KEY;
 
 public final class LanguagesSettingsFragment extends SubScreenFragment{
     private static final String TAG = LanguagesSettingsFragment.class.getSimpleName();
-    // Note: We would like to turn this debug flag true in order to see what input styles are
-    // defined in a bug-report.
+
     private static final boolean DEBUG_SUBTYPE_ID = false;
 
-    private SharedPreferences mPrefs;
     private RichInputMethodManager mRichImm;
     private CharSequence[] mEntries;
     private String[] mEntryValues;
@@ -73,7 +70,6 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
-        mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(getActivity());
         RichInputMethodManager.init(getActivity());
         mRichImm = RichInputMethodManager.getInstance();
 
@@ -150,37 +146,25 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     }
 
     private Preference createSubtypeSettingLinkPreference(final Context context) {
-        final InputMethodInfo imi = mRichImm.getInputMethodInfoOfThisIme();
+        final String imeId = mRichImm.getInputMethodIdOfThisIme();
 
         final Preference subtypeEnablerPreference = new Preference(context);
         subtypeEnablerPreference
                 .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                     @Override
                     public boolean onPreferenceClick(Preference preference) {
-                        openSubtypeSettings(imi, context);
+                        final Intent intent =
+                                IntentUtils.getInputLanguageSelectionIntent(imeId, context);
+                        context.startActivity(intent);
                         return true;
                     }
                 });
         return subtypeEnablerPreference;
     }
 
-    //TODO: move somewhere common
-    public static void openSubtypeSettings(final InputMethodInfo imi, final Context context) {
-        final CharSequence title = context.getString(R.string.select_language);
-        final Intent intent =
-                new Intent(android.provider.Settings.ACTION_INPUT_METHOD_SUBTYPE_SETTINGS);
-        intent.putExtra(android.provider.Settings.EXTRA_INPUT_METHOD_ID, imi.getId());
-        if (!TextUtils.isEmpty(title)) {
-            intent.putExtra(Intent.EXTRA_TITLE, title);
-        }
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
-                | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        context.startActivity(intent);
-    }
-
     private void setContent(final Context context) {
         final PreferenceGroup group = getPreferenceScreen();
+        group.setTitle(R.string.select_language);
         group.removeAll();
 
         final Preference subtypeEnablerPreference = createSubtypeSettingLinkPreference(context);
@@ -198,13 +182,13 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     private void setLanguageInfo(final PreferenceGroup group, final Context context) {
         final InputMethodInfo imi = mRichImm.getInputMethodInfoOfThisIme();
         final HashSet<InputMethodSubtype> enabledSubtypes =
-                SingleLanguageSettingsFragment.loadEnabledSubtypes(mRichImm, context);
+                new HashSet<>(mRichImm.getMyEnabledInputMethodSubtypeList(true));
 
         final Locale currentLocale = getResources().getConfiguration().locale;
         final Comparator<Locale> comparator = new LocaleComparator(currentLocale);
 
         final HashSet<InputMethodSubtype> prefSubtypes =
-                SingleLanguageSettingsFragment.loadPrefSubtypes(mPrefs, getResources());
+                new HashSet<>(Arrays.asList(mRichImm.getAdditionalSubtypes()));
 
         final TreeSet<Locale> usedLocales =
                 getUsedLocales(enabledSubtypes, prefSubtypes, comparator);
@@ -221,7 +205,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
 
         for (final InputMethodSubtype subtype: subtypes) {
             if (DEBUG_SUBTYPE_ID) {
-                Log.d(TAG, String.format("Used default subtype: %-6s 0x%08x %11d %s",
+                Log.d(TAG, String.format("Enabled subtype: %-6s 0x%08x %11d %s",
                         subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
                         SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
             }
@@ -229,8 +213,8 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         }
 
         for (final InputMethodSubtype subtype: prefSubtypes) {
-            if (DEBUG_SUBTYPE_ID) {
-                Log.d(TAG, String.format("Used additional subtype: %-6s 0x%08x %11d %s",
+            if (DEBUG_SUBTYPE_ID && !subtypes.contains(subtype)) {
+                Log.d(TAG, String.format("Not enabled additional subtype: %-6s 0x%08x %11d %s",
                         subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
                         SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
             }
@@ -251,11 +235,6 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
             if (usedLocales.contains(locale)) {
                 continue;
             }
-            if (DEBUG_SUBTYPE_ID) {
-                Log.d(TAG, String.format("Unused subtype: %-6s 0x%08x %11d %s",
-                        subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
-                        SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
-            }
             if (subtype.isAsciiCapable()) {
                 locales.add(locale);
             }
@@ -272,7 +251,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
             final SingleLanguagePreference pref =
                     new SingleLanguagePreference(context, localeString);
             if (subtypesNeedEnabling(localeString, prefSubtypes, enabledSubtypes)) {
-                pref.setSummary("Some layouts still need to be enabled");
+                pref.setSummary(R.string.subtypes_need_enabling);
             }
             group.addPreference(pref);
         }

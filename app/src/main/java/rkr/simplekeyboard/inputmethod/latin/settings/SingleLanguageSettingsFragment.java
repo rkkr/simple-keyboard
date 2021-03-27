@@ -17,8 +17,8 @@
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
@@ -30,7 +30,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
 import android.widget.Button;
 
@@ -43,14 +42,13 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     private static final String TAG = SingleLanguageSettingsFragment.class.getSimpleName();
-    // Note: We would like to turn this debug flag true in order to see what input styles are
-    // defined in a bug-report.
+
     private static final boolean DEBUG_CUSTOM_INPUT_STYLES = false;
-    private static final boolean DEBUG_SUBTYPE_ID = false;//TODO: maybe remove since it is somewhat redundant from LanguageSettingsFragment
 
     public static final String LOCALE_BUNDLE_KEY = "LOCALE";
 
@@ -58,7 +56,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     private SharedPreferences mPrefs;
 
     private final List<SubtypePreference> mSubtypePrefs = new ArrayList<>();
-    private HashSet<InputMethodSubtype> mEnabledSubtypes;//TODO: consider making final
+    private HashSet<InputMethodSubtype> mEnabledSubtypes;
     private HashSet<InputMethodSubtype> mPrefAdditionalSubtypes;
 
     @Override
@@ -86,8 +84,9 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
             @Override
             public void onClick(View view) {
                 final Context context = getActivity();
-                final InputMethodInfo imi = mRichImm.getInputMethodInfoOfThisIme();
-                LanguagesSettingsFragment.openSubtypeSettings(imi, context);
+                final String imeId = mRichImm.getInputMethodIdOfThisIme();
+                final Intent intent = IntentUtils.getInputLanguageSelectionIntent(imeId, context);
+                context.startActivity(intent);
             }
         });
 
@@ -124,50 +123,12 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     }
 
     private HashSet<InputMethodSubtype> loadPrefSubtypes() {
-        return loadPrefSubtypes(mPrefs, getResources());
+        return new HashSet<>(Arrays.asList(mRichImm.getAdditionalSubtypes()));
     }
 
 
     private HashSet<InputMethodSubtype> loadEnabledSubtypes() {
-        return loadEnabledSubtypes(mRichImm, getActivity());
-    }
-
-    //TODO: put this in a better common place
-    public static HashSet<InputMethodSubtype> loadPrefSubtypes(final SharedPreferences prefs,
-                                                               final Resources res) {
-        final String prefSubtypes =
-                Settings.readPrefAdditionalSubtypes(prefs, res);
-        if (DEBUG_CUSTOM_INPUT_STYLES) {
-            Log.i(TAG, "Load custom input styles: " + prefSubtypes);
-        }
-        final InputMethodSubtype[] prefSubtypesArray =
-                AdditionalSubtypeUtils.createAdditionalSubtypesArray(prefSubtypes);
-        if (DEBUG_SUBTYPE_ID) {
-            for (InputMethodSubtype subtype : prefSubtypesArray) {
-                Log.d(TAG, String.format("Load custom subtypes: %-6s 0x%08x %11d %s",
-                        subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
-                        SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
-            }
-        }
-        return new HashSet<>(Arrays.asList(prefSubtypesArray));
-    }
-
-    //TODO: put this in a better common place
-    public static HashSet<InputMethodSubtype> loadEnabledSubtypes(
-            final RichInputMethodManager richImm, final Context context) {
-        final InputMethodInfo imi = richImm.getInputMethodInfoOfThisIme();
-        final InputMethodManager inputMethodManager =
-                (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        final List<InputMethodSubtype> enabledSubtypes =
-                inputMethodManager.getEnabledInputMethodSubtypeList(imi, true);
-        if (DEBUG_SUBTYPE_ID) {
-            for (InputMethodSubtype subtype : enabledSubtypes) {
-                Log.d(TAG, String.format("Load enabled subtypes: %-6s 0x%08x %11d %s",
-                        subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
-                        SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
-            }
-        }
-        return new HashSet<>(enabledSubtypes);
+        return new HashSet<>(mRichImm.getMyEnabledInputMethodSubtypeList(true));
     }
 
     private List<InputMethodSubtype> loadDefaultSubtypes(final String locale) {
@@ -186,12 +147,6 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                 continue;
             }
 
-            if (DEBUG_SUBTYPE_ID) {
-                Log.d(TAG, String.format("Load default subtypes: %-6s 0x%08x %11d %s",
-                        subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
-                        SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
-            }
-
             localeSubtypes.add(subtype);
         }
 
@@ -200,10 +155,12 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
 
     private void setContent(final String locale, final Context context) {
         final PreferenceGroup group = getPreferenceScreen();
+        final String title = SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(locale);
+        group.setTitle(title);
         group.removeAll();
 
         final PreferenceCategory mainCategory = new PreferenceCategory(context);
-        mainCategory.setTitle(SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(locale));
+        mainCategory.setTitle(title);
         group.addPreference(mainCategory);
 
         addSubtypePreferences(locale, context);
@@ -256,7 +213,9 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         return false;
     }
 
-    private void createSubtypePreference(final InputMethodSubtype subtype, final boolean isChecked, final boolean isEnabled, final PreferenceGroup group, final Context context) {
+    private void createSubtypePreference(final InputMethodSubtype subtype, final boolean isChecked,
+                                         final boolean isEnabled, final PreferenceGroup group,
+                                         final Context context) {
         final SubtypePreference pref = new SubtypePreference(context, subtype);
         pref.setTitle(SubtypeLocaleUtils.getKeyboardLayoutDisplayName(subtype, context));
         pref.setChecked(isChecked);
