@@ -58,6 +58,9 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             removePreference(Settings.PREF_MATCHING_NAVBAR_COLOR);
         }
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+            removePreference(Settings.PREF_ENABLE_IME_SWITCH);
+        }
         refreshEnablingsOfSettings();
 
         setupKeypressVibrationDurationSettings();
@@ -83,10 +86,12 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
                 Settings.readVibrationEnabled(prefs, res));
         setPreferenceEnabled(Settings.PREF_KEYPRESS_SOUND_VOLUME,
                 Settings.readKeypressSoundEnabled(prefs, res));
+        setPreferenceEnabled(Settings.PREF_ENABLE_IME_SWITCH,
+                Settings.readShowLanguageSwitchKey(prefs));
         final KeyboardTheme theme = KeyboardTheme.getKeyboardTheme(prefs);
-        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR,
-                theme.mThemeId != KeyboardTheme.THEME_ID_SYSTEM
-                        && theme.mThemeId != KeyboardTheme.THEME_ID_SYSTEM_BORDER);
+        final boolean isSystemTheme = theme.mThemeId != KeyboardTheme.THEME_ID_SYSTEM
+                && theme.mThemeId != KeyboardTheme.THEME_ID_SYSTEM_BORDER;
+        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR, isSystemTheme);
     }
 
     private void setupKeypressVibrationDurationSettings() {

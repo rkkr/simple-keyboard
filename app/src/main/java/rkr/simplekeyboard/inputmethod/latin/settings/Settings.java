@@ -44,13 +44,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_VIBRATE_ON = "vibrate_on";
     public static final String PREF_SOUND_ON = "sound_on";
     public static final String PREF_POPUP_ON = "popup_on";
-    //public static final boolean SHOULD_SHOW_LXX_SUGGESTION_UI =
-    //        Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
-    public static final String PREF_HIDE_LANGUAGE_SWITCH_KEY =
-            "pref_hide_language_switch_key";
+    public static final String PREF_HIDE_LANGUAGE_SWITCH_KEY = "pref_hide_language_switch_key";
+    public static final String PREF_ENABLE_IME_SWITCH = "pref_enable_ime_switch";
     public static final String PREF_CUSTOM_INPUT_STYLES = "custom_input_styles";
-    public static final String PREF_VIBRATION_DURATION_SETTINGS =
-            "pref_vibration_duration_settings";
+    public static final String PREF_VIBRATION_DURATION_SETTINGS = "pref_vibration_duration_settings";
     public static final String PREF_KEYPRESS_SOUND_VOLUME = "pref_keypress_sound_volume";
     public static final String PREF_KEY_LONGPRESS_TIMEOUT = "pref_key_longpress_timeout";
     public static final String PREF_KEYBOARD_HEIGHT = "pref_keyboard_height";
@@ -156,8 +153,12 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return prefs.getBoolean(PREF_POPUP_ON, defaultKeyPreviewPopup);
     }
 
-    public static boolean readShowsLanguageSwitchKey(final SharedPreferences prefs) {
+    public static boolean readShowLanguageSwitchKey(final SharedPreferences prefs) {
         return !prefs.getBoolean(PREF_HIDE_LANGUAGE_SWITCH_KEY, false);
+    }
+
+    public static boolean readEnableImeSwitch(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_ENABLE_IME_SWITCH, false);
     }
 
     public static boolean readHideSpecialChars(final SharedPreferences prefs) {

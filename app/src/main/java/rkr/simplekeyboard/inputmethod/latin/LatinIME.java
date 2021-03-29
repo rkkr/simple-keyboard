@@ -1078,8 +1078,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (token == null) {
             return false;
         }
-        final boolean overrideValue = mSettings.getCurrent().isLanguageSwitchKeyEnabled();
-        return mRichImm.shouldOfferSwitchingToNextInputMethod(token) && overrideValue;
+        final boolean languageKeyEnabled = mSettings.getCurrent().isLanguageSwitchKeyEnabled();
+        final boolean imeSwitchEnabled = mSettings.getCurrent().mImeSwitchEnabled;
+        return mRichImm.shouldOfferSwitchingToNextInputMethod(token) && languageKeyEnabled && imeSwitchEnabled;
     }
 
     public boolean shouldShowLanguageSwitchKey() {
@@ -1090,8 +1091,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (token == null) {
             return false;
         }
-        final boolean overrideValue = mSettings.getCurrent().isLanguageSwitchKeyEnabled();
-        return mRichImm.shouldOfferSwitchingToNextInputMethod(token) && overrideValue;
+        final boolean languageKeyEnabled = mSettings.getCurrent().isLanguageSwitchKeyEnabled();
+        return mRichImm.shouldOfferSwitchingToNextInputMethod(token) && languageKeyEnabled;
     }
 
     private void setNavigationBarColor() {

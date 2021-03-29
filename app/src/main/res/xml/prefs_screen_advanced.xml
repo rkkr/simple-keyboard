@@ -55,6 +55,10 @@
         android:title="@string/hide_language_switch_key"
         android:defaultValue="false" />
     <CheckBoxPreference
+        android:key="pref_enable_ime_switch"
+        android:title="@string/pref_enable_ime_switch"
+        android:defaultValue="false" />
+    <CheckBoxPreference
         android:key="pref_show_number_row"
         android:title="@string/show_number_row"
         android:defaultValue="false" />
