@@ -102,7 +102,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     public void onResume() {
         super.onResume();
         mPrefAdditionalSubtypes = loadPrefSubtypes();
-        for (SubtypePreference pref : mSubtypePrefs) {
+        for (final SubtypePreference pref : mSubtypePrefs) {
             if (!pref.isEnabled()) {
                 // skip default subtypes since they always exist
                 continue;
@@ -133,8 +133,8 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         List<InputMethodSubtype> defaultSubtypes = mRichImm.getDefaultSubtypesOfThisIme();
 
         List<InputMethodSubtype> localeSubtypes = new ArrayList<>();
-        for (InputMethodSubtype subtype : defaultSubtypes) {
-            if (locale != null && !locale.equals(subtype.getLocale())) {
+        for (final InputMethodSubtype subtype : defaultSubtypes) {
+            if (!locale.equals(subtype.getLocale())) {
                 continue;
             }
             localeSubtypes.add(subtype);
@@ -162,45 +162,31 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         }
         final PreferenceGroup group = getPreferenceScreen();
 
-        List<InputMethodSubtype> localeSubtypes = loadDefaultSubtypes(locale);
+        final List<InputMethodSubtype> localeDefaultSubtypes = loadDefaultSubtypes(locale);
+        final HashSet<String> localeDefaultLayoutSets = new HashSet<>();
         boolean ascii = false;
-        //TODO: fix the order of the items - they probably should be in some fixed order - this seems to match method.xml, so this might be fine
-        for (InputMethodSubtype subtype : localeSubtypes) {
+        for (final InputMethodSubtype subtype : localeDefaultSubtypes) {
+            localeDefaultLayoutSets.add(SubtypeLocaleUtils.getKeyboardLayoutSetName(subtype));
             if (subtype.isAsciiCapable()) {
                 ascii = true;
             }
             createSubtypePreference(subtype, true, false, group, context);
         }
+
         if (ascii) {
             final String[] predefinedKeyboardLayoutSet = context.getResources().getStringArray(
                     R.array.predefined_layouts);
-            //TODO: fix the order of the items - they probably should be in some fixed order - maybe the order of the array above is fine
-            for (final String layout : predefinedKeyboardLayoutSet) {
-                InputMethodSubtype genericSubtype =
-                        AdditionalSubtypeUtils.createAdditionalSubtype(locale, layout);
 
-                //TODO: maybe use SubtypeLocaleUtils.getKeyboardLayoutSetName
-                if (isDuplicateSubtype(genericSubtype, localeSubtypes)) {
+            for (final String layout : predefinedKeyboardLayoutSet) {
+                if (localeDefaultLayoutSets.contains(layout)) {
                     continue;
                 }
 
+                InputMethodSubtype genericSubtype =
+                        AdditionalSubtypeUtils.createAdditionalSubtype(locale, layout);
                 createSubtypePreference(genericSubtype, false, true, group, context);
             }
         }
-    }
-
-    private boolean isDuplicateSubtype(final InputMethodSubtype subtype, final List<InputMethodSubtype> subtypes) {
-        final String layoutName = SubtypeLocaleUtils.getKeyboardLayoutSetName(subtype);
-        final String localeString = subtype.getLocale();
-        for (InputMethodSubtype curSubtype : subtypes) {
-            final String curLayoutName = SubtypeLocaleUtils.getKeyboardLayoutSetName(curSubtype);
-            //TODO: the locale check is probably unnecessary for how this is used
-            if (localeString.equals(curSubtype.getLocale())
-                    && layoutName.equals(curLayoutName)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private void createSubtypePreference(final InputMethodSubtype subtype, final boolean isChecked,
@@ -251,7 +237,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     private boolean subtypeNeedsEnabling() {
         boolean hasDefaultSubtypesEnabled = false;
         boolean hasAdditionalSubtypesEnabled = false;
-        for (SubtypePreference pref : mSubtypePrefs) {
+        for (final SubtypePreference pref : mSubtypePrefs) {
             if (!pref.isChecked()) {
                 // unused subtypes don't need to be enabled
                 continue;
@@ -276,7 +262,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
 
     private void setAdditionalSubtypes() {
         boolean hasChanges = false;
-        for (SubtypePreference pref : mSubtypePrefs) {
+        for (final SubtypePreference pref : mSubtypePrefs) {
             if (!pref.isEnabled()) {
                 continue;
             }

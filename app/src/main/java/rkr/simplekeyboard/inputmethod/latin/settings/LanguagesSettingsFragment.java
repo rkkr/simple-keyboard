@@ -203,7 +203,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                                            final Comparator<Locale> comparator) {
         TreeSet<Locale> locales = new TreeSet<>(comparator);
 
-        for (final InputMethodSubtype subtype: subtypes) {
+        for (final InputMethodSubtype subtype : subtypes) {
             if (DEBUG_SUBTYPE_ID) {
                 Log.d(TAG, String.format("Enabled subtype: %-6s 0x%08x %11d %s",
                         subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
@@ -212,7 +212,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
             locales.add(LocaleUtils.constructLocaleFromString(subtype.getLocale()));
         }
 
-        for (final InputMethodSubtype subtype: prefSubtypes) {
+        for (final InputMethodSubtype subtype : prefSubtypes) {
             if (DEBUG_SUBTYPE_ID && !subtypes.contains(subtype)) {
                 Log.d(TAG, String.format("Not enabled additional subtype: %-6s 0x%08x %11d %s",
                         subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
@@ -246,7 +246,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                                            final HashSet<InputMethodSubtype> prefSubtypes,
                                            final HashSet<InputMethodSubtype> enabledSubtypes,
                                            final PreferenceGroup group, final Context context) {
-        for (Locale locale : locales) {
+        for (final Locale locale : locales) {
             final String localeString = LocaleUtils.getLocaleString(locale);
             final SingleLanguagePreference pref =
                     new SingleLanguagePreference(context, localeString);
@@ -260,7 +260,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     private boolean subtypesNeedEnabling(final String locale,
                                          final HashSet<InputMethodSubtype> prefSubtypes,
                                          final HashSet<InputMethodSubtype> enabledSubtypes) {
-        for (InputMethodSubtype subtype : prefSubtypes) {
+        for (final InputMethodSubtype subtype : prefSubtypes) {
             if (!locale.equals(subtype.getLocale())) {
                 continue;
             }
