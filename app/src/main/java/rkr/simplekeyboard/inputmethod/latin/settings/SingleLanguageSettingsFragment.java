@@ -29,7 +29,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodSubtype;
 import android.widget.Button;
 
@@ -90,8 +89,6 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
             }
         });
 
-        mPrefAdditionalSubtypes = loadPrefSubtypes();
-
         final Bundle args = getArguments();
         if (args != null) {
             final String locale = getArguments().getString(LOCALE_BUNDLE_KEY);
@@ -132,21 +129,14 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     }
 
     private List<InputMethodSubtype> loadDefaultSubtypes(final String locale) {
-        final InputMethodInfo imi = mRichImm.getInputMethodInfoOfThisIme();
-        final int count = imi.getSubtypeCount();
+
+        List<InputMethodSubtype> defaultSubtypes = mRichImm.getDefaultSubtypesOfThisIme();
+
         List<InputMethodSubtype> localeSubtypes = new ArrayList<>();
-        //TODO: fix the order of the items - they probably should be in some fixed order
-        for (int i = 0; i < count; i++) {
-            final InputMethodSubtype subtype = imi.getSubtypeAt(i);
+        for (InputMethodSubtype subtype : defaultSubtypes) {
             if (locale != null && !locale.equals(subtype.getLocale())) {
                 continue;
             }
-
-            //TODO: try to find a way to get the default subtypes that doesn't involve checking the preferences so it doesn't need to load twice when opening the fragment
-            if (mPrefAdditionalSubtypes.contains(subtype)) {
-                continue;
-            }
-
             localeSubtypes.add(subtype);
         }
 
