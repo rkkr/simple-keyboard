@@ -27,8 +27,6 @@ public final class SettingsFragment extends InputMethodSettingsFragment {
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setHasOptionsMenu(true);
-        setInputMethodSettingsCategoryTitle(R.string.language_selection_title);
-        setSubtypeEnablerTitle(R.string.select_language);
         addPreferencesFromResource(R.xml.prefs);
         final PreferenceScreen preferenceScreen = getPreferenceScreen();
         preferenceScreen.setTitle(
