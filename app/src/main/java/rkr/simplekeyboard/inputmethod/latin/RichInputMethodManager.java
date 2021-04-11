@@ -497,6 +497,11 @@ public class RichInputMethodManager {
                 imi, allowsImplicitlySelectedSubtypes);
     }
 
+    /**
+     * Get the list of subtypes that are always available for this IME. This returns the list of
+     * subtypes from method.xml.
+     * @return the list of default subtypes.
+     */
     public List<InputMethodSubtype> getDefaultSubtypesOfThisIme() {
         final InputMethodInfo imi = getInputMethodInfoOfThisIme();
         final int inputMethodResId = imi.getServiceInfo().metaData.getInt(SUBTYPE_META_DATA_NAME);
@@ -520,6 +525,11 @@ public class RichInputMethodManager {
         return defaultSubtypes;
     }
 
+    /**
+     * Build a subtype from an xml tag.
+     * @param parser the XML parser.
+     * @return the subtype that the xml defines.
+     */
     private static InputMethodSubtype parseSubtype(final XmlResourceParser parser) {
         final InputMethodSubtype.InputMethodSubtypeBuilder builder =
                 new InputMethodSubtype.InputMethodSubtypeBuilder();

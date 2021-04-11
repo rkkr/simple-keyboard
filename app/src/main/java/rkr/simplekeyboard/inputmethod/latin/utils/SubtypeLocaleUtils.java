@@ -305,6 +305,12 @@ public final class SubtypeLocaleUtils {
         return keyboardLayoutSet;
     }
 
+    /**
+     * Get the display name to use for a subtype's keyboard layout.
+     * @param subtype the subtype to get the keyboard layout name for.
+     * @param context the context for this application.
+     * @return The name for the keyboard layout.
+     */
     public static String getKeyboardLayoutDisplayName(final InputMethodSubtype subtype,
                                                       final Context context) {
         final String layoutName = SubtypeLocaleUtils.getKeyboardLayoutSetName(subtype);

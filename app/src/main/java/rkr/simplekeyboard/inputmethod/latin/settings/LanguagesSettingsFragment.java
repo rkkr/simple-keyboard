@@ -16,6 +16,7 @@
 
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -55,6 +56,9 @@ import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 import static rkr.simplekeyboard.inputmethod.latin.settings.SingleLanguageSettingsFragment.LOCALE_BUNDLE_KEY;
 
+/**
+ * "Languages" settings sub screen.
+ */
 public final class LanguagesSettingsFragment extends SubScreenFragment{
     private static final String TAG = LanguagesSettingsFragment.class.getSimpleName();
 
@@ -90,7 +94,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     public void onResume() {
         super.onResume();
         final Context context = getActivity();
-        setContent(context);
+        buildContent(context);
     }
 
     @Override
@@ -111,10 +115,15 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         // make the icon match the color of the text in the action bar
         TextView textView = findActionBarTitleView();
         if (textView != null) {
-            setIconColor(menu, textView.getCurrentTextColor());
+            MenuItem menuItem = menu.findItem(R.id.action_add_language);
+            setIconColor(menuItem, textView.getCurrentTextColor());
         }
     }
 
+    /**
+     * Try to look up the {@link TextView} from the activity's {@link ActionBar}.
+     * @return the {@link TextView} or null if it wasn't found.
+     */
     private TextView findActionBarTitleView() {
         ArrayList<View> views = new ArrayList<>();
         mView.getRootView().findViewsWithText(views, getActivity().getActionBar().getTitle(),
@@ -125,8 +134,12 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         return null;
     }
 
-    private void setIconColor(final Menu menu, final int color) {
-        MenuItem menuItem = menu.findItem(R.id.action_add_language);
+    /**
+     * Set a menu item's icon to specific color.
+     * @param menuItem the menu item that should change colors.
+     * @param color the color that the icon should be changed to.
+     */
+    private void setIconColor(final MenuItem menuItem, final int color) {
         if (menuItem != null) {
             Drawable drawable = menuItem.getIcon();
             if (drawable != null) {
@@ -145,6 +158,33 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Build the preferences and them to this settings screen.
+     * @param context the context for this application.
+     */
+    private void buildContent(final Context context) {
+        final PreferenceGroup group = getPreferenceScreen();
+        group.removeAll();
+        group.setTitle(R.string.select_language);
+
+        final Preference subtypeEnablerPreference = createSubtypeSettingLinkPreference(context);
+        subtypeEnablerPreference.setTitle(R.string.enable_subtypes);
+        subtypeEnablerPreference.setSummary(R.string.enable_subtypes_details);
+        group.addPreference(subtypeEnablerPreference);
+
+        final PreferenceCategory languageCategory = new PreferenceCategory(context);
+        languageCategory.setTitle(R.string.user_languages);
+        group.addPreference(languageCategory);
+
+        setUpLanguages(group, context);
+    }
+
+    /**
+     * Create the preference to open the system's subtype settings activity to enable or disable
+     * subtypes for this IME.
+     * @param context the context for this application.
+     * @return the preference that was created.
+     */
     private Preference createSubtypeSettingLinkPreference(final Context context) {
         final String imeId = mRichImm.getInputMethodIdOfThisIme();
 
@@ -162,24 +202,13 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         return subtypeEnablerPreference;
     }
 
-    private void setContent(final Context context) {
-        final PreferenceGroup group = getPreferenceScreen();
-        group.setTitle(R.string.select_language);
-        group.removeAll();
-
-        final Preference subtypeEnablerPreference = createSubtypeSettingLinkPreference(context);
-        subtypeEnablerPreference.setTitle(R.string.enable_subtypes);
-        subtypeEnablerPreference.setSummary(R.string.enable_subtypes_details);
-        group.addPreference(subtypeEnablerPreference);
-
-        final PreferenceCategory languageCategory = new PreferenceCategory(context);
-        languageCategory.setTitle(R.string.user_languages);
-        group.addPreference(languageCategory);
-
-        setLanguageInfo(group, context);
-    }
-
-    private void setLanguageInfo(final PreferenceGroup group, final Context context) {
+    /**
+     * Add a preference for each of the used languages (enabled in the system or created additional
+     * layouts that haven't been enabled in the system yet), and build the list of unused languages.
+     * @param group the preference group to add preferences to.
+     * @param context the context for this application.
+     */
+    private void setUpLanguages(final PreferenceGroup group, final Context context) {
         final InputMethodInfo imi = mRichImm.getInputMethodInfoOfThisIme();
         final HashSet<InputMethodSubtype> enabledSubtypes =
                 new HashSet<>(mRichImm.getMyEnabledInputMethodSubtypeList(true));
@@ -194,10 +223,20 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                 getUsedLocales(enabledSubtypes, prefSubtypes, comparator);
         final TreeSet<Locale> unusedLocales = getUnusedLocales(imi, usedLocales, comparator);
 
-        createLanguagePreferences(usedLocales, prefSubtypes, enabledSubtypes, group, context);
+        buildLanguagePreferences(usedLocales, prefSubtypes, enabledSubtypes, group, context);
         setAdditionalLocaleEntries(unusedLocales);
     }
 
+    /**
+     * Get all of the languages that are use by the user. This is defined as the locale for any
+     * default subtype that has been enabled in the system or any additional subtype that has been
+     * selected (extra keyboard layout checked in the language specific setting screen), regardless
+     * of whether it has been enabled in the system.
+     * @param subtypes the list of subtypes for this IME that have been enabled in the system.
+     * @param prefSubtypes the list of additional subtypes that have been selected.
+     * @param comparator the comparator to sort the languages.
+     * @return a tree set of locales for the used languages sorted using the specified comparator.
+     */
     private TreeSet<Locale> getUsedLocales(final HashSet<InputMethodSubtype> subtypes,
                                            final HashSet<InputMethodSubtype> prefSubtypes,
                                            final Comparator<Locale> comparator) {
@@ -224,6 +263,14 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         return locales;
     }
 
+    /**
+     * Get the list of languages supported by this IME that aren't included in
+     * {@link #getUsedLocales}.
+     * @param imi input method info for this IME.
+     * @param usedLocales the used locales.
+     * @param comparator the comparator to sort the languages.
+     * @return a tree set of locales for the unused languages sorted using the specified comparator.
+     */
     private TreeSet<Locale> getUnusedLocales(final InputMethodInfo imi,
                                              final TreeSet<Locale> usedLocales,
                                              final Comparator<Locale> comparator) {
@@ -242,10 +289,20 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         return locales;
     }
 
-    private void createLanguagePreferences(final TreeSet<Locale> locales,
-                                           final HashSet<InputMethodSubtype> prefSubtypes,
-                                           final HashSet<InputMethodSubtype> enabledSubtypes,
-                                           final PreferenceGroup group, final Context context) {
+    /**
+     * Create a language preference for each of the specified locales in the preference group. These
+     * preferences will be added to the group in the order of the locales that are passed in.
+     * @param locales the locales to add preferences for.
+     * @param prefSubtypes the selected additional subtypes used to check if something needs
+     *                     enabling.
+     * @param enabledSubtypes the subtypes enabled in the system.
+     * @param group the preference group to add preferences to.
+     * @param context the context for this application.
+     */
+    private void buildLanguagePreferences(final TreeSet<Locale> locales,
+                                          final HashSet<InputMethodSubtype> prefSubtypes,
+                                          final HashSet<InputMethodSubtype> enabledSubtypes,
+                                          final PreferenceGroup group, final Context context) {
         for (final Locale locale : locales) {
             final String localeString = LocaleUtils.getLocaleString(locale);
             final SingleLanguagePreference pref =
@@ -257,6 +314,14 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         }
     }
 
+    /**
+     * Check if any additional subtypes for a locale have been selected but not enabled in the
+     * system.
+     * @param locale the locale to check.
+     * @param prefSubtypes the selected additional subtypes.
+     * @param enabledSubtypes the enabled subtypes for this IME.
+     * @return whether any selected additional subtypes for the locale still need to be enabled.
+     */
     private boolean subtypesNeedEnabling(final String locale,
                                          final HashSet<InputMethodSubtype> prefSubtypes,
                                          final HashSet<InputMethodSubtype> enabledSubtypes) {
@@ -271,6 +336,10 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         return false;
     }
 
+    /**
+     * Set the list of unused languages that can be added.
+     * @param locales the unused locales that are supported in this IME.
+     */
     private void setAdditionalLocaleEntries(final TreeSet<Locale> locales) {
         mEntries = new CharSequence[locales.size()];
         mEntryValues = new String[locales.size()];
@@ -284,6 +353,9 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         }
     }
 
+    /**
+     * Show the popup to add a new language.
+     */
     private void showLanguagePopup() {
         mAlertDialog = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.add_language)
@@ -302,6 +374,10 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         mAlertDialog.show();
     }
 
+    /**
+     * Open a language specific settings screen.
+     * @param locale the locale for the setting screen to open.
+     */
     private void openSingleLanguageSettings(String locale) {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -314,9 +390,17 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         transaction.commit();
     }
 
+    /**
+     * Comparator for {@link Locale} to order them alphabetically, but keeping the current language
+     * first.
+     */
     private static class LocaleComparator implements Comparator<Locale> {
         private final Locale mCurrentLocale;
 
+        /**
+         * Create a new LocaleComparator.
+         * @param currentLocale the language and country to sort first.
+         */
         public LocaleComparator(final Locale currentLocale) {
             mCurrentLocale = currentLocale;
         }
@@ -354,10 +438,19 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         }
     }
 
+    /**
+     * Preference to link to a language specific settings screen.
+     */
     private static class SingleLanguagePreference extends Preference {
         private final String mLocale;
         private Bundle mExtras;
 
+        /**
+         * Create a new preference for a language.
+         * @param context the context for this application.
+         * @param localeString a string specification of a locale, in a format of "ll_cc_variant",
+         *                     where "ll" is a language code, "cc" is a country code.
+         */
         public SingleLanguagePreference(final Context context, final String localeString) {
             super(context);
             mLocale = localeString;

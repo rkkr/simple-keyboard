@@ -33,7 +33,9 @@ public final class IntentUtils {
         final CharSequence title = context.getString(R.string.language_selection_title);
         final Intent intent =
                 new Intent(android.provider.Settings.ACTION_INPUT_METHOD_SUBTYPE_SETTINGS);
-        intent.putExtra(android.provider.Settings.EXTRA_INPUT_METHOD_ID, imeId);
+        if (!TextUtils.isEmpty(imeId)) {
+            intent.putExtra(android.provider.Settings.EXTRA_INPUT_METHOD_ID, imeId);
+        }
         if (!TextUtils.isEmpty(title)) {
             intent.putExtra(Intent.EXTRA_TITLE, title);
         }

@@ -44,6 +44,9 @@ import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
+/**
+ * Settings sub screen for a specific language.
+ */
 public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     private static final String TAG = SingleLanguageSettingsFragment.class.getSimpleName();
 
@@ -92,7 +95,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         final Bundle args = getArguments();
         if (args != null) {
             final String locale = getArguments().getString(LOCALE_BUNDLE_KEY);
-            setContent(locale, context);
+            buildContent(locale, context);
         }
 
         super.onActivityCreated(savedInstanceState);
@@ -119,15 +122,27 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         setAdditionalSubtypes();
     }
 
+    /**
+     * Get all of the additional subtypes that have been added.
+     * @return the additional subtypes from the user preference.
+     */
     private HashSet<InputMethodSubtype> loadPrefSubtypes() {
         return new HashSet<>(Arrays.asList(mRichImm.getAdditionalSubtypes()));
     }
 
-
+    /**
+     * Get all of the enabled subtypes of this IME.
+     * @return the enabled subtypes.
+     */
     private HashSet<InputMethodSubtype> loadEnabledSubtypes() {
         return new HashSet<>(mRichImm.getMyEnabledInputMethodSubtypeList(true));
     }
 
+    /**
+     * Get the default subtypes for a locale.
+     * @param locale the locale for the subtypes to include.
+     * @return the default subtypes for the specified locale.
+     */
     private List<InputMethodSubtype> loadDefaultSubtypes(final String locale) {
 
         List<InputMethodSubtype> defaultSubtypes = mRichImm.getDefaultSubtypesOfThisIme();
@@ -143,7 +158,15 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         return localeSubtypes;
     }
 
-    private void setContent(final String locale, final Context context) {
+    /**
+     * Build the preferences and them to this settings screen.
+     * @param locale the locale string of the locale to display content for.
+     * @param context the context for this application.
+     */
+    private void buildContent(final String locale, final Context context) {
+        if (locale == null) {
+            return;
+        }
         final PreferenceGroup group = getPreferenceScreen();
         final String title = SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(locale);
         group.setTitle(title);
@@ -153,15 +176,17 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         mainCategory.setTitle(title);
         group.addPreference(mainCategory);
 
-        addSubtypePreferences(locale, context);
+        buildSubtypePreferences(locale, group, context);
     }
 
-    private void addSubtypePreferences(final String locale, final Context context) {
-        if (locale == null) {
-            return;
-        }
-        final PreferenceGroup group = getPreferenceScreen();
-
+    /**
+     * Build the subtype preferences for a locale and them to the settings screen.
+     * @param locale the locale string of the locale to add subtypes for.
+     * @param group the preference group to add preferences to.
+     * @param context the context for this application.
+     */
+    private void buildSubtypePreferences(final String locale, final PreferenceGroup group,
+                                         final Context context) {
         final List<InputMethodSubtype> localeDefaultSubtypes = loadDefaultSubtypes(locale);
         final HashSet<String> localeDefaultLayoutSets = new HashSet<>();
         boolean ascii = false;
@@ -170,7 +195,10 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
             if (subtype.isAsciiCapable()) {
                 ascii = true;
             }
-            createSubtypePreference(subtype, true, false, group, context);
+
+            final SubtypePreference pref = createSubtypePreference(subtype, true, false, context);
+            group.addPreference(pref);
+            mSubtypePrefs.add(pref);
         }
 
         if (ascii) {
@@ -184,56 +212,79 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
 
                 InputMethodSubtype genericSubtype =
                         AdditionalSubtypeUtils.createAdditionalSubtype(locale, layout);
-                createSubtypePreference(genericSubtype, false, true, group, context);
+                final SubtypePreference pref =
+                        createSubtypePreference(genericSubtype, false, true, context);
+                group.addPreference(pref);
+                mSubtypePrefs.add(pref);
             }
         }
     }
 
-    private void createSubtypePreference(final InputMethodSubtype subtype, final boolean isChecked,
-                                         final boolean isEnabled, final PreferenceGroup group,
-                                         final Context context) {
+    /**
+     * Create a preference for a keyboard layout subtype.
+     * @param subtype the subtype that the preference enables.
+     * @param isChecked whether the preference should start as checked (subtype enabled).
+     * @param isEnabled whether the preference is clickable. This should only be true for custom
+     *                  subtypes.
+     * @param context the context for this application.
+     * @return the preference that was created.
+     */
+    private SubtypePreference createSubtypePreference(final InputMethodSubtype subtype,
+                                                      final boolean isChecked,
+                                                      final boolean isEnabled,
+                                                      final Context context) {
         final SubtypePreference pref = new SubtypePreference(context, subtype);
         pref.setTitle(SubtypeLocaleUtils.getKeyboardLayoutDisplayName(subtype, context));
         pref.setChecked(isChecked);
         pref.setEnabled(isEnabled);
-        group.addPreference(pref);
 
-        mSubtypePrefs.add(pref);
+        if (isEnabled) {
+            pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    updateEnablePrompt();
 
-        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                updateEnablePrompt();
+                    final SubtypePreference pref = (SubtypePreference) preference;
+                    if (pref.isChecked()) {
+                        mPrefAdditionalSubtypes.add(pref.getSubtype());
+                    } else {
+                        mPrefAdditionalSubtypes.remove(pref.getSubtype());
+                    }
+                    final InputMethodSubtype[] subtypes =
+                            mPrefAdditionalSubtypes.toArray(new InputMethodSubtype[0]);
+                    final String prefSubtypes = AdditionalSubtypeUtils.createPrefSubtypes(subtypes);
+                    if (DEBUG_CUSTOM_INPUT_STYLES) {
+                        Log.i(TAG, "Save custom input styles: " + prefSubtypes);
+                    }
+                    Settings.writePrefAdditionalSubtypes(mPrefs, prefSubtypes);
+                    // The subtypes will be actually set in the input method manager later in
+                    // onPause so that if a user unchecks an enabled subtype and then checks it
+                    // again before leaving the activity, the user isn't forced to go re-enable it,
+                    // since nothing really changed
 
-                final SubtypePreference pref = (SubtypePreference)preference;
-                if (pref.isChecked()) {
-                    mPrefAdditionalSubtypes.add(pref.getSubtype());
-                } else {
-                    mPrefAdditionalSubtypes.remove(pref.getSubtype());
+                    return true;
                 }
-                final InputMethodSubtype[] subtypes =
-                        mPrefAdditionalSubtypes.toArray(new InputMethodSubtype[0]);
-                final String prefSubtypes = AdditionalSubtypeUtils.createPrefSubtypes(subtypes);
-                if (DEBUG_CUSTOM_INPUT_STYLES) {
-                    Log.i(TAG, "Save custom input styles: " + prefSubtypes);
-                }
-                Settings.writePrefAdditionalSubtypes(mPrefs, prefSubtypes);
-                // The subtypes will be actually set in the input method manager later in onPause
-                // so that if a user unchecks an enabled subtype and then checks it again before
-                // leaving the activity, the user isn't forced to go re-enable it, since nothing
-                // really changed
+            });
+        }
 
-                return true;
-            }
-        });
+        return pref;
     }
 
+    /**
+     * Check if any subtypes need to be enabled in the system, and if so, show the button to go to
+     * the system setting to enable it.
+     */
     private void updateEnablePrompt() {
         final boolean needsEnabling = subtypeNeedsEnabling();
         Button button = getActivity().findViewById(R.id.input_style_enable_prompt);
         button.setVisibility(needsEnabling ? View.VISIBLE : View.GONE);
     }
 
+    /**
+     * Check if any additional subtypes have been enabled internally but still need to be enabled in
+     * the system or if no subtypes have been enabled in the system (including default subtypes).
+     * @return whether any subtype needs to be enabled.
+     */
     private boolean subtypeNeedsEnabling() {
         boolean hasDefaultSubtypesEnabled = false;
         boolean hasAdditionalSubtypesEnabled = false;
@@ -260,6 +311,11 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         return !hasAdditionalSubtypesEnabled && !hasDefaultSubtypesEnabled;
     }
 
+    /**
+     * Update the additional subtypes preference if any changes have been made to enable or disable
+     * alternate keyboard layouts for the language on the current settings screen. This also creates
+     * or removes the additional subtype in the system.
+     */
     private void setAdditionalSubtypes() {
         boolean hasChanges = false;
         for (final SubtypePreference pref : mSubtypePrefs) {
@@ -290,14 +346,26 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         mRichImm.setAdditionalInputMethodSubtypes(subtypes);
     }
 
+    /**
+     * Preference for a keyboard layout.
+     */
     private static class SubtypePreference extends SwitchPreference {
         final InputMethodSubtype mSubtype;
 
+        /**
+         * Create a subtype preference.
+         * @param context the context for this application.
+         * @param subtype the subtype to create the preference for.
+         */
         public SubtypePreference(final Context context, final InputMethodSubtype subtype) {
             super(context);
             mSubtype = subtype;
         }
 
+        /**
+         * Get the subtype that this preference represents.
+         * @return the subtype.
+         */
         public InputMethodSubtype getSubtype() {
             return mSubtype;
         }
