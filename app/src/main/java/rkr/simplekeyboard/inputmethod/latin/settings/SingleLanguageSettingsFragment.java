@@ -168,7 +168,8 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
             return;
         }
         final PreferenceGroup group = getPreferenceScreen();
-        final String title = SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(locale);
+        final String title = context.getString(R.string.generic_language_layouts,
+                SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(locale));
         group.setTitle(title);
         group.removeAll();
 

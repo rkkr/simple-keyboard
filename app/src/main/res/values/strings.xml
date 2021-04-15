@@ -140,4 +140,5 @@
     <string name="enable_subtypes_details">Keyboard languages and layouts need to be enabled in the system before they can be used</string>
     <string name="user_languages">Your keyboard languages</string>
     <string name="add_language">Add language</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> keyboard layouts</string>
 </resources>
