@@ -505,8 +505,10 @@ public final class RichInputConnection {
         if (start < 0 || end < 0) {
             return false;
         }
-        mExpectedSelStart = start;
-        mExpectedSelEnd = end;
+        // TODO: A race condition may happen if application hasn't responded to selection change
+        // and next change action is sent before the onChange event is called.
+        //mExpectedSelStart = start;
+        //mExpectedSelEnd = end;
         if (isConnected()) {
             final boolean isIcValid = mIC.setSelection(start, end);
             if (!isIcValid) {
