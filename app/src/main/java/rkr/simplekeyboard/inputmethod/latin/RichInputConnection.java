@@ -59,6 +59,7 @@ public final class RichInputConnection {
     private static final long SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS = 200;
 
     private static final int OPERATION_GET_TEXT_BEFORE_CURSOR = 0;
+    private static final int OPERATION_GET_TEXT_AFTER_CURSOR = 1;
     private static final int OPERATION_RELOAD_TEXT_CACHE = 3;
     private static final String[] OPERATION_NAMES = new String[] {
             "GET_TEXT_BEFORE_CURSOR",
@@ -372,6 +373,13 @@ public final class RichInputConnection {
                 n, flags);
     }
 
+    public CharSequence getTextAfterCursor(final int n, final int flags) {
+        return getTextAfterCursorAndDetectLaggyConnection(
+                OPERATION_GET_TEXT_AFTER_CURSOR,
+                SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS,
+                n, flags);
+    }
+
     private CharSequence getTextBeforeCursorAndDetectLaggyConnection(
             final int operation, final long timeout, final int n, final int flags) {
         mIC = mParent.getCurrentInputConnection();
@@ -380,6 +388,18 @@ public final class RichInputConnection {
         }
         final long startTime = SystemClock.uptimeMillis();
         final CharSequence result = mIC.getTextBeforeCursor(n, flags);
+        detectLaggyConnection(operation, timeout, startTime);
+        return result;
+    }
+
+    private CharSequence getTextAfterCursorAndDetectLaggyConnection(
+            final int operation, final long timeout, final int n, final int flags) {
+        mIC = mParent.getCurrentInputConnection();
+        if (!isConnected()) {
+            return null;
+        }
+        final long startTime = SystemClock.uptimeMillis();
+        final CharSequence result = mIC.getTextAfterCursor(n, flags);
         detectLaggyConnection(operation, timeout, startTime);
         return result;
     }
@@ -499,23 +519,33 @@ public final class RichInputConnection {
      * valid when setting the selection or when retrieving the text cache at that point, or
      * invalid arguments were passed.
      */
-    public boolean setSelection(final int start, final int end) {
+    public void setSelection(int start, int end) {
         if (DEBUG_BATCH_NESTING) checkBatchEdit();
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
-        if (start < 0 || end < 0) {
-            return false;
+        if (start < 0 || end < 0 ) {
+            return;
         }
-        // TODO: A race condition may happen if application hasn't responded to selection change
-        // and next change action is sent before the onChange event is called.
-        //mExpectedSelStart = start;
-        //mExpectedSelEnd = end;
+        if (end > mExpectedSelEnd) {
+            // Moving selection right, check for available text to not get out of range
+            final CharSequence textAfter = getTextAfterCursor(end - mExpectedSelEnd, 0);
+            end = Math.min(mExpectedSelEnd + textAfter.length(), end);
+        }
+        if (start > mExpectedSelStart) {
+            start = Math.min(start, end);
+        }
+        if (mExpectedSelStart == start && mExpectedSelEnd == end) {
+            return;
+        }
+
+        mExpectedSelStart = start;
+        mExpectedSelEnd = end;
         if (isConnected()) {
             final boolean isIcValid = mIC.setSelection(start, end);
             if (!isIcValid) {
-                return false;
+                return;
             }
         }
-        return reloadTextCache();
+        reloadTextCache();
     }
 
     public int getExpectedSelectionStart() {
