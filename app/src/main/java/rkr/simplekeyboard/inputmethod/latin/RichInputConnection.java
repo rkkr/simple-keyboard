@@ -522,7 +522,7 @@ public final class RichInputConnection {
     public void setSelection(int start, int end) {
         if (DEBUG_BATCH_NESTING) checkBatchEdit();
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
-        if (start < 0 || end < 0 ) {
+        if (start < 0 || end < 0) {
             return;
         }
         if (end > mExpectedSelEnd) {
