@@ -45,6 +45,8 @@ public final class AppearanceSettingsFragment extends SubScreenFragment {
     @Override
     public void onResume() {
         super.onResume();
+        CustomInputStyleSettingsFragment.updateCustomInputStylesSummary(
+                findPreference(Settings.PREF_CUSTOM_INPUT_STYLES));
         refreshSettings();
     }
 
