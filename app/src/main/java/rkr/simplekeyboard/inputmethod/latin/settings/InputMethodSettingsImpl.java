@@ -17,6 +17,7 @@
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.content.Context;
+import android.content.Intent;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.text.TextUtils;
@@ -27,6 +28,7 @@ import android.view.inputmethod.InputMethodSubtype;
 import java.util.List;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
 
 /* package private */ class InputMethodSettingsImpl {
     private Preference mSubtypeEnablerPreference;
@@ -49,7 +51,16 @@ import rkr.simplekeyboard.inputmethod.R;
         }
         mSubtypeEnablerPreference = new Preference(context);
         mSubtypeEnablerPreference.setTitle(R.string.select_language);
-        mSubtypeEnablerPreference.setFragment(LanguagesSettingsFragment.class.getName());
+        mSubtypeEnablerPreference
+                .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        final Intent intent =
+                                IntentUtils.getInputLanguageSelectionIntent(mImi.getId(), context);
+                        context.startActivity(intent);
+                        return true;
+                    }
+                });
         prefScreen.addPreference(mSubtypeEnablerPreference);
         updateEnabledSubtypeList();
         return true;

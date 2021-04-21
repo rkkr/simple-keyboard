@@ -21,7 +21,6 @@ import android.content.res.Resources;
 import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -43,10 +42,6 @@ public final class SubtypeLocaleUtils {
     private static final String RESOURCE_PACKAGE_NAME = R.class.getPackage().getName();
 
     public static final String QWERTY = "qwerty";
-    public static final String BULGARIAN_BDS = "bulgarian_bds";
-    public static final String HINDI_COMPACT = "hindi_compact";
-    public static final String NEPALI_TRADITIONAL = "nepali_traditional";
-    public static final String SERBIAN_QWERTZ = "serbian_qwertz";
     public static final int UNKNOWN_KEYBOARD_LAYOUT = R.string.subtype_generic;
 
     private static volatile boolean sInitialized = false;
@@ -303,41 +298,5 @@ public final class SubtypeLocaleUtils {
             return QWERTY;
         }
         return keyboardLayoutSet;
-    }
-
-    /**
-     * Get the display name to use for a subtype's keyboard layout.
-     * @param subtype the subtype to get the keyboard layout name for.
-     * @param context the context for this application.
-     * @return The name for the keyboard layout.
-     */
-    public static String getKeyboardLayoutDisplayName(final InputMethodSubtype subtype,
-                                                      final Context context) {
-        final String layoutName = SubtypeLocaleUtils.getKeyboardLayoutSetName(subtype);
-        final String[] predefinedLayouts = context.getResources().getStringArray(
-                R.array.predefined_layouts);
-        final String[] predefinedLayoutDisplayNames = context.getResources().getStringArray(
-                R.array.predefined_layout_display_names);
-        final int predefinedLayoutIndex = Arrays.asList(predefinedLayouts).indexOf(layoutName);
-        if (predefinedLayoutIndex >= 0
-                && predefinedLayoutIndex < predefinedLayoutDisplayNames.length) {
-            return predefinedLayoutDisplayNames[predefinedLayoutIndex];
-        }
-
-        // Languages with multiple layouts should have simplified names that don't include the
-        // language name to avoid redundancy when listing them together under the language.
-        switch (layoutName) {
-            case BULGARIAN_BDS:
-                return "BDS";//TODO: tokenize
-            case HINDI_COMPACT:
-                return "Compact";//TODO: tokenize
-            case NEPALI_TRADITIONAL:
-                return "Traditional";//TODO: tokenize
-            case SERBIAN_QWERTZ:
-                return SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype);
-        }
-
-        final Locale locale = LocaleUtils.constructLocaleFromString(subtype.getLocale());
-        return locale.getDisplayLanguage(sResources.getConfiguration().locale);
     }
 }

@@ -91,7 +91,6 @@
     <!-- Description for "LANGUAGE_NAME" (Traditional) keyboard subtype [CHAR LIMIT=25]
          (Traditional) can be an abbreviation to fit in the CHAR LIMIT. -->
     <string name="subtype_generic_traditional"><xliff:g id="LANGUAGE_NAME" example="Nepali">%s</xliff:g> (Traditional)</string>
-    <string name="subtype_traditional">Traditional</string>
     <!-- Description for "LANGUAGE_NAME" (Compact) keyboard subtype [CHAR LIMIT=25]
          (Compact) can be an abbreviation to fit in the CHAR LIMIT. -->
     <string name="subtype_generic_compact"><xliff:g id="LANGUAGE_NAME" example="Hindi">%s</xliff:g> (Compact)</string>
@@ -150,10 +149,4 @@
     <string name="delete_swipe">Delete swipe</string>
     <string name="matching_navbar_color">Use matching navigation bar color</string>
     <string name="setup_message">Simple Keyboard is not enabled. Click OK to open Languages &amp; Input settings. You will need to select Simple Keyboard in your current keyboard to use it.</string>
-    <string name="subtypes_need_enabling">Some layouts still need to be enabled</string>
-    <string name="enable_subtypes">Enable languages and layouts</string>
-    <string name="enable_subtypes_details">Keyboard languages and layouts need to be enabled in the system before they can be used</string>
-    <string name="user_languages">Your keyboard languages</string>
-    <string name="add_language">Add language</string>
-    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> keyboard layouts</string>
 </resources>
