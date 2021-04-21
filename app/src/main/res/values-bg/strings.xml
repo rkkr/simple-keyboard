@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Звук при натиск. на клавиш"</string>
     <string name="popup_on_keypress">"Изск. прозорец при натискане на клавиш"</string>
     <string name="settings_screen_preferences">"Предпочитания"</string>
+    <string name="settings_screen_appearance">"Облик и оформления"</string>
     <string name="settings_screen_theme">"Тема"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> милисек"</string>
     <string name="settings_system_default">"Станд. за системата"</string>

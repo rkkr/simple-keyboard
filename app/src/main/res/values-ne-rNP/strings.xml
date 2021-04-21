@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"कुञ्जी थिच्दा आवाज"</string>
     <string name="popup_on_keypress">"कुञ्जी दबाउँदा पपअप"</string>
     <string name="settings_screen_preferences">"प्राथमिकताहरू"</string>
+    <string name="settings_screen_appearance">"आवरण तथा लेआउटहरू"</string>
     <string name="settings_screen_theme">"विषयवस्तु"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> मिलिसेकेन्ड"</string>
     <string name="settings_system_default">"पूर्वनिर्धारित प्रणाली"</string>

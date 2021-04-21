@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Звук клавиш"</string>
     <string name="popup_on_keypress">"Увеличивать при нажатии"</string>
     <string name="settings_screen_preferences">"Настройки"</string>
+    <string name="settings_screen_appearance">"Вид и раскладки"</string>
     <string name="settings_screen_theme">"Тема"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
     <string name="settings_system_default">"По умолчанию"</string>

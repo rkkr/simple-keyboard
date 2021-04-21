@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Звук на притискање копче"</string>
     <string name="popup_on_keypress">"Појавен прозорец на притискање копче"</string>
     <string name="settings_screen_preferences">"Претпочитани поставки"</string>
+    <string name="settings_screen_appearance">"Изглед и распоред"</string>
     <string name="settings_screen_theme">"Тема"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Стандардно за системот"</string>

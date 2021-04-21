@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Tugma bosilganda ovoz"</string>
     <string name="popup_on_keypress">"Tugma bosilganda qalqib chiqish"</string>
     <string name="settings_screen_preferences">"Sozlamalar"</string>
+    <string name="settings_screen_appearance">"Ko‘rinish va sxema"</string>
     <string name="settings_screen_theme">"Mavzu"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Tizim standarti"</string>

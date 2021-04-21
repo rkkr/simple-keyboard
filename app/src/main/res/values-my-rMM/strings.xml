@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"ခလုတ်နှိပ်လျှင် အသံမြည်"</string>
     <string name="popup_on_keypress">"ကီးနှိပ်လိုက်သည်နှင့် ပေါ်လာရန်"</string>
     <string name="settings_screen_preferences">"ရွေးချယ်စရာများ"</string>
+    <string name="settings_screen_appearance">"ပုံပန်းသွင်ပြင် &amp; အပြင်အဆင်များ"</string>
     <string name="settings_screen_theme">"အပြင်အဆင်"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"စနစ်ပုံသေ"</string>

@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Lyd ved tastetrykk"</string>
     <string name="popup_on_keypress">"Forgrunnsvindu ved tastetrykk"</string>
     <string name="settings_screen_preferences">"Innstillinger"</string>
+    <string name="settings_screen_appearance">"Utseende og utforming"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Systemstandard"</string>

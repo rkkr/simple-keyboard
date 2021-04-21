@@ -34,8 +34,9 @@
     <string name="settings_screen_preferences">Preferences</string>
     <!-- Settings screen title for key press preferences [CHAR LIMIT=33]-->
     <string name="settings_screen_key_press">Key press</string>
-    <!-- Settings screen title for appearance preferences [CHAR LIMIT=33] -->
-    <string name="settings_screen_appearance">Appearance</string>
+    <!-- Settings screen title for accounts and privacy preferences [CHAR LIMIT=33]-->
+    <!-- Settings screen title for appearance & layouts preferences [CHAR LIMIT=33] -->
+    <string name="settings_screen_appearance">Appearance &amp; Layouts</string>
     <!-- Settings screen title for keyboard theme settings [CHAR LIMIT=33] -->
     <string name="settings_screen_theme">Theme</string>
 

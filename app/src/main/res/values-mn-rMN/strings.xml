@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Товч дарахад дуу гаргах"</string>
     <string name="popup_on_keypress">"Товч дарахад попап гарна"</string>
     <string name="settings_screen_preferences">"Тохируулга"</string>
+    <string name="settings_screen_appearance">"Харагдах байдал &amp; Зураглал"</string>
     <string name="settings_screen_theme">"Загвар"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>мс"</string>
     <string name="settings_system_default">"Системийн үндсэн утга"</string>

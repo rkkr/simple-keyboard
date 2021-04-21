@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"ხმა კლავიშზე დაჭერისას"</string>
     <string name="popup_on_keypress">"გადიდება ღილაკზე დაჭერისას"</string>
     <string name="settings_screen_preferences">"პარამეტრები"</string>
+    <string name="settings_screen_appearance">"იერსახე &amp; განლაგებები"</string>
     <string name="settings_screen_theme">"თემა"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>მწმ"</string>
     <string name="settings_system_default">"სისტემის ნაგულისხმევი"</string>

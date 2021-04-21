@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Toa sauti unapobofya kitufe"</string>
     <string name="popup_on_keypress">"Ibuka kitufe kinapobonyezwa"</string>
     <string name="settings_screen_preferences">"Mapendeleo"</string>
+    <string name="settings_screen_appearance">"Mwonekano na Mipangilio"</string>
     <string name="settings_screen_theme">"Mandhari"</string>
     <string name="abbreviation_unit_milliseconds">"Milisekunde <xliff:g id="MILLISECONDS">%s</xliff:g>"</string>
     <string name="settings_system_default">"Chaguo-msingi la mfumo"</string>

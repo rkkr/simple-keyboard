@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Klank met sleuteldruk"</string>
     <string name="popup_on_keypress">"Opspring met sleuteldruk"</string>
     <string name="settings_screen_preferences">"Voorkeure"</string>
+    <string name="settings_screen_appearance">"Voorkoms en uitlegte"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms."</string>
     <string name="settings_system_default">"Stelsel se verstek"</string>

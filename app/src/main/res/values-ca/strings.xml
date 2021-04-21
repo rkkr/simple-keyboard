@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"So en prémer tecles"</string>
     <string name="popup_on_keypress">"Amplia en prémer tecles"</string>
     <string name="settings_screen_preferences">"Preferències"</string>
+    <string name="settings_screen_appearance">"Aparença i disseny"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Predeterminat"</string>

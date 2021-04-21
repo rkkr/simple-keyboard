@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Пернені басу кезіндегі дыбыс"</string>
     <string name="popup_on_keypress">"Басылған пернені үлкейтіп көрсету"</string>
     <string name="settings_screen_preferences">"Қалауларыңыз"</string>
+    <string name="settings_screen_appearance">"Сыртқы түр және орналасулар"</string>
     <string name="settings_screen_theme">"Тақырып"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>мс"</string>
     <string name="settings_system_default">"Жүйе әдепкісі"</string>

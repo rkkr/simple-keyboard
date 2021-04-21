@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"صدا با فشار کلید"</string>
     <string name="popup_on_keypress">"بازشدن با فشار کلید"</string>
     <string name="settings_screen_preferences">"تنظیمات برگزیده"</string>
+    <string name="settings_screen_appearance">"شکل ظاهری و چیدمان"</string>
     <string name="settings_screen_theme">"طرح‌زمینه"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> میلی‌ثانیه"</string>
     <string name="settings_system_default">"پیش‌فرض سیستم"</string>

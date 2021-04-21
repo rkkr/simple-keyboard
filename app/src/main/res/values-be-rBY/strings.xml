@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Гук пры націску"</string>
     <string name="popup_on_keypress">"Па націску на клавішы ўсплывае акно"</string>
     <string name="settings_screen_preferences">"Параметры"</string>
+    <string name="settings_screen_appearance">"Знешні выгляд і раскладкі"</string>
     <string name="settings_screen_theme">"Тэма"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
     <string name="settings_system_default">"Стандартныя сістэмныя"</string>

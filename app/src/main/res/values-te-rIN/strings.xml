@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"కీని నొక్కినప్పుడు ధ్వని"</string>
     <string name="popup_on_keypress">"కీని నొక్కినప్పుడు పాప్‌అప్ చూపు"</string>
     <string name="settings_screen_preferences">"ప్రాధాన్యతలు"</string>
+    <string name="settings_screen_appearance">"కనిపించే తీరు &amp; లేఅవుట్‌లు"</string>
     <string name="settings_screen_theme">"థీమ్"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>మిసె"</string>
     <string name="settings_system_default">"సిస్టమ్ డిఫాల్ట్"</string>

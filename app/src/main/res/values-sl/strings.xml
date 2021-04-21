@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Zvok ob pritisku tipke"</string>
     <string name="popup_on_keypress">"Povečaj črko ob pritisku"</string>
     <string name="settings_screen_preferences">"Nastavitve"</string>
+    <string name="settings_screen_appearance">"Videz in postavitve"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Privzeto v sistemu"</string>

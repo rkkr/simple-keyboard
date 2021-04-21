@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"કીપ્રેસ પર ધ્વનિ"</string>
     <string name="popup_on_keypress">"કીપ્રેસ પર પોપઅપ"</string>
     <string name="settings_screen_preferences">"પસંદગી"</string>
+    <string name="settings_screen_appearance">"દેખાવ અને લેઆઉટ્સ"</string>
     <string name="settings_screen_theme">"થીમ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"સિસ્ટમ ડિફોલ્ટ"</string>

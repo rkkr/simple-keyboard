@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Sunet la apăsarea tastei"</string>
     <string name="popup_on_keypress">"Pop-up la apăsarea tastei"</string>
     <string name="settings_screen_preferences">"Preferințe"</string>
+    <string name="settings_screen_appearance">"Aspect"</string>
     <string name="settings_screen_theme">"Temă"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> msec."</string>
     <string name="settings_system_default">"Valoare prestabilită"</string>

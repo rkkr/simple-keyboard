@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Geluid bij toetsaanslag"</string>
     <string name="popup_on_keypress">"Pop-up bij toetsaanslag"</string>
     <string name="settings_screen_preferences">"Voorkeuren"</string>
+    <string name="settings_screen_appearance">"Uiterlijk en lay-out"</string>
     <string name="settings_screen_theme">"Thema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Systeemstandaard"</string>

@@ -24,6 +24,7 @@
     <string name="sound_on_keypress">"Zvuk pri stlačení klávesu"</string>
     <string name="popup_on_keypress">"Detail znaku pri stlačení"</string>
     <string name="settings_screen_preferences">"Predvoľby"</string>
+    <string name="settings_screen_appearance">"Vzhľad a rozloženie"</string>
     <string name="settings_screen_theme">"Motív"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Predvolené"</string>
