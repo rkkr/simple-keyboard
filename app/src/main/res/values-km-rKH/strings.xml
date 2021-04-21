@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"លេច​ឡើង​នៅ​​ពេល​ចុច​គ្រាប់​ចុច"</string>
     <string name="settings_screen_preferences">"ចំណូលចិត្ត"</string>
     <string name="settings_screen_appearance">"រូបរាង &amp;amp ប្លង់"</string>
+    <string name="settings_screen_advanced">"កម្រិត​ខ្ពស់"</string>
     <string name="settings_screen_theme">"រូបរាង"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> មិល្លី​វិនាទី"</string>
     <string name="settings_system_default">"លំនាំ​ដើម​​​ប្រព័ន្ធ"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"សើប (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (អក្សរ​ពេញ)"</string>
-    <string name="subtype_traditional">"អក្សរ​ពេញ"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (បង្រួម)"</string>
-    <string name="subtype_compact">"បង្រួម"</string>
+    <string name="custom_input_styles_title">"រចនាប័ទ្ម​បញ្ចូល​ផ្ទាល់ខ្លួន"</string>
+    <string name="add_style">"បន្ថែម​រចនាប័ទ្ម"</string>
+    <string name="add">"បន្ថែម"</string>
+    <string name="remove">"លុប​ចេញ"</string>
+    <string name="save">"រក្សាទុក"</string>
+    <string name="subtype_locale">"ភាសា"</string>
+    <string name="keyboard_layout_set">"ប្លង់"</string>
+    <string name="custom_input_style_note_message">"ចាំបាច់​ត្រូវ​បើក​រចនាប័ទ្ម​បញ្ចូល​ផ្ទាល់​ខ្លួន​របស់​អ្នក មុន​ពេល​អ្នក​ចាប់ផ្ដើម​ប្រើ​វា។ តើ​អ្នក​ចង់​បើក​វា​ឥឡូវ​នេះ​ឬ?"</string>
     <string name="enable">"បើក"</string>
     <string name="not_now">"មិនមែន​ឥឡូវ"</string>
     <string name="custom_input_style_already_exists">"មាន​រចនាប័ទ្ម​បញ្ចូល​ដូច​គ្នា​ដូច​ហើយ៖ <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

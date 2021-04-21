@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"Nagyobb billentyű gombnyomásra"</string>
     <string name="settings_screen_preferences">"Beállítások"</string>
     <string name="settings_screen_appearance">"Megjelenés és elrendezés"</string>
+    <string name="settings_screen_advanced">"Speciális"</string>
     <string name="settings_screen_theme">"Téma"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Alapértelmezett"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (hindi-angol, <xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Szerb (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (hagyományos)"</string>
-    <string name="subtype_traditional">"hagyományos"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompakt)"</string>
-    <string name="subtype_compact">"kompakt"</string>
+    <string name="custom_input_styles_title">"Egyedi bevitelstílusok"</string>
+    <string name="add_style">"Új stílus"</string>
+    <string name="add">"Hozzáadás"</string>
+    <string name="remove">"Eltávolítás"</string>
+    <string name="save">"Mentés"</string>
+    <string name="subtype_locale">"Nyelv"</string>
+    <string name="keyboard_layout_set">"Elrendezés"</string>
+    <string name="custom_input_style_note_message">"Az egyéni stílust először engedélyezni kell. Engedélyezi most?"</string>
     <string name="enable">"Engedélyezés"</string>
     <string name="not_now">"Most nem"</string>
     <string name="custom_input_style_already_exists">"Ugyanez a bemenetstílus már létezik: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"Pop op ved tastetryk"</string>
     <string name="settings_screen_preferences">"Præferencer"</string>
     <string name="settings_screen_appearance">"Udseende og layouts"</string>
+    <string name="settings_screen_advanced">"Avanceret"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Systemstandard"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Serbisk (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditionelt)"</string>
-    <string name="subtype_traditional">"traditionelt"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompakt)"</string>
-    <string name="subtype_compact">"kompakt"</string>
+    <string name="custom_input_styles_title">"Tilpasset inputtypografi"</string>
+    <string name="add_style">"Tilføj typografi"</string>
+    <string name="add">"Tilføj"</string>
+    <string name="remove">"Fjern"</string>
+    <string name="save">"Gem"</string>
+    <string name="subtype_locale">"Sprog"</string>
+    <string name="keyboard_layout_set">"Layout"</string>
+    <string name="custom_input_style_note_message">"Din tilpassede indtastningsmetode skal være aktiveret, før du begynder at bruge den. Vil du gøre det nu?"</string>
     <string name="enable">"Aktivér"</string>
     <string name="not_now">"Ikke nu"</string>
     <string name="custom_input_style_already_exists">"Denne inputstil findes allerede: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

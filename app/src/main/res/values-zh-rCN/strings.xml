@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"按键时弹出显示字符"</string>
     <string name="settings_screen_preferences">"偏好设置"</string>
     <string name="settings_screen_appearance">"外观和布局"</string>
+    <string name="settings_screen_advanced">"高级"</string>
     <string name="settings_screen_theme">"主题背景"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>毫秒"</string>
     <string name="settings_system_default">"系统默认值"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"印地英语（<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>）"</string>
     <string name="subtype_with_layout_sr_ZZ">"塞尔维亚语（<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>布局）"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>（传统）"</string>
-    <string name="subtype_traditional">"传统"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>（紧凑型）"</string>
-    <string name="subtype_compact">"紧凑型"</string>
+    <string name="custom_input_styles_title">"自定义输入样式"</string>
+    <string name="add_style">"添加样式"</string>
+    <string name="add">"添加"</string>
+    <string name="remove">"删除"</string>
+    <string name="save">"保存"</string>
+    <string name="subtype_locale">"语言"</string>
+    <string name="keyboard_layout_set">"布局"</string>
+    <string name="custom_input_style_note_message">"您需要先启用自定义输入样式，然后才能开始使用。要立即启用该样式吗？"</string>
     <string name="enable">"启用"</string>
     <string name="not_now">"以后再说"</string>
     <string name="custom_input_style_already_exists">"已经存在相同的输入样式：<xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

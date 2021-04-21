@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"Powiększ przy naciśnięciu"</string>
     <string name="settings_screen_preferences">"Ustawienia"</string>
     <string name="settings_screen_appearance">"Wygląd i układy"</string>
+    <string name="settings_screen_advanced">"Zaawansowane"</string>
     <string name="settings_screen_theme">"Motyw"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Ustawienie domyślne"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"serbski (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradycyjny)"</string>
-    <string name="subtype_traditional">"tradycyjny"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktowa)"</string>
-    <string name="subtype_compact">"kompaktowa"</string>
+    <string name="custom_input_styles_title">"Niestandardowe style wprowadzania"</string>
+    <string name="add_style">"Dodaj styl"</string>
+    <string name="add">"Dodaj"</string>
+    <string name="remove">"Usuń"</string>
+    <string name="save">"Zapisz"</string>
+    <string name="subtype_locale">"Język"</string>
+    <string name="keyboard_layout_set">"Układ"</string>
+    <string name="custom_input_style_note_message">"Niestandardowy styl wprowadzania należy włączyć przed użyciem. Zrobić to teraz?"</string>
     <string name="enable">"Włącz"</string>
     <string name="not_now">"Nie teraz"</string>
     <string name="custom_input_style_already_exists">"Taki styl wprowadzania już istnieje: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

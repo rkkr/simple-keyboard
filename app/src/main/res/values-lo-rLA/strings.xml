@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"ໂຕອັກສອນເວລາພິມ"</string>
     <string name="settings_screen_preferences">"​​ການ​ຕັ້ງ​ຄ່າ"</string>
     <string name="settings_screen_appearance">"​ລັກ​ສະ​ນະ &amp; ໂຄງ​ຮ່າງ"</string>
+    <string name="settings_screen_advanced">"​ຂັ້ນ​ສູງ"</string>
     <string name="settings_screen_theme">"ຮູບແບບສີສັນ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"ຄ່າເລີ່ມຕົ້ນຂອງລະບົບ"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"ຮິງ​ລິສ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"ເຊີ​ບຽນ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ດັ້ງ​ເດີມ)"</string>
-    <string name="subtype_traditional">"ດັ້ງ​ເດີມ"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ກະ​ທັດ​ຮັດ)"</string>
-    <string name="subtype_compact">"ກະ​ທັດ​ຮັດ"</string>
+    <string name="custom_input_styles_title">"ຮູບແບບການປ້ອນຂໍ້ມູນສ່ວນຕົວ"</string>
+    <string name="add_style">"ເພີ່ມຮູບແບບ"</string>
+    <string name="add">"ເພີ່ມ"</string>
+    <string name="remove">"ລຶບອອກ"</string>
+    <string name="save">"ບັນທຶກ"</string>
+    <string name="subtype_locale">"ພາສາ"</string>
+    <string name="keyboard_layout_set">"ຮູບແບບ"</string>
+    <string name="custom_input_style_note_message">"ຮູບແບບການປ້ອນຂໍ້ມູນແບບສ່ວນຕົວຂອງທ່ານ ຕ້ອງຖືກເປີດນຳໃຊ້ຢູ່ກ່ອນທີ່ທ່ານຈະສາມາດໃຊ້ມັນໄດ້. ທ່ານຕ້ອງການທີ່ຈະເປີດໃຊ້ມັນດຽວນີ້ບໍ່?"</string>
     <string name="enable">"ເປີດນຳໃຊ້"</string>
     <string name="not_now">"ບໍ່ແມ່ນຕອນນີ້"</string>
     <string name="custom_input_style_already_exists">"ຮູບແບບການປ້ອນຂໍ້ມູນທີ່ຄືກັນມີຢູ່ແລ້ວ: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"ቁልፍ ጫን ላይ ብቅ ባይ"</string>
     <string name="settings_screen_preferences">"ምርጫዎች"</string>
     <string name="settings_screen_appearance">"መልክ እና አቀማመጦች"</string>
+    <string name="settings_screen_advanced">"የላቀ"</string>
     <string name="settings_screen_theme">"ገፅታ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ሚሊሰከንድ"</string>
     <string name="settings_system_default">"የስርዓት ነባሪ"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"ሂንግሊሽ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"ሰርቢያኛ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ተለምዷዊ)"</string>
-    <string name="subtype_traditional">"ተለምዷዊ"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (እስግ)"</string>
-    <string name="subtype_compact">"እስግ"</string>
+    <string name="custom_input_styles_title">"የተበጁ የግቤት ስታይሎች"</string>
+    <string name="add_style">"ስታይል አክል"</string>
+    <string name="add">"አክል"</string>
+    <string name="remove">"አስወግድ"</string>
+    <string name="save">"አስቀምጥ"</string>
+    <string name="subtype_locale">"ቋንቋ"</string>
+    <string name="keyboard_layout_set">"አቀማመጥ"</string>
+    <string name="custom_input_style_note_message">"የተበጀው የእርስዎን ግብዓት ቅጥ ከመጠቀምዎ በፊት መንቃት አለበት። አሁን ማንቃት ይፈልጋሉ?"</string>
     <string name="enable">"አንቃ"</string>
     <string name="not_now">"አሁን አልፈልግም"</string>
     <string name="custom_input_style_already_exists">"ተመሳሳዩ የግብዓት ቅጥ አስቀድሞ አለ፦ <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

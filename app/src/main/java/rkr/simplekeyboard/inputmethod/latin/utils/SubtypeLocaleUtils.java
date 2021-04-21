@@ -328,11 +328,11 @@ public final class SubtypeLocaleUtils {
         // language name to avoid redundancy when listing them together under the language.
         switch (layoutName) {
             case BULGARIAN_BDS:
-                return context.getResources().getString(R.string.subtype_bds);
+                return "BDS";//TODO: tokenize
             case HINDI_COMPACT:
-                return context.getResources().getString(R.string.subtype_compact);
+                return "Compact";//TODO: tokenize
             case NEPALI_TRADITIONAL:
-                return context.getResources().getString(R.string.subtype_traditional);
+                return "Traditional";//TODO: tokenize
             case SERBIAN_QWERTZ:
                 return SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype);
         }

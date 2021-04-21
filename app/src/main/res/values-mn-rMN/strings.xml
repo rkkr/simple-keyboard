@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"Товч дарахад попап гарна"</string>
     <string name="settings_screen_preferences">"Тохируулга"</string>
     <string name="settings_screen_appearance">"Харагдах байдал &amp; Зураглал"</string>
+    <string name="settings_screen_advanced">"Дэлгэрэнгүй"</string>
     <string name="settings_screen_theme">"Загвар"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>мс"</string>
     <string name="settings_system_default">"Системийн үндсэн утга"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"Хинглиш (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Серьби хэл (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (уламжлалт)"</string>
-    <string name="subtype_traditional">"уламжлалт"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Компакт)"</string>
-    <string name="subtype_compact">"Компакт"</string>
+    <string name="custom_input_styles_title">"Өөрийн оруулах загвар"</string>
+    <string name="add_style">"Загвар нэмэх"</string>
+    <string name="add">"Нэмэх"</string>
+    <string name="remove">"Устгах"</string>
+    <string name="save">"Хадгалах"</string>
+    <string name="subtype_locale">"Хэл"</string>
+    <string name="keyboard_layout_set">"Байршил"</string>
+    <string name="custom_input_style_note_message">"Та өөрийн оруулах загварыг ашиглахаас өмнө идэвхжүүлэх шаардлагатай. Одоо идэвхжүүлэх үү?"</string>
     <string name="enable">"Идэвхжүүлэх"</string>
     <string name="not_now">"Одоо биш"</string>
     <string name="custom_input_style_already_exists">"Ижилхэн оруулах загвар байна: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

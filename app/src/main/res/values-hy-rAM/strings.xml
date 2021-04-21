@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"Ելնող պատուհան՝ ստեղնի հպման դեպքում"</string>
     <string name="settings_screen_preferences">"Նախընտրանքներ"</string>
     <string name="settings_screen_appearance">"Արտաքին տեսք և դասավորություն"</string>
+    <string name="settings_screen_advanced">"Հավելյալ"</string>
     <string name="settings_screen_theme">"Թեմա"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>մվ"</string>
     <string name="settings_system_default">"Համակարգի լռելյայնները"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"Հինգլիշ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Սերբերեն (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ավանդական)"</string>
-    <string name="subtype_traditional">"ավանդական"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (սեղմ)"</string>
-    <string name="subtype_compact">"սեղմ"</string>
+    <string name="custom_input_styles_title">"Մուտքագրման հատուկ ոճեր"</string>
+    <string name="add_style">"Ավելացնել ոճ"</string>
+    <string name="add">"Ավելացնել"</string>
+    <string name="remove">"Հեռացնել"</string>
+    <string name="save">"Պահել"</string>
+    <string name="subtype_locale">"Lեզու"</string>
+    <string name="keyboard_layout_set">"Դասավորություն"</string>
+    <string name="custom_input_style_note_message">"Մուտքագրման ձեր հատուկ ոճը պետք է միացված լինի նախքան դուք կսկսեք օգտագործել այն: Ցանկանո՞ւմ եք միացնել այն հիմա:"</string>
     <string name="enable">"Միացնել"</string>
     <string name="not_now">"Ոչ հիմա"</string>
     <string name="custom_input_style_already_exists">"Մուտքագրման այսպիսի ոճ արդեն գոյություն ունի՝ <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

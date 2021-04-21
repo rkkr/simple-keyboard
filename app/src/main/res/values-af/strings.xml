@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"Opspring met sleuteldruk"</string>
     <string name="settings_screen_preferences">"Voorkeure"</string>
     <string name="settings_screen_appearance">"Voorkoms en uitlegte"</string>
+    <string name="settings_screen_advanced">"Gevorderd"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms."</string>
     <string name="settings_system_default">"Stelsel se verstek"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Serwies (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Tradisioneel)"</string>
-    <string name="subtype_traditional">"Tradisioneel"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Kompak)"</string>
-    <string name="subtype_compact">"Kompak"</string>
+    <string name="custom_input_styles_title">"Gepasmaakte invoerstyle"</string>
+    <string name="add_style">"Voeg styl by"</string>
+    <string name="add">"Voeg by"</string>
+    <string name="remove">"Verwyder"</string>
+    <string name="save">"Stoor"</string>
+    <string name="subtype_locale">"Taal"</string>
+    <string name="keyboard_layout_set">"Uitleg"</string>
+    <string name="custom_input_style_note_message">"Jou gepasmaakte invoerstyl moet geaktiveer word voor gebruik. Aktiveer nou?"</string>
     <string name="enable">"Aktiveer"</string>
     <string name="not_now">"Nie nou nie"</string>
     <string name="custom_input_style_already_exists">"Dieselfde invoerstyl bestaan ​​reeds: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

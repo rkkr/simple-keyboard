@@ -110,12 +110,12 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
 
     @Override
     public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
-        inflater.inflate(R.menu.add_language, menu);
+        inflater.inflate(R.menu.add_style, menu);//TODO: rename this file
 
         // make the icon match the color of the text in the action bar
         TextView textView = findActionBarTitleView();
         if (textView != null) {
-            MenuItem menuItem = menu.findItem(R.id.action_add_language);
+            MenuItem menuItem = menu.findItem(R.id.action_add_style);
             setIconColor(menuItem, textView.getCurrentTextColor());
         }
     }
@@ -152,7 +152,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
         final int itemId = item.getItemId();
-        if (itemId == R.id.action_add_language) {
+        if (itemId == R.id.action_add_style) {
             showLanguagePopup();
         }
         return super.onOptionsItemSelected(item);
@@ -168,12 +168,12 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         group.setTitle(R.string.select_language);
 
         final Preference subtypeEnablerPreference = createSubtypeSettingLinkPreference(context);
-        subtypeEnablerPreference.setTitle(R.string.enable_subtypes);
-        subtypeEnablerPreference.setSummary(R.string.enable_subtypes_details);
+        subtypeEnablerPreference.setTitle("Enable languages and layouts");//TODO: tokenize
+        subtypeEnablerPreference.setSummary("Keyboard languages and layouts need to be enabled in the system before they can be used");//TODO: tokenize
         group.addPreference(subtypeEnablerPreference);
 
         final PreferenceCategory languageCategory = new PreferenceCategory(context);
-        languageCategory.setTitle(R.string.user_languages);
+        languageCategory.setTitle("Your keyboard languages");//TODO: tokenize
         group.addPreference(languageCategory);
 
         setUpLanguages(group, context);
@@ -308,7 +308,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
             final SingleLanguagePreference pref =
                     new SingleLanguagePreference(context, localeString);
             if (subtypesNeedEnabling(localeString, prefSubtypes, enabledSubtypes)) {
-                pref.setSummary(R.string.subtypes_need_enabling);
+                pref.setSummary("Some layouts still need to be enabled");
             }
             group.addPreference(pref);
         }
@@ -358,7 +358,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      */
     private void showLanguagePopup() {
         mAlertDialog = new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.add_language)
+                .setTitle("Choose a language")//TODO: tokenize
                 .setItems(mEntries, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

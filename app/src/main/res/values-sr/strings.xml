@@ -25,6 +25,7 @@
     <string name="popup_on_keypress">"Искачући прозор приликом притиска тастера"</string>
     <string name="settings_screen_preferences">"Подешавања"</string>
     <string name="settings_screen_appearance">"Изглед и распореди"</string>
+    <string name="settings_screen_advanced">"Напредно"</string>
     <string name="settings_screen_theme">"Тема"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Подразумевано"</string>
@@ -43,9 +44,15 @@
     <string name="subtype_with_layout_hi_ZZ">"хенглески (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"српски (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (традиционални)"</string>
-    <string name="subtype_traditional">"традиционални"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактна)"</string>
-    <string name="subtype_compact">"компактна"</string>
+    <string name="custom_input_styles_title">"Прилагођени стилови уноса"</string>
+    <string name="add_style">"Додајте стил"</string>
+    <string name="add">"Додај"</string>
+    <string name="remove">"Уклони"</string>
+    <string name="save">"Сачувај"</string>
+    <string name="subtype_locale">"Језик"</string>
+    <string name="keyboard_layout_set">"Распоред"</string>
+    <string name="custom_input_style_note_message">"Прилагођени стил уноса треба да буде омогућен да бисте почели да га користите. Желите ли да га омогућите сада?"</string>
     <string name="enable">"Омогући"</string>
     <string name="not_now">"Не сада"</string>
     <string name="custom_input_style_already_exists">"Исти стил уноса већ постоји: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
