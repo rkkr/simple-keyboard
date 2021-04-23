@@ -36,7 +36,7 @@ import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
  * - Popup on keypress
  * - Key long press delay
  */
-public class KeyPressSettingsFragment extends SubScreenFragment {
+public final class KeyPressSettingsFragment extends SubScreenFragment {
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);

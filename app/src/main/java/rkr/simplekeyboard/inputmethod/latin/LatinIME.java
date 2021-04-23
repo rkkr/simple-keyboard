@@ -1009,7 +1009,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 switch (position) {
                 case 0:
                     final Intent intent =
-                            IntentUtils.getInputLanguageSelectionIntent(imeId,LatinIME.this);
+                            IntentUtils.getInputLanguageSelectionIntent(imeId, LatinIME.this);
                     startActivity(intent);
                     break;
                 case 1:
