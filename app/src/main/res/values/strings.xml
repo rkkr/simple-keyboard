@@ -32,12 +32,11 @@
 
     <!-- Settings screen title for preferences [CHAR LIMIT=33]-->
     <string name="settings_screen_preferences">Preferences</string>
+    <!-- Settings screen title for key press preferences [CHAR LIMIT=33]-->
+    <string name="settings_screen_key_press">Key press</string>
     <!-- Settings screen title for accounts and privacy preferences [CHAR LIMIT=33]-->
     <!-- Settings screen title for appearance & layouts preferences [CHAR LIMIT=33] -->
     <string name="settings_screen_appearance">Appearance &amp; Layouts</string>
-    <!-- Settings screen title for gesture typing preferences [CHAR_LIMIT=33] -->
-    <!-- Settings screen title for advanced settings [CHAR LIMIT=33] -->
-    <string name="settings_screen_advanced">Advanced</string>
     <!-- Settings screen title for keyboard theme settings [CHAR LIMIT=33] -->
     <string name="settings_screen_theme">Theme</string>
 
@@ -95,6 +94,8 @@
     <!-- Description for "LANGUAGE_NAME" (Compact) keyboard subtype [CHAR LIMIT=25]
          (Compact) can be an abbreviation to fit in the CHAR LIMIT. -->
     <string name="subtype_generic_compact"><xliff:g id="LANGUAGE_NAME" example="Hindi">%s</xliff:g> (Compact)</string>
+    <!-- Description for Bulgarian (BDS) subtype. -->
+    <string name="subtype_bulgarian_bds"><xliff:g id="LANGUAGE_NAME" example="Bulgarian">%s</xliff:g> (BDS)</string>
 
     <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
     <string name="keyboard_theme_light_border" translatable="false">Material Light Border</string>

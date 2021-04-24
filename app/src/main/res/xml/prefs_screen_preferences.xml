@@ -23,18 +23,27 @@
         android:defaultValue="true"
         android:persistent="true" />
     <CheckBoxPreference
-        android:key="vibrate_on"
-        android:title="@string/vibrate_on_keypress"
-        android:defaultValue="@bool/config_default_vibration_enabled"
-        android:persistent="true" />
+        android:key="pref_show_number_row"
+        android:title="@string/show_number_row"
+        android:defaultValue="false" />
     <CheckBoxPreference
-        android:key="sound_on"
-        android:title="@string/sound_on_keypress"
-        android:defaultValue="@bool/config_default_sound_enabled"
-        android:persistent="true" />
+        android:key="pref_hide_special_chars"
+        android:title="@string/hide_special_chars"
+        android:defaultValue="false" />
     <CheckBoxPreference
-        android:key="popup_on"
-        android:title="@string/popup_on_keypress"
-        android:defaultValue="@bool/config_default_key_preview_popup"
-        android:persistent="true" />
+        android:key="pref_hide_language_switch_key"
+        android:title="@string/hide_language_switch_key"
+        android:defaultValue="false" />
+    <CheckBoxPreference
+        android:key="pref_enable_ime_switch"
+        android:title="@string/pref_enable_ime_switch"
+        android:defaultValue="false" />
+    <CheckBoxPreference
+        android:key="pref_space_swipe"
+        android:title="@string/space_swipe"
+        android:defaultValue="false" />
+    <CheckBoxPreference
+        android:key="pref_delete_swipe"
+        android:title="@string/delete_swipe"
+        android:defaultValue="false" />
 </PreferenceScreen>

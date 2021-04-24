@@ -20,30 +20,27 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.AudioManager;
-import android.os.Build;
 import android.os.Bundle;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet;
-import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 
 /**
- * "Advanced" settings sub screen.
+ * "Preferences" settings sub screen.
  *
- * This settings sub screen handles the following advanced preferences.
- * - Key popup dismiss delay
+ * This settings sub screen handles the following input preferences.
+ * - Vibrate on keypress
  * - Keypress vibration duration
+ * - Sound on keypress
  * - Keypress sound volume
- * - Show app icon
- * - Improve keyboard
- * - Debug settings
+ * - Popup on keypress
+ * - Key long press delay
  */
-public final class AdvancedSettingsFragment extends SubScreenFragment {
+public final class KeyPressSettingsFragment extends SubScreenFragment {
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.prefs_screen_advanced);
+        addPreferencesFromResource(R.xml.prefs_screen_key_press);
 
         final Context context = getActivity();
 
@@ -53,45 +50,13 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         AudioAndHapticFeedbackManager.init(context);
 
         if (!AudioAndHapticFeedbackManager.getInstance().hasVibrator()) {
+            removePreference(Settings.PREF_VIBRATE_ON);
             removePreference(Settings.PREF_VIBRATION_DURATION_SETTINGS);
         }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
-            removePreference(Settings.PREF_MATCHING_NAVBAR_COLOR);
-        }
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            removePreference(Settings.PREF_ENABLE_IME_SWITCH);
-        }
-        refreshEnablingsOfSettings();
 
         setupKeypressVibrationDurationSettings();
         setupKeypressSoundVolumeSettings();
         setupKeyLongpressTimeoutSettings();
-        setupKeyboardHeightSettings();
-        setupKeyboardColorSettings();
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        if (key.equals(Settings.PREF_HIDE_SPECIAL_CHARS) ||
-                key.equals(Settings.PREF_SHOW_NUMBER_ROW))
-            KeyboardLayoutSet.onKeyboardThemeChanged();
-
-        refreshEnablingsOfSettings();
-    }
-
-    private void refreshEnablingsOfSettings() {
-        final SharedPreferences prefs = getSharedPreferences();
-        final Resources res = getResources();
-        setPreferenceEnabled(Settings.PREF_VIBRATION_DURATION_SETTINGS,
-                Settings.readVibrationEnabled(prefs, res));
-        setPreferenceEnabled(Settings.PREF_KEYPRESS_SOUND_VOLUME,
-                Settings.readKeypressSoundEnabled(prefs, res));
-        setPreferenceEnabled(Settings.PREF_ENABLE_IME_SWITCH,
-                Settings.readShowLanguageSwitchKey(prefs));
-        final KeyboardTheme theme = KeyboardTheme.getKeyboardTheme(prefs);
-        final boolean isSystemTheme = theme.mThemeId != KeyboardTheme.THEME_ID_SYSTEM
-                && theme.mThemeId != KeyboardTheme.THEME_ID_SYSTEM_BORDER;
-        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR, isSystemTheme);
     }
 
     private void setupKeypressVibrationDurationSettings() {
@@ -230,84 +195,6 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
 
             @Override
             public void feedbackValue(final int value) {}
-        });
-    }
-
-    private void setupKeyboardHeightSettings() {
-        final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(
-                Settings.PREF_KEYBOARD_HEIGHT);
-        if (pref == null) {
-            return;
-        }
-        final SharedPreferences prefs = getSharedPreferences();
-        final Resources res = getResources();
-        pref.setInterface(new SeekBarDialogPreference.ValueProxy() {
-            private static final float PERCENTAGE_FLOAT = 100.0f;
-
-            private float getValueFromPercentage(final int percentage) {
-                return percentage / PERCENTAGE_FLOAT;
-            }
-
-            private int getPercentageFromValue(final float floatValue) {
-                return Math.round(floatValue * PERCENTAGE_FLOAT);
-            }
-
-            @Override
-            public void writeValue(final int value, final String key) {
-                prefs.edit().putFloat(key, getValueFromPercentage(value)).apply();
-            }
-
-            @Override
-            public void writeDefaultValue(final String key) {
-                prefs.edit().remove(key).apply();
-            }
-
-            @Override
-            public int readValue(final String key) {
-                return getPercentageFromValue(Settings.readKeyboardHeight(prefs, 1));
-            }
-
-            @Override
-            public int readDefaultValue(final String key) {
-                return getPercentageFromValue(1);
-            }
-
-            @Override
-            public String getValueText(final int value) {
-                if (value < 0) {
-                    return res.getString(R.string.settings_system_default);
-                }
-                return res.getString(R.string.abbreviation_unit_percent, value);
-            }
-
-            @Override
-            public void feedbackValue(final int value) {}
-        });
-    }
-
-    private void setupKeyboardColorSettings() {
-        final ColorDialogPreference pref = (ColorDialogPreference)findPreference(
-                Settings.PREF_KEYBOARD_COLOR);
-        if (pref == null) {
-            return;
-        }
-        final SharedPreferences prefs = getSharedPreferences();
-        final Context context = this.getActivity().getApplicationContext();
-        pref.setInterface(new ColorDialogPreference.ValueProxy() {
-            @Override
-            public void writeValue(final int value, final String key) {
-                prefs.edit().putInt(key, value).apply();
-            }
-
-            @Override
-            public int readValue(final String key) {
-                return Settings.readKeyboardColor(prefs, context);
-            }
-
-            @Override
-            public void writeDefaultValue(final String key) {
-                Settings.removeKeyboardColor(prefs);
-            }
         });
     }
 }

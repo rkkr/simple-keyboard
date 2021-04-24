@@ -18,9 +18,8 @@ package rkr.simplekeyboard.inputmethod.latin.utils;
 
 import java.util.HashSet;
 
-import rkr.simplekeyboard.inputmethod.latin.settings.AdvancedSettingsFragment;
 import rkr.simplekeyboard.inputmethod.latin.settings.AppearanceSettingsFragment;
-import rkr.simplekeyboard.inputmethod.latin.settings.CustomInputStyleSettingsFragment;
+import rkr.simplekeyboard.inputmethod.latin.settings.KeyPressSettingsFragment;
 import rkr.simplekeyboard.inputmethod.latin.settings.PreferencesSettingsFragment;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsFragment;
 import rkr.simplekeyboard.inputmethod.latin.settings.ThemeSettingsFragment;
@@ -29,10 +28,9 @@ public class FragmentUtils {
     private static final HashSet<String> sLatinImeFragments = new HashSet<>();
     static {
         sLatinImeFragments.add(PreferencesSettingsFragment.class.getName());
+        sLatinImeFragments.add(KeyPressSettingsFragment.class.getName());
         sLatinImeFragments.add(AppearanceSettingsFragment.class.getName());
         sLatinImeFragments.add(ThemeSettingsFragment.class.getName());
-        sLatinImeFragments.add(CustomInputStyleSettingsFragment.class.getName());
-        sLatinImeFragments.add(AdvancedSettingsFragment.class.getName());
         sLatinImeFragments.add(SettingsFragment.class.getName());
     }
 

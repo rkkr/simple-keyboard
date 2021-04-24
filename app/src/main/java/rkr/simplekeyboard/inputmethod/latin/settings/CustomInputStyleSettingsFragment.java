@@ -16,12 +16,15 @@
 
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -35,6 +38,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodSubtype;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -58,6 +62,7 @@ public final class CustomInputStyleSettingsFragment extends PreferenceFragment
     private SharedPreferences mPrefs;
     private CustomInputStylePreference.SubtypeLocaleAdapter mSubtypeLocaleAdapter;
     private CustomInputStylePreference.KeyboardLayoutSetAdapter mKeyboardLayoutSetAdapter;
+    private View mView;
 
     private boolean mIsAddingNewSubtype;
     private AlertDialog mSubtypeEnablerNotificationDialog;
@@ -98,19 +103,19 @@ public final class CustomInputStyleSettingsFragment extends PreferenceFragment
         mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(getActivity());
         RichInputMethodManager.init(getActivity());
         mRichImm = RichInputMethodManager.getInstance();
-        addPreferencesFromResource(R.xml.additional_subtype_settings);
+        addPreferencesFromResource(R.xml.empty_settings);
         setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
             final Bundle savedInstanceState) {
-        final View view = super.onCreateView(inflater, container, savedInstanceState);
+        mView = super.onCreateView(inflater, container, savedInstanceState);
         // For correct display in RTL locales, we need to set the layout direction of the
         // fragment's top view.
         //ViewCompat.setLayoutDirection(view, ViewCompat.LAYOUT_DIRECTION_LOCALE);
-        view.setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
-        return view;
+        mView.setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
+        return mView;
     }
 
     @Override
@@ -231,8 +236,9 @@ public final class CustomInputStyleSettingsFragment extends PreferenceFragment
 
     private AlertDialog createDialog() {
         final String imeId = mRichImm.getInputMethodIdOfThisIme();
+        final Context context = getActivity();
         final AlertDialog.Builder builder = new AlertDialog.Builder(
-                DialogUtils.getPlatformDialogThemeContext(getActivity()));
+                DialogUtils.getPlatformDialogThemeContext(context));
         builder.setTitle(R.string.custom_input_styles_title)
                 .setMessage(R.string.custom_input_style_note_message)
                 .setNegativeButton(R.string.not_now, null)
@@ -241,9 +247,7 @@ public final class CustomInputStyleSettingsFragment extends PreferenceFragment
                     public void onClick(DialogInterface dialog, int which) {
                         final Intent intent = IntentUtils.getInputLanguageSelectionIntent(
                                 imeId,
-                                Intent.FLAG_ACTIVITY_NEW_TASK
-                                | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
-                                | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                context);
                         // TODO: Add newly adding subtype to extra value of the intent as a hint
                         // for the input language selection activity.
                         // intent.putExtra("newlyAddedSubtype", subtypePref.getSubtype());
@@ -301,6 +305,42 @@ public final class CustomInputStyleSettingsFragment extends PreferenceFragment
     @Override
     public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
         inflater.inflate(R.menu.add_style, menu);
+
+        // make the icon match the color of the text in the action bar
+        TextView textView = findActionBarTitleView();
+        if (textView != null) {
+            MenuItem menuItem = menu.findItem(R.id.action_add_style);
+            setIconColor(menuItem, textView.getCurrentTextColor());
+        }
+    }
+
+    /**
+     * Try to look up the {@link TextView} from the activity's {@link ActionBar}.
+     * @return the {@link TextView} or null if it wasn't found.
+     */
+    private TextView findActionBarTitleView() {
+        ArrayList<View> views = new ArrayList<>();
+        mView.getRootView().findViewsWithText(views, getActivity().getActionBar().getTitle(),
+                View.FIND_VIEWS_WITH_TEXT);
+        if (views.size() == 1 && views.get(0) instanceof TextView) {
+            return (TextView)views.get(0);
+        }
+        return null;
+    }
+
+    /**
+     * Set a menu item's icon to specific color.
+     * @param menuItem the menu item that should change colors.
+     * @param color the color that the icon should be changed to.
+     */
+    private void setIconColor(final MenuItem menuItem, final int color) {
+        if (menuItem != null) {
+            Drawable drawable = menuItem.getIcon();
+            if (drawable != null) {
+                drawable.mutate();
+                drawable.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+            }
+        }
     }
 
     @Override

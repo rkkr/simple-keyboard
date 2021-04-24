@@ -75,9 +75,6 @@
     <string name="subtype_generic_pcqwerty">%s (PC)</string>
     <string name="subtype_generic_abc">%s (ABC)</string>
 
-    <!-- Description for Bulgarian (BDS) subtype. -->
-    <string name="subtype_bulgarian_bds">%s (BDS)</string>
-
     <!-- Compatibility map from subtypeLocale:subtypeExtraValue to keyboardLayoutSet -->
     <string-array name="locale_and_extra_value_to_keyboard_layout_set_map">
         <item>en_US</item>

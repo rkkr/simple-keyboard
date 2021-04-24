@@ -45,6 +45,7 @@
     <string name="subtype_with_layout_sr_ZZ">"Сръбска (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (традиционна клавиатура)"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактна)"</string>
+    <string name="subtype_bulgarian_bds">"<xliff:g id="LANGUAGE_NAME" example="Bulgarian">%s</xliff:g> (БДС)"</string>
     <string name="custom_input_styles_title">"Персон. стилове за въвежд."</string>
     <string name="add_style">"+ стил"</string>
     <string name="add">"Добавяне"</string>
