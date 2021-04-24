@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"કીપ્રેસ પર ધ્વનિ"</string>
     <string name="popup_on_keypress">"કીપ્રેસ પર પોપઅપ"</string>
     <string name="settings_screen_preferences">"પસંદગી"</string>
-    <string name="settings_screen_appearance">"દેખાવ અને લેઆઉટ્સ"</string>
     <string name="settings_screen_theme">"થીમ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"સિસ્ટમ ડિફોલ્ટ"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"હિંગ્લિશ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"સર્બિયન (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (પરંપરાગત)"</string>
+    <string name="subtype_traditional">"પરંપરાગત"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (કોમ્પેક્ટ)"</string>
-    <string name="custom_input_styles_title">"કસ્ટમ ઇનપુટ શૈલીઓ"</string>
-    <string name="add_style">"શૈલી ઉમેરો"</string>
-    <string name="add">"ઉમેરો"</string>
-    <string name="remove">"દૂર કરો"</string>
-    <string name="save">"સાચવો"</string>
-    <string name="subtype_locale">"ભાષા"</string>
-    <string name="keyboard_layout_set">"લેઆઉટ"</string>
-    <string name="custom_input_style_note_message">"તમારી કસ્ટમ ઇનપુટ શૈલી તમે તેનો ઉપયોગ કરવાનું શરૂ કરો તે પહેલા સક્ષમ કરવાની જરૂર છે. શું તમે તેને સક્ષમ કરવા માંગો છો?"</string>
+    <string name="subtype_compact">"કોમ્પેક્ટ"</string>
     <string name="enable">"સક્ષમ કરો"</string>
     <string name="not_now">"હમણાં નહીં"</string>
     <string name="custom_input_style_already_exists">"સમાન ઇનપુટ શૈલી પહેલાથી જ અસ્તિત્વમાં છે: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Zvuk pri pritisku tipke"</string>
     <string name="popup_on_keypress">"Iskačuči prozor pri pritisku na tipku"</string>
     <string name="settings_screen_preferences">"Karakteristike"</string>
-    <string name="settings_screen_appearance">"Izgled i rasporedi tipki"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"Sistemski zadano"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hindu engleski (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Srpski (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicionalan)"</string>
+    <string name="subtype_traditional">"tradicionalan"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktan)"</string>
-    <string name="custom_input_styles_title">"Prilagođeni stilovi unosa"</string>
-    <string name="add_style">"Dodaj stil"</string>
-    <string name="add">"Dodaj"</string>
-    <string name="remove">"Ukloni"</string>
-    <string name="save">"Sačuvaj"</string>
-    <string name="subtype_locale">"Jezik"</string>
-    <string name="keyboard_layout_set">"Raspored tipki"</string>
-    <string name="custom_input_style_note_message">"Prije nego što počnete koristiti prilagođeni stil unosa, trebate ga omogućiti. Želite li ga sada omogućiti?"</string>
+    <string name="subtype_compact">"kompaktan"</string>
     <string name="enable">"Omogući"</string>
     <string name="not_now">"Ne sada"</string>
     <string name="custom_input_style_already_exists">"Već postoji isti stil unosa: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

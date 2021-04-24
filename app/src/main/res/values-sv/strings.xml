@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Knappljud"</string>
     <string name="popup_on_keypress">"Popup vid knapptryck"</string>
     <string name="settings_screen_preferences">"Inställningar"</string>
-    <string name="settings_screen_appearance">"Utseende och layouter"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> millisek."</string>
     <string name="settings_system_default">"Standardinställning"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hindi/engelska (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Serbiska (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditionell)"</string>
+    <string name="subtype_traditional">"traditionell"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompakt)"</string>
-    <string name="custom_input_styles_title">"Anpassade indatastilar"</string>
-    <string name="add_style">"Ny stil"</string>
-    <string name="add">"Lägg till"</string>
-    <string name="remove">"Ta bort"</string>
-    <string name="save">"Spara"</string>
-    <string name="subtype_locale">"Språk"</string>
-    <string name="keyboard_layout_set">"Layout"</string>
-    <string name="custom_input_style_note_message">"Din anpassade indatatyp måste aktiveras innan du börjar använda den. Vill du aktivera den nu?"</string>
+    <string name="subtype_compact">"kompakt"</string>
     <string name="enable">"Aktivera"</string>
     <string name="not_now">"Inte nu"</string>
     <string name="custom_input_style_already_exists">"Samma indatastil finns redan: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

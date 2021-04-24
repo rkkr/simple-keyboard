@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Klikləmə səsi"</string>
     <string name="popup_on_keypress">"Klikləmədə popup"</string>
     <string name="settings_screen_preferences">"Seçimlər"</string>
-    <string name="settings_screen_appearance">"Görünüş &amp; Düzümlər"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> millisaniyə"</string>
     <string name="settings_system_default">"Sistem defoltu"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hingilis (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Serb (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Ənənəvi)"</string>
+    <string name="subtype_traditional">"Ənənəvi"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Kompakt)"</string>
-    <string name="custom_input_styles_title">"Xüsusi daxiletmə üslubları"</string>
-    <string name="add_style">"Stil əlavə et"</string>
-    <string name="add">"Əlavə et"</string>
-    <string name="remove">"Ləğv et"</string>
-    <string name="save">"Yadda saxla"</string>
-    <string name="subtype_locale">"Dil"</string>
-    <string name="keyboard_layout_set">"Tərtibat"</string>
-    <string name="custom_input_style_note_message">"Xüsusi daxiletmə üslubunuz istifadəyə başlamazdan əvvəl aktivləşdirilməlidir. Aktiv etmək istəyirsiniz?"</string>
+    <string name="subtype_compact">"Kompakt"</string>
     <string name="enable">"Aktiv et"</string>
     <string name="not_now">"İndi yox"</string>
     <string name="custom_input_style_already_exists">"Eyni daxiletmə üslubu artıq mövcuddur: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

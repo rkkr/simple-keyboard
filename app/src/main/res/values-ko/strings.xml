@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"키를 누를 때 소리 발생"</string>
     <string name="popup_on_keypress">"키를 누를 때 팝업"</string>
     <string name="settings_screen_preferences">"환경설정"</string>
-    <string name="settings_screen_appearance">"모양 및 레이아웃"</string>
     <string name="settings_screen_theme">"테마"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"시스템 기본값"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"인도 영어(<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"세르비아어(<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>(번체)"</string>
+    <string name="subtype_traditional">"번체"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>(컴팩트)"</string>
-    <string name="custom_input_styles_title">"맞춤 입력 스타일"</string>
-    <string name="add_style">"스타일 추가"</string>
-    <string name="add">"추가"</string>
-    <string name="remove">"삭제"</string>
-    <string name="save">"저장"</string>
-    <string name="subtype_locale">"언어"</string>
-    <string name="keyboard_layout_set">"레이아웃"</string>
-    <string name="custom_input_style_note_message">"맞춤 입력 스타일을 사용하려면 사용 설정해야 합니다. 지금 사용 설정하시겠습니까?"</string>
+    <string name="subtype_compact">"컴팩트"</string>
     <string name="enable">"사용"</string>
     <string name="not_now">"나중에"</string>
     <string name="custom_input_style_already_exists">"같은 입력 스타일이 다음과 같이 이미 존재합니다. <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

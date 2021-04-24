@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Bunyi pada tekanan kekunci"</string>
     <string name="popup_on_keypress">"Pop timbul pada tekanan kunci"</string>
     <string name="settings_screen_preferences">"Pilihan"</string>
-    <string name="settings_screen_appearance">"Penampilan &amp; Bentangan"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"Tetapan asal sistem"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Bahasa Serbia (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Tradisional)"</string>
+    <string name="subtype_traditional">"Tradisional"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Sarat)"</string>
-    <string name="custom_input_styles_title">"Gaya input peribadi"</string>
-    <string name="add_style">"Tambah gaya"</string>
-    <string name="add">"Tambah"</string>
-    <string name="remove">"Alih Keluar"</string>
-    <string name="save">"Simpan"</string>
-    <string name="subtype_locale">"Bahasa"</string>
-    <string name="keyboard_layout_set">"Reka letak"</string>
-    <string name="custom_input_style_note_message">"Gaya input tersuai anda perlu didayakan sebelum anda mula menggunakannya. Adakah anda ingin mendayakannya sekarang?"</string>
+    <string name="subtype_compact">"Sarat"</string>
     <string name="enable">"Dayakan"</string>
     <string name="not_now">"Bukan sekarang"</string>
     <string name="custom_input_style_already_exists">"The same input style already exists: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

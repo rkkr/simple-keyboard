@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"کلید دبانے پر آواز"</string>
     <string name="popup_on_keypress">"کلید دبانے پر پاپ اپ"</string>
     <string name="settings_screen_preferences">"ترجیحات"</string>
-    <string name="settings_screen_appearance">"ظہور اور لے آؤٹس"</string>
     <string name="settings_screen_theme">"تھیم"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ملی سیکنڈ"</string>
     <string name="settings_system_default">"سسٹم ڈیفالٹ"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"ہنگلش (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"سربیائی (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (روایتی)"</string>
+    <string name="subtype_traditional">"روایتی"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (کمپیکٹ)"</string>
-    <string name="custom_input_styles_title">"حسب ضرورت ان پٹ اسٹائلز"</string>
-    <string name="add_style">"اسٹائل شامل کریں"</string>
-    <string name="add">"شامل کریں"</string>
-    <string name="remove">"ہٹائیں"</string>
-    <string name="save">"محفوظ کریں"</string>
-    <string name="subtype_locale">"زبان"</string>
-    <string name="keyboard_layout_set">"لے آؤٹ"</string>
-    <string name="custom_input_style_note_message">"آپ کیلئے اپنا حسب ضرورت ان پٹ اسٹائل استعمال کرنے سے پہلے اسے فعال کرنا ضروری ہے۔ کیا آپ اسے ابھی فعال کرنا چاہتے ہیں؟"</string>
+    <string name="subtype_compact">"کمپیکٹ"</string>
     <string name="enable">"فعال کریں"</string>
     <string name="not_now">"ابھی نہیں"</string>
     <string name="custom_input_style_already_exists">"ایسا ہی ان پٹ اسٹائل پہلے سے موجود ہے: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Lësho tingull kur shtyp tastin"</string>
     <string name="popup_on_keypress">"Zmadhim germe kur shtyp"</string>
     <string name="settings_screen_preferences">"Preferencat"</string>
-    <string name="settings_screen_appearance">"Pamja dhe struktura"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> milisek."</string>
     <string name="settings_system_default">"Parazgjedhja e sistemit"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"hinglisht (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"serbisht (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicionale)"</string>
+    <string name="subtype_traditional">"tradicionale"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompakte)"</string>
-    <string name="custom_input_styles_title">"Stile të personalizuara hyrjeje"</string>
-    <string name="add_style">"Shto stilizimin"</string>
-    <string name="add">"Shto"</string>
-    <string name="remove">"Hiq"</string>
-    <string name="save">"Ruaj"</string>
-    <string name="subtype_locale">"Gjuha"</string>
-    <string name="keyboard_layout_set">"Struktura"</string>
-    <string name="custom_input_style_note_message">"Stili yt i hyrjes ka nevojë të aktivizohet para se të fillosh përdorimin e tij. Dëshiron ta aktivizosh tani?"</string>
+    <string name="subtype_compact">"kompakte"</string>
     <string name="enable">"Aktivizo"</string>
     <string name="not_now">"Jo tani!"</string>
     <string name="custom_input_style_already_exists">"I njëjti stil hyrjesh ekziston tashmë: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

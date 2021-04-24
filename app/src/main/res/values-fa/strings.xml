@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"صدا با فشار کلید"</string>
     <string name="popup_on_keypress">"بازشدن با فشار کلید"</string>
     <string name="settings_screen_preferences">"تنظیمات برگزیده"</string>
-    <string name="settings_screen_appearance">"شکل ظاهری و چیدمان"</string>
     <string name="settings_screen_theme">"طرح‌زمینه"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> میلی‌ثانیه"</string>
     <string name="settings_system_default">"پیش‌فرض سیستم"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"هندی انگلیسی (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"صربی (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (سنتی)"</string>
+    <string name="subtype_traditional">"سنتی"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (فشرده)"</string>
-    <string name="custom_input_styles_title">"سبک‌های ورودی سفارشی"</string>
-    <string name="add_style">"افزودن سبک"</string>
-    <string name="add">"افزودن"</string>
-    <string name="remove">"حذف"</string>
-    <string name="save">"ذخیره"</string>
-    <string name="subtype_locale">"زبان"</string>
-    <string name="keyboard_layout_set">"چیدمان"</string>
-    <string name="custom_input_style_note_message">"سبک ورودی سفارشی شما باید قبل از شروع به استفاده از آن فعال شود. می‌خواهید اکنون آن را فعال کنید؟"</string>
+    <string name="subtype_compact">"فشرده"</string>
     <string name="enable">"فعال کردن"</string>
     <string name="not_now">"اکنون نه"</string>
     <string name="custom_input_style_already_exists">"سبک ورودی مشابهی در حال حاضر وجود دارد: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

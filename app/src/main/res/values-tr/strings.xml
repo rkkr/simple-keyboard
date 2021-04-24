@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Tuşa basıldığında ses çıkar"</string>
     <string name="popup_on_keypress">"Tuşa basıldığında pop-up aç"</string>
     <string name="settings_screen_preferences">"Tercihler"</string>
-    <string name="settings_screen_appearance">"Görünüm ve Düzenler"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Sistem varsayılanı"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hingilizce (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Sırpça (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Geleneksel)"</string>
+    <string name="subtype_traditional">"Geleneksel"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Kompakt)"</string>
-    <string name="custom_input_styles_title">"Özel giriş stilleri"</string>
-    <string name="add_style">"Stil ekle"</string>
-    <string name="add">"Ekle"</string>
-    <string name="remove">"Kaldır"</string>
-    <string name="save">"Kaydet"</string>
-    <string name="subtype_locale">"Dil"</string>
-    <string name="keyboard_layout_set">"Düzen"</string>
-    <string name="custom_input_style_note_message">"Kullanmaya başlamadan önce özel giriş stilinizin etkinleştirilmesi gerekiyor. Şimdi etkinleştirmek ister misiniz?"</string>
+    <string name="subtype_compact">"Kompakt"</string>
     <string name="enable">"Etkinleştir"</string>
     <string name="not_now">"Şimdi değil"</string>
     <string name="custom_input_style_already_exists">"Aynı giriş stili zaten var: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

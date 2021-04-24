@@ -51,16 +51,7 @@ import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
         }
         mSubtypeEnablerPreference = new Preference(context);
         mSubtypeEnablerPreference.setTitle(R.string.select_language);
-        mSubtypeEnablerPreference
-                .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        final Intent intent =
-                                IntentUtils.getInputLanguageSelectionIntent(mImi.getId(), context);
-                        context.startActivity(intent);
-                        return true;
-                    }
-                });
+        mSubtypeEnablerPreference.setFragment(LanguagesSettingsFragment.class.getName());
         prefScreen.addPreference(mSubtypeEnablerPreference);
         updateEnabledSubtypeList();
         return true;

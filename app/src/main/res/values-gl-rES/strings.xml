@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"Son ao premer as teclas"</string>
     <string name="popup_on_keypress">"Ventás emerxentes ao premer as teclas"</string>
     <string name="settings_screen_preferences">"Preferencias"</string>
-    <string name="settings_screen_appearance">"Aparencia e deseños"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Predeterminado do sistema"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"Serbio (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicional)"</string>
+    <string name="subtype_traditional">"tradicional"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (compacto)"</string>
-    <string name="custom_input_styles_title">"Estilos de entrada personalizados"</string>
-    <string name="add_style">"Engadir estilo"</string>
-    <string name="add">"Engadir"</string>
-    <string name="remove">"Eliminar"</string>
-    <string name="save">"Gardar"</string>
-    <string name="subtype_locale">"Idioma"</string>
-    <string name="keyboard_layout_set">"Deseño"</string>
-    <string name="custom_input_style_note_message">"É necesario activar o estilo de entrada personalizado para poder comezar a utilizalo. Queres activalo agora?"</string>
+    <string name="subtype_compact">"compacto"</string>
     <string name="enable">"Activar"</string>
     <string name="not_now">"Agora non"</string>
     <string name="custom_input_style_already_exists">"Xa existe o mesmo estilo de entrada: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>

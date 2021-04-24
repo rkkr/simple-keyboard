@@ -24,7 +24,6 @@
     <string name="sound_on_keypress">"కీని నొక్కినప్పుడు ధ్వని"</string>
     <string name="popup_on_keypress">"కీని నొక్కినప్పుడు పాప్‌అప్ చూపు"</string>
     <string name="settings_screen_preferences">"ప్రాధాన్యతలు"</string>
-    <string name="settings_screen_appearance">"కనిపించే తీరు &amp; లేఅవుట్‌లు"</string>
     <string name="settings_screen_theme">"థీమ్"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>మిసె"</string>
     <string name="settings_system_default">"సిస్టమ్ డిఫాల్ట్"</string>
@@ -43,15 +42,9 @@
     <string name="subtype_with_layout_hi_ZZ">"హింగ్లీష్ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_with_layout_sr_ZZ">"సెర్బియన్ (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (సాంప్రదాయకం)"</string>
+    <string name="subtype_traditional">"సాంప్రదాయకం"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (కాంపాక్ట్)"</string>
-    <string name="custom_input_styles_title">"అనుకూల ఇన్‌పుట్ శైలులు"</string>
-    <string name="add_style">"శైలిని జోడించండి"</string>
-    <string name="add">"జోడించండి"</string>
-    <string name="remove">"తీసివేయి"</string>
-    <string name="save">"సేవ్ చేయి"</string>
-    <string name="subtype_locale">"భాష"</string>
-    <string name="keyboard_layout_set">"లేఅవుట్"</string>
-    <string name="custom_input_style_note_message">"మీరు మీ అనుకూల ఇన్‌పుట్ శైలిని ఉపయోగించడం ప్రారంభించడానికి ముందు దీన్ని ప్రారంభించాల్సి ఉంటుంది. మీరు ఇప్పుడు దీన్ని ప్రారంభించాలనుకుంటున్నారా?"</string>
+    <string name="subtype_compact">"కాంపాక్ట్"</string>
     <string name="enable">"ప్రారంభించండి"</string>
     <string name="not_now">"ఇప్పుడు కాదు"</string>
     <string name="custom_input_style_already_exists">"ఇదే ఇన్‌పుట్ శైలి ఇప్పటికే ఉంది: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
