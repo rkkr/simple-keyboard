@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Bật lên khi nhấn phím"</string>
     <string name="settings_screen_preferences">"Tùy chọn"</string>
     <string name="settings_screen_appearance">"Giao diện và bố cục"</string>
-    <string name="settings_screen_advanced">"Nâng cao"</string>
     <string name="settings_screen_theme">"Chủ đề"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> mili giây"</string>
     <string name="settings_system_default">"Mặc định của hệ thống"</string>

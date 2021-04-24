@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"കീയമർത്തുമ്പോൾ പോപ്പപ്പ്"</string>
     <string name="settings_screen_preferences">"മുൻഗണനകൾ"</string>
     <string name="settings_screen_appearance">"രൂപഭാവവും ലേഔട്ടുകളും"</string>
-    <string name="settings_screen_advanced">"വിപുലം"</string>
     <string name="settings_screen_theme">"തീം"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>മി.സെ"</string>
     <string name="settings_system_default">"സ്ഥിരമായ സിസ്റ്റം"</string>

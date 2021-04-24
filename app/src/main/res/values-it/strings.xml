@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Popup tasti"</string>
     <string name="settings_screen_preferences">"Preferenze"</string>
     <string name="settings_screen_appearance">"Aspetto e layout"</string>
-    <string name="settings_screen_advanced">"Avanzate"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Predefinito"</string>
@@ -64,6 +63,7 @@
     <string name="keyboard_color">Cambia colore tastiera</string>
     <string name="hide_special_chars">Nascondi caratteri speciali</string>
     <string name="hide_language_switch_key">Nascondi tasto per cambiare lingua</string>
+    <string name="pref_enable_ime_switch">"Passa a un'altra tastiera"</string>
     <string name="show_number_row">Mostra riga numeri separata</string>
     <string name="space_swipe">Muovi cursore scorrendo sulla barra spaziatrice</string>
     <string name="delete_swipe">Cancella scorrendo sul tasto cancella</string>

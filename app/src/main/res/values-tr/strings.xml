@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Tuşa basıldığında pop-up aç"</string>
     <string name="settings_screen_preferences">"Tercihler"</string>
     <string name="settings_screen_appearance">"Görünüm ve Düzenler"</string>
-    <string name="settings_screen_advanced">"Gelişmiş"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Sistem varsayılanı"</string>

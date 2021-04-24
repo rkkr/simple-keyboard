@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Zmadhim germe kur shtyp"</string>
     <string name="settings_screen_preferences">"Preferencat"</string>
     <string name="settings_screen_appearance">"Pamja dhe struktura"</string>
-    <string name="settings_screen_advanced">"I përparuar"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> milisek."</string>
     <string name="settings_system_default">"Parazgjedhja e sistemit"</string>
@@ -64,7 +63,10 @@
     <string name="keyboard_color">Vendos ngjyrë tastiere me porosi</string>
     <string name="hide_special_chars">Fshih karakteret speciale</string>
     <string name="hide_language_switch_key">Fshi çelësin për ndryshimin e gjuhës</string>
+    <string name="pref_enable_ime_switch">Përdor tastierat e tjera</string>
     <string name="show_number_row">Shfaq numrat në rresht të ndarë</string>
     <string name="space_swipe">Lëvizjet e kursorit në tabin e hapsirës</string>
     <string name="delete_swipe">Fshij rrëshqitjet</string>
+    <string name="matching_navbar_color">Përdor ngjyrën e shiritit të vozitjes</string>
+    <string name="setup_message">"Tastiera e Thjesht nuk është aktivizuar. Shtyp OK për të hapur Opsionet e Gjuhëve $amp; hyrëse. Do të duhet të zgjedhësh Tastierën e Thjesht si tastierën tënde të rradhës për t'a përdorur atë."</string>
 </resources>

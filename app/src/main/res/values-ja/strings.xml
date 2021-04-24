@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"キー押下時ポップアップ"</string>
     <string name="settings_screen_preferences">"設定"</string>
     <string name="settings_screen_appearance">"外観とレイアウト"</string>
-    <string name="settings_screen_advanced">"詳細設定"</string>
     <string name="settings_screen_theme">"テーマ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ミリ秒"</string>
     <string name="settings_system_default">"システムのデフォルト"</string>

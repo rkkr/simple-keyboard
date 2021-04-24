@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"ป๊อปอัปเมื่อกดแป้น"</string>
     <string name="settings_screen_preferences">"ค่ากำหนด"</string>
     <string name="settings_screen_appearance">"ลักษณะที่ปรากฏและการจัดวาง"</string>
-    <string name="settings_screen_advanced">"ขั้นสูง"</string>
     <string name="settings_screen_theme">"ธีม"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> มิลลิวิ"</string>
     <string name="settings_system_default">"ค่าเริ่มต้นของระบบ"</string>

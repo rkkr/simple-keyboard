@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"ໂຕອັກສອນເວລາພິມ"</string>
     <string name="settings_screen_preferences">"​​ການ​ຕັ້ງ​ຄ່າ"</string>
     <string name="settings_screen_appearance">"​ລັກ​ສະ​ນະ &amp; ໂຄງ​ຮ່າງ"</string>
-    <string name="settings_screen_advanced">"​ຂັ້ນ​ສູງ"</string>
     <string name="settings_screen_theme">"ຮູບແບບສີສັນ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"ຄ່າເລີ່ມຕົ້ນຂອງລະບົບ"</string>

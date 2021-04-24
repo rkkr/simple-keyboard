@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Iššoka paspaudus klavišą"</string>
     <string name="settings_screen_preferences">"Nuostatos"</string>
     <string name="settings_screen_appearance">"Išvaizda ir išdėstymai"</string>
-    <string name="settings_screen_advanced">"Išplėstiniai"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Sist. numat. nustat."</string>

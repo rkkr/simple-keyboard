@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Mag-popup sa keypress"</string>
     <string name="settings_screen_preferences">"Mga Kagustuhan"</string>
     <string name="settings_screen_appearance">"Hitsura at Mga Layout"</string>
-    <string name="settings_screen_advanced">"Advanced"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"Default ng system"</string>

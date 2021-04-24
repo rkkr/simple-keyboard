@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"按键时弹出显示字符"</string>
     <string name="settings_screen_preferences">"偏好设置"</string>
     <string name="settings_screen_appearance">"外观和布局"</string>
-    <string name="settings_screen_advanced">"高级"</string>
     <string name="settings_screen_theme">"主题背景"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>毫秒"</string>
     <string name="settings_system_default">"系统默认值"</string>

@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"ਕੁੰਜੀ ਦਬਾਉਣ ’ਤੇ ਪੌਪਅੱਪ ਕਰੋ"</string>
     <string name="settings_screen_preferences">"ਤਰਜੀਹਾਂ"</string>
     <string name="settings_screen_appearance">"ਪ੍ਰਗਟਾਅ &amp; ਲੇਆਉਟਸ"</string>
-    <string name="settings_screen_advanced">"ਉੱਨਤ"</string>
     <string name="settings_screen_theme">"ਵਿਸ਼ਾ"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"ਸਿਸਟਮ ਡਿਫੌਲਟ"</string>

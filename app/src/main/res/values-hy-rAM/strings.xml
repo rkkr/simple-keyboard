@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Ելնող պատուհան՝ ստեղնի հպման դեպքում"</string>
     <string name="settings_screen_preferences">"Նախընտրանքներ"</string>
     <string name="settings_screen_appearance">"Արտաքին տեսք և դասավորություն"</string>
-    <string name="settings_screen_advanced">"Հավելյալ"</string>
     <string name="settings_screen_theme">"Թեմա"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>մվ"</string>
     <string name="settings_system_default">"Համակարգի լռելյայնները"</string>

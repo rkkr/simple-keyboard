@@ -25,7 +25,6 @@
     <string name="popup_on_keypress">"Збільшення натиснутих"</string>
     <string name="settings_screen_preferences">"Параметри"</string>
     <string name="settings_screen_appearance">"Вигляд і розкладка"</string>
-    <string name="settings_screen_advanced">"Додатково"</string>
     <string name="settings_screen_theme">"Тема"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
     <string name="settings_system_default">"За умовчанням"</string>
@@ -64,6 +63,7 @@
     <string name="keyboard_color">Змінити колір клавіатури</string>
     <string name="hide_special_chars">Приховати спеціальні символи</string>
     <string name="hide_language_switch_key">Приховати клавішу зміни мови</string>
+    <string name="pref_enable_ime_switch">Перемикатись на інші клавіатури</string>
     <string name="show_number_row">Показувати рядок цифр</string>
     <string name="space_swipe">Переміщати курсор ковзанням по пробілу</string>
     <string name="delete_swipe">Видаляти ковзанням</string>
