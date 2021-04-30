@@ -29,6 +29,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodSubtype;
 import android.widget.Button;
 
@@ -59,6 +60,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
 
     private final List<SubtypePreference> mSubtypePrefs = new ArrayList<>();
     private HashSet<InputMethodSubtype> mEnabledSubtypes;
+    private HashSet<InputMethodSubtype> mCreatedSubtypes;
     private HashSet<InputMethodSubtype> mPrefAdditionalSubtypes;
 
     @Override
@@ -113,6 +115,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
             pref.setChecked(mPrefAdditionalSubtypes.contains(pref.getSubtype()));
         }
         mEnabledSubtypes = loadEnabledSubtypes();
+        mCreatedSubtypes = loadCreatedSubtypes();
         updateEnablePrompt();
     }
 
@@ -137,6 +140,15 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     private HashSet<InputMethodSubtype> loadEnabledSubtypes() {
         return new HashSet<>(mRichImm.getMyEnabledInputMethodSubtypeList(true));
     }
+    private HashSet<InputMethodSubtype> loadCreatedSubtypes() {
+        HashSet<InputMethodSubtype> subtypes = new HashSet<>();
+        final InputMethodInfo imi = mRichImm.getInputMethodInfoOfThisIme();
+        final int count = imi.getSubtypeCount();
+        for (int i = 0; i < count; i++) {
+            subtypes.add(imi.getSubtypeAt(i));
+        }
+        return subtypes;
+    }
 
     /**
      * Get the default subtypes for a locale.
@@ -147,6 +159,39 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
 
         List<InputMethodSubtype> defaultSubtypes = mRichImm.getDefaultSubtypesOfThisIme();
 
+        List<InputMethodSubtype> defaultSubtypes2 = new ArrayList<>();
+        for (final String supportedLocale : RichInputMethodManager.sSupportedLocales) {
+            List<InputMethodSubtype> subtypes = mRichImm.getSubtypes(supportedLocale);
+            defaultSubtypes2.add(subtypes.get(0));
+            if (supportedLocale.equals("bg") || supportedLocale.equals("hi") || supportedLocale.equals("ne_NP")) {
+                defaultSubtypes2.add(subtypes.get(1));
+            }
+        }
+//        compareSubtypes(defaultSubtypes, defaultSubtypes2);
+
+        List<InputMethodSubtype> allXmlSubtypes = new ArrayList<>();
+        final String[] predefinedKeyboardLayoutSets = getActivity().getResources().getStringArray(
+                R.array.predefined_layouts);
+        for (final InputMethodSubtype subtype : defaultSubtypes) {
+            allXmlSubtypes.add(subtype);
+            if (subtype.isAsciiCapable()) {
+                for (final String predefinedLayout : predefinedKeyboardLayoutSets) {
+                    if (SubtypeLocaleUtils.getKeyboardLayoutSetName(subtype).equals(predefinedLayout)) {
+                        continue;
+                    }
+                    allXmlSubtypes.add(AdditionalSubtypeUtils.createAdditionalSubtype(subtype.getLocale(), predefinedLayout));
+                }
+            }
+        }
+
+        List<InputMethodSubtype> allJavaSubtypes = new ArrayList<>();
+        for (final String supportedLocale : RichInputMethodManager.sSupportedLocales) {
+            List<InputMethodSubtype> subtypes = mRichImm.getSubtypes(supportedLocale);
+            allJavaSubtypes.addAll(subtypes);
+        }
+
+//        compareSubtypes(allXmlSubtypes, allJavaSubtypes);
+
         List<InputMethodSubtype> localeSubtypes = new ArrayList<>();
         for (final InputMethodSubtype subtype : defaultSubtypes) {
             if (!locale.equals(subtype.getLocale())) {
@@ -156,6 +201,54 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         }
 
         return localeSubtypes;
+    }
+
+    private void compareSubtypes(List<InputMethodSubtype> xmlSubtypes, List<InputMethodSubtype> javaSubtypes) {
+        final String sizeMessage = "defaultSubtypesXml: " + xmlSubtypes.size() + ", defaultSubtypesJava: " + javaSubtypes.size();
+        if (xmlSubtypes.size() == javaSubtypes.size()) {
+            Log.w(TAG, sizeMessage);
+        } else {
+            Log.e(TAG, sizeMessage);
+        }
+        for (int i = 0; i < Math.min(xmlSubtypes.size(), javaSubtypes.size()); i++) {
+            final InputMethodSubtype subtypeXml = xmlSubtypes.get(i);
+            final InputMethodSubtype subtypeJava = javaSubtypes.get(i);
+
+            final String nameXml = SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtypeXml);
+            final String nameJava = SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtypeJava);
+            final boolean labelSame = nameXml.equals(nameJava);
+            final String labelMessage = "label: equal=" + labelSame
+                    + (labelSame ? " " + nameXml : " xml=" + nameXml + ", java=" + nameJava);
+
+
+            final boolean localeSame = subtypeXml.getLocale().equals(subtypeJava.getLocale());
+            final String localeMessage = "locale: equal=" + localeSame
+                    + (localeSame ? " " + subtypeXml.getLocale() : " xml=" + subtypeXml.getLocale() + ", java=" + subtypeJava.getLocale());
+
+
+            final String layoutXml = SubtypeLocaleUtils.getKeyboardLayoutSetName(subtypeXml);
+            final String layoutJava = SubtypeLocaleUtils.getKeyboardLayoutSetName(subtypeJava);
+            final boolean layoutSame = layoutXml.equals(layoutJava);
+            final String layoutMessage = "layout: equal=" + layoutSame
+                    + (layoutSame ? " " + layoutXml : " xml=" + layoutXml + ", java=" + layoutJava);
+
+            final boolean extraValueSame = subtypeXml.getExtraValue().equals(subtypeJava.getExtraValue());
+            final String extraValueMessage = "extraValue: equal=" + extraValueSame
+                    + (extraValueSame ? " " + subtypeXml.getExtraValue() : " xml=" + subtypeXml.getExtraValue() + ", java=" + subtypeJava.getExtraValue());
+
+
+            if (labelSame && localeSame && layoutSame /*&& extraValueSame*/) {
+                Log.w(TAG, labelMessage);
+                Log.w(TAG, localeMessage);
+                Log.w(TAG, layoutMessage);
+                Log.w(TAG, extraValueMessage);
+            } else {
+                Log.e(TAG, labelMessage);
+                Log.e(TAG, localeMessage);
+                Log.e(TAG, layoutMessage);
+                Log.e(TAG, extraValueMessage);
+            }
+        }
     }
 
     /**
@@ -188,36 +281,42 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
      */
     private void buildSubtypePreferences(final String locale, final PreferenceGroup group,
                                          final Context context) {
-        final List<InputMethodSubtype> localeDefaultSubtypes = loadDefaultSubtypes(locale);
-        final HashSet<String> localeDefaultLayoutSets = new HashSet<>();
-        boolean ascii = false;
-        for (final InputMethodSubtype subtype : localeDefaultSubtypes) {
-            localeDefaultLayoutSets.add(SubtypeLocaleUtils.getKeyboardLayoutSetName(subtype));
-            if (subtype.isAsciiCapable()) {
-                ascii = true;
-            }
-
-            final SubtypePreference pref = createSubtypePreference(subtype, true, false, context);
+//        final List<InputMethodSubtype> localeDefaultSubtypes = loadDefaultSubtypes(locale);
+//        final HashSet<String> localeDefaultLayoutSets = new HashSet<>();
+//        boolean ascii = false;
+//        for (final InputMethodSubtype subtype : localeDefaultSubtypes) {
+//            localeDefaultLayoutSets.add(SubtypeLocaleUtils.getKeyboardLayoutSetName(subtype));
+//            if (subtype.isAsciiCapable()) {
+//                ascii = true;
+//            }
+//
+//            final SubtypePreference pref = createSubtypePreference(subtype, true, false, context);
+//            group.addPreference(pref);
+//            mSubtypePrefs.add(pref);
+//        }
+//
+//        if (ascii) {
+//            final String[] predefinedKeyboardLayoutSet = context.getResources().getStringArray(
+//                    R.array.predefined_layouts);
+//
+//            for (final String layout : predefinedKeyboardLayoutSet) {
+//                if (localeDefaultLayoutSets.contains(layout)) {
+//                    continue;
+//                }
+//
+//                InputMethodSubtype genericSubtype =
+//                        AdditionalSubtypeUtils.createAdditionalSubtype(locale, layout);
+//                final SubtypePreference pref =
+//                        createSubtypePreference(genericSubtype, false, true, context);
+//                group.addPreference(pref);
+//                mSubtypePrefs.add(pref);
+//            }
+//        }
+        final List<InputMethodSubtype> subtypes = mRichImm.getSubtypes(locale);
+        for (final InputMethodSubtype subtype : subtypes) {
+            final SubtypePreference pref = createSubtypePreference(subtype, false, true, context);
             group.addPreference(pref);
             mSubtypePrefs.add(pref);
-        }
-
-        if (ascii) {
-            final String[] predefinedKeyboardLayoutSet = context.getResources().getStringArray(
-                    R.array.predefined_layouts);
-
-            for (final String layout : predefinedKeyboardLayoutSet) {
-                if (localeDefaultLayoutSets.contains(layout)) {
-                    continue;
-                }
-
-                InputMethodSubtype genericSubtype =
-                        AdditionalSubtypeUtils.createAdditionalSubtype(locale, layout);
-                final SubtypePreference pref =
-                        createSubtypePreference(genericSubtype, false, true, context);
-                group.addPreference(pref);
-                mSubtypePrefs.add(pref);
-            }
         }
     }
 
@@ -323,7 +422,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
             if (!pref.isEnabled()) {
                 continue;
             }
-            final boolean subtypeExists = mEnabledSubtypes.contains(pref.getSubtype());
+            final boolean subtypeExists = /*mEnabledSubtypes*/mCreatedSubtypes.contains(pref.getSubtype());
             if (!subtypeExists && pref.isChecked()) {
                 // creating subtype
                 hasChanges = true;

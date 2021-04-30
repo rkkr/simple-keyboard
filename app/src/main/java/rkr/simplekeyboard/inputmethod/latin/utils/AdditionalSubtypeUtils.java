@@ -106,11 +106,11 @@ public final class AdditionalSubtypeUtils {
             // This is actually what the setting dialog for additional subtype is doing.
             final InputMethodSubtype subtype = createAdditionalSubtype(
                     localeString, keyboardLayoutSetName);
-            if (subtype.getNameResId() == SubtypeLocaleUtils.UNKNOWN_KEYBOARD_LAYOUT) {
-                // Skip unknown keyboard layout subtype. This may happen when predefined keyboard
-                // layout has been removed.
-                continue;
-            }
+//            if (subtype.getNameResId() == SubtypeLocaleUtils.UNKNOWN_KEYBOARD_LAYOUT) {
+//                // Skip unknown keyboard layout subtype. This may happen when predefined keyboard
+//                // layout has been removed.
+//                continue;
+//            }
             subtypesList.add(subtype);
         }
         return subtypesList.toArray(new InputMethodSubtype[subtypesList.size()]);

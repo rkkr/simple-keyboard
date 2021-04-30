@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.TreeSet;
 
@@ -275,16 +276,12 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                                              final TreeSet<Locale> usedLocales,
                                              final Comparator<Locale> comparator) {
         final TreeSet<Locale> locales = new TreeSet<>(comparator);
-        final int count = imi.getSubtypeCount();
-        for (int i = 0; i < count; i++) {
-            final InputMethodSubtype subtype = imi.getSubtypeAt(i);
-            final Locale locale = LocaleUtils.constructLocaleFromString(subtype.getLocale());
+        for (String localeString : RichInputMethodManager.sSupportedLocales) {
+            final Locale locale = LocaleUtils.constructLocaleFromString(localeString);
             if (usedLocales.contains(locale)) {
                 continue;
             }
-            if (subtype.isAsciiCapable()) {
-                locales.add(locale);
-            }
+            locales.add(locale);
         }
         return locales;
     }

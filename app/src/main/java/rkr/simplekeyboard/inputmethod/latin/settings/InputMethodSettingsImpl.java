@@ -46,9 +46,9 @@ import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
         mContext = context;
         mImm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         mImi = getMyImi(context, mImm);
-        if (mImi == null || mImi.getSubtypeCount() <= 1) {
-            return false;
-        }
+//        if (mImi == null || mImi.getSubtypeCount() <= 1) {
+//            return false;
+//        }
         mSubtypeEnablerPreference = new Preference(context);
         mSubtypeEnablerPreference.setTitle(R.string.select_language);
         mSubtypeEnablerPreference.setFragment(LanguagesSettingsFragment.class.getName());
