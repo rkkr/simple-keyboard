@@ -198,23 +198,19 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         // <code>mIsTrackingForActionDisabled</code> should also be taken account of.
         final boolean ignoreModifierKey = mIsInDraggingFinger && key.isModifier();
         if (DEBUG_LISTENER) {
-            Log.d(TAG, String.format("[%d] onPress    : %s%s%s%s", mPointerId,
+            Log.d(TAG, String.format("[%d] onPress    : %s%s%s", mPointerId,
                     (key == null ? "none" : Constants.printableCode(key.getCode())),
                     ignoreModifierKey ? " ignoreModifier" : "",
-                    key.isEnabled() ? "" : " disabled",
                     repeatCount > 0 ? " repeatCount=" + repeatCount : ""));
         }
         if (ignoreModifierKey) {
             return false;
         }
-        if (key.isEnabled()) {
-            sListener.onPressKey(key.getCode(), repeatCount, getActivePointerTrackerCount() == 1);
-            final boolean keyboardLayoutHasBeenChanged = mKeyboardLayoutHasBeenChanged;
-            mKeyboardLayoutHasBeenChanged = false;
-            sTimerProxy.startTypingStateTimer(key);
-            return keyboardLayoutHasBeenChanged;
-        }
-        return false;
+        sListener.onPressKey(key.getCode(), repeatCount, getActivePointerTrackerCount() == 1);
+        final boolean keyboardLayoutHasBeenChanged = mKeyboardLayoutHasBeenChanged;
+        mKeyboardLayoutHasBeenChanged = false;
+        sTimerProxy.startTypingStateTimer(key);
+        return keyboardLayoutHasBeenChanged;
     }
 
     // Note that we need primaryCode argument because the keyboard may in shifted state and the
@@ -229,19 +225,17 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
                     ? key.getOutputText() : Constants.printableCode(code);
             Log.d(TAG, String.format("[%d] onCodeInput: %4d %4d %s%s%s", mPointerId, x, y,
                     output, ignoreModifierKey ? " ignoreModifier" : "",
-                    altersCode ? " altersCode" : "", key.isEnabled() ? "" : " disabled"));
+                    altersCode ? " altersCode" : ""));
         }
         if (ignoreModifierKey) {
             return;
         }
-        // Even if the key is disabled, it should respond if it is in the altCodeWhileTyping state.
-        if (key.isEnabled() || altersCode) {
-            if (code == Constants.CODE_OUTPUT_TEXT) {
-                sListener.onTextInput(key.getOutputText());
-            } else if (code != Constants.CODE_UNSPECIFIED) {
-                sListener.onCodeInput(code,
-                    Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, isKeyRepeat);
-            }
+
+        if (code == Constants.CODE_OUTPUT_TEXT) {
+            sListener.onTextInput(key.getOutputText());
+        } else if (code != Constants.CODE_UNSPECIFIED) {
+            sListener.onCodeInput(code,
+                Constants.NOT_A_COORDINATE, Constants.NOT_A_COORDINATE, isKeyRepeat);
         }
     }
 
@@ -252,17 +246,14 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         // See the comment at {@link #callListenerOnPressAndCheckKeyboardLayoutChange(Key}}.
         final boolean ignoreModifierKey = mIsInDraggingFinger && key.isModifier();
         if (DEBUG_LISTENER) {
-            Log.d(TAG, String.format("[%d] onRelease  : %s%s%s%s", mPointerId,
+            Log.d(TAG, String.format("[%d] onRelease  : %s%s%s", mPointerId,
                     Constants.printableCode(primaryCode),
-                    withSliding ? " sliding" : "", ignoreModifierKey ? " ignoreModifier" : "",
-                    key.isEnabled() ?  "": " disabled"));
+                    withSliding ? " sliding" : "", ignoreModifierKey ? " ignoreModifier" : ""));
         }
         if (ignoreModifierKey) {
             return;
         }
-        if (key.isEnabled()) {
-            sListener.onReleaseKey(primaryCode, withSliding);
-        }
+        sListener.onReleaseKey(primaryCode, withSliding);
     }
 
     private void callListenerOnFinishSlidingInput() {
@@ -348,10 +339,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
 
         // Even if the key is disabled, it should respond if it is in the altCodeWhileTyping state.
         final boolean altersCode = key.altCodeWhileTyping() && sTimerProxy.isTypingState();
-        final boolean needsToUpdateGraphics = key.isEnabled() || altersCode;
-        if (!needsToUpdateGraphics) {
-            return;
-        }
 
         sDrawingProxy.onKeyPressed(key, true);
 

@@ -401,8 +401,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
         final Key key = new Key(keySpec, keyAttr, keyStyle, mParams, row);
         keyAttr.recycle();
         if (DEBUG) {
-            startEndTag("<%s%s %s moreKeys=%s />", TAG_KEY, (key.isEnabled() ? "" : " disabled"),
-                    key, Arrays.toString(key.getMoreKeys()));
+            startEndTag("<%s %s moreKeys=%s />", TAG_KEY, key, Arrays.toString(key.getMoreKeys()));
         }
         XmlParseUtils.checkEndTag(TAG_KEY, parser);
         endKey(key, row);

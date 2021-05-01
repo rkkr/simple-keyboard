@@ -385,19 +385,14 @@ public class KeyboardView extends View {
                 }
             }
 
-            if (key.isEnabled()) {
-                paint.setColor(key.selectTextColor(params));
-                // Set a drop shadow for the text if the shadow radius is positive value.
-                if (mKeyTextShadowRadius > 0.0f) {
-                    paint.setShadowLayer(mKeyTextShadowRadius, 0.0f, 0.0f, params.mTextShadowColor);
-                } else {
-                    paint.clearShadowLayer();
-                }
+            paint.setColor(key.selectTextColor(params));
+            // Set a drop shadow for the text if the shadow radius is positive value.
+            if (mKeyTextShadowRadius > 0.0f) {
+                paint.setShadowLayer(mKeyTextShadowRadius, 0.0f, 0.0f, params.mTextShadowColor);
             } else {
-                // Make label invisible
-                paint.setColor(Color.TRANSPARENT);
                 paint.clearShadowLayer();
             }
+
             blendAlpha(paint, params.mAnimAlpha);
             canvas.drawText(label, 0, label.length(), labelX, labelBaseline, paint);
             // Turn off drop shadow and reset x-scale.

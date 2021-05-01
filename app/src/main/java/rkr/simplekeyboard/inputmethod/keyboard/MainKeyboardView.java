@@ -579,7 +579,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     @Override
     protected void onDrawKeyTopVisuals(final Key key, final Canvas canvas, final Paint paint,
             final KeyDrawParams params) {
-        if (key.altCodeWhileTyping() && key.isEnabled()) {
+        if (key.altCodeWhileTyping()) {
             params.mAnimAlpha = mAltCodeKeyWhileTypingAnimAlpha;
         }
         super.onDrawKeyTopVisuals(key, canvas, paint, params);

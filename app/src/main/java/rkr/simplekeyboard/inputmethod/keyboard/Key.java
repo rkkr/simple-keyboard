@@ -155,23 +155,17 @@ public class Key implements Comparable<Key> {
         /** Text to output when pressed. This can be multiple characters, like ".com" */
         public final String mOutputText;
         public final int mAltCode;
-        /** Icon for disabled state */
-        public final int mDisabledIconId;
 
-        private OptionalAttributes(final String outputText, final int altCode,
-                final int disabledIconId) {
+        private OptionalAttributes(final String outputText, final int altCode) {
             mOutputText = outputText;
             mAltCode = altCode;
-            mDisabledIconId = disabledIconId;
         }
 
-        public static OptionalAttributes newInstance(final String outputText, final int altCode,
-                final int disabledIconId) {
-            if (outputText == null && altCode == CODE_UNSPECIFIED
-                    && disabledIconId == ICON_UNDEFINED) {
+        public static OptionalAttributes newInstance(final String outputText, final int altCode) {
+            if (outputText == null && altCode == CODE_UNSPECIFIED) {
                 return null;
             }
-            return new OptionalAttributes(outputText, altCode, disabledIconId);
+            return new OptionalAttributes(outputText, altCode);
         }
     }
 
@@ -179,8 +173,6 @@ public class Key implements Comparable<Key> {
 
     /** The current pressed state of this key */
     private boolean mPressed;
-    /** Key is enabled and responds on press */
-    private boolean mEnabled = true;
 
     /**
      * Constructor for a key on <code>MoreKeyKeyboard</code>.
@@ -206,10 +198,8 @@ public class Key implements Comparable<Key> {
         mMoreKeys = null;
         mMoreKeysColumnAndFlags = 0;
         mLabel = label;
-        mOptionalAttributes = OptionalAttributes.newInstance(outputText, CODE_UNSPECIFIED,
-                ICON_UNDEFINED);
+        mOptionalAttributes = OptionalAttributes.newInstance(outputText, CODE_UNSPECIFIED);
         mCode = code;
-        mEnabled = (code != CODE_UNSPECIFIED);
         mIconId = iconId;
         mKeyVisualAttributes = null;
 
@@ -306,8 +296,6 @@ public class Key implements Comparable<Key> {
         mActionFlags = actionFlags;
 
         mIconId = KeySpecParser.getIconId(keySpec);
-        final int disabledIconId = KeySpecParser.getIconId(style.getString(keyAttr,
-                R.styleable.Keyboard_Key_keyIconDisabled));
 
         final int code = KeySpecParser.getCode(keySpec);
         if ((mLabelFlags & LABEL_FLAGS_FROM_CUSTOM_ACTION_LABEL) != 0) {
@@ -369,7 +357,7 @@ public class Key implements Comparable<Key> {
         final int altCode = needsToUpcase
                 ? StringUtils.toTitleCaseOfKeyCode(altCodeInAttr, localeForUpcasing)
                 : altCodeInAttr;
-        mOptionalAttributes = OptionalAttributes.newInstance(outputText, altCode, disabledIconId);
+        mOptionalAttributes = OptionalAttributes.newInstance(outputText, altCode);
         mKeyVisualAttributes = KeyVisualAttributes.newInstance(keyAttr);
         mHashCode = computeHashCode(this);
     }
@@ -406,7 +394,6 @@ public class Key implements Comparable<Key> {
         mHashCode = key.mHashCode;
         // Key state.
         mPressed = key.mPressed;
-        mEnabled = key.mEnabled;
     }
 
     public static Key removeRedundantMoreKeys(final Key key,
@@ -714,10 +701,7 @@ public class Key implements Comparable<Key> {
     }
 
     public Drawable getIcon(final KeyboardIconsSet iconSet, final int alpha) {
-        final OptionalAttributes attrs = mOptionalAttributes;
-        final int disabledIconId = (attrs != null) ? attrs.mDisabledIconId : ICON_UNDEFINED;
-        final int iconId = mEnabled ? getIconId() : disabledIconId;
-        final Drawable icon = iconSet.getIconDrawable(iconId);
+        final Drawable icon = iconSet.getIconDrawable(getIconId());
         if (icon != null) {
             icon.setAlpha(alpha);
         }
@@ -830,14 +814,6 @@ public class Key implements Comparable<Key> {
      */
     public void onReleased() {
         mPressed = false;
-    }
-
-    public final boolean isEnabled() {
-        return mEnabled;
-    }
-
-    public void setEnabled(final boolean enabled) {
-        mEnabled = enabled;
     }
 
     /**
