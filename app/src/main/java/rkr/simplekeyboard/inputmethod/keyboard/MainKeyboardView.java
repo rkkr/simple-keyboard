@@ -550,19 +550,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         onDismissMoreKeysPanel();
     }
 
-    public void updateShortcutKey(final boolean available) {
-        final Keyboard keyboard = getKeyboard();
-        if (keyboard == null) {
-            return;
-        }
-        final Key shortcutKey = keyboard.getKey(Constants.CODE_SHORTCUT);
-        if (shortcutKey == null) {
-            return;
-        }
-        shortcutKey.setEnabled(available);
-        invalidateKey(shortcutKey);
-    }
-
     public void startDisplayLanguageOnSpacebar(final boolean subtypeChanged,
             final int languageOnSpacebarFormatType) {
         if (subtypeChanged) {
