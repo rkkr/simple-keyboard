@@ -63,6 +63,7 @@
     <string name="keyboard_color">Tastaturfarbe definieren</string>
     <string name="hide_special_chars">Sonderzeichen ausblenden</string>
     <string name="hide_language_switch_key">Taste für Sprachwahl ausblenden</string>
+    <string name="pref_enable_ime_switch">Zu anderen Tastaturen wechseln</string>
     <string name="show_number_row">Zahlenreihe anzeigen</string>
     <string name="space_swipe">Cursor mit Wischen über die Leertaste steuern</string>
     <string name="delete_swipe">Durch Wischen löschen</string>
