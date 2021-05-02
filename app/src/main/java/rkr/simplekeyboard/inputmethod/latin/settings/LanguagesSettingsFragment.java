@@ -37,15 +37,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodSubtype;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 import java.util.TreeSet;
 
@@ -210,21 +207,15 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * @param context the context for this application.
      */
     private void setUpLanguages(final PreferenceGroup group, final Context context) {
-        final InputMethodInfo imi = mRichImm.getInputMethodInfoOfThisIme();
-        final HashSet<InputMethodSubtype> enabledSubtypes =
-                new HashSet<>(mRichImm.getMyEnabledInputMethodSubtypeList(true));
+        final HashSet<InputMethodSubtype> enabledSubtypes = mRichImm.getEnabledSubtypesOfThisIme();
 
         final Locale currentLocale = getResources().getConfiguration().locale;
         final Comparator<Locale> comparator = new LocaleComparator(currentLocale);
 
-        final HashSet<InputMethodSubtype> prefSubtypes =
-                new HashSet<>(Arrays.asList(mRichImm.getAdditionalSubtypes()));
+        final TreeSet<Locale> usedLocales = getUsedLocales(enabledSubtypes, comparator);
+        final TreeSet<Locale> unusedLocales = getUnusedLocales(usedLocales, comparator);
 
-        final TreeSet<Locale> usedLocales =
-                getUsedLocales(enabledSubtypes, prefSubtypes, comparator);
-        final TreeSet<Locale> unusedLocales = getUnusedLocales(imi, usedLocales, comparator);
-
-        buildLanguagePreferences(usedLocales, prefSubtypes, enabledSubtypes, group, context);
+        buildLanguagePreferences(usedLocales, group, context);
         setAdditionalLocaleEntries(unusedLocales);
     }
 
@@ -233,13 +224,11 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * default subtype that has been enabled in the system or any additional subtype that has been
      * selected (extra keyboard layout checked in the language specific setting screen), regardless
      * of whether it has been enabled in the system.
-     * @param subtypes the list of subtypes for this IME that have been enabled in the system.
-     * @param prefSubtypes the list of additional subtypes that have been selected.
+     * @param subtypes the list of subtypes for this IME that have been enabled.
      * @param comparator the comparator to sort the languages.
      * @return a tree set of locales for the used languages sorted using the specified comparator.
      */
     private TreeSet<Locale> getUsedLocales(final HashSet<InputMethodSubtype> subtypes,
-                                           final HashSet<InputMethodSubtype> prefSubtypes,
                                            final Comparator<Locale> comparator) {
         TreeSet<Locale> locales = new TreeSet<>(comparator);
 
@@ -252,28 +241,17 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
             locales.add(LocaleUtils.constructLocaleFromString(subtype.getLocale()));
         }
 
-        for (final InputMethodSubtype subtype : prefSubtypes) {
-            if (DEBUG_SUBTYPE_ID && !subtypes.contains(subtype)) {
-                Log.d(TAG, String.format("Not enabled additional subtype: %-6s 0x%08x %11d %s",
-                        subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
-                        SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype)));
-            }
-            locales.add(LocaleUtils.constructLocaleFromString(subtype.getLocale()));
-        }
-
         return locales;
     }
 
     /**
      * Get the list of languages supported by this IME that aren't included in
      * {@link #getUsedLocales}.
-     * @param imi input method info for this IME.
      * @param usedLocales the used locales.
      * @param comparator the comparator to sort the languages.
      * @return a tree set of locales for the unused languages sorted using the specified comparator.
      */
-    private TreeSet<Locale> getUnusedLocales(final InputMethodInfo imi,
-                                             final TreeSet<Locale> usedLocales,
+    private TreeSet<Locale> getUnusedLocales(final TreeSet<Locale> usedLocales,
                                              final Comparator<Locale> comparator) {
         final TreeSet<Locale> locales = new TreeSet<>(comparator);
         for (String localeString : RichInputMethodManager.sSupportedLocales) {
@@ -290,23 +268,15 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * Create a language preference for each of the specified locales in the preference group. These
      * preferences will be added to the group in the order of the locales that are passed in.
      * @param locales the locales to add preferences for.
-     * @param prefSubtypes the selected additional subtypes used to check if something needs
-     *                     enabling.
-     * @param enabledSubtypes the subtypes enabled in the system.
      * @param group the preference group to add preferences to.
      * @param context the context for this application.
      */
     private void buildLanguagePreferences(final TreeSet<Locale> locales,
-                                          final HashSet<InputMethodSubtype> prefSubtypes,
-                                          final HashSet<InputMethodSubtype> enabledSubtypes,
                                           final PreferenceGroup group, final Context context) {
         for (final Locale locale : locales) {
             final String localeString = LocaleUtils.getLocaleString(locale);
             final SingleLanguagePreference pref =
                     new SingleLanguagePreference(context, localeString);
-            if (subtypesNeedEnabling(localeString, prefSubtypes, enabledSubtypes)) {
-                pref.setSummary(R.string.subtypes_need_enabling);
-            }
             group.addPreference(pref);
         }
     }

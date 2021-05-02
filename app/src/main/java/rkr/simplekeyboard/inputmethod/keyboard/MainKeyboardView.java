@@ -587,7 +587,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         if (code == Constants.CODE_SPACE) {
             // If more than one language is enabled in current input method
             final RichInputMethodManager imm = RichInputMethodManager.getInstance();
-            if (imm.getMyEnabledInputMethodSubtypeList(false).size() > 1) {
+            if (imm.hasMultipleEnabledSubtypesInThisIme()) {
                 drawLanguageOnSpacebar(key, canvas, paint);
             }
         }
