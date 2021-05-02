@@ -97,7 +97,7 @@ public class RichInputMethodManager {
         mImmService.setAdditionalInputMethodSubtypes(
                 getInputMethodIdOfThisIme(), additionalSubtypes);
 
-        // Initialize the current input method subtype and the shortcut IME.
+        // Initialize the current input method subtype.
         refreshSubtypeCaches();
     }
 
@@ -296,14 +296,6 @@ public class RichInputMethodManager {
                         true /* allowsImplicitlySelectedSubtypes */));
     }
 
-    public boolean checkIfSubtypeBelongsToThisImeAndImplicitlyEnabled(
-            final InputMethodSubtype subtype) {
-        final boolean subtypeEnabled = checkIfSubtypeBelongsToThisImeAndEnabled(subtype);
-        final boolean subtypeExplicitlyEnabled = checkIfSubtypeBelongsToList(subtype,
-                getMyEnabledInputMethodSubtypeList(false /* allowsImplicitlySelectedSubtypes */));
-        return subtypeEnabled && !subtypeExplicitlyEnabled;
-    }
-
     private static boolean checkIfSubtypeBelongsToList(final InputMethodSubtype subtype,
             final List<InputMethodSubtype> subtypes) {
         return getSubtypeIndexInList(subtype, subtypes) != INDEX_NOT_FOUND;
@@ -494,21 +486,5 @@ public class RichInputMethodManager {
 
     private void updateCurrentSubtype(final InputMethodSubtype subtype) {
         mCurrentRichInputMethodSubtype = RichInputMethodSubtype.getRichInputMethodSubtype(subtype);
-    }
-
-    private void switchToTargetIME(final String imiId, final InputMethodSubtype subtype,
-            final InputMethodService context) {
-        final IBinder token = context.getWindow().getWindow().getAttributes().token;
-        if (token == null) {
-            return;
-        }
-        final InputMethodManager imm = getInputMethodManager();
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                imm.setInputMethodAndSubtype(token, imiId, subtype);
-                return null;
-            }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 }
