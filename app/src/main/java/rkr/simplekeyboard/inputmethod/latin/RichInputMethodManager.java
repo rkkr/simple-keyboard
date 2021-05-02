@@ -790,18 +790,21 @@ public class RichInputMethodManager {
                 addGenericLayouts(subtypes, locale, R.string.subtype_en_US);
                 break;
             case LOCALE_ENGLISH_GREAT_BRITAIN:
-                //TODO: verify this is always true
                 subtypes.add(createSubtype(locale, R.string.subtype_en_GB, LAYOUT_QWERTY));
                 addGenericLayouts(subtypes, locale, R.string.subtype_en_GB);
                 break;
             case LOCALE_AFRIKAANS:
             case LOCALE_AZERBAIJANI_AZERBAIJAN:
             case LOCALE_ENGLISH_INDIA:
+            case LOCALE_FRENCH_CANADA:
             case LOCALE_INDONESIAN:
             case LOCALE_ICELANDIC:
+            case LOCALE_ITALIAN:
             case LOCALE_LITHUANIAN:
             case LOCALE_LATVIAN:
             case LOCALE_MALAY_MALAYSIA:
+            case LOCALE_DUTCH:
+            case LOCALE_POLISH:
             case LOCALE_PORTUGUESE_BRAZIL:
             case LOCALE_PORTUGUESE_PORTUGAL:
             case LOCALE_ROMANIAN:
@@ -812,7 +815,22 @@ public class RichInputMethodManager {
                 subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTY));
                 addGenericLayouts(subtypes, locale, R.string.subtype_generic);
                 break;
+            case LOCALE_CZECH:
+            case LOCALE_GERMAN:
+            case LOCALE_CROATIAN:
+            case LOCALE_HUNGARIAN:
+            case LOCALE_SLOVENIAN:
+                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTZ));
+                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
+                break;
+            case LOCALE_FRENCH:
+            case LOCALE_DUTCH_BELGIUM:
+                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_AZERTY));
+                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
+                break;
             case LOCALE_CATALAN:
+//            case LOCALE_ESPERANTO:
+            case LOCALE_SPANISH:
             case LOCALE_SPANISH_LATIN_AMERICA:
             case LOCALE_BASQUE_SPAIN:
             case LOCALE_GALICIAN_SPAIN:
@@ -823,14 +841,17 @@ public class RichInputMethodManager {
             case LOCALE_ESPERANTO:
                 subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_SPANISH));
                 break;
-            case LOCALE_SPANISH:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_SPANISH));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
             case LOCALE_SPANISH_UNITED_STATES:
                 subtypes.add(createSubtype(locale, R.string.subtype_es_US, LAYOUT_SPANISH));
                 addGenericLayouts(subtypes, locale, R.string.subtype_es_US);
+                break;
+            case LOCALE_DANISH:
+            case LOCALE_ESTONIAN_ESTONIA:
+            case LOCALE_FINNISH:
+            case LOCALE_NORWEGIAN_BOKMAL:
+            case LOCALE_SWEDISH:
+                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_NORDIC));
+                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
                 break;
             case LOCALE_GERMAN_SWITZERLAND:
             case LOCALE_FRENCH_SWITZERLAND:
@@ -838,85 +859,7 @@ public class RichInputMethodManager {
                 subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_SWISS));
                 addGenericLayouts(subtypes, locale, R.string.subtype_generic);
                 break;
-            case LOCALE_ESTONIAN_ESTONIA:
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_NORDIC));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_CZECH:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTZ));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_DANISH:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_NORDIC));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_GERMAN:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTZ));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_FINNISH:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_NORDIC));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_FRENCH:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_AZERTY));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_FRENCH_CANADA:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTY));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_CROATIAN:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTZ));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_HUNGARIAN:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTZ));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_ITALIAN:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTY));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_NORWEGIAN_BOKMAL:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_NORDIC));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_DUTCH:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTY));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_DUTCH_BELGIUM:
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_AZERTY));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_POLISH:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTY));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_SLOVENIAN:
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTZ));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
-            case LOCALE_SWEDISH:
-                //TODO: verify this is always true
-                subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_NORDIC));
-                addGenericLayouts(subtypes, locale, R.string.subtype_generic);
-                break;
             case LOCALE_TURKISH:
-                //TODO: verify this is always true
                 subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_QWERTY));
                 subtypes.add(createSubtype(locale, R.string.subtype_generic_f, LAYOUT_TURKISH_F));
                 addGenericLayouts(subtypes, locale, R.string.subtype_generic);
@@ -1035,6 +978,31 @@ public class RichInputMethodManager {
                 continue;
             }
             subtypes.add(createSubtypeInternal(locale, /*labelRes*/SubtypeLocaleUtils.getSubtypeNameId(locale, predefinedLayout), predefinedLayout, true));
+        }
+    }
+
+    //TODO: move and rename
+    public class MySubtype {
+        private final String mLocale;
+        private final String mName;
+        private final String mLayoutSet;
+
+        public MySubtype(final String locale, final String name, final String layoutSet) {
+            mLocale = locale;
+            mName = name;
+            mLayoutSet = layoutSet;
+        }
+
+        public String getLocale() {
+            return mLocale;
+        }
+
+        public String getName() {
+            return mName;
+        }
+
+        public String getLayoutSet() {
+            return mLayoutSet;
         }
     }
 
