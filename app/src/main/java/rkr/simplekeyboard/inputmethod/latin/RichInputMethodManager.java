@@ -60,8 +60,6 @@ public class RichInputMethodManager {
     private InputMethodManager mImmService;
     private InputMethodInfoCache mInputMethodInfoCache;
     private RichInputMethodSubtype mCurrentRichInputMethodSubtype;
-    private InputMethodInfo mShortcutInputMethodInfo;
-    private InputMethodSubtype mShortcutSubtype;
 
     private static final int INDEX_NOT_FOUND = -1;
 
@@ -99,7 +97,7 @@ public class RichInputMethodManager {
         mImmService.setAdditionalInputMethodSubtypes(
                 getInputMethodIdOfThisIme(), additionalSubtypes);
 
-        // Initialize the current input method subtype and the shortcut IME.
+        // Initialize the current input method subtype.
         refreshSubtypeCaches();
     }
 
@@ -298,14 +296,6 @@ public class RichInputMethodManager {
                         true /* allowsImplicitlySelectedSubtypes */));
     }
 
-    public boolean checkIfSubtypeBelongsToThisImeAndImplicitlyEnabled(
-            final InputMethodSubtype subtype) {
-        final boolean subtypeEnabled = checkIfSubtypeBelongsToThisImeAndEnabled(subtype);
-        final boolean subtypeExplicitlyEnabled = checkIfSubtypeBelongsToList(subtype,
-                getMyEnabledInputMethodSubtypeList(false /* allowsImplicitlySelectedSubtypes */));
-        return subtypeEnabled && !subtypeExplicitlyEnabled;
-    }
-
     private static boolean checkIfSubtypeBelongsToList(final InputMethodSubtype subtype,
             final List<InputMethodSubtype> subtypes) {
         return getSubtypeIndexInList(subtype, subtypes) != INDEX_NOT_FOUND;
@@ -325,7 +315,6 @@ public class RichInputMethodManager {
 
     public void onSubtypeChanged(final InputMethodSubtype newSubtype) {
         updateCurrentSubtype(newSubtype);
-        updateShortcutIme();
         if (DEBUG) {
             Log.w(TAG, "onSubtypeChanged: " + mCurrentRichInputMethodSubtype.getNameForLogging());
         }
@@ -483,7 +472,6 @@ public class RichInputMethodManager {
     public void refreshSubtypeCaches() {
         mInputMethodInfoCache.clear();
         updateCurrentSubtype(mImmService.getCurrentInputMethodSubtype());
-        updateShortcutIme();
     }
 
     public boolean shouldOfferSwitchingToNextInputMethod(final IBinder binder) {
@@ -498,81 +486,5 @@ public class RichInputMethodManager {
 
     private void updateCurrentSubtype(final InputMethodSubtype subtype) {
         mCurrentRichInputMethodSubtype = RichInputMethodSubtype.getRichInputMethodSubtype(subtype);
-    }
-
-    private void updateShortcutIme() {
-        if (DEBUG) {
-            Log.d(TAG, "Update shortcut IME from : "
-                    + (mShortcutInputMethodInfo == null
-                            ? "<null>" : mShortcutInputMethodInfo.getId()) + ", "
-                    + (mShortcutSubtype == null ? "<null>" : (
-                            mShortcutSubtype.getLocale() + ", " + mShortcutSubtype.getMode())));
-        }
-        final RichInputMethodSubtype richSubtype = mCurrentRichInputMethodSubtype;
-        final boolean implicitlyEnabledSubtype = checkIfSubtypeBelongsToThisImeAndImplicitlyEnabled(
-                richSubtype.getRawSubtype());
-        final Locale systemLocale = mContext.getResources().getConfiguration().locale;
-        LanguageOnSpacebarUtils.onSubtypeChanged(
-                richSubtype, implicitlyEnabledSubtype, systemLocale);
-        LanguageOnSpacebarUtils.setEnabledSubtypes(getMyEnabledInputMethodSubtypeList(
-                true /* allowsImplicitlySelectedSubtypes */));
-
-        // TODO: Update an icon for shortcut IME
-        final Map<InputMethodInfo, List<InputMethodSubtype>> shortcuts =
-                getInputMethodManager().getShortcutInputMethodsAndSubtypes();
-        mShortcutInputMethodInfo = null;
-        mShortcutSubtype = null;
-        for (final InputMethodInfo imi : shortcuts.keySet()) {
-            final List<InputMethodSubtype> subtypes = shortcuts.get(imi);
-            // TODO: Returns the first found IMI for now. Should handle all shortcuts as
-            // appropriate.
-            mShortcutInputMethodInfo = imi;
-            // TODO: Pick up the first found subtype for now. Should handle all subtypes
-            // as appropriate.
-            mShortcutSubtype = subtypes.size() > 0 ? subtypes.get(0) : null;
-            break;
-        }
-        if (DEBUG) {
-            Log.d(TAG, "Update shortcut IME to : "
-                    + (mShortcutInputMethodInfo == null
-                            ? "<null>" : mShortcutInputMethodInfo.getId()) + ", "
-                    + (mShortcutSubtype == null ? "<null>" : (
-                            mShortcutSubtype.getLocale() + ", " + mShortcutSubtype.getMode())));
-        }
-    }
-
-    public void switchToShortcutIme(final InputMethodService context) {
-        if (mShortcutInputMethodInfo == null) {
-            return;
-        }
-
-        final String imiId = mShortcutInputMethodInfo.getId();
-        switchToTargetIME(imiId, mShortcutSubtype, context);
-    }
-
-    private void switchToTargetIME(final String imiId, final InputMethodSubtype subtype,
-            final InputMethodService context) {
-        final IBinder token = context.getWindow().getWindow().getAttributes().token;
-        if (token == null) {
-            return;
-        }
-        final InputMethodManager imm = getInputMethodManager();
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                imm.setInputMethodAndSubtype(token, imiId, subtype);
-                return null;
-            }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-
-    public boolean isShortcutImeReady() {
-        if (mShortcutInputMethodInfo == null) {
-            return false;
-        }
-        if (mShortcutSubtype == null) {
-            return true;
-        }
-        return true;
     }
 }

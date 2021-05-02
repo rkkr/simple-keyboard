@@ -141,7 +141,6 @@ public final class KeyStylesSet {
             readStringArray(keyAttr, R.styleable.Keyboard_Key_moreKeys);
             readStringArray(keyAttr, R.styleable.Keyboard_Key_additionalMoreKeys);
             readFlags(keyAttr, R.styleable.Keyboard_Key_keyLabelFlags);
-            readString(keyAttr, R.styleable.Keyboard_Key_keyIconDisabled);
             readInt(keyAttr, R.styleable.Keyboard_Key_maxMoreKeysColumn);
             readInt(keyAttr, R.styleable.Keyboard_Key_backgroundType);
             readFlags(keyAttr, R.styleable.Keyboard_Key_keyActionFlags);
