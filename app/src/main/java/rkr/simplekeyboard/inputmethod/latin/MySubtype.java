@@ -1,11 +1,15 @@
 package rkr.simplekeyboard.inputmethod.latin;
 
+import android.util.Log;
+
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 public class MySubtype {
+    private static final String TAG = MySubtype.class.getSimpleName();
+
     private final String mLocale;
     private final String mName;
     private final String mLayoutSet;
@@ -59,15 +63,19 @@ public class MySubtype {
         return "subtype " + mLocale + ":" + mLayoutSet;
     }
 
-    // Get the RichInputMethodSubtype's full display name in its locale.
-    //TODO: rename or remove
-    public String getFullDisplayName() {
+    /**
+     * Get the full display name of the locale in its locale.
+     * @return
+     */
+    public String getLocaleDisplayNameInLocale() {
         return SubtypeLocaleUtils.getSubtypeLocaleDisplayName(getLocale());
     }
 
-    // Get the RichInputMethodSubtype's middle display name in its locale.
-    //TODO: rename or remove
-    public String getMiddleDisplayName() {
+    /**
+     * Get the display name of the language in its locale.
+     * @return
+     */
+    public String getLanguageDisplayNameInLocale() {
         return SubtypeLocaleUtils.getSubtypeLanguageDisplayName(getLocale());
     }
 }
