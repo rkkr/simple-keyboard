@@ -79,13 +79,13 @@ public final class AdditionalSubtypeUtils {
 
     public static MySubtype createAdditionalSubtype2(
             final String localeString, final String keyboardLayoutSetName) {
-//        //TODO: maybe find a more efficient way to do this
-//        final List<MySubtype> localeSubtypes = RichInputMethodManager.getInstance().getSubtypes(localeString);
-//        for (final MySubtype subtype : localeSubtypes) {
-//            if (subtype.getLayoutSet().equals(keyboardLayoutSetName)) {
-//                return subtype;
-//            }
-//        }
+        //TODO: maybe find a more efficient way to do this
+        final List<MySubtype> localeSubtypes = RichInputMethodManager.getInstance().getSubtypes(localeString);
+        for (final MySubtype subtype : localeSubtypes) {
+            if (subtype.getLayoutSet().equals(keyboardLayoutSetName)) {
+                return subtype;
+            }
+        }
         return null;
     }
 
@@ -179,8 +179,8 @@ public final class AdditionalSubtypeUtils {
         return sb.toString();
     }
 
-    public static String createPrefSubtypes(final MySubtype[] subtypes) {
-        if (subtypes == null || subtypes.length == 0) {
+    public static String createPrefSubtypes(final List<MySubtype> subtypes) {
+        if (subtypes == null || subtypes.size() == 0) {
             return "";
         }
         final StringBuilder sb = new StringBuilder();

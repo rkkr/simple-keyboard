@@ -16,12 +16,11 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
-import android.view.inputmethod.InputMethodSubtype;
-
-import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
+import rkr.simplekeyboard.inputmethod.latin.MySubtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
 
 /**
@@ -36,21 +35,20 @@ public final class LanguageOnSpacebarUtils {
         // This utility class is not publicly instantiable.
     }
 
-    public static int getLanguageOnSpacebarFormatType(
-            final RichInputMethodSubtype subtype) {
-        final Locale locale = subtype.getLocale();
+    public static int getLanguageOnSpacebarFormatType(final MySubtype subtype) {
+        final Locale locale = subtype.getLocaleObject();
         if (locale == null) {
             return FORMAT_TYPE_NONE;
         }
         final String keyboardLanguage = locale.getLanguage();
-        final String keyboardLayout = subtype.getKeyboardLayoutSetName();
+        final String keyboardLayout = subtype.getLayoutSet();
         int sameLanguageAndLayoutCount = 0;
-        final List<InputMethodSubtype> enabledSubtypes =
-                RichInputMethodManager.getInstance().getMyEnabledInputMethodSubtypeList(true);
-        for (final InputMethodSubtype ims : enabledSubtypes) {
-            final String language = SubtypeLocaleUtils.getSubtypeLocale(ims).getLanguage();
-            if (keyboardLanguage.equals(language) && keyboardLayout.equals(
-                    SubtypeLocaleUtils.getKeyboardLayoutSetName(ims))) {
+        final Set<MySubtype> enabledSubtypes =
+                RichInputMethodManager.getInstance().getEnabledSubtypesOfThisIme();
+        for (final MySubtype enabledSubtype : enabledSubtypes) {
+            final String language = enabledSubtype.getLocaleObject().getLanguage();
+            if (keyboardLanguage.equals(language)
+                    && keyboardLayout.equals(enabledSubtype.getLayoutSet())) {
                 sameLanguageAndLayoutCount++;
             }
         }

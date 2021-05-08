@@ -413,13 +413,15 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (primaryHintLocale == null) {
             return;
         }
-        final InputMethodSubtype newSubtype = mRichImm.findSubtypeByLocale(primaryHintLocale);
-        if (newSubtype == null || newSubtype.equals(mRichImm.getCurrentSubtype().getRawSubtype())) {
+        final MySubtype newSubtype = mRichImm.findSubtypeByLocale(primaryHintLocale);
+        if (newSubtype == null || newSubtype.equals(mRichImm.getCurrentSubtype())) {
             return;
         }
 //        mHandler.postSwitchLanguage(newSubtype);
         //TODO: maybe just pass the locale
-        mRichImm.updateCurrentSubtype(newSubtype);
+        if (!mRichImm.setCurrentSubtype(newSubtype)) {
+            return;
+        }
         mInputLogic.onSubtypeChanged();
         loadKeyboard();
     }
@@ -699,7 +701,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     int getCurrentAutoCapsState() {
         return mInputLogic.getCurrentAutoCapsState(mSettings.getCurrent(),
-                mRichImm.getCurrentSubtype().getKeyboardLayoutSetName());
+                mRichImm.getCurrentSubtype().getLayoutSet());
     }
 
     int getCurrentRecapitalizeState() {

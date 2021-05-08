@@ -22,6 +22,7 @@ import android.view.inputmethod.InputMethodSubtype;
 
 import java.util.Locale;
 
+import rkr.simplekeyboard.inputmethod.latin.MySubtype;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 
 public final class InputMethodSubtypeCompatUtils {
@@ -37,6 +38,11 @@ public final class InputMethodSubtypeCompatUtils {
                 return Locale.forLanguageTag(languageTag);
             }
         }
+        return LocaleUtils.constructLocaleFromString(subtype.getLocale());
+    }
+
+    //TODO: figure out the language tag and special handling for sr_ZZ
+    public static Locale getLocaleObject(final MySubtype subtype) {
         return LocaleUtils.constructLocaleFromString(subtype.getLocale());
     }
 }

@@ -82,7 +82,7 @@ public class RichInputMethodManager {
     private Context mContext;
     private InputMethodManager mImmService;
     private InputMethodInfoCache mInputMethodInfoCache;
-    private RichInputMethodSubtype mCurrentRichInputMethodSubtype;
+    private VirtualSubtypeManager mVirtualSubtypeManager;
 
     private static final int INDEX_NOT_FOUND = -1;
 
@@ -119,13 +119,8 @@ public class RichInputMethodManager {
 
         // Initialize the current input method subtype.
         refreshSubtypeCaches();
-    }
 
-    public InputMethodSubtype[] getAdditionalSubtypes() {
-        final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(mContext);
-        final String prefAdditionalSubtypes = Settings.readPrefAdditionalSubtypes(
-                prefs, mContext.getResources());
-        return AdditionalSubtypeUtils.createAdditionalSubtypesArray(prefAdditionalSubtypes);
+        mVirtualSubtypeManager = new VirtualSubtypeManager(context);
     }
 
     public InputMethodManager getInputMethodManager() {
@@ -133,92 +128,33 @@ public class RichInputMethodManager {
         return mImmService;
     }
 
-    public HashSet<InputMethodSubtype> getEnabledSubtypesOfThisIme() {
-        return new HashSet<>(getSubtypes());
+    public HashSet<MySubtype> getEnabledSubtypesOfThisIme() {
+        return mVirtualSubtypeManager.getAll();
     }
 
-    public boolean addSubtype(final InputMethodSubtype subtype) {
-        final List<InputMethodSubtype> subtypes = getSubtypes();
-        if (subtypes.contains(subtype)) {
-            return false;
-        }
-        if (!subtypes.add(subtype)) {
-            return false;
-        }
-        final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(mContext);
-        saveEnabledSubtypePref(prefs, subtypes);
-        return true;
+    public boolean addSubtype(final MySubtype subtype) {
+        return mVirtualSubtypeManager.addSubtype(subtype);
     }
 
-    public boolean removeSubtype(final InputMethodSubtype subtype) {
-        final List<InputMethodSubtype> subtypes = getSubtypes();
-        if (subtypes.size() == 1) {
-            //TODO: is this how this should be handled?
-            return false;
-        }
-
-        final int index = subtypes.indexOf(subtype);
-        if (index < 0) {
-            return false;
-        }
-
-        final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(mContext);
-        final int currentSubtypeIndex = Settings.readPrefCurrentSubtypeIndex(prefs);
-        if (currentSubtypeIndex == index) {
-            Settings.writePrefCurrentSubtypeIndex(prefs, 0);
-            //TODO: maybe notify LatinIME, but possibly not since the keyboard won't already be open (double check split screen)
-        }
-
-        subtypes.remove(index);
-        saveEnabledSubtypePref(prefs, subtypes);
-        return true;
-    }
-
-    private void saveEnabledSubtypePref(final SharedPreferences prefs, final List<InputMethodSubtype> subtypes) {
-        final InputMethodSubtype[] subtypesArray = subtypes.toArray(new InputMethodSubtype[0]);
-        final String prefSubtypes = AdditionalSubtypeUtils.createPrefSubtypes(subtypesArray);
-        Settings.writePrefAdditionalSubtypes(prefs, prefSubtypes);
+    public boolean removeSubtype(final MySubtype subtype) {
+        return mVirtualSubtypeManager.removeSubtype(subtype);
     }
 
     public void resetSubtypeCycleOrder() {
-        final List<InputMethodSubtype> subtypes = getSubtypes();
-        final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(mContext);
-        final int subtypeIndex = Settings.readPrefCurrentSubtypeIndex(prefs);
-        if (subtypeIndex == 0) {
-            return;
-        }
-        //TODO: maybe consider multiple threads
-
-        // move the current subtype to the top of the list and shift everything above it down one
-        Collections.rotate(subtypes.subList(0, subtypeIndex + 1), 1);
-        Settings.writePrefCurrentSubtypeIndex(prefs, 0);
-
-        saveEnabledSubtypePref(prefs, subtypes);
+        mVirtualSubtypeManager.resetSubtypeCycleOrder();
     }
 
     public boolean switchToNextInputMethod(final IBinder token, final boolean onlyCurrentIme) {
         if (onlyCurrentIme) {
-            if (getAdditionalSubtypes().length < 2) {
+            if (!mVirtualSubtypeManager.hasMultiple()) {
                 return false;
             }
-            return switchToNextVirtualSubtype(true);
+            return mVirtualSubtypeManager.switchToNextSubtype(true);
         }
-        if (switchToNextVirtualSubtype(false)) {
+        if (mVirtualSubtypeManager.switchToNextSubtype(false)) {
             return true;
         }
         return switchToNextOtherInputMethod(token);
-    }
-
-    private boolean switchToNextVirtualSubtype(final boolean cycle) {
-        final List<InputMethodSubtype> subtypes = getSubtypes();
-        if (subtypes.size() < 2) {
-            return false;
-        }
-        final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(mContext);
-        final int subtypeIndex = (Settings.readPrefCurrentSubtypeIndex(prefs) + 1) % subtypes.size();
-        Settings.writePrefCurrentSubtypeIndex(prefs, subtypeIndex);
-        updateCurrentSubtype(subtypes.get(subtypeIndex));
-        return subtypeIndex > 0 || cycle;
     }
 
     private boolean switchToNextOtherInputMethod(final IBinder token) {
@@ -360,17 +296,12 @@ public class RichInputMethodManager {
         return getInputMethodInfoOfThisIme().getId();
     }
 
-    private static RichInputMethodSubtype sForcedSubtypeForTesting = null;
-
     public Locale getCurrentSubtypeLocale() {
-        return getCurrentSubtype().getLocale();
+        return getCurrentSubtype().getLocaleObject();
     }
 
-    public RichInputMethodSubtype getCurrentSubtype() {
-        if (null != sForcedSubtypeForTesting) {
-            return sForcedSubtypeForTesting;
-        }
-        return mCurrentRichInputMethodSubtype;
+    public MySubtype getCurrentSubtype() {
+        return mVirtualSubtypeManager.getCurrentSubtype();
     }
 
     public boolean hasMultipleEnabledImesOrSubtypes(final boolean shouldIncludeAuxiliarySubtypes) {
@@ -382,24 +313,7 @@ public class RichInputMethodManager {
     }
 
     public boolean hasMultipleEnabledSubtypesInThisIme() {
-        return getSubtypes().size() > 1;
-    }
-
-    //TODO: maybe set in initialize, otherwise clear/refresh at some point
-    private List<InputMethodSubtype> mSubtypes;
-    private List<InputMethodSubtype> getSubtypes() {
-        if (mSubtypes == null) {
-            InputMethodSubtype[] subtypes = getAdditionalSubtypes();
-            if (subtypes.length <= 0) {
-                //TODO: make a better default
-                subtypes = new InputMethodSubtype[] {
-                        createSubtype(LOCALE_ENGLISH_UNITED_STATES, R.string.subtype_en_US, LAYOUT_QWERTY)
-                };
-            }
-            mSubtypes = new ArrayList<>(Arrays.asList(subtypes));
-        }
-
-        return mSubtypes;
+        return mVirtualSubtypeManager.hasMultiple();
     }
 
     private boolean hasMultipleEnabledImes(final boolean shouldIncludeAuxiliarySubtypes,
@@ -438,20 +352,17 @@ public class RichInputMethodManager {
         return filteredImisCount > 1;
     }
 
-    public InputMethodSubtype findSubtypeByLocale(final Locale locale) {
+    public MySubtype findSubtypeByLocale(final Locale locale) {
         // Find the best subtype based on a straightforward matching algorithm.
         // TODO: Use LocaleList#getFirstMatch() instead.
-        final List<InputMethodSubtype> subtypes = getSubtypes();
-        final int count = subtypes.size();
-        for (int i = 0; i < count; ++i) {
-            final InputMethodSubtype subtype = subtypes.get(i);
+        final HashSet<MySubtype> subtypes = getEnabledSubtypesOfThisIme();
+        for (final MySubtype subtype : subtypes) {
             final Locale subtypeLocale = InputMethodSubtypeCompatUtils.getLocaleObject(subtype);
             if (subtypeLocale.equals(locale)) {
                 return subtype;
             }
         }
-        for (int i = 0; i < count; ++i) {
-            final InputMethodSubtype subtype = subtypes.get(i);
+        for (final MySubtype subtype : subtypes) {
             final Locale subtypeLocale = InputMethodSubtypeCompatUtils.getLocaleObject(subtype);
             if (subtypeLocale.getLanguage().equals(locale.getLanguage()) &&
                     subtypeLocale.getCountry().equals(locale.getCountry()) &&
@@ -459,16 +370,14 @@ public class RichInputMethodManager {
                 return subtype;
             }
         }
-        for (int i = 0; i < count; ++i) {
-            final InputMethodSubtype subtype = subtypes.get(i);
+        for (final MySubtype subtype : subtypes) {
             final Locale subtypeLocale = InputMethodSubtypeCompatUtils.getLocaleObject(subtype);
             if (subtypeLocale.getLanguage().equals(locale.getLanguage()) &&
                     subtypeLocale.getCountry().equals(locale.getCountry())) {
                 return subtype;
             }
         }
-        for (int i = 0; i < count; ++i) {
-            final InputMethodSubtype subtype = subtypes.get(i);
+        for (final MySubtype subtype : subtypes) {
             final Locale subtypeLocale = InputMethodSubtypeCompatUtils.getLocaleObject(subtype);
             if (subtypeLocale.getLanguage().equals(locale.getLanguage())) {
                 return subtype;
@@ -553,10 +462,6 @@ public class RichInputMethodManager {
 
     public void refreshSubtypeCaches() {
         mInputMethodInfoCache.clear();
-        final InputMethodSubtype[] subtypes = getAdditionalSubtypes();
-        final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(mContext);
-        final int subtypeIndex = Settings.readPrefCurrentSubtypeIndex(prefs);
-        updateCurrentSubtype(subtypes[subtypeIndex]);
     }
 
     public boolean shouldOfferSwitchingToNextInputMethod(final IBinder binder) {
@@ -571,8 +476,8 @@ public class RichInputMethodManager {
         return mImmService.shouldOfferSwitchingToNextInputMethod(binder);
     }
 
-    public void updateCurrentSubtype(final InputMethodSubtype subtype) {
-        mCurrentRichInputMethodSubtype = RichInputMethodSubtype.getRichInputMethodSubtype(subtype);
+    public boolean setCurrentSubtype(final MySubtype subtype) {
+        return mVirtualSubtypeManager.setCurrentSubtype(subtype);
     }
 
     public List<Locale> getSystemLocales() {
@@ -783,8 +688,8 @@ public class RichInputMethodManager {
     private static final String LAYOUT_URDU = "urdu";
     private static final String LAYOUT_UZBEK = "uzbek";
 
-    public List<InputMethodSubtype> getSubtypes(final String locale) {
-        List<InputMethodSubtype> subtypes = new ArrayList<>();
+    public List<MySubtype> getSubtypes(final String locale) {
+        List<MySubtype> subtypes = new ArrayList<>();
         switch (locale) {
             case LOCALE_ENGLISH_UNITED_STATES:
                 subtypes.add(createSubtype(locale, R.string.subtype_en_US, LAYOUT_QWERTY));
@@ -957,22 +862,22 @@ public class RichInputMethodManager {
         return subtypes;
     }
 
-    private InputMethodSubtype createSubtype(final String locale, final int labelRes, final String keyboardLayoutSet) {
+    private MySubtype createSubtype(final String locale, final int labelRes, final String keyboardLayoutSet) {
         return createSubtype(locale, labelRes, keyboardLayoutSet, null);
     }
 
-    private InputMethodSubtype createSubtype(final String locale, final int labelRes, final String keyboardLayoutSet, final int layoutRes) {
+    private MySubtype createSubtype(final String locale, final int labelRes, final String keyboardLayoutSet, final int layoutRes) {
         return createSubtype(locale, labelRes, keyboardLayoutSet, mContext.getResources().getString(layoutRes));
     }
 
-    private InputMethodSubtype createSubtype(final String locale, final int labelRes, final String keyboardLayoutSet, final String layoutName) {
+    private MySubtype createSubtype(final String locale, final int labelRes, final String keyboardLayoutSet, final String layoutName) {
 //        final InputMethodSubtype subtype = AdditionalSubtypeUtils.createAdditionalSubtype(locale, keyboardLayoutSet);
         final InputMethodSubtype subtype = createSubtypeInternal(locale, labelRes, labelRes, keyboardLayoutSet, false, null);
 
         final MySubtype mySubtype = createMySubtype(locale, labelRes, keyboardLayoutSet, layoutName);
         compareSubtypes(subtype, mySubtype);
 
-        return /*new RichInputMethodSubtype*/(subtype);
+        return mySubtype;
     }
     private MySubtype createMySubtype(final String locale, final int labelRes, final String keyboardLayoutSet, String layoutName) {
         final String localeDisplayName = LocaleUtils.constructLocaleFromString(locale).getDisplayName();
@@ -1063,7 +968,7 @@ public class RichInputMethodManager {
         }
     }
 
-    private void addGenericLayouts(final List<InputMethodSubtype> subtypes, final String locale, final int labelRes) {
+    private void addGenericLayouts(final List<MySubtype> subtypes, final String locale, final int labelRes) {
         final int initialSize = subtypes.size();
         final String[] predefinedKeyboardLayoutSets = mContext.getResources().getStringArray(
                 R.array.predefined_layouts);
@@ -1073,7 +978,7 @@ public class RichInputMethodManager {
             final String predefinedLayout = predefinedKeyboardLayoutSets[i];
             boolean alreadyExists = false;
             for (int j = 0; j < initialSize; j++) {
-                if (SubtypeLocaleUtils.getKeyboardLayoutSetName(subtypes.get(j)).equals(predefinedLayout)) {
+                if (subtypes.get(j).getLayoutSet().equals(predefinedLayout)) {
                     alreadyExists = true;
                     break;
                 }
@@ -1084,9 +989,9 @@ public class RichInputMethodManager {
 
 
             final InputMethodSubtype subtype = createSubtypeInternal(locale, labelRes, SubtypeLocaleUtils.getSubtypeNameId(locale, predefinedLayout), predefinedLayout, true, predefinedKeyboardLayoutSetDisplayNames[i]);
-            subtypes.add(subtype);
 
             final MySubtype mySubtype = createMySubtypeAlternate(locale, labelRes, predefinedLayout, predefinedKeyboardLayoutSetDisplayNames[i]);
+            subtypes.add(mySubtype);
             compareSubtypes(subtype, mySubtype);
         }
     }
