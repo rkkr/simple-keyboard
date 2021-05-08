@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.latin.MySubtype;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
@@ -335,6 +336,35 @@ public final class SubtypeLocaleUtils {
                 return context.getResources().getString(R.string.subtype_traditional);
             case SERBIAN_QWERTZ:
                 return SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype);
+        }
+
+        final Locale locale = LocaleUtils.constructLocaleFromString(subtype.getLocale());
+        return locale.getDisplayLanguage(sResources.getConfiguration().locale);
+    }
+    public static String getKeyboardLayoutDisplayName(final MySubtype subtype,
+                                                      final Context context) {
+        final String layoutName = subtype.getLayoutSet();
+        final String[] predefinedLayouts = context.getResources().getStringArray(
+                R.array.predefined_layouts);
+        final String[] predefinedLayoutDisplayNames = context.getResources().getStringArray(
+                R.array.predefined_layout_display_names);
+        final int predefinedLayoutIndex = Arrays.asList(predefinedLayouts).indexOf(layoutName);
+        if (predefinedLayoutIndex >= 0
+                && predefinedLayoutIndex < predefinedLayoutDisplayNames.length) {
+            return predefinedLayoutDisplayNames[predefinedLayoutIndex];
+        }
+
+        // Languages with multiple layouts should have simplified names that don't include the
+        // language name to avoid redundancy when listing them together under the language.
+        switch (layoutName) {
+            case BULGARIAN_BDS:
+                return context.getResources().getString(R.string.subtype_bds);
+            case HINDI_COMPACT:
+                return context.getResources().getString(R.string.subtype_compact);
+            case NEPALI_TRADITIONAL:
+                return context.getResources().getString(R.string.subtype_traditional);
+            case SERBIAN_QWERTZ:
+                return subtype.getName();
         }
 
         final Locale locale = LocaleUtils.constructLocaleFromString(subtype.getLocale());

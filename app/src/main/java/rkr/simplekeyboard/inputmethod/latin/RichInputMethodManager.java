@@ -44,6 +44,7 @@ import java.util.Locale;
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
+import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
@@ -880,7 +881,7 @@ public class RichInputMethodManager {
                 break;
             case LOCALE_BULGARIAN:
                 subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_BULGARIAN));
-                subtypes.add(createSubtype(locale, R.string.subtype_bulgarian_bds, LAYOUT_BULGARIAN_BDS));
+                subtypes.add(createSubtype(locale, R.string.subtype_bulgarian_bds, LAYOUT_BULGARIAN_BDS, R.string.subtype_bds));
                 break;
             case LOCALE_BENGALI_BANGLADESH:
                 subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_BENGALI_AKKHOR));
@@ -896,7 +897,7 @@ public class RichInputMethodManager {
                 break;
             case LOCALE_HINDI:
                 subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_HINDI));
-                subtypes.add(createSubtype(locale, R.string.subtype_generic_compact, LAYOUT_HINDI_COMPACT));
+                subtypes.add(createSubtype(locale, R.string.subtype_generic_compact, LAYOUT_HINDI_COMPACT, R.string.subtype_compact));
                 break;
             case LOCALE_ARMENIAN_ARMENIA:
                 subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_ARMENIAN_PHONETIC));
@@ -930,7 +931,7 @@ public class RichInputMethodManager {
                 break;
             case LOCALE_NEPALI_NEPAL:
                 subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_NEPALI_ROMANIZED));
-                subtypes.add(createSubtype(locale, R.string.subtype_generic_traditional, LAYOUT_NEPALI_TRADITIONAL));
+                subtypes.add(createSubtype(locale, R.string.subtype_generic_traditional, LAYOUT_NEPALI_TRADITIONAL, R.string.subtype_traditional));
                 break;
             case LOCALE_SERBIAN:
                 subtypes.add(createSubtype(locale, R.string.subtype_generic, LAYOUT_SERBIAN));
@@ -957,19 +958,122 @@ public class RichInputMethodManager {
     }
 
     private InputMethodSubtype createSubtype(final String locale, final int labelRes, final String keyboardLayoutSet) {
+        return createSubtype(locale, labelRes, keyboardLayoutSet, null);
+    }
+
+    private InputMethodSubtype createSubtype(final String locale, final int labelRes, final String keyboardLayoutSet, final int layoutRes) {
+        return createSubtype(locale, labelRes, keyboardLayoutSet, mContext.getResources().getString(layoutRes));
+    }
+
+    private InputMethodSubtype createSubtype(final String locale, final int labelRes, final String keyboardLayoutSet, final String layoutName) {
 //        final InputMethodSubtype subtype = AdditionalSubtypeUtils.createAdditionalSubtype(locale, keyboardLayoutSet);
-        final InputMethodSubtype subtype = createSubtypeInternal(locale, labelRes, keyboardLayoutSet, false);
+        final InputMethodSubtype subtype = createSubtypeInternal(locale, labelRes, labelRes, keyboardLayoutSet, false, null);
+
+        final MySubtype mySubtype = createMySubtype(locale, labelRes, keyboardLayoutSet, layoutName);
+        compareSubtypes(subtype, mySubtype);
+
         return /*new RichInputMethodSubtype*/(subtype);
+    }
+    private MySubtype createMySubtype(final String locale, final int labelRes, final String keyboardLayoutSet, String layoutName) {
+        final String localeDisplayName = LocaleUtils.constructLocaleFromString(locale).getDisplayName();
+        final Resources res = mContext.getResources();
+        final String subtypeName = res.getString(labelRes, localeDisplayName);
+        if (layoutName == null) {
+
+            final String[] predefinedLayouts = mContext.getResources().getStringArray(
+                    R.array.predefined_layouts);
+            final int predefinedLayoutIndex = Arrays.asList(predefinedLayouts).indexOf(keyboardLayoutSet);
+            if (predefinedLayoutIndex >= 0) {
+                final String[] predefinedLayoutDisplayNames = mContext.getResources().getStringArray(
+                        R.array.predefined_layout_display_names);
+                if (predefinedLayoutIndex < predefinedLayoutDisplayNames.length) {
+                    layoutName = predefinedLayoutDisplayNames[predefinedLayoutIndex];
+                } else {
+                    //TODO: probably handle this differently - possibly don't bother with this check
+                    layoutName = "unknown";
+                }
+            } else {
+                layoutName = LocaleUtils.constructLocaleFromString(locale).getDisplayLanguage();
+            }
+        }
+        return new MySubtype(locale, subtypeName, keyboardLayoutSet, layoutName);
+    }
+    private MySubtype createMySubtypeAlternate(final String locale, final int labelRes, final String keyboardLayoutSet, final String layoutName) {
+        final String localeDisplayName = LocaleUtils.constructLocaleFromString(locale).getDisplayName();
+        final Resources res = mContext.getResources();
+        final String baseName = res.getString(labelRes, localeDisplayName);
+        final String subtypeName = res.getString(R.string.subtype_generic_layout, baseName, layoutName);
+        return new MySubtype(locale, subtypeName, keyboardLayoutSet, layoutName);
+    }
+
+    private MySubtype createSubtypeInternal2(final String localeString, final int labelRes,
+                                             final String keyboardLayoutSetName,
+                                             final boolean isAdditional,
+                                             final String genericKeyboardLayoutSetDisplayName) {
+
+        Resources res = mContext.getResources();
+        final String baseName = res.getString(labelRes, LocaleUtils.constructLocaleFromString(localeString).getDisplayName());
+        final String name;
+        if (isAdditional) {
+            name = res.getString(R.string.subtype_generic_layout, baseName, genericKeyboardLayoutSetDisplayName);
+        } else {
+            name = baseName;
+        }
+        return new MySubtype(localeString, name, keyboardLayoutSetName, "dummy");
+    }
+
+    private void compareSubtypes(final InputMethodSubtype standardSubtype, final MySubtype mySubtype) {
+        final String nameStandard = SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(standardSubtype);
+        final String nameMy = mySubtype.getName();
+        final boolean nameSame = nameStandard.equals(nameMy);
+        final String nameMessage = "name: equal=" + nameSame
+                + (nameSame ? " " + nameStandard : " standard=" + nameStandard + ", my=" + nameMy);
+
+
+        final boolean localeSame = standardSubtype.getLocale().equals(mySubtype.getLocale());
+        final String localeMessage = "locale: equal=" + localeSame
+                + (localeSame ? " " + standardSubtype.getLocale() : " standard=" + standardSubtype.getLocale() + ", my=" + mySubtype.getLocale());
+
+
+        final String layoutStandard = SubtypeLocaleUtils.getKeyboardLayoutSetName(standardSubtype);
+        final String layoutMy = mySubtype.getLayoutSet();
+        final boolean layoutSame = layoutStandard.equals(layoutMy);
+        final String layoutMessage = "layout: equal=" + layoutSame
+                + (layoutSame ? " " + layoutStandard : " standard=" + layoutStandard + ", my=" + layoutMy);
+
+
+        final String layoutNameStandard = SubtypeLocaleUtils.getKeyboardLayoutDisplayName(standardSubtype, mContext);
+//        final String layoutNameMy = SubtypeLocaleUtils.getKeyboardLayoutDisplayName(mySubtype, mContext);
+        final String layoutNameMy = mySubtype.getLayoutDisplayName();
+        final boolean layoutNameSame = layoutNameStandard.equals(layoutNameMy);
+        final String layoutNameMessage = "layoutName: equal=" + layoutNameSame
+                + (layoutNameSame ? " " + layoutNameStandard : " standard=" + layoutNameStandard + ", my=" + layoutNameMy);
+
+
+        if (nameSame && localeSame && layoutSame && layoutNameSame) {
+            Log.w(TAG, nameMessage);
+            Log.w(TAG, localeMessage);
+            Log.w(TAG, layoutMessage);
+            Log.w(TAG, layoutNameMessage);
+        } else {
+            Log.e(TAG, nameMessage);
+            Log.e(TAG, localeMessage);
+            Log.e(TAG, layoutMessage);
+            Log.e(TAG, layoutNameMessage);
+        }
     }
 
     private void addGenericLayouts(final List<InputMethodSubtype> subtypes, final String locale, final int labelRes) {
         final int initialSize = subtypes.size();
         final String[] predefinedKeyboardLayoutSets = mContext.getResources().getStringArray(
                 R.array.predefined_layouts);
-        for (final String predefinedLayout : predefinedKeyboardLayoutSets) {
+        final String[] predefinedKeyboardLayoutSetDisplayNames = mContext.getResources().getStringArray(
+                R.array.predefined_layout_display_names);
+        for (int i = 0; i < predefinedKeyboardLayoutSets.length; i++) {
+            final String predefinedLayout = predefinedKeyboardLayoutSets[i];
             boolean alreadyExists = false;
-            for (int i = 0; i < initialSize; i++) {
-                if (SubtypeLocaleUtils.getKeyboardLayoutSetName(subtypes.get(i)).equals(predefinedLayout)) {
+            for (int j = 0; j < initialSize; j++) {
+                if (SubtypeLocaleUtils.getKeyboardLayoutSetName(subtypes.get(j)).equals(predefinedLayout)) {
                     alreadyExists = true;
                     break;
                 }
@@ -977,39 +1081,20 @@ public class RichInputMethodManager {
             if (alreadyExists) {
                 continue;
             }
-            subtypes.add(createSubtypeInternal(locale, /*labelRes*/SubtypeLocaleUtils.getSubtypeNameId(locale, predefinedLayout), predefinedLayout, true));
+
+
+            final InputMethodSubtype subtype = createSubtypeInternal(locale, labelRes, SubtypeLocaleUtils.getSubtypeNameId(locale, predefinedLayout), predefinedLayout, true, predefinedKeyboardLayoutSetDisplayNames[i]);
+            subtypes.add(subtype);
+
+            final MySubtype mySubtype = createMySubtypeAlternate(locale, labelRes, predefinedLayout, predefinedKeyboardLayoutSetDisplayNames[i]);
+            compareSubtypes(subtype, mySubtype);
         }
     }
 
-    //TODO: move and rename
-    public class MySubtype {
-        private final String mLocale;
-        private final String mName;
-        private final String mLayoutSet;
-
-        public MySubtype(final String locale, final String name, final String layoutSet) {
-            mLocale = locale;
-            mName = name;
-            mLayoutSet = layoutSet;
-        }
-
-        public String getLocale() {
-            return mLocale;
-        }
-
-        public String getName() {
-            return mName;
-        }
-
-        public String getLayoutSet() {
-            return mLayoutSet;
-        }
-    }
-
-    private static InputMethodSubtype createSubtypeInternal(
-            final String localeString, final int labelRes, final String keyboardLayoutSetName, final boolean isAdditional) {
+    private InputMethodSubtype createSubtypeInternal(
+            final String localeString, final int labelRes, final int labelResGeneric, final String keyboardLayoutSetName, final boolean isAdditional, final String genericKeyboardLayoutSetDisplayName) {
 //        final int nameId = SubtypeLocaleUtils.getSubtypeNameId(localeString, keyboardLayoutSetName);
-        final int nameId = labelRes;
+        final int nameId = isAdditional ? labelResGeneric : labelRes;
         final String platformVersionDependentExtraValues = getPlatformVersionDependentExtraValue(
                 localeString, keyboardLayoutSetName, isAdditional);
         final int platformVersionIndependentSubtypeId =
@@ -1024,7 +1109,13 @@ public class RichInputMethodManager {
                 .setOverridesImplicitlyEnabledSubtype(false)
                 .setIsAuxiliary(false)
                 .setSubtypeId(platformVersionIndependentSubtypeId);
-        return builder.build();
+        final InputMethodSubtype result = builder.build();
+
+
+//        compareSubtypes(result, createSubtypeInternal2(localeString, labelRes, keyboardLayoutSetName, isAdditional, genericKeyboardLayoutSetDisplayName));
+
+        return result;
+
     }
     private static String getPlatformVersionDependentExtraValue(final String localeString, final String keyboardLayoutSetName, final boolean isAdditional) {
         final ArrayList<String> extraValueItems = new ArrayList<>();
