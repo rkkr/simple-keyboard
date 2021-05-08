@@ -761,6 +761,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             if (TextUtils.getLayoutDirectionFromLocale(mSettings.getCurrent().mLocale) == View.LAYOUT_DIRECTION_RTL)
                 steps = -steps;
 
+            steps = mInputLogic.mConnection.getUnicodeSteps(steps, true);
             final int end = mInputLogic.mConnection.getExpectedSelectionEnd() + steps;
             final int start = mInputLogic.mConnection.hasSelection() ? mInputLogic.mConnection.getExpectedSelectionStart() : end;
             mInputLogic.mConnection.setSelection(start, end);
@@ -772,13 +773,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
     }
 
-
     @Override
     public void onMoveDeletePointer(int steps) {
         if (mInputLogic.mConnection.hasCursorPosition()) {
-            final int stepsBack = determineJavaCharsToStep(steps);
+            steps = mInputLogic.mConnection.getUnicodeSteps(steps, false);
             final int end = mInputLogic.mConnection.getExpectedSelectionEnd();
-            final int start = mInputLogic.mConnection.getExpectedSelectionStart() + stepsBack;
+            final int start = mInputLogic.mConnection.getExpectedSelectionStart() + steps;
             if (start > end)
                 return;
             mInputLogic.mConnection.setSelection(start, end);
@@ -786,61 +786,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             for (; steps < 0; steps++)
                 mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
         }
-    }
-
-    /**
-     * Some chars, such as emoji consist of 2 chars (surrogate pairs). We should treat them as one character.
-     */
-    private int determineJavaCharsToStep(int steps) {
-        if (steps < 0) {
-            final int absolute = Math.abs(steps);
-            CharSequence charsBeforeCursor = mInputLogic.mConnection.getTextBeforeCursor(absolute,
-                    0);
-            if (charsBeforeCursor != null) {
-                return countBackwards(charsBeforeCursor.toString(), absolute);
-            }
-        } else if (steps > 0) {
-            final CharSequence selectedText = mInputLogic.mConnection.getSelectedText(0);
-            if (selectedText != null) {
-                return countForwards(selectedText.toString(), steps);
-            }
-        }
-        return steps;
-    }
-
-    private int countForwards(String textBeforeCursor, int steps) {
-        int len = textBeforeCursor.length();
-        int javaCharsToStep = 0;
-        while (steps > 0) {
-            if (javaCharsToStep < len) {
-                if (Character.isSurrogate(textBeforeCursor.charAt(javaCharsToStep))) {
-                    javaCharsToStep++;
-                }
-            } else {
-                return javaCharsToStep + steps;
-            }
-            javaCharsToStep++;
-            steps--;
-        }
-        return javaCharsToStep;
-    }
-
-    private int countBackwards(String textBeforeCursor, int steps) {
-        int len = textBeforeCursor.length();
-        int ixOnText = len;
-        while (steps > 0) {
-            ixOnText--;
-            steps--;
-            if (ixOnText >= 0) {
-                char c = textBeforeCursor.charAt(ixOnText);
-                if (Character.isSurrogate(c)) {
-                    ixOnText--; // count double
-                }
-            } else {
-                return -(len - (ixOnText - steps));
-            }
-        }
-        return -(len - ixOnText);
     }
 
     @Override

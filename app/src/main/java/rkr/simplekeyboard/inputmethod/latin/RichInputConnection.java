@@ -525,14 +525,6 @@ public final class RichInputConnection {
         if (start < 0 || end < 0) {
             return;
         }
-        if (end > mExpectedSelEnd) {
-            // Moving selection right, check for available text to not get out of range
-            final CharSequence textAfter = getTextAfterCursor(end - mExpectedSelEnd, 0);
-            end = Math.min(mExpectedSelEnd + textAfter.length(), end);
-        }
-        if (start > mExpectedSelStart) {
-            start = Math.min(start, end);
-        }
         if (mExpectedSelStart == start && mExpectedSelEnd == end) {
             return;
         }
@@ -565,5 +557,38 @@ public final class RichInputConnection {
 
     public boolean hasCursorPosition() {
         return mExpectedSelStart != INVALID_CURSOR_POSITION && mExpectedSelEnd != INVALID_CURSOR_POSITION;
+    }
+
+    /**
+     * Some chars, such as emoji consist of 2 chars (surrogate pairs). We should treat them as one character.
+     */
+    public int getUnicodeSteps(int chars, boolean rightSidePointer) {
+        int steps = 0;
+        if (chars < 0) {
+            CharSequence charsBeforeCursor = rightSidePointer && hasSelection() ?
+                    getSelectedText(0) :
+                    getTextBeforeCursor(-chars * 2, 0);
+            if (charsBeforeCursor != null) {
+                for (int i = charsBeforeCursor.length() - 1; i >= 0 && chars < 0; i--, chars++, steps--) {
+                    if (Character.isSurrogate(charsBeforeCursor.charAt(i))) {
+                        steps--;
+                        i--;
+                    }
+                }
+            }
+        } else if (chars > 0) {
+            CharSequence charsAfterCursor = !rightSidePointer && hasSelection() ?
+                    getSelectedText(0) :
+                    getTextAfterCursor(chars * 2, 0);
+            if (charsAfterCursor != null) {
+                for (int i = 0; i < charsAfterCursor.length() && chars > 0; i++, chars--, steps++) {
+                    if (Character.isSurrogate(charsAfterCursor.charAt(i))) {
+                        steps++;
+                        i++;
+                    }
+                }
+            }
+        }
+        return steps;
     }
 }
