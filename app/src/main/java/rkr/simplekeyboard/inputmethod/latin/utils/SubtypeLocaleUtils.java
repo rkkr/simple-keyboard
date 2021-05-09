@@ -169,6 +169,18 @@ public final class SubtypeLocaleUtils {
         return getSubtypeLocaleDisplayNameInternal(localeString, displayLocale);
     }
 
+    public static String getSubtypeLanguageDisplayNameInSystemLocale(
+            final String localeString) {
+        final Locale displayLocale = sResources.getConfiguration().locale;
+        final String languageString;
+        if (sExceptionalLocaleDisplayedInRootLocale.containsKey(localeString)) {
+            languageString = localeString;
+        } else {
+            languageString = LocaleUtils.constructLocaleFromString(localeString).getLanguage();
+        }
+        return getSubtypeLocaleDisplayNameInternal(languageString, displayLocale);
+    }
+
     public static String getSubtypeLanguageDisplayName(final String localeString) {
         final Locale displayLocale = getDisplayLocaleOfSubtypeLocale(localeString);
         final String languageString;
@@ -240,12 +252,12 @@ public final class SubtypeLocaleUtils {
         return getSubtypeDisplayNameInternal(subtype, displayLocale);
     }
 
-    public static String getSubtypeNameForLogging(final InputMethodSubtype subtype) {
-        if (subtype == null) {
-            return "<null subtype>";
-        }
-        return getSubtypeLocale(subtype) + "/" + getKeyboardLayoutSetName(subtype);
-    }
+//    public static String getSubtypeNameForLogging(final InputMethodSubtype subtype) {
+//        if (subtype == null) {
+//            return "<null subtype>";
+//        }
+//        return getSubtypeLocale(subtype) + "/" + getKeyboardLayoutSetName(subtype);
+//    }
 
     private static String getSubtypeDisplayNameInternal(final InputMethodSubtype subtype,
             final Locale displayLocale) {
@@ -336,35 +348,6 @@ public final class SubtypeLocaleUtils {
                 return context.getResources().getString(R.string.subtype_traditional);
             case SERBIAN_QWERTZ:
                 return SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtype);
-        }
-
-        final Locale locale = LocaleUtils.constructLocaleFromString(subtype.getLocale());
-        return locale.getDisplayLanguage(sResources.getConfiguration().locale);
-    }
-    public static String getKeyboardLayoutDisplayName(final MySubtype subtype,
-                                                      final Context context) {
-        final String layoutName = subtype.getLayoutSet();
-        final String[] predefinedLayouts = context.getResources().getStringArray(
-                R.array.predefined_layouts);
-        final String[] predefinedLayoutDisplayNames = context.getResources().getStringArray(
-                R.array.predefined_layout_display_names);
-        final int predefinedLayoutIndex = Arrays.asList(predefinedLayouts).indexOf(layoutName);
-        if (predefinedLayoutIndex >= 0
-                && predefinedLayoutIndex < predefinedLayoutDisplayNames.length) {
-            return predefinedLayoutDisplayNames[predefinedLayoutIndex];
-        }
-
-        // Languages with multiple layouts should have simplified names that don't include the
-        // language name to avoid redundancy when listing them together under the language.
-        switch (layoutName) {
-            case BULGARIAN_BDS:
-                return context.getResources().getString(R.string.subtype_bds);
-            case HINDI_COMPACT:
-                return context.getResources().getString(R.string.subtype_compact);
-            case NEPALI_TRADITIONAL:
-                return context.getResources().getString(R.string.subtype_traditional);
-            case SERBIAN_QWERTZ:
-                return subtype.getName();
         }
 
         final Locale locale = LocaleUtils.constructLocaleFromString(subtype.getLocale());

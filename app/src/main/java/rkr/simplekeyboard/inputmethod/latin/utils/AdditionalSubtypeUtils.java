@@ -89,53 +89,10 @@ public final class AdditionalSubtypeUtils {
         return null;
     }
 
-    public static String getPrefSubtype(final InputMethodSubtype subtype) {
-        final String localeString = subtype.getLocale();
-        final String keyboardLayoutSetName = SubtypeLocaleUtils.getKeyboardLayoutSetName(subtype);
-        final String layoutExtraValue = KEYBOARD_LAYOUT_SET + "=" + keyboardLayoutSetName;
-        final String extraValue = StringUtils.removeFromCommaSplittableTextIfExists(
-                layoutExtraValue, StringUtils.removeFromCommaSplittableTextIfExists(
-                        IS_ADDITIONAL_SUBTYPE, subtype.getExtraValue()));
-        final String basePrefSubtype = localeString + LOCALE_AND_LAYOUT_SEPARATOR
-                + keyboardLayoutSetName;
-        return extraValue.isEmpty() ? basePrefSubtype
-                : basePrefSubtype + LOCALE_AND_LAYOUT_SEPARATOR + extraValue;
-    }
-
     public static String getPrefSubtype(final MySubtype subtype) {
         final String localeString = subtype.getLocale();
         final String keyboardLayoutSetName = subtype.getLayoutSet();
         return localeString + LOCALE_AND_LAYOUT_SEPARATOR + keyboardLayoutSetName;
-    }
-
-    public static InputMethodSubtype[] createAdditionalSubtypesArray(final String prefSubtypes) {
-        if (TextUtils.isEmpty(prefSubtypes)) {
-            return EMPTY_SUBTYPE_ARRAY;
-        }
-        final String[] prefSubtypeArray = prefSubtypes.split(PREF_SUBTYPE_SEPARATOR);
-        final ArrayList<InputMethodSubtype> subtypesList = new ArrayList<>(prefSubtypeArray.length);
-        for (final String prefSubtype : prefSubtypeArray) {
-            final String[] elems = prefSubtype.split(LOCALE_AND_LAYOUT_SEPARATOR);
-            if (elems.length != LENGTH_WITHOUT_EXTRA_VALUE
-                    && elems.length != LENGTH_WITH_EXTRA_VALUE) {
-                Log.w(TAG, "Unknown additional subtype specified: " + prefSubtype + " in "
-                        + prefSubtypes);
-                continue;
-            }
-            final String localeString = elems[INDEX_OF_LOCALE];
-            final String keyboardLayoutSetName = elems[INDEX_OF_KEYBOARD_LAYOUT];
-            // Here we assume that all the additional subtypes have AsciiCapable and EmojiCapable.
-            // This is actually what the setting dialog for additional subtype is doing.
-            final InputMethodSubtype subtype = createAdditionalSubtype(
-                    localeString, keyboardLayoutSetName);
-//            if (subtype.getNameResId() == SubtypeLocaleUtils.UNKNOWN_KEYBOARD_LAYOUT) {
-//                // Skip unknown keyboard layout subtype. This may happen when predefined keyboard
-//                // layout has been removed.
-//                continue;
-//            }
-            subtypesList.add(subtype);
-        }
-        return subtypesList.toArray(new InputMethodSubtype[subtypesList.size()]);
     }
 
     public static MySubtype[] createAdditionalSubtypesArray2(final String prefSubtypes) {
@@ -165,20 +122,6 @@ public final class AdditionalSubtypeUtils {
         return subtypesList.toArray(new MySubtype[subtypesList.size()]);
     }
 
-    public static String createPrefSubtypes(final InputMethodSubtype[] subtypes) {
-        if (subtypes == null || subtypes.length == 0) {
-            return "";
-        }
-        final StringBuilder sb = new StringBuilder();
-        for (final InputMethodSubtype subtype : subtypes) {
-            if (sb.length() > 0) {
-                sb.append(PREF_SUBTYPE_SEPARATOR);
-            }
-            sb.append(getPrefSubtype(subtype));
-        }
-        return sb.toString();
-    }
-
     public static String createPrefSubtypes(final List<MySubtype> subtypes) {
         if (subtypes == null || subtypes.size() == 0) {
             return "";
@@ -189,20 +132,6 @@ public final class AdditionalSubtypeUtils {
                 sb.append(PREF_SUBTYPE_SEPARATOR);
             }
             sb.append(getPrefSubtype(subtype));
-        }
-        return sb.toString();
-    }
-
-    public static String createPrefSubtypes(final String[] prefSubtypes) {
-        if (prefSubtypes == null || prefSubtypes.length == 0) {
-            return "";
-        }
-        final StringBuilder sb = new StringBuilder();
-        for (final String prefSubtype : prefSubtypes) {
-            if (sb.length() > 0) {
-                sb.append(PREF_SUBTYPE_SEPARATOR);
-            }
-            sb.append(prefSubtype);
         }
         return sb.toString();
     }

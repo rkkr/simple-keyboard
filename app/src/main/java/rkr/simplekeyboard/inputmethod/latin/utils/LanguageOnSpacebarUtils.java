@@ -19,9 +19,8 @@ package rkr.simplekeyboard.inputmethod.latin.utils;
 import java.util.Locale;
 import java.util.Set;
 
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.MySubtype;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
+import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 
 /**
  * This class determines that the language name on the spacebar should be displayed in what format.
