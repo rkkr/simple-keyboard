@@ -99,7 +99,7 @@
     th: Thai/thai
     tl: Tagalog/spanish
     tr: Turkish/qwerty
-    tr_F: Turkish/F-layout
+    tr__F: Turkish/F-layout
     uk: Ukrainian/east_slavic
     ur: Urdu/urdu
     uz_UZ: Uzbek (Uzbekistan)/uzbek # This is a preliminary keyboard layout.
@@ -175,9 +175,9 @@
             android:isAsciiCapable="false"
     />
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
-            android:label="@string/subtype_turkish_f"
+            android:label="@string/subtype_generic"
             android:subtypeId="0x5f51ba31"
-            android:imeSubtypeLocale="tr"
+            android:imeSubtypeLocale="tr__F"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=turkish_f"
             android:isAsciiCapable="true"
