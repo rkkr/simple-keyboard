@@ -16,29 +16,19 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
+import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.inputmethod.InputMethodSubtype;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.MySubtype;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.IS_ADDITIONAL_SUBTYPE;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
 
 public final class AdditionalSubtypeUtils {
     private static final String TAG = AdditionalSubtypeUtils.class.getSimpleName();
 
-    private static final InputMethodSubtype[] EMPTY_SUBTYPE_ARRAY = new InputMethodSubtype[0];
-    private static final MySubtype[] EMPTY_SUBTYPE_ARRAY2 = new MySubtype[0];
+    private static final MySubtype[] EMPTY_SUBTYPE_ARRAY = new MySubtype[0];
 
     private AdditionalSubtypeUtils() {
         // This utility class is not publicly instantiable.
@@ -47,40 +37,14 @@ public final class AdditionalSubtypeUtils {
     private static final String LOCALE_AND_LAYOUT_SEPARATOR = ":";
     private static final int INDEX_OF_LOCALE = 0;
     private static final int INDEX_OF_KEYBOARD_LAYOUT = 1;
-    private static final int INDEX_OF_EXTRA_VALUE = 2;
     private static final int LENGTH_WITHOUT_EXTRA_VALUE = (INDEX_OF_KEYBOARD_LAYOUT + 1);
-    private static final int LENGTH_WITH_EXTRA_VALUE = (INDEX_OF_EXTRA_VALUE + 1);
     private static final String PREF_SUBTYPE_SEPARATOR = ";";
 
-    private static InputMethodSubtype createAdditionalSubtypeInternal(
-            final String localeString, final String keyboardLayoutSetName) {
-        final int nameId = SubtypeLocaleUtils.getSubtypeNameId(localeString, keyboardLayoutSetName);
-        final String platformVersionDependentExtraValues = getPlatformVersionDependentExtraValue(
-                localeString, keyboardLayoutSetName);
-        final int platformVersionIndependentSubtypeId =
-                getPlatformVersionIndependentSubtypeId(localeString, keyboardLayoutSetName);
-        InputMethodSubtype.InputMethodSubtypeBuilder builder = new InputMethodSubtype.InputMethodSubtypeBuilder();
-
-        builder.setSubtypeNameResId(nameId)
-            .setSubtypeIconResId(R.drawable.ic_ime_switcher_dark)
-            .setSubtypeLocale(localeString)
-            .setSubtypeMode(KEYBOARD_MODE)
-            .setSubtypeExtraValue(platformVersionDependentExtraValues)
-            .setOverridesImplicitlyEnabledSubtype(false)
-            .setIsAuxiliary(false)
-            .setSubtypeId(platformVersionIndependentSubtypeId);
-        return builder.build();
-    }
-
-    public static InputMethodSubtype createAdditionalSubtype(
-            final String localeString, final String keyboardLayoutSetName) {
-        return createAdditionalSubtypeInternal(localeString, keyboardLayoutSetName);
-    }
-
-    public static MySubtype createAdditionalSubtype2(
-            final String localeString, final String keyboardLayoutSetName) {
+    private static MySubtype createSubtype(
+            final String localeString, final String keyboardLayoutSetName,
+            final Resources resources) {
         //TODO: maybe find a more efficient way to do this
-        final List<MySubtype> localeSubtypes = RichInputMethodManager.getInstance().getSubtypes(localeString);
+        final List<MySubtype> localeSubtypes = SubtypeUtils.getSubtypes(localeString, resources);
         for (final MySubtype subtype : localeSubtypes) {
             if (subtype.getLayoutSet().equals(keyboardLayoutSetName)) {
                 return subtype;
@@ -89,15 +53,16 @@ public final class AdditionalSubtypeUtils {
         return null;
     }
 
-    public static String getPrefSubtype(final MySubtype subtype) {
+    private static String getPrefString(final MySubtype subtype) {
         final String localeString = subtype.getLocale();
         final String keyboardLayoutSetName = subtype.getLayoutSet();
         return localeString + LOCALE_AND_LAYOUT_SEPARATOR + keyboardLayoutSetName;
     }
 
-    public static MySubtype[] createAdditionalSubtypesArray2(final String prefSubtypes) {
+    public static MySubtype[] createSubtypesFromPref(final String prefSubtypes,
+                                                     final Resources resources) {
         if (TextUtils.isEmpty(prefSubtypes)) {
-            return EMPTY_SUBTYPE_ARRAY2;
+            return EMPTY_SUBTYPE_ARRAY;
         }
         final String[] prefSubtypeArray = prefSubtypes.split(PREF_SUBTYPE_SEPARATOR);
         final ArrayList<MySubtype> subtypesList = new ArrayList<>(prefSubtypeArray.length);
@@ -110,10 +75,7 @@ public final class AdditionalSubtypeUtils {
             }
             final String localeString = elems[INDEX_OF_LOCALE];
             final String keyboardLayoutSetName = elems[INDEX_OF_KEYBOARD_LAYOUT];
-            // Here we assume that all the additional subtypes have AsciiCapable and EmojiCapable.
-            // This is actually what the setting dialog for additional subtype is doing.
-            final MySubtype subtype = createAdditionalSubtype2(
-                    localeString, keyboardLayoutSetName);
+            final MySubtype subtype = createSubtype(localeString, keyboardLayoutSetName, resources);
             if (subtype == null) {
                 continue;
             }
@@ -131,71 +93,8 @@ public final class AdditionalSubtypeUtils {
             if (sb.length() > 0) {
                 sb.append(PREF_SUBTYPE_SEPARATOR);
             }
-            sb.append(getPrefSubtype(subtype));
+            sb.append(getPrefString(subtype));
         }
         return sb.toString();
-    }
-
-    /**
-     * Returns the extra value that is optimized for the running OS.
-     * <p>
-     * Historically the extra value has been used as the last resort to annotate various kinds of
-     * attributes. Some of these attributes are valid only on some platform versions. Thus we cannot
-     * assume that the extra values stored in a persistent storage are always valid. We need to
-     * regenerate the extra value on the fly instead.
-     * </p>
-     * @param keyboardLayoutSetName the keyboard layout set name (e.g., "dvorak").
-     * @return extra value that is optimized for the running OS.
-     * @see #getPlatformVersionIndependentSubtypeId(String, String)
-     */
-    private static String getPlatformVersionDependentExtraValue(final String localeString, final String keyboardLayoutSetName) {
-        final ArrayList<String> extraValueItems = new ArrayList<>();
-        extraValueItems.add(KEYBOARD_LAYOUT_SET + "=" + keyboardLayoutSetName);
-        if (SubtypeLocaleUtils.isExceptionalLocale(localeString)) {
-            extraValueItems.add(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME + "=" +
-                    SubtypeLocaleUtils.getKeyboardLayoutSetDisplayName(keyboardLayoutSetName));
-        }
-        extraValueItems.add(IS_ADDITIONAL_SUBTYPE);
-        return TextUtils.join(",", extraValueItems);
-    }
-
-    /**
-     * Returns the subtype ID that is supposed to be compatible between different version of OSes.
-     * <p>
-     * From the compatibility point of view, it is important to keep subtype id predictable and
-     * stable between different OSes. For this purpose, the calculation code in this method is
-     * carefully chosen and then fixed. Treat the following code as no more or less than a
-     * hash function. Each component to be hashed can be different from the corresponding value
-     * that is used to instantiate {@link InputMethodSubtype} actually.
-     * For example, you don't need to update <code>compatibilityExtraValueItems</code> in this
-     * method even when we need to add some new extra values for the actual instance of
-     * {@link InputMethodSubtype}.
-     * </p>
-     * @param localeString the locale string (e.g., "en_US").
-     * @param keyboardLayoutSetName the keyboard layout set name (e.g., "dvorak").
-     * @return a platform-version independent subtype ID.
-     */
-    private static int getPlatformVersionIndependentSubtypeId(final String localeString,
-            final String keyboardLayoutSetName) {
-        // For compatibility reasons, we concatenate the extra values in the following order.
-        // - KeyboardLayoutSet
-        // - AsciiCapable
-        // - UntranslatableReplacementStringInSubtypeName
-        // - EmojiCapable
-        // - isAdditionalSubtype
-        final ArrayList<String> compatibilityExtraValueItems = new ArrayList<>();
-        compatibilityExtraValueItems.add(KEYBOARD_LAYOUT_SET + "=" + keyboardLayoutSetName);
-        if (SubtypeLocaleUtils.isExceptionalLocale(localeString)) {
-            compatibilityExtraValueItems.add(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME + "=" +
-                    SubtypeLocaleUtils.getKeyboardLayoutSetDisplayName(keyboardLayoutSetName));
-        }
-        compatibilityExtraValueItems.add(IS_ADDITIONAL_SUBTYPE);
-        final String compatibilityExtraValues = TextUtils.join(",", compatibilityExtraValueItems);
-        return Arrays.hashCode(new Object[] {
-                localeString,
-                KEYBOARD_MODE,
-                compatibilityExtraValues,
-                false /* isAuxiliary */,
-                false /* overrideImplicitlyEnabledSubtype */ });
     }
 }

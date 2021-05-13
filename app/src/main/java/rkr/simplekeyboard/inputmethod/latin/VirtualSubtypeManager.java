@@ -13,6 +13,7 @@ import java.util.List;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeUtils;
 
 public class VirtualSubtypeManager {
     private static final String TAG = VirtualSubtypeManager.class.getSimpleName();
@@ -26,9 +27,7 @@ public class VirtualSubtypeManager {
 
         final MySubtype[] subtypes = loadSubtypes(context);
         if (subtypes == null || subtypes.length < 1) {
-            //TODO: make a better default
-            mSubtypes = new ArrayList<>();
-            mSubtypes.add(RichInputMethodManager.getInstance().getSubtypes("en_US").get(0));
+            mSubtypes = SubtypeUtils.getDefaultSubtypes(context.getResources());
             mCurrentSubtypeIndex = 0;
         } else {
             mSubtypes = new ArrayList<>(Arrays.asList(subtypes));
@@ -39,7 +38,8 @@ public class VirtualSubtypeManager {
     private MySubtype[] loadSubtypes(final Context context) {
         final String prefAdditionalSubtypes = Settings.readPrefAdditionalSubtypes(
                 mPrefs, context.getResources());
-        return AdditionalSubtypeUtils.createAdditionalSubtypesArray2(prefAdditionalSubtypes);
+        return AdditionalSubtypeUtils.createSubtypesFromPref(prefAdditionalSubtypes,
+                context.getResources());
     }
 
     private int loadSubtypeIndex() {

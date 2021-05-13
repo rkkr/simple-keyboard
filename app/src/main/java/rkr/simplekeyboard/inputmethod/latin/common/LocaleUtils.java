@@ -16,9 +16,15 @@
 
 package rkr.simplekeyboard.inputmethod.latin.common;
 
+import android.content.res.Resources;
+import android.os.Build;
+import android.os.LocaleList;
 import android.text.TextUtils;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -81,5 +87,47 @@ public final class LocaleUtils {
             return locale.getLanguage() + "_" + locale.getCountry();
         }
         return locale.getLanguage() + "_" + locale.getCountry() + "_" + locale.getVariant();
+    }
+
+    public static Locale findBestLocale(final Locale localeToFind, final Collection<Locale> collection) {
+        // Find the best subtype based on a straightforward matching algorithm.
+        // TODO: Use LocaleList#getFirstMatch() instead.
+        for (final Locale locale : collection) {
+            if (locale.equals(localeToFind)) {
+                return locale;
+            }
+        }
+        for (final Locale locale : collection) {
+            if (locale.getLanguage().equals(localeToFind.getLanguage()) &&
+                    locale.getCountry().equals(localeToFind.getCountry()) &&
+                    locale.getVariant().equals(localeToFind.getVariant())) {
+                return locale;
+            }
+        }
+        for (final Locale locale : collection) {
+            if (locale.getLanguage().equals(localeToFind.getLanguage()) &&
+                    locale.getCountry().equals(localeToFind.getCountry())) {
+                return locale;
+            }
+        }
+        for (final Locale locale : collection) {
+            if (locale.getLanguage().equals(localeToFind.getLanguage())) {
+                return locale;
+            }
+        }
+        return null;
+    }
+
+    public static List<Locale> getSystemLocales() {
+        ArrayList<Locale> locales = new ArrayList<>();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
+            for (int i = 0; i < localeList.size(); i++) {
+                locales.add(localeList.get(i));
+            }
+        } else {
+            locales.add(Resources.getSystem().getConfiguration().locale);
+        }
+        return locales;
     }
 }
