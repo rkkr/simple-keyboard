@@ -17,42 +17,21 @@
 package rkr.simplekeyboard.inputmethod.latin;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
 import android.os.Build;
 import android.os.IBinder;
-import android.os.LocaleList;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
-import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
-import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
-import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
-import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
-
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.IS_ADDITIONAL_SUBTYPE;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
 
 /**
  * Enrichment class for InputMethodManager to simplify interaction and add functionality.
@@ -62,24 +41,12 @@ public class RichInputMethodManager {
     private static final String TAG = RichInputMethodManager.class.getSimpleName();
     private static final boolean DEBUG = false;
 
-    private static final String SUBTYPE_META_DATA_NAME = "android.view.im";
-    private static final String XML_NAMESPACE = "http://schemas.android.com/apk/res/android";
-    private static final String TAG_SUBTYPE = "subtype";
-    private static final String TAG_ICON = "icon";
-    private static final String TAG_LABEL = "label";
-    private static final String TAG_SUBTYPE_ID = "subtypeId";
-    private static final String TAG_LOCALE = "imeSubtypeLocale";
-    private static final String TAG_MODE = "imeSubtypeMode";
-    private static final String TAG_EXTRA_VALUE = "imeSubtypeExtraValue";
-    private static final String TAG_ASCII_CAPABLE = "isAsciiCapable";
-
     private RichInputMethodManager() {
         // This utility class is not publicly instantiable.
     }
 
     private static final RichInputMethodManager sInstance = new RichInputMethodManager();
 
-    private Context mContext;
     private InputMethodManager mImmService;
     private InputMethodInfoCache mInputMethodInfoCache;
     private VirtualSubtypeManager mVirtualSubtypeManager;
@@ -110,7 +77,6 @@ public class RichInputMethodManager {
             return;
         }
         mImmService = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        mContext = context;
         mInputMethodInfoCache = new InputMethodInfoCache(
                 mImmService, context.getPackageName());
 
@@ -375,74 +341,6 @@ public class RichInputMethodManager {
                 imi, allowsImplicitlySelectedSubtypes);
     }
 
-    /**
-     * Get the list of subtypes that are always available for this IME. This returns the list of
-     * subtypes from method.xml.
-     * @return the list of default subtypes.
-     */
-    public List<InputMethodSubtype> getDefaultSubtypesOfThisIme() {
-        final InputMethodInfo imi = getInputMethodInfoOfThisIme();
-        final int inputMethodResId = imi.getServiceInfo().metaData.getInt(SUBTYPE_META_DATA_NAME);
-        final XmlResourceParser parser = mContext.getResources().getXml(inputMethodResId);
-        final List<InputMethodSubtype> defaultSubtypes = new ArrayList<>();
-        try {
-            while (parser.getEventType() != XmlResourceParser.END_DOCUMENT) {
-                final int event = parser.next();
-                if (event == XmlPullParser.START_TAG) {
-                    final String tag = parser.getName();
-                    if (TAG_SUBTYPE.equals(tag)) {
-                        defaultSubtypes.add(parseSubtype(parser));
-                    }
-                }
-            }
-        } catch (XmlPullParserException | IOException e) {
-            e.printStackTrace();
-            Log.e(TAG, "Failed to parse default subtypes");
-            return new ArrayList<>();
-        }
-        return defaultSubtypes;
-    }
-
-    /**
-     * Build a subtype from an xml tag.
-     * @param parser the XML parser.
-     * @return the subtype that the xml defines.
-     */
-    private static InputMethodSubtype parseSubtype(final XmlResourceParser parser) {
-        final InputMethodSubtype.InputMethodSubtypeBuilder builder =
-                new InputMethodSubtype.InputMethodSubtypeBuilder();
-
-        final int icon = parser.getAttributeResourceValue(XML_NAMESPACE, TAG_ICON, -1);
-        if (icon != -1) {
-            builder.setSubtypeIconResId(icon);
-        }
-
-        final int label = parser.getAttributeResourceValue(XML_NAMESPACE, TAG_LABEL, -1);
-        if (label != -1) {
-            builder.setSubtypeNameResId(label);
-        }
-
-        final int id = parser.getAttributeIntValue(XML_NAMESPACE, TAG_SUBTYPE_ID, -1);
-        if (id != -1) {
-            builder.setSubtypeId(id);
-        }
-
-        final String locale = parser.getAttributeValue(XML_NAMESPACE, TAG_LOCALE);
-        builder.setSubtypeLocale(locale);
-
-        final String mode = parser.getAttributeValue(XML_NAMESPACE, TAG_MODE);
-        builder.setSubtypeMode(mode);
-
-        final String extraValue = parser.getAttributeValue(XML_NAMESPACE, TAG_EXTRA_VALUE);
-        builder.setSubtypeExtraValue(extraValue);
-
-        final boolean asciiCapable = parser.getAttributeBooleanValue(XML_NAMESPACE,
-                TAG_ASCII_CAPABLE, false);
-        builder.setIsAsciiCapable(asciiCapable);
-
-        return builder.build();
-    }
-
     public void refreshSubtypeCaches() {
         mInputMethodInfoCache.clear();
     }
@@ -462,6 +360,4 @@ public class RichInputMethodManager {
     public boolean setCurrentSubtype(final MySubtype subtype) {
         return mVirtualSubtypeManager.setCurrentSubtype(subtype);
     }
-
-
 }

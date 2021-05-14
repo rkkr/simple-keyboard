@@ -37,7 +37,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodSubtype;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -281,28 +280,6 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                     new SingleLanguagePreference(context, localeString);
             group.addPreference(pref);
         }
-    }
-
-    /**
-     * Check if any additional subtypes for a locale have been selected but not enabled in the
-     * system.
-     * @param locale the locale to check.
-     * @param prefSubtypes the selected additional subtypes.
-     * @param enabledSubtypes the enabled subtypes for this IME.
-     * @return whether any selected additional subtypes for the locale still need to be enabled.
-     */
-    private boolean subtypesNeedEnabling(final String locale,
-                                         final HashSet<InputMethodSubtype> prefSubtypes,
-                                         final HashSet<InputMethodSubtype> enabledSubtypes) {
-        for (final InputMethodSubtype subtype : prefSubtypes) {
-            if (!locale.equals(subtype.getLocale())) {
-                continue;
-            }
-            if (!enabledSubtypes.contains(subtype)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**

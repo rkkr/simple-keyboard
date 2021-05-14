@@ -32,6 +32,9 @@ public class VirtualSubtypeManager {
         } else {
             mSubtypes = new ArrayList<>(Arrays.asList(subtypes));
             mCurrentSubtypeIndex = loadSubtypeIndex();
+            if (mCurrentSubtypeIndex > mSubtypes.size()) {
+                mCurrentSubtypeIndex = 0;
+            }
         }
     }
 

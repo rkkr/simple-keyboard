@@ -16,18 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
-import android.os.Build;
-import android.view.inputmethod.InputMethodSubtype;
-
-import java.util.HashMap;
-import java.util.Locale;
-
-import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
-
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
-
 /**
  * Enrichment class for InputMethodSubtype to enable concurrent multi-lingual input.
  *

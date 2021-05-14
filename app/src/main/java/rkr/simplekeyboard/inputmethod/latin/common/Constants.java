@@ -25,44 +25,6 @@ public final class Constants {
         public final static int ALPHA_OPAQUE = 255;
     }
 
-    public static final class Subtype {
-        /**
-         * The subtype mode used to indicate that the subtype is a keyboard.
-         */
-        public static final String KEYBOARD_MODE = "keyboard";
-
-        public static final class ExtraValue {
-            /**
-             * The subtype extra value used to indicate that the display name of this subtype
-             * contains a "%s" for printf-like replacement and it should be replaced by
-             * this extra value.
-             * This extra value is supported on JellyBean and later.
-             */
-            public static final String UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME =
-                    "UntranslatableReplacementStringInSubtypeName";
-
-            /**
-             * The subtype extra value used to indicate this subtype keyboard layout set name.
-             * This extra value is private to LatinIME.
-             */
-            public static final String KEYBOARD_LAYOUT_SET = "KeyboardLayoutSet";
-
-            /**
-             * The subtype extra value used to indicate that this subtype is an additional subtype
-             * that the user defined. This extra value is private to LatinIME.
-             */
-            public static final String IS_ADDITIONAL_SUBTYPE = "isAdditionalSubtype";
-
-            private ExtraValue() {
-                // This utility class is not publicly instantiable.
-            }
-        }
-
-        private Subtype() {
-            // This utility class is not publicly instantiable.
-        }
-    }
-
     public static final class TextUtils {
         /**
          * Capitalization mode for {@link android.text.TextUtils#getCapsMode}: don't capitalize
