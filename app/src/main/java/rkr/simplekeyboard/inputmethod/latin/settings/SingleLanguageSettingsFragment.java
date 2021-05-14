@@ -105,7 +105,8 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                 defaultSubtypes2.add(subtypes.get(1));
             }
         }
-        compareSubtypes(defaultSubtypes, defaultSubtypes2);
+//        compareSubtypes(defaultSubtypes, defaultSubtypes2);
+        printSubtypes(defaultSubtypes2, "default");
 
         List<InputMethodSubtype> allXmlSubtypes = new ArrayList<>();
         final String[] predefinedKeyboardLayoutSets = getActivity().getResources().getStringArray(
@@ -128,7 +129,8 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
             allJavaSubtypes.addAll(subtypes);
         }
 
-        compareSubtypes(allXmlSubtypes, allJavaSubtypes);
+//        compareSubtypes(allXmlSubtypes, allJavaSubtypes);
+        printSubtypes(allJavaSubtypes, "all");
 
         List<InputMethodSubtype> localeSubtypes = new ArrayList<>();
         for (final InputMethodSubtype subtype : defaultSubtypes) {
@@ -141,53 +143,6 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         return localeSubtypes;
     }
 
-//    private void compareSubtypes(List<InputMethodSubtype> xmlSubtypes, List<InputMethodSubtype> javaSubtypes) {
-//        final String sizeMessage = "defaultSubtypesXml: " + xmlSubtypes.size() + ", defaultSubtypesJava: " + javaSubtypes.size();
-//        if (xmlSubtypes.size() == javaSubtypes.size()) {
-//            Log.w(TAG, sizeMessage);
-//        } else {
-//            Log.e(TAG, sizeMessage);
-//        }
-//        for (int i = 0; i < Math.min(xmlSubtypes.size(), javaSubtypes.size()); i++) {
-//            final InputMethodSubtype subtypeXml = xmlSubtypes.get(i);
-//            final InputMethodSubtype subtypeJava = javaSubtypes.get(i);
-//
-//            final String nameXml = SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtypeXml);
-//            final String nameJava = SubtypeLocaleUtils.getSubtypeDisplayNameInSystemLocale(subtypeJava);
-//            final boolean labelSame = nameXml.equals(nameJava);
-//            final String labelMessage = "label: equal=" + labelSame
-//                    + (labelSame ? " " + nameXml : " xml=" + nameXml + ", java=" + nameJava);
-//
-//
-//            final boolean localeSame = subtypeXml.getLocale().equals(subtypeJava.getLocale());
-//            final String localeMessage = "locale: equal=" + localeSame
-//                    + (localeSame ? " " + subtypeXml.getLocale() : " xml=" + subtypeXml.getLocale() + ", java=" + subtypeJava.getLocale());
-//
-//
-//            final String layoutXml = SubtypeLocaleUtils.getKeyboardLayoutSetName(subtypeXml);
-//            final String layoutJava = SubtypeLocaleUtils.getKeyboardLayoutSetName(subtypeJava);
-//            final boolean layoutSame = layoutXml.equals(layoutJava);
-//            final String layoutMessage = "layout: equal=" + layoutSame
-//                    + (layoutSame ? " " + layoutXml : " xml=" + layoutXml + ", java=" + layoutJava);
-//
-//            final boolean extraValueSame = subtypeXml.getExtraValue().equals(subtypeJava.getExtraValue());
-//            final String extraValueMessage = "extraValue: equal=" + extraValueSame
-//                    + (extraValueSame ? " " + subtypeXml.getExtraValue() : " xml=" + subtypeXml.getExtraValue() + ", java=" + subtypeJava.getExtraValue());
-//
-//
-//            if (labelSame && localeSame && layoutSame /*&& extraValueSame*/) {
-//                Log.w(TAG, labelMessage);
-//                Log.w(TAG, localeMessage);
-//                Log.w(TAG, layoutMessage);
-//                Log.w(TAG, extraValueMessage);
-//            } else {
-//                Log.e(TAG, labelMessage);
-//                Log.e(TAG, localeMessage);
-//                Log.e(TAG, layoutMessage);
-//                Log.e(TAG, extraValueMessage);
-//            }
-//        }
-//    }
     private void compareSubtypes(List<InputMethodSubtype> xmlSubtypes, List<MySubtype> javaSubtypes) {
         final String sizeMessage = "defaultSubtypesXml: " + xmlSubtypes.size() + ", defaultSubtypesJava: " + javaSubtypes.size();
         if (xmlSubtypes.size() == javaSubtypes.size()) {
@@ -236,6 +191,18 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                 Log.e(TAG, layoutMessage);
                 Log.e(TAG, layoutNameMessage);
             }
+        }
+    }
+
+    private void printSubtypes(List<MySubtype> javaSubtypes, String prefix) {
+        Log.w(TAG, "printSubtypes: " + prefix + ": size=" + javaSubtypes.size());
+        for (final MySubtype subtype : javaSubtypes) {
+            Log.w(TAG, "printSubtypes: " + prefix + ": getName=" + subtype.getName());
+            Log.w(TAG, "printSubtypes: " + prefix + ": getLocale=" + subtype.getLocale());
+            Log.w(TAG, "printSubtypes: " + prefix + ": getLayoutDisplayName=" + subtype.getLayoutDisplayName());
+            Log.w(TAG, "printSubtypes: " + prefix + ": getLocaleDisplayNameInLocale=" + subtype.getLocaleDisplayNameInLocale());
+            Log.w(TAG, "printSubtypes: " + prefix + ": getLanguageDisplayNameInLocale=" + subtype.getLanguageDisplayNameInLocale());
+            Log.w(TAG, "printSubtypes: " + prefix + ": getLayoutSet=" + subtype.getLayoutSet());
         }
     }
 
