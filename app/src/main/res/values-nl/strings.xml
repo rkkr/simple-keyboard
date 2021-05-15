@@ -36,9 +36,8 @@
     <string name="subtype_es_US">"Spaans (VS)"</string>
     <string name="subtype_hi_ZZ">"Hindi-Engels"</string>
     <string name="subtype_sr_ZZ">"Servisch (Latijns)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditioneel)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"traditioneel"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (compact)"</string>
     <string name="subtype_compact">"compact"</string>
     <string name="enable">"Inschakelen"</string>
     <string name="not_now">"Niet nu"</string>

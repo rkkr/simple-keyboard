@@ -36,9 +36,8 @@
     <string name="subtype_es_US">"स्पेनिस (युएस्)"</string>
     <string name="subtype_hi_ZZ">"हिङ्लिस"</string>
     <string name="subtype_sr_ZZ">"सर्बियाई (ल्याटिन)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (परम्परागत)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"परम्परागत"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (संकुचित)"</string>
     <string name="subtype_compact">"संकुचित"</string>
     <string name="enable">"सक्षम पार्नुहोस्"</string>
     <string name="not_now">"अहिले होइन"</string>

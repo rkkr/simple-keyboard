@@ -36,9 +36,8 @@
     <string name="subtype_es_US">"ስፓኒሽኛ (ዩኤስ)"</string>
     <string name="subtype_hi_ZZ">"ሂንግሊሽ"</string>
     <string name="subtype_sr_ZZ">"ሰርብያኛ (ላቲን)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ተለምዷዊ)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ተለምዷዊ"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (እስግ)"</string>
     <string name="subtype_compact">"እስግ"</string>
     <string name="enable">"አንቃ"</string>
     <string name="not_now">"አሁን አልፈልግም"</string>

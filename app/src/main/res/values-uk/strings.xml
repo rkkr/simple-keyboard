@@ -36,9 +36,8 @@
     <string name="subtype_es_US">"іспанська (США)"</string>
     <string name="subtype_hi_ZZ">"Хінґліш"</string>
     <string name="subtype_sr_ZZ">"сербська (латиниця)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (традиційна)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"традиційна"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактна)"</string>
     <string name="subtype_compact">"компактна"</string>
     <string name="enable">"Увімкнути"</string>
     <string name="not_now">"Не зараз"</string>

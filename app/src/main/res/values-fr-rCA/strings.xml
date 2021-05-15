@@ -36,9 +36,8 @@
     <string name="subtype_es_US">"Espagnol (États-Unis)"</string>
     <string name="subtype_hi_ZZ">"Hinglish"</string>
     <string name="subtype_sr_ZZ">"Serbe (latin)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditionnel)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"traditionnel"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (compact)"</string>
     <string name="subtype_compact">"compact"</string>
     <string name="enable">"Activer"</string>
     <string name="not_now">"Pas maintenant"</string>

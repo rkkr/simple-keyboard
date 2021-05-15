@@ -36,9 +36,8 @@
     <string name="subtype_es_US">"Испанча (US)"</string>
     <string name="subtype_hi_ZZ">"Хинглиш"</string>
     <string name="subtype_sr_ZZ">"Сербче (Латын)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Салттык)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Салттык"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Чакан)"</string>
     <string name="subtype_compact">"Чакан"</string>
     <string name="enable">"Иштетүү"</string>
     <string name="not_now">"Азыр эмес"</string>

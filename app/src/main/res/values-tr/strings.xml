@@ -36,9 +36,8 @@
     <string name="subtype_es_US">"İspanyolca (ABD)"</string>
     <string name="subtype_hi_ZZ">"Hingilizce"</string>
     <string name="subtype_sr_ZZ">"Sırpça (Latin alfabesi)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Geleneksel)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Geleneksel"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Kompakt)"</string>
     <string name="subtype_compact">"Kompakt"</string>
     <string name="enable">"Etkinleştir"</string>
     <string name="not_now">"Şimdi değil"</string>

@@ -36,11 +36,9 @@
     <string name="subtype_es_US">"испански (САЩ)"</string>
     <string name="subtype_hi_ZZ">"Хинглиш"</string>
     <string name="subtype_sr_ZZ">"Сръбска (латиница)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (традиционна клавиатура)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"традиционна клавиатура"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактна)"</string>
     <string name="subtype_compact">"компактна"</string>
-    <string name="subtype_bulgarian_bds">"<xliff:g id="LANGUAGE_NAME" example="Bulgarian">%s</xliff:g> (БДС)"</string>
     <string name="subtype_bds">"БДС"</string>
     <string name="enable">"Активиране"</string>
     <string name="not_now">"Не сега"</string>

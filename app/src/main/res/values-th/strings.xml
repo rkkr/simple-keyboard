@@ -36,9 +36,8 @@
     <string name="subtype_es_US">"สเปน (สหรัฐอเมริกา)"</string>
     <string name="subtype_hi_ZZ">"ภาษาอังกฤษผสมกับฮินดู"</string>
     <string name="subtype_sr_ZZ">"เซอร์เบีย (ละติน)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ดั้งเดิม)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ดั้งเดิม"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (แบบกะทัดรัด)"</string>
     <string name="subtype_compact">"แบบกะทัดรัด"</string>
     <string name="enable">"เปิดใช้งาน"</string>
     <string name="not_now">"ข้ามไปก่อน"</string>

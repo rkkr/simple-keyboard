@@ -69,20 +69,16 @@
     <!-- Description for Serbian (Latin) keyboard subtype [CHAR LIMIT=25]
          (Latin) can be an abbreviation to fit in the CHAR LIMIT. -->
     <string name="subtype_sr_ZZ">Serbian (Latin)</string>
-    <!-- Description for "LANGUAGE_NAME" (Traditional) keyboard subtype [CHAR LIMIT=25]
-         (Traditional) can be an abbreviation to fit in the CHAR LIMIT. -->
-    <string name="subtype_generic_traditional"><xliff:g id="LANGUAGE_NAME" example="Nepali">%s</xliff:g> (Traditional)</string>
-    <string name="subtype_traditional">Traditional</string>
-    <!-- Description for "LANGUAGE_NAME" (Compact) keyboard subtype [CHAR LIMIT=25]
-         (Compact) can be an abbreviation to fit in the CHAR LIMIT. -->
-    <string name="subtype_generic_compact"><xliff:g id="LANGUAGE_NAME" example="Hindi">%s</xliff:g> (Compact)</string>
-    <string name="subtype_compact">Compact</string>
-    <!-- Description for Bulgarian (BDS) subtype. -->
-    <string name="subtype_bulgarian_bds"><xliff:g id="LANGUAGE_NAME" example="Bulgarian">%s</xliff:g> (BDS)</string>
-    <string name="subtype_bds">BDS</string>
-    <string name="subtype_generic_f" translatable="false"><xliff:g id="LANGUAGE_NAME" example="Turkish">%s</xliff:g> (F)</string>
-    <string name="subtype_f">F</string>
+    <!-- Description for a keyboard layout listing the language and layout name. -->
     <string name="subtype_generic_layout"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> (<xliff:g id="LAYOUT" example="QWERTY">%s</xliff:g>)</string>
+    <!-- Description for a traditional keyboard layout, such as Nepali (Traditional). -->
+    <string name="subtype_traditional">Traditional</string>
+    <!-- Description for a compact keyboard layout, such as Hindi (Compact). -->
+    <string name="subtype_compact">Compact</string>
+    <!-- Description for Bulgarian (BDS) keyboard layout. -->
+    <string name="subtype_bds">BDS</string>
+    <!-- Description for Turkish (F) keyboard layout. -->
+    <string name="subtype_f">F</string>
 
     <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
     <string name="keyboard_theme_light_border" translatable="false">Material Light Border</string>
