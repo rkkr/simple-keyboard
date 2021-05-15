@@ -40,19 +40,6 @@ public final class AdditionalSubtypeUtils {
     private static final int LENGTH_WITHOUT_EXTRA_VALUE = (INDEX_OF_KEYBOARD_LAYOUT + 1);
     private static final String PREF_SUBTYPE_SEPARATOR = ";";
 
-    private static MySubtype createSubtype(
-            final String localeString, final String keyboardLayoutSetName,
-            final Resources resources) {
-        //TODO: maybe find a more efficient way to do this
-        final List<MySubtype> localeSubtypes = SubtypeUtils.getSubtypes(localeString, resources);
-        for (final MySubtype subtype : localeSubtypes) {
-            if (subtype.getLayoutSet().equals(keyboardLayoutSetName)) {
-                return subtype;
-            }
-        }
-        return null;
-    }
-
     private static String getPrefString(final MySubtype subtype) {
         final String localeString = subtype.getLocale();
         final String keyboardLayoutSetName = subtype.getLayoutSet();
@@ -75,7 +62,8 @@ public final class AdditionalSubtypeUtils {
             }
             final String localeString = elems[INDEX_OF_LOCALE];
             final String keyboardLayoutSetName = elems[INDEX_OF_KEYBOARD_LAYOUT];
-            final MySubtype subtype = createSubtype(localeString, keyboardLayoutSetName, resources);
+            final MySubtype subtype =
+                    SubtypeUtils.getSubtype(localeString, keyboardLayoutSetName, resources);
             if (subtype == null) {
                 continue;
             }
