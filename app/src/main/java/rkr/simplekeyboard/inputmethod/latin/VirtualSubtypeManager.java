@@ -39,8 +39,7 @@ public class VirtualSubtypeManager {
     }
 
     private MySubtype[] loadSubtypes(final Context context) {
-        final String prefAdditionalSubtypes = Settings.readPrefAdditionalSubtypes(
-                mPrefs, context.getResources());
+        final String prefAdditionalSubtypes = Settings.readPrefAdditionalSubtypes(mPrefs);
         return AdditionalSubtypeUtils.createSubtypesFromPref(prefAdditionalSubtypes,
                 context.getResources());
     }

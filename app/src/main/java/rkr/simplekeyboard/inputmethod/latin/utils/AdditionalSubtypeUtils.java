@@ -69,7 +69,7 @@ public final class AdditionalSubtypeUtils {
         for (final String prefSubtype : prefSubtypeArray) {
             final String[] elems = prefSubtype.split(LOCALE_AND_LAYOUT_SEPARATOR);
             if (elems.length != LENGTH_WITHOUT_EXTRA_VALUE) {
-                Log.w(TAG, "Unknown additional subtype specified: " + prefSubtype + " in "
+                Log.w(TAG, "Unknown subtype specified: " + prefSubtype + " in "
                         + prefSubtypes);
                 continue;
             }

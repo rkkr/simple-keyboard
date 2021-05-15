@@ -178,11 +178,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return prefs.getBoolean(PREF_DELETE_SWIPE, false);
     }
 
-    public static String readPrefAdditionalSubtypes(final SharedPreferences prefs,
-            final Resources res) {
-        final String predefinedPrefSubtypes = /*AdditionalSubtypeUtils.createPrefSubtypes(
-                res.getStringArray(R.array.predefined_subtypes))*/"";
-        return prefs.getString(PREF_CUSTOM_INPUT_STYLES, predefinedPrefSubtypes);
+    public static String readPrefAdditionalSubtypes(final SharedPreferences prefs) {
+        return prefs.getString(PREF_CUSTOM_INPUT_STYLES, "");
     }
 
     public static void writePrefAdditionalSubtypes(final SharedPreferences prefs,
