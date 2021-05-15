@@ -36,11 +36,6 @@
     <string name="subtype_es_US">"ესპანური (აშშ)"</string>
     <string name="subtype_hi_ZZ">"ჰინგლისური"</string>
     <string name="subtype_sr_ZZ">"სერბული (ლათინური)"</string>
-    <string name="subtype_with_layout_en_GB">"ინგლისური (გაერთ.სამ.) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"ინგლისური (აშშ) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"ესპანური (აშშ) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"ჰინგლისური (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"სერბული (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ტრადიციული)"</string>
     <string name="subtype_traditional">"ტრადიციული"</string>
     <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (კომპაქტური)"</string>
