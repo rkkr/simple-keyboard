@@ -307,8 +307,7 @@ public class SubtypeUtils {
                 break;
             case LOCALE_BULGARIAN:
                 subtypes.add(createSubtype(locale, LAYOUT_BULGARIAN));
-                subtypes.add(createSubtype(locale, LAYOUT_BULGARIAN_BDS,
-                        R.string.subtype_bulgarian_bds, R.string.subtype_bds));
+                subtypes.add(createSubtype(locale, LAYOUT_BULGARIAN_BDS, R.string.subtype_bds));
                 break;
             case LOCALE_BENGALI_BANGLADESH:
                 subtypes.add(createSubtype(locale, LAYOUT_BENGALI_AKKHOR));
@@ -324,8 +323,7 @@ public class SubtypeUtils {
                 break;
             case LOCALE_HINDI:
                 subtypes.add(createSubtype(locale, LAYOUT_HINDI));
-                subtypes.add(createSubtype(locale, LAYOUT_HINDI_COMPACT,
-                        R.string.subtype_generic_compact, R.string.subtype_compact));
+                subtypes.add(createSubtype(locale, LAYOUT_HINDI_COMPACT, R.string.subtype_compact));
                 break;
             case LOCALE_ARMENIAN_ARMENIA:
                 subtypes.add(createSubtype(locale, LAYOUT_ARMENIAN_PHONETIC));
@@ -360,7 +358,7 @@ public class SubtypeUtils {
             case LOCALE_NEPALI_NEPAL:
                 subtypes.add(createSubtype(locale, LAYOUT_NEPALI_ROMANIZED));
                 subtypes.add(createSubtype(locale, LAYOUT_NEPALI_TRADITIONAL,
-                        R.string.subtype_generic_traditional, R.string.subtype_traditional));
+                        R.string.subtype_traditional));
                 break;
             case LOCALE_SERBIAN:
                 subtypes.add(createSubtype(locale, LAYOUT_SERBIAN));
@@ -387,54 +385,23 @@ public class SubtypeUtils {
     }
 
     private static MySubtype createSubtype(final String locale, final String keyboardLayoutSet) {
-        return createSubtype(locale, R.string.subtype_generic, keyboardLayoutSet, null);
+        final String[] predefinedLayouts = mResources.getStringArray(R.array.predefined_layouts);
+        final int predefinedLayoutIndex =
+                Arrays.asList(predefinedLayouts).indexOf(keyboardLayoutSet);
+        final String layoutNameStr;
+        if (predefinedLayoutIndex >= 0) {
+            final String[] predefinedLayoutDisplayNames = mResources.getStringArray(
+                    R.array.predefined_layout_display_names);
+            layoutNameStr = predefinedLayoutDisplayNames[predefinedLayoutIndex];
+        } else {
+            layoutNameStr = null;
+        }
+        return new MySubtype(locale, keyboardLayoutSet, layoutNameStr, false, mResources);
     }
 
     private static MySubtype createSubtype(final String locale, final String keyboardLayoutSet,
-                                           final int labelRes, final int layoutRes) {
-        return createSubtype(locale, labelRes, keyboardLayoutSet, mResources.getString(layoutRes));
-    }
-
-    private static MySubtype createSubtype(final String locale, final int labelRes,
-                                           final String keyboardLayoutSet,
-                                           final String layoutName) {
-        return createMySubtype(locale, labelRes, keyboardLayoutSet, layoutName);
-    }
-    private static MySubtype createMySubtype(final String locale, final int labelRes,
-                                             final String keyboardLayoutSet, String layoutName) {
-        final String localeDisplayName =
-                SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(locale);
-        final String subtypeName = mResources.getString(labelRes, localeDisplayName);
-        if (layoutName == null) {
-
-            final String[] predefinedLayouts =
-                    mResources.getStringArray(R.array.predefined_layouts);
-            final int predefinedLayoutIndex =
-                    Arrays.asList(predefinedLayouts).indexOf(keyboardLayoutSet);
-            if (predefinedLayoutIndex >= 0) {
-                final String[] predefinedLayoutDisplayNames = mResources.getStringArray(
-                        R.array.predefined_layout_display_names);
-                if (predefinedLayoutIndex < predefinedLayoutDisplayNames.length) {
-                    layoutName = predefinedLayoutDisplayNames[predefinedLayoutIndex];
-                } else {
-                    //TODO: probably handle this differently - possibly don't bother with this check
-                    layoutName = "unknown";
-                }
-            } else {
-                layoutName = SubtypeLocaleUtils.getSubtypeLanguageDisplayNameInSystemLocale(locale);
-            }
-        }
-        return new MySubtype(locale, subtypeName, keyboardLayoutSet, layoutName);
-    }
-    private static MySubtype createMySubtypeAlternate(final String locale, final int labelRes,
-                                                      final String keyboardLayoutSet,
-                                                      final String layoutName) {
-        final String localeDisplayName =
-                SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(locale);
-        final String baseName = mResources.getString(labelRes, localeDisplayName);
-        final String subtypeName =
-                mResources.getString(R.string.subtype_generic_layout, baseName, layoutName);
-        return new MySubtype(locale, subtypeName, keyboardLayoutSet, layoutName);
+                                           final int layoutRes) {
+        return new MySubtype(locale, keyboardLayoutSet, layoutRes, true, mResources);
     }
 
     private static void addGenericLayouts(final List<MySubtype> subtypes, final String locale) {
@@ -456,8 +423,8 @@ public class SubtypeUtils {
                 continue;
             }
 
-            final MySubtype mySubtype = createMySubtypeAlternate(locale, R.string.subtype_generic,
-                    predefinedLayout, predefinedKeyboardLayoutSetDisplayNames[i]);
+            final MySubtype mySubtype = new MySubtype(locale,
+                    predefinedLayout, predefinedKeyboardLayoutSetDisplayNames[i], true, mResources);
             subtypes.add(mySubtype);
         }
     }

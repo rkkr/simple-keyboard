@@ -1,25 +1,42 @@
 package rkr.simplekeyboard.inputmethod.latin;
 
+import android.content.res.Resources;
 import android.util.Log;
 
 import java.util.Locale;
 
+import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 public class MySubtype {
     private static final String TAG = MySubtype.class.getSimpleName();
 
-    private final String mLocale;
-    private final String mName;
-    private final String mLayoutSet;
-    private final String mLayoutName;
+    private static final int NO_RESOURCE = 0;
 
-    public MySubtype(final String locale, final String name, final String layoutSet, final String layoutName) {
+    private final String mLocale;
+    private final String mLayoutSet;
+    private final int mLayoutNameRes;
+    private final String mLayoutNameStr;
+    private final boolean mShowLayoutInName;
+    private final Resources mResources;
+
+    public MySubtype(final String locale, final String layoutSet, final int layoutNameRes, final boolean showLayoutInName, final Resources resources) {
         mLocale = locale;
-        mName = name;
         mLayoutSet = layoutSet;
-        mLayoutName = layoutName;
+        mLayoutNameRes = layoutNameRes;
+        mLayoutNameStr = null;
+        mShowLayoutInName = showLayoutInName;
+        mResources = resources;
+    }
+
+    public MySubtype(final String locale, final String layoutSet, final String layoutNameStr, final boolean showLayoutInName, final Resources resources) {
+        mLocale = locale;
+        mLayoutSet = layoutSet;
+        mLayoutNameRes = NO_RESOURCE;
+        mLayoutNameStr = layoutNameStr;
+        mShowLayoutInName = showLayoutInName;
+        mResources = resources;
     }
 
     public String getLocale() {
@@ -31,7 +48,17 @@ public class MySubtype {
     }
 
     public String getName() {
-        return mName;
+        final String localeDisplayName =
+                SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(mLocale);
+        if (mShowLayoutInName) {
+            if (mLayoutNameRes != NO_RESOURCE) {
+                return mResources.getString(R.string.subtype_generic_layout, localeDisplayName, mResources.getString(mLayoutNameRes));
+            }
+            if (mLayoutNameStr != null) {
+                return mResources.getString(R.string.subtype_generic_layout, localeDisplayName, mLayoutNameStr);
+            }
+        }
+        return localeDisplayName;
     }
 
     public String getLayoutSet() {
@@ -39,7 +66,15 @@ public class MySubtype {
     }
 
     public String getLayoutDisplayName() {
-        return mLayoutName;
+        final String displayName;
+        if (mLayoutNameRes != NO_RESOURCE) {
+            displayName = mResources.getString(mLayoutNameRes);
+        } else if (mLayoutNameStr != null) {
+            displayName = mLayoutNameStr;
+        } else {
+            displayName = SubtypeLocaleUtils.getSubtypeLanguageDisplayNameInSystemLocale(mLocale);
+        }
+        return displayName;
     }
 
     @Override
