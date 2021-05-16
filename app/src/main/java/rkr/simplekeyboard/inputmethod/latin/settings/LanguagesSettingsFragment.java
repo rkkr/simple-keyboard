@@ -166,39 +166,11 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
         group.removeAll();
         group.setTitle(R.string.select_language);
 
-        final Preference subtypeEnablerPreference = createSubtypeSettingLinkPreference(context);
-        subtypeEnablerPreference.setTitle(R.string.enable_subtypes);
-        subtypeEnablerPreference.setSummary(R.string.enable_subtypes_details);
-        group.addPreference(subtypeEnablerPreference);
-
         final PreferenceCategory languageCategory = new PreferenceCategory(context);
         languageCategory.setTitle(R.string.user_languages);
         group.addPreference(languageCategory);
 
         setUpLanguages(group, context);
-    }
-
-    /**
-     * Create the preference to open the system's subtype settings activity to enable or disable
-     * subtypes for this IME.
-     * @param context the context for this application.
-     * @return the preference that was created.
-     */
-    private Preference createSubtypeSettingLinkPreference(final Context context) {
-        final String imeId = mRichImm.getInputMethodIdOfThisIme();
-
-        final Preference subtypeEnablerPreference = new Preference(context);
-        subtypeEnablerPreference
-                .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        final Intent intent =
-                                IntentUtils.getInputLanguageSelectionIntent(imeId, context);
-                        context.startActivity(intent);
-                        return true;
-                    }
-                });
-        return subtypeEnablerPreference;
     }
 
     /**

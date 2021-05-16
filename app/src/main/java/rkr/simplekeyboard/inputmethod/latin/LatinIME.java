@@ -19,8 +19,6 @@ package rkr.simplekeyboard.inputmethod.latin;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -44,7 +42,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodSubtype;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -70,8 +67,6 @@ import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsActivity;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 import rkr.simplekeyboard.inputmethod.latin.utils.ApplicationUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
@@ -431,7 +426,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
         // Switch to the null consumer to handle cases leading to early exit below, for which we
         // also wouldn't be consuming gesture data.
-        mRichImm.refreshSubtypeCaches();
         mRichImm.resetSubtypeCycleOrder();
         final KeyboardSwitcher switcher = mKeyboardSwitcher;
         switcher.updateKeyboardTheme(getResources().getConfiguration().uiMode);
@@ -721,7 +715,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         switch (requestCode) {
             case Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER:
                 if (mRichImm.hasMultipleEnabledImesOrSubtypes(true /* include aux subtypes */)) {
-                    mRichImm.getInputMethodManager().showInputMethodPicker();
+                    mRichImm.showInputMethodPicker();
                     return true;
                 }
                 return false;
@@ -965,37 +959,39 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void showSubtypeSelectorAndSettings() {
-        final CharSequence title = getString(R.string.english_ime_input_options);
-        // TODO: Should use new string "Select active input modes".
-        final CharSequence languageSelectionTitle = getString(R.string.language_selection_title);
-        final CharSequence[] items = new CharSequence[] {
-                languageSelectionTitle,
-                getString(ApplicationUtils.getActivityTitleResId(this, SettingsActivity.class))
-        };
-        final String imeId = mRichImm.getInputMethodIdOfThisIme();
-        final OnClickListener listener = new OnClickListener() {
-            @Override
-            public void onClick(DialogInterface di, int position) {
-                di.dismiss();
-                switch (position) {
-                case 0:
-                    final Intent intent =
-                            IntentUtils.getInputLanguageSelectionIntent(imeId, LatinIME.this);
-                    startActivity(intent);
-                    break;
-                case 1:
-                    launchSettings();
-                    break;
-                }
-            }
-        };
-        final AlertDialog.Builder builder = new AlertDialog.Builder(
-                DialogUtils.getPlatformDialogThemeContext(this));
-        builder.setItems(items, listener).setTitle(title);
-        final AlertDialog dialog = builder.create();
-        dialog.setCancelable(true /* cancelable */);
-        dialog.setCanceledOnTouchOutside(true /* cancelable */);
-        showOptionDialog(dialog);
+//        final CharSequence title = getString(R.string.english_ime_input_options);
+//        // TODO: Should use new string "Select active input modes".
+//        final CharSequence languageSelectionTitle = getString(R.string.language_selection_title);
+//        final CharSequence[] items = new CharSequence[] {
+//                languageSelectionTitle,
+//                getString(ApplicationUtils.getActivityTitleResId(this, SettingsActivity.class))
+//        };
+//        final String imeId = mRichImm.getInputMethodIdOfThisIme();
+//        final OnClickListener listener = new OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface di, int position) {
+//                di.dismiss();
+//                switch (position) {
+//                case 0:
+//                    final Intent intent =
+//                            IntentUtils.getInputLanguageSelectionIntent(imeId, LatinIME.this);
+//                    startActivity(intent);
+//                    break;
+//                case 1:
+//                    launchSettings();
+//                    break;
+//                }
+//            }
+//        };
+//        final AlertDialog.Builder builder = new AlertDialog.Builder(
+//                DialogUtils.getPlatformDialogThemeContext(this));
+//        builder.setItems(items, listener).setTitle(title);
+//        final AlertDialog dialog = builder.create();
+//        dialog.setCancelable(true /* cancelable */);
+//        dialog.setCanceledOnTouchOutside(true /* cancelable */);
+//        showOptionDialog(dialog);
+        //TODO: consider keeping this popup and have an new activity to go directly to the languages settings
+        launchSettings();
     }
 
     // TODO: Move this method out of {@link LatinIME}.
@@ -1044,7 +1040,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (!mSettings.getCurrent().mImeSwitchEnabled) {
             return false;
         }
-        return mRichImm.shouldOfferSwitchingToNextInputMethod(token);
+        return mRichImm.shouldOfferSwitchingToOtherInputMethods(token);
     }
 
     public boolean shouldShowLanguageSwitchKey() {

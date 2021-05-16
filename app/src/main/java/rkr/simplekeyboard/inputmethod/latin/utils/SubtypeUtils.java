@@ -13,7 +13,6 @@ import rkr.simplekeyboard.inputmethod.latin.MySubtype;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 
 public class SubtypeUtils {
-    public static Resources mResources;
 
     private SubtypeUtils() {
         // This utility class is not publicly instantiable.
