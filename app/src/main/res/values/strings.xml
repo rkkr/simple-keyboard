@@ -96,6 +96,7 @@
     <string name="subtype_generic_compact"><xliff:g id="LANGUAGE_NAME" example="Hindi">%s</xliff:g> (Compact)</string>
     <!-- Description for Bulgarian (BDS) subtype. -->
     <string name="subtype_bulgarian_bds"><xliff:g id="LANGUAGE_NAME" example="Bulgarian">%s</xliff:g> (BDS)</string>
+    <string name="subtype_generic_f" translatable="false"><xliff:g id="LANGUAGE_NAME" example="Turkish">%s</xliff:g> (F)</string>
 
     <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
     <string name="keyboard_theme_light_border" translatable="false">Material Light Border</string>

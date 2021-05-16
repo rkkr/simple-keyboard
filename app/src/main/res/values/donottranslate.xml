@@ -62,7 +62,7 @@
         <item>Colemak</item>
         <item>Workman</item>
         <item>PC</item>
-        <item>ABC</item>-->
+        <item>ABC</item>
     </string-array>
     <!-- Description for generic subtype that has predefined layout.
          The string resource name must be "subtype_generic_<layout name>".-->
