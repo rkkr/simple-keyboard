@@ -189,7 +189,11 @@ public class RichInputMethodManager {
         for (int i = 0; i < mSubtypes.size(); i++) {
             if (mSubtypes.get(i).equals(subtype)) {
                 mCurrentSubtypeIndex = i;
-                saveSubtypePref(false, true);
+                if (i == 0) {
+                    saveSubtypePref(false, true);
+                } else {
+                    resetSubtypeCycleOrder();
+                }
                 return true;
             }
         }

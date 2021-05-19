@@ -19,6 +19,8 @@ package rkr.simplekeyboard.inputmethod.latin;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -45,7 +47,9 @@ import android.view.inputmethod.EditorInfo;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
+import java.util.Comparator;
 import java.util.Locale;
+import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -67,6 +71,7 @@ import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsActivity;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 import rkr.simplekeyboard.inputmethod.latin.utils.ApplicationUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
@@ -714,6 +719,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (isShowingOptionDialog()) return false;
         switch (requestCode) {
             case Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER:
+                if (mRichImm.hasMultipleEnabledSubtypes()) {
+                    showSubtypeSelector();
+                    return true;
+                }
                 if (mRichImm.hasMultipleEnabledImesOrSubtypes(true /* include aux subtypes */)) {
                     mRichImm.showInputMethodPicker();
                     return true;
@@ -992,6 +1001,54 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //        showOptionDialog(dialog);
         //TODO: consider keeping this popup and have an new activity to go directly to the languages settings
         launchSettings();
+    }
+
+    //TODO: consider moving into RichInputMethodManager
+    private void showSubtypeSelector() {
+        final CharSequence title = getString(R.string.change_keyboard);
+
+        //TODO: copied from InputMethodSettingsImpl - de-duplicate
+        final TreeSet<MySubtype> subtypes = new TreeSet<>(new Comparator<MySubtype>() {
+            @Override
+            public int compare(MySubtype a, MySubtype b) {
+                return a.getName().compareToIgnoreCase(b.getName());
+            }
+        });
+        subtypes.addAll(mRichImm.getEnabledSubtypesOfThisIme());
+
+        final CharSequence[] items = new CharSequence[subtypes.size()];
+        final MySubtype currentSubtype = mRichImm.getCurrentSubtype();
+        int currentSubtypeIndex = 0;
+        int i = 0;
+        for (final MySubtype subtype : subtypes) {
+            if (subtype.equals(currentSubtype)) {
+                currentSubtypeIndex = i;
+            }
+            items[i++] = subtype.getName();
+        }
+        final OnClickListener listener = new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface di, int position) {
+                di.dismiss();
+                int i = 0;
+                for (final MySubtype subtype : subtypes) {
+                    if (i == position) {
+                        mRichImm.setCurrentSubtype(subtype);
+                        mInputLogic.onSubtypeChanged();
+                        loadKeyboard();
+                        break;
+                    }
+                    i++;
+                }
+            }
+        };
+        final AlertDialog.Builder builder = new AlertDialog.Builder(
+                DialogUtils.getPlatformDialogThemeContext(this));
+        builder.setSingleChoiceItems(items, currentSubtypeIndex, listener).setTitle(title);
+        final AlertDialog dialog = builder.create();
+        dialog.setCancelable(true /* cancelable */);
+        dialog.setCanceledOnTouchOutside(true /* cancelable */);
+        showOptionDialog(dialog);
     }
 
     // TODO: Move this method out of {@link LatinIME}.
