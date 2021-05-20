@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"ಇನ್‌ಪುಟ್ ಆಯ್ಕೆಗಳು"</string>
     <string name="vibrate_on_keypress">"ಕೀಪ್ರೆಸ್‌ನ ವೈಬ್ರೇಟ್"</string>
     <string name="sound_on_keypress">"ಕೀಪ್ರೆಸ್ ಶಬ್ದ"</string>
     <string name="popup_on_keypress">"ಕೀಪ್ರೆಸ್‌ನಲ್ಲಿ ಪಾಪ್ಅಪ್"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"ಸಿಸ್ಟಂ ಡಿಫಾಲ್ಟ್"</string>
     <string name="auto_cap">"ಸ್ವಯಂ-ದೊಡ್ಡಕ್ಷರ"</string>
     <string name="auto_cap_summary">"ಪ್ರತಿ ವಾಕ್ಯದ ಮೊದಲ ಅಕ್ಷರವನ್ನು ದೊಡ್ಡಕ್ಷರಗೊಳಿಸು"</string>
-    <string name="language_selection_title">"ಭಾಷೆಗಳು"</string>
     <string name="select_language">"ಭಾಷೆಗಳು"</string>
     <string name="subtype_en_GB">"ಇಂಗ್ಲಿಷ್ (ಯುಕೆ)"</string>
     <string name="subtype_en_US">"ಇಂಗ್ಲಿಷ್ (US)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ಸಾಂಪ್ರದಾಯಿಕ"</string>
     <string name="subtype_compact">"ಕಾಂಪ್ಯಾಕ್ಟ್‌‌"</string>
-    <string name="enable">"ಸಕ್ರಿಯಗೊಳಿಸು"</string>
-    <string name="not_now">"ಸದ್ಯಕ್ಕೆ ಬೇಡ"</string>
-    <string name="custom_input_style_already_exists">"ಅದೇ ರೀತಿಯ ಇನ್‌ಪುಟ್ ಶೈಲಿಯು ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"ಕೀಒತ್ತುವ ವೈಬ್ರೇಷನ್‌‌ ಅವಧಿ"</string>
     <string name="prefs_keypress_sound_volume_settings">"ಕೀಒತ್ತುವ ಶಬ್ದದ ವಾಲ್ಯೂಮ್"</string>
     <string name="prefs_key_longpress_timeout_settings">"ಕೀಯ ದೀರ್ಘ ಒತ್ತುವ ವಿಳಂಬ"</string>

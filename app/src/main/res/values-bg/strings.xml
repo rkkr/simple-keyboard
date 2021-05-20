@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Опции за въвеждане"</string>
     <string name="vibrate_on_keypress">"Да вибрира при натискане на клавиш"</string>
     <string name="sound_on_keypress">"Звук при натиск. на клавиш"</string>
     <string name="popup_on_keypress">"Изск. прозорец при натискане на клавиш"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Станд. за системата"</string>
     <string name="auto_cap">"Авт. поставяне на главни букви"</string>
     <string name="auto_cap_summary">"Главна буква за първата дума от всяко изречение"</string>
-    <string name="language_selection_title">"Езици"</string>
     <string name="select_language">"Езици"</string>
     <string name="subtype_en_GB">"английски (Великобритания)"</string>
     <string name="subtype_en_US">"английски (САЩ)"</string>
@@ -40,9 +38,6 @@
     <string name="subtype_traditional">"традиционна клавиатура"</string>
     <string name="subtype_compact">"компактна"</string>
     <string name="subtype_bds">"БДС"</string>
-    <string name="enable">"Активиране"</string>
-    <string name="not_now">"Не сега"</string>
-    <string name="custom_input_style_already_exists">"Същият стил на въвеждане вече съществува: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Продълж. на вибриране при натискане"</string>
     <string name="prefs_keypress_sound_volume_settings">"Сила на звука при натиск. на клавиш"</string>
     <string name="prefs_key_longpress_timeout_settings">"Забавяне при продълж. натискане"</string>

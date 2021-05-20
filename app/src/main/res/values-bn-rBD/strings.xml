@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"ইনপুট বিকল্পগুলি"</string>
     <string name="vibrate_on_keypress">"কীপ্রেস এর সময় কম্পন"</string>
     <string name="sound_on_keypress">"কীপ্রেস এর সময়ের শব্দ"</string>
     <string name="popup_on_keypress">"কীপ্রেস এর ফলে পপআপ"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"সিস্টেম ডিফল্ট"</string>
     <string name="auto_cap">"স্বতঃ-ক্যাপিটালাইজেশন"</string>
     <string name="auto_cap_summary">"প্রতিটি বাক্যের প্রথম শব্দ বড় হাতের করুন"</string>
-    <string name="language_selection_title">"ভাষাগুলি"</string>
     <string name="select_language">"ভাষাগুলি"</string>
     <string name="subtype_en_GB">"ইংরেজি (UK)"</string>
     <string name="subtype_en_US">"ইংরেজি (US)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ঐতিহ্যবাহি"</string>
     <string name="subtype_compact">"কম্প্যাক্ট"</string>
-    <string name="enable">"সক্ষম করুন"</string>
-    <string name="not_now">"এখন নয়"</string>
-    <string name="custom_input_style_already_exists">"একই ইনপুট শৈলী ইতোমধ্যে বিদ্যমান: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"কীপ্রেস কম্পন সময়কাল"</string>
     <string name="prefs_keypress_sound_volume_settings">"কীপ্রেস সাউন্ড ভলিউম"</string>
     <string name="prefs_key_longpress_timeout_settings">"কী প্রেসে দীর্ঘ বিলম্ব"</string>

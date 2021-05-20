@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Inmatningsalternativ"</string>
     <string name="vibrate_on_keypress">"Vibrera vid tangenttryck"</string>
     <string name="sound_on_keypress">"Knappljud"</string>
     <string name="popup_on_keypress">"Popup vid knapptryck"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Standardinställning"</string>
     <string name="auto_cap">"Automatiska versaler"</string>
     <string name="auto_cap_summary">"Automatisk stor bokstav först i varje mening"</string>
-    <string name="language_selection_title">"Språk"</string>
     <string name="select_language">"Språk"</string>
     <string name="subtype_en_GB">"Engelska (brittisk)"</string>
     <string name="subtype_en_US">"Engelska (amerikansk)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"traditionell"</string>
     <string name="subtype_compact">"kompakt"</string>
-    <string name="enable">"Aktivera"</string>
-    <string name="not_now">"Inte nu"</string>
-    <string name="custom_input_style_already_exists">"Samma indatastil finns redan: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Vibrationslängd för tangenter"</string>
     <string name="prefs_keypress_sound_volume_settings">"Ljudvolym för tangenter"</string>
     <string name="prefs_key_longpress_timeout_settings">"Fördröjning vid långt tryck"</string>

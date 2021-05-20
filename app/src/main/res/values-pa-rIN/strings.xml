@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"ਇਨਪੁਟ ਚੋਣਾਂ"</string>
     <string name="vibrate_on_keypress">"ਕੁੰਜੀ ਦਬਾਉਣ ’ਤੇ ਥਰਥਰਾਹਟ ਕਰੋ"</string>
     <string name="sound_on_keypress">"ਕੁੰਜੀ ਦਬਾਉਣ \'ਤੇ ਧੁਨ ਵਜਾਓ"</string>
     <string name="popup_on_keypress">"ਕੁੰਜੀ ਦਬਾਉਣ ’ਤੇ ਪੌਪਅੱਪ ਕਰੋ"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"ਸਿਸਟਮ ਡਿਫੌਲਟ"</string>
     <string name="auto_cap">"ਆਟੋ-ਕੈਪਿਟਲਾਈਜ਼ੇਸ਼ਨ"</string>
     <string name="auto_cap_summary">"ਹਰੇਕ ਵਾਕ ਦਾ ਪਹਿਲਾ ਸ਼ਬਦ ਕੈਪੀਟਲਾਈਜ਼ ਕਰੋ"</string>
-    <string name="language_selection_title">"ਭਾਸ਼ਾਵਾਂ"</string>
     <string name="select_language">"ਭਾਸ਼ਾਵਾਂ"</string>
     <string name="subtype_en_GB">"ਅੰਗ੍ਰੇਜ਼ੀ (ਯੂਕੇ)"</string>
     <string name="subtype_en_US">"ਅੰਗ੍ਰੇਜੀ (ਅਮਰੀਕਾ)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ਪਰੰਪਰਿਕ"</string>
     <string name="subtype_compact">"ਕੰਪੈਕਟ"</string>
-    <string name="enable">"ਸਮਰੱਥ ਬਣਾਓ"</string>
-    <string name="not_now">"ਅਜੇ ਨਹੀਂ"</string>
-    <string name="custom_input_style_already_exists">"ਸਮਾਨ ਇਨਪੁਟ ਸਟਾਈਲ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"ਕੀਪ੍ਰੈਸ ਵਾਈਬ੍ਰੇਸ਼ਨ ਮਿਆਦ"</string>
     <string name="prefs_keypress_sound_volume_settings">"ਕੀਪ੍ਰੈਸ ਅਵਾਜ਼ ਵੌਲਿਊਮ"</string>
     <string name="prefs_key_longpress_timeout_settings">"ਕੁੰਜੀ ਦਬਾਈ ਰੱਖਣ ਦੀ ਮਿਆਦ"</string>

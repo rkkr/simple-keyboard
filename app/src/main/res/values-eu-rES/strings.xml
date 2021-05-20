@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Idazketa-aukerak"</string>
     <string name="vibrate_on_keypress">"Egin dar-dar sakatzean"</string>
     <string name="sound_on_keypress">"Soinua teklak sakatzean"</string>
     <string name="popup_on_keypress">"Handitu teklak, sakatzean"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Sistemaren lehenespena"</string>
     <string name="auto_cap">"Maiuskula automatikoak"</string>
     <string name="auto_cap_summary">"Ezarri esaldi bakoitzaren lehenengo hizkia maiuskulaz"</string>
-    <string name="language_selection_title">"Hizkuntzak"</string>
     <string name="select_language">"Hizkuntzak"</string>
     <string name="subtype_en_GB">"Ingelesa (Erresuma Batua)"</string>
     <string name="subtype_en_US">"Ingelesa (AEB)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradizionala"</string>
     <string name="subtype_compact">"trinkoa"</string>
-    <string name="enable">"Gaitu"</string>
-    <string name="not_now">"Orain ez"</string>
-    <string name="custom_input_style_already_exists">"Idazketa-estilo hori badago lehendik ere: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Tekla sakatzearen dardararen iraupena"</string>
     <string name="prefs_keypress_sound_volume_settings">"Tekla sakatzearen bolumena"</string>
     <string name="prefs_key_longpress_timeout_settings">"Luze sakatzearen atzerapena"</string>

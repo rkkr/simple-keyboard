@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Daxiletmə seçimləri"</string>
     <string name="vibrate_on_keypress">"Vibrasiyalı klikləmə"</string>
     <string name="sound_on_keypress">"Klikləmə səsi"</string>
     <string name="popup_on_keypress">"Klikləmədə popup"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Sistem defoltu"</string>
     <string name="auto_cap">"Avtomatik böyük hərfləşmə"</string>
     <string name="auto_cap_summary">"Hər cümlənin ilk sözünü böyük hərflə yaz"</string>
-    <string name="language_selection_title">"Dillər"</string>
     <string name="select_language">"Dillər"</string>
     <string name="subtype_en_GB">"İngilis (BK)"</string>
     <string name="subtype_en_US">"İngilis (ABŞ)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Ənənəvi"</string>
     <string name="subtype_compact">"Kompakt"</string>
-    <string name="enable">"Aktiv et"</string>
-    <string name="not_now">"İndi yox"</string>
-    <string name="custom_input_style_already_exists">"Eyni daxiletmə üslubu artıq mövcuddur: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Vibrasiyalı klikləmə müddəti"</string>
     <string name="prefs_keypress_sound_volume_settings">"Səsli klikləmə səsi"</string>
     <string name="prefs_key_longpress_timeout_settings">"Klavişi uzun müddət basmada gecikmə"</string>

@@ -517,7 +517,7 @@ public final class InputLogic {
      * Handle a press on the settings key.
      */
     private void onSettingsKeyPressed() {
-        mLatinIME.displaySettingsDialog();
+        mLatinIME.launchSettings();
     }
 
     /**

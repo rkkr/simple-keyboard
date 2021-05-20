@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Invoeropsies"</string>
     <string name="vibrate_on_keypress">"Vibreer met sleuteldruk"</string>
     <string name="sound_on_keypress">"Klank met sleuteldruk"</string>
     <string name="popup_on_keypress">"Opspring met sleuteldruk"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Stelsel se verstek"</string>
     <string name="auto_cap">"Outohoofletters"</string>
     <string name="auto_cap_summary">"Die eerste woord van elke sin moet met \'n hoofletter begin"</string>
-    <string name="language_selection_title">"Tale"</string>
     <string name="select_language">"Tale"</string>
     <string name="subtype_en_GB">"Engels (VK)"</string>
     <string name="subtype_en_US">"Engels (VS)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Tradisioneel"</string>
     <string name="subtype_compact">"Kompak"</string>
-    <string name="enable">"Aktiveer"</string>
-    <string name="not_now">"Nie nou nie"</string>
-    <string name="custom_input_style_already_exists">"Dieselfde invoerstyl bestaan ​​reeds: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Sleuteldruk se vibrasie-tydsduur"</string>
     <string name="prefs_keypress_sound_volume_settings">"Sleuteldruk se klankvolume"</string>
     <string name="prefs_key_longpress_timeout_settings">"Vertraging van sleutellangdruk"</string>

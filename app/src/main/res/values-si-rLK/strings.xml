@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"ආදාන විකල්ප"</string>
     <string name="vibrate_on_keypress">"යතුර එබීමට කම්පනය කිරීම සක්‍රියයි"</string>
     <string name="sound_on_keypress">"යතුරු එබිම මත හඬ"</string>
     <string name="popup_on_keypress">"යතුරු එබීම මත උත්පතනය"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"පද්ධති සුපුරුදු"</string>
     <string name="auto_cap">"ස්වයං-ලොකු අකුරු කරණය"</string>
     <string name="auto_cap_summary">"එක් එක් වාක්‍යයේ පළමු වචනය ලොකු අකුරු කරන්න"</string>
-    <string name="language_selection_title">"භාෂා"</string>
     <string name="select_language">"භාෂා"</string>
     <string name="subtype_en_GB">"ඉංග්‍රීසි (UK)"</string>
     <string name="subtype_en_US">"ඉංග්‍රීසි (US)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"සාම්ප්‍රදායික"</string>
     <string name="subtype_compact">"සංයුක්ත"</string>
-    <string name="enable">"සබල කරන්න"</string>
-    <string name="not_now">"දැන් නොවේ"</string>
-    <string name="custom_input_style_already_exists">"සමාන ආදාන විලාසය දැනටමත් පවතී: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"යතුරු එබිම් කම්පන කාලපරිච්ඡේදය"</string>
     <string name="prefs_keypress_sound_volume_settings">"යතුරු එබීම් හඬ තීව්‍රතාවය"</string>
     <string name="prefs_key_longpress_timeout_settings">"යතුරු දිගු එබීම් ප්‍රමාදය"</string>

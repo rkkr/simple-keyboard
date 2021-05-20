@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"ఇన్‌పుట్ ఎంపికలు"</string>
     <string name="vibrate_on_keypress">"కీని నొక్కినప్పుడు వైబ్రేట్"</string>
     <string name="sound_on_keypress">"కీని నొక్కినప్పుడు ధ్వని"</string>
     <string name="popup_on_keypress">"కీని నొక్కినప్పుడు పాప్‌అప్ చూపు"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"సిస్టమ్ డిఫాల్ట్"</string>
     <string name="auto_cap">"స్వీయ-పెద్ద అక్షరాలు"</string>
     <string name="auto_cap_summary">"ప్రతి వాక్యంలో మొదటి అక్షరాన్ని పెద్ద అక్షరం చేయి"</string>
-    <string name="language_selection_title">"భాషలు"</string>
     <string name="select_language">"భాషలు"</string>
     <string name="subtype_en_GB">"ఆంగ్లం (యుకె)"</string>
     <string name="subtype_en_US">"ఆంగ్లం (యుఎస్)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"సాంప్రదాయకం"</string>
     <string name="subtype_compact">"కాంపాక్ట్"</string>
-    <string name="enable">"ప్రారంభించండి"</string>
-    <string name="not_now">"ఇప్పుడు కాదు"</string>
-    <string name="custom_input_style_already_exists">"ఇదే ఇన్‌పుట్ శైలి ఇప్పటికే ఉంది: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"కీని నొక్కినప్పుడు వైబ్రేషన్ వ్యవధి"</string>
     <string name="prefs_keypress_sound_volume_settings">"కీని నొక్కినప్పుడు చేసే ధ్వని వాల్యూమ్"</string>
     <string name="prefs_key_longpress_timeout_settings">"కీని ఎక్కువసేపు నొక్కి ఉంచాల్సిన సమయంలో ఆలస్యం"</string>

@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Opcje wprowadzania"</string>
     <string name="vibrate_on_keypress">"Wibracja przy naciśnięciu"</string>
     <string name="sound_on_keypress">"Dźwięk przy naciśnięciu"</string>
     <string name="popup_on_keypress">"Powiększ przy naciśnięciu"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Ustawienie domyślne"</string>
     <string name="auto_cap">"Wstawiaj wielkie litery"</string>
     <string name="auto_cap_summary">"Zaczynaj każde zdanie wielką literą"</string>
-    <string name="language_selection_title">"Języki"</string>
     <string name="select_language">"Języki"</string>
     <string name="subtype_en_GB">"angielski (Wielka Brytania)"</string>
     <string name="subtype_en_US">"angielski (Stany Zjednoczone)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradycyjny"</string>
     <string name="subtype_compact">"kompaktowa"</string>
-    <string name="enable">"Włącz"</string>
-    <string name="not_now">"Nie teraz"</string>
-    <string name="custom_input_style_already_exists">"Taki styl wprowadzania już istnieje: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Wibracja przy naciśniętym klawiszu"</string>
     <string name="prefs_keypress_sound_volume_settings">"Głośność przy naciśniętym klawiszu"</string>
     <string name="prefs_key_longpress_timeout_settings">"Opóźnienie przy długim naciśnięciu"</string>

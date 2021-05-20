@@ -707,27 +707,27 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return mInputLogic.getCurrentRecapitalizeState();
     }
 
-    public void displaySettingsDialog() {
-        if (isShowingOptionDialog()) {
-            return;
-        }
-        showSubtypeSelectorAndSettings();
-    }
-
     @Override
     public boolean onCustomRequest(final int requestCode) {
-        if (isShowingOptionDialog()) return false;
         switch (requestCode) {
             case Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER:
-                if (mRichImm.hasMultipleEnabledSubtypes()) {
-                    showSubtypeSelector();
-                    return true;
-                }
-                if (mRichImm.hasMultipleEnabledImesOrSubtypes(true /* include aux subtypes */)) {
-                    mRichImm.showInputMethodPicker();
-                    return true;
-                }
-                return false;
+                return showInputMethodPicker();
+        }
+        return false;
+    }
+
+    //TODO: consider moving into RichInputMethodManager
+    private boolean showInputMethodPicker() {
+        if (isShowingOptionDialog()) {
+            return false;
+        }
+        if (mRichImm.hasMultipleEnabledSubtypes()) {
+            showSubtypeSelector();
+            return true;
+        }
+        if (mRichImm.hasMultipleEnabledImesOrSubtypes(true /* include aux subtypes */)) {
+            mRichImm.showInputMethodPicker();
+            return true;
         }
         return false;
     }
@@ -953,7 +953,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
     };
 
-    void launchSettings() {
+    public void launchSettings() {
         requestHideSelf(0);
         final MainKeyboardView mainKeyboardView = mKeyboardSwitcher.getMainKeyboardView();
         if (mainKeyboardView != null) {
@@ -965,42 +965,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-    }
-
-    private void showSubtypeSelectorAndSettings() {
-//        final CharSequence title = getString(R.string.english_ime_input_options);
-//        // TODO: Should use new string "Select active input modes".
-//        final CharSequence languageSelectionTitle = getString(R.string.language_selection_title);
-//        final CharSequence[] items = new CharSequence[] {
-//                languageSelectionTitle,
-//                getString(ApplicationUtils.getActivityTitleResId(this, SettingsActivity.class))
-//        };
-//        final String imeId = mRichImm.getInputMethodIdOfThisIme();
-//        final OnClickListener listener = new OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface di, int position) {
-//                di.dismiss();
-//                switch (position) {
-//                case 0:
-//                    final Intent intent =
-//                            IntentUtils.getInputLanguageSelectionIntent(imeId, LatinIME.this);
-//                    startActivity(intent);
-//                    break;
-//                case 1:
-//                    launchSettings();
-//                    break;
-//                }
-//            }
-//        };
-//        final AlertDialog.Builder builder = new AlertDialog.Builder(
-//                DialogUtils.getPlatformDialogThemeContext(this));
-//        builder.setItems(items, listener).setTitle(title);
-//        final AlertDialog dialog = builder.create();
-//        dialog.setCancelable(true /* cancelable */);
-//        dialog.setCanceledOnTouchOutside(true /* cancelable */);
-//        showOptionDialog(dialog);
-        //TODO: consider keeping this popup and have an new activity to go directly to the languages settings
-        launchSettings();
     }
 
     //TODO: consider moving into RichInputMethodManager

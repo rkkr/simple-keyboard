@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Tùy chọn nhập"</string>
     <string name="vibrate_on_keypress">"Rung khi nhấn phím"</string>
     <string name="sound_on_keypress">"Âm thanh khi nhấn phím"</string>
     <string name="popup_on_keypress">"Bật lên khi nhấn phím"</string>
@@ -30,7 +29,6 @@
     <string name="settings_system_default">"Mặc định của hệ thống"</string>
     <string name="auto_cap">"Tự động viết hoa"</string>
     <string name="auto_cap_summary">"Viết hoa chữ đầu tiên của mỗi câu"</string>
-    <string name="language_selection_title">"Ngôn ngữ"</string>
     <string name="select_language">"Ngôn ngữ"</string>
     <string name="subtype_en_GB">"Tiếng Anh (Anh)"</string>
     <string name="subtype_en_US">"Tiếng Anh (Mỹ)"</string>
@@ -40,9 +38,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Truyền thống"</string>
     <string name="subtype_compact">"Viết tắt"</string>
-    <string name="enable">"Bật"</string>
-    <string name="not_now">"Để sau"</string>
-    <string name="custom_input_style_already_exists">"Đã tồn tại kiểu nhập tương tự: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Thời gian rung khi nhấn phím"</string>
     <string name="prefs_keypress_sound_volume_settings">"Âm lượng khi nhấn phím"</string>
     <string name="prefs_key_longpress_timeout_settings">"Thời gian trễ nhấn và giữ phím"</string>

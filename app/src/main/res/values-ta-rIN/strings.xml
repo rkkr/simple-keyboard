@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"உள்ளீட்டு விருப்பங்கள்"</string>
     <string name="vibrate_on_keypress">"விசையழுத்தின்போது அதிர்வுரு"</string>
     <string name="sound_on_keypress">"விசையழுத்தத்தின்போது ஒலியெழுப்பு"</string>
     <string name="popup_on_keypress">"விழை அழுத்தத்தின்போது பாப்அப் செய்"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"அமைப்பின் இயல்புநிலை"</string>
     <string name="auto_cap">"தன்னியக்க பேரெழுத்தாக்கல்"</string>
     <string name="auto_cap_summary">"வரியின் முதல் எழுத்தை பேரெழுத்தாக்கும்"</string>
-    <string name="language_selection_title">"மொழிகள்"</string>
     <string name="select_language">"மொழிகள்"</string>
     <string name="subtype_en_GB">"ஆங்கிலம் (யூகே)"</string>
     <string name="subtype_en_US">"ஆங்கிலம் (யூஎஸ்)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"பாரம்பரியமானது"</string>
     <string name="subtype_compact">"வசதியான"</string>
-    <string name="enable">"இயக்கு"</string>
-    <string name="not_now">"இப்பொழுது வேண்டாம்"</string>
-    <string name="custom_input_style_already_exists">"இதே உள்ளீட்டு நடை ஏற்கனவே உள்ளது: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"விசையழுத்த அதிர்வின் காலஅளவு"</string>
     <string name="prefs_keypress_sound_volume_settings">"விசையழுத்த ஒலியளவு"</string>
     <string name="prefs_key_longpress_timeout_settings">"விசைக்கான நீண்ட அழுத்த நேரம்"</string>

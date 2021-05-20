@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"ግቤት አማራጮች"</string>
     <string name="vibrate_on_keypress">"በቁልፍመጫንጊዜ አንዝር"</string>
     <string name="sound_on_keypress">"በቁልፍ መጫን ላይ የሚወጣ ድምፅ"</string>
     <string name="popup_on_keypress">"ቁልፍ ጫን ላይ ብቅ ባይ"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"የስርዓት ነባሪ"</string>
     <string name="auto_cap">"ራስ-ሰር አቢይ ማድረግ"</string>
     <string name="auto_cap_summary">"የእያንዳንዱ ዓረፍተ ነገር የመጀመሪያ ቃል በአቢይ ሆሄ ያስቀምጡ"</string>
-    <string name="language_selection_title">"ቋንቋዎች"</string>
     <string name="select_language">"ቋንቋዎች"</string>
     <string name="subtype_en_GB">"እንግሊዘኛ (የታላቋ ብሪታንያ)"</string>
     <string name="subtype_en_US">"እንግሊዘኛ (ዩ.ኤስ)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ተለምዷዊ"</string>
     <string name="subtype_compact">"እስግ"</string>
-    <string name="enable">"አንቃ"</string>
-    <string name="not_now">"አሁን አልፈልግም"</string>
-    <string name="custom_input_style_already_exists">"ተመሳሳዩ የግብዓት ቅጥ አስቀድሞ አለ፦ <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"የቁልፍ ጭነት ንዝረት ርዝመት"</string>
     <string name="prefs_keypress_sound_volume_settings">"የቁልፍ ጭነት ድምጽ መጠን"</string>
     <string name="prefs_key_longpress_timeout_settings">"የሰሌዳ ቁልፍ ጠቅታ በመጫን መዘግየት"</string>

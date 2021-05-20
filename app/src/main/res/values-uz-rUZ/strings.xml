@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Sozlamalar"</string>
     <string name="vibrate_on_keypress">"Tugma bosilganda tebranish"</string>
     <string name="sound_on_keypress">"Tugma bosilganda ovoz"</string>
     <string name="popup_on_keypress">"Tugma bosilganda qalqib chiqish"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Tizim standarti"</string>
     <string name="auto_cap">"Avtomatik bosh harf"</string>
     <string name="auto_cap_summary">"Har bir gapning birinchi so‘zini bosh harf bilan boshlash"</string>
-    <string name="language_selection_title">"Tillar"</string>
     <string name="select_language">"Tillar"</string>
     <string name="subtype_en_GB">"Ingliz (Buyuk Britaniya)"</string>
     <string name="subtype_en_US">"Ingliz (AQSH)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"an’anaviy"</string>
     <string name="subtype_compact">"ixcham"</string>
-    <string name="enable">"Yoqish"</string>
-    <string name="not_now">"Hozir emas"</string>
-    <string name="custom_input_style_already_exists">"Xuddi shunday matn kiritish usuli allaqachon mavjud: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Tugma bosilganda tebranish vaqti"</string>
     <string name="prefs_keypress_sound_volume_settings">"Tugma bosilgandagi ovoz"</string>
     <string name="prefs_key_longpress_timeout_settings">"Tugmani bosib turish"</string>

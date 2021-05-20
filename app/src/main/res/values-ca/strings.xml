@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Opcions d\'entrada"</string>
     <string name="vibrate_on_keypress">"Vibra en prémer tecles"</string>
     <string name="sound_on_keypress">"So en prémer tecles"</string>
     <string name="popup_on_keypress">"Amplia en prémer tecles"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Predeterminat"</string>
     <string name="auto_cap">"Majúscules automàtiques"</string>
     <string name="auto_cap_summary">"Posa en majúscula la primera paraula de cada frase"</string>
-    <string name="language_selection_title">"Idiomes"</string>
     <string name="select_language">"Idiomes"</string>
     <string name="subtype_en_GB">"anglès (Regne Unit)"</string>
     <string name="subtype_en_US">"anglès (EUA)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicional"</string>
     <string name="subtype_compact">"compacte"</string>
-    <string name="enable">"Activa"</string>
-    <string name="not_now">"Ara no"</string>
-    <string name="custom_input_style_already_exists">"Ja existeix aquest estil d\'entrada: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Durada vibració en prémer"</string>
     <string name="prefs_keypress_sound_volume_settings">"Volum so en prémer tecla"</string>
     <string name="prefs_key_longpress_timeout_settings">"Retard en mantenir premut"</string>

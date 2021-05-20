@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"입력 옵션"</string>
     <string name="vibrate_on_keypress">"키를 누를 때 진동 발생"</string>
     <string name="sound_on_keypress">"키를 누를 때 소리 발생"</string>
     <string name="popup_on_keypress">"키를 누를 때 팝업"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"시스템 기본값"</string>
     <string name="auto_cap">"자동 대문자화"</string>
     <string name="auto_cap_summary">"문장의 첫 단어를 대문자로 표시"</string>
-    <string name="language_selection_title">"언어"</string>
     <string name="select_language">"언어"</string>
     <string name="subtype_en_GB">"영어(영국)"</string>
     <string name="subtype_en_US">"영어(미국)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>(<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"번체"</string>
     <string name="subtype_compact">"컴팩트"</string>
-    <string name="enable">"사용"</string>
-    <string name="not_now">"나중에"</string>
-    <string name="custom_input_style_already_exists">"같은 입력 스타일이 다음과 같이 이미 존재합니다. <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"키를 누를 때 진동 시간"</string>
     <string name="prefs_keypress_sound_volume_settings">"키를 누를 때 소리 볼륨"</string>
     <string name="prefs_key_longpress_timeout_settings">"키 길게 누르기 지연"</string>

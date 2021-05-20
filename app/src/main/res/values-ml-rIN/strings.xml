@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"ടൈപ്പിംഗ് ഓപ്‌ഷനുകൾ"</string>
     <string name="vibrate_on_keypress">"കീ അമർത്തുമ്പോൾ വൈബ്രേറ്റുചെയ്യുക"</string>
     <string name="sound_on_keypress">"കീയമർത്തുമ്പോൾ ശബ്ദം"</string>
     <string name="popup_on_keypress">"കീയമർത്തുമ്പോൾ പോപ്പപ്പ്"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"സ്ഥിരമായ സിസ്റ്റം"</string>
     <string name="auto_cap">"സ്വയം വലിയക്ഷരമാക്കുക"</string>
     <string name="auto_cap_summary">"ഓരോ വാക്യത്തിന്റെയും ആദ്യ പദം വലിയക്ഷരമാക്കുക"</string>
-    <string name="language_selection_title">"ഭാഷകൾ"</string>
     <string name="select_language">"ഭാഷകൾ"</string>
     <string name="subtype_en_GB">"ഇംഗ്ലീഷ് (യുകെ)"</string>
     <string name="subtype_en_US">"ഇംഗ്ലീഷ് (യുഎസ്)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"പരമ്പരാഗതം"</string>
     <string name="subtype_compact">"കോം‌പാക്‌ട്"</string>
-    <string name="enable">"പ്രവർത്തനക്ഷമമാക്കുക"</string>
-    <string name="not_now">"ഇപ്പോൾ വേണ്ട"</string>
-    <string name="custom_input_style_already_exists">"സമാന ടൈപ്പുചെയ്യൽ ശൈലി ഇതിനകം നിലവിലുണ്ട്: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"കീ അമർത്തുമ്പോഴുള്ള വൈബ്രേഷൻ ദൈർഘ്യം"</string>
     <string name="prefs_keypress_sound_volume_settings">"കീ അമർത്തുമ്പോഴുള്ള ശബ്‌ദ വോളിയം"</string>
     <string name="prefs_key_longpress_timeout_settings">"കീ അമർത്തിപ്പിടിക്കുന്നതിലെ കാലതാമസം"</string>

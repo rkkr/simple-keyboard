@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Možnosti zadávání textu a dat"</string>
     <string name="vibrate_on_keypress">"Při stisku klávesy vibrovat"</string>
     <string name="sound_on_keypress">"Zvuk při stisku klávesy"</string>
     <string name="popup_on_keypress">"Detail znaku při stisku klávesy"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Výchozí nastavení"</string>
     <string name="auto_cap">"Velká písmena automaticky"</string>
     <string name="auto_cap_summary">"Kapitalizace prvního slova každé věty"</string>
-    <string name="language_selection_title">"Jazyky"</string>
     <string name="select_language">"Jazyky"</string>
     <string name="subtype_en_GB">"angličtina (Velká Británie)"</string>
     <string name="subtype_en_US">"angličtina (USA)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradiční"</string>
     <string name="subtype_compact">"kompaktní"</string>
-    <string name="enable">"Povolit"</string>
-    <string name="not_now">"Teď ne"</string>
-    <string name="custom_input_style_already_exists">"Tento styl zadávání již existuje: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Délka vibrace při stisknutí klávesy"</string>
     <string name="prefs_keypress_sound_volume_settings">"Hlasitost stisknutí klávesy"</string>
     <string name="prefs_key_longpress_timeout_settings">"Prodleva dlouhého stisknutí"</string>

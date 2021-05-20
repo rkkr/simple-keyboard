@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Опции за внесување"</string>
     <string name="vibrate_on_keypress">"Вибрирање при притисок на копче"</string>
     <string name="sound_on_keypress">"Звук на притискање копче"</string>
     <string name="popup_on_keypress">"Појавен прозорец на притискање копче"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Стандардно за системот"</string>
     <string name="auto_cap">"Автоматска голема буква"</string>
     <string name="auto_cap_summary">"Прави првиот збор од секоја реченица да почнува со голема буква"</string>
-    <string name="language_selection_title">"Јазици"</string>
     <string name="select_language">"Јазици"</string>
     <string name="subtype_en_GB">"англиски (ОК)"</string>
     <string name="subtype_en_US">"англиски (САД)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"традиционален"</string>
     <string name="subtype_compact">"Компактна"</string>
-    <string name="enable">"Овозможи"</string>
-    <string name="not_now">"Не сега"</string>
-    <string name="custom_input_style_already_exists">"Истиот стил на влез веќе постои: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Траење на вибрација од копче"</string>
     <string name="prefs_keypress_sound_volume_settings">"Копче за јачина на звук"</string>
     <string name="prefs_key_longpress_timeout_settings">"Доцнење на долго притискање копче"</string>

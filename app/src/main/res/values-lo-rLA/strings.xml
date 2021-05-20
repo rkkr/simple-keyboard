@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"ຕົວເລືອກການປ້ອນຂໍ້ມູນ"</string>
     <string name="vibrate_on_keypress">"ສັ່ນເຕືອນເມື່ອພິມ"</string>
     <string name="sound_on_keypress">"ສຽງໃນການກົດປຸ່ມ"</string>
     <string name="popup_on_keypress">"ໂຕອັກສອນເວລາພິມ"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"ຄ່າເລີ່ມຕົ້ນຂອງລະບົບ"</string>
     <string name="auto_cap">"ເຮັດໂຕພິມໃຫຍ່ອັດຕະໂນມັດ"</string>
     <string name="auto_cap_summary">"ເຮັດໂຕພິມໃຫຍ່ໃຫ້ໂຕອັກສອນທຳອິດຂອງແຕ່ລໃນປະໂຫຍກ"</string>
-    <string name="language_selection_title">"ພາ​ສາ"</string>
     <string name="select_language">"ພາ​ສາ"</string>
     <string name="subtype_en_GB">"ອັງກິດ (ສະຫະລາດຊະອານາຈັກ)"</string>
     <string name="subtype_en_US">"ອັງກິດ (ສະຫະລັດຯ)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ດັ້ງ​ເດີມ"</string>
     <string name="subtype_compact">"ກະ​ທັດ​ຮັດ"</string>
-    <string name="enable">"ເປີດນຳໃຊ້"</string>
-    <string name="not_now">"ບໍ່ແມ່ນຕອນນີ້"</string>
-    <string name="custom_input_style_already_exists">"ຮູບແບບການປ້ອນຂໍ້ມູນທີ່ຄືກັນມີຢູ່ແລ້ວ: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"ໄລຍະເວລາຂອງການສັ່ນໃນການກົດປຸ່ມ"</string>
     <string name="prefs_keypress_sound_volume_settings">"ລະດັບສຽງຂອງການກົດປຸ່ມ"</string>
     <string name="prefs_key_longpress_timeout_settings">"ໄລຍະເວລາຂອງການກົດປຸ່ມ"</string>

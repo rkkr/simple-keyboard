@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"ထည့်သွင်းရန် နည်းလမ်းများ"</string>
     <string name="vibrate_on_keypress">"ခလုတ်နှိပ်သည်နှင့် တုံခါစေပါ"</string>
     <string name="sound_on_keypress">"ခလုတ်နှိပ်လျှင် အသံမြည်"</string>
     <string name="popup_on_keypress">"ကီးနှိပ်လိုက်သည်နှင့် ပေါ်လာရန်"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"စနစ်ပုံသေ"</string>
     <string name="auto_cap">"အော်တိုစာလုံးကြီးပြောင်း"</string>
     <string name="auto_cap_summary">"စာကြောင်းတိုင်း ပထမစာလုံးကို အကြီးလုပ်ရန်"</string>
-    <string name="language_selection_title">"ဘာသာစကားများ"</string>
     <string name="select_language">"ဘာသာစကားများ"</string>
     <string name="subtype_en_GB">"အင်္ဂလိပ်(ယူကေ)"</string>
     <string name="subtype_en_US">"အင်္ဂလိပ် (ယူအက်စ်)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ရိုးရာ"</string>
     <string name="subtype_compact">"ကျစ်လစ်သော"</string>
-    <string name="enable">"ဖွင့်ရန်"</string>
-    <string name="not_now">"ယခု မဟုတ်"</string>
-    <string name="custom_input_style_already_exists">"တူညီသည့် ထည့်သွင်းရန် စတိုင်လ် ရှိပြီးဖြစ်: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"ခလုတ်နှိပ်တုန်ခါမှု ကြာမြင့်ချိန်"</string>
     <string name="prefs_keypress_sound_volume_settings">"ခလုတ်နှိပ်သည့် အသံအတိုးကျယ်"</string>
     <string name="prefs_key_longpress_timeout_settings">"ကီးကြာမြင့်စွာ ဖိနှိပ်မှုနှုန်း"</string>

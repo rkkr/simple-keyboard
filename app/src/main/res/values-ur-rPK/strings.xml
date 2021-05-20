@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"ان پٹ اختیارات"</string>
     <string name="vibrate_on_keypress">"کلید دبانے پر وائبریٹ کریں"</string>
     <string name="sound_on_keypress">"کلید دبانے پر آواز"</string>
     <string name="popup_on_keypress">"کلید دبانے پر پاپ اپ"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"سسٹم ڈیفالٹ"</string>
     <string name="auto_cap">"بڑے حروف میں خودکار تبدیلی"</string>
     <string name="auto_cap_summary">"ہر جملے کا پہلا لفظ بڑے حروف میں لکھیں"</string>
-    <string name="language_selection_title">"زبانیں"</string>
     <string name="select_language">"زبانیں"</string>
     <string name="subtype_en_GB">"انگریزی (برطانیہ)"</string>
     <string name="subtype_en_US">"انگریزی (امریکہ)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"روایتی"</string>
     <string name="subtype_compact">"کمپیکٹ"</string>
-    <string name="enable">"فعال کریں"</string>
-    <string name="not_now">"ابھی نہیں"</string>
-    <string name="custom_input_style_already_exists">"ایسا ہی ان پٹ اسٹائل پہلے سے موجود ہے: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"کلید دبانے پر وائبریشن کا دورانیہ"</string>
     <string name="prefs_keypress_sound_volume_settings">"کلید دبانے پر آواز کا والیوم"</string>
     <string name="prefs_key_longpress_timeout_settings">"کلید کو دیر تک دبانے کی تاخیر"</string>

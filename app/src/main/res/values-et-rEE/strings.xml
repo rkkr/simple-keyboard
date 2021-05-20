@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Sisestusvalikud"</string>
     <string name="vibrate_on_keypress">"Vibreeri klahvivajutusel"</string>
     <string name="sound_on_keypress">"Heli klahvivajutusel"</string>
     <string name="popup_on_keypress">"Klahvivajutusel kuva hüpik"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Süsteemi vaikeväärt."</string>
     <string name="auto_cap">"Automaatne suurtähtede kasutamine"</string>
     <string name="auto_cap_summary">"Iga lause esimese sõna kirjutamine suure algustähega"</string>
-    <string name="language_selection_title">"Keeled"</string>
     <string name="select_language">"Keeled"</string>
     <string name="subtype_en_GB">"Inglise (UK)"</string>
     <string name="subtype_en_US">"Inglise (USA)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"traditsiooniline"</string>
     <string name="subtype_compact">"kompaktne"</string>
-    <string name="enable">"Luba"</string>
-    <string name="not_now">"Mitte kohe"</string>
-    <string name="custom_input_style_already_exists">"Sama sisendstiil on juba olemas: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Klahvivajutuse vibreerimise kestus"</string>
     <string name="prefs_keypress_sound_volume_settings">"Klahvivajutuse helitugevus"</string>
     <string name="prefs_key_longpress_timeout_settings">"Pika klahvivajutuse viide"</string>

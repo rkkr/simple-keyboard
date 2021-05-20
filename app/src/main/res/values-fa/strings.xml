@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"گزینه‌های ورودی"</string>
     <string name="vibrate_on_keypress">"لرزش با فشار کلید"</string>
     <string name="sound_on_keypress">"صدا با فشار کلید"</string>
     <string name="popup_on_keypress">"بازشدن با فشار کلید"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"پیش‌فرض سیستم"</string>
     <string name="auto_cap">"بزرگ‌کردن خودکار حروف"</string>
     <string name="auto_cap_summary">"بزرگ‌نویسی کلمه اول هر جمله"</string>
-    <string name="language_selection_title">"زبان‌ها"</string>
     <string name="select_language">"زبان‌ها"</string>
     <string name="subtype_en_GB">"انگلیسی (بریتانیا)"</string>
     <string name="subtype_en_US">"انگلیسی (امریکا)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"سنتی"</string>
     <string name="subtype_compact">"فشرده"</string>
-    <string name="enable">"فعال کردن"</string>
-    <string name="not_now">"اکنون نه"</string>
-    <string name="custom_input_style_already_exists">"سبک ورودی مشابهی در حال حاضر وجود دارد: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"طول مدت لرزش در اثر فشردن کلید"</string>
     <string name="prefs_keypress_sound_volume_settings">"میزان صدای فشردن کلید"</string>
     <string name="prefs_key_longpress_timeout_settings">"تأخیر فشار طولانی کلید"</string>

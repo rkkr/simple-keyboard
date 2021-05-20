@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Chaguo za uingizaji"</string>
     <string name="vibrate_on_keypress">"Tetema unabofya kitufe"</string>
     <string name="sound_on_keypress">"Toa sauti unapobofya kitufe"</string>
     <string name="popup_on_keypress">"Ibuka kitufe kinapobonyezwa"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"Chaguo-msingi la mfumo"</string>
     <string name="auto_cap">"Uwekaji wa herufi kubwa kiotomatiki"</string>
     <string name="auto_cap_summary">"Fanya herufi kubwa neno la kwanza la kila sentensi"</string>
-    <string name="language_selection_title">"Lugha"</string>
     <string name="select_language">"Lugha"</string>
     <string name="subtype_en_GB">"Kiingereza cha (Uingereza)"</string>
     <string name="subtype_en_US">"Kiingereza cha (Marekani)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"cha Jadi"</string>
     <string name="subtype_compact">"Thabiti"</string>
-    <string name="enable">"Washa"</string>
-    <string name="not_now">"Sio sasa"</string>
-    <string name="custom_input_style_already_exists">"Mfumo sawa wa maingizo tayari upo: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Bonyeza kitufe cha muda wa kutetema"</string>
     <string name="prefs_keypress_sound_volume_settings">"Bonyeza kitufe cha kiwango cha sauti"</string>
     <string name="prefs_key_longpress_timeout_settings">"Ucheleweshaji wa kubofya kitufe na kushikilia"</string>

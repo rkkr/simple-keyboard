@@ -19,7 +19,6 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Парам. введення"</string>
     <string name="vibrate_on_keypress">"Вібр. при натисканні клавіш"</string>
     <string name="sound_on_keypress">"Звук при натиску клав."</string>
     <string name="popup_on_keypress">"Збільшення натиснутих"</string>
@@ -29,7 +28,6 @@
     <string name="settings_system_default">"За умовчанням"</string>
     <string name="auto_cap">"Вел. літери автоматично"</string>
     <string name="auto_cap_summary">"Писати перше слово в кожному реченні з великої літери"</string>
-    <string name="language_selection_title">"Мови"</string>
     <string name="select_language">"Мови"</string>
     <string name="subtype_en_GB">"Англійська (Велика Британія)"</string>
     <string name="subtype_en_US">"Англійська (США)"</string>
@@ -39,9 +37,6 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"традиційна"</string>
     <string name="subtype_compact">"компактна"</string>
-    <string name="enable">"Увімкнути"</string>
-    <string name="not_now">"Не зараз"</string>
-    <string name="custom_input_style_already_exists">"Такий стиль введення вже існує: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Вібрація при натисканні клавіш"</string>
     <string name="prefs_keypress_sound_volume_settings">"Гучність натискання клавіш"</string>
     <string name="prefs_key_longpress_timeout_settings">"Затримка довгого натискання"</string>
