@@ -19,7 +19,7 @@ package rkr.simplekeyboard.inputmethod.latin.utils;
 import java.util.Locale;
 import java.util.Set;
 
-import rkr.simplekeyboard.inputmethod.latin.MySubtype;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 
 /**
@@ -34,7 +34,7 @@ public final class LanguageOnSpacebarUtils {
         // This utility class is not publicly instantiable.
     }
 
-    public static int getLanguageOnSpacebarFormatType(final MySubtype subtype) {
+    public static int getLanguageOnSpacebarFormatType(final Subtype subtype) {
         final Locale locale = subtype.getLocaleObject();
         if (locale == null) {
             return FORMAT_TYPE_NONE;
@@ -42,9 +42,9 @@ public final class LanguageOnSpacebarUtils {
         final String keyboardLanguage = locale.getLanguage();
         final String keyboardLayout = subtype.getLayoutSet();
         int sameLanguageAndLayoutCount = 0;
-        final Set<MySubtype> enabledSubtypes =
+        final Set<Subtype> enabledSubtypes =
                 RichInputMethodManager.getInstance().getEnabledSubtypesOfThisIme(false);
-        for (final MySubtype enabledSubtype : enabledSubtypes) {
+        for (final Subtype enabledSubtype : enabledSubtypes) {
             final String language = enabledSubtype.getLocaleObject().getLanguage();
             if (keyboardLanguage.equals(language)
                     && keyboardLayout.equals(enabledSubtype.getLayoutSet())) {

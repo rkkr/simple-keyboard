@@ -23,12 +23,12 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import rkr.simplekeyboard.inputmethod.latin.MySubtype;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 
 public final class AdditionalSubtypeUtils {
     private static final String TAG = AdditionalSubtypeUtils.class.getSimpleName();
 
-    private static final MySubtype[] EMPTY_SUBTYPE_ARRAY = new MySubtype[0];
+    private static final Subtype[] EMPTY_SUBTYPE_ARRAY = new Subtype[0];
 
     private AdditionalSubtypeUtils() {
         // This utility class is not publicly instantiable.
@@ -40,19 +40,19 @@ public final class AdditionalSubtypeUtils {
     private static final int LENGTH_WITHOUT_EXTRA_VALUE = (INDEX_OF_KEYBOARD_LAYOUT + 1);
     private static final String PREF_SUBTYPE_SEPARATOR = ";";
 
-    private static String getPrefString(final MySubtype subtype) {
+    private static String getPrefString(final Subtype subtype) {
         final String localeString = subtype.getLocale();
         final String keyboardLayoutSetName = subtype.getLayoutSet();
         return localeString + LOCALE_AND_LAYOUT_SEPARATOR + keyboardLayoutSetName;
     }
 
-    public static MySubtype[] createSubtypesFromPref(final String prefSubtypes,
-                                                     final Resources resources) {
+    public static Subtype[] createSubtypesFromPref(final String prefSubtypes,
+                                                   final Resources resources) {
         if (TextUtils.isEmpty(prefSubtypes)) {
             return EMPTY_SUBTYPE_ARRAY;
         }
         final String[] prefSubtypeArray = prefSubtypes.split(PREF_SUBTYPE_SEPARATOR);
-        final ArrayList<MySubtype> subtypesList = new ArrayList<>(prefSubtypeArray.length);
+        final ArrayList<Subtype> subtypesList = new ArrayList<>(prefSubtypeArray.length);
         for (final String prefSubtype : prefSubtypeArray) {
             final String[] elems = prefSubtype.split(LOCALE_AND_LAYOUT_SEPARATOR);
             if (elems.length != LENGTH_WITHOUT_EXTRA_VALUE) {
@@ -62,22 +62,22 @@ public final class AdditionalSubtypeUtils {
             }
             final String localeString = elems[INDEX_OF_LOCALE];
             final String keyboardLayoutSetName = elems[INDEX_OF_KEYBOARD_LAYOUT];
-            final MySubtype subtype =
+            final Subtype subtype =
                     SubtypeUtils.getSubtype(localeString, keyboardLayoutSetName, resources);
             if (subtype == null) {
                 continue;
             }
             subtypesList.add(subtype);
         }
-        return subtypesList.toArray(new MySubtype[subtypesList.size()]);
+        return subtypesList.toArray(new Subtype[subtypesList.size()]);
     }
 
-    public static String createPrefSubtypes(final List<MySubtype> subtypes) {
+    public static String createPrefSubtypes(final List<Subtype> subtypes) {
         if (subtypes == null || subtypes.size() == 0) {
             return "";
         }
         final StringBuilder sb = new StringBuilder();
-        for (final MySubtype subtype : subtypes) {
+        for (final Subtype subtype : subtypes) {
             if (sb.length() > 0) {
                 sb.append(PREF_SUBTYPE_SEPARATOR);
             }

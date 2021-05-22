@@ -415,7 +415,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (primaryHintLocale == null) {
             return;
         }
-        final MySubtype newSubtype = mRichImm.findSubtypeByLocale(primaryHintLocale);
+        final Subtype newSubtype = mRichImm.findSubtypeByLocale(primaryHintLocale);
         if (newSubtype == null || newSubtype.equals(mRichImm.getCurrentSubtype())) {
             return;
         }

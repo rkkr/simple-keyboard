@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.MySubtype;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 
 public class SubtypeUtils {
@@ -233,28 +233,28 @@ public class SubtypeUtils {
     private static final String LAYOUT_URDU = "urdu";
     private static final String LAYOUT_UZBEK = "uzbek";
 
-    public static List<MySubtype> getSubtypes(final String locale, final Resources resources) {
+    public static List<Subtype> getSubtypes(final String locale, final Resources resources) {
         return new SubtypeBuilder(locale, true, resources).getSubtypes();
     }
 
-    public static MySubtype getDefaultSubtype(final String locale, final Resources resources) {
-        List<MySubtype> subtypes = new SubtypeBuilder(locale, true, resources).getSubtypes();
+    public static Subtype getDefaultSubtype(final String locale, final Resources resources) {
+        List<Subtype> subtypes = new SubtypeBuilder(locale, true, resources).getSubtypes();
         return subtypes.size() == 0 ? null : subtypes.get(0);
     }
 
-    public static MySubtype getSubtype(final String locale, final String layoutSet,
-                                       final Resources resources) {
-        List<MySubtype> subtypes = new SubtypeBuilder(locale, layoutSet, resources).getSubtypes();
+    public static Subtype getSubtype(final String locale, final String layoutSet,
+                                     final Resources resources) {
+        List<Subtype> subtypes = new SubtypeBuilder(locale, layoutSet, resources).getSubtypes();
         return subtypes.size() == 0 ? null : subtypes.get(0);
     }
 
-    public static List<MySubtype> getDefaultSubtypes(final Resources resources) {
+    public static List<Subtype> getDefaultSubtypes(final Resources resources) {
         final ArrayList<Locale> supportedLocales = new ArrayList<>(sSupportedLocales.length);
         for (final String localeString : sSupportedLocales) {
             supportedLocales.add(LocaleUtils.constructLocaleFromString(localeString));
         }
         final List<Locale> systemLocales = LocaleUtils.getSystemLocales();
-        final ArrayList<MySubtype> subtypes = new ArrayList<>();
+        final ArrayList<Subtype> subtypes = new ArrayList<>();
         final HashSet<Locale> addedLocales = new HashSet<>();
         for (final Locale systemLocale : systemLocales) {
             final Locale bestLocale = LocaleUtils.findBestLocale(systemLocale, supportedLocales);
@@ -275,7 +275,7 @@ public class SubtypeUtils {
         private final boolean mAllowMultiple;
         private final String mLocale;
         private final String mExpectedLayoutSet;
-        private List<MySubtype> mSubtypes;
+        private List<Subtype> mSubtypes;
 
         public SubtypeBuilder(final String locale, final String expectedLayoutSet,
                               final Resources resources) {
@@ -292,7 +292,7 @@ public class SubtypeUtils {
             mResources = resources;
         }
 
-        public List<MySubtype> getSubtypes() {
+        public List<Subtype> getSubtypes() {
             if (mSubtypes != null) {
                 return mSubtypes;
             }
@@ -489,7 +489,7 @@ public class SubtypeUtils {
                 layoutNameStr = null;
             }
             mSubtypes.add(
-                    new MySubtype(mLocale, keyboardLayoutSet, layoutNameStr, false, mResources));
+                    new Subtype(mLocale, keyboardLayoutSet, layoutNameStr, false, mResources));
         }
 
         private void addLayout(final String keyboardLayoutSet, final int layoutRes) {
@@ -497,7 +497,7 @@ public class SubtypeUtils {
                 return;
             }
             mSubtypes.add(
-                    new MySubtype(mLocale, keyboardLayoutSet, layoutRes, true, mResources));
+                    new Subtype(mLocale, keyboardLayoutSet, layoutRes, true, mResources));
         }
 
         private void addGenericLayouts() {
@@ -525,7 +525,7 @@ public class SubtypeUtils {
                     continue;
                 }
 
-                mSubtypes.add(new MySubtype(mLocale, predefinedLayout,
+                mSubtypes.add(new Subtype(mLocale, predefinedLayout,
                         predefinedKeyboardLayoutSetDisplayNames[i], true, mResources));
             }
         }

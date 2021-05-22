@@ -23,7 +23,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -46,7 +45,7 @@ import java.util.Locale;
 import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.MySubtype;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
@@ -179,7 +178,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * @param context the context for this application.
      */
     private void setUpLanguages(final PreferenceGroup group, final Context context) {
-        final Collection<MySubtype> enabledSubtypes = mRichImm.getEnabledSubtypesOfThisIme(false);
+        final Collection<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypesOfThisIme(false);
 
         final Locale currentLocale = getResources().getConfiguration().locale;
         final Comparator<Locale> comparator = new LocaleComparator(currentLocale);
@@ -200,11 +199,11 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * @param comparator the comparator to sort the languages.
      * @return a tree set of locales for the used languages sorted using the specified comparator.
      */
-    private TreeSet<Locale> getUsedLocales(final Collection<MySubtype> subtypes,
+    private TreeSet<Locale> getUsedLocales(final Collection<Subtype> subtypes,
                                            final Comparator<Locale> comparator) {
         TreeSet<Locale> locales = new TreeSet<>(comparator);
 
-        for (final MySubtype subtype : subtypes) {
+        for (final Subtype subtype : subtypes) {
             if (DEBUG_SUBTYPE_ID) {
                 Log.d(TAG, String.format("Enabled subtype: %-6s 0x%08x %11d %s",
                         subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),

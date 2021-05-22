@@ -17,7 +17,6 @@
 package rkr.simplekeyboard.inputmethod.latin;
 
 import android.content.res.Resources;
-import android.util.Log;
 
 import java.util.Locale;
 
@@ -25,8 +24,8 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
-public class MySubtype {
-    private static final String TAG = MySubtype.class.getSimpleName();
+public class Subtype {
+    private static final String TAG = Subtype.class.getSimpleName();
 
     private static final int NO_RESOURCE = 0;
 
@@ -37,7 +36,7 @@ public class MySubtype {
     private final boolean mShowLayoutInName;
     private final Resources mResources;
 
-    public MySubtype(final String locale, final String layoutSet, final int layoutNameRes, final boolean showLayoutInName, final Resources resources) {
+    public Subtype(final String locale, final String layoutSet, final int layoutNameRes, final boolean showLayoutInName, final Resources resources) {
         mLocale = locale;
         mLayoutSet = layoutSet;
         mLayoutNameRes = layoutNameRes;
@@ -46,7 +45,7 @@ public class MySubtype {
         mResources = resources;
     }
 
-    public MySubtype(final String locale, final String layoutSet, final String layoutNameStr, final boolean showLayoutInName, final Resources resources) {
+    public Subtype(final String locale, final String layoutSet, final String layoutNameStr, final boolean showLayoutInName, final Resources resources) {
         mLocale = locale;
         mLayoutSet = layoutSet;
         mLayoutNameRes = NO_RESOURCE;
@@ -95,10 +94,10 @@ public class MySubtype {
 
     @Override
     public boolean equals(final Object o) {
-        if (!(o instanceof MySubtype)) {
+        if (!(o instanceof Subtype)) {
             return false;
         }
-        final MySubtype other = (MySubtype)o;
+        final Subtype other = (Subtype)o;
         return mLocale.equals(other.mLocale) && mLayoutSet.equals(other.mLayoutSet);
     }
 

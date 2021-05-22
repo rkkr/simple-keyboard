@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.compat.EditorInfoCompatUtils;
-import rkr.simplekeyboard.inputmethod.latin.MySubtype;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
 
 /**
@@ -51,7 +51,7 @@ public final class KeyboardId {
     public static final int ELEMENT_PHONE_SYMBOLS = 8;
     public static final int ELEMENT_NUMBER = 9;
 
-    public final MySubtype mSubtype;
+    public final Subtype mSubtype;
     public final int mThemeId;
     public final int mWidth;
     public final int mHeight;

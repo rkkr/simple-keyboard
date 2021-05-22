@@ -24,7 +24,7 @@ import android.text.TextUtils;
 import java.util.Set;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.MySubtype;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 
 /* package private */ class InputMethodSettingsImpl {
@@ -54,10 +54,10 @@ import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
             return null;
         }
 
-        final Set<MySubtype> subtypes = richImm.getEnabledSubtypesOfThisIme(true);
+        final Set<Subtype> subtypes = richImm.getEnabledSubtypesOfThisIme(true);
 
         final StringBuilder sb = new StringBuilder();
-        for (final MySubtype subtype : subtypes) {
+        for (final Subtype subtype : subtypes) {
             if (sb.length() > 0) {
                 sb.append(", ");
             }

@@ -64,7 +64,7 @@ public class RichInputMethodManager {
 
     private InputMethodManager mImmService;
 
-    private List<MySubtype> mSubtypes;
+    private List<Subtype> mSubtypes;
     private int mCurrentSubtypeIndex = 0;
     private SharedPreferences mPrefs;
     private SubtypeChangedHandler mSubtypeChangedHandler;
@@ -101,7 +101,7 @@ public class RichInputMethodManager {
 
         // Initialize the virtual subtypes
         final String prefSubtypes = Settings.readPrefSubtypes(mPrefs);
-        final MySubtype[] subtypes = AdditionalSubtypeUtils.createSubtypesFromPref(prefSubtypes,
+        final Subtype[] subtypes = AdditionalSubtypeUtils.createSubtypesFromPref(prefSubtypes,
                 context.getResources());
         if (subtypes == null || subtypes.length < 1) {
             mSubtypes = SubtypeUtils.getDefaultSubtypes(context.getResources());
@@ -140,12 +140,12 @@ public class RichInputMethodManager {
         }
     }
 
-    public Set<MySubtype> getEnabledSubtypesOfThisIme(final boolean sortForDisplay) {
-        final Set<MySubtype> subtypes;
+    public Set<Subtype> getEnabledSubtypesOfThisIme(final boolean sortForDisplay) {
+        final Set<Subtype> subtypes;
         if (sortForDisplay) {
-            subtypes = new TreeSet<>(new Comparator<MySubtype>() {
+            subtypes = new TreeSet<>(new Comparator<Subtype>() {
                 @Override
-                public int compare(MySubtype a, MySubtype b) {
+                public int compare(Subtype a, Subtype b) {
                     return a.getName().compareToIgnoreCase(b.getName());
                 }
             });
@@ -160,7 +160,7 @@ public class RichInputMethodManager {
         return mSubtypes.size() > 1;
     }
 
-    public boolean addSubtype(final MySubtype subtype) {
+    public boolean addSubtype(final Subtype subtype) {
         if (mSubtypes.contains(subtype)) {
             return false;
         }
@@ -171,7 +171,7 @@ public class RichInputMethodManager {
         return true;
     }
 
-    public boolean removeSubtype(final MySubtype subtype) {
+    public boolean removeSubtype(final Subtype subtype) {
         if (mSubtypes.size() == 1) {
             //TODO: is this how this should be handled?
             return false;
@@ -205,15 +205,15 @@ public class RichInputMethodManager {
         saveSubtypePref(true, true);
     }
 
-    public MySubtype findSubtypeByLocale(final Locale locale) {
-        final Collection<MySubtype> subtypes = mSubtypes;
+    public Subtype findSubtypeByLocale(final Locale locale) {
+        final Collection<Subtype> subtypes = mSubtypes;
         final ArrayList<Locale> enabledLocales = new ArrayList<>(subtypes.size());
-        for (final MySubtype subtype : subtypes) {
+        for (final Subtype subtype : subtypes) {
             enabledLocales.add(subtype.getLocaleObject());
         }
         final Locale bestLocale = LocaleUtils.findBestLocale(locale, enabledLocales);
         if (bestLocale != null) {
-            for (final MySubtype subtype : subtypes) {
+            for (final Subtype subtype : subtypes) {
                 if (bestLocale.equals(subtype.getLocaleObject())) {
                     return subtype;
                 }
@@ -222,7 +222,7 @@ public class RichInputMethodManager {
         return null;
     }
 
-    public boolean setCurrentSubtype(final MySubtype subtype) {
+    public boolean setCurrentSubtype(final Subtype subtype) {
         for (int i = 0; i < mSubtypes.size(); i++) {
             if (mSubtypes.get(i).equals(subtype)) {
                 mCurrentSubtypeIndex = i;
@@ -270,7 +270,7 @@ public class RichInputMethodManager {
         return getCurrentSubtype().getLocaleObject();
     }
 
-    public MySubtype getCurrentSubtype() {
+    public Subtype getCurrentSubtype() {
         return mSubtypes.get(mCurrentSubtypeIndex);
     }
 
@@ -337,13 +337,13 @@ public class RichInputMethodManager {
         }
         final CharSequence title = context.getString(R.string.change_keyboard);
 
-        final Set<MySubtype> subtypes = getEnabledSubtypesOfThisIme(true);
+        final Set<Subtype> subtypes = getEnabledSubtypesOfThisIme(true);
 
         final CharSequence[] items = new CharSequence[subtypes.size()];
-        final MySubtype currentSubtype = getCurrentSubtype();
+        final Subtype currentSubtype = getCurrentSubtype();
         int currentSubtypeIndex = 0;
         int i = 0;
-        for (final MySubtype subtype : subtypes) {
+        for (final Subtype subtype : subtypes) {
             if (subtype.equals(currentSubtype)) {
                 currentSubtypeIndex = i;
             }
@@ -354,7 +354,7 @@ public class RichInputMethodManager {
             public void onClick(DialogInterface di, int position) {
                 di.dismiss();
                 int i = 0;
-                for (final MySubtype subtype : subtypes) {
+                for (final Subtype subtype : subtypes) {
                     if (i == position) {
                         setCurrentSubtype(subtype);
                         break;
