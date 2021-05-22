@@ -19,8 +19,6 @@ package rkr.simplekeyboard.inputmethod.latin;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -42,13 +40,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.Locale;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -70,7 +66,6 @@ import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsActivity;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 import rkr.simplekeyboard.inputmethod.latin.utils.ApplicationUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
@@ -78,7 +73,8 @@ import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 /**
  * Input method implementation for Qwerty'ish keyboard.
  */
-public class LatinIME extends InputMethodService implements KeyboardActionListener {
+public class LatinIME extends InputMethodService implements KeyboardActionListener,
+        RichInputMethodManager.SubtypeChangedHandler {
     static final String TAG = LatinIME.class.getSimpleName();
     private static final boolean TRACE = false;
 
@@ -310,6 +306,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         DebugFlags.init(PreferenceManagerCompat.getDeviceSharedPreferences(this));
         RichInputMethodManager.init(this);
         mRichImm = RichInputMethodManager.getInstance();
+        mRichImm.setSubtypeChangeHandler(this);
         KeyboardSwitcher.init(this);
         AudioAndHapticFeedbackManager.init(this);
         super.onCreate();
@@ -402,6 +399,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mHandler.onFinishInput();
     }
 
+    @Override
+    public void onCurrentSubtypeChanged() {
+        mInputLogic.onSubtypeChanged();
+        loadKeyboard();
+    }
+
     void onStartInputInternal(final EditorInfo editorInfo, final boolean restarting) {
         super.onStartInput(editorInfo, restarting);
 
@@ -418,11 +421,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
 //        mHandler.postSwitchLanguage(newSubtype);
         //TODO: maybe just pass the locale
-        if (!mRichImm.setCurrentSubtype(newSubtype)) {
-            return;
-        }
-        mInputLogic.onSubtypeChanged();
-        loadKeyboard();
+        mRichImm.setCurrentSubtype(newSubtype);
     }
 
     void onStartInputViewInternal(final EditorInfo editorInfo, final boolean restarting) {
@@ -715,13 +714,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return false;
     }
 
-    //TODO: consider moving into RichInputMethodManager
     private boolean showInputMethodPicker() {
         if (isShowingOptionDialog()) {
             return false;
         }
         if (mRichImm.hasMultipleEnabledSubtypes()) {
-            showSubtypeSelector();
+            mOptionsDialog = mRichImm.showSubtypePicker(this,
+                    mKeyboardSwitcher.getMainKeyboardView().getWindowToken());
             return true;
         }
         if (mRichImm.hasMultipleEnabledImesOrSubtypes(true /* include aux subtypes */)) {
@@ -781,10 +780,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     public void switchToNextSubtype() {
         final IBinder token = getWindow().getWindow().getAttributes().token;
-        if (mRichImm.switchToNextInputMethod(token, !shouldSwitchToOtherInputMethods(token))) {
-            mInputLogic.onSubtypeChanged();
-            loadKeyboard();
-        }
+        mRichImm.switchToNextInputMethod(token, !shouldSwitchToOtherInputMethods(token));
     }
 
     // TODO: Instead of checking for alphabetic keyboard here, separate keycodes for
@@ -964,65 +960,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-    }
-
-    //TODO: consider moving into RichInputMethodManager
-    private void showSubtypeSelector() {
-        final CharSequence title = getString(R.string.change_keyboard);
-
-        final Set<MySubtype> subtypes = mRichImm.getEnabledSubtypesOfThisIme(true);
-
-        final CharSequence[] items = new CharSequence[subtypes.size()];
-        final MySubtype currentSubtype = mRichImm.getCurrentSubtype();
-        int currentSubtypeIndex = 0;
-        int i = 0;
-        for (final MySubtype subtype : subtypes) {
-            if (subtype.equals(currentSubtype)) {
-                currentSubtypeIndex = i;
-            }
-            items[i++] = subtype.getName();
-        }
-        final OnClickListener listener = new OnClickListener() {
-            @Override
-            public void onClick(DialogInterface di, int position) {
-                di.dismiss();
-                int i = 0;
-                for (final MySubtype subtype : subtypes) {
-                    if (i == position) {
-                        mRichImm.setCurrentSubtype(subtype);
-                        mInputLogic.onSubtypeChanged();
-                        loadKeyboard();
-                        break;
-                    }
-                    i++;
-                }
-            }
-        };
-        final AlertDialog.Builder builder = new AlertDialog.Builder(
-                DialogUtils.getPlatformDialogThemeContext(this));
-        builder.setSingleChoiceItems(items, currentSubtypeIndex, listener).setTitle(title);
-        final AlertDialog dialog = builder.create();
-        dialog.setCancelable(true /* cancelable */);
-        dialog.setCanceledOnTouchOutside(true /* cancelable */);
-        showOptionDialog(dialog);
-    }
-
-    // TODO: Move this method out of {@link LatinIME}.
-    private void showOptionDialog(final AlertDialog dialog) {
-        final IBinder windowToken = mKeyboardSwitcher.getMainKeyboardView().getWindowToken();
-        if (windowToken == null) {
-            return;
-        }
-
-        final Window window = dialog.getWindow();
-        final WindowManager.LayoutParams lp = window.getAttributes();
-        lp.token = windowToken;
-        lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
-        window.setAttributes(lp);
-        window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
-
-        mOptionsDialog = dialog;
-        dialog.show();
     }
 
     public void debugDumpStateAndCrashWithException(final String context) {

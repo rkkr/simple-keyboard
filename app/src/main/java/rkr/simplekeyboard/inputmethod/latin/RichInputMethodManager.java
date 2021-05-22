@@ -16,11 +16,14 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.IBinder;
-import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
@@ -36,10 +39,12 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
 
+import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeUtils;
 
@@ -62,6 +67,7 @@ public class RichInputMethodManager {
     private List<MySubtype> mSubtypes;
     private int mCurrentSubtypeIndex = 0;
     private SharedPreferences mPrefs;
+    private SubtypeChangedHandler mSubtypeChangedHandler;
 
     public static RichInputMethodManager getInstance() {
         sInstance.checkInitialized();
@@ -107,6 +113,20 @@ public class RichInputMethodManager {
                 mCurrentSubtypeIndex = 0;
             }
         }
+    }
+
+    public void setSubtypeChangeHandler(final SubtypeChangedHandler handler) {
+        mSubtypeChangedHandler = handler;
+    }
+
+    private void notifySubtypeChanged() {
+        if (mSubtypeChangedHandler != null) {
+            mSubtypeChangedHandler.onCurrentSubtypeChanged();
+        }
+    }
+
+    public interface SubtypeChangedHandler {
+        void onCurrentSubtypeChanged();
     }
 
     private void saveSubtypePref(final boolean subtypesUpdated, final boolean indexUpdated) {
@@ -211,6 +231,7 @@ public class RichInputMethodManager {
                 } else {
                     resetSubtypeCycleOrder();
                 }
+                notifySubtypeChanged();
                 return true;
             }
         }
@@ -237,7 +258,12 @@ public class RichInputMethodManager {
         }
         mCurrentSubtypeIndex = (mCurrentSubtypeIndex + 1) % mSubtypes.size();
         saveSubtypePref(false, true);
-        return mCurrentSubtypeIndex > 0 || cycle;
+        if (mCurrentSubtypeIndex > 0 || cycle) {
+            notifySubtypeChanged();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public Locale getCurrentSubtypeLocale() {
@@ -302,7 +328,56 @@ public class RichInputMethodManager {
     }
 
     public void showInputMethodPicker() {
-        //TODO: implement a virtual subtype picker
         mImmService.showInputMethodPicker();
+    }
+
+    public AlertDialog showSubtypePicker(final Context context, final IBinder windowToken) {
+        if (windowToken == null) {
+            return null;
+        }
+        final CharSequence title = context.getString(R.string.change_keyboard);
+
+        final Set<MySubtype> subtypes = getEnabledSubtypesOfThisIme(true);
+
+        final CharSequence[] items = new CharSequence[subtypes.size()];
+        final MySubtype currentSubtype = getCurrentSubtype();
+        int currentSubtypeIndex = 0;
+        int i = 0;
+        for (final MySubtype subtype : subtypes) {
+            if (subtype.equals(currentSubtype)) {
+                currentSubtypeIndex = i;
+            }
+            items[i++] = subtype.getName();
+        }
+        final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface di, int position) {
+                di.dismiss();
+                int i = 0;
+                for (final MySubtype subtype : subtypes) {
+                    if (i == position) {
+                        setCurrentSubtype(subtype);
+                        break;
+                    }
+                    i++;
+                }
+            }
+        };
+        final AlertDialog.Builder builder = new AlertDialog.Builder(
+                DialogUtils.getPlatformDialogThemeContext(context));
+        builder.setSingleChoiceItems(items, currentSubtypeIndex, listener).setTitle(title);
+        final AlertDialog dialog = builder.create();
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+
+        final Window window = dialog.getWindow();
+        final WindowManager.LayoutParams lp = window.getAttributes();
+        lp.token = windowToken;
+        lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
+        window.setAttributes(lp);
+        window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+
+        dialog.show();
+        return dialog;
     }
 }
