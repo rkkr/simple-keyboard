@@ -24,6 +24,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.SwitchPreference;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -170,15 +171,23 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         pref.setChecked(false);
         pref.setEnabled(true);
 
-        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference) {
-
+            public boolean onPreferenceChange(final Preference preference, final Object newValue) {
+                if (!(newValue instanceof Boolean)) {
+                    return false;
+                }
+                final boolean isEnabling = (boolean)newValue;
                 final SubtypePreference pref = (SubtypePreference) preference;
-                if (pref.isChecked()) {
+                if (isEnabling) {
                     return mRichImm.addSubtype(pref.getSubtype());
                 } else {
-                    return mRichImm.removeSubtype(pref.getSubtype());
+                    final boolean removed = mRichImm.removeSubtype(pref.getSubtype());
+                    if (!removed) {
+                        Toast.makeText(SingleLanguageSettingsFragment.this.getActivity(),
+                                R.string.layout_not_disabled, Toast.LENGTH_SHORT).show();
+                    }
+                    return removed;
                 }
             }
         });
