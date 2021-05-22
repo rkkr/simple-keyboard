@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
@@ -29,8 +30,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
@@ -117,13 +120,18 @@ public class RichInputMethodManager {
         }
     }
 
-    public TreeSet<MySubtype> getEnabledSubtypesOfThisIme() {
-        final TreeSet<MySubtype> subtypes = new TreeSet<>(new Comparator<MySubtype>() {
-            @Override
-            public int compare(MySubtype a, MySubtype b) {
-                return a.getName().compareToIgnoreCase(b.getName());
-            }
-        });
+    public Set<MySubtype> getEnabledSubtypesOfThisIme(final boolean sortForDisplay) {
+        final Set<MySubtype> subtypes;
+        if (sortForDisplay) {
+            subtypes = new TreeSet<>(new Comparator<MySubtype>() {
+                @Override
+                public int compare(MySubtype a, MySubtype b) {
+                    return a.getName().compareToIgnoreCase(b.getName());
+                }
+            });
+        } else {
+            subtypes = new HashSet<>();
+        }
         subtypes.addAll(mSubtypes);
         return subtypes;
     }
@@ -178,7 +186,7 @@ public class RichInputMethodManager {
     }
 
     public MySubtype findSubtypeByLocale(final Locale locale) {
-        final Collection<MySubtype> subtypes = getEnabledSubtypesOfThisIme();
+        final Collection<MySubtype> subtypes = mSubtypes;
         final ArrayList<Locale> enabledLocales = new ArrayList<>(subtypes.size());
         for (final MySubtype subtype : subtypes) {
             enabledLocales.add(subtype.getLocaleObject());

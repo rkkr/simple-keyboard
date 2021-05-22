@@ -21,8 +21,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.text.TextUtils;
 
-import java.util.Comparator;
-import java.util.TreeSet;
+import java.util.Set;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.MySubtype;
@@ -50,12 +49,12 @@ import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
         return true;
     }
 
-    private static String getEnabledSubtypesLabel(RichInputMethodManager richImm) {
+    private static String getEnabledSubtypesLabel(final RichInputMethodManager richImm) {
         if (richImm == null) {
             return null;
         }
 
-        TreeSet<MySubtype> subtypes = richImm.getEnabledSubtypesOfThisIme();
+        final Set<MySubtype> subtypes = richImm.getEnabledSubtypesOfThisIme(true);
 
         final StringBuilder sb = new StringBuilder();
         for (final MySubtype subtype : subtypes) {

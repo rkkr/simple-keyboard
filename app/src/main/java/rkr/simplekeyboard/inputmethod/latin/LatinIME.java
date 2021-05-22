@@ -47,9 +47,8 @@ import android.view.inputmethod.EditorInfo;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
-import java.util.Comparator;
 import java.util.Locale;
-import java.util.TreeSet;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -971,7 +970,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private void showSubtypeSelector() {
         final CharSequence title = getString(R.string.change_keyboard);
 
-        final TreeSet<MySubtype> subtypes = mRichImm.getEnabledSubtypesOfThisIme();
+        final Set<MySubtype> subtypes = mRichImm.getEnabledSubtypesOfThisIme(true);
 
         final CharSequence[] items = new CharSequence[subtypes.size()];
         final MySubtype currentSubtype = mRichImm.getCurrentSubtype();
