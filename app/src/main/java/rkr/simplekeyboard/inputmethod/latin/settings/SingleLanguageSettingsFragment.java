@@ -26,8 +26,9 @@ import android.preference.SwitchPreference;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.List;
+import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.MySubtype;
@@ -74,7 +75,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     @Override
     public void onResume() {
         super.onResume();
-        final HashSet<MySubtype> enabledSubtypes = mRichImm.getEnabledSubtypesOfThisIme();
+        final TreeSet<MySubtype> enabledSubtypes = mRichImm.getEnabledSubtypesOfThisIme();
         for (final SubtypePreference pref : mSubtypePrefs) {
             pref.setChecked(enabledSubtypes.contains(pref.getSubtype()));
         }
@@ -86,9 +87,10 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     }
 
     private void testLogSubtypes() {
+        final List<String> supportedLocales = SubtypeUtils.getSupportedLocales();
 
         List<MySubtype> defaultSubtypes = new ArrayList<>();
-        for (final String supportedLocale : SubtypeUtils.sSupportedLocales) {
+        for (final String supportedLocale : supportedLocales) {
             List<MySubtype> subtypes = SubtypeUtils.getSubtypes(supportedLocale, getActivity().getResources());
             defaultSubtypes.add(subtypes.get(0));
             if (supportedLocale.equals("bg") || supportedLocale.equals("hi") || supportedLocale.equals("ne_NP")) {
@@ -98,14 +100,14 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         printSubtypes(defaultSubtypes, "default");
 
         List<MySubtype> allJavaSubtypes = new ArrayList<>();
-        for (final String supportedLocale : SubtypeUtils.sSupportedLocales) {
+        for (final String supportedLocale : supportedLocales) {
             List<MySubtype> subtypes = SubtypeUtils.getSubtypes(supportedLocale, getActivity().getResources());
             allJavaSubtypes.addAll(subtypes);
         }
         printSubtypes(allJavaSubtypes, "all");
     }
 
-    private void printSubtypes(List<MySubtype> javaSubtypes, String prefix) {
+    private void printSubtypes(Collection<MySubtype> javaSubtypes, String prefix) {
         Log.w(TAG, "printSubtypes: " + prefix + ": size=" + javaSubtypes.size());
         for (final MySubtype subtype : javaSubtypes) {
             Log.w(TAG, "printSubtypes: " + prefix + ": getName=" + subtype.getName());

@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2014 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
 import android.content.res.Resources;
@@ -47,15 +63,16 @@ public class SubtypeUtils {
     private static final String LOCALE_FRENCH_SWITZERLAND = "fr_CH";
     private static final String LOCALE_GALICIAN_SPAIN = "gl_ES";
     private static final String LOCALE_HINDI = "hi";
-    //hi_ZZ: Hinglish/qwerty  # This is a preliminary keyboard layout.
     private static final String LOCALE_CROATIAN = "hr";
     private static final String LOCALE_HUNGARIAN = "hu";
     private static final String LOCALE_ARMENIAN_ARMENIA = "hy_AM";
-    private static final String LOCALE_INDONESIAN = "in"; // "id" is the official language code of Indonesian. // Java uses the deprecated "in" code instead of the standard "id" code for Indonesian.
+    // Java uses the deprecated "in" code instead of the standard "id" code for Indonesian.
+    private static final String LOCALE_INDONESIAN = "in";
     private static final String LOCALE_ICELANDIC = "is";
     private static final String LOCALE_ITALIAN = "it";
     private static final String LOCALE_ITALIAN_SWITZERLAND = "it_CH";
-    private static final String LOCALE_HEBREW = "iw"; // "he" is the official language code of Hebrew. // Java uses the deprecated "iw" code instead of the standard "he" code for Hebrew.
+    // Java uses the deprecated "iw" code instead of the standard "he" code for Hebrew.
+    private static final String LOCALE_HEBREW = "iw";
     private static final String LOCALE_GEORGIAN_GEORGIA = "ka_GE";
     private static final String LOCALE_KAZAKH = "kk";
     private static final String LOCALE_KHMER_CAMBODIA = "km_KH";
@@ -78,7 +95,6 @@ public class SubtypeUtils {
     private static final String LOCALE_PORTUGUESE_PORTUGAL = "pt_PT";
     private static final String LOCALE_ROMANIAN = "ro";
     private static final String LOCALE_RUSSIAN = "ru";
-    //si_LK: Sinhala (Sri Lanka)/sinhala # This is a preliminary keyboard layout.
     private static final String LOCALE_SLOVAK = "sk";
     private static final String LOCALE_SLOVENIAN = "sl";
     private static final String LOCALE_SERBIAN = "sr";
@@ -86,7 +102,6 @@ public class SubtypeUtils {
     private static final String LOCALE_SWEDISH = "sv";
     private static final String LOCALE_SWAHILI = "sw";
     private static final String LOCALE_TAMIL_INDIA = "ta_IN";
-    //ta_LK: Tamil (Sri Lanka)/tamil # Disabled in conjunction with si_LK.
     private static final String LOCALE_TAMIL_SINGAPORE = "ta_SG";
     private static final String LOCALE_TELUGU_INDIA = "te_IN";
     private static final String LOCALE_THAI = "th";
@@ -98,8 +113,7 @@ public class SubtypeUtils {
     private static final String LOCALE_VIETNAMESE = "vi";
     private static final String LOCALE_ZULU = "zu";
 
-    //TODO: this probably should be private
-    public static final String[] sSupportedLocales = new String[] {
+    private static final String[] sSupportedLocales = new String[] {
             LOCALE_ENGLISH_UNITED_STATES,
             LOCALE_ENGLISH_GREAT_BRITAIN,
             LOCALE_AFRIKAANS,
@@ -177,6 +191,10 @@ public class SubtypeUtils {
             LOCALE_VIETNAMESE,
             LOCALE_ZULU
     };
+
+    public static List<String> getSupportedLocales() {
+        return Arrays.asList(sSupportedLocales);
+    }
 
     private static final String LAYOUT_QWERTY = "qwerty";
     private static final String LAYOUT_AZERTY = "azerty";

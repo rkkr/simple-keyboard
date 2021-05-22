@@ -55,13 +55,7 @@ import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
             return null;
         }
 
-        TreeSet<MySubtype> subtypes = new TreeSet<>(new Comparator<MySubtype>() {
-            @Override
-            public int compare(MySubtype a, MySubtype b) {
-                return a.getName().compareToIgnoreCase(b.getName());
-            }
-        });
-        subtypes.addAll(richImm.getEnabledSubtypesOfThisIme());
+        TreeSet<MySubtype> subtypes = richImm.getEnabledSubtypesOfThisIme();
 
         final StringBuilder sb = new StringBuilder();
         for (final MySubtype subtype : subtypes) {

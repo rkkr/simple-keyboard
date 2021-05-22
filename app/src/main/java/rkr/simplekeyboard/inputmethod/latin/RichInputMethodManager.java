@@ -26,10 +26,12 @@ import android.view.inputmethod.InputMethodSubtype;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
@@ -115,8 +117,15 @@ public class RichInputMethodManager {
         }
     }
 
-    public HashSet<MySubtype> getEnabledSubtypesOfThisIme() {
-        return new HashSet<>(mSubtypes);
+    public TreeSet<MySubtype> getEnabledSubtypesOfThisIme() {
+        final TreeSet<MySubtype> subtypes = new TreeSet<>(new Comparator<MySubtype>() {
+            @Override
+            public int compare(MySubtype a, MySubtype b) {
+                return a.getName().compareToIgnoreCase(b.getName());
+            }
+        });
+        subtypes.addAll(mSubtypes);
+        return subtypes;
     }
 
     public boolean hasMultipleEnabledSubtypes() {
@@ -169,7 +178,7 @@ public class RichInputMethodManager {
     }
 
     public MySubtype findSubtypeByLocale(final Locale locale) {
-        final HashSet<MySubtype> subtypes = getEnabledSubtypesOfThisIme();
+        final Collection<MySubtype> subtypes = getEnabledSubtypesOfThisIme();
         final ArrayList<Locale> enabledLocales = new ArrayList<>(subtypes.size());
         for (final MySubtype subtype : subtypes) {
             enabledLocales.add(subtype.getLocaleObject());

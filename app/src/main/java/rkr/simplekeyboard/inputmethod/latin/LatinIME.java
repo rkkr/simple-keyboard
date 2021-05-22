@@ -971,14 +971,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private void showSubtypeSelector() {
         final CharSequence title = getString(R.string.change_keyboard);
 
-        //TODO: copied from InputMethodSettingsImpl - de-duplicate
-        final TreeSet<MySubtype> subtypes = new TreeSet<>(new Comparator<MySubtype>() {
-            @Override
-            public int compare(MySubtype a, MySubtype b) {
-                return a.getName().compareToIgnoreCase(b.getName());
-            }
-        });
-        subtypes.addAll(mRichImm.getEnabledSubtypesOfThisIme());
+        final TreeSet<MySubtype> subtypes = mRichImm.getEnabledSubtypesOfThisIme();
 
         final CharSequence[] items = new CharSequence[subtypes.size()];
         final MySubtype currentSubtype = mRichImm.getCurrentSubtype();

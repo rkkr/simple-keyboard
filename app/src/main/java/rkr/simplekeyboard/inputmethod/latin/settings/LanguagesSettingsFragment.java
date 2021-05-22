@@ -40,8 +40,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Locale;
 import java.util.TreeSet;
 
@@ -179,7 +179,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * @param context the context for this application.
      */
     private void setUpLanguages(final PreferenceGroup group, final Context context) {
-        final HashSet<MySubtype> enabledSubtypes = mRichImm.getEnabledSubtypesOfThisIme();
+        final Collection<MySubtype> enabledSubtypes = mRichImm.getEnabledSubtypesOfThisIme();
 
         final Locale currentLocale = getResources().getConfiguration().locale;
         final Comparator<Locale> comparator = new LocaleComparator(currentLocale);
@@ -200,7 +200,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * @param comparator the comparator to sort the languages.
      * @return a tree set of locales for the used languages sorted using the specified comparator.
      */
-    private TreeSet<Locale> getUsedLocales(final HashSet<MySubtype> subtypes,
+    private TreeSet<Locale> getUsedLocales(final Collection<MySubtype> subtypes,
                                            final Comparator<Locale> comparator) {
         TreeSet<Locale> locales = new TreeSet<>(comparator);
 
@@ -210,7 +210,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                         subtype.getLocale(), subtype.hashCode(), subtype.hashCode(),
                         subtype.getName()));
             }
-            locales.add(LocaleUtils.constructLocaleFromString(subtype.getLocale()));
+            locales.add(subtype.getLocaleObject());
         }
 
         return locales;
@@ -226,7 +226,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     private TreeSet<Locale> getUnusedLocales(final TreeSet<Locale> usedLocales,
                                              final Comparator<Locale> comparator) {
         final TreeSet<Locale> locales = new TreeSet<>(comparator);
-        for (String localeString : SubtypeUtils.sSupportedLocales) {
+        for (String localeString : SubtypeUtils.getSupportedLocales()) {
             final Locale locale = LocaleUtils.constructLocaleFromString(localeString);
             if (usedLocales.contains(locale)) {
                 continue;
@@ -243,7 +243,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * @param group the preference group to add preferences to.
      * @param context the context for this application.
      */
-    private void buildLanguagePreferences(final TreeSet<Locale> locales,
+    private void buildLanguagePreferences(final Collection<Locale> locales,
                                           final PreferenceGroup group, final Context context) {
         for (final Locale locale : locales) {
             final String localeString = LocaleUtils.getLocaleString(locale);
