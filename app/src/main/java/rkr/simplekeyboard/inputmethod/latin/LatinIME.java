@@ -106,7 +106,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         private static final int MSG_RESET_CACHES = 7;
         private static final int MSG_WAIT_FOR_DICTIONARY_LOAD = 8;
         private static final int MSG_DEALLOCATE_MEMORY = 9;
-//        private static final int MSG_SWITCH_LANGUAGE_AUTOMATICALLY = 11;
 
         private static final int ARG1_TRUE = 1;
 
@@ -156,9 +155,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             case MSG_DEALLOCATE_MEMORY:
                 latinIme.deallocateMemory();
                 break;
-//            case MSG_SWITCH_LANGUAGE_AUTOMATICALLY:
-//                latinIme.switchLanguage((InputMethodSubtype)msg.obj);
-//                break;
             }
         }
 
@@ -190,10 +186,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         public boolean hasPendingDeallocateMemory() {
             return hasMessages(MSG_DEALLOCATE_MEMORY);
         }
-
-//        public void postSwitchLanguage(final InputMethodSubtype subtype) {
-//            obtainMessage(MSG_SWITCH_LANGUAGE_AUTOMATICALLY, subtype).sendToTarget();
-//        }
 
         // Working variables for the following methods.
         private boolean mIsOrientationChanging;
@@ -419,7 +411,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (newSubtype == null || newSubtype.equals(mRichImm.getCurrentSubtype())) {
             return;
         }
-//        mHandler.postSwitchLanguage(newSubtype);
         //TODO: maybe just pass the locale
         mRichImm.setCurrentSubtype(newSubtype);
     }
@@ -772,11 +763,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private boolean isShowingOptionDialog() {
         return mOptionsDialog != null && mOptionsDialog.isShowing();
     }
-
-//    public void switchLanguage(final InputMethodSubtype subtype) {
-//        final IBinder token = getWindow().getWindow().getAttributes().token;
-//        mRichImm.setInputMethodAndSubtype(token, subtype);
-//    }
 
     public void switchToNextSubtype() {
         final IBinder token = getWindow().getWindow().getAttributes().token;
