@@ -29,11 +29,11 @@
     <string name="auto_cap">"Вел. літери автоматично"</string>
     <string name="auto_cap_summary">"Писати перше слово в кожному реченні з великої літери"</string>
     <string name="select_language">"Мови"</string>
-    <string name="subtype_en_GB">"Англійська (Велика Британія)"</string>
-    <string name="subtype_en_US">"Англійська (США)"</string>
-    <string name="subtype_es_US">"іспанська (США)"</string>
-    <string name="subtype_hi_ZZ">"Хінґліш"</string>
-    <string name="subtype_sr_ZZ">"сербська (латиниця)"</string>
+    <string name="locale_name_en_GB">"Англійська (Велика Британія)"</string>
+    <string name="locale_name_en_US">"Англійська (США)"</string>
+    <string name="locale_name_es_US">"іспанська (США)"</string>
+    <string name="locale_name_hi_ZZ">"Хінґліш"</string>
+    <string name="locale_name_sr_ZZ">"сербська (латиниця)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"традиційна"</string>
     <string name="subtype_compact">"компактна"</string>

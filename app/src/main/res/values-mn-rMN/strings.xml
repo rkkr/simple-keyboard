@@ -29,11 +29,11 @@
     <string name="auto_cap">"Автоматаар томруулах"</string>
     <string name="auto_cap_summary">"Өгүүлбэр бүрийн эхний үгийн эхний үсгийг томруулах"</string>
     <string name="select_language">"Хэл"</string>
-    <string name="subtype_en_GB">"Англи (ИБ)"</string>
-    <string name="subtype_en_US">"Англи (АНУ)"</string>
-    <string name="subtype_es_US">"Испани (АНУ)"</string>
-    <string name="subtype_hi_ZZ">"Хинглиш"</string>
-    <string name="subtype_sr_ZZ">"Серьби хэл (латин)"</string>
+    <string name="locale_name_en_GB">"Англи (ИБ)"</string>
+    <string name="locale_name_en_US">"Англи (АНУ)"</string>
+    <string name="locale_name_es_US">"Испани (АНУ)"</string>
+    <string name="locale_name_hi_ZZ">"Хинглиш"</string>
+    <string name="locale_name_sr_ZZ">"Серьби хэл (латин)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"уламжлалт"</string>
     <string name="subtype_compact">"Компакт"</string>

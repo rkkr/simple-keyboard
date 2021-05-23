@@ -29,11 +29,11 @@
     <string name="auto_cap">"સ્વતઃ-કેપિટલાઇઝેશન"</string>
     <string name="auto_cap_summary">"દરેક વાક્યનો પ્રથમ શબ્દ કેપિટલ કરો"</string>
     <string name="select_language">"ભાષાઓ"</string>
-    <string name="subtype_en_GB">"અંગ્રેજી (યુકે)"</string>
-    <string name="subtype_en_US">"અંગ્રેજી (યુ એસ)"</string>
-    <string name="subtype_es_US">"સ્પેનિશ (US)"</string>
-    <string name="subtype_hi_ZZ">"હિંગ્લિશ"</string>
-    <string name="subtype_sr_ZZ">"સર્બિયન (લેટિન)"</string>
+    <string name="locale_name_en_GB">"અંગ્રેજી (યુકે)"</string>
+    <string name="locale_name_en_US">"અંગ્રેજી (યુ એસ)"</string>
+    <string name="locale_name_es_US">"સ્પેનિશ (US)"</string>
+    <string name="locale_name_hi_ZZ">"હિંગ્લિશ"</string>
+    <string name="locale_name_sr_ZZ">"સર્બિયન (લેટિન)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"પરંપરાગત"</string>
     <string name="subtype_compact">"કોમ્પેક્ટ"</string>

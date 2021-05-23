@@ -29,11 +29,11 @@
     <string name="auto_cap">"Auto-capitalization"</string>
     <string name="auto_cap_summary">"I-capitalize ang unang salita ng bawat pangungusap"</string>
     <string name="select_language">"Mga Wika"</string>
-    <string name="subtype_en_GB">"English (UK)"</string>
-    <string name="subtype_en_US">"English (United States)"</string>
-    <string name="subtype_es_US">"Spanish (US)"</string>
-    <string name="subtype_hi_ZZ">"Hinglish"</string>
-    <string name="subtype_sr_ZZ">"Serbian (Latin)"</string>
+    <string name="locale_name_en_GB">"English (UK)"</string>
+    <string name="locale_name_en_US">"English (United States)"</string>
+    <string name="locale_name_es_US">"Spanish (US)"</string>
+    <string name="locale_name_hi_ZZ">"Hinglish"</string>
+    <string name="locale_name_sr_ZZ">"Serbian (Latin)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Traditional"</string>
     <string name="subtype_compact">"Compact"</string>

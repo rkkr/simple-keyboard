@@ -29,11 +29,11 @@
     <string name="auto_cap">"Majúscules automàtiques"</string>
     <string name="auto_cap_summary">"Posa en majúscula la primera paraula de cada frase"</string>
     <string name="select_language">"Idiomes"</string>
-    <string name="subtype_en_GB">"anglès (Regne Unit)"</string>
-    <string name="subtype_en_US">"anglès (EUA)"</string>
-    <string name="subtype_es_US">"Espanyol (EUA)"</string>
-    <string name="subtype_hi_ZZ">"Hinglish"</string>
-    <string name="subtype_sr_ZZ">"Serbi (llatí)"</string>
+    <string name="locale_name_en_GB">"anglès (Regne Unit)"</string>
+    <string name="locale_name_en_US">"anglès (EUA)"</string>
+    <string name="locale_name_es_US">"Espanyol (EUA)"</string>
+    <string name="locale_name_hi_ZZ">"Hinglish"</string>
+    <string name="locale_name_sr_ZZ">"Serbi (llatí)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicional"</string>
     <string name="subtype_compact">"compacte"</string>

@@ -30,11 +30,11 @@
     <string name="auto_cap">"Automatinis didžiųjų raidžių rašymas"</string>
     <string name="auto_cap_summary">"Kiekvieno sakinio pirmą žodį rašyti iš didžiosios raidės"</string>
     <string name="select_language">"Kalbos"</string>
-    <string name="subtype_en_GB">"Anglų k. (JK)"</string>
-    <string name="subtype_en_US">"Anglų k. (JAV)"</string>
-    <string name="subtype_es_US">"Ispanų k. (JAV)"</string>
-    <string name="subtype_hi_ZZ">"Hindi ir anglų k. derinys"</string>
-    <string name="subtype_sr_ZZ">"Serbų k. (lot. rašmenys)"</string>
+    <string name="locale_name_en_GB">"Anglų k. (JK)"</string>
+    <string name="locale_name_en_US">"Anglų k. (JAV)"</string>
+    <string name="locale_name_es_US">"Ispanų k. (JAV)"</string>
+    <string name="locale_name_hi_ZZ">"Hindi ir anglų k. derinys"</string>
+    <string name="locale_name_sr_ZZ">"Serbų k. (lot. rašmenys)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicinė"</string>
     <string name="subtype_compact">"kompaktiška"</string>

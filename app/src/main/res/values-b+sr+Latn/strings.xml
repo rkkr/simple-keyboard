@@ -29,11 +29,11 @@
     <string name="auto_cap">"Automatski unos velikih slova"</string>
     <string name="auto_cap_summary">"Pisanje velikog slova na početku svake rečenice"</string>
     <string name="select_language">"Jezici"</string>
-    <string name="subtype_en_GB">"engleski (UK)"</string>
-    <string name="subtype_en_US">"engleski (SAD)"</string>
-    <string name="subtype_es_US">"španski (SAD)"</string>
-    <string name="subtype_hi_ZZ">"hengleski"</string>
-    <string name="subtype_sr_ZZ">"srpski (latinica)"</string>
+    <string name="locale_name_en_GB">"engleski (UK)"</string>
+    <string name="locale_name_en_US">"engleski (SAD)"</string>
+    <string name="locale_name_es_US">"španski (SAD)"</string>
+    <string name="locale_name_hi_ZZ">"hengleski"</string>
+    <string name="locale_name_sr_ZZ">"srpski (latinica)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicionalni"</string>
     <string name="subtype_compact">"kompaktna"</string>

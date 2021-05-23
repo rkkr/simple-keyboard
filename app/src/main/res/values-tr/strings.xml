@@ -29,11 +29,11 @@
     <string name="auto_cap">"Otomatik büyük harf yap"</string>
     <string name="auto_cap_summary">"Her cümlenin ilk harfini büyük harf yap"</string>
     <string name="select_language">"Diller"</string>
-    <string name="subtype_en_GB">"İngilizce (BK)"</string>
-    <string name="subtype_en_US">"İngilizce (ABD)"</string>
-    <string name="subtype_es_US">"İspanyolca (ABD)"</string>
-    <string name="subtype_hi_ZZ">"Hingilizce"</string>
-    <string name="subtype_sr_ZZ">"Sırpça (Latin alfabesi)"</string>
+    <string name="locale_name_en_GB">"İngilizce (BK)"</string>
+    <string name="locale_name_en_US">"İngilizce (ABD)"</string>
+    <string name="locale_name_es_US">"İspanyolca (ABD)"</string>
+    <string name="locale_name_hi_ZZ">"Hingilizce"</string>
+    <string name="locale_name_sr_ZZ">"Sırpça (Latin alfabesi)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Geleneksel"</string>
     <string name="subtype_compact">"Kompakt"</string>

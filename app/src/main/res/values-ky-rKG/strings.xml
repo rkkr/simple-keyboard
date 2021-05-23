@@ -29,11 +29,11 @@
     <string name="auto_cap">"Авто чоң тамгалоо"</string>
     <string name="auto_cap_summary">"Ар бир сүйлөмдүн биринчи сөзүн чоң тамга менен жазып турат"</string>
     <string name="select_language">"Тилдер"</string>
-    <string name="subtype_en_GB">"Англисче (UK)"</string>
-    <string name="subtype_en_US">"Англисче (US)"</string>
-    <string name="subtype_es_US">"Испанча (US)"</string>
-    <string name="subtype_hi_ZZ">"Хинглиш"</string>
-    <string name="subtype_sr_ZZ">"Сербче (Латын)"</string>
+    <string name="locale_name_en_GB">"Англисче (UK)"</string>
+    <string name="locale_name_en_US">"Англисче (US)"</string>
+    <string name="locale_name_es_US">"Испанча (US)"</string>
+    <string name="locale_name_hi_ZZ">"Хинглиш"</string>
+    <string name="locale_name_sr_ZZ">"Сербче (Латын)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Салттык"</string>
     <string name="subtype_compact">"Чакан"</string>

@@ -30,11 +30,11 @@
     <string name="auto_cap">"Заглавные автоматически"</string>
     <string name="auto_cap_summary">"Писать первое слово предложения с прописной буквы"</string>
     <string name="select_language">"Язык"</string>
-    <string name="subtype_en_GB">"английский (Великобритания)"</string>
-    <string name="subtype_en_US">"английский (США)"</string>
-    <string name="subtype_es_US">"Испанский (США)"</string>
-    <string name="subtype_hi_ZZ">"Хинглиш"</string>
-    <string name="subtype_sr_ZZ">"Сербский (латиница)"</string>
+    <string name="locale_name_en_GB">"английский (Великобритания)"</string>
+    <string name="locale_name_en_US">"английский (США)"</string>
+    <string name="locale_name_es_US">"Испанский (США)"</string>
+    <string name="locale_name_hi_ZZ">"Хинглиш"</string>
+    <string name="locale_name_sr_ZZ">"Сербский (латиница)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"классическая"</string>
     <string name="subtype_compact">"компактная раскладка"</string>

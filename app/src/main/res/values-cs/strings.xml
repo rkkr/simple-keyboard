@@ -29,11 +29,11 @@
     <string name="auto_cap">"Velká písmena automaticky"</string>
     <string name="auto_cap_summary">"Kapitalizace prvního slova každé věty"</string>
     <string name="select_language">"Jazyky"</string>
-    <string name="subtype_en_GB">"angličtina (Velká Británie)"</string>
-    <string name="subtype_en_US">"angličtina (USA)"</string>
-    <string name="subtype_es_US">"španělština (USA)"</string>
-    <string name="subtype_hi_ZZ">"Hinglish"</string>
-    <string name="subtype_sr_ZZ">"srbština (latinka)"</string>
+    <string name="locale_name_en_GB">"angličtina (Velká Británie)"</string>
+    <string name="locale_name_en_US">"angličtina (USA)"</string>
+    <string name="locale_name_es_US">"španělština (USA)"</string>
+    <string name="locale_name_hi_ZZ">"Hinglish"</string>
+    <string name="locale_name_sr_ZZ">"srbština (latinka)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradiční"</string>
     <string name="subtype_compact">"kompaktní"</string>

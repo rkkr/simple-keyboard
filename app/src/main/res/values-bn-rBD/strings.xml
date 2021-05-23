@@ -29,11 +29,11 @@
     <string name="auto_cap">"স্বতঃ-ক্যাপিটালাইজেশন"</string>
     <string name="auto_cap_summary">"প্রতিটি বাক্যের প্রথম শব্দ বড় হাতের করুন"</string>
     <string name="select_language">"ভাষাগুলি"</string>
-    <string name="subtype_en_GB">"ইংরেজি (UK)"</string>
-    <string name="subtype_en_US">"ইংরেজি (US)"</string>
-    <string name="subtype_es_US">"স্প্যানিশ (US)"</string>
-    <string name="subtype_hi_ZZ">"Hinglish"</string>
-    <string name="subtype_sr_ZZ">"সার্বিয়ান (ল্যাটিন)"</string>
+    <string name="locale_name_en_GB">"ইংরেজি (UK)"</string>
+    <string name="locale_name_en_US">"ইংরেজি (US)"</string>
+    <string name="locale_name_es_US">"স্প্যানিশ (US)"</string>
+    <string name="locale_name_hi_ZZ">"Hinglish"</string>
+    <string name="locale_name_sr_ZZ">"সার্বিয়ান (ল্যাটিন)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ঐতিহ্যবাহি"</string>
     <string name="subtype_compact">"কম্প্যাক্ট"</string>

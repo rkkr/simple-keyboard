@@ -29,11 +29,11 @@
     <string name="auto_cap">"स्वतः क्यापिटलाइजेसन"</string>
     <string name="auto_cap_summary">"प्रत्येक वाक्यको पहिलो शब्द क्यापिटल गर्नुहोस्"</string>
     <string name="select_language">"भाषाहरू"</string>
-    <string name="subtype_en_GB">"अंग्रेजी (युके)"</string>
-    <string name="subtype_en_US">"अंग्रेजी (युएस्)"</string>
-    <string name="subtype_es_US">"स्पेनिस (युएस्)"</string>
-    <string name="subtype_hi_ZZ">"हिङ्लिस"</string>
-    <string name="subtype_sr_ZZ">"सर्बियाई (ल्याटिन)"</string>
+    <string name="locale_name_en_GB">"अंग्रेजी (युके)"</string>
+    <string name="locale_name_en_US">"अंग्रेजी (युएस्)"</string>
+    <string name="locale_name_es_US">"स्पेनिस (युएस्)"</string>
+    <string name="locale_name_hi_ZZ">"हिङ्लिस"</string>
+    <string name="locale_name_sr_ZZ">"सर्बियाई (ल्याटिन)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"परम्परागत"</string>
     <string name="subtype_compact">"संकुचित"</string>

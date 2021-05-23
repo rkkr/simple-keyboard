@@ -29,11 +29,11 @@
     <string name="auto_cap">"స్వీయ-పెద్ద అక్షరాలు"</string>
     <string name="auto_cap_summary">"ప్రతి వాక్యంలో మొదటి అక్షరాన్ని పెద్ద అక్షరం చేయి"</string>
     <string name="select_language">"భాషలు"</string>
-    <string name="subtype_en_GB">"ఆంగ్లం (యుకె)"</string>
-    <string name="subtype_en_US">"ఆంగ్లం (యుఎస్)"</string>
-    <string name="subtype_es_US">"స్పానిష్ (యుఎస్)"</string>
-    <string name="subtype_hi_ZZ">"హింగ్లీష్"</string>
-    <string name="subtype_sr_ZZ">"సెర్బియన్ (లాటిన్)"</string>
+    <string name="locale_name_en_GB">"ఆంగ్లం (యుకె)"</string>
+    <string name="locale_name_en_US">"ఆంగ్లం (యుఎస్)"</string>
+    <string name="locale_name_es_US">"స్పానిష్ (యుఎస్)"</string>
+    <string name="locale_name_hi_ZZ">"హింగ్లీష్"</string>
+    <string name="locale_name_sr_ZZ">"సెర్బియన్ (లాటిన్)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"సాంప్రదాయకం"</string>
     <string name="subtype_compact">"కాంపాక్ట్"</string>

@@ -29,11 +29,11 @@
     <string name="auto_cap">"Maiuscole automatiche"</string>
     <string name="auto_cap_summary">"Iniziale maiuscola per la prima parola di ogni frase"</string>
     <string name="select_language">"Lingue"</string>
-    <string name="subtype_en_GB">"Inglese (UK)"</string>
-    <string name="subtype_en_US">"Inglese (USA)"</string>
-    <string name="subtype_es_US">"Spagnolo (USA)"</string>
-    <string name="subtype_hi_ZZ">"Hinglish"</string>
-    <string name="subtype_sr_ZZ">"Serbo (latino)"</string>
+    <string name="locale_name_en_GB">"Inglese (UK)"</string>
+    <string name="locale_name_en_US">"Inglese (USA)"</string>
+    <string name="locale_name_es_US">"Spagnolo (USA)"</string>
+    <string name="locale_name_hi_ZZ">"Hinglish"</string>
+    <string name="locale_name_sr_ZZ">"Serbo (latino)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradizionale"</string>
     <string name="subtype_compact">"compatto"</string>

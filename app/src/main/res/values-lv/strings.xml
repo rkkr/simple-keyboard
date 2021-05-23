@@ -29,11 +29,11 @@
     <string name="auto_cap">"Automātiska lielo burtu lietošana"</string>
     <string name="auto_cap_summary">"Katra teikuma pirmo vārdu rakstīt ar lielo burtu."</string>
     <string name="select_language">"Valodas"</string>
-    <string name="subtype_en_GB">"Angļu valoda (Lielbritānija)"</string>
-    <string name="subtype_en_US">"Angļu valoda (ASV)"</string>
-    <string name="subtype_es_US">"Spāņu (ASV)"</string>
-    <string name="subtype_hi_ZZ">"Hindi–angļu valoda"</string>
-    <string name="subtype_sr_ZZ">"Serbu (latīņu)"</string>
+    <string name="locale_name_en_GB">"Angļu valoda (Lielbritānija)"</string>
+    <string name="locale_name_en_US">"Angļu valoda (ASV)"</string>
+    <string name="locale_name_es_US">"Spāņu (ASV)"</string>
+    <string name="locale_name_hi_ZZ">"Hindi–angļu valoda"</string>
+    <string name="locale_name_sr_ZZ">"Serbu (latīņu)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicionālā"</string>
     <string name="subtype_compact">"kompaktā"</string>

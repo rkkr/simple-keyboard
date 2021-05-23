@@ -41,12 +41,12 @@ public final class LocaleResourceUtils {
     // Exceptional locale whose name should be displayed in Locale.ROOT.
     private static final HashMap<String, Integer> sExceptionalLocaleDisplayedInRootLocale =
             new HashMap<>();
-    // Exceptional locale to subtype name resource id map.
+    // Exceptional locale to locale name resource id map.
     private static final HashMap<String, Integer> sExceptionalLocaleToNameIdsMap = new HashMap<>();
-    private static final String SUBTYPE_NAME_RESOURCE_PREFIX =
-            "string/subtype_";
-    private static final String SUBTYPE_NAME_RESOURCE_IN_ROOT_LOCALE_PREFIX =
-            "string/subtype_in_root_locale_";
+    private static final String LOCALE_NAME_RESOURCE_PREFIX =
+            "string/locale_name_";
+    private static final String LOCALE_NAME_RESOURCE_IN_ROOT_LOCALE_PREFIX =
+            "string/locale_name_in_root_locale_";
 
     private LocaleResourceUtils() {
         // Intentional empty constructor for utility class.
@@ -67,19 +67,18 @@ public final class LocaleResourceUtils {
         sResources = res;
 
         final String[] exceptionalLocaleInRootLocale = res.getStringArray(
-                R.array.subtype_locale_displayed_in_root_locale);
+                R.array.locale_displayed_in_root_locale);
         for (int i = 0; i < exceptionalLocaleInRootLocale.length; i++) {
             final String localeString = exceptionalLocaleInRootLocale[i];
-            final String resourceName = SUBTYPE_NAME_RESOURCE_IN_ROOT_LOCALE_PREFIX + localeString;
+            final String resourceName = LOCALE_NAME_RESOURCE_IN_ROOT_LOCALE_PREFIX + localeString;
             final int resId = res.getIdentifier(resourceName, null, RESOURCE_PACKAGE_NAME);
             sExceptionalLocaleDisplayedInRootLocale.put(localeString, resId);
         }
 
-        final String[] exceptionalLocales = res.getStringArray(
-                R.array.subtype_locale_exception_keys);
+        final String[] exceptionalLocales = res.getStringArray(R.array.locale_exception_keys);
         for (int i = 0; i < exceptionalLocales.length; i++) {
             final String localeString = exceptionalLocales[i];
-            final String resourceName = SUBTYPE_NAME_RESOURCE_PREFIX + localeString;
+            final String resourceName = LOCALE_NAME_RESOURCE_PREFIX + localeString;
             final int resId = res.getIdentifier(resourceName, null, RESOURCE_PACKAGE_NAME);
             sExceptionalLocaleToNameIdsMap.put(localeString, resId);
         }

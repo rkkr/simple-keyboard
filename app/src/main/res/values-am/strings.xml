@@ -29,11 +29,11 @@
     <string name="auto_cap">"ራስ-ሰር አቢይ ማድረግ"</string>
     <string name="auto_cap_summary">"የእያንዳንዱ ዓረፍተ ነገር የመጀመሪያ ቃል በአቢይ ሆሄ ያስቀምጡ"</string>
     <string name="select_language">"ቋንቋዎች"</string>
-    <string name="subtype_en_GB">"እንግሊዘኛ (የታላቋ ብሪታንያ)"</string>
-    <string name="subtype_en_US">"እንግሊዘኛ (ዩ.ኤስ)"</string>
-    <string name="subtype_es_US">"ስፓኒሽኛ (ዩኤስ)"</string>
-    <string name="subtype_hi_ZZ">"ሂንግሊሽ"</string>
-    <string name="subtype_sr_ZZ">"ሰርብያኛ (ላቲን)"</string>
+    <string name="locale_name_en_GB">"እንግሊዘኛ (የታላቋ ብሪታንያ)"</string>
+    <string name="locale_name_en_US">"እንግሊዘኛ (ዩ.ኤስ)"</string>
+    <string name="locale_name_es_US">"ስፓኒሽኛ (ዩኤስ)"</string>
+    <string name="locale_name_hi_ZZ">"ሂንግሊሽ"</string>
+    <string name="locale_name_sr_ZZ">"ሰርብያኛ (ላቲን)"</string>
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ተለምዷዊ"</string>
     <string name="subtype_compact">"እስግ"</string>
