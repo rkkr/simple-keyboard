@@ -22,7 +22,7 @@ import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 
 public class Subtype {
     private static final String TAG = Subtype.class.getSimpleName();
@@ -36,7 +36,8 @@ public class Subtype {
     private final boolean mShowLayoutInName;
     private final Resources mResources;
 
-    public Subtype(final String locale, final String layoutSet, final int layoutNameRes, final boolean showLayoutInName, final Resources resources) {
+    public Subtype(final String locale, final String layoutSet, final int layoutNameRes,
+                   final boolean showLayoutInName, final Resources resources) {
         mLocale = locale;
         mLayoutSet = layoutSet;
         mLayoutNameRes = layoutNameRes;
@@ -45,7 +46,8 @@ public class Subtype {
         mResources = resources;
     }
 
-    public Subtype(final String locale, final String layoutSet, final String layoutNameStr, final boolean showLayoutInName, final Resources resources) {
+    public Subtype(final String locale, final String layoutSet, final String layoutNameStr,
+                   final boolean showLayoutInName, final Resources resources) {
         mLocale = locale;
         mLayoutSet = layoutSet;
         mLayoutNameRes = NO_RESOURCE;
@@ -64,13 +66,15 @@ public class Subtype {
 
     public String getName() {
         final String localeDisplayName =
-                SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(mLocale);
+                LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(mLocale);
         if (mShowLayoutInName) {
             if (mLayoutNameRes != NO_RESOURCE) {
-                return mResources.getString(R.string.subtype_generic_layout, localeDisplayName, mResources.getString(mLayoutNameRes));
+                return mResources.getString(R.string.subtype_generic_layout, localeDisplayName,
+                        mResources.getString(mLayoutNameRes));
             }
             if (mLayoutNameStr != null) {
-                return mResources.getString(R.string.subtype_generic_layout, localeDisplayName, mLayoutNameStr);
+                return mResources.getString(R.string.subtype_generic_layout, localeDisplayName,
+                        mLayoutNameStr);
             }
         }
         return localeDisplayName;
@@ -87,7 +91,7 @@ public class Subtype {
         } else if (mLayoutNameStr != null) {
             displayName = mLayoutNameStr;
         } else {
-            displayName = SubtypeLocaleUtils.getSubtypeLanguageDisplayNameInSystemLocale(mLocale);
+            displayName = LocaleResourceUtils.getLanguageDisplayNameInSystemLocale(mLocale);
         }
         return displayName;
     }
@@ -118,7 +122,7 @@ public class Subtype {
      * @return
      */
     public String getLocaleDisplayNameInLocale() {
-        return SubtypeLocaleUtils.getSubtypeLocaleDisplayName(getLocale());
+        return LocaleResourceUtils.getLocaleDisplayName(getLocale());
     }
 
     /**
@@ -126,6 +130,6 @@ public class Subtype {
      * @return
      */
     public String getLanguageDisplayNameInLocale() {
-        return SubtypeLocaleUtils.getSubtypeLanguageDisplayName(getLocale());
+        return LocaleResourceUtils.getLanguageDisplayName(getLocale());
     }
 }

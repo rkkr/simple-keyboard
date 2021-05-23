@@ -48,7 +48,7 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeUtils;
 
 import static rkr.simplekeyboard.inputmethod.latin.settings.SingleLanguageSettingsFragment.LOCALE_BUNDLE_KEY;
@@ -264,7 +264,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
             final String localeString = LocaleUtils.getLocaleString(locale);
             mEntryValues[i] = localeString;
             mEntries[i] =
-                    SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(localeString);
+                    LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(localeString);
             i++;
         }
     }
@@ -346,9 +346,9 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                     return 1;
                 }
             }
-            final String aDisplay = SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(
+            final String aDisplay = LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(
                     LocaleUtils.getLocaleString(a));
-            final String bDisplay = SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(
+            final String bDisplay = LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(
                     LocaleUtils.getLocaleString(b));
             return aDisplay.compareToIgnoreCase(bDisplay);
         }
@@ -371,7 +371,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
             super(context);
             mLocale = localeString;
 
-            setTitle(SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(localeString));
+            setTitle(LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(localeString));
             setFragment(SingleLanguageSettingsFragment.class.getName());
         }
 

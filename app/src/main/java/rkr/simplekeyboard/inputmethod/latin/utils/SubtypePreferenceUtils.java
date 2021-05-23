@@ -25,12 +25,12 @@ import java.util.List;
 
 import rkr.simplekeyboard.inputmethod.latin.Subtype;
 
-public final class AdditionalSubtypeUtils {
-    private static final String TAG = AdditionalSubtypeUtils.class.getSimpleName();
+public final class SubtypePreferenceUtils {
+    private static final String TAG = SubtypePreferenceUtils.class.getSimpleName();
 
     private static final Subtype[] EMPTY_SUBTYPE_ARRAY = new Subtype[0];
 
-    private AdditionalSubtypeUtils() {
+    private SubtypePreferenceUtils() {
         // This utility class is not publicly instantiable.
     }
 

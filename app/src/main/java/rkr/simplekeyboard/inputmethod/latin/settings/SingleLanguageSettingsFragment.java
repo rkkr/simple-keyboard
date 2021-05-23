@@ -34,7 +34,7 @@ import java.util.Set;
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeUtils;
 
 /**
@@ -205,7 +205,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         }
         final PreferenceGroup group = getPreferenceScreen();
         final String title = context.getString(R.string.generic_language_layouts,
-                SubtypeLocaleUtils.getSubtypeLocaleDisplayNameInSystemLocale(locale));
+                LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(locale));
         group.setTitle(title);
         group.removeAll();
 

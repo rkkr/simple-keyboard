@@ -24,7 +24,6 @@ import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.utils.RunInLocale;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 // TODO: Make this an immutable class.
 public final class KeyboardTextsSet {

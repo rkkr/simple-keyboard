@@ -43,9 +43,9 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
-import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.SubtypePreferenceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeUtils;
 
 /**
@@ -95,13 +95,13 @@ public class RichInputMethodManager {
         mImmService = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
 
         // Initialize additional subtypes.
-        SubtypeLocaleUtils.init(context);
+        LocaleResourceUtils.init(context);
 
         mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(context);
 
         // Initialize the virtual subtypes
         final String prefSubtypes = Settings.readPrefSubtypes(mPrefs);
-        final Subtype[] subtypes = AdditionalSubtypeUtils.createSubtypesFromPref(prefSubtypes,
+        final Subtype[] subtypes = SubtypePreferenceUtils.createSubtypesFromPref(prefSubtypes,
                 context.getResources());
         if (subtypes == null || subtypes.length < 1) {
             mSubtypes = SubtypeUtils.getDefaultSubtypes(context.getResources());
@@ -135,7 +135,7 @@ public class RichInputMethodManager {
             Settings.writePrefCurrentSubtypeIndex(mPrefs, mCurrentSubtypeIndex);
         }
         if (subtypesUpdated) {
-            final String prefSubtypes = AdditionalSubtypeUtils.createPrefSubtypes(mSubtypes);
+            final String prefSubtypes = SubtypePreferenceUtils.createPrefSubtypes(mSubtypes);
             Settings.writePrefSubtypes(mPrefs, prefSubtypes);
         }
     }
