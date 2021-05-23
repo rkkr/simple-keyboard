@@ -18,6 +18,7 @@
     package="rkr.simplekeyboard.inputmethod">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-feature android:name="android.software.leanback" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -48,6 +49,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- Broadcast receivers -->
+         
+        <activity 
+            android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
+        </intent-filter>
+    </activity>
+         
         <receiver android:name=".latin.SystemBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.LOCALE_CHANGED" />
