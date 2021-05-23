@@ -28,9 +28,9 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 
-public class SubtypeUtils {
+public class SubtypeLocaleUtils {
 
-    private SubtypeUtils() {
+    private SubtypeLocaleUtils() {
         // This utility class is not publicly instantiable.
     }
 

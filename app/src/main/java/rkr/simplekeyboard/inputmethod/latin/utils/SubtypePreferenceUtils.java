@@ -63,7 +63,7 @@ public final class SubtypePreferenceUtils {
             final String localeString = elems[INDEX_OF_LOCALE];
             final String keyboardLayoutSetName = elems[INDEX_OF_KEYBOARD_LAYOUT];
             final Subtype subtype =
-                    SubtypeUtils.getSubtype(localeString, keyboardLayoutSetName, resources);
+                    SubtypeLocaleUtils.getSubtype(localeString, keyboardLayoutSetName, resources);
             if (subtype == null) {
                 continue;
             }

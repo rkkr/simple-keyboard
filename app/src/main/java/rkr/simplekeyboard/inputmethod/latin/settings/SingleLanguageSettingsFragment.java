@@ -35,7 +35,7 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 /**
  * Settings sub screen for a specific language.
@@ -92,7 +92,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     }
 
     private void perfTestSubtypeCreation() {
-        final List<String> supportedLocales = SubtypeUtils.getSupportedLocales();
+        final List<String> supportedLocales = SubtypeLocaleUtils.getSupportedLocales();
 
         final long[] times = new long[supportedLocales.size()];
         final int numRuns = 10000;
@@ -101,7 +101,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
             final String supportedLocale = supportedLocales.get(localeIndex);
             long start = System.currentTimeMillis();
             for (int runIndex = 0; runIndex < numRuns; runIndex++) {
-                Subtype subtype = SubtypeUtils.getDefaultSubtype(supportedLocale, getActivity().getResources());
+                Subtype subtype = SubtypeLocaleUtils.getDefaultSubtype(supportedLocale, getActivity().getResources());
             }
             long finish = System.currentTimeMillis();
             times[localeIndex] = finish - start;
@@ -122,11 +122,11 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     }
 
     private void enableAllSubtypes() {
-        final List<String> supportedLocales = SubtypeUtils.getSupportedLocales();
+        final List<String> supportedLocales = SubtypeLocaleUtils.getSupportedLocales();
 
         long start = System.currentTimeMillis();
         for (final String supportedLocale : supportedLocales) {
-            List<Subtype> subtypes = SubtypeUtils.getSubtypes(supportedLocale, getActivity().getResources());
+            List<Subtype> subtypes = SubtypeLocaleUtils.getSubtypes(supportedLocale, getActivity().getResources());
             for (final Subtype subtype : subtypes) {
                 mRichImm.addSubtype(subtype);
             }
@@ -136,11 +136,11 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     }
 
     private void disableAllSubtypes() {
-        final List<String> supportedLocales = SubtypeUtils.getSupportedLocales();
+        final List<String> supportedLocales = SubtypeLocaleUtils.getSupportedLocales();
 
         long start = System.currentTimeMillis();
         for (final String supportedLocale : supportedLocales) {
-            List<Subtype> subtypes = SubtypeUtils.getSubtypes(supportedLocale, getActivity().getResources());
+            List<Subtype> subtypes = SubtypeLocaleUtils.getSubtypes(supportedLocale, getActivity().getResources());
             for (final Subtype subtype : subtypes) {
                 mRichImm.removeSubtype(subtype);
             }
@@ -150,11 +150,11 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     }
 
     private void enableAllDefaultSubtypes() {
-        final List<String> supportedLocales = SubtypeUtils.getSupportedLocales();
+        final List<String> supportedLocales = SubtypeLocaleUtils.getSupportedLocales();
 
         long start = System.currentTimeMillis();
         for (final String supportedLocale : supportedLocales) {
-            Subtype subtype = SubtypeUtils.getDefaultSubtype(supportedLocale, getActivity().getResources());
+            Subtype subtype = SubtypeLocaleUtils.getDefaultSubtype(supportedLocale, getActivity().getResources());
             mRichImm.addSubtype(subtype);
         }
         long finish = System.currentTimeMillis();
@@ -162,11 +162,11 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     }
 
     private void testLogSubtypes() {
-        final List<String> supportedLocales = SubtypeUtils.getSupportedLocales();
+        final List<String> supportedLocales = SubtypeLocaleUtils.getSupportedLocales();
 
         List<Subtype> defaultSubtypes = new ArrayList<>();
         for (final String supportedLocale : supportedLocales) {
-            List<Subtype> subtypes = SubtypeUtils.getSubtypes(supportedLocale, getActivity().getResources());
+            List<Subtype> subtypes = SubtypeLocaleUtils.getSubtypes(supportedLocale, getActivity().getResources());
             defaultSubtypes.add(subtypes.get(0));
             if (supportedLocale.equals("bg") || supportedLocale.equals("hi") || supportedLocale.equals("ne_NP")) {
                 defaultSubtypes.add(subtypes.get(1));
@@ -176,7 +176,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
 
         List<Subtype> allJavaSubtypes = new ArrayList<>();
         for (final String supportedLocale : supportedLocales) {
-            List<Subtype> subtypes = SubtypeUtils.getSubtypes(supportedLocale, getActivity().getResources());
+            List<Subtype> subtypes = SubtypeLocaleUtils.getSubtypes(supportedLocale, getActivity().getResources());
             allJavaSubtypes.addAll(subtypes);
         }
         printSubtypes(allJavaSubtypes, "all");
@@ -224,7 +224,8 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
      */
     private void buildSubtypePreferences(final String locale, final PreferenceGroup group,
                                          final Context context) {
-        final List<Subtype> subtypes = SubtypeUtils.getSubtypes(locale, context.getResources());
+        final List<Subtype> subtypes =
+                SubtypeLocaleUtils.getSubtypes(locale, context.getResources());
         for (final Subtype subtype : subtypes) {
             final SubtypePreference pref = createSubtypePreference(subtype, context);
             group.addPreference(pref);

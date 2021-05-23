@@ -46,7 +46,7 @@ import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypePreferenceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 /**
  * Enrichment class for InputMethodManager to simplify interaction and add functionality.
@@ -104,7 +104,7 @@ public class RichInputMethodManager {
         final Subtype[] subtypes = SubtypePreferenceUtils.createSubtypesFromPref(prefSubtypes,
                 context.getResources());
         if (subtypes == null || subtypes.length < 1) {
-            mSubtypes = SubtypeUtils.getDefaultSubtypes(context.getResources());
+            mSubtypes = SubtypeLocaleUtils.getDefaultSubtypes(context.getResources());
             mCurrentSubtypeIndex = 0;
         } else {
             mSubtypes = new ArrayList<>(Arrays.asList(subtypes));

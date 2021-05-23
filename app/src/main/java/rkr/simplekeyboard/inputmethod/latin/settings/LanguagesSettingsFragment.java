@@ -49,7 +49,7 @@ import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 import static rkr.simplekeyboard.inputmethod.latin.settings.SingleLanguageSettingsFragment.LOCALE_BUNDLE_KEY;
 
@@ -225,7 +225,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
     private TreeSet<Locale> getUnusedLocales(final TreeSet<Locale> usedLocales,
                                              final Comparator<Locale> comparator) {
         final TreeSet<Locale> locales = new TreeSet<>(comparator);
-        for (String localeString : SubtypeUtils.getSupportedLocales()) {
+        for (String localeString : SubtypeLocaleUtils.getSupportedLocales()) {
             final Locale locale = LocaleUtils.constructLocaleFromString(localeString);
             if (usedLocales.contains(locale)) {
                 continue;
