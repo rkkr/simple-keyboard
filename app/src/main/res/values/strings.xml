@@ -83,7 +83,7 @@
     <string name="keyboard_theme_system" translatable="false">System Default</string>
     <string name="keyboard_theme_system_border" translatable="false">System Default Border</string>
 
-    <!-- Title of the button to add custom style entry in the settings dialog [CHAR LIMIT=15] -->
+    <!-- Title of the button to add a language in the settings dialog [CHAR LIMIT=15] -->
     <string name="add">Add</string>
 
     <!-- Title of the settings for keypress vibration duration [CHAR LIMIT=35] -->
