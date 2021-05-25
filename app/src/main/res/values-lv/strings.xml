@@ -37,6 +37,7 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicionālā"</string>
     <string name="subtype_compact">"kompaktā"</string>
+    <string name="add">"Pievienot"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Taust. nosp. vibrācijas ilgums"</string>
     <string name="prefs_keypress_sound_volume_settings">"Taustiņu nosp. skaņas skaļums"</string>
     <string name="prefs_key_longpress_timeout_settings">"Taustiņa ilgās nosp. noildze"</string>

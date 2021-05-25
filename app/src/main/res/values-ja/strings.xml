@@ -37,6 +37,7 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>（<xliff:g id="LAYOUT">%s</xliff:g>）"</string>
     <string name="subtype_traditional">"伝統言語"</string>
     <string name="subtype_compact">"コンパクト"</string>
+    <string name="add">"追加"</string>
     <string name="prefs_keypress_vibration_duration_settings">"キー操作バイブの振動時間"</string>
     <string name="prefs_keypress_sound_volume_settings">"キー操作音の音量"</string>
     <string name="prefs_key_longpress_timeout_settings">"キーの長押し時間"</string>

@@ -37,6 +37,7 @@
     <string name="subtype_generic_layout">"Isi-<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Tradition"</string>
     <string name="subtype_compact">"Okuqoqene ndawonye"</string>
+    <string name="add">"Engeza"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Ubude besikhathi sokudlidliza ukucindezela ukhiye"</string>
     <string name="prefs_keypress_sound_volume_settings">"Ivolumu yomsindo wokucindezela ukhiye"</string>
     <string name="prefs_key_longpress_timeout_settings">"Ukulibazisa ukucindezela isikhashana ukhiye"</string>

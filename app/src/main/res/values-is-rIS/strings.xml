@@ -37,6 +37,7 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"hefðbundið"</string>
     <string name="subtype_compact">"lítið"</string>
+    <string name="add">"Bæta við"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Lengd lyklatitrings"</string>
     <string name="prefs_keypress_sound_volume_settings">"Styrkur lyklahljóða"</string>
     <string name="prefs_key_longpress_timeout_settings">"Töf áður en lykli er haldið inni"</string>

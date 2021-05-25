@@ -37,6 +37,7 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ရိုးရာ"</string>
     <string name="subtype_compact">"ကျစ်လစ်သော"</string>
+    <string name="add">"ထည့်ရန်"</string>
     <string name="prefs_keypress_vibration_duration_settings">"ခလုတ်နှိပ်တုန်ခါမှု ကြာမြင့်ချိန်"</string>
     <string name="prefs_keypress_sound_volume_settings">"ခလုတ်နှိပ်သည့် အသံအတိုးကျယ်"</string>
     <string name="prefs_key_longpress_timeout_settings">"ကီးကြာမြင့်စွာ ဖိနှိပ်မှုနှုန်း"</string>

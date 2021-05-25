@@ -37,6 +37,7 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"perinteinen"</string>
     <string name="subtype_compact">"tiivis"</string>
+    <string name="add">"Lisää"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Painalluksen värinän kesto"</string>
     <string name="prefs_keypress_sound_volume_settings">"Näppäinpainalluksen äänenvoimakkuus"</string>
     <string name="prefs_key_longpress_timeout_settings">"Pitkän painalluksen viive"</string>

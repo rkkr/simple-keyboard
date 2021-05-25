@@ -37,6 +37,7 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ավանդական"</string>
     <string name="subtype_compact">"սեղմ"</string>
+    <string name="add">"Ավելացնել"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Սեղմման թրթռոցի տևողություն"</string>
     <string name="prefs_keypress_sound_volume_settings">"Սեղմման ձայնի բարձրությունը"</string>
     <string name="prefs_key_longpress_timeout_settings">"Ստեղնի երկար սեղմման ուշացում"</string>

@@ -37,6 +37,7 @@
     <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"傳統"</string>
     <string name="subtype_compact">"精簡"</string>
+    <string name="add">"新增"</string>
     <string name="prefs_keypress_vibration_duration_settings">"按鍵震動持續時間"</string>
     <string name="prefs_keypress_sound_volume_settings">"按鍵音量"</string>
     <string name="prefs_key_longpress_timeout_settings">"按鍵長按延遲"</string>
