@@ -21,5 +21,6 @@
 <resources>
     <style name="platformSettingsTheme" parent="@android:style/Theme.DeviceDefault.Settings" />
     <style name="platformDialogTheme" parent="@android:style/Theme.DeviceDefault.Light.Dialog" />
+    <style name="platformDialogThemeLight" parent="@android:style/Theme.DeviceDefault.Light.Dialog" />
     <style name="platformViewTheme" parent="@android:style/Theme.Material.Light" />
 </resources>
