@@ -23,11 +23,9 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.SwitchPreference;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -41,7 +39,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
  * Settings sub screen for a specific language.
  */
 public final class SingleLanguageSettingsFragment extends PreferenceFragment {
-    private static final String TAG = SingleLanguageSettingsFragment.class.getSimpleName();
 
     public static final String LOCALE_BUNDLE_KEY = "LOCALE";
 
@@ -66,12 +63,6 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         if (args != null) {
             final String locale = getArguments().getString(LOCALE_BUNDLE_KEY);
             buildContent(locale, context);
-            //TODO: delete - testing
-//            testLogSubtypes();
-//            perfTestSubtypeCreation();
-//            enableAllSubtypes();
-//            disableAllSubtypes();
-//            enableAllDefaultSubtypes();
         }
 
         super.onActivityCreated(savedInstanceState);
@@ -89,109 +80,6 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     @Override
     public void onPause() {
         super.onPause();
-    }
-
-    private void perfTestSubtypeCreation() {
-        final List<String> supportedLocales = SubtypeLocaleUtils.getSupportedLocales();
-
-        final long[] times = new long[supportedLocales.size()];
-        final int numRuns = 10000;
-
-        for (int localeIndex = 0; localeIndex < supportedLocales.size(); localeIndex++) {
-            final String supportedLocale = supportedLocales.get(localeIndex);
-            long start = System.currentTimeMillis();
-            for (int runIndex = 0; runIndex < numRuns; runIndex++) {
-                Subtype subtype = SubtypeLocaleUtils.getDefaultSubtype(supportedLocale, getActivity().getResources());
-            }
-            long finish = System.currentTimeMillis();
-            times[localeIndex] = finish - start;
-        }
-
-        long minTime = Long.MAX_VALUE;
-        long maxTime = Long.MIN_VALUE;
-        long totalTime = 0;
-        for (final long time : times) {
-            minTime = Math.min(minTime, time);
-            maxTime = Math.max(maxTime, time);
-            totalTime += time;
-        }
-        Log.w(TAG, "perfTestSubtypeCreation: minTime=" + String.format("%.3f", (double)minTime / numRuns) + "ms");
-        Log.w(TAG, "perfTestSubtypeCreation: maxTime=" + String.format("%.3f", (double)maxTime / numRuns) + "ms");
-        Log.w(TAG, "perfTestSubtypeCreation: averageTime=" + String.format("%.3f", (double)totalTime / times.length / numRuns) + "ms");
-        Log.w(TAG, "perfTestSubtypeCreation: totalTime=" + totalTime + "ms runs=" + numRuns);
-    }
-
-    private void enableAllSubtypes() {
-        final List<String> supportedLocales = SubtypeLocaleUtils.getSupportedLocales();
-
-        long start = System.currentTimeMillis();
-        for (final String supportedLocale : supportedLocales) {
-            List<Subtype> subtypes = SubtypeLocaleUtils.getSubtypes(supportedLocale, getActivity().getResources());
-            for (final Subtype subtype : subtypes) {
-                mRichImm.addSubtype(subtype);
-            }
-        }
-        long finish = System.currentTimeMillis();
-        Log.w(TAG, "enableAllSubtypes: " + (finish - start) + "ms");
-    }
-
-    private void disableAllSubtypes() {
-        final List<String> supportedLocales = SubtypeLocaleUtils.getSupportedLocales();
-
-        long start = System.currentTimeMillis();
-        for (final String supportedLocale : supportedLocales) {
-            List<Subtype> subtypes = SubtypeLocaleUtils.getSubtypes(supportedLocale, getActivity().getResources());
-            for (final Subtype subtype : subtypes) {
-                mRichImm.removeSubtype(subtype);
-            }
-        }
-        long finish = System.currentTimeMillis();
-        Log.w(TAG, "disableAllSubtypes: " + (finish - start) + "ms");
-    }
-
-    private void enableAllDefaultSubtypes() {
-        final List<String> supportedLocales = SubtypeLocaleUtils.getSupportedLocales();
-
-        long start = System.currentTimeMillis();
-        for (final String supportedLocale : supportedLocales) {
-            Subtype subtype = SubtypeLocaleUtils.getDefaultSubtype(supportedLocale, getActivity().getResources());
-            mRichImm.addSubtype(subtype);
-        }
-        long finish = System.currentTimeMillis();
-        Log.w(TAG, "enableAllDefaultSubtypes: " + (finish - start) + "ms");
-    }
-
-    private void testLogSubtypes() {
-        final List<String> supportedLocales = SubtypeLocaleUtils.getSupportedLocales();
-
-        List<Subtype> defaultSubtypes = new ArrayList<>();
-        for (final String supportedLocale : supportedLocales) {
-            List<Subtype> subtypes = SubtypeLocaleUtils.getSubtypes(supportedLocale, getActivity().getResources());
-            defaultSubtypes.add(subtypes.get(0));
-            if (supportedLocale.equals("bg") || supportedLocale.equals("hi") || supportedLocale.equals("ne_NP")) {
-                defaultSubtypes.add(subtypes.get(1));
-            }
-        }
-        printSubtypes(defaultSubtypes, "default");
-
-        List<Subtype> allJavaSubtypes = new ArrayList<>();
-        for (final String supportedLocale : supportedLocales) {
-            List<Subtype> subtypes = SubtypeLocaleUtils.getSubtypes(supportedLocale, getActivity().getResources());
-            allJavaSubtypes.addAll(subtypes);
-        }
-        printSubtypes(allJavaSubtypes, "all");
-    }
-
-    private void printSubtypes(Collection<Subtype> javaSubtypes, String prefix) {
-        Log.w(TAG, "printSubtypes: " + prefix + ": size=" + javaSubtypes.size());
-        for (final Subtype subtype : javaSubtypes) {
-            Log.w(TAG, "printSubtypes: " + prefix + ": getName=" + subtype.getName());
-            Log.w(TAG, "printSubtypes: " + prefix + ": getLocale=" + subtype.getLocale());
-            Log.w(TAG, "printSubtypes: " + prefix + ": getLayoutDisplayName=" + subtype.getLayoutDisplayName());
-            Log.w(TAG, "printSubtypes: " + prefix + ": getLocaleDisplayNameInLocale=" + subtype.getLocaleDisplayNameInLocale());
-            Log.w(TAG, "printSubtypes: " + prefix + ": getLanguageDisplayNameInLocale=" + subtype.getLanguageDisplayNameInLocale());
-            Log.w(TAG, "printSubtypes: " + prefix + ": getLayoutSet=" + subtype.getLayoutSet());
-        }
     }
 
     /**

@@ -28,6 +28,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,10 +40,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Locale;
+import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -57,7 +58,7 @@ import static rkr.simplekeyboard.inputmethod.latin.settings.SingleLanguageSettin
 /**
  * "Languages" settings sub screen.
  */
-public final class LanguagesSettingsFragment extends SubScreenFragment{
+public final class LanguagesSettingsFragment extends PreferenceFragment {
     private static final String TAG = LanguagesSettingsFragment.class.getSimpleName();
 
     private static final boolean DEBUG_SUBTYPE_ID = false;
@@ -178,13 +179,13 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * @param context the context for this application.
      */
     private void setUpLanguages(final PreferenceGroup group, final Context context) {
-        final Collection<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
+        final Set<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
 
         final Locale currentLocale = getResources().getConfiguration().locale;
         final Comparator<Locale> comparator = new LocaleComparator(currentLocale);
 
-        final TreeSet<Locale> usedLocales = getUsedLocales(enabledSubtypes, comparator);
-        final TreeSet<Locale> unusedLocales = getUnusedLocales(usedLocales, comparator);
+        final SortedSet<Locale> usedLocales = getUsedLocales(enabledSubtypes, comparator);
+        final SortedSet<Locale> unusedLocales = getUnusedLocales(usedLocales, comparator);
 
         buildLanguagePreferences(usedLocales, group, context);
         setAdditionalLocaleEntries(unusedLocales);
@@ -197,11 +198,11 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * of whether it has been enabled in the system.
      * @param subtypes the list of subtypes for this IME that have been enabled.
      * @param comparator the comparator to sort the languages.
-     * @return a tree set of locales for the used languages sorted using the specified comparator.
+     * @return a set of locales for the used languages sorted using the specified comparator.
      */
-    private TreeSet<Locale> getUsedLocales(final Collection<Subtype> subtypes,
-                                           final Comparator<Locale> comparator) {
-        TreeSet<Locale> locales = new TreeSet<>(comparator);
+    private SortedSet<Locale> getUsedLocales(final Set<Subtype> subtypes,
+                                             final Comparator<Locale> comparator) {
+        final SortedSet<Locale> locales = new TreeSet<>(comparator);
 
         for (final Subtype subtype : subtypes) {
             if (DEBUG_SUBTYPE_ID) {
@@ -220,11 +221,11 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * {@link #getUsedLocales}.
      * @param usedLocales the used locales.
      * @param comparator the comparator to sort the languages.
-     * @return a tree set of locales for the unused languages sorted using the specified comparator.
+     * @return a set of locales for the unused languages sorted using the specified comparator.
      */
-    private TreeSet<Locale> getUnusedLocales(final TreeSet<Locale> usedLocales,
-                                             final Comparator<Locale> comparator) {
-        final TreeSet<Locale> locales = new TreeSet<>(comparator);
+    private SortedSet<Locale> getUnusedLocales(final Set<Locale> usedLocales,
+                                               final Comparator<Locale> comparator) {
+        final SortedSet<Locale> locales = new TreeSet<>(comparator);
         for (String localeString : SubtypeLocaleUtils.getSupportedLocales()) {
             final Locale locale = LocaleUtils.constructLocaleFromString(localeString);
             if (usedLocales.contains(locale)) {
@@ -242,7 +243,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * @param group the preference group to add preferences to.
      * @param context the context for this application.
      */
-    private void buildLanguagePreferences(final Collection<Locale> locales,
+    private void buildLanguagePreferences(final SortedSet<Locale> locales,
                                           final PreferenceGroup group, final Context context) {
         for (final Locale locale : locales) {
             final String localeString = LocaleUtils.getLocaleString(locale);
@@ -256,7 +257,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * Set the list of unused languages that can be added.
      * @param locales the unused locales that are supported in this IME.
      */
-    private void setAdditionalLocaleEntries(final TreeSet<Locale> locales) {
+    private void setAdditionalLocaleEntries(final SortedSet<Locale> locales) {
         mUnusedLocaleNames = new CharSequence[locales.size()];
         mUnusedLocaleValues = new String[locales.size()];
         int i = 0;
@@ -298,7 +299,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
                 .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(final DialogInterface dialog, final int which) {
-                        List<String> selectedLocales = new ArrayList<>();
+                        final ArrayList<String> selectedLocales = new ArrayList<>();
                         // enable the default layout for all of the checked languages
                         for (int i = 0; i < checkedItems.length; i++) {
                             if (checkedItems[i]) {
