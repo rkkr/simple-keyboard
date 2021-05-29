@@ -72,14 +72,6 @@ public final class KeyboardTheme {
         return mThemeId;
     }
 
-    public boolean isLight() {
-        return mThemeId == THEME_ID_LIGHT_BORDER || mThemeId == THEME_ID_LIGHT;
-    }
-
-    public boolean isDark() {
-        return mThemeId == THEME_ID_DARK_BORDER || mThemeId == THEME_ID_DARK;
-    }
-
     /* package private for testing */
     static KeyboardTheme searchKeyboardThemeById(final int themeId) {
         // TODO: This search algorithm isn't optimal if there are many themes.

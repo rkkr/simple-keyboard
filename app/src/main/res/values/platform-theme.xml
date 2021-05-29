@@ -21,7 +21,4 @@
 <resources>
     <style name="platformSettingsTheme" parent="@android:style/Theme.DeviceDefault" />
     <style name="platformDialogTheme" parent="@android:style/Theme.DeviceDefault.Dialog" />
-    <!-- Since dialogs are normally dark, we shouldn't make it light even with a light theme -->
-    <style name="platformDialogThemeLight" parent="@android:style/Theme.DeviceDefault.Dialog" />
-    <style name="platformDialogThemeDark" parent="@android:style/Theme.DeviceDefault.Dialog" />
 </resources>
