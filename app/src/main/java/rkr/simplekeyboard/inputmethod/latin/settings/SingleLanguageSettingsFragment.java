@@ -80,7 +80,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     @Override
     public void onResume() {
         super.onResume();
-        final Set<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypesOfThisIme(false);
+        final Set<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
         for (final SubtypePreference pref : mSubtypePrefs) {
             pref.setChecked(enabledSubtypes.contains(pref.getSubtype()));
         }

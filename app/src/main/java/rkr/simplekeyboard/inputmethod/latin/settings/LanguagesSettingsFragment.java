@@ -178,7 +178,7 @@ public final class LanguagesSettingsFragment extends SubScreenFragment{
      * @param context the context for this application.
      */
     private void setUpLanguages(final PreferenceGroup group, final Context context) {
-        final Collection<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypesOfThisIme(false);
+        final Collection<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
 
         final Locale currentLocale = getResources().getConfiguration().locale;
         final Comparator<Locale> comparator = new LocaleComparator(currentLocale);

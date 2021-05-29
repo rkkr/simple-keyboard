@@ -43,7 +43,7 @@ public final class LanguageOnSpacebarUtils {
         final String keyboardLayout = subtype.getLayoutSet();
         int sameLanguageAndLayoutCount = 0;
         final Set<Subtype> enabledSubtypes =
-                RichInputMethodManager.getInstance().getEnabledSubtypesOfThisIme(false);
+                RichInputMethodManager.getInstance().getEnabledSubtypes(false);
         for (final Subtype enabledSubtype : enabledSubtypes) {
             final String language = enabledSubtype.getLocaleObject().getLanguage();
             if (keyboardLanguage.equals(language)

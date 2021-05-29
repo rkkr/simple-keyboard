@@ -54,7 +54,7 @@ import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
             return null;
         }
 
-        final Set<Subtype> subtypes = richImm.getEnabledSubtypesOfThisIme(true);
+        final Set<Subtype> subtypes = richImm.getEnabledSubtypes(true);
 
         final StringBuilder sb = new StringBuilder();
         for (final Subtype subtype : subtypes) {

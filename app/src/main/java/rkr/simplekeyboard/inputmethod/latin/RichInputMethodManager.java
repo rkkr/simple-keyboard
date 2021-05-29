@@ -64,9 +64,7 @@ public class RichInputMethodManager {
 
     private InputMethodManager mImmService;
 
-    private List<Subtype> mSubtypes;
-    private int mCurrentSubtypeIndex = 0;
-    private SharedPreferences mPrefs;
+    private SubtypeList mSubtypeList;
     private SubtypeChangedHandler mSubtypeChangedHandler;
 
     public static RichInputMethodManager getInstance() {
@@ -97,22 +95,8 @@ public class RichInputMethodManager {
         // Initialize additional subtypes.
         LocaleResourceUtils.init(context);
 
-        mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(context);
-
         // Initialize the virtual subtypes
-        final String prefSubtypes = Settings.readPrefSubtypes(mPrefs);
-        final Subtype[] subtypes = SubtypePreferenceUtils.createSubtypesFromPref(prefSubtypes,
-                context.getResources());
-        if (subtypes == null || subtypes.length < 1) {
-            mSubtypes = SubtypeLocaleUtils.getDefaultSubtypes(context.getResources());
-            mCurrentSubtypeIndex = 0;
-        } else {
-            mSubtypes = new ArrayList<>(Arrays.asList(subtypes));
-            mCurrentSubtypeIndex = Settings.readPrefCurrentSubtypeIndex(mPrefs);
-            if (mCurrentSubtypeIndex > mSubtypes.size()) {
-                mCurrentSubtypeIndex = 0;
-            }
-        }
+        mSubtypeList = new SubtypeList(context);
     }
 
     public void setSubtypeChangeHandler(final SubtypeChangedHandler handler) {
@@ -129,84 +113,164 @@ public class RichInputMethodManager {
         void onCurrentSubtypeChanged();
     }
 
-    private void saveSubtypePref(final boolean subtypesUpdated, final boolean indexUpdated) {
-        //TODO: make atomic?
-        if (indexUpdated) {
-            Settings.writePrefCurrentSubtypeIndex(mPrefs, mCurrentSubtypeIndex);
+    private static class SubtypeList {
+        private final List<Subtype> mSubtypes;
+        private int mCurrentSubtypeIndex = 0;
+        private final SharedPreferences mPrefs;
+
+        public SubtypeList(final Context context) {
+            mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(context);
+
+            final String prefSubtypes = Settings.readPrefSubtypes(mPrefs);
+            final Subtype[] subtypes = SubtypePreferenceUtils.createSubtypesFromPref(prefSubtypes,
+                    context.getResources());
+            if (subtypes == null || subtypes.length < 1) {
+                mSubtypes = SubtypeLocaleUtils.getDefaultSubtypes(context.getResources());
+                mCurrentSubtypeIndex = 0;
+            } else {
+                mSubtypes = new ArrayList<>(Arrays.asList(subtypes));
+                mCurrentSubtypeIndex = Settings.readPrefCurrentSubtypeIndex(mPrefs);
+                if (mCurrentSubtypeIndex > mSubtypes.size()) {
+                    mCurrentSubtypeIndex = 0;
+                }
+            }
         }
-        if (subtypesUpdated) {
-            final String prefSubtypes = SubtypePreferenceUtils.createPrefSubtypes(mSubtypes);
-            Settings.writePrefSubtypes(mPrefs, prefSubtypes);
+
+        public synchronized Set<Subtype> getAll(final boolean sortForDisplay) {
+            final Set<Subtype> subtypes;
+            if (sortForDisplay) {
+                subtypes = new TreeSet<>(new Comparator<Subtype>() {
+                    @Override
+                    public int compare(Subtype a, Subtype b) {
+                        return a.getName().compareToIgnoreCase(b.getName());
+                    }
+                });
+            } else {
+                subtypes = new HashSet<>();
+            }
+            subtypes.addAll(mSubtypes);
+            return subtypes;
+        }
+
+        public synchronized int size() {
+            return mSubtypes.size();
+        }
+
+        private void saveSubtypePref(final boolean subtypesUpdated, final boolean indexUpdated) {
+            if (indexUpdated) {
+                Settings.writePrefCurrentSubtypeIndex(mPrefs, mCurrentSubtypeIndex);
+            }
+            if (subtypesUpdated) {
+                final String prefSubtypes = SubtypePreferenceUtils.createPrefSubtypes(mSubtypes);
+                Settings.writePrefSubtypes(mPrefs, prefSubtypes);
+            }
+        }
+
+        public synchronized boolean addSubtype(final Subtype subtype) {
+            if (mSubtypes.contains(subtype)) {
+                return false;
+            }
+            if (!mSubtypes.add(subtype)) {
+                return false;
+            }
+            saveSubtypePref(true, false);
+            return true;
+        }
+
+        public synchronized boolean removeSubtype(final Subtype subtype) {
+            if (mSubtypes.size() == 1) {
+                return false;
+            }
+
+            final int index = mSubtypes.indexOf(subtype);
+            if (index < 0) {
+                // nothing to remove
+                return true;
+            }
+
+            final boolean indexUpdated = mCurrentSubtypeIndex == index;
+            if (indexUpdated) {
+                mCurrentSubtypeIndex = 0;
+            }
+
+            mSubtypes.remove(index);
+            saveSubtypePref(true, indexUpdated);
+            return true;
+        }
+
+        public synchronized void resetSubtypeCycleOrder() {
+            if (mCurrentSubtypeIndex == 0) {
+                return;
+            }
+
+            // move the current subtype to the top of the list and shift everything above it down
+            Collections.rotate(mSubtypes.subList(0, mCurrentSubtypeIndex + 1), 1);
+            mCurrentSubtypeIndex = 0;
+            saveSubtypePref(true, true);
+        }
+
+        public synchronized boolean setCurrentSubtype(final Subtype subtype) {
+            for (int i = 0; i < mSubtypes.size(); i++) {
+                if (mSubtypes.get(i).equals(subtype)) {
+                    mCurrentSubtypeIndex = i;
+                    if (i == 0) {
+                        saveSubtypePref(false, true);
+                    } else {
+                        // since the subtype was selected directly, the cycle should be reset so
+                        // switching to the next subtype can iterate through all of the rest of the
+                        // subtypes
+                        resetSubtypeCycleOrder();
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public synchronized boolean switchToNextSubtype() {
+            if (mSubtypes.size() < 2) {
+                // reached the end of the loop
+                return false;
+            }
+            mCurrentSubtypeIndex = (mCurrentSubtypeIndex + 1) % mSubtypes.size();
+            saveSubtypePref(false, true);
+            // loop is only reset if the index is put back at 0
+            return mCurrentSubtypeIndex > 0;
+        }
+
+        public synchronized Subtype getCurrentSubtype() {
+            return mSubtypes.get(mCurrentSubtypeIndex);
         }
     }
 
-    public Set<Subtype> getEnabledSubtypesOfThisIme(final boolean sortForDisplay) {
-        final Set<Subtype> subtypes;
-        if (sortForDisplay) {
-            subtypes = new TreeSet<>(new Comparator<Subtype>() {
-                @Override
-                public int compare(Subtype a, Subtype b) {
-                    return a.getName().compareToIgnoreCase(b.getName());
-                }
-            });
-        } else {
-            subtypes = new HashSet<>();
-        }
-        subtypes.addAll(mSubtypes);
-        return subtypes;
+    public Set<Subtype> getEnabledSubtypes(final boolean sortForDisplay) {
+        return mSubtypeList.getAll(sortForDisplay);
     }
 
     public boolean hasMultipleEnabledSubtypes() {
-        return mSubtypes.size() > 1;
+        return mSubtypeList.size() > 1;
     }
 
     public boolean addSubtype(final Subtype subtype) {
-        if (mSubtypes.contains(subtype)) {
-            return false;
-        }
-        if (!mSubtypes.add(subtype)) {
-            return false;
-        }
-        saveSubtypePref(true, false);
-        return true;
+        return mSubtypeList.addSubtype(subtype);
     }
 
     public boolean removeSubtype(final Subtype subtype) {
-        if (mSubtypes.size() == 1) {
-            //TODO: is this how this should be handled?
-            return false;
+        final Subtype curSubtype = mSubtypeList.getCurrentSubtype();
+        final boolean result = mSubtypeList.removeSubtype(subtype);
+        if (curSubtype != mSubtypeList.getCurrentSubtype()) {
+            notifySubtypeChanged();
         }
-
-        final int index = mSubtypes.indexOf(subtype);
-        if (index < 0) {
-            return false;
-        }
-
-        final boolean indexUpdated = mCurrentSubtypeIndex == index;
-        if (indexUpdated) {
-            mCurrentSubtypeIndex = 0;
-            //TODO: maybe notify LatinIME, but possibly not since the keyboard won't already be open (double check split screen)
-        }
-
-        mSubtypes.remove(index);
-        saveSubtypePref(true, indexUpdated);
-        return true;
+        return result;
     }
 
     public void resetSubtypeCycleOrder() {
-        if (mCurrentSubtypeIndex == 0) {
-            return;
-        }
-        //TODO: maybe consider multiple threads
-
-        // move the current subtype to the top of the list and shift everything above it down one
-        Collections.rotate(mSubtypes.subList(0, mCurrentSubtypeIndex + 1), 1);
-        mCurrentSubtypeIndex = 0;
-        saveSubtypePref(true, true);
+        mSubtypeList.resetSubtypeCycleOrder();
     }
 
+    //TODO: consider moving this into SubtypeList to set the current subtype by the locale
     public Subtype findSubtypeByLocale(final Locale locale) {
-        final Collection<Subtype> subtypes = mSubtypes;
+        final Collection<Subtype> subtypes = mSubtypeList.getAll(false);
         final ArrayList<Locale> enabledLocales = new ArrayList<>(subtypes.size());
         for (final Subtype subtype : subtypes) {
             enabledLocales.add(subtype.getLocaleObject());
@@ -223,17 +287,9 @@ public class RichInputMethodManager {
     }
 
     public boolean setCurrentSubtype(final Subtype subtype) {
-        for (int i = 0; i < mSubtypes.size(); i++) {
-            if (mSubtypes.get(i).equals(subtype)) {
-                mCurrentSubtypeIndex = i;
-                if (i == 0) {
-                    saveSubtypePref(false, true);
-                } else {
-                    resetSubtypeCycleOrder();
-                }
-                notifySubtypeChanged();
-                return true;
-            }
+        if (mSubtypeList.setCurrentSubtype(subtype)) {
+            notifySubtypeChanged();
+            return true;
         }
         return false;
     }
@@ -253,12 +309,7 @@ public class RichInputMethodManager {
     }
 
     private boolean switchToNextSubtype(final boolean cycle) {
-        if (mSubtypes.size() < 2) {
-            return false;
-        }
-        mCurrentSubtypeIndex = (mCurrentSubtypeIndex + 1) % mSubtypes.size();
-        saveSubtypePref(false, true);
-        if (mCurrentSubtypeIndex > 0 || cycle) {
+        if (mSubtypeList.switchToNextSubtype() || cycle) {
             notifySubtypeChanged();
             return true;
         } else {
@@ -271,7 +322,7 @@ public class RichInputMethodManager {
     }
 
     public Subtype getCurrentSubtype() {
-        return mSubtypes.get(mCurrentSubtypeIndex);
+        return mSubtypeList.getCurrentSubtype();
     }
 
     public boolean hasMultipleEnabledImesOrSubtypes(final boolean shouldIncludeAuxiliarySubtypes) {
@@ -337,7 +388,7 @@ public class RichInputMethodManager {
         }
         final CharSequence title = context.getString(R.string.change_keyboard);
 
-        final Set<Subtype> subtypes = getEnabledSubtypesOfThisIme(true);
+        final Set<Subtype> subtypes = mSubtypeList.getAll(true);
 
         final CharSequence[] items = new CharSequence[subtypes.size()];
         final Subtype currentSubtype = getCurrentSubtype();

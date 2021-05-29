@@ -383,6 +383,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public void onFinishInputView(final boolean finishingInput) {
+        mRichImm.resetSubtypeCycleOrder();
         mHandler.onFinishInputView(finishingInput);
     }
 
@@ -420,7 +421,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
         // Switch to the null consumer to handle cases leading to early exit below, for which we
         // also wouldn't be consuming gesture data.
-        mRichImm.resetSubtypeCycleOrder();
         final KeyboardSwitcher switcher = mKeyboardSwitcher;
         switcher.updateKeyboardTheme(getResources().getConfiguration().uiMode);
         final MainKeyboardView mainKeyboardView = switcher.getMainKeyboardView();
