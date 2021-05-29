@@ -156,14 +156,13 @@ public class RichInputMethodManager {
             return mSubtypes.size();
         }
 
-        private void saveSubtypePref(final boolean subtypesUpdated, final boolean indexUpdated) {
-            if (indexUpdated) {
-                Settings.writePrefCurrentSubtypeIndex(mPrefs, mCurrentSubtypeIndex);
-            }
-            if (subtypesUpdated) {
-                final String prefSubtypes = SubtypePreferenceUtils.createPrefSubtypes(mSubtypes);
-                Settings.writePrefSubtypes(mPrefs, prefSubtypes);
-            }
+        private void saveSubtypeListPref() {
+            final String prefSubtypes = SubtypePreferenceUtils.createPrefSubtypes(mSubtypes);
+            Settings.writePrefSubtypes(mPrefs, prefSubtypes);
+        }
+
+        private void saveSubtypeIndexPref() {
+            Settings.writePrefCurrentSubtypeIndex(mPrefs, mCurrentSubtypeIndex);
         }
 
         public synchronized boolean addSubtype(final Subtype subtype) {
@@ -173,7 +172,7 @@ public class RichInputMethodManager {
             if (!mSubtypes.add(subtype)) {
                 return false;
             }
-            saveSubtypePref(true, false);
+            saveSubtypeListPref();
             return true;
         }
 
@@ -188,13 +187,22 @@ public class RichInputMethodManager {
                 return true;
             }
 
-            final boolean indexUpdated = mCurrentSubtypeIndex == index;
-            if (indexUpdated) {
+            final boolean indexUpdated;
+            if (mCurrentSubtypeIndex == index) {
                 mCurrentSubtypeIndex = 0;
+                indexUpdated = true;
+            } else if (mCurrentSubtypeIndex > index) {
+                mCurrentSubtypeIndex--;
+                indexUpdated = true;
+            } else {
+                indexUpdated = false;
             }
 
             mSubtypes.remove(index);
-            saveSubtypePref(true, indexUpdated);
+            saveSubtypeListPref();
+            if (indexUpdated) {
+                saveSubtypeIndexPref();
+            }
             return true;
         }
 
@@ -206,25 +214,48 @@ public class RichInputMethodManager {
             // move the current subtype to the top of the list and shift everything above it down
             Collections.rotate(mSubtypes.subList(0, mCurrentSubtypeIndex + 1), 1);
             mCurrentSubtypeIndex = 0;
-            saveSubtypePref(true, true);
+            saveSubtypeListPref();
+            saveSubtypeIndexPref();
         }
 
         public synchronized boolean setCurrentSubtype(final Subtype subtype) {
             for (int i = 0; i < mSubtypes.size(); i++) {
                 if (mSubtypes.get(i).equals(subtype)) {
                     mCurrentSubtypeIndex = i;
-                    if (i == 0) {
-                        saveSubtypePref(false, true);
-                    } else {
-                        // since the subtype was selected directly, the cycle should be reset so
-                        // switching to the next subtype can iterate through all of the rest of the
-                        // subtypes
-                        resetSubtypeCycleOrder();
-                    }
+                    setCurrentSubtype(i);
                     return true;
                 }
             }
             return false;
+        }
+
+        public synchronized boolean setCurrentSubtype(final Locale locale) {
+            final ArrayList<Locale> enabledLocales = new ArrayList<>(mSubtypes.size());
+            for (final Subtype subtype : mSubtypes) {
+                enabledLocales.add(subtype.getLocaleObject());
+            }
+            final Locale bestLocale = LocaleUtils.findBestLocale(locale, enabledLocales);
+            if (bestLocale != null) {
+                for (int i = 0; i < mSubtypes.size(); i++) {
+                    final Subtype subtype = mSubtypes.get(i);
+                    if (bestLocale.equals(subtype.getLocaleObject())) {
+                        setCurrentSubtype(i);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private void setCurrentSubtype(final int index) {
+            mCurrentSubtypeIndex = index;
+            if (index == 0) {
+                saveSubtypeIndexPref();
+            } else {
+                // since the subtype was selected directly, the cycle should be reset so switching
+                // to the next subtype can iterate through all of the rest of the subtypes
+                resetSubtypeCycleOrder();
+            }
         }
 
         public synchronized boolean switchToNextSubtype() {
@@ -233,7 +264,7 @@ public class RichInputMethodManager {
                 return false;
             }
             mCurrentSubtypeIndex = (mCurrentSubtypeIndex + 1) % mSubtypes.size();
-            saveSubtypePref(false, true);
+            saveSubtypeIndexPref();
             // loop is only reset if the index is put back at 0
             return mCurrentSubtypeIndex > 0;
         }
@@ -268,26 +299,16 @@ public class RichInputMethodManager {
         mSubtypeList.resetSubtypeCycleOrder();
     }
 
-    //TODO: consider moving this into SubtypeList to set the current subtype by the locale
-    public Subtype findSubtypeByLocale(final Locale locale) {
-        final Collection<Subtype> subtypes = mSubtypeList.getAll(false);
-        final ArrayList<Locale> enabledLocales = new ArrayList<>(subtypes.size());
-        for (final Subtype subtype : subtypes) {
-            enabledLocales.add(subtype.getLocaleObject());
-        }
-        final Locale bestLocale = LocaleUtils.findBestLocale(locale, enabledLocales);
-        if (bestLocale != null) {
-            for (final Subtype subtype : subtypes) {
-                if (bestLocale.equals(subtype.getLocaleObject())) {
-                    return subtype;
-                }
-            }
-        }
-        return null;
-    }
-
     public boolean setCurrentSubtype(final Subtype subtype) {
         if (mSubtypeList.setCurrentSubtype(subtype)) {
+            notifySubtypeChanged();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean setCurrentSubtype(final Locale locale) {
+        if (mSubtypeList.setCurrentSubtype(locale)) {
             notifySubtypeChanged();
             return true;
         }
