@@ -142,7 +142,17 @@ public class RichInputMethodManager {
                 subtypes = new TreeSet<>(new Comparator<Subtype>() {
                     @Override
                     public int compare(Subtype a, Subtype b) {
-                        return a.getName().compareToIgnoreCase(b.getName());
+                        if (a.equals(b)) {
+                            // ensure that this is consistent with equals
+                            return 0;
+                        }
+                        final int result = a.getName().compareToIgnoreCase(b.getName());
+                        if (result != 0) {
+                            return result;
+                        }
+                        // ensure that non-equal objects are distinguished to be consistent with
+                        // equals
+                        return a.hashCode() > b.hashCode() ? 1 : -1;
                     }
                 });
             } else {

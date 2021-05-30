@@ -23,9 +23,12 @@ import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 
 /**
  * A class to help with handling Locales in string form.
@@ -129,5 +132,29 @@ public final class LocaleUtils {
             locales.add(Resources.getSystem().getConfiguration().locale);
         }
         return locales;
+    }
+
+    /**
+     * Comparator for {@link Locale} to order them alphabetically
+     * first.
+     */
+    public static class LocaleComparator implements Comparator<Locale> {
+        @Override
+        public int compare(Locale a, Locale b) {
+            if (a.equals(b)) {
+                // ensure that this is consistent with equals
+                return 0;
+            }
+            final String aDisplay =
+                    LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(getLocaleString(a));
+            final String bDisplay =
+                    LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(getLocaleString(b));
+            final int result = aDisplay.compareToIgnoreCase(bDisplay);
+            if (result != 0) {
+                return result;
+            }
+            // ensure that non-equal objects are distinguished to be consistent with equals
+            return a.hashCode() > b.hashCode() ? 1 : -1;
+        }
     }
 }

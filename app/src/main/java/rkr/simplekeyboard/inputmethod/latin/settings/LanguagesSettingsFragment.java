@@ -181,8 +181,7 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     private void setUpLanguages(final PreferenceGroup group, final Context context) {
         final Set<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
 
-        final Locale currentLocale = getResources().getConfiguration().locale;
-        final Comparator<Locale> comparator = new LocaleComparator(currentLocale);
+        final Comparator<Locale> comparator = new LocaleUtils.LocaleComparator();
 
         final SortedSet<Locale> usedLocales = getUsedLocales(enabledSubtypes, comparator);
         final SortedSet<Locale> unusedLocales = getUnusedLocales(usedLocales, comparator);
@@ -344,54 +343,6 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
         transaction.replace(mContainer.getId(), fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
-
-    /**
-     * Comparator for {@link Locale} to order them alphabetically, but keeping the current language
-     * first.
-     */
-    private static class LocaleComparator implements Comparator<Locale> {
-        private final Locale mCurrentLocale;
-
-        /**
-         * Create a new LocaleComparator.
-         * @param currentLocale the language and country to sort first.
-         */
-        public LocaleComparator(final Locale currentLocale) {
-            mCurrentLocale = currentLocale;
-        }
-
-        @Override
-        public int compare(Locale a, Locale b) {
-            if (a.getLanguage().equals(b.getLanguage())) {
-                if (a.getCountry().equals(b.getCountry())) {
-                    return 0;
-                }
-                if (a.getLanguage().equals(mCurrentLocale.getLanguage())) {
-                    if (a.getCountry().equals(mCurrentLocale.getCountry())) {
-                        // current language and country should be at the top
-                        return -1;
-                    }
-                    if (b.getCountry().equals(mCurrentLocale.getCountry())) {
-                        // current language should be at above others
-                        return 1;
-                    }
-                }
-            } else {
-                if (a.getLanguage().equals(mCurrentLocale.getLanguage())) {
-                    // current language should be at above others
-                    return -1;
-                } else if (b.getLanguage().equals(mCurrentLocale.getLanguage())) {
-                    // current language should be at above others
-                    return 1;
-                }
-            }
-            final String aDisplay = LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(
-                    LocaleUtils.getLocaleString(a));
-            final String bDisplay = LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(
-                    LocaleUtils.getLocaleString(b));
-            return aDisplay.compareToIgnoreCase(bDisplay);
-        }
     }
 
     /**
