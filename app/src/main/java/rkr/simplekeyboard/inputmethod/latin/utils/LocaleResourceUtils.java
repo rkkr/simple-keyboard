@@ -91,17 +91,35 @@ public final class LocaleResourceUtils {
         return LocaleUtils.constructLocaleFromString(localeString);
     }
 
+    /**
+     * Get the full display name of the locale in the system's locale.
+     * For example in an English system, en_US: "English (US)", fr_CA: "French (Canada)"
+     * @param localeString the locale to display.
+     * @return the full display name of the locale.
+     */
     public static String getLocaleDisplayNameInSystemLocale(
             final String localeString) {
         final Locale displayLocale = sResources.getConfiguration().locale;
         return getLocaleDisplayNameInternal(localeString, displayLocale);
     }
 
-    public static String getLocaleDisplayName(final String localeString) {
+    /**
+     * Get the full display name of the locale in its locale.
+     * For example, en_US: "English (US)", fr_CA: "Français (Canada)"
+     * @param localeString the locale to display.
+     * @return the full display name of the locale.
+     */
+    public static String getLocaleDisplayNameInLocale(final String localeString) {
         final Locale displayLocale = getDisplayLocale(localeString);
         return getLocaleDisplayNameInternal(localeString, displayLocale);
     }
 
+    /**
+     * Get the display name of the language in the system's locale.
+     * For example in an English system, en_US: "English", fr_CA: "French"
+     * @param localeString the locale to display.
+     * @return the display name of the language.
+     */
     public static String getLanguageDisplayNameInSystemLocale(
             final String localeString) {
         final Locale displayLocale = sResources.getConfiguration().locale;
@@ -114,7 +132,13 @@ public final class LocaleResourceUtils {
         return getLocaleDisplayNameInternal(languageString, displayLocale);
     }
 
-    public static String getLanguageDisplayName(final String localeString) {
+    /**
+     * Get the display name of the language in its locale.
+     * For example, en_US: "English", fr_CA: "Français"
+     * @param localeString the locale to display.
+     * @return the display name of the language.
+     */
+    public static String getLanguageDisplayNameInLocale(final String localeString) {
         final Locale displayLocale = getDisplayLocale(localeString);
         final String languageString;
         if (sExceptionalLocaleDisplayedInRootLocale.containsKey(localeString)) {

@@ -50,6 +50,7 @@ import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LanguageOnSpacebarUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
 
 /**
@@ -615,13 +616,15 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
                                             final Subtype subtype, final int width) {
         // Choose appropriate language name to fit into the width.
         if (mLanguageOnSpacebarFormatType == LanguageOnSpacebarUtils.FORMAT_TYPE_FULL_LOCALE) {
-            final String fullText = subtype.getLocaleDisplayNameInLocale();
+            final String fullText =
+                    LocaleResourceUtils.getLocaleDisplayNameInLocale(subtype.getLocale());
             if (fitsTextIntoWidth(width, fullText, paint)) {
                 return fullText;
             }
         }
 
-        final String middleText = subtype.getLanguageDisplayNameInLocale();
+        final String middleText =
+                LocaleResourceUtils.getLanguageDisplayNameInLocale(subtype.getLocale());
         if (fitsTextIntoWidth(width, middleText, paint)) {
             return middleText;
         }

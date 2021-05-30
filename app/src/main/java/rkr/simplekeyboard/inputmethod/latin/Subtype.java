@@ -24,9 +24,10 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 
-public class Subtype {
-    private static final String TAG = Subtype.class.getSimpleName();
-
+/**
+ * A keyboard layout for a locale.
+ */
+public final class Subtype {
     private static final int NO_RESOURCE = 0;
 
     private final String mLocale;
@@ -36,6 +37,18 @@ public class Subtype {
     private final boolean mShowLayoutInName;
     private final Resources mResources;
 
+    /**
+     * Create a subtype.
+     * @param locale the locale for the layout in the format of "ll_cc_variant" where "ll" is a
+     *              language code, "cc" is a country code.
+     * @param layoutSet the keyboard layout set name.
+     * @param layoutNameRes the keyboard layout name resource ID to use for display instead of the
+     *                     name of the language.
+     * @param showLayoutInName flag to indicate if the display name of the keyboard layout should be
+     *                        used in the main display name of the subtype
+     *                        (eg: "English (US) (QWERTY)" vs "English (US)").
+     * @param resources the resources to use.
+     */
     public Subtype(final String locale, final String layoutSet, final int layoutNameRes,
                    final boolean showLayoutInName, final Resources resources) {
         mLocale = locale;
@@ -46,6 +59,18 @@ public class Subtype {
         mResources = resources;
     }
 
+    /**
+     * Create a subtype.
+     * @param locale the locale for the layout in the format of "ll_cc_variant" where "ll" is a
+     *              language code, "cc" is a country code.
+     * @param layoutSet the keyboard layout set name.
+     * @param layoutNameStr the keyboard layout name string to use for display instead of the name
+     *                     of the language.
+     * @param showLayoutInName flag to indicate if the display name of the keyboard layout should be
+     *                        used in the main display name of the subtype
+     *                        (eg: "English (US) (QWERTY)" vs "English (US)").
+     * @param resources the resources to use.
+     */
     public Subtype(final String locale, final String layoutSet, final String layoutNameStr,
                    final boolean showLayoutInName, final Resources resources) {
         mLocale = locale;
@@ -56,14 +81,27 @@ public class Subtype {
         mResources = resources;
     }
 
+    /**
+     * Get the locale string.
+     * @return the locale string.
+     */
     public String getLocale() {
         return mLocale;
     }
 
+    /**
+     * Get the locale object.
+     * @return the locale object.
+     */
     public Locale getLocaleObject() {
         return LocaleUtils.constructLocaleFromString(mLocale);
     }
 
+    /**
+     * Get the display name for the subtype. This should be something like "English (US)" or
+     * "English (US) (QWERTY)".
+     * @return the display name.
+     */
     public String getName() {
         final String localeDisplayName =
                 LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(mLocale);
@@ -80,10 +118,18 @@ public class Subtype {
         return localeDisplayName;
     }
 
+    /**
+     * Get the keyboard layout set name (internal).
+     * @return the keyboard layout set name.
+     */
     public String getLayoutSet() {
         return mLayoutSet;
     }
 
+    /**
+     * Get the display name for the keyboard layout. This should be something like "QWERTY".
+     * @return the display name for the keyboard layout.
+     */
     public String getLayoutDisplayName() {
         final String displayName;
         if (mLayoutNameRes != NO_RESOURCE) {
@@ -115,21 +161,5 @@ public class Subtype {
     @Override
     public String toString() {
         return "subtype " + mLocale + ":" + mLayoutSet;
-    }
-
-    /**
-     * Get the full display name of the locale in its locale.
-     * @return
-     */
-    public String getLocaleDisplayNameInLocale() {
-        return LocaleResourceUtils.getLocaleDisplayName(getLocale());
-    }
-
-    /**
-     * Get the display name of the language in its locale.
-     * @return
-     */
-    public String getLanguageDisplayNameInLocale() {
-        return LocaleResourceUtils.getLanguageDisplayName(getLocale());
     }
 }
