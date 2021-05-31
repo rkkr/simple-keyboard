@@ -74,7 +74,7 @@ import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
  * Input method implementation for Qwerty'ish keyboard.
  */
 public class LatinIME extends InputMethodService implements KeyboardActionListener,
-        RichInputMethodManager.SubtypeChangedHandler {
+        RichInputMethodManager.SubtypeChangedListener {
     static final String TAG = LatinIME.class.getSimpleName();
     private static final boolean TRACE = false;
 
@@ -316,7 +316,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void loadSettings() {
-        final Locale locale = mRichImm.getCurrentSubtypeLocale();
+        final Locale locale = mRichImm.getCurrentSubtype().getLocaleObject();
         final EditorInfo editorInfo = getCurrentInputEditorInfo();
         final InputAttributes inputAttributes = new InputAttributes(editorInfo, isFullscreenMode());
         mSettings.loadSettings(this, locale, inputAttributes);
@@ -684,7 +684,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     int getCurrentAutoCapsState() {
         return mInputLogic.getCurrentAutoCapsState(mSettings.getCurrent(),
-                mRichImm.getCurrentSubtype().getLayoutSet());
+                mRichImm.getCurrentSubtype().getKeyboardLayoutSet());
     }
 
     int getCurrentRecapitalizeState() {

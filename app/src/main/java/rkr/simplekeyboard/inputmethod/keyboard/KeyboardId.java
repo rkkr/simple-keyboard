@@ -169,7 +169,7 @@ public final class KeyboardId {
         return String.format(Locale.ROOT, "[%s %s:%s %dx%d %s %s%s%s%s%s%s %s]",
                 elementIdToName(mElementId),
                 mSubtype.getLocale(),
-                mSubtype.getLayoutSet(),
+                mSubtype.getKeyboardLayoutSet(),
                 mWidth, mHeight,
                 modeName(mMode),
                 actionName(imeAction()),

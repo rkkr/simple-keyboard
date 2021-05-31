@@ -40,14 +40,14 @@ public final class LanguageOnSpacebarUtils {
             return FORMAT_TYPE_NONE;
         }
         final String keyboardLanguage = locale.getLanguage();
-        final String keyboardLayout = subtype.getLayoutSet();
+        final String keyboardLayout = subtype.getKeyboardLayoutSet();
         int sameLanguageAndLayoutCount = 0;
         final Set<Subtype> enabledSubtypes =
                 RichInputMethodManager.getInstance().getEnabledSubtypes(false);
         for (final Subtype enabledSubtype : enabledSubtypes) {
             final String language = enabledSubtype.getLocaleObject().getLanguage();
             if (keyboardLanguage.equals(language)
-                    && keyboardLayout.equals(enabledSubtype.getLayoutSet())) {
+                    && keyboardLayout.equals(enabledSubtype.getKeyboardLayoutSet())) {
                 sameLanguageAndLayoutCount++;
             }
         }

@@ -122,7 +122,7 @@ public final class Subtype {
      * Get the keyboard layout set name (internal).
      * @return the keyboard layout set name.
      */
-    public String getLayoutSet() {
+    public String getKeyboardLayoutSet() {
         return mLayoutSet;
     }
 

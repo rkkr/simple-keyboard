@@ -229,7 +229,7 @@ public final class KeyboardLayoutSet {
             // TODO: Consolidate with {@link InputAttributes}.
             mParams.mSubtype = subtype;
             mParams.mKeyboardLayoutSetName = KEYBOARD_LAYOUT_SET_RESOURCE_PREFIX
-                    + subtype.getLayoutSet();
+                    + subtype.getKeyboardLayoutSet();
             return this;
         }
 

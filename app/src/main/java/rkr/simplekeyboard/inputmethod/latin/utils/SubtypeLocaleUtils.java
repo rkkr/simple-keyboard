@@ -598,7 +598,7 @@ public final class SubtypeLocaleUtils {
                 }
                 boolean alreadyExists = false;
                 for (int j = 0; j < initialSize; j++) {
-                    if (mSubtypes.get(j).getLayoutSet().equals(predefinedLayout)) {
+                    if (mSubtypes.get(j).getKeyboardLayoutSet().equals(predefinedLayout)) {
                         alreadyExists = true;
                         break;
                     }

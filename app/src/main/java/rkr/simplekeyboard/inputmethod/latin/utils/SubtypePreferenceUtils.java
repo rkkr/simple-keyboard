@@ -42,7 +42,7 @@ public final class SubtypePreferenceUtils {
 
     private static String getPrefString(final Subtype subtype) {
         final String localeString = subtype.getLocale();
-        final String keyboardLayoutSetName = subtype.getLayoutSet();
+        final String keyboardLayoutSetName = subtype.getKeyboardLayoutSet();
         return localeString + LOCALE_AND_LAYOUT_SEPARATOR + keyboardLayoutSetName;
     }
 
