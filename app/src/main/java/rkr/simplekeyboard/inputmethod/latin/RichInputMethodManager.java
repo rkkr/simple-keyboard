@@ -64,7 +64,6 @@ public class RichInputMethodManager {
     private InputMethodManager mImmService;
 
     private SubtypeList mSubtypeList;
-    private SubtypeChangedListener mSubtypeChangedListener;
 
     public static RichInputMethodManager getInstance() {
         sInstance.checkInitialized();
@@ -103,16 +102,7 @@ public class RichInputMethodManager {
      * @param listener the listener to call when the subtype changes.
      */
     public void setSubtypeChangeHandler(final SubtypeChangedListener listener) {
-        mSubtypeChangedListener = listener;
-    }
-
-    /**
-     * Call the subtype changed handler to indicate that the virtual subtype has changed.
-     */
-    private void notifySubtypeChanged() {
-        if (mSubtypeChangedListener != null) {
-            mSubtypeChangedListener.onCurrentSubtypeChanged();
-        }
+        mSubtypeList.setSubtypeChangeHandler(listener);
     }
 
     /**
@@ -130,6 +120,7 @@ public class RichInputMethodManager {
         private final List<Subtype> mSubtypes;
         private int mCurrentSubtypeIndex = 0;
         private final SharedPreferences mPrefs;
+        private SubtypeChangedListener mSubtypeChangedListener;
 
         /**
          * Create the manager for the virtual subtypes.
@@ -147,9 +138,26 @@ public class RichInputMethodManager {
             } else {
                 mSubtypes = new ArrayList<>(Arrays.asList(subtypes));
                 mCurrentSubtypeIndex = Settings.readPrefCurrentSubtypeIndex(mPrefs);
-                if (mCurrentSubtypeIndex > mSubtypes.size()) {
+                if (mCurrentSubtypeIndex >= mSubtypes.size()) {
                     mCurrentSubtypeIndex = 0;
                 }
+            }
+        }
+
+        /**
+         * Add a listener to be called when the virtual subtype changes.
+         * @param listener the listener to call when the subtype changes.
+         */
+        public void setSubtypeChangeHandler(final SubtypeChangedListener listener) {
+            mSubtypeChangedListener = listener;
+        }
+
+        /**
+         * Call the subtype changed handler to indicate that the virtual subtype has changed.
+         */
+        private void notifySubtypeChanged() {
+            if (mSubtypeChangedListener != null) {
+                mSubtypeChangedListener.onCurrentSubtypeChanged();
             }
         }
 
@@ -241,20 +249,27 @@ public class RichInputMethodManager {
             }
 
             final boolean indexUpdated;
+            final boolean subtypeChanged;
             if (mCurrentSubtypeIndex == index) {
                 mCurrentSubtypeIndex = 0;
                 indexUpdated = true;
+                subtypeChanged = true;
             } else if (mCurrentSubtypeIndex > index) {
                 mCurrentSubtypeIndex--;
                 indexUpdated = true;
+                subtypeChanged = false;
             } else {
                 indexUpdated = false;
+                subtypeChanged = false;
             }
 
             mSubtypes.remove(index);
             saveSubtypeListPref();
             if (indexUpdated) {
                 saveSubtypeIndexPref();
+            }
+            if (subtypeChanged) {
+                notifySubtypeChanged();
             }
             return true;
         }
@@ -281,9 +296,12 @@ public class RichInputMethodManager {
          * @return whether the current subtype was set to the requested subtype.
          */
         public synchronized boolean setCurrentSubtype(final Subtype subtype) {
+            if (getCurrentSubtype().equals(subtype)) {
+                // nothing to do
+                return true;
+            }
             for (int i = 0; i < mSubtypes.size(); i++) {
                 if (mSubtypes.get(i).equals(subtype)) {
-                    mCurrentSubtypeIndex = i;
                     setCurrentSubtype(i);
                     return true;
                 }
@@ -320,6 +338,11 @@ public class RichInputMethodManager {
          * @param index the index of the subtype to set as current.
          */
         private void setCurrentSubtype(final int index) {
+            if (mCurrentSubtypeIndex == index)
+            {
+                // nothing to do
+                return;
+            }
             mCurrentSubtypeIndex = index;
             if (index == 0) {
                 saveSubtypeIndexPref();
@@ -328,22 +351,30 @@ public class RichInputMethodManager {
                 // to the next subtype can iterate through all of the rest of the subtypes
                 resetSubtypeCycleOrder();
             }
+            notifySubtypeChanged();
         }
 
         /**
          * Switch to the next subtype in the list.
-         * @return false if the end of the list was reached and the subtype was set to the first
-         * subtype, true if it didn't need to loop back to the beginning.
+         * @param notifyChangeOnCycle whether the subtype changed handler should be notified if the
+         *                           end of the list is passed and the next subtype would go back to
+         *                           the first in the list.
+         * @return whether the subtype changed listener was called.
          */
-        public synchronized boolean switchToNextSubtype() {
-            if (mSubtypes.size() < 2) {
-                // reached the end of the loop
-                return false;
+        public synchronized boolean switchToNextSubtype(final boolean notifyChangeOnCycle) {
+            final int nextIndex = mCurrentSubtypeIndex + 1;
+            if (nextIndex >= mSubtypes.size()) {
+                mCurrentSubtypeIndex = 0;
+                saveSubtypeIndexPref();
+                if (!notifyChangeOnCycle) {
+                    return false;
+                }
+            } else {
+                mCurrentSubtypeIndex = nextIndex;
+                saveSubtypeIndexPref();
             }
-            mCurrentSubtypeIndex = (mCurrentSubtypeIndex + 1) % mSubtypes.size();
-            saveSubtypeIndexPref();
-            // loop is only reset if the index is put back at 0
-            return mCurrentSubtypeIndex > 0;
+            notifySubtypeChanged();
+            return true;
         }
 
         public synchronized Subtype getCurrentSubtype() {
@@ -384,12 +415,7 @@ public class RichInputMethodManager {
      * @return whether the subtype was removed.
      */
     public boolean removeSubtype(final Subtype subtype) {
-        final Subtype curSubtype = mSubtypeList.getCurrentSubtype();
-        final boolean result = mSubtypeList.removeSubtype(subtype);
-        if (curSubtype != mSubtypeList.getCurrentSubtype()) {
-            notifySubtypeChanged();
-        }
-        return result;
+        return mSubtypeList.removeSubtype(subtype);
     }
 
     /**
@@ -406,15 +432,7 @@ public class RichInputMethodManager {
      * @return whether the current subtype was set to the requested subtype.
      */
     public boolean setCurrentSubtype(final Subtype subtype) {
-        if (mSubtypeList.getCurrentSubtype().equals(subtype)) {
-            // nothing to do
-            return true;
-        }
-        if (mSubtypeList.setCurrentSubtype(subtype)) {
-            notifySubtypeChanged();
-            return true;
-        }
-        return false;
+        return mSubtypeList.setCurrentSubtype(subtype);
     }
 
     /**
@@ -423,14 +441,7 @@ public class RichInputMethodManager {
      * @return whether the current subtype was set to the requested locale.
      */
     public boolean setCurrentSubtype(final Locale locale) {
-        final Subtype originalSubtype = mSubtypeList.getCurrentSubtype();
-        if (mSubtypeList.setCurrentSubtype(locale)) {
-            if (!mSubtypeList.getCurrentSubtype().equals(originalSubtype)) {
-                notifySubtypeChanged();
-            }
-            return true;
-        }
-        return false;
+        return mSubtypeList.setCurrentSubtype(locale);
     }
 
     /**
@@ -447,28 +458,13 @@ public class RichInputMethodManager {
             if (!hasMultipleEnabledSubtypes()) {
                 return false;
             }
-            return switchToNextSubtype(true);
+            return mSubtypeList.switchToNextSubtype(true);
         }
-        if (switchToNextSubtype(false)) {
+        if (mSubtypeList.switchToNextSubtype(false)) {
             return true;
         }
         // switch to a different IME
         return mImmService.switchToNextInputMethod(token, false);
-    }
-
-    /**
-     * Switch to the next virtual subtype.
-     * @param cycle whether cycling back to the first subtype when reaching the end of the list
-     *             should be considered a successful switch.
-     * @return whether the next subtype was successfully switched to.
-     */
-    private boolean switchToNextSubtype(final boolean cycle) {
-        if (mSubtypeList.switchToNextSubtype() || cycle) {
-            notifySubtypeChanged();
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
