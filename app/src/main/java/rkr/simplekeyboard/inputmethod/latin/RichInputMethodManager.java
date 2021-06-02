@@ -117,8 +117,17 @@ public class RichInputMethodManager {
      * Only one of these should be created to avoid conflicts.
      */
     private static class SubtypeList {
+        /** The list of enabled subtypes ordered by how they should be cycled through when moving to
+         *  the next subtype. When a subtype is actually in use, it should be moved to the beginning
+         *  of the list so that the next time the user uses the switch to next subtype button, all
+         *  of the subtypes can be iterated through before potentially switching to a different
+         *  input method. */
         private final List<Subtype> mSubtypes;
-        private int mCurrentSubtypeIndex = 0;
+        /** The index of the currently selected subtype. This is used for tracking the status of
+         *  cycling through subtypes. When actually using the keyboard, the subtype should be moved
+         *  to the beginning of the list, so this should normally be 0. */
+        private int mCurrentSubtypeIndex;
+
         private final SharedPreferences mPrefs;
         private SubtypeChangedListener mSubtypeChangedListener;
 
@@ -134,14 +143,10 @@ public class RichInputMethodManager {
                     context.getResources());
             if (subtypes == null || subtypes.length < 1) {
                 mSubtypes = SubtypeLocaleUtils.getDefaultSubtypes(context.getResources());
-                mCurrentSubtypeIndex = 0;
             } else {
                 mSubtypes = new ArrayList<>(Arrays.asList(subtypes));
-                mCurrentSubtypeIndex = Settings.readPrefCurrentSubtypeIndex(mPrefs);
-                if (mCurrentSubtypeIndex >= mSubtypes.size()) {
-                    mCurrentSubtypeIndex = 0;
-                }
             }
+            mCurrentSubtypeIndex = 0;
         }
 
         /**
@@ -210,13 +215,6 @@ public class RichInputMethodManager {
         }
 
         /**
-         * Update the preference for the index of the current subtype.
-         */
-        private void saveSubtypeIndexPref() {
-            Settings.writePrefCurrentSubtypeIndex(mPrefs, mCurrentSubtypeIndex);
-        }
-
-        /**
          * Add a subtype to the list.
          * @param subtype the subtype to add.
          * @return whether the subtype was added to the list.
@@ -248,26 +246,19 @@ public class RichInputMethodManager {
                 return true;
             }
 
-            final boolean indexUpdated;
             final boolean subtypeChanged;
             if (mCurrentSubtypeIndex == index) {
                 mCurrentSubtypeIndex = 0;
-                indexUpdated = true;
                 subtypeChanged = true;
-            } else if (mCurrentSubtypeIndex > index) {
-                mCurrentSubtypeIndex--;
-                indexUpdated = true;
-                subtypeChanged = false;
             } else {
-                indexUpdated = false;
+                if (mCurrentSubtypeIndex > index) {
+                    mCurrentSubtypeIndex--;
+                }
                 subtypeChanged = false;
             }
 
             mSubtypes.remove(index);
             saveSubtypeListPref();
-            if (indexUpdated) {
-                saveSubtypeIndexPref();
-            }
             if (subtypeChanged) {
                 notifySubtypeChanged();
             }
@@ -276,7 +267,9 @@ public class RichInputMethodManager {
 
         /**
          * Move the current subtype to the beginning of the list to allow the rest of the subtypes
-         * to be cycled through before possibly switching to a separate input method.
+         * to be cycled through before possibly switching to a separate input method. This should be
+         * called whenever the user is done cycling through subtypes (eg: when a subtype is actually
+         * used or the keyboard is closed).
          */
         public synchronized void resetSubtypeCycleOrder() {
             if (mCurrentSubtypeIndex == 0) {
@@ -287,7 +280,6 @@ public class RichInputMethodManager {
             Collections.rotate(mSubtypes.subList(0, mCurrentSubtypeIndex + 1), 1);
             mCurrentSubtypeIndex = 0;
             saveSubtypeListPref();
-            saveSubtypeIndexPref();
         }
 
         /**
@@ -344,9 +336,7 @@ public class RichInputMethodManager {
                 return;
             }
             mCurrentSubtypeIndex = index;
-            if (index == 0) {
-                saveSubtypeIndexPref();
-            } else {
+            if (index != 0) {
                 // since the subtype was selected directly, the cycle should be reset so switching
                 // to the next subtype can iterate through all of the rest of the subtypes
                 resetSubtypeCycleOrder();
@@ -365,13 +355,11 @@ public class RichInputMethodManager {
             final int nextIndex = mCurrentSubtypeIndex + 1;
             if (nextIndex >= mSubtypes.size()) {
                 mCurrentSubtypeIndex = 0;
-                saveSubtypeIndexPref();
                 if (!notifyChangeOnCycle) {
                     return false;
                 }
             } else {
                 mCurrentSubtypeIndex = nextIndex;
-                saveSubtypeIndexPref();
             }
             notifySubtypeChanged();
             return true;

@@ -46,7 +46,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_HIDE_LANGUAGE_SWITCH_KEY = "pref_hide_language_switch_key";
     public static final String PREF_ENABLE_IME_SWITCH = "pref_enable_ime_switch";
     public static final String PREF_ENABLED_SUBTYPES = "pref_enabled_subtypes";
-    public static final String PREF_CURRENT_SUBTYPE_INDEX = "pref_current_subtype_index";
     public static final String PREF_VIBRATION_DURATION_SETTINGS = "pref_vibration_duration_settings";
     public static final String PREF_KEYPRESS_SOUND_VOLUME = "pref_keypress_sound_volume";
     public static final String PREF_KEY_LONGPRESS_TIMEOUT = "pref_key_longpress_timeout";
@@ -183,15 +182,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static void writePrefSubtypes(final SharedPreferences prefs, final String prefSubtypes) {
         prefs.edit().putString(PREF_ENABLED_SUBTYPES, prefSubtypes).apply();
-    }
-
-    public static int readPrefCurrentSubtypeIndex(final SharedPreferences prefs) {
-        return prefs.getInt(PREF_CURRENT_SUBTYPE_INDEX, 0);
-    }
-
-    public static void writePrefCurrentSubtypeIndex(final SharedPreferences prefs,
-                                                   final int index) {
-        prefs.edit().putInt(PREF_CURRENT_SUBTYPE_INDEX, index).apply();
     }
 
     public static float readKeypressSoundVolume(final SharedPreferences prefs,
