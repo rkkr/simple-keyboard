@@ -69,6 +69,10 @@ public class SettingsActivity extends PreferenceActivity {
         }
     }
 
+    /**
+     * Check if this IME is enabled in the system.
+     * @return whether this IME is enabled in the system.
+     */
     private boolean isInputMethodOfThisImeEnabled() {
         final InputMethodManager imm =
                 (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

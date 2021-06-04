@@ -92,35 +92,51 @@ public final class LocaleUtils {
         return locale.getLanguage() + "_" + locale.getCountry() + "_" + locale.getVariant();
     }
 
-    public static Locale findBestLocale(final Locale localeToFind, final Collection<Locale> collection) {
+    /**
+     * Get the closest matching locale. This searches by:
+     * 1. {@link Locale#equals(Object)}
+     * 2. Language, Country, and Variant match
+     * 3. Language and Country match
+     * 4. Language matches
+     * @param localeToMatch the locale to match.
+     * @param options a collection of locales to find the best match.
+     * @return the locale from the collection that is the best match for the specified locale or
+     * null if nothing matches.
+     */
+    public static Locale findBestLocale(final Locale localeToMatch,
+                                        final Collection<Locale> options) {
         // Find the best subtype based on a straightforward matching algorithm.
         // TODO: Use LocaleList#getFirstMatch() instead.
-        for (final Locale locale : collection) {
-            if (locale.equals(localeToFind)) {
+        for (final Locale locale : options) {
+            if (locale.equals(localeToMatch)) {
                 return locale;
             }
         }
-        for (final Locale locale : collection) {
-            if (locale.getLanguage().equals(localeToFind.getLanguage()) &&
-                    locale.getCountry().equals(localeToFind.getCountry()) &&
-                    locale.getVariant().equals(localeToFind.getVariant())) {
+        for (final Locale locale : options) {
+            if (locale.getLanguage().equals(localeToMatch.getLanguage()) &&
+                    locale.getCountry().equals(localeToMatch.getCountry()) &&
+                    locale.getVariant().equals(localeToMatch.getVariant())) {
                 return locale;
             }
         }
-        for (final Locale locale : collection) {
-            if (locale.getLanguage().equals(localeToFind.getLanguage()) &&
-                    locale.getCountry().equals(localeToFind.getCountry())) {
+        for (final Locale locale : options) {
+            if (locale.getLanguage().equals(localeToMatch.getLanguage()) &&
+                    locale.getCountry().equals(localeToMatch.getCountry())) {
                 return locale;
             }
         }
-        for (final Locale locale : collection) {
-            if (locale.getLanguage().equals(localeToFind.getLanguage())) {
+        for (final Locale locale : options) {
+            if (locale.getLanguage().equals(localeToMatch.getLanguage())) {
                 return locale;
             }
         }
         return null;
     }
 
+    /**
+     * Get the list of locales enabled in the system.
+     * @return the list of locales enabled in the system.
+     */
     public static List<Locale> getSystemLocales() {
         ArrayList<Locale> locales = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
