@@ -37,8 +37,6 @@ public final class SubtypeLocaleUtils {
         // This utility class is not publicly instantiable.
     }
 
-    private static final String LOCALE_ENGLISH_UNITED_STATES = "en_US";
-    private static final String LOCALE_ENGLISH_GREAT_BRITAIN = "en_GB";
     private static final String LOCALE_AFRIKAANS = "af";
     private static final String LOCALE_ARABIC = "ar";
     private static final String LOCALE_AZERBAIJANI_AZERBAIJAN = "az_AZ";
@@ -53,6 +51,8 @@ public final class SubtypeLocaleUtils {
     private static final String LOCALE_GERMAN_SWITZERLAND = "de_CH";
     private static final String LOCALE_GREEK = "el";
     private static final String LOCALE_ENGLISH_INDIA = "en_IN";
+    private static final String LOCALE_ENGLISH_GREAT_BRITAIN = "en_GB";
+    private static final String LOCALE_ENGLISH_UNITED_STATES = "en_US";
     private static final String LOCALE_ESPERANTO = "eo";
     private static final String LOCALE_SPANISH = "es";
     private static final String LOCALE_SPANISH_UNITED_STATES = "es_US";
@@ -204,42 +204,42 @@ public final class SubtypeLocaleUtils {
         return Arrays.asList(sSupportedLocales);
     }
 
-    private static final String LAYOUT_QWERTY = "qwerty";
-    private static final String LAYOUT_AZERTY = "azerty";
-    private static final String LAYOUT_QWERTZ = "qwertz";
-    private static final String LAYOUT_ARABIC = "arabic";
-    private static final String LAYOUT_ARMENIAN_PHONETIC = "armenian_phonetic";
-    private static final String LAYOUT_BENGALI = "bengali";
-    private static final String LAYOUT_BENGALI_AKKHOR = "bengali_akkhor";
-    private static final String LAYOUT_BULGARIAN = "bulgarian";
-    private static final String LAYOUT_BULGARIAN_BDS = "bulgarian_bds";
-    private static final String LAYOUT_EAST_SLAVIC = "east_slavic";
-    private static final String LAYOUT_FARSI = "farsi";
-    private static final String LAYOUT_GEORGIAN = "georgian";
-    private static final String LAYOUT_GREEK = "greek";
-    private static final String LAYOUT_HEBREW = "hebrew";
-    private static final String LAYOUT_HINDI = "hindi";
-    private static final String LAYOUT_HINDI_COMPACT = "hindi_compact";
-    private static final String LAYOUT_KANNADA = "kannada";
-    private static final String LAYOUT_KHMER = "khmer";
-    private static final String LAYOUT_LAO = "lao";
-    private static final String LAYOUT_MACEDONIAN = "macedonian";
-    private static final String LAYOUT_MALAYALAM = "malayalam";
-    private static final String LAYOUT_MARATHI = "marathi";
-    private static final String LAYOUT_MONGOLIAN = "mongolian";
-    private static final String LAYOUT_NEPALI_ROMANIZED = "nepali_romanized";
-    private static final String LAYOUT_NEPALI_TRADITIONAL = "nepali_traditional";
-    private static final String LAYOUT_NORDIC = "nordic";
-    private static final String LAYOUT_SERBIAN = "serbian";
-    private static final String LAYOUT_SERBIAN_QWERTZ = "serbian_qwertz";
-    private static final String LAYOUT_SPANISH = "spanish";
-    private static final String LAYOUT_SWISS = "swiss";
-    private static final String LAYOUT_TAMIL = "tamil";
-    private static final String LAYOUT_TELUGU = "telugu";
-    private static final String LAYOUT_THAI = "thai";
-    private static final String LAYOUT_TURKISH_F = "turkish_f";
-    private static final String LAYOUT_URDU = "urdu";
-    private static final String LAYOUT_UZBEK = "uzbek";
+    public static final String LAYOUT_ARABIC = "arabic";
+    public static final String LAYOUT_ARMENIAN_PHONETIC = "armenian_phonetic";
+    public static final String LAYOUT_AZERTY = "azerty";
+    public static final String LAYOUT_BENGALI = "bengali";
+    public static final String LAYOUT_BENGALI_AKKHOR = "bengali_akkhor";
+    public static final String LAYOUT_BULGARIAN = "bulgarian";
+    public static final String LAYOUT_BULGARIAN_BDS = "bulgarian_bds";
+    public static final String LAYOUT_EAST_SLAVIC = "east_slavic";
+    public static final String LAYOUT_FARSI = "farsi";
+    public static final String LAYOUT_GEORGIAN = "georgian";
+    public static final String LAYOUT_GREEK = "greek";
+    public static final String LAYOUT_HEBREW = "hebrew";
+    public static final String LAYOUT_HINDI = "hindi";
+    public static final String LAYOUT_HINDI_COMPACT = "hindi_compact";
+    public static final String LAYOUT_KANNADA = "kannada";
+    public static final String LAYOUT_KHMER = "khmer";
+    public static final String LAYOUT_LAO = "lao";
+    public static final String LAYOUT_MACEDONIAN = "macedonian";
+    public static final String LAYOUT_MALAYALAM = "malayalam";
+    public static final String LAYOUT_MARATHI = "marathi";
+    public static final String LAYOUT_MONGOLIAN = "mongolian";
+    public static final String LAYOUT_NEPALI_ROMANIZED = "nepali_romanized";
+    public static final String LAYOUT_NEPALI_TRADITIONAL = "nepali_traditional";
+    public static final String LAYOUT_NORDIC = "nordic";
+    public static final String LAYOUT_QWERTY = "qwerty";
+    public static final String LAYOUT_QWERTZ = "qwertz";
+    public static final String LAYOUT_SERBIAN = "serbian";
+    public static final String LAYOUT_SERBIAN_QWERTZ = "serbian_qwertz";
+    public static final String LAYOUT_SPANISH = "spanish";
+    public static final String LAYOUT_SWISS = "swiss";
+    public static final String LAYOUT_TAMIL = "tamil";
+    public static final String LAYOUT_TELUGU = "telugu";
+    public static final String LAYOUT_THAI = "thai";
+    public static final String LAYOUT_TURKISH_F = "turkish_f";
+    public static final String LAYOUT_URDU = "urdu";
+    public static final String LAYOUT_UZBEK = "uzbek";
 
     /**
      * Get a list of all of the supported subtypes for a locale.
@@ -258,7 +258,7 @@ public final class SubtypeLocaleUtils {
      * @return the default subtype for the specified locale or null if the locale isn't supported.
      */
     public static Subtype getDefaultSubtype(final String locale, final Resources resources) {
-        List<Subtype> subtypes = new SubtypeBuilder(locale, true, resources).getSubtypes();
+        final List<Subtype> subtypes = new SubtypeBuilder(locale, true, resources).getSubtypes();
         return subtypes.size() == 0 ? null : subtypes.get(0);
     }
 
@@ -271,7 +271,8 @@ public final class SubtypeLocaleUtils {
      */
     public static Subtype getSubtype(final String locale, final String layoutSet,
                                      final Resources resources) {
-        List<Subtype> subtypes = new SubtypeBuilder(locale, layoutSet, resources).getSubtypes();
+        final List<Subtype> subtypes =
+                new SubtypeBuilder(locale, layoutSet, resources).getSubtypes();
         return subtypes.size() == 0 ? null : subtypes.get(0);
     }
 
@@ -285,7 +286,9 @@ public final class SubtypeLocaleUtils {
         for (final String localeString : sSupportedLocales) {
             supportedLocales.add(LocaleUtils.constructLocaleFromString(localeString));
         }
+
         final List<Locale> systemLocales = LocaleUtils.getSystemLocales();
+
         final ArrayList<Subtype> subtypes = new ArrayList<>();
         final HashSet<Locale> addedLocales = new HashSet<>();
         for (final Locale systemLocale : systemLocales) {
@@ -297,6 +300,7 @@ public final class SubtypeLocaleUtils {
             }
         }
         if (subtypes.size() == 0) {
+            // there needs to be at least one default subtype
             subtypes.add(getSubtypes(LOCALE_ENGLISH_UNITED_STATES, resources).get(0));
         }
         return subtypes;
@@ -304,7 +308,7 @@ public final class SubtypeLocaleUtils {
 
     /**
      * Utility for building the supported subtype objects. {@link #getSubtypes} sets up the full
-     * list of available subtypes for a locale, but not all of the subtypes that it request always
+     * list of available subtypes for a locale, but not all of the subtypes that it requests always
      * get returned. The parameters passed in the constructor limit what subtypes are actually built
      * and returned. This allows for a central location for indicating what subtypes are available
      * for each locale without always needing to build them all.
@@ -331,7 +335,7 @@ public final class SubtypeLocaleUtils {
         }
 
         /**
-         * Builder for one or more subtypes with a specific locale.
+         * Builder for one or all subtypes with a specific locale.
          * @param locale the locale string for the subtype to build.
          * @param all true to get all of the subtypes for the locale or false for just the default.
          * @param resources the resources to use.
@@ -547,6 +551,8 @@ public final class SubtypeLocaleUtils {
             if (shouldSkipLayout(keyboardLayoutSet)) {
                 return;
             }
+
+            // if this is a generic layout, use that corresponding layout name
             final String[] predefinedLayouts =
                     mResources.getStringArray(R.array.predefined_layouts);
             final int predefinedLayoutIndex =
@@ -559,6 +565,7 @@ public final class SubtypeLocaleUtils {
             } else {
                 layoutNameStr = null;
             }
+
             mSubtypes.add(
                     new Subtype(mLocale, keyboardLayoutSet, layoutNameStr, false, mResources));
         }
@@ -596,9 +603,11 @@ public final class SubtypeLocaleUtils {
                 if (shouldSkipLayout(predefinedLayout)) {
                     continue;
                 }
+
                 boolean alreadyExists = false;
-                for (int j = 0; j < initialSize; j++) {
-                    if (mSubtypes.get(j).getKeyboardLayoutSet().equals(predefinedLayout)) {
+                for (int subtypeIndex = 0; subtypeIndex < initialSize; subtypeIndex++) {
+                    final String layoutSet = mSubtypes.get(subtypeIndex).getKeyboardLayoutSet();
+                    if (layoutSet.equals(predefinedLayout)) {
                         alreadyExists = true;
                         break;
                     }

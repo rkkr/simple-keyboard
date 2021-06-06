@@ -28,8 +28,6 @@ import rkr.simplekeyboard.inputmethod.latin.Subtype;
 public final class SubtypePreferenceUtils {
     private static final String TAG = SubtypePreferenceUtils.class.getSimpleName();
 
-    private static final Subtype[] EMPTY_SUBTYPE_ARRAY = new Subtype[0];
-
     private SubtypePreferenceUtils() {
         // This utility class is not publicly instantiable.
     }
@@ -37,7 +35,7 @@ public final class SubtypePreferenceUtils {
     private static final String LOCALE_AND_LAYOUT_SEPARATOR = ":";
     private static final int INDEX_OF_LOCALE = 0;
     private static final int INDEX_OF_KEYBOARD_LAYOUT = 1;
-    private static final int LENGTH_WITHOUT_EXTRA_VALUE = (INDEX_OF_KEYBOARD_LAYOUT + 1);
+    private static final int PREF_ELEMENTS_LENGTH = (INDEX_OF_KEYBOARD_LAYOUT + 1);
     private static final String PREF_SUBTYPE_SEPARATOR = ";";
 
     private static String getPrefString(final Subtype subtype) {
@@ -46,22 +44,22 @@ public final class SubtypePreferenceUtils {
         return localeString + LOCALE_AND_LAYOUT_SEPARATOR + keyboardLayoutSetName;
     }
 
-    public static Subtype[] createSubtypesFromPref(final String prefSubtypes,
+    public static List<Subtype> createSubtypesFromPref(final String prefSubtypes,
                                                    final Resources resources) {
         if (TextUtils.isEmpty(prefSubtypes)) {
-            return EMPTY_SUBTYPE_ARRAY;
+            return new ArrayList<>();
         }
         final String[] prefSubtypeArray = prefSubtypes.split(PREF_SUBTYPE_SEPARATOR);
         final ArrayList<Subtype> subtypesList = new ArrayList<>(prefSubtypeArray.length);
         for (final String prefSubtype : prefSubtypeArray) {
-            final String[] elems = prefSubtype.split(LOCALE_AND_LAYOUT_SEPARATOR);
-            if (elems.length != LENGTH_WITHOUT_EXTRA_VALUE) {
+            final String[] elements = prefSubtype.split(LOCALE_AND_LAYOUT_SEPARATOR);
+            if (elements.length != PREF_ELEMENTS_LENGTH) {
                 Log.w(TAG, "Unknown subtype specified: " + prefSubtype + " in "
                         + prefSubtypes);
                 continue;
             }
-            final String localeString = elems[INDEX_OF_LOCALE];
-            final String keyboardLayoutSetName = elems[INDEX_OF_KEYBOARD_LAYOUT];
+            final String localeString = elements[INDEX_OF_LOCALE];
+            final String keyboardLayoutSetName = elements[INDEX_OF_KEYBOARD_LAYOUT];
             final Subtype subtype =
                     SubtypeLocaleUtils.getSubtype(localeString, keyboardLayoutSetName, resources);
             if (subtype == null) {
@@ -69,7 +67,7 @@ public final class SubtypePreferenceUtils {
             }
             subtypesList.add(subtype);
         }
-        return subtypesList.toArray(new Subtype[subtypesList.size()]);
+        return subtypesList;
     }
 
     public static String createPrefSubtypes(final List<Subtype> subtypes) {

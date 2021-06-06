@@ -33,6 +33,7 @@ import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.RecapitalizeStatus;
+import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
 /**
  * This class manages the input logic.
@@ -437,25 +438,25 @@ public final class InputLogic {
 
     private boolean layoutUsesAutoCaps(final String layoutSetName) {
         switch (layoutSetName) {
-            case "arabic":
-            case "bengali":
-            case "bengali_akkhor":
-            case "farsi":
-            case "georgian":
-            case "hebrew":
-            case "hindi":
-            case "hindi_compact":
-            case "kannada":
-            case "khmer":
-            case "lao":
-            case "malayalam":
-            case "marathi":
-            case "nepali_romanized":
-            case "nepali_traditional":
-            case "tamil":
-            case "telugu":
-            case "thai":
-            case "urdu":
+            case SubtypeLocaleUtils.LAYOUT_ARABIC:
+            case SubtypeLocaleUtils.LAYOUT_BENGALI:
+            case SubtypeLocaleUtils.LAYOUT_BENGALI_AKKHOR:
+            case SubtypeLocaleUtils.LAYOUT_FARSI:
+            case SubtypeLocaleUtils.LAYOUT_GEORGIAN:
+            case SubtypeLocaleUtils.LAYOUT_HEBREW:
+            case SubtypeLocaleUtils.LAYOUT_HINDI:
+            case SubtypeLocaleUtils.LAYOUT_HINDI_COMPACT:
+            case SubtypeLocaleUtils.LAYOUT_KANNADA:
+            case SubtypeLocaleUtils.LAYOUT_KHMER:
+            case SubtypeLocaleUtils.LAYOUT_LAO:
+            case SubtypeLocaleUtils.LAYOUT_MALAYALAM:
+            case SubtypeLocaleUtils.LAYOUT_MARATHI:
+            case SubtypeLocaleUtils.LAYOUT_NEPALI_ROMANIZED:
+            case SubtypeLocaleUtils.LAYOUT_NEPALI_TRADITIONAL:
+            case SubtypeLocaleUtils.LAYOUT_TAMIL:
+            case SubtypeLocaleUtils.LAYOUT_TELUGU:
+            case SubtypeLocaleUtils.LAYOUT_THAI:
+            case SubtypeLocaleUtils.LAYOUT_URDU:
                 return false;
             default:
                 return true;

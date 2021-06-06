@@ -44,8 +44,6 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
 
     private RichInputMethodManager mRichImm;
 
-    private final List<SubtypePreference> mSubtypePrefs = new ArrayList<>();
-
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
@@ -68,20 +66,6 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         super.onActivityCreated(savedInstanceState);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        final Set<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
-        for (final SubtypePreference pref : mSubtypePrefs) {
-            pref.setChecked(enabledSubtypes.contains(pref.getSubtype()));
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
     /**
      * Build the preferences and them to this settings screen.
      * @param locale the locale string of the locale to display content for.
@@ -92,47 +76,48 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
             return;
         }
         final PreferenceGroup group = getPreferenceScreen();
-        final String title = context.getString(R.string.generic_language_layouts,
-                LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(locale));
-        group.setTitle(title);
         group.removeAll();
 
         final PreferenceCategory mainCategory = new PreferenceCategory(context);
-        mainCategory.setTitle(title);
+        final String localeName = LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(locale);
+        mainCategory.setTitle(context.getString(R.string.generic_language_layouts, localeName));
         group.addPreference(mainCategory);
 
         buildSubtypePreferences(locale, group, context);
     }
 
     /**
-     * Build the subtype preferences for a locale and them to the settings screen.
+     * Build preferences for all of the available subtypes for a locale and them to the settings
+     * screen.
      * @param locale the locale string of the locale to add subtypes for.
      * @param group the preference group to add preferences to.
      * @param context the context for this application.
      */
     private void buildSubtypePreferences(final String locale, final PreferenceGroup group,
                                          final Context context) {
+        final Set<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
         final List<Subtype> subtypes =
                 SubtypeLocaleUtils.getSubtypes(locale, context.getResources());
         for (final Subtype subtype : subtypes) {
-            final SubtypePreference pref = createSubtypePreference(subtype, context);
+            final boolean isEnabled = enabledSubtypes.contains(subtype);
+            final SubtypePreference pref = createSubtypePreference(subtype, isEnabled, context);
             group.addPreference(pref);
-            mSubtypePrefs.add(pref);
         }
     }
 
     /**
      * Create a preference for a keyboard layout subtype.
      * @param subtype the subtype that the preference enables.
+     * @param checked whether the preference should be initially checked.
      * @param context the context for this application.
      * @return the preference that was created.
      */
     private SubtypePreference createSubtypePreference(final Subtype subtype,
+                                                      final boolean checked,
                                                       final Context context) {
         final SubtypePreference pref = new SubtypePreference(context, subtype);
         pref.setTitle(subtype.getLayoutDisplayName());
-        pref.setChecked(false);
-        pref.setEnabled(true);
+        pref.setChecked(checked);
 
         pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override

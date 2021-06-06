@@ -46,8 +46,6 @@
     <!-- Description for option to enable auto capitalization of sentences -->
     <string name="auto_cap_summary">Capitalize the first word of each sentence</string>
 
-    <!-- Title for input language selection screen -->
-
     <!-- Preference for input language selection -->
     <string name="select_language">Languages</string>
 

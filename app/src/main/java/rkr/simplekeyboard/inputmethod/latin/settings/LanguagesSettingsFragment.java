@@ -90,20 +90,9 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
         buildContent();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        // The enabled languages might change before coming back, so they will need to update. The
-        // user can just press the add button again.
-        if (mAlertDialog != null) {
-            mAlertDialog.dismiss();
-            mAlertDialog = null;
-        }
     }
 
     @Override
@@ -151,7 +140,7 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     public boolean onOptionsItemSelected(final MenuItem item) {
         final int itemId = item.getItemId();
         if (itemId == R.id.action_add_language) {
-            showLanguagePopup();
+            showAddLanguagePopup();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -163,26 +152,13 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
         final Context context = getActivity();
         final PreferenceGroup group = getPreferenceScreen();
         group.removeAll();
-        group.setTitle(R.string.select_language);
 
         final PreferenceCategory languageCategory = new PreferenceCategory(context);
         languageCategory.setTitle(R.string.user_languages);
         group.addPreference(languageCategory);
 
-        setUpLanguages(group, context);
-    }
-
-    /**
-     * Add a preference for each of the used languages (enabled in the system or created additional
-     * layouts that haven't been enabled in the system yet), and build the list of unused languages.
-     * @param group the preference group to add preferences to.
-     * @param context the context for this application.
-     */
-    private void setUpLanguages(final PreferenceGroup group, final Context context) {
-        final Set<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
-
         final Comparator<Locale> comparator = new LocaleUtils.LocaleComparator();
-
+        final Set<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
         final SortedSet<Locale> usedLocales = getUsedLocales(enabledSubtypes, comparator);
         final SortedSet<Locale> unusedLocales = getUnusedLocales(usedLocales, comparator);
 
@@ -191,10 +167,7 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     }
 
     /**
-     * Get all of the languages that are use by the user. This is defined as the locale for any
-     * default subtype that has been enabled in the system or any additional subtype that has been
-     * selected (extra keyboard layout checked in the language specific setting screen), regardless
-     * of whether it has been enabled in the system.
+     * Get all of the unique languages from the subtypes that have been enabled.
      * @param subtypes the list of subtypes for this IME that have been enabled.
      * @param comparator the comparator to sort the languages.
      * @return a set of locales for the used languages sorted using the specified comparator.
@@ -272,7 +245,7 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     /**
      * Show the popup to add a new language.
      */
-    private void showLanguagePopup() {
+    private void showAddLanguagePopup() {
         final boolean[] checkedItems = new boolean[mUnusedLocaleNames.length];
         mAlertDialog = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.add_language)
@@ -289,6 +262,7 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
                         }
                         for (final boolean itemChecked : checkedItems) {
                             if (itemChecked) {
+                                // button should already be enabled - nothing to do
                                 return;
                             }
                         }
@@ -333,11 +307,11 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
      * Open a language specific settings screen.
      * @param locale the locale for the setting screen to open.
      */
-    private void openSingleLanguageSettings(String locale) {
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        Fragment fragment = new SingleLanguageSettingsFragment();
-        Bundle extras = new Bundle();
+    private void openSingleLanguageSettings(final String locale) {
+        final FragmentManager fragmentManager = getFragmentManager();
+        final FragmentTransaction transaction = fragmentManager.beginTransaction();
+        final Fragment fragment = new SingleLanguageSettingsFragment();
+        final Bundle extras = new Bundle();
         extras.putString(LOCALE_BUNDLE_KEY, locale);
         fragment.setArguments(extras);
         transaction.replace(mContainer.getId(), fragment);

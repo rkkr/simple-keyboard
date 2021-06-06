@@ -90,7 +90,6 @@ public class RichInputMethodManager {
         }
         mImmService = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        // Initialize additional subtypes.
         LocaleResourceUtils.init(context);
 
         // Initialize the virtual subtypes
@@ -139,12 +138,12 @@ public class RichInputMethodManager {
             mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(context);
 
             final String prefSubtypes = Settings.readPrefSubtypes(mPrefs);
-            final Subtype[] subtypes = SubtypePreferenceUtils.createSubtypesFromPref(prefSubtypes,
-                    context.getResources());
-            if (subtypes == null || subtypes.length < 1) {
+            final List<Subtype> subtypes = SubtypePreferenceUtils.createSubtypesFromPref(
+                    prefSubtypes, context.getResources());
+            if (subtypes == null || subtypes.size() < 1) {
                 mSubtypes = SubtypeLocaleUtils.getDefaultSubtypes(context.getResources());
             } else {
-                mSubtypes = new ArrayList<>(Arrays.asList(subtypes));
+                mSubtypes = subtypes;
             }
             mCurrentSubtypeIndex = 0;
         }
@@ -160,7 +159,7 @@ public class RichInputMethodManager {
         /**
          * Call the subtype changed handler to indicate that the virtual subtype has changed.
          */
-        private void notifySubtypeChanged() {
+        public void notifySubtypeChanged() {
             if (mSubtypeChangedListener != null) {
                 mSubtypeChangedListener.onCurrentSubtypeChanged();
             }
@@ -169,7 +168,7 @@ public class RichInputMethodManager {
         /**
          * Get all of the enabled subtypes.
          * @param sortForDisplay whether the subtypes should be sorted alphabetically by the display
-         *                      name.
+         *                      name as opposed to having no particular order.
          * @return the enabled subtypes.
          */
         public synchronized Set<Subtype> getAll(final boolean sortForDisplay) {
@@ -217,11 +216,13 @@ public class RichInputMethodManager {
         /**
          * Add a subtype to the list.
          * @param subtype the subtype to add.
-         * @return whether the subtype was added to the list.
+         * @return whether the subtype was added to the list (or already existed in the list).
          */
         public synchronized boolean addSubtype(final Subtype subtype) {
             if (mSubtypes.contains(subtype)) {
-                return false;
+                // don't allow duplicates, but since it's already in the list this can be considered
+                // successful
+                return true;
             }
             if (!mSubtypes.add(subtype)) {
                 return false;
@@ -237,6 +238,7 @@ public class RichInputMethodManager {
          */
         public synchronized boolean removeSubtype(final Subtype subtype) {
             if (mSubtypes.size() == 1) {
+                // there needs to be at least one subtype
                 return false;
             }
 
@@ -252,6 +254,8 @@ public class RichInputMethodManager {
                 subtypeChanged = true;
             } else {
                 if (mCurrentSubtypeIndex > index) {
+                    // make sure the current subtype is still pointed to when the other subtype is
+                    // removed
                     mCurrentSubtypeIndex--;
                 }
                 subtypeChanged = false;
@@ -313,6 +317,7 @@ public class RichInputMethodManager {
             }
             final Locale bestLocale = LocaleUtils.findBestLocale(locale, enabledLocales);
             if (bestLocale != null) {
+                // get the first subtype (most recently used) with a matching locale
                 for (int i = 0; i < mSubtypes.size(); i++) {
                     final Subtype subtype = mSubtypes.get(i);
                     if (bestLocale.equals(subtype.getLocaleObject())) {
@@ -365,6 +370,10 @@ public class RichInputMethodManager {
             return true;
         }
 
+        /**
+         * Get the subtype that is currently in use (or will be once the keyboard is opened).
+         * @return the current subtype.
+         */
         public synchronized Subtype getCurrentSubtype() {
             return mSubtypes.get(mCurrentSubtypeIndex);
         }
@@ -373,7 +382,7 @@ public class RichInputMethodManager {
     /**
      * Get all of the enabled subtypes.
      * @param sortForDisplay whether the subtypes should be sorted alphabetically by the display
-     *                      name.
+     *                      name as opposed to having no particular order.
      * @return the enabled subtypes.
      */
     public Set<Subtype> getEnabledSubtypes(final boolean sortForDisplay) {
@@ -452,7 +461,17 @@ public class RichInputMethodManager {
             return true;
         }
         // switch to a different IME
-        return mImmService.switchToNextInputMethod(token, false);
+        if (mImmService.switchToNextInputMethod(token, false)) {
+            return true;
+        }
+        if (hasMultipleEnabledSubtypes()) {
+            // the virtual subtype should have been reset to the first item to prepare for switching
+            // back to this IME, but we skipped notifying the change because we expected to switch
+            // to a different IME, but since that failed, we just need to notify the listener
+            mSubtypeList.notifySubtypeChanged();
+            return true;
+        }
+        return false;
     }
 
     /**
