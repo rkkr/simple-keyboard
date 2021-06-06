@@ -114,7 +114,8 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mKeyboardLayoutSet = builder.build();
         try {
             mState.onLoadKeyboard(currentAutoCapsState, currentRecapitalizeState);
-            mKeyboardTextsSet.setLocale(mRichImm.getCurrentSubtypeLocale(), mThemeContext);
+            mKeyboardTextsSet.setLocale(mRichImm.getCurrentSubtype().getLocaleObject(),
+                    mThemeContext);
         } catch (KeyboardLayoutSetException e) {
             Log.w(TAG, "loading keyboard failed: " + e.mKeyboardId, e.getCause());
         }

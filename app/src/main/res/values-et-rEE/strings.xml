@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Sisestusvalikud"</string>
     <string name="vibrate_on_keypress">"Vibreeri klahvivajutusel"</string>
     <string name="sound_on_keypress">"Heli klahvivajutusel"</string>
     <string name="popup_on_keypress">"Klahvivajutusel kuva hüpik"</string>
     <string name="settings_screen_preferences">"Eelistused"</string>
-    <string name="settings_screen_appearance">"Välimus ja paigutused"</string>
     <string name="settings_screen_theme">"Teema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Süsteemi vaikeväärt."</string>
     <string name="auto_cap">"Automaatne suurtähtede kasutamine"</string>
     <string name="auto_cap_summary">"Iga lause esimese sõna kirjutamine suure algustähega"</string>
-    <string name="language_selection_title">"Keeled"</string>
     <string name="select_language">"Keeled"</string>
-    <string name="subtype_en_GB">"Inglise (UK)"</string>
-    <string name="subtype_en_US">"Inglise (USA)"</string>
-    <string name="subtype_es_US">"hispaania (USA)"</string>
-    <string name="subtype_hi_ZZ">"Hindi-inglise"</string>
-    <string name="subtype_sr_ZZ">"Serbia (ladina)"</string>
-    <string name="subtype_with_layout_en_GB">"Inglise (Ühendk.) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"Inglise (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"Hispaania (USA) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Hindi-inglise (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"Serbia (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditsiooniline)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktne)"</string>
-    <string name="custom_input_styles_title">"Kohandage sisendlaadid"</string>
-    <string name="add_style">"Lisage laad"</string>
+    <string name="locale_name_en_GB">"Inglise (UK)"</string>
+    <string name="locale_name_en_US">"Inglise (USA)"</string>
+    <string name="locale_name_es_US">"hispaania (USA)"</string>
+    <string name="locale_name_hi_ZZ">"Hindi-inglise"</string>
+    <string name="locale_name_sr_ZZ">"Serbia (ladina)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"traditsiooniline"</string>
+    <string name="subtype_compact">"kompaktne"</string>
     <string name="add">"Lisa"</string>
-    <string name="remove">"Eemalda"</string>
-    <string name="save">"Salvesta"</string>
-    <string name="subtype_locale">"Keel"</string>
-    <string name="keyboard_layout_set">"Paigutus"</string>
-    <string name="custom_input_style_note_message">"Kohandatud sisendi laad tuleb enne kasutamist lubada. Lubada?"</string>
-    <string name="enable">"Luba"</string>
-    <string name="not_now">"Mitte kohe"</string>
-    <string name="custom_input_style_already_exists">"Sama sisendstiil on juba olemas: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Klahvivajutuse vibreerimise kestus"</string>
     <string name="prefs_keypress_sound_volume_settings">"Klahvivajutuse helitugevus"</string>
     <string name="prefs_key_longpress_timeout_settings">"Pika klahvivajutuse viide"</string>

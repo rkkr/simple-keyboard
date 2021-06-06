@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Syöttövalinnat"</string>
     <string name="vibrate_on_keypress">"Käytä värinää näppäimiä painettaessa"</string>
     <string name="sound_on_keypress">"Toista ääni näppäimiä painettaessa"</string>
     <string name="popup_on_keypress">"Ponnahdusikkuna painalluksella"</string>
     <string name="settings_screen_preferences">"Asetukset"</string>
-    <string name="settings_screen_appearance">"Ulkoasu ja asettelut"</string>
     <string name="settings_screen_theme">"Teema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Järjestelmän oletusarvo"</string>
     <string name="auto_cap">"Automaattiset isot kirjaimet"</string>
     <string name="auto_cap_summary">"Kirjoita jokaisen lauseen ensimmäinen sana isolla alkukirjaimella."</string>
-    <string name="language_selection_title">"Kielet"</string>
     <string name="select_language">"Kielet"</string>
-    <string name="subtype_en_GB">"englanti (Iso-Britannia)"</string>
-    <string name="subtype_en_US">"englanti (Yhdysvallat)"</string>
-    <string name="subtype_es_US">"espanja (Yhdysvallat)"</string>
-    <string name="subtype_hi_ZZ">"Hindienglanti"</string>
-    <string name="subtype_sr_ZZ">"serbialainen (latinal.)"</string>
-    <string name="subtype_with_layout_en_GB">"englanti (UK) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"englanti (US) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"espanja (US) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Hindienglanti (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"serbialainen (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (perinteinen)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tiivis)"</string>
-    <string name="custom_input_styles_title">"Muokatut syöttötyylit"</string>
-    <string name="add_style">"Lisää tyyli"</string>
+    <string name="locale_name_en_GB">"englanti (Iso-Britannia)"</string>
+    <string name="locale_name_en_US">"englanti (Yhdysvallat)"</string>
+    <string name="locale_name_es_US">"espanja (Yhdysvallat)"</string>
+    <string name="locale_name_hi_ZZ">"Hindienglanti"</string>
+    <string name="locale_name_sr_ZZ">"serbialainen (latinal.)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"perinteinen"</string>
+    <string name="subtype_compact">"tiivis"</string>
     <string name="add">"Lisää"</string>
-    <string name="remove">"Poista"</string>
-    <string name="save">"Tallenna"</string>
-    <string name="subtype_locale">"Kieli"</string>
-    <string name="keyboard_layout_set">"Asettelu"</string>
-    <string name="custom_input_style_note_message">"Muokattua syöttötyyliä ei ole otettu käyttöön. Haluatko ottaa sen käyttöön nyt?"</string>
-    <string name="enable">"Ota käyttöön"</string>
-    <string name="not_now">"Ei nyt"</string>
-    <string name="custom_input_style_already_exists">"Syöttötyyli on jo olemassa: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Painalluksen värinän kesto"</string>
     <string name="prefs_keypress_sound_volume_settings">"Näppäinpainalluksen äänenvoimakkuus"</string>
     <string name="prefs_key_longpress_timeout_settings">"Pitkän painalluksen viive"</string>

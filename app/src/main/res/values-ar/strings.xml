@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"خيارات الإرسال"</string>
     <string name="vibrate_on_keypress">"اهتزاز عند ضغط مفتاح"</string>
     <string name="sound_on_keypress">"صوت عند الضغط على مفتاح"</string>
     <string name="popup_on_keypress">"انبثاق عند ضغط مفتاح"</string>
     <string name="settings_screen_preferences">"التفضيلات"</string>
-    <string name="settings_screen_appearance">"المظهر والتنسيقات"</string>
     <string name="settings_screen_theme">"المظهر"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> مللي ثانية"</string>
     <string name="settings_system_default">"الإعداد الافتراضي للنظام"</string>
     <string name="auto_cap">"أحرف كبيرة تلقائيًا"</string>
     <string name="auto_cap_summary">"كتابة الحرف الأول من كل جملة بحرف كبير."</string>
-    <string name="language_selection_title">"اللغات"</string>
     <string name="select_language">"اللغات"</string>
-    <string name="subtype_en_GB">"الإنجليزية (المملكة المتحدة)"</string>
-    <string name="subtype_en_US">"الإنجليزية (الولايات المتحدة)"</string>
-    <string name="subtype_es_US">"الإسبانية (الأميركية)"</string>
-    <string name="subtype_hi_ZZ">"هنجليزية"</string>
-    <string name="subtype_sr_ZZ">"الصربية (اللاتينية)"</string>
-    <string name="subtype_with_layout_en_GB">"الإنجليزية (المملكة المتحدة) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"الإنجليزية (الولايات المتحدة) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"الإسبانية (الولايات المتحدة) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"هنجليزية (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"الصربية (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (التقليدية)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (مكثفة)"</string>
-    <string name="custom_input_styles_title">"أنماط الإدخال المخصصة"</string>
-    <string name="add_style">"إضافة نمط"</string>
+    <string name="locale_name_en_GB">"الإنجليزية (المملكة المتحدة)"</string>
+    <string name="locale_name_en_US">"الإنجليزية (الولايات المتحدة)"</string>
+    <string name="locale_name_es_US">"الإسبانية (الأميركية)"</string>
+    <string name="locale_name_hi_ZZ">"هنجليزية"</string>
+    <string name="locale_name_sr_ZZ">"الصربية (اللاتينية)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"التقليدية"</string>
+    <string name="subtype_compact">"مكثفة"</string>
     <string name="add">"إضافة"</string>
-    <string name="remove">"إزالة"</string>
-    <string name="save">"حفظ"</string>
-    <string name="subtype_locale">"اللغة"</string>
-    <string name="keyboard_layout_set">"التخطيط"</string>
-    <string name="custom_input_style_note_message">"يجب تمكين نمط الإدخال المخصص قبل استخدامه. هل تريد تمكينه الآن؟"</string>
-    <string name="enable">"تمكين"</string>
-    <string name="not_now">"ليس الآن"</string>
-    <string name="custom_input_style_already_exists">"نمط الإدخال ذاته موجود من قبل: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"مدة اهتزاز الضغط على المفاتيح"</string>
     <string name="prefs_keypress_sound_volume_settings">"مستوى صوت الضغط على المفاتيح"</string>
     <string name="prefs_key_longpress_timeout_settings">"تأخير الضغط الطويل للمفاتيح"</string>

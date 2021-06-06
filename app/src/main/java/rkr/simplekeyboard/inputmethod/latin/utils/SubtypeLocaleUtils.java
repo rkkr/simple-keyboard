@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2014 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,287 +16,609 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
-import android.content.Context;
 import android.content.res.Resources;
-import android.util.Log;
-import android.view.inputmethod.InputMethodSubtype;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME;
 
 /**
- * A helper class to deal with subtype locales.
-  */
-// TODO: consolidate this into RichInputMethodSubtype
+ * Utility methods for building subtypes for the supported locales.
+ */
 public final class SubtypeLocaleUtils {
-    static final String TAG = SubtypeLocaleUtils.class.getSimpleName();
-
-    // This reference class {@link R} must be located in the same package as LatinIME.java.
-    private static final String RESOURCE_PACKAGE_NAME = R.class.getPackage().getName();
-
-    public static final String QWERTY = "qwerty";
-    public static final int UNKNOWN_KEYBOARD_LAYOUT = R.string.subtype_generic;
-
-    private static volatile boolean sInitialized = false;
-    private static final Object sInitializeLock = new Object();
-    private static Resources sResources;
-    // Keyboard layout to its display name map.
-    private static final HashMap<String, String> sKeyboardLayoutToDisplayNameMap = new HashMap<>();
-    // Keyboard layout to subtype name resource id map.
-    private static final HashMap<String, Integer> sKeyboardLayoutToNameIdsMap = new HashMap<>();
-    // Exceptional locale whose name should be displayed in Locale.ROOT.
-    private static final HashMap<String, Integer> sExceptionalLocaleDisplayedInRootLocale =
-            new HashMap<>();
-    // Exceptional locale to subtype name resource id map.
-    private static final HashMap<String, Integer> sExceptionalLocaleToNameIdsMap = new HashMap<>();
-    // Exceptional locale to subtype name with layout resource id map.
-    private static final HashMap<String, Integer> sExceptionalLocaleToWithLayoutNameIdsMap =
-            new HashMap<>();
-    private static final String SUBTYPE_NAME_RESOURCE_PREFIX =
-            "string/subtype_";
-    private static final String SUBTYPE_NAME_RESOURCE_GENERIC_PREFIX =
-            "string/subtype_generic_";
-    private static final String SUBTYPE_NAME_RESOURCE_WITH_LAYOUT_PREFIX =
-            "string/subtype_with_layout_";
-    private static final String SUBTYPE_NAME_RESOURCE_IN_ROOT_LOCALE_PREFIX =
-            "string/subtype_in_root_locale_";
-    // Keyboard layout set name for the subtypes that don't have a keyboardLayoutSet extra value.
-    // This is for compatibility to keep the same subtype ids as pre-JellyBean.
-    private static final HashMap<String, String> sLocaleAndExtraValueToKeyboardLayoutSetMap =
-            new HashMap<>();
 
     private SubtypeLocaleUtils() {
-        // Intentional empty constructor for utility class.
+        // This utility class is not publicly instantiable.
     }
 
-    // Note that this initialization method can be called multiple times.
-    public static void init(final Context context) {
-        synchronized (sInitializeLock) {
-            if (sInitialized == false) {
-                initLocked(context);
-                sInitialized = true;
+    private static final String LOCALE_AFRIKAANS = "af";
+    private static final String LOCALE_ARABIC = "ar";
+    private static final String LOCALE_AZERBAIJANI_AZERBAIJAN = "az_AZ";
+    private static final String LOCALE_BELARUSIAN_BELARUS = "be_BY";
+    private static final String LOCALE_BULGARIAN = "bg";
+    private static final String LOCALE_BENGALI_BANGLADESH = "bn_BD";
+    private static final String LOCALE_BENGALI_INDIA = "bn_IN";
+    private static final String LOCALE_CATALAN = "ca";
+    private static final String LOCALE_CZECH = "cs";
+    private static final String LOCALE_DANISH = "da";
+    private static final String LOCALE_GERMAN = "de";
+    private static final String LOCALE_GERMAN_SWITZERLAND = "de_CH";
+    private static final String LOCALE_GREEK = "el";
+    private static final String LOCALE_ENGLISH_INDIA = "en_IN";
+    private static final String LOCALE_ENGLISH_GREAT_BRITAIN = "en_GB";
+    private static final String LOCALE_ENGLISH_UNITED_STATES = "en_US";
+    private static final String LOCALE_ESPERANTO = "eo";
+    private static final String LOCALE_SPANISH = "es";
+    private static final String LOCALE_SPANISH_UNITED_STATES = "es_US";
+    private static final String LOCALE_SPANISH_LATIN_AMERICA = "es_419";
+    private static final String LOCALE_ESTONIAN_ESTONIA = "et_EE";
+    private static final String LOCALE_BASQUE_SPAIN = "eu_ES";
+    private static final String LOCALE_PERSIAN = "fa";
+    private static final String LOCALE_FINNISH = "fi";
+    private static final String LOCALE_FRENCH = "fr";
+    private static final String LOCALE_FRENCH_CANADA = "fr_CA";
+    private static final String LOCALE_FRENCH_SWITZERLAND = "fr_CH";
+    private static final String LOCALE_GALICIAN_SPAIN = "gl_ES";
+    private static final String LOCALE_HINDI = "hi";
+    private static final String LOCALE_CROATIAN = "hr";
+    private static final String LOCALE_HUNGARIAN = "hu";
+    private static final String LOCALE_ARMENIAN_ARMENIA = "hy_AM";
+    // Java uses the deprecated "in" code instead of the standard "id" code for Indonesian.
+    private static final String LOCALE_INDONESIAN = "in";
+    private static final String LOCALE_ICELANDIC = "is";
+    private static final String LOCALE_ITALIAN = "it";
+    private static final String LOCALE_ITALIAN_SWITZERLAND = "it_CH";
+    // Java uses the deprecated "iw" code instead of the standard "he" code for Hebrew.
+    private static final String LOCALE_HEBREW = "iw";
+    private static final String LOCALE_GEORGIAN_GEORGIA = "ka_GE";
+    private static final String LOCALE_KAZAKH = "kk";
+    private static final String LOCALE_KHMER_CAMBODIA = "km_KH";
+    private static final String LOCALE_KANNADA_INDIA = "kn_IN";
+    private static final String LOCALE_KYRGYZ = "ky";
+    private static final String LOCALE_LAO_LAOS = "lo_LA";
+    private static final String LOCALE_LITHUANIAN = "lt";
+    private static final String LOCALE_LATVIAN = "lv";
+    private static final String LOCALE_MACEDONIAN = "mk";
+    private static final String LOCALE_MALAYALAM_INDIA = "ml_IN";
+    private static final String LOCALE_MONGOLIAN_MONGOLIA = "mn_MN";
+    private static final String LOCALE_MARATHI_INDIA = "mr_IN";
+    private static final String LOCALE_MALAY_MALAYSIA = "ms_MY";
+    private static final String LOCALE_NORWEGIAN_BOKMAL = "nb"; // Norwegian Bokmål
+    private static final String LOCALE_NEPALI_NEPAL = "ne_NP";
+    private static final String LOCALE_DUTCH = "nl";
+    private static final String LOCALE_DUTCH_BELGIUM = "nl_BE";
+    private static final String LOCALE_POLISH = "pl";
+    private static final String LOCALE_PORTUGUESE_BRAZIL = "pt_BR";
+    private static final String LOCALE_PORTUGUESE_PORTUGAL = "pt_PT";
+    private static final String LOCALE_ROMANIAN = "ro";
+    private static final String LOCALE_RUSSIAN = "ru";
+    private static final String LOCALE_SLOVAK = "sk";
+    private static final String LOCALE_SLOVENIAN = "sl";
+    private static final String LOCALE_SERBIAN = "sr";
+    private static final String LOCALE_SERBIAN_LATIN = "sr_ZZ";
+    private static final String LOCALE_SWEDISH = "sv";
+    private static final String LOCALE_SWAHILI = "sw";
+    private static final String LOCALE_TAMIL_INDIA = "ta_IN";
+    private static final String LOCALE_TAMIL_SINGAPORE = "ta_SG";
+    private static final String LOCALE_TELUGU_INDIA = "te_IN";
+    private static final String LOCALE_THAI = "th";
+    private static final String LOCALE_TAGALOG = "tl";
+    private static final String LOCALE_TURKISH = "tr";
+    private static final String LOCALE_UKRAINIAN = "uk";
+    private static final String LOCALE_URDU = "ur";
+    private static final String LOCALE_UZBEK_UZBEKISTAN = "uz_UZ";
+    private static final String LOCALE_VIETNAMESE = "vi";
+    private static final String LOCALE_ZULU = "zu";
+
+    private static final String[] sSupportedLocales = new String[] {
+            LOCALE_ENGLISH_UNITED_STATES,
+            LOCALE_ENGLISH_GREAT_BRITAIN,
+            LOCALE_AFRIKAANS,
+            LOCALE_ARABIC,
+            LOCALE_AZERBAIJANI_AZERBAIJAN,
+            LOCALE_BELARUSIAN_BELARUS,
+            LOCALE_BULGARIAN,
+            LOCALE_BENGALI_BANGLADESH,
+            LOCALE_BENGALI_INDIA,
+            LOCALE_CATALAN,
+            LOCALE_CZECH,
+            LOCALE_DANISH,
+            LOCALE_GERMAN,
+            LOCALE_GERMAN_SWITZERLAND,
+            LOCALE_GREEK,
+            LOCALE_ENGLISH_INDIA,
+            LOCALE_ESPERANTO,
+            LOCALE_SPANISH,
+            LOCALE_SPANISH_UNITED_STATES,
+            LOCALE_SPANISH_LATIN_AMERICA,
+            LOCALE_ESTONIAN_ESTONIA,
+            LOCALE_BASQUE_SPAIN,
+            LOCALE_PERSIAN,
+            LOCALE_FINNISH,
+            LOCALE_FRENCH,
+            LOCALE_FRENCH_CANADA,
+            LOCALE_FRENCH_SWITZERLAND,
+            LOCALE_GALICIAN_SPAIN,
+            LOCALE_HINDI,
+            LOCALE_CROATIAN,
+            LOCALE_HUNGARIAN,
+            LOCALE_ARMENIAN_ARMENIA,
+            LOCALE_INDONESIAN,
+            LOCALE_ICELANDIC,
+            LOCALE_ITALIAN,
+            LOCALE_ITALIAN_SWITZERLAND,
+            LOCALE_HEBREW,
+            LOCALE_GEORGIAN_GEORGIA,
+            LOCALE_KAZAKH,
+            LOCALE_KHMER_CAMBODIA,
+            LOCALE_KANNADA_INDIA,
+            LOCALE_KYRGYZ,
+            LOCALE_LAO_LAOS,
+            LOCALE_LITHUANIAN,
+            LOCALE_LATVIAN,
+            LOCALE_MACEDONIAN,
+            LOCALE_MALAYALAM_INDIA,
+            LOCALE_MONGOLIAN_MONGOLIA,
+            LOCALE_MARATHI_INDIA,
+            LOCALE_MALAY_MALAYSIA,
+            LOCALE_NORWEGIAN_BOKMAL,
+            LOCALE_NEPALI_NEPAL,
+            LOCALE_DUTCH,
+            LOCALE_DUTCH_BELGIUM,
+            LOCALE_POLISH,
+            LOCALE_PORTUGUESE_BRAZIL,
+            LOCALE_PORTUGUESE_PORTUGAL,
+            LOCALE_ROMANIAN,
+            LOCALE_RUSSIAN,
+            LOCALE_SLOVAK,
+            LOCALE_SLOVENIAN,
+            LOCALE_SERBIAN,
+            LOCALE_SERBIAN_LATIN,
+            LOCALE_SWEDISH,
+            LOCALE_SWAHILI,
+            LOCALE_TAMIL_INDIA,
+            LOCALE_TAMIL_SINGAPORE,
+            LOCALE_TELUGU_INDIA,
+            LOCALE_THAI,
+            LOCALE_TAGALOG,
+            LOCALE_TURKISH,
+            LOCALE_UKRAINIAN,
+            LOCALE_URDU,
+            LOCALE_UZBEK_UZBEKISTAN,
+            LOCALE_VIETNAMESE,
+            LOCALE_ZULU
+    };
+
+    /**
+     * Get a list of all of the currently supported subtype locales.
+     * @return a list of subtype strings in the format of "ll_cc_variant" where "ll" is a language
+     * code, "cc" is a country code.
+     */
+    public static List<String> getSupportedLocales() {
+        return Arrays.asList(sSupportedLocales);
+    }
+
+    public static final String LAYOUT_ARABIC = "arabic";
+    public static final String LAYOUT_ARMENIAN_PHONETIC = "armenian_phonetic";
+    public static final String LAYOUT_AZERTY = "azerty";
+    public static final String LAYOUT_BENGALI = "bengali";
+    public static final String LAYOUT_BENGALI_AKKHOR = "bengali_akkhor";
+    public static final String LAYOUT_BULGARIAN = "bulgarian";
+    public static final String LAYOUT_BULGARIAN_BDS = "bulgarian_bds";
+    public static final String LAYOUT_EAST_SLAVIC = "east_slavic";
+    public static final String LAYOUT_FARSI = "farsi";
+    public static final String LAYOUT_GEORGIAN = "georgian";
+    public static final String LAYOUT_GREEK = "greek";
+    public static final String LAYOUT_HEBREW = "hebrew";
+    public static final String LAYOUT_HINDI = "hindi";
+    public static final String LAYOUT_HINDI_COMPACT = "hindi_compact";
+    public static final String LAYOUT_KANNADA = "kannada";
+    public static final String LAYOUT_KHMER = "khmer";
+    public static final String LAYOUT_LAO = "lao";
+    public static final String LAYOUT_MACEDONIAN = "macedonian";
+    public static final String LAYOUT_MALAYALAM = "malayalam";
+    public static final String LAYOUT_MARATHI = "marathi";
+    public static final String LAYOUT_MONGOLIAN = "mongolian";
+    public static final String LAYOUT_NEPALI_ROMANIZED = "nepali_romanized";
+    public static final String LAYOUT_NEPALI_TRADITIONAL = "nepali_traditional";
+    public static final String LAYOUT_NORDIC = "nordic";
+    public static final String LAYOUT_QWERTY = "qwerty";
+    public static final String LAYOUT_QWERTZ = "qwertz";
+    public static final String LAYOUT_SERBIAN = "serbian";
+    public static final String LAYOUT_SERBIAN_QWERTZ = "serbian_qwertz";
+    public static final String LAYOUT_SPANISH = "spanish";
+    public static final String LAYOUT_SWISS = "swiss";
+    public static final String LAYOUT_TAMIL = "tamil";
+    public static final String LAYOUT_TELUGU = "telugu";
+    public static final String LAYOUT_THAI = "thai";
+    public static final String LAYOUT_TURKISH_F = "turkish_f";
+    public static final String LAYOUT_URDU = "urdu";
+    public static final String LAYOUT_UZBEK = "uzbek";
+
+    /**
+     * Get a list of all of the supported subtypes for a locale.
+     * @param locale the locale string for the subtypes to look up.
+     * @param resources the resources to use.
+     * @return the list of subtypes for the specified locale.
+     */
+    public static List<Subtype> getSubtypes(final String locale, final Resources resources) {
+        return new SubtypeBuilder(locale, true, resources).getSubtypes();
+    }
+
+    /**
+     * Get the default subtype for a locale.
+     * @param locale the locale string for the subtype to look up.
+     * @param resources the resources to use.
+     * @return the default subtype for the specified locale or null if the locale isn't supported.
+     */
+    public static Subtype getDefaultSubtype(final String locale, final Resources resources) {
+        final List<Subtype> subtypes = new SubtypeBuilder(locale, true, resources).getSubtypes();
+        return subtypes.size() == 0 ? null : subtypes.get(0);
+    }
+
+    /**
+     * Get a subtype for a specific locale and keyboard layout.
+     * @param locale the locale string for the subtype to look up.
+     * @param layoutSet the keyboard layout set name for the subtype.
+     * @param resources the resources to use.
+     * @return the subtype for the specified locale and layout or null if it isn't supported.
+     */
+    public static Subtype getSubtype(final String locale, final String layoutSet,
+                                     final Resources resources) {
+        final List<Subtype> subtypes =
+                new SubtypeBuilder(locale, layoutSet, resources).getSubtypes();
+        return subtypes.size() == 0 ? null : subtypes.get(0);
+    }
+
+    /**
+     * Get the list subtypes corresponding to the system's languages.
+     * @param resources the resources to use.
+     * @return the default list of subtypes based on the system's languages.
+     */
+    public static List<Subtype> getDefaultSubtypes(final Resources resources) {
+        final ArrayList<Locale> supportedLocales = new ArrayList<>(sSupportedLocales.length);
+        for (final String localeString : sSupportedLocales) {
+            supportedLocales.add(LocaleUtils.constructLocaleFromString(localeString));
+        }
+
+        final List<Locale> systemLocales = LocaleUtils.getSystemLocales();
+
+        final ArrayList<Subtype> subtypes = new ArrayList<>();
+        final HashSet<Locale> addedLocales = new HashSet<>();
+        for (final Locale systemLocale : systemLocales) {
+            final Locale bestLocale = LocaleUtils.findBestLocale(systemLocale, supportedLocales);
+            if (bestLocale != null && !addedLocales.contains(bestLocale)) {
+                addedLocales.add(bestLocale);
+                final String bestLocaleString = LocaleUtils.getLocaleString(bestLocale);
+                subtypes.add(getDefaultSubtype(bestLocaleString, resources));
             }
         }
+        if (subtypes.size() == 0) {
+            // there needs to be at least one default subtype
+            subtypes.add(getSubtypes(LOCALE_ENGLISH_UNITED_STATES, resources).get(0));
+        }
+        return subtypes;
     }
 
-    private static void initLocked(final Context context) {
-        final Resources res = context.getResources();
-        sResources = res;
+    /**
+     * Utility for building the supported subtype objects. {@link #getSubtypes} sets up the full
+     * list of available subtypes for a locale, but not all of the subtypes that it requests always
+     * get returned. The parameters passed in the constructor limit what subtypes are actually built
+     * and returned. This allows for a central location for indicating what subtypes are available
+     * for each locale without always needing to build them all.
+     */
+    private static class SubtypeBuilder {
+        private final Resources mResources;
+        private final boolean mAllowMultiple;
+        private final String mLocale;
+        private final String mExpectedLayoutSet;
+        private List<Subtype> mSubtypes;
 
-        final String[] predefinedLayoutSet = res.getStringArray(R.array.predefined_layouts);
-        final String[] layoutDisplayNames = res.getStringArray(
-                R.array.predefined_layout_display_names);
-        for (int i = 0; i < predefinedLayoutSet.length; i++) {
-            final String layoutName = predefinedLayoutSet[i];
-            sKeyboardLayoutToDisplayNameMap.put(layoutName, layoutDisplayNames[i]);
-            final String resourceName = SUBTYPE_NAME_RESOURCE_GENERIC_PREFIX + layoutName;
-            final int resId = res.getIdentifier(resourceName, null, RESOURCE_PACKAGE_NAME);
-            sKeyboardLayoutToNameIdsMap.put(layoutName, resId);
+        /**
+         * Builder for single subtype with a specific locale and layout.
+         * @param locale the locale string for the subtype to build.
+         * @param layoutSet the keyboard layout set name for the subtype.
+         * @param resources the resources to use.
+         */
+        public SubtypeBuilder(final String locale, final String layoutSet,
+                              final Resources resources) {
+            mLocale = locale;
+            mExpectedLayoutSet = layoutSet;
+            mAllowMultiple = false;
+            mResources = resources;
         }
 
-        final String[] exceptionalLocaleInRootLocale = res.getStringArray(
-                R.array.subtype_locale_displayed_in_root_locale);
-        for (int i = 0; i < exceptionalLocaleInRootLocale.length; i++) {
-            final String localeString = exceptionalLocaleInRootLocale[i];
-            final String resourceName = SUBTYPE_NAME_RESOURCE_IN_ROOT_LOCALE_PREFIX + localeString;
-            final int resId = res.getIdentifier(resourceName, null, RESOURCE_PACKAGE_NAME);
-            sExceptionalLocaleDisplayedInRootLocale.put(localeString, resId);
+        /**
+         * Builder for one or all subtypes with a specific locale.
+         * @param locale the locale string for the subtype to build.
+         * @param all true to get all of the subtypes for the locale or false for just the default.
+         * @param resources the resources to use.
+         */
+        public SubtypeBuilder(final String locale, final boolean all, final Resources resources) {
+            mLocale = locale;
+            mExpectedLayoutSet = null;
+            mAllowMultiple = all;
+            mResources = resources;
         }
 
-        final String[] exceptionalLocales = res.getStringArray(
-                R.array.subtype_locale_exception_keys);
-        for (int i = 0; i < exceptionalLocales.length; i++) {
-            final String localeString = exceptionalLocales[i];
-            final String resourceName = SUBTYPE_NAME_RESOURCE_PREFIX + localeString;
-            final int resId = res.getIdentifier(resourceName, null, RESOURCE_PACKAGE_NAME);
-            sExceptionalLocaleToNameIdsMap.put(localeString, resId);
-            final String resourceNameWithLayout =
-                    SUBTYPE_NAME_RESOURCE_WITH_LAYOUT_PREFIX + localeString;
-            final int resIdWithLayout = res.getIdentifier(
-                    resourceNameWithLayout, null, RESOURCE_PACKAGE_NAME);
-            sExceptionalLocaleToWithLayoutNameIdsMap.put(localeString, resIdWithLayout);
-        }
-
-        final String[] keyboardLayoutSetMap = res.getStringArray(
-                R.array.locale_and_extra_value_to_keyboard_layout_set_map);
-        for (int i = 0; i + 1 < keyboardLayoutSetMap.length; i += 2) {
-            final String key = keyboardLayoutSetMap[i];
-            final String keyboardLayoutSet = keyboardLayoutSetMap[i + 1];
-            sLocaleAndExtraValueToKeyboardLayoutSetMap.put(key, keyboardLayoutSet);
-        }
-    }
-
-    public static boolean isExceptionalLocale(final String localeString) {
-        return sExceptionalLocaleToNameIdsMap.containsKey(localeString);
-    }
-
-    public static int getSubtypeNameId(final String localeString, final String keyboardLayoutName) {
-        if (isExceptionalLocale(localeString)) {
-            return sExceptionalLocaleToWithLayoutNameIdsMap.get(localeString);
-        }
-        final Integer nameId = sKeyboardLayoutToNameIdsMap.get(keyboardLayoutName);
-        return nameId == null ? UNKNOWN_KEYBOARD_LAYOUT : nameId;
-    }
-
-    public static Locale getDisplayLocaleOfSubtypeLocale(final String localeString) {
-        if (sExceptionalLocaleDisplayedInRootLocale.containsKey(localeString)) {
-            return Locale.ROOT;
-        }
-        return LocaleUtils.constructLocaleFromString(localeString);
-    }
-
-    public static String getSubtypeLocaleDisplayNameInSystemLocale(
-            final String localeString) {
-        final Locale displayLocale = sResources.getConfiguration().locale;
-        return getSubtypeLocaleDisplayNameInternal(localeString, displayLocale);
-    }
-
-    public static String getSubtypeLocaleDisplayName(final String localeString) {
-        final Locale displayLocale = getDisplayLocaleOfSubtypeLocale(localeString);
-        return getSubtypeLocaleDisplayNameInternal(localeString, displayLocale);
-    }
-
-    public static String getSubtypeLanguageDisplayName(final String localeString) {
-        final Locale displayLocale = getDisplayLocaleOfSubtypeLocale(localeString);
-        final String languageString;
-        if (sExceptionalLocaleDisplayedInRootLocale.containsKey(localeString)) {
-            languageString = localeString;
-        } else {
-            languageString = LocaleUtils.constructLocaleFromString(localeString).getLanguage();
-        }
-        return getSubtypeLocaleDisplayNameInternal(languageString, displayLocale);
-    }
-
-    private static String getSubtypeLocaleDisplayNameInternal(final String localeString,
-            final Locale displayLocale) {
-        final Integer exceptionalNameResId;
-        if (displayLocale.equals(Locale.ROOT)
-                && sExceptionalLocaleDisplayedInRootLocale.containsKey(localeString)) {
-            exceptionalNameResId = sExceptionalLocaleDisplayedInRootLocale.get(localeString);
-        } else if (sExceptionalLocaleToNameIdsMap.containsKey(localeString)) {
-            exceptionalNameResId = sExceptionalLocaleToNameIdsMap.get(localeString);
-        } else {
-            exceptionalNameResId = null;
-        }
-
-        final String displayName;
-        if (exceptionalNameResId != null) {
-            final RunInLocale<String> getExceptionalName = new RunInLocale<String>() {
-                @Override
-                protected String job(final Resources res) {
-                    return res.getString(exceptionalNameResId);
-                }
-            };
-            displayName = getExceptionalName.runInLocale(sResources, displayLocale);
-        } else {
-            displayName = LocaleUtils.constructLocaleFromString(localeString)
-                    .getDisplayName(displayLocale);
-        }
-        return StringUtils.capitalizeFirstCodePoint(displayName, displayLocale);
-    }
-
-    // InputMethodSubtype's display name in its locale.
-    //        isAdditionalSubtype (T=true, F=false)
-    // locale layout  |  display name
-    // ------ ------- - ----------------------
-    //  en_US qwerty  F  English (US)            exception
-    //  en_GB qwerty  F  English (UK)            exception
-    //  es_US spanish F  Español (EE.UU.)        exception
-    //  fr    azerty  F  Français
-    //  fr_CA qwerty  F  Français (Canada)
-    //  fr_CH swiss   F  Français (Suisse)
-    //  de    qwertz  F  Deutsch
-    //  de_CH swiss   T  Deutsch (Schweiz)
-    //  zz    qwerty  F  Alphabet (QWERTY)       in system locale
-    //  fr    qwertz  T  Français (QWERTZ)
-    //  de    qwerty  T  Deutsch (QWERTY)
-    //  en_US azerty  T  English (US) (AZERTY)   exception
-    //  zz    azerty  T  Alphabet (AZERTY)       in system locale
-
-    private static String getReplacementString(final InputMethodSubtype subtype,
-            final Locale displayLocale) {
-        if (subtype.containsExtraValueKey(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME)) {
-            return subtype.getExtraValueOf(UNTRANSLATABLE_STRING_IN_SUBTYPE_NAME);
-        }
-        return getSubtypeLocaleDisplayNameInternal(subtype.getLocale(), displayLocale);
-    }
-
-    public static String getSubtypeDisplayNameInSystemLocale(
-            final InputMethodSubtype subtype) {
-        final Locale displayLocale = sResources.getConfiguration().locale;
-        return getSubtypeDisplayNameInternal(subtype, displayLocale);
-    }
-
-    public static String getSubtypeNameForLogging(final InputMethodSubtype subtype) {
-        if (subtype == null) {
-            return "<null subtype>";
-        }
-        return getSubtypeLocale(subtype) + "/" + getKeyboardLayoutSetName(subtype);
-    }
-
-    private static String getSubtypeDisplayNameInternal(final InputMethodSubtype subtype,
-            final Locale displayLocale) {
-        final String replacementString = getReplacementString(subtype, displayLocale);
-        // TODO: rework this for multi-lingual subtypes
-        final int nameResId = subtype.getNameResId();
-        final RunInLocale<String> getSubtypeName = new RunInLocale<String>() {
-            @Override
-            protected String job(final Resources res) {
-                try {
-                    return res.getString(nameResId, replacementString);
-                } catch (Resources.NotFoundException e) {
-                    // TODO: Remove this catch when InputMethodManager.getCurrentInputMethodSubtype
-                    // is fixed.
-                    Log.w(TAG, "Unknown subtype: mode=" + subtype.getMode()
-                            + " nameResId=" + subtype.getNameResId()
-                            + " locale=" + subtype.getLocale()
-                            + " extra=" + subtype.getExtraValue()
-                            + "\n" + DebugLogUtils.getStackTrace());
-                    return "";
-                }
+        /**
+         * Get the requested subtypes.
+         * @return the list of subtypes that were built.
+         */
+        public List<Subtype> getSubtypes() {
+            if (mSubtypes != null) {
+                // in case this gets called again for some reason, the subtypes should only be built
+                // once
+                return mSubtypes;
             }
-        };
-        return StringUtils.capitalizeFirstCodePoint(
-                getSubtypeName.runInLocale(sResources, displayLocale), displayLocale);
-    }
-
-    public static Locale getSubtypeLocale(final InputMethodSubtype subtype) {
-        final String localeString = subtype.getLocale();
-        return LocaleUtils.constructLocaleFromString(localeString);
-    }
-
-    public static String getKeyboardLayoutSetDisplayName(
-            final InputMethodSubtype subtype) {
-        final String layoutName = getKeyboardLayoutSetName(subtype);
-        return getKeyboardLayoutSetDisplayName(layoutName);
-    }
-
-    public static String getKeyboardLayoutSetDisplayName(final String layoutName) {
-        return sKeyboardLayoutToDisplayNameMap.get(layoutName);
-    }
-
-    public static String getKeyboardLayoutSetName(final InputMethodSubtype subtype) {
-        String keyboardLayoutSet = subtype.getExtraValueOf(KEYBOARD_LAYOUT_SET);
-        if (keyboardLayoutSet == null) {
-            // This subtype doesn't have a keyboardLayoutSet extra value, so lookup its keyboard
-            // layout set in sLocaleAndExtraValueToKeyboardLayoutSetMap to keep it compatible with
-            // pre-JellyBean.
-            keyboardLayoutSet = sLocaleAndExtraValueToKeyboardLayoutSetMap.get(subtype.getLocale());
+            mSubtypes = new ArrayList<>();
+            // This should call to build all of the available for each supported locale. The private
+            // helper functions will handle skipping building the subtypes that weren't requested.
+            // The first subtype that is specified to be built here for each locale will be
+            // considered the default.
+            switch (mLocale) {
+                case LOCALE_AFRIKAANS:
+                case LOCALE_AZERBAIJANI_AZERBAIJAN:
+                case LOCALE_ENGLISH_INDIA:
+                case LOCALE_ENGLISH_GREAT_BRITAIN:
+                case LOCALE_ENGLISH_UNITED_STATES:
+                case LOCALE_FRENCH_CANADA:
+                case LOCALE_INDONESIAN:
+                case LOCALE_ICELANDIC:
+                case LOCALE_ITALIAN:
+                case LOCALE_LITHUANIAN:
+                case LOCALE_LATVIAN:
+                case LOCALE_MALAY_MALAYSIA:
+                case LOCALE_DUTCH:
+                case LOCALE_POLISH:
+                case LOCALE_PORTUGUESE_BRAZIL:
+                case LOCALE_PORTUGUESE_PORTUGAL:
+                case LOCALE_ROMANIAN:
+                case LOCALE_SLOVAK:
+                case LOCALE_SWAHILI:
+                case LOCALE_VIETNAMESE:
+                case LOCALE_ZULU:
+                    addLayout(LAYOUT_QWERTY);
+                    addGenericLayouts();
+                    break;
+                case LOCALE_CZECH:
+                case LOCALE_GERMAN:
+                case LOCALE_CROATIAN:
+                case LOCALE_HUNGARIAN:
+                case LOCALE_SLOVENIAN:
+                    addLayout(LAYOUT_QWERTZ);
+                    addGenericLayouts();
+                    break;
+                case LOCALE_FRENCH:
+                case LOCALE_DUTCH_BELGIUM:
+                    addLayout(LAYOUT_AZERTY);
+                    addGenericLayouts();
+                    break;
+                case LOCALE_CATALAN:
+                case LOCALE_SPANISH:
+                case LOCALE_SPANISH_UNITED_STATES:
+                case LOCALE_SPANISH_LATIN_AMERICA:
+                case LOCALE_BASQUE_SPAIN:
+                case LOCALE_GALICIAN_SPAIN:
+                case LOCALE_TAGALOG:
+                    addLayout(LAYOUT_SPANISH);
+                    addGenericLayouts();
+                    break;
+                case LOCALE_ESPERANTO:
+                    addLayout(LAYOUT_SPANISH);
+                    break;
+                case LOCALE_DANISH:
+                case LOCALE_ESTONIAN_ESTONIA:
+                case LOCALE_FINNISH:
+                case LOCALE_NORWEGIAN_BOKMAL:
+                case LOCALE_SWEDISH:
+                    addLayout(LAYOUT_NORDIC);
+                    addGenericLayouts();
+                    break;
+                case LOCALE_GERMAN_SWITZERLAND:
+                case LOCALE_FRENCH_SWITZERLAND:
+                case LOCALE_ITALIAN_SWITZERLAND:
+                    addLayout(LAYOUT_SWISS);
+                    addGenericLayouts();
+                    break;
+                case LOCALE_TURKISH:
+                    addLayout(LAYOUT_QWERTY);
+                    addLayout(LAYOUT_TURKISH_F, R.string.subtype_f);
+                    addGenericLayouts();
+                    break;
+                case LOCALE_UZBEK_UZBEKISTAN:
+                    addLayout(LAYOUT_UZBEK);
+                    addGenericLayouts();
+                    break;
+                case LOCALE_ARABIC:
+                    addLayout(LAYOUT_ARABIC);
+                    break;
+                case LOCALE_BELARUSIAN_BELARUS:
+                case LOCALE_KAZAKH:
+                case LOCALE_KYRGYZ:
+                case LOCALE_RUSSIAN:
+                case LOCALE_UKRAINIAN:
+                    addLayout(LAYOUT_EAST_SLAVIC);
+                    break;
+                case LOCALE_BULGARIAN:
+                    addLayout(LAYOUT_BULGARIAN);
+                    addLayout(LAYOUT_BULGARIAN_BDS, R.string.subtype_bds);
+                    break;
+                case LOCALE_BENGALI_BANGLADESH:
+                    addLayout(LAYOUT_BENGALI_AKKHOR);
+                    break;
+                case LOCALE_BENGALI_INDIA:
+                    addLayout(LAYOUT_BENGALI);
+                    break;
+                case LOCALE_GREEK:
+                    addLayout(LAYOUT_GREEK);
+                    break;
+                case LOCALE_PERSIAN:
+                    addLayout(LAYOUT_FARSI);
+                    break;
+                case LOCALE_HINDI:
+                    addLayout(LAYOUT_HINDI);
+                    addLayout(LAYOUT_HINDI_COMPACT, R.string.subtype_compact);
+                    break;
+                case LOCALE_ARMENIAN_ARMENIA:
+                    addLayout(LAYOUT_ARMENIAN_PHONETIC);
+                    break;
+                case LOCALE_HEBREW:
+                    addLayout(LAYOUT_HEBREW);
+                    break;
+                case LOCALE_GEORGIAN_GEORGIA:
+                    addLayout(LAYOUT_GEORGIAN);
+                    break;
+                case LOCALE_KHMER_CAMBODIA:
+                    addLayout(LAYOUT_KHMER);
+                    break;
+                case LOCALE_KANNADA_INDIA:
+                    addLayout(LAYOUT_KANNADA);
+                    break;
+                case LOCALE_LAO_LAOS:
+                    addLayout(LAYOUT_LAO);
+                    break;
+                case LOCALE_MACEDONIAN:
+                    addLayout(LAYOUT_MACEDONIAN);
+                    break;
+                case LOCALE_MALAYALAM_INDIA:
+                    addLayout(LAYOUT_MALAYALAM);
+                    break;
+                case LOCALE_MONGOLIAN_MONGOLIA:
+                    addLayout(LAYOUT_MONGOLIAN);
+                    break;
+                case LOCALE_MARATHI_INDIA:
+                    addLayout(LAYOUT_MARATHI);
+                    break;
+                case LOCALE_NEPALI_NEPAL:
+                    addLayout(LAYOUT_NEPALI_ROMANIZED);
+                    addLayout(LAYOUT_NEPALI_TRADITIONAL, R.string.subtype_traditional);
+                    break;
+                case LOCALE_SERBIAN:
+                    addLayout(LAYOUT_SERBIAN);
+                    break;
+                case LOCALE_SERBIAN_LATIN:
+                    addLayout(LAYOUT_SERBIAN_QWERTZ);
+                    addGenericLayouts();
+                    break;
+                case LOCALE_TAMIL_INDIA:
+                case LOCALE_TAMIL_SINGAPORE:
+                    addLayout(LAYOUT_TAMIL);
+                    break;
+                case LOCALE_TELUGU_INDIA:
+                    addLayout(LAYOUT_TELUGU);
+                    break;
+                case LOCALE_THAI:
+                    addLayout(LAYOUT_THAI);
+                    break;
+                case LOCALE_URDU:
+                    addLayout(LAYOUT_URDU);
+                    break;
+            }
+            return mSubtypes;
         }
-        // TODO: Remove this null check when InputMethodManager.getCurrentInputMethodSubtype is
-        // fixed.
-        if (keyboardLayoutSet == null) {
-            android.util.Log.w(TAG, "KeyboardLayoutSet not found, use QWERTY: " +
-                    "locale=" + subtype.getLocale() + " extraValue=" + subtype.getExtraValue());
-            return QWERTY;
+
+        /**
+         * Check if the layout should skip being built based on the request from the constructor.
+         * @param keyboardLayoutSet the layout set for the subtype to potentially build.
+         * @return whether the subtype should be skipped.
+         */
+        private boolean shouldSkipLayout(final String keyboardLayoutSet) {
+            if (mAllowMultiple) {
+                return false;
+            }
+            if (mSubtypes.size() > 0) {
+                return true;
+            }
+            if (mExpectedLayoutSet != null) {
+                return !mExpectedLayoutSet.equals(keyboardLayoutSet);
+            }
+            return false;
         }
-        return keyboardLayoutSet;
+
+        /**
+         * Add a single layout for the locale. This might not actually add the subtype to the list
+         * depending on the original request.
+         * @param keyboardLayoutSet the keyboard layout set name.
+         */
+        private void addLayout(final String keyboardLayoutSet) {
+            if (shouldSkipLayout(keyboardLayoutSet)) {
+                return;
+            }
+
+            // if this is a generic layout, use that corresponding layout name
+            final String[] predefinedLayouts =
+                    mResources.getStringArray(R.array.predefined_layouts);
+            final int predefinedLayoutIndex =
+                    Arrays.asList(predefinedLayouts).indexOf(keyboardLayoutSet);
+            final String layoutNameStr;
+            if (predefinedLayoutIndex >= 0) {
+                final String[] predefinedLayoutDisplayNames = mResources.getStringArray(
+                        R.array.predefined_layout_display_names);
+                layoutNameStr = predefinedLayoutDisplayNames[predefinedLayoutIndex];
+            } else {
+                layoutNameStr = null;
+            }
+
+            mSubtypes.add(
+                    new Subtype(mLocale, keyboardLayoutSet, layoutNameStr, false, mResources));
+        }
+
+        /**
+         * Add a single layout for the locale. This might not actually add the subtype to the list
+         * depending on the original request.
+         * @param keyboardLayoutSet the keyboard layout set name.
+         * @param layoutRes the resource ID to use for the display name of the keyboard layout. This
+         *                 generally shouldn't include the name of the language.
+         */
+        private void addLayout(final String keyboardLayoutSet, final int layoutRes) {
+            if (shouldSkipLayout(keyboardLayoutSet)) {
+                return;
+            }
+            mSubtypes.add(
+                    new Subtype(mLocale, keyboardLayoutSet, layoutRes, true, mResources));
+        }
+
+        /**
+         * Add the predefined layouts (eg: QWERTY, AZERTY, etc) for the locale. This might not
+         * actually add all of the subtypes to the list depending on the original request.
+         */
+        private void addGenericLayouts() {
+            if (mSubtypes.size() > 0 && !mAllowMultiple) {
+                return;
+            }
+            final int initialSize = mSubtypes.size();
+            final String[] predefinedKeyboardLayoutSets = mResources.getStringArray(
+                    R.array.predefined_layouts);
+            final String[] predefinedKeyboardLayoutSetDisplayNames = mResources.getStringArray(
+                    R.array.predefined_layout_display_names);
+            for (int i = 0; i < predefinedKeyboardLayoutSets.length; i++) {
+                final String predefinedLayout = predefinedKeyboardLayoutSets[i];
+                if (shouldSkipLayout(predefinedLayout)) {
+                    continue;
+                }
+
+                boolean alreadyExists = false;
+                for (int subtypeIndex = 0; subtypeIndex < initialSize; subtypeIndex++) {
+                    final String layoutSet = mSubtypes.get(subtypeIndex).getKeyboardLayoutSet();
+                    if (layoutSet.equals(predefinedLayout)) {
+                        alreadyExists = true;
+                        break;
+                    }
+                }
+                if (alreadyExists) {
+                    continue;
+                }
+
+                mSubtypes.add(new Subtype(mLocale, predefinedLayout,
+                        predefinedKeyboardLayoutSetDisplayNames[i], true, mResources));
+            }
+        }
     }
 }

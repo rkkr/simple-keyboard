@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Επιλογές εισόδου"</string>
     <string name="vibrate_on_keypress">"Δόνηση κατά το πάτημα πλήκτρων"</string>
     <string name="sound_on_keypress">"Ήχος πλήκτρων"</string>
     <string name="popup_on_keypress">"Εμφάνιση με το πάτημα πλήκτρου"</string>
     <string name="settings_screen_preferences">"Προτιμήσεις"</string>
-    <string name="settings_screen_appearance">"Εμφάνιση και διάταξη"</string>
     <string name="settings_screen_theme">"Θέμα"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>χλστ. δ."</string>
     <string name="settings_system_default">"Προεπιλογή"</string>
     <string name="auto_cap">"Αυτόματη χρήση κεφαλαίων"</string>
     <string name="auto_cap_summary">"Χρήση κεφαλαίου στην πρώτη λέξη κάθε πρότασης"</string>
-    <string name="language_selection_title">"Γλώσσες"</string>
     <string name="select_language">"Γλώσσες"</string>
-    <string name="subtype_en_GB">"Αγγλικά (ΗΒ)"</string>
-    <string name="subtype_en_US">"Αγγλικά (ΗΠΑ)"</string>
-    <string name="subtype_es_US">"Ισπανικά (ΗΠΑ)"</string>
-    <string name="subtype_hi_ZZ">"Hinglish"</string>
-    <string name="subtype_sr_ZZ">"Σερβικά (Λατινικά)"</string>
-    <string name="subtype_with_layout_en_GB">"Αγγλικά (Ηνωμένο Βασίλειο) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"Αγγλικά (ΗΠΑ) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"Ισπανικά (ΗΠΑ) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"Σερβικά (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Παραδοσιακά)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Συμπαγές)"</string>
-    <string name="custom_input_styles_title">"Στυλ εισαγωγής"</string>
-    <string name="add_style">"Προσθ. στυλ"</string>
+    <string name="locale_name_en_GB">"Αγγλικά (ΗΒ)"</string>
+    <string name="locale_name_en_US">"Αγγλικά (ΗΠΑ)"</string>
+    <string name="locale_name_es_US">"Ισπανικά (ΗΠΑ)"</string>
+    <string name="locale_name_hi_ZZ">"Hinglish"</string>
+    <string name="locale_name_sr_ZZ">"Σερβικά (Λατινικά)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"Παραδοσιακά"</string>
+    <string name="subtype_compact">"Συμπαγές"</string>
     <string name="add">"Προσθήκη"</string>
-    <string name="remove">"Κατάργηση"</string>
-    <string name="save">"Αποθήκευση"</string>
-    <string name="subtype_locale">"Γλώσσα"</string>
-    <string name="keyboard_layout_set">"Διάταξη"</string>
-    <string name="custom_input_style_note_message">"Απαιτείται ενεργοποίηση προσαρμ. στυλ εισόδου. Να γίνει τώρα;"</string>
-    <string name="enable">"Ενεργοποίηση"</string>
-    <string name="not_now">"Όχι τώρα"</string>
-    <string name="custom_input_style_already_exists">"Το ίδιο στυλ εισόδου υπάρχει ήδη: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Διάρκεια δόνησης πατήμ. πλήκτ."</string>
     <string name="prefs_keypress_sound_volume_settings">"Ένταση ήχου πατήματος πλήκτρου"</string>
     <string name="prefs_key_longpress_timeout_settings">"Καθυστέρηση παρατεταμένου πατήματος"</string>

@@ -19,6 +19,8 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
+import android.preference.Preference;
 import android.preference.SwitchPreference;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -64,12 +66,24 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
      * language switch key.
      */
     private void updateImeSwitchEnabledPref() {
-        final SwitchPreference enableImeSwitch =
-                (SwitchPreference) findPreference(Settings.PREF_ENABLE_IME_SWITCH);
-        final SwitchPreference hideLanguageSwitchKey =
-                (SwitchPreference) findPreference(Settings.PREF_HIDE_LANGUAGE_SWITCH_KEY);
-        if (enableImeSwitch != null && hideLanguageSwitchKey != null) {
-            enableImeSwitch.setEnabled(!hideLanguageSwitchKey.isChecked());
+        final Preference enableImeSwitch = findPreference(Settings.PREF_ENABLE_IME_SWITCH);
+        final Preference hideLanguageSwitchKey =
+                findPreference(Settings.PREF_HIDE_LANGUAGE_SWITCH_KEY);
+        if (enableImeSwitch == null || hideLanguageSwitchKey == null) {
+            return;
         }
+        final boolean hideLanguageSwitchKeyIsChecked;
+        // depending on the version of Android, the preferences could be different types
+        if (hideLanguageSwitchKey instanceof CheckBoxPreference) {
+            hideLanguageSwitchKeyIsChecked =
+                    ((CheckBoxPreference)hideLanguageSwitchKey).isChecked();
+        } else if (hideLanguageSwitchKey instanceof SwitchPreference) {
+            hideLanguageSwitchKeyIsChecked =
+                    ((SwitchPreference)hideLanguageSwitchKey).isChecked();
+        } else {
+            // in case it can be something else, don't bother doing anything
+            return;
+        }
+        enableImeSwitch.setEnabled(!hideLanguageSwitchKeyIsChecked);
     }
 }

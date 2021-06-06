@@ -16,31 +16,36 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.inputmethodservice.InputMethodService;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.IBinder;
-import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
-import rkr.simplekeyboard.inputmethod.compat.InputMethodSubtypeCompatUtils;
+import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
+import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
-import rkr.simplekeyboard.inputmethod.latin.utils.AdditionalSubtypeUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.LanguageOnSpacebarUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.SubtypePreferenceUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
-
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.KEYBOARD_MODE;
 
 /**
  * Enrichment class for InputMethodManager to simplify interaction and add functionality.
@@ -56,12 +61,9 @@ public class RichInputMethodManager {
 
     private static final RichInputMethodManager sInstance = new RichInputMethodManager();
 
-    private Context mContext;
     private InputMethodManager mImmService;
-    private InputMethodInfoCache mInputMethodInfoCache;
-    private RichInputMethodSubtype mCurrentRichInputMethodSubtype;
 
-    private static final int INDEX_NOT_FOUND = -1;
+    private SubtypeList mSubtypeList;
 
     public static RichInputMethodManager getInstance() {
         sInstance.checkInitialized();
@@ -87,276 +89,430 @@ public class RichInputMethodManager {
             return;
         }
         mImmService = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        mContext = context;
-        mInputMethodInfoCache = new InputMethodInfoCache(
-                mImmService, context.getPackageName());
 
-        // Initialize additional subtypes.
-        SubtypeLocaleUtils.init(context);
-        final InputMethodSubtype[] additionalSubtypes = getAdditionalSubtypes();
-        mImmService.setAdditionalInputMethodSubtypes(
-                getInputMethodIdOfThisIme(), additionalSubtypes);
+        LocaleResourceUtils.init(context);
 
-        // Initialize the current input method subtype.
-        refreshSubtypeCaches();
+        // Initialize the virtual subtypes
+        mSubtypeList = new SubtypeList(context);
     }
 
-    public InputMethodSubtype[] getAdditionalSubtypes() {
-        final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(mContext);
-        final String prefAdditionalSubtypes = Settings.readPrefAdditionalSubtypes(
-                prefs, mContext.getResources());
-        return AdditionalSubtypeUtils.createAdditionalSubtypesArray(prefAdditionalSubtypes);
+    /**
+     * Add a listener to be called when the virtual subtype changes.
+     * @param listener the listener to call when the subtype changes.
+     */
+    public void setSubtypeChangeHandler(final SubtypeChangedListener listener) {
+        mSubtypeList.setSubtypeChangeHandler(listener);
     }
 
-    public InputMethodManager getInputMethodManager() {
-        checkInitialized();
-        return mImmService;
+    /**
+     * Interface used to allow some code to run when the virtual subtype changes.
+     */
+    public interface SubtypeChangedListener {
+        void onCurrentSubtypeChanged();
     }
 
-    public boolean isInputMethodOfThisImeEnabled() {
-        return mInputMethodInfoCache.isInputMethodOfThisImeEnabled();
-    }
+    /**
+     * Manager for the list of enabled subtypes that also handles which one is currently in use.
+     * Only one of these should be created to avoid conflicts.
+     */
+    private static class SubtypeList {
+        /** The list of enabled subtypes ordered by how they should be cycled through when moving to
+         *  the next subtype. When a subtype is actually in use, it should be moved to the beginning
+         *  of the list so that the next time the user uses the switch to next subtype button, all
+         *  of the subtypes can be iterated through before potentially switching to a different
+         *  input method. */
+        private final List<Subtype> mSubtypes;
+        /** The index of the currently selected subtype. This is used for tracking the status of
+         *  cycling through subtypes. When actually using the keyboard, the subtype should be moved
+         *  to the beginning of the list, so this should normally be 0. */
+        private int mCurrentSubtypeIndex;
 
-    public List<InputMethodSubtype> getMyEnabledInputMethodSubtypeList(
-            boolean allowsImplicitlySelectedSubtypes) {
-        return getEnabledInputMethodSubtypeList(
-                getInputMethodInfoOfThisIme(), allowsImplicitlySelectedSubtypes);
-    }
+        private final SharedPreferences mPrefs;
+        private SubtypeChangedListener mSubtypeChangedListener;
 
-    public boolean switchToNextInputMethod(final IBinder token, final boolean onlyCurrentIme) {
-        if (mImmService.switchToNextInputMethod(token, onlyCurrentIme)) {
-            return true;
+        /**
+         * Create the manager for the virtual subtypes.
+         * @param context the context for this application.
+         */
+        public SubtypeList(final Context context) {
+            mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(context);
+
+            final String prefSubtypes = Settings.readPrefSubtypes(mPrefs);
+            final List<Subtype> subtypes = SubtypePreferenceUtils.createSubtypesFromPref(
+                    prefSubtypes, context.getResources());
+            if (subtypes == null || subtypes.size() < 1) {
+                mSubtypes = SubtypeLocaleUtils.getDefaultSubtypes(context.getResources());
+            } else {
+                mSubtypes = subtypes;
+            }
+            mCurrentSubtypeIndex = 0;
         }
-        // Was not able to call {@link InputMethodManager#switchToNextInputMethodIBinder,boolean)}
-        // because the current device is running ICS or previous and lacks the API.
-        if (switchToNextInputSubtypeInThisIme(token, onlyCurrentIme)) {
-            return true;
-        }
-        return switchToNextInputMethodAndSubtype(token);
-    }
 
-    private boolean switchToNextInputSubtypeInThisIme(final IBinder token,
-            final boolean onlyCurrentIme) {
-        final InputMethodSubtype currentSubtype = mImmService.getCurrentInputMethodSubtype();
-        final List<InputMethodSubtype> enabledSubtypes = getMyEnabledInputMethodSubtypeList(
-                true /* allowsImplicitlySelectedSubtypes */);
-        final int currentIndex = getSubtypeIndexInList(currentSubtype, enabledSubtypes);
-        if (currentIndex == INDEX_NOT_FOUND) {
-            Log.w(TAG, "Can't find current subtype in enabled subtypes: subtype="
-                    + SubtypeLocaleUtils.getSubtypeNameForLogging(currentSubtype));
-            return false;
+        /**
+         * Add a listener to be called when the virtual subtype changes.
+         * @param listener the listener to call when the subtype changes.
+         */
+        public void setSubtypeChangeHandler(final SubtypeChangedListener listener) {
+            mSubtypeChangedListener = listener;
         }
-        final int nextIndex = (currentIndex + 1) % enabledSubtypes.size();
-        if (nextIndex <= currentIndex && !onlyCurrentIme) {
-            // The current subtype is the last or only enabled one and it needs to switch to
-            // next IME.
-            return false;
-        }
-        final InputMethodSubtype nextSubtype = enabledSubtypes.get(nextIndex);
-        setInputMethodAndSubtype(token, nextSubtype);
-        return true;
-    }
 
-    private boolean switchToNextInputMethodAndSubtype(final IBinder token) {
-        final List<InputMethodInfo> enabledImis = mImmService.getEnabledInputMethodList();
-        final int currentIndex = getImiIndexInList(getInputMethodInfoOfThisIme(), enabledImis);
-        if (currentIndex == INDEX_NOT_FOUND) {
-            Log.w(TAG, "Can't find current IME in enabled IMEs: IME package="
-                    + getInputMethodInfoOfThisIme().getPackageName());
-            return false;
-        }
-        final InputMethodInfo nextImi = getNextNonAuxiliaryIme(currentIndex, enabledImis);
-        final List<InputMethodSubtype> enabledSubtypes = getEnabledInputMethodSubtypeList(nextImi,
-                true /* allowsImplicitlySelectedSubtypes */);
-        if (enabledSubtypes.isEmpty()) {
-            // The next IME has no subtype.
-            mImmService.setInputMethod(token, nextImi.getId());
-            return true;
-        }
-        final InputMethodSubtype firstSubtype = enabledSubtypes.get(0);
-        mImmService.setInputMethodAndSubtype(token, nextImi.getId(), firstSubtype);
-        return true;
-    }
-
-    private static int getImiIndexInList(final InputMethodInfo inputMethodInfo,
-            final List<InputMethodInfo> imiList) {
-        final int count = imiList.size();
-        for (int index = 0; index < count; index++) {
-            final InputMethodInfo imi = imiList.get(index);
-            if (imi.equals(inputMethodInfo)) {
-                return index;
+        /**
+         * Call the subtype changed handler to indicate that the virtual subtype has changed.
+         */
+        public void notifySubtypeChanged() {
+            if (mSubtypeChangedListener != null) {
+                mSubtypeChangedListener.onCurrentSubtypeChanged();
             }
         }
-        return INDEX_NOT_FOUND;
-    }
 
-    // This method mimics {@link InputMethodManager#switchToNextInputMethod(IBinder,boolean)}.
-    private static InputMethodInfo getNextNonAuxiliaryIme(final int currentIndex,
-            final List<InputMethodInfo> imiList) {
-        final int count = imiList.size();
-        for (int i = 1; i < count; i++) {
-            final int nextIndex = (currentIndex + i) % count;
-            final InputMethodInfo nextImi = imiList.get(nextIndex);
-            if (!isAuxiliaryIme(nextImi)) {
-                return nextImi;
+        /**
+         * Get all of the enabled subtypes.
+         * @param sortForDisplay whether the subtypes should be sorted alphabetically by the display
+         *                      name as opposed to having no particular order.
+         * @return the enabled subtypes.
+         */
+        public synchronized Set<Subtype> getAll(final boolean sortForDisplay) {
+            final Set<Subtype> subtypes;
+            if (sortForDisplay) {
+                subtypes = new TreeSet<>(new Comparator<Subtype>() {
+                    @Override
+                    public int compare(Subtype a, Subtype b) {
+                        if (a.equals(b)) {
+                            // ensure that this is consistent with equals
+                            return 0;
+                        }
+                        final int result = a.getName().compareToIgnoreCase(b.getName());
+                        if (result != 0) {
+                            return result;
+                        }
+                        // ensure that non-equal objects are distinguished to be consistent with
+                        // equals
+                        return a.hashCode() > b.hashCode() ? 1 : -1;
+                    }
+                });
+            } else {
+                subtypes = new HashSet<>();
             }
+            subtypes.addAll(mSubtypes);
+            return subtypes;
         }
-        return imiList.get(currentIndex);
-    }
 
-    // Copied from {@link InputMethodInfo}. See how auxiliary of IME is determined.
-    private static boolean isAuxiliaryIme(final InputMethodInfo imi) {
-        final int count = imi.getSubtypeCount();
-        if (count == 0) {
-            return false;
+        /**
+         * Get the number of enabled subtypes.
+         * @return the number of enabled subtypes.
+         */
+        public synchronized int size() {
+            return mSubtypes.size();
         }
-        for (int index = 0; index < count; index++) {
-            final InputMethodSubtype subtype = imi.getSubtypeAt(index);
-            if (!subtype.isAuxiliary()) {
+
+        /**
+         * Update the preference for the list of enabled subtypes.
+         */
+        private void saveSubtypeListPref() {
+            final String prefSubtypes = SubtypePreferenceUtils.createPrefSubtypes(mSubtypes);
+            Settings.writePrefSubtypes(mPrefs, prefSubtypes);
+        }
+
+        /**
+         * Add a subtype to the list.
+         * @param subtype the subtype to add.
+         * @return whether the subtype was added to the list (or already existed in the list).
+         */
+        public synchronized boolean addSubtype(final Subtype subtype) {
+            if (mSubtypes.contains(subtype)) {
+                // don't allow duplicates, but since it's already in the list this can be considered
+                // successful
+                return true;
+            }
+            if (!mSubtypes.add(subtype)) {
                 return false;
             }
-        }
-        return true;
-    }
-
-    public static class InputMethodInfoCache {
-        private final InputMethodManager mImm;
-        private final String mImePackageName;
-
-        private InputMethodInfo mCachedThisImeInfo;
-        private final HashMap<InputMethodInfo, List<InputMethodSubtype>>
-                mCachedSubtypeListWithImplicitlySelected;
-        private final HashMap<InputMethodInfo, List<InputMethodSubtype>>
-                mCachedSubtypeListOnlyExplicitlySelected;
-
-        public InputMethodInfoCache(final InputMethodManager imm, final String imePackageName) {
-            mImm = imm;
-            mImePackageName = imePackageName;
-            mCachedSubtypeListWithImplicitlySelected = new HashMap<>();
-            mCachedSubtypeListOnlyExplicitlySelected = new HashMap<>();
+            saveSubtypeListPref();
+            return true;
         }
 
-        public synchronized boolean isInputMethodOfThisImeEnabled() {
-            for (final InputMethodInfo imi : mImm.getEnabledInputMethodList()) {
-                if (imi.getPackageName().equals(mImePackageName)) {
+        /**
+         * Remove a subtype from the list.
+         * @param subtype the subtype to remove.
+         * @return whether the subtype was removed (or wasn't even in the list).
+         */
+        public synchronized boolean removeSubtype(final Subtype subtype) {
+            if (mSubtypes.size() == 1) {
+                // there needs to be at least one subtype
+                return false;
+            }
+
+            final int index = mSubtypes.indexOf(subtype);
+            if (index < 0) {
+                // nothing to remove
+                return true;
+            }
+
+            final boolean subtypeChanged;
+            if (mCurrentSubtypeIndex == index) {
+                mCurrentSubtypeIndex = 0;
+                subtypeChanged = true;
+            } else {
+                if (mCurrentSubtypeIndex > index) {
+                    // make sure the current subtype is still pointed to when the other subtype is
+                    // removed
+                    mCurrentSubtypeIndex--;
+                }
+                subtypeChanged = false;
+            }
+
+            mSubtypes.remove(index);
+            saveSubtypeListPref();
+            if (subtypeChanged) {
+                notifySubtypeChanged();
+            }
+            return true;
+        }
+
+        /**
+         * Move the current subtype to the beginning of the list to allow the rest of the subtypes
+         * to be cycled through before possibly switching to a separate input method. This should be
+         * called whenever the user is done cycling through subtypes (eg: when a subtype is actually
+         * used or the keyboard is closed).
+         */
+        public synchronized void resetSubtypeCycleOrder() {
+            if (mCurrentSubtypeIndex == 0) {
+                return;
+            }
+
+            // move the current subtype to the top of the list and shift everything above it down
+            Collections.rotate(mSubtypes.subList(0, mCurrentSubtypeIndex + 1), 1);
+            mCurrentSubtypeIndex = 0;
+            saveSubtypeListPref();
+        }
+
+        /**
+         * Set the current subtype to a specific subtype.
+         * @param subtype the subtype to set as current.
+         * @return whether the current subtype was set to the requested subtype.
+         */
+        public synchronized boolean setCurrentSubtype(final Subtype subtype) {
+            if (getCurrentSubtype().equals(subtype)) {
+                // nothing to do
+                return true;
+            }
+            for (int i = 0; i < mSubtypes.size(); i++) {
+                if (mSubtypes.get(i).equals(subtype)) {
+                    setCurrentSubtype(i);
                     return true;
                 }
             }
             return false;
         }
 
-        public synchronized InputMethodInfo getInputMethodOfThisIme() {
-            if (mCachedThisImeInfo != null) {
-                return mCachedThisImeInfo;
+        /**
+         * Set the current subtype to match a specified locale.
+         * @param locale the locale to use.
+         * @return whether the current subtype was set to the requested locale.
+         */
+        public synchronized boolean setCurrentSubtype(final Locale locale) {
+            final ArrayList<Locale> enabledLocales = new ArrayList<>(mSubtypes.size());
+            for (final Subtype subtype : mSubtypes) {
+                enabledLocales.add(subtype.getLocaleObject());
             }
-            for (final InputMethodInfo imi : mImm.getInputMethodList()) {
-                if (imi.getPackageName().equals(mImePackageName)) {
-                    mCachedThisImeInfo = imi;
-                    return imi;
+            final Locale bestLocale = LocaleUtils.findBestLocale(locale, enabledLocales);
+            if (bestLocale != null) {
+                // get the first subtype (most recently used) with a matching locale
+                for (int i = 0; i < mSubtypes.size(); i++) {
+                    final Subtype subtype = mSubtypes.get(i);
+                    if (bestLocale.equals(subtype.getLocaleObject())) {
+                        setCurrentSubtype(i);
+                        return true;
+                    }
                 }
             }
-            throw new RuntimeException("Input method id for " + mImePackageName + " not found.");
+            return false;
         }
 
-        public synchronized List<InputMethodSubtype> getEnabledInputMethodSubtypeList(
-                final InputMethodInfo imi, final boolean allowsImplicitlySelectedSubtypes) {
-            final HashMap<InputMethodInfo, List<InputMethodSubtype>> cache =
-                    allowsImplicitlySelectedSubtypes
-                    ? mCachedSubtypeListWithImplicitlySelected
-                    : mCachedSubtypeListOnlyExplicitlySelected;
-            final List<InputMethodSubtype> cachedList = cache.get(imi);
-            if (cachedList != null) {
-                return cachedList;
+        /**
+         * Set the current subtype to a specified index. This should only be used when setting the
+         * subtype to something specific (not when just iterating through the subtypes).
+         * @param index the index of the subtype to set as current.
+         */
+        private void setCurrentSubtype(final int index) {
+            if (mCurrentSubtypeIndex == index)
+            {
+                // nothing to do
+                return;
             }
-            final List<InputMethodSubtype> result = mImm.getEnabledInputMethodSubtypeList(
-                    imi, allowsImplicitlySelectedSubtypes);
-            cache.put(imi, result);
-            return result;
-        }
-
-        public synchronized void clear() {
-            mCachedThisImeInfo = null;
-            mCachedSubtypeListWithImplicitlySelected.clear();
-            mCachedSubtypeListOnlyExplicitlySelected.clear();
-        }
-    }
-
-    public InputMethodInfo getInputMethodInfoOfThisIme() {
-        return mInputMethodInfoCache.getInputMethodOfThisIme();
-    }
-
-    public String getInputMethodIdOfThisIme() {
-        return getInputMethodInfoOfThisIme().getId();
-    }
-
-    public boolean checkIfSubtypeBelongsToThisImeAndEnabled(final InputMethodSubtype subtype) {
-        return checkIfSubtypeBelongsToList(subtype,
-                getEnabledInputMethodSubtypeList(
-                        getInputMethodInfoOfThisIme(),
-                        true /* allowsImplicitlySelectedSubtypes */));
-    }
-
-    private static boolean checkIfSubtypeBelongsToList(final InputMethodSubtype subtype,
-            final List<InputMethodSubtype> subtypes) {
-        return getSubtypeIndexInList(subtype, subtypes) != INDEX_NOT_FOUND;
-    }
-
-    private static int getSubtypeIndexInList(final InputMethodSubtype subtype,
-            final List<InputMethodSubtype> subtypes) {
-        final int count = subtypes.size();
-        for (int index = 0; index < count; index++) {
-            final InputMethodSubtype ims = subtypes.get(index);
-            if (ims.equals(subtype)) {
-                return index;
+            mCurrentSubtypeIndex = index;
+            if (index != 0) {
+                // since the subtype was selected directly, the cycle should be reset so switching
+                // to the next subtype can iterate through all of the rest of the subtypes
+                resetSubtypeCycleOrder();
             }
+            notifySubtypeChanged();
         }
-        return INDEX_NOT_FOUND;
-    }
 
-    public void onSubtypeChanged(final InputMethodSubtype newSubtype) {
-        updateCurrentSubtype(newSubtype);
-        if (DEBUG) {
-            Log.w(TAG, "onSubtypeChanged: " + mCurrentRichInputMethodSubtype.getNameForLogging());
+        /**
+         * Switch to the next subtype in the list.
+         * @param notifyChangeOnCycle whether the subtype changed handler should be notified if the
+         *                           end of the list is passed and the next subtype would go back to
+         *                           the first in the list.
+         * @return whether the subtype changed listener was called.
+         */
+        public synchronized boolean switchToNextSubtype(final boolean notifyChangeOnCycle) {
+            final int nextIndex = mCurrentSubtypeIndex + 1;
+            if (nextIndex >= mSubtypes.size()) {
+                mCurrentSubtypeIndex = 0;
+                if (!notifyChangeOnCycle) {
+                    return false;
+                }
+            } else {
+                mCurrentSubtypeIndex = nextIndex;
+            }
+            notifySubtypeChanged();
+            return true;
+        }
+
+        /**
+         * Get the subtype that is currently in use (or will be once the keyboard is opened).
+         * @return the current subtype.
+         */
+        public synchronized Subtype getCurrentSubtype() {
+            return mSubtypes.get(mCurrentSubtypeIndex);
         }
     }
 
-    private static RichInputMethodSubtype sForcedSubtypeForTesting = null;
+    /**
+     * Get all of the enabled subtypes.
+     * @param sortForDisplay whether the subtypes should be sorted alphabetically by the display
+     *                      name as opposed to having no particular order.
+     * @return the enabled subtypes.
+     */
+    public Set<Subtype> getEnabledSubtypes(final boolean sortForDisplay) {
+        return mSubtypeList.getAll(sortForDisplay);
+    }
 
-    public Locale getCurrentSubtypeLocale() {
-        if (null != sForcedSubtypeForTesting) {
-            return sForcedSubtypeForTesting.getLocale();
+    /**
+     * Check if there are multiple enabled subtypes.
+     * @return whether there are multiple subtypes.
+     */
+    public boolean hasMultipleEnabledSubtypes() {
+        return mSubtypeList.size() > 1;
+    }
+
+    /**
+     * Enable a new subtype.
+     * @param subtype the subtype to add.
+     * @return whether the subtype was added.
+     */
+    public boolean addSubtype(final Subtype subtype) {
+        return mSubtypeList.addSubtype(subtype);
+    }
+
+    /**
+     * Disable a subtype.
+     * @param subtype the subtype to remove.
+     * @return whether the subtype was removed.
+     */
+    public boolean removeSubtype(final Subtype subtype) {
+        return mSubtypeList.removeSubtype(subtype);
+    }
+
+    /**
+     * Move the current subtype to the beginning of the list to allow the rest of the subtypes
+     * to be cycled through before possibly switching to a separate input method.
+     */
+    public void resetSubtypeCycleOrder() {
+        mSubtypeList.resetSubtypeCycleOrder();
+    }
+
+    /**
+     * Set the current subtype to a specific subtype.
+     * @param subtype the subtype to set as current.
+     * @return whether the current subtype was set to the requested subtype.
+     */
+    public boolean setCurrentSubtype(final Subtype subtype) {
+        return mSubtypeList.setCurrentSubtype(subtype);
+    }
+
+    /**
+     * Set the current subtype to match a specified locale.
+     * @param locale the locale to use.
+     * @return whether the current subtype was set to the requested locale.
+     */
+    public boolean setCurrentSubtype(final Locale locale) {
+        return mSubtypeList.setCurrentSubtype(locale);
+    }
+
+    /**
+     * Switch to the next subtype of this IME or optionally to another IME if all of the subtypes of
+     * this IME have already been iterated through.
+     * @param token supplies the identifying token given to an input method when it was started,
+     *             which allows it to perform this operation on itself.
+     * @param onlyCurrentIme whether to only switch virtual subtypes or also switch to other input
+     *                      methods.
+     * @return whether the switch was successful.
+     */
+    public boolean switchToNextInputMethod(final IBinder token, final boolean onlyCurrentIme) {
+        if (onlyCurrentIme) {
+            if (!hasMultipleEnabledSubtypes()) {
+                return false;
+            }
+            return mSubtypeList.switchToNextSubtype(true);
         }
-        return getCurrentSubtype().getLocale();
-    }
-
-    public RichInputMethodSubtype getCurrentSubtype() {
-        if (null != sForcedSubtypeForTesting) {
-            return sForcedSubtypeForTesting;
+        if (mSubtypeList.switchToNextSubtype(false)) {
+            return true;
         }
-        return mCurrentRichInputMethodSubtype;
+        // switch to a different IME
+        if (mImmService.switchToNextInputMethod(token, false)) {
+            return true;
+        }
+        if (hasMultipleEnabledSubtypes()) {
+            // the virtual subtype should have been reset to the first item to prepare for switching
+            // back to this IME, but we skipped notifying the change because we expected to switch
+            // to a different IME, but since that failed, we just need to notify the listener
+            mSubtypeList.notifySubtypeChanged();
+            return true;
+        }
+        return false;
     }
 
-    public boolean hasMultipleEnabledIMEsOrSubtypes(final boolean shouldIncludeAuxiliarySubtypes) {
-        final List<InputMethodInfo> enabledImis = mImmService.getEnabledInputMethodList();
-        return hasMultipleEnabledSubtypes(shouldIncludeAuxiliarySubtypes, enabledImis);
+    /**
+     * Get the subtype that is currently in use.
+     * @return the current subtype.
+     */
+    public Subtype getCurrentSubtype() {
+        return mSubtypeList.getCurrentSubtype();
     }
 
-    public boolean hasMultipleEnabledSubtypesInThisIme(
-            final boolean shouldIncludeAuxiliarySubtypes) {
-        final List<InputMethodInfo> imiList = Collections.singletonList(
-                getInputMethodInfoOfThisIme());
-        return hasMultipleEnabledSubtypes(shouldIncludeAuxiliarySubtypes, imiList);
+    /**
+     * Check if there are multiple IMEs that are enabled in the system or if this IME has multiple
+     * subtypes.
+     * @param shouldIncludeAuxiliarySubtypes whether IMEs with only auxiliary subtypes should be
+     *                                      counted.
+     * @return whether the are multiple enabled IMEs or subtypes.
+     */
+    public boolean hasMultipleEnabledImesOrSubtypes(final boolean shouldIncludeAuxiliarySubtypes) {
+        return hasMultipleEnabledSubtypes()
+                || hasMultipleEnabledImes(shouldIncludeAuxiliarySubtypes);
     }
 
-    private boolean hasMultipleEnabledSubtypes(final boolean shouldIncludeAuxiliarySubtypes,
-            final List<InputMethodInfo> imiList) {
+    /**
+     * Check if there are multiple IMEs that are enabled in the system.
+     * @param shouldIncludeAuxiliarySubtypes whether IMEs with only auxiliary subtypes should be
+     *                                      counted.
+     * @return whether there are multiple enabled IMEs.
+     */
+    private boolean hasMultipleEnabledImes(final boolean shouldIncludeAuxiliarySubtypes) {
+        final List<InputMethodInfo> imiList = mImmService.getEnabledInputMethodList();
+
         // Number of the filtered IMEs
         int filteredImisCount = 0;
 
         for (InputMethodInfo imi : imiList) {
             // We can return true immediately after we find two or more filtered IMEs.
-            if (filteredImisCount > 1) return true;
-            final List<InputMethodSubtype> subtypes = getEnabledInputMethodSubtypeList(imi, true);
+            if (filteredImisCount > 1) {
+                return true;
+            }
+            final List<InputMethodSubtype> subtypes =
+                    mImmService.getEnabledInputMethodSubtypeList(imi, true);
             // IMEs that have no subtypes should be counted.
             if (subtypes.isEmpty()) {
                 ++filteredImisCount;
@@ -379,112 +535,85 @@ public class RichInputMethodManager {
             }
         }
 
-        if (filteredImisCount > 1) {
-            return true;
-        }
-        final List<InputMethodSubtype> subtypes = getMyEnabledInputMethodSubtypeList(true);
-        int keyboardCount = 0;
-        // imm.getEnabledInputMethodSubtypeList(null, true) will return the current IME's
-        // both explicitly and implicitly enabled input method subtype.
-        // (The current IME should be LatinIME.)
-        for (InputMethodSubtype subtype : subtypes) {
-            if (KEYBOARD_MODE.equals(subtype.getMode())) {
-                ++keyboardCount;
-            }
-        }
-        return keyboardCount > 1;
+        return filteredImisCount > 1;
     }
 
-    public InputMethodSubtype findSubtypeByLocaleAndKeyboardLayoutSet(final String localeString,
-            final String keyboardLayoutSetName) {
-        final InputMethodInfo myImi = getInputMethodInfoOfThisIme();
-        final int count = myImi.getSubtypeCount();
-        for (int i = 0; i < count; i++) {
-            final InputMethodSubtype subtype = myImi.getSubtypeAt(i);
-            final String layoutName = SubtypeLocaleUtils.getKeyboardLayoutSetName(subtype);
-            if (localeString.equals(subtype.getLocale())
-                    && keyboardLayoutSetName.equals(layoutName)) {
-                return subtype;
-            }
-        }
-        return null;
-    }
-
-    public InputMethodSubtype findSubtypeByLocale(final Locale locale) {
-        // Find the best subtype based on a straightforward matching algorithm.
-        // TODO: Use LocaleList#getFirstMatch() instead.
-        final List<InputMethodSubtype> subtypes =
-                getMyEnabledInputMethodSubtypeList(true /* allowsImplicitlySelectedSubtypes */);
-        final int count = subtypes.size();
-        for (int i = 0; i < count; ++i) {
-            final InputMethodSubtype subtype = subtypes.get(i);
-            final Locale subtypeLocale = InputMethodSubtypeCompatUtils.getLocaleObject(subtype);
-            if (subtypeLocale.equals(locale)) {
-                return subtype;
-            }
-        }
-        for (int i = 0; i < count; ++i) {
-            final InputMethodSubtype subtype = subtypes.get(i);
-            final Locale subtypeLocale = InputMethodSubtypeCompatUtils.getLocaleObject(subtype);
-            if (subtypeLocale.getLanguage().equals(locale.getLanguage()) &&
-                    subtypeLocale.getCountry().equals(locale.getCountry()) &&
-                    subtypeLocale.getVariant().equals(locale.getVariant())) {
-                return subtype;
-            }
-        }
-        for (int i = 0; i < count; ++i) {
-            final InputMethodSubtype subtype = subtypes.get(i);
-            final Locale subtypeLocale = InputMethodSubtypeCompatUtils.getLocaleObject(subtype);
-            if (subtypeLocale.getLanguage().equals(locale.getLanguage()) &&
-                    subtypeLocale.getCountry().equals(locale.getCountry())) {
-                return subtype;
-            }
-        }
-        for (int i = 0; i < count; ++i) {
-            final InputMethodSubtype subtype = subtypes.get(i);
-            final Locale subtypeLocale = InputMethodSubtypeCompatUtils.getLocaleObject(subtype);
-            if (subtypeLocale.getLanguage().equals(locale.getLanguage())) {
-                return subtype;
-            }
-        }
-        return null;
-    }
-
-    public void setInputMethodAndSubtype(final IBinder token, final InputMethodSubtype subtype) {
-        mImmService.setInputMethodAndSubtype(
-                token, getInputMethodIdOfThisIme(), subtype);
-    }
-
-    public void setAdditionalInputMethodSubtypes(final InputMethodSubtype[] subtypes) {
-        mImmService.setAdditionalInputMethodSubtypes(
-                getInputMethodIdOfThisIme(), subtypes);
-        // Clear the cache so that we go read the {@link InputMethodInfo} of this IME and list of
-        // subtypes again next time.
-        refreshSubtypeCaches();
-    }
-
-    private List<InputMethodSubtype> getEnabledInputMethodSubtypeList(final InputMethodInfo imi,
-            final boolean allowsImplicitlySelectedSubtypes) {
-        return mInputMethodInfoCache.getEnabledInputMethodSubtypeList(
-                imi, allowsImplicitlySelectedSubtypes);
-    }
-
-    public void refreshSubtypeCaches() {
-        mInputMethodInfoCache.clear();
-        updateCurrentSubtype(mImmService.getCurrentInputMethodSubtype());
-    }
-
-    public boolean shouldOfferSwitchingToNextInputMethod(final IBinder binder) {
+    /**
+     * Check if the IME should offer ways to switch to a next input method (eg: a globe key).
+     * @param binder supplies the identifying token given to an input method when it was started,
+     *              which allows it to perform this operation on itself.
+     * @return whether the IME should offer ways to switch to a next input method.
+     */
+    public boolean shouldOfferSwitchingToOtherInputMethods(final IBinder binder) {
         // Use the default value instead on Jelly Bean MR2 and previous where
         // {@link InputMethodManager#shouldOfferSwitchingToNextInputMethod} isn't yet available
         // and on KitKat where the API is still just a stub to return true always.
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            return hasMultipleEnabledSubtypesInThisIme(false);
+            return false;
         }
         return mImmService.shouldOfferSwitchingToNextInputMethod(binder);
     }
 
-    private void updateCurrentSubtype(final InputMethodSubtype subtype) {
-        mCurrentRichInputMethodSubtype = RichInputMethodSubtype.getRichInputMethodSubtype(subtype);
+    /**
+     * Show the system's IME picker popup window.
+     */
+    public void showInputMethodPicker() {
+        mImmService.showInputMethodPicker();
+    }
+
+    /**
+     * Show a popup to pick the current subtype.
+     * @param context the context for this application.
+     * @param windowToken identifier for the window.
+     * @return the dialog that was created.
+     */
+    public AlertDialog showSubtypePicker(final Context context, final IBinder windowToken) {
+        if (windowToken == null) {
+            return null;
+        }
+        final CharSequence title = context.getString(R.string.change_keyboard);
+
+        final Set<Subtype> subtypes = mSubtypeList.getAll(true);
+
+        final CharSequence[] items = new CharSequence[subtypes.size()];
+        final Subtype currentSubtype = getCurrentSubtype();
+        int currentSubtypeIndex = 0;
+        int i = 0;
+        for (final Subtype subtype : subtypes) {
+            if (subtype.equals(currentSubtype)) {
+                currentSubtypeIndex = i;
+            }
+            items[i++] = subtype.getName();
+        }
+        final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface di, int position) {
+                di.dismiss();
+                int i = 0;
+                for (final Subtype subtype : subtypes) {
+                    if (i == position) {
+                        setCurrentSubtype(subtype);
+                        break;
+                    }
+                    i++;
+                }
+            }
+        };
+        final AlertDialog.Builder builder = new AlertDialog.Builder(
+                DialogUtils.getPlatformDialogThemeContext(context));
+        builder.setSingleChoiceItems(items, currentSubtypeIndex, listener).setTitle(title);
+        final AlertDialog dialog = builder.create();
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+
+        final Window window = dialog.getWindow();
+        final WindowManager.LayoutParams lp = window.getAttributes();
+        lp.token = windowToken;
+        lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
+        window.setAttributes(lp);
+        window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+
+        dialog.show();
+        return dialog;
     }
 }

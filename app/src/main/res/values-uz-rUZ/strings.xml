@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Sozlamalar"</string>
     <string name="vibrate_on_keypress">"Tugma bosilganda tebranish"</string>
     <string name="sound_on_keypress">"Tugma bosilganda ovoz"</string>
     <string name="popup_on_keypress">"Tugma bosilganda qalqib chiqish"</string>
     <string name="settings_screen_preferences">"Sozlamalar"</string>
-    <string name="settings_screen_appearance">"Ko‘rinish va sxema"</string>
     <string name="settings_screen_theme">"Mavzu"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Tizim standarti"</string>
     <string name="auto_cap">"Avtomatik bosh harf"</string>
     <string name="auto_cap_summary">"Har bir gapning birinchi so‘zini bosh harf bilan boshlash"</string>
-    <string name="language_selection_title">"Tillar"</string>
     <string name="select_language">"Tillar"</string>
-    <string name="subtype_en_GB">"Ingliz (Buyuk Britaniya)"</string>
-    <string name="subtype_en_US">"Ingliz (AQSH)"</string>
-    <string name="subtype_es_US">"Ispan (AQSH)"</string>
-    <string name="subtype_hi_ZZ">"Hinglish"</string>
-    <string name="subtype_sr_ZZ">"Serb (Lotin)"</string>
-    <string name="subtype_with_layout_en_GB">"Ingliz (Buyuk Britaniya) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"Ingliz (AQSH) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"Ispan (AQSH) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Hinglish (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"Serb (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (an’anaviy)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (ixcham)"</string>
-    <string name="custom_input_styles_title">"Maxsus usullar"</string>
-    <string name="add_style">"Usul qo‘shish"</string>
+    <string name="locale_name_en_GB">"Ingliz (Buyuk Britaniya)"</string>
+    <string name="locale_name_en_US">"Ingliz (AQSH)"</string>
+    <string name="locale_name_es_US">"Ispan (AQSH)"</string>
+    <string name="locale_name_hi_ZZ">"Hinglish"</string>
+    <string name="locale_name_sr_ZZ">"Serb (Lotin)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"an’anaviy"</string>
+    <string name="subtype_compact">"ixcham"</string>
     <string name="add">"Qo‘shish"</string>
-    <string name="remove">"Olib tashlash"</string>
-    <string name="save">"Saqlash"</string>
-    <string name="subtype_locale">"Til"</string>
-    <string name="keyboard_layout_set">"Sxema"</string>
-    <string name="custom_input_style_note_message">"Moslashtirilgan matn kiritish usulini yoqish lozim. Uni hozir yoqmoqchimisiz?"</string>
-    <string name="enable">"Yoqish"</string>
-    <string name="not_now">"Hozir emas"</string>
-    <string name="custom_input_style_already_exists">"Xuddi shunday matn kiritish usuli allaqachon mavjud: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Tugma bosilganda tebranish vaqti"</string>
     <string name="prefs_keypress_sound_volume_settings">"Tugma bosilgandagi ovoz"</string>
     <string name="prefs_key_longpress_timeout_settings">"Tugmani bosib turish"</string>

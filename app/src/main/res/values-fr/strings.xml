@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Options de saisie"</string>
     <string name="vibrate_on_keypress">"Vibrer à chaque touche"</string>
     <string name="sound_on_keypress">"Émettre un son à chaque touche"</string>
     <string name="popup_on_keypress">"Agrandir les caractères"</string>
     <string name="settings_screen_preferences">"Préférences"</string>
-    <string name="settings_screen_appearance">"Apparence et dispositions"</string>
     <string name="settings_screen_theme">"Thème"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Paramètres par défaut"</string>
     <string name="auto_cap">"Majuscules auto"</string>
     <string name="auto_cap_summary">"Majuscule au premier mot de chaque phrase"</string>
-    <string name="language_selection_title">"Langues"</string>
     <string name="select_language">"Langues"</string>
-    <string name="subtype_en_GB">"Anglais (Royaume-Uni)"</string>
-    <string name="subtype_en_US">"Anglais (États-Unis)"</string>
-    <string name="subtype_es_US">"Espagnol (États-Unis)"</string>
-    <string name="subtype_hi_ZZ">"Hindi/Anglais"</string>
-    <string name="subtype_sr_ZZ">"Serbe (latin)"</string>
-    <string name="subtype_with_layout_en_GB">"anglais (Royaume-Uni) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"anglais (États-Unis) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"espagnol (États-Unis) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Hindi/Anglais (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"Serbe (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (traditionnel)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Compact)"</string>
-    <string name="custom_input_styles_title">"Styles saisie perso"</string>
-    <string name="add_style">"Ajouter style"</string>
+    <string name="locale_name_en_GB">"Anglais (Royaume-Uni)"</string>
+    <string name="locale_name_en_US">"Anglais (États-Unis)"</string>
+    <string name="locale_name_es_US">"Espagnol (États-Unis)"</string>
+    <string name="locale_name_hi_ZZ">"Hindi/Anglais"</string>
+    <string name="locale_name_sr_ZZ">"Serbe (latin)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"traditionnel"</string>
+    <string name="subtype_compact">"Compact"</string>
     <string name="add">"Ajouter"</string>
-    <string name="remove">"Supprimer"</string>
-    <string name="save">"Enregistrer"</string>
-    <string name="subtype_locale">"Langue"</string>
-    <string name="keyboard_layout_set">"Clavier"</string>
-    <string name="custom_input_style_note_message">"Vous devez activer votre style de saisie personnalisé avant de l\'utiliser. Voulez-vous le faire maintenant ?"</string>
-    <string name="enable">"Activer"</string>
-    <string name="not_now">"Pas maintenant"</string>
-    <string name="custom_input_style_already_exists">"Le style de saisie suivant existe déjà : <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>."</string>
     <string name="prefs_keypress_vibration_duration_settings">"Durée de vibration des touches"</string>
     <string name="prefs_keypress_sound_volume_settings">"Volume son pression de touche"</string>
     <string name="prefs_key_longpress_timeout_settings">"Délai d\'appui prolongé"</string>

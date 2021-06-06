@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"इनपुट विकल्‍प"</string>
     <string name="vibrate_on_keypress">"बटन दबाने पर कंपन करे"</string>
     <string name="sound_on_keypress">"बटन दबाने पर आवाज़"</string>
     <string name="popup_on_keypress">"कुंजी दबाने पर पॉपअप दिखाएं"</string>
     <string name="settings_screen_preferences">"प्राथमिकताएं"</string>
-    <string name="settings_screen_appearance">"दिखावट और सज्जा"</string>
     <string name="settings_screen_theme">"थीम"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> मिलीसेकंड"</string>
     <string name="settings_system_default">"सिस्टम डिफ़ॉल्ट"</string>
     <string name="auto_cap">"स्‍वत: अक्षर बड़े करना"</string>
     <string name="auto_cap_summary">"प्रत्येक वाक्य के पहले शब्द को बड़ा लिखें"</string>
-    <string name="language_selection_title">"भाषाएं"</string>
     <string name="select_language">"भाषाएं"</string>
-    <string name="subtype_en_GB">"अंग्रेज़ी (यूके)"</string>
-    <string name="subtype_en_US">"अंग्रेज़ी (यूएस)"</string>
-    <string name="subtype_es_US">"स्पेनिश (यूएस)"</string>
-    <string name="subtype_hi_ZZ">"हिंग्लिश"</string>
-    <string name="subtype_sr_ZZ">"सर्बियाई (लैटिन)"</string>
-    <string name="subtype_with_layout_en_GB">"अंग्रेज़ी (यूके) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"अंग्रेज़ी (यूएस) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"स्‍पेनिश (यूएस) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"हिंग्लिश (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"सर्बियाई (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (पारंपरिक)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (संक्षिप्त)"</string>
-    <string name="custom_input_styles_title">"कस्‍टम इनपुट शैलियां"</string>
-    <string name="add_style">"शैली जोड़ें"</string>
+    <string name="locale_name_en_GB">"अंग्रेज़ी (यूके)"</string>
+    <string name="locale_name_en_US">"अंग्रेज़ी (यूएस)"</string>
+    <string name="locale_name_es_US">"स्पेनिश (यूएस)"</string>
+    <string name="locale_name_hi_ZZ">"हिंग्लिश"</string>
+    <string name="locale_name_sr_ZZ">"सर्बियाई (लैटिन)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"पारंपरिक"</string>
+    <string name="subtype_compact">"संक्षिप्त"</string>
     <string name="add">"जोड़ें"</string>
-    <string name="remove">"निकालें"</string>
-    <string name="save">"जोड़ें"</string>
-    <string name="subtype_locale">"भाषा"</string>
-    <string name="keyboard_layout_set">"लेआउट"</string>
-    <string name="custom_input_style_note_message">"कस्‍टम इनपुट शैली का उपयोग करने से पहले सक्षम करना होगा. उसे सक्षम करना चाहते हैं?"</string>
-    <string name="enable">"सक्षम करें"</string>
-    <string name="not_now">"अभी नहीं"</string>
-    <string name="custom_input_style_already_exists">"ऐसी ही इनपुट शैली पहले से मौजूद है: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"बटन दबाने पर कंपन अवधि"</string>
     <string name="prefs_keypress_sound_volume_settings">"बटन दबाने पर आवाज़ का स्तर"</string>
     <string name="prefs_key_longpress_timeout_settings">"बटन दबाए रखने की समयाविधि"</string>

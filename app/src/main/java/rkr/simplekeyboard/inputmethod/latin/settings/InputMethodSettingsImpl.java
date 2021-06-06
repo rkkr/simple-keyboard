@@ -17,24 +17,19 @@
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.content.Context;
-import android.content.Intent;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.text.TextUtils;
-import android.view.inputmethod.InputMethodInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.view.inputmethod.InputMethodSubtype;
 
-import java.util.List;
+import java.util.Set;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
+import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 
 /* package private */ class InputMethodSettingsImpl {
     private Preference mSubtypeEnablerPreference;
-    private InputMethodManager mImm;
-    private InputMethodInfo mImi;
-    private Context mContext;
+    private RichInputMethodManager mRichImm;
 
     /**
      * Initialize internal states of this object.
@@ -43,60 +38,37 @@ import rkr.simplekeyboard.inputmethod.latin.utils.IntentUtils;
      * @return true if this application is an IME and has two or more subtypes, false otherwise.
      */
     public boolean init(final Context context, final PreferenceScreen prefScreen) {
-        mContext = context;
-        mImm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        mImi = getMyImi(context, mImm);
-        if (mImi == null || mImi.getSubtypeCount() <= 1) {
-            return false;
-        }
+        RichInputMethodManager.init(context);
+        mRichImm = RichInputMethodManager.getInstance();
+
         mSubtypeEnablerPreference = new Preference(context);
         mSubtypeEnablerPreference.setTitle(R.string.select_language);
-        mSubtypeEnablerPreference
-                .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        final Intent intent =
-                                IntentUtils.getInputLanguageSelectionIntent(mImi.getId(), context);
-                        context.startActivity(intent);
-                        return true;
-                    }
-                });
+        mSubtypeEnablerPreference.setFragment(LanguagesSettingsFragment.class.getName());
         prefScreen.addPreference(mSubtypeEnablerPreference);
         updateEnabledSubtypeList();
         return true;
     }
 
-    private static InputMethodInfo getMyImi(Context context, InputMethodManager imm) {
-        final List<InputMethodInfo> imis = imm.getInputMethodList();
-        for (int i = 0; i < imis.size(); ++i) {
-            final InputMethodInfo imi = imis.get(i);
-            if (imis.get(i).getPackageName().equals(context.getPackageName())) {
-                return imi;
-            }
+    private static String getEnabledSubtypesLabel(final RichInputMethodManager richImm) {
+        if (richImm == null) {
+            return null;
         }
-        return null;
-    }
 
-    private static String getEnabledSubtypesLabel(
-            Context context, InputMethodManager imm, InputMethodInfo imi) {
-        if (context == null || imm == null || imi == null) return null;
-        final List<InputMethodSubtype> subtypes = imm.getEnabledInputMethodSubtypeList(imi, true);
+        final Set<Subtype> subtypes = richImm.getEnabledSubtypes(true);
+
         final StringBuilder sb = new StringBuilder();
-        final int N = subtypes.size();
-        for (int i = 0; i < N; ++i) {
-            final InputMethodSubtype subtype = subtypes.get(i);
+        for (final Subtype subtype : subtypes) {
             if (sb.length() > 0) {
                 sb.append(", ");
             }
-            sb.append(subtype.getDisplayName(context, imi.getPackageName(),
-                    imi.getServiceInfo().applicationInfo));
+            sb.append(subtype.getName());
         }
         return sb.toString();
     }
 
     public void updateEnabledSubtypeList() {
         if (mSubtypeEnablerPreference != null) {
-            final String summary = getEnabledSubtypesLabel(mContext, mImm, mImi);
+            final String summary = getEnabledSubtypesLabel(mRichImm);
             if (!TextUtils.isEmpty(summary)) {
                 mSubtypeEnablerPreference.setSummary(summary);
             }

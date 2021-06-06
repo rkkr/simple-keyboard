@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Опције уноса"</string>
     <string name="vibrate_on_keypress">"Вибрирај на притисак тастера"</string>
     <string name="sound_on_keypress">"Звук на притисак тастера"</string>
     <string name="popup_on_keypress">"Искачући прозор приликом притиска тастера"</string>
     <string name="settings_screen_preferences">"Подешавања"</string>
-    <string name="settings_screen_appearance">"Изглед и распореди"</string>
     <string name="settings_screen_theme">"Тема"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Подразумевано"</string>
     <string name="auto_cap">"Аутоматски унос великих слова"</string>
     <string name="auto_cap_summary">"Писање великог слова на почетку сваке реченице"</string>
-    <string name="language_selection_title">"Језици"</string>
     <string name="select_language">"Језици"</string>
-    <string name="subtype_en_GB">"енглески (УК)"</string>
-    <string name="subtype_en_US">"енглески (САД)"</string>
-    <string name="subtype_es_US">"шпански (САД)"</string>
-    <string name="subtype_hi_ZZ">"хенглески"</string>
-    <string name="subtype_sr_ZZ">"српски (латиница)"</string>
-    <string name="subtype_with_layout_en_GB">"енглески (УК) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"енглески (САД) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"шпански (САД) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"хенглески (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"српски (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (традиционални)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактна)"</string>
-    <string name="custom_input_styles_title">"Прилагођени стилови уноса"</string>
-    <string name="add_style">"Додајте стил"</string>
+    <string name="locale_name_en_GB">"енглески (УК)"</string>
+    <string name="locale_name_en_US">"енглески (САД)"</string>
+    <string name="locale_name_es_US">"шпански (САД)"</string>
+    <string name="locale_name_hi_ZZ">"хенглески"</string>
+    <string name="locale_name_sr_ZZ">"српски (латиница)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"традиционални"</string>
+    <string name="subtype_compact">"компактна"</string>
     <string name="add">"Додај"</string>
-    <string name="remove">"Уклони"</string>
-    <string name="save">"Сачувај"</string>
-    <string name="subtype_locale">"Језик"</string>
-    <string name="keyboard_layout_set">"Распоред"</string>
-    <string name="custom_input_style_note_message">"Прилагођени стил уноса треба да буде омогућен да бисте почели да га користите. Желите ли да га омогућите сада?"</string>
-    <string name="enable">"Омогући"</string>
-    <string name="not_now">"Не сада"</string>
-    <string name="custom_input_style_already_exists">"Исти стил уноса већ постоји: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Трајање вибрације при притиску"</string>
     <string name="prefs_keypress_sound_volume_settings">"Јачина звука при притиску"</string>
     <string name="prefs_key_longpress_timeout_settings">"Одлагање при дугом притиску"</string>

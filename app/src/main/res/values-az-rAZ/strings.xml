@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Daxiletmə seçimləri"</string>
     <string name="vibrate_on_keypress">"Vibrasiyalı klikləmə"</string>
     <string name="sound_on_keypress">"Klikləmə səsi"</string>
     <string name="popup_on_keypress">"Klikləmədə popup"</string>
     <string name="settings_screen_preferences">"Seçimlər"</string>
-    <string name="settings_screen_appearance">"Görünüş &amp; Düzümlər"</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> millisaniyə"</string>
     <string name="settings_system_default">"Sistem defoltu"</string>
     <string name="auto_cap">"Avtomatik böyük hərfləşmə"</string>
     <string name="auto_cap_summary">"Hər cümlənin ilk sözünü böyük hərflə yaz"</string>
-    <string name="language_selection_title">"Dillər"</string>
     <string name="select_language">"Dillər"</string>
-    <string name="subtype_en_GB">"İngilis (BK)"</string>
-    <string name="subtype_en_US">"İngilis (ABŞ)"</string>
-    <string name="subtype_es_US">"İspan (ABŞ)"</string>
-    <string name="subtype_hi_ZZ">"Hingilis"</string>
-    <string name="subtype_sr_ZZ">"Serb (Latın)"</string>
-    <string name="subtype_with_layout_en_GB">"İngilis (Britaniya) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"İngilis (Amerika) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"İspan (Amerika) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Hingilis (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"Serb (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Ənənəvi)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Kompakt)"</string>
-    <string name="custom_input_styles_title">"Xüsusi daxiletmə üslubları"</string>
-    <string name="add_style">"Stil əlavə et"</string>
+    <string name="locale_name_en_GB">"İngilis (BK)"</string>
+    <string name="locale_name_en_US">"İngilis (ABŞ)"</string>
+    <string name="locale_name_es_US">"İspan (ABŞ)"</string>
+    <string name="locale_name_hi_ZZ">"Hingilis"</string>
+    <string name="locale_name_sr_ZZ">"Serb (Latın)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"Ənənəvi"</string>
+    <string name="subtype_compact">"Kompakt"</string>
     <string name="add">"Əlavə et"</string>
-    <string name="remove">"Ləğv et"</string>
-    <string name="save">"Yadda saxla"</string>
-    <string name="subtype_locale">"Dil"</string>
-    <string name="keyboard_layout_set">"Tərtibat"</string>
-    <string name="custom_input_style_note_message">"Xüsusi daxiletmə üslubunuz istifadəyə başlamazdan əvvəl aktivləşdirilməlidir. Aktiv etmək istəyirsiniz?"</string>
-    <string name="enable">"Aktiv et"</string>
-    <string name="not_now">"İndi yox"</string>
-    <string name="custom_input_style_already_exists">"Eyni daxiletmə üslubu artıq mövcuddur: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Vibrasiyalı klikləmə müddəti"</string>
     <string name="prefs_keypress_sound_volume_settings">"Səsli klikləmə səsi"</string>
     <string name="prefs_key_longpress_timeout_settings">"Klavişi uzun müddət basmada gecikmə"</string>

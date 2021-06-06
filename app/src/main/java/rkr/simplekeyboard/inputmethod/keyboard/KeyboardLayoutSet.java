@@ -37,7 +37,7 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardBuilder;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardParams;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.UniqueKeysCache;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.XmlParseUtils;
 
@@ -94,7 +94,7 @@ public final class KeyboardLayoutSet {
         // TODO: Use {@link InputAttributes} instead of these variables.
         EditorInfo mEditorInfo;
         boolean mLanguageSwitchKeyEnabled;
-        RichInputMethodSubtype mSubtype;
+        Subtype mSubtype;
         int mKeyboardThemeId;
         int mKeyboardWidth;
         int mKeyboardHeight;
@@ -225,11 +225,11 @@ public final class KeyboardLayoutSet {
             return this;
         }
 
-        public Builder setSubtype(final RichInputMethodSubtype subtype) {
+        public Builder setSubtype(final Subtype subtype) {
             // TODO: Consolidate with {@link InputAttributes}.
             mParams.mSubtype = subtype;
             mParams.mKeyboardLayoutSetName = KEYBOARD_LAYOUT_SET_RESOURCE_PREFIX
-                    + subtype.getKeyboardLayoutSetName();
+                    + subtype.getKeyboardLayoutSet();
             return this;
         }
 

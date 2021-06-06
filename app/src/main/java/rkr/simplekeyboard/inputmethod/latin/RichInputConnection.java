@@ -250,6 +250,7 @@ public final class RichInputConnection {
      * @param newCursorPosition The new cursor position around the text.
      */
     public void commitText(final CharSequence text, final int newCursorPosition) {
+        RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
         if (DEBUG_BATCH_NESTING) checkBatchEdit();
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
         mCommittedTextBeforeComposingText.append(text);

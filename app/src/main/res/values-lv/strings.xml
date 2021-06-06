@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Ievades opcijas"</string>
     <string name="vibrate_on_keypress">"Vibrēt, nospiežot taustiņu"</string>
     <string name="sound_on_keypress">"Skaņa, nospiežot taustiņu"</string>
     <string name="popup_on_keypress">"Parādās, nospiežot taustiņu"</string>
     <string name="settings_screen_preferences">"Preferences"</string>
-    <string name="settings_screen_appearance">"Izskats un izkārtojumi"</string>
     <string name="settings_screen_theme">"Motīvs"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Sistēmas noklusējums"</string>
     <string name="auto_cap">"Automātiska lielo burtu lietošana"</string>
     <string name="auto_cap_summary">"Katra teikuma pirmo vārdu rakstīt ar lielo burtu."</string>
-    <string name="language_selection_title">"Valodas"</string>
     <string name="select_language">"Valodas"</string>
-    <string name="subtype_en_GB">"Angļu valoda (Lielbritānija)"</string>
-    <string name="subtype_en_US">"Angļu valoda (ASV)"</string>
-    <string name="subtype_es_US">"Spāņu (ASV)"</string>
-    <string name="subtype_hi_ZZ">"Hindi–angļu valoda"</string>
-    <string name="subtype_sr_ZZ">"Serbu (latīņu)"</string>
-    <string name="subtype_with_layout_en_GB">"Angļu (Lielbritānija) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"Angļu (ASV) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"Spāņu (ASV) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Hindi–angļu valoda (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"Serbu (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (tradicionālā)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (kompaktā)"</string>
-    <string name="custom_input_styles_title">"Pielāg. ievades stili"</string>
-    <string name="add_style">"Piev. stilu"</string>
+    <string name="locale_name_en_GB">"Angļu valoda (Lielbritānija)"</string>
+    <string name="locale_name_en_US">"Angļu valoda (ASV)"</string>
+    <string name="locale_name_es_US">"Spāņu (ASV)"</string>
+    <string name="locale_name_hi_ZZ">"Hindi–angļu valoda"</string>
+    <string name="locale_name_sr_ZZ">"Serbu (latīņu)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"tradicionālā"</string>
+    <string name="subtype_compact">"kompaktā"</string>
     <string name="add">"Pievienot"</string>
-    <string name="remove">"Noņemt"</string>
-    <string name="save">"Saglabāt"</string>
-    <string name="subtype_locale">"Valoda"</string>
-    <string name="keyboard_layout_set">"Izkārtojums"</string>
-    <string name="custom_input_style_note_message">"Lai lietotu pielāgoto stilu, tas ir jāiespējo. Vai iespējot?"</string>
-    <string name="enable">"Iespējot"</string>
-    <string name="not_now">"Vēlāk"</string>
-    <string name="custom_input_style_already_exists">"Šāds ievades stils jau pastāv: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Taust. nosp. vibrācijas ilgums"</string>
     <string name="prefs_keypress_sound_volume_settings">"Taustiņu nosp. skaņas skaļums"</string>
     <string name="prefs_key_longpress_timeout_settings">"Taustiņa ilgās nosp. noildze"</string>

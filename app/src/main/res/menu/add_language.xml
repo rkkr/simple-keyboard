@@ -2,7 +2,7 @@
 <!--
 /*
 **
-** Copyright 2012, The Android Open Source Project
+** Copyright 2014, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@
 ** limitations under the License.
 */
 -->
-<resources>
-    <!-- Predefined subtypes (language:layout[:extraValue]) -->
-    <string-array name="predefined_subtypes" translatable="false">
-        <item>de:qwerty</item>
-        <item>fr:qwertz</item>
-    </string-array>
-</resources>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_add_language"
+        android:icon="@drawable/ic_add_circle_white_24dp"
+        android:title="@string/add_language"
+        android:showAsAction="always" />
+</menu>

@@ -36,8 +36,4 @@
         latin:minValue="@integer/config_min_keyboar_height"
         latin:maxValue="@integer/config_max_keyboar_height"
         latin:stepValue="@integer/config_keyboar_height_step" />
-    <PreferenceScreen
-        android:fragment="rkr.simplekeyboard.inputmethod.latin.settings.CustomInputStyleSettingsFragment"
-        android:key="custom_input_styles"
-        android:title="@string/custom_input_styles_title" />
 </PreferenceScreen>

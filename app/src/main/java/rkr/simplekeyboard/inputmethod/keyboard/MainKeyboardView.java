@@ -45,11 +45,12 @@ import rkr.simplekeyboard.inputmethod.keyboard.internal.KeyPreviewView;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.MoreKeySpec;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.NonDistinctMultitouchHelper;
 import rkr.simplekeyboard.inputmethod.keyboard.internal.TimerHandler;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.CoordinateUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LanguageOnSpacebarUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
 
 /**
@@ -587,7 +588,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         if (code == Constants.CODE_SPACE) {
             // If more than one language is enabled in current input method
             final RichInputMethodManager imm = RichInputMethodManager.getInstance();
-            if (imm.getMyEnabledInputMethodSubtypeList(false).size() > 1) {
+            if (imm.hasMultipleEnabledSubtypes()) {
                 drawLanguageOnSpacebar(key, canvas, paint);
             }
         }
@@ -612,16 +613,18 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
 
     // Layout language name on spacebar.
     private String layoutLanguageOnSpacebar(final Paint paint,
-            final RichInputMethodSubtype subtype, final int width) {
+                                            final Subtype subtype, final int width) {
         // Choose appropriate language name to fit into the width.
         if (mLanguageOnSpacebarFormatType == LanguageOnSpacebarUtils.FORMAT_TYPE_FULL_LOCALE) {
-            final String fullText = subtype.getFullDisplayName();
+            final String fullText =
+                    LocaleResourceUtils.getLocaleDisplayNameInLocale(subtype.getLocale());
             if (fitsTextIntoWidth(width, fullText, paint)) {
                 return fullText;
             }
         }
 
-        final String middleText = subtype.getMiddleDisplayName();
+        final String middleText =
+                LocaleResourceUtils.getLanguageDisplayNameInLocale(subtype.getLocale());
         if (fitsTextIntoWidth(width, middleText, paint)) {
             return middleText;
         }

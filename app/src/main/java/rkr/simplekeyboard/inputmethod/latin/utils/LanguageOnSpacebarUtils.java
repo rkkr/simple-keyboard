@@ -16,13 +16,11 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
-import android.view.inputmethod.InputMethodSubtype;
-
-import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
 
 /**
  * This class determines that the language name on the spacebar should be displayed in what format.
@@ -36,21 +34,20 @@ public final class LanguageOnSpacebarUtils {
         // This utility class is not publicly instantiable.
     }
 
-    public static int getLanguageOnSpacebarFormatType(
-            final RichInputMethodSubtype subtype) {
-        final Locale locale = subtype.getLocale();
+    public static int getLanguageOnSpacebarFormatType(final Subtype subtype) {
+        final Locale locale = subtype.getLocaleObject();
         if (locale == null) {
             return FORMAT_TYPE_NONE;
         }
         final String keyboardLanguage = locale.getLanguage();
-        final String keyboardLayout = subtype.getKeyboardLayoutSetName();
+        final String keyboardLayout = subtype.getKeyboardLayoutSet();
         int sameLanguageAndLayoutCount = 0;
-        final List<InputMethodSubtype> enabledSubtypes =
-                RichInputMethodManager.getInstance().getMyEnabledInputMethodSubtypeList(true);
-        for (final InputMethodSubtype ims : enabledSubtypes) {
-            final String language = SubtypeLocaleUtils.getSubtypeLocale(ims).getLanguage();
-            if (keyboardLanguage.equals(language) && keyboardLayout.equals(
-                    SubtypeLocaleUtils.getKeyboardLayoutSetName(ims))) {
+        final Set<Subtype> enabledSubtypes =
+                RichInputMethodManager.getInstance().getEnabledSubtypes(false);
+        for (final Subtype enabledSubtype : enabledSubtypes) {
+            final String language = enabledSubtype.getLocaleObject().getLanguage();
+            if (keyboardLanguage.equals(language)
+                    && keyboardLayout.equals(enabledSubtype.getKeyboardLayoutSet())) {
                 sameLanguageAndLayoutCount++;
             }
         }

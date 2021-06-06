@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Оруулах сонголтууд"</string>
     <string name="vibrate_on_keypress">"Товч дарахад чичрэх"</string>
     <string name="sound_on_keypress">"Товч дарахад дуу гаргах"</string>
     <string name="popup_on_keypress">"Товч дарахад попап гарна"</string>
     <string name="settings_screen_preferences">"Тохируулга"</string>
-    <string name="settings_screen_appearance">"Харагдах байдал &amp; Зураглал"</string>
     <string name="settings_screen_theme">"Загвар"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>мс"</string>
     <string name="settings_system_default">"Системийн үндсэн утга"</string>
     <string name="auto_cap">"Автоматаар томруулах"</string>
     <string name="auto_cap_summary">"Өгүүлбэр бүрийн эхний үгийн эхний үсгийг томруулах"</string>
-    <string name="language_selection_title">"Хэл"</string>
     <string name="select_language">"Хэл"</string>
-    <string name="subtype_en_GB">"Англи (ИБ)"</string>
-    <string name="subtype_en_US">"Англи (АНУ)"</string>
-    <string name="subtype_es_US">"Испани (АНУ)"</string>
-    <string name="subtype_hi_ZZ">"Хинглиш"</string>
-    <string name="subtype_sr_ZZ">"Серьби хэл (латин)"</string>
-    <string name="subtype_with_layout_en_GB">"Англи (ИБ) ( <xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g> )"</string>
-    <string name="subtype_with_layout_en_US">"Англи (АНУ) ( <xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g> )"</string>
-    <string name="subtype_with_layout_es_US">"Испани (АНУ-ын) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Хинглиш (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"Серьби хэл (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (уламжлалт)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (Компакт)"</string>
-    <string name="custom_input_styles_title">"Өөрийн оруулах загвар"</string>
-    <string name="add_style">"Загвар нэмэх"</string>
+    <string name="locale_name_en_GB">"Англи (ИБ)"</string>
+    <string name="locale_name_en_US">"Англи (АНУ)"</string>
+    <string name="locale_name_es_US">"Испани (АНУ)"</string>
+    <string name="locale_name_hi_ZZ">"Хинглиш"</string>
+    <string name="locale_name_sr_ZZ">"Серьби хэл (латин)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"уламжлалт"</string>
+    <string name="subtype_compact">"Компакт"</string>
     <string name="add">"Нэмэх"</string>
-    <string name="remove">"Устгах"</string>
-    <string name="save">"Хадгалах"</string>
-    <string name="subtype_locale">"Хэл"</string>
-    <string name="keyboard_layout_set">"Байршил"</string>
-    <string name="custom_input_style_note_message">"Та өөрийн оруулах загварыг ашиглахаас өмнө идэвхжүүлэх шаардлагатай. Одоо идэвхжүүлэх үү?"</string>
-    <string name="enable">"Идэвхжүүлэх"</string>
-    <string name="not_now">"Одоо биш"</string>
-    <string name="custom_input_style_already_exists">"Ижилхэн оруулах загвар байна: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Товч дарах чичиргээний хугацаа"</string>
     <string name="prefs_keypress_sound_volume_settings">"Товчны дууны хэмжээ"</string>
     <string name="prefs_key_longpress_timeout_settings">"Товчны удаан даралтын тохиргоо"</string>

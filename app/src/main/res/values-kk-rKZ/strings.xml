@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Енгізу опциялары"</string>
     <string name="vibrate_on_keypress">"Пернені басқан кездегі діріл"</string>
     <string name="sound_on_keypress">"Пернені басу кезіндегі дыбыс"</string>
     <string name="popup_on_keypress">"Басылған пернені үлкейтіп көрсету"</string>
     <string name="settings_screen_preferences">"Қалауларыңыз"</string>
-    <string name="settings_screen_appearance">"Сыртқы түр және орналасулар"</string>
     <string name="settings_screen_theme">"Тақырып"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>мс"</string>
     <string name="settings_system_default">"Жүйе әдепкісі"</string>
     <string name="auto_cap">"Авто бас әріптерге түрлендіру"</string>
     <string name="auto_cap_summary">"Әрбір сөйлемнің бірінші әріпін бас әріпке түрлендіру"</string>
-    <string name="language_selection_title">"Тілдер"</string>
     <string name="select_language">"Тілдер"</string>
-    <string name="subtype_en_GB">"ағылшын (ҰБ)"</string>
-    <string name="subtype_en_US">"ағылшын (АҚШ)"</string>
-    <string name="subtype_es_US">"Испан (АҚШ)"</string>
-    <string name="subtype_hi_ZZ">"Хинглиш"</string>
-    <string name="subtype_sr_ZZ">"Серб (латын жазуы)"</string>
-    <string name="subtype_with_layout_en_GB">"Ағылшын (Құрама Корольдік) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"Ағылшын (АҚШ) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"Испан (АҚШ) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Хинглиш (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"Серб (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (дәстүрлі)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (шағын)"</string>
-    <string name="custom_input_styles_title">"Реттелетін енгізу стильдері"</string>
-    <string name="add_style">"Стиль қосу"</string>
+    <string name="locale_name_en_GB">"ағылшын (ҰБ)"</string>
+    <string name="locale_name_en_US">"ағылшын (АҚШ)"</string>
+    <string name="locale_name_es_US">"Испан (АҚШ)"</string>
+    <string name="locale_name_hi_ZZ">"Хинглиш"</string>
+    <string name="locale_name_sr_ZZ">"Серб (латын жазуы)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"дәстүрлі"</string>
+    <string name="subtype_compact">"шағын"</string>
     <string name="add">"Қосу"</string>
-    <string name="remove">"Өшіру"</string>
-    <string name="save">"Сақтау"</string>
-    <string name="subtype_locale">"Тіл"</string>
-    <string name="keyboard_layout_set">"Орналасу"</string>
-    <string name="custom_input_style_note_message">"Реттелетін енгізу стилі пайдалануды бастамас бұрын қосылуы қажет. Оны қазір қосу қажет пе?"</string>
-    <string name="enable">"Қосу"</string>
-    <string name="not_now">"Қазір емес"</string>
-    <string name="custom_input_style_already_exists">"Бірдей енгізу стилі бұрыннан бар: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Пернені басқан кездегі діріл ұзақтығы"</string>
     <string name="prefs_keypress_sound_volume_settings">"Пернені басқан кездегі дыбыс деңгейі"</string>
     <string name="prefs_key_longpress_timeout_settings">"Пернені ұзақ басу кідірісі"</string>

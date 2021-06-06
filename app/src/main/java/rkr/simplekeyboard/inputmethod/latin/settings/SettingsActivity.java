@@ -25,10 +25,10 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.utils.FragmentUtils;
 
 public class SettingsActivity extends PreferenceActivity {
@@ -41,9 +41,7 @@ public class SettingsActivity extends PreferenceActivity {
 
         boolean enabled = false;
         try {
-            InputMethodManager immService = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            RichInputMethodManager.InputMethodInfoCache inputMethodInfoCache = new RichInputMethodManager.InputMethodInfoCache(immService, getPackageName());
-            enabled = inputMethodInfoCache.isInputMethodOfThisImeEnabled();
+            enabled = isInputMethodOfThisImeEnabled();
         } catch (Exception e) {
             Log.e(TAG, "Exception in check if input method is enabled", e);
         }
@@ -69,6 +67,22 @@ public class SettingsActivity extends PreferenceActivity {
 
             builder.create().show();
         }
+    }
+
+    /**
+     * Check if this IME is enabled in the system.
+     * @return whether this IME is enabled in the system.
+     */
+    private boolean isInputMethodOfThisImeEnabled() {
+        final InputMethodManager imm =
+                (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        final String imePackageName = getPackageName();
+        for (final InputMethodInfo imi : imm.getEnabledInputMethodList()) {
+            if (imi.getPackageName().equals(imePackageName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

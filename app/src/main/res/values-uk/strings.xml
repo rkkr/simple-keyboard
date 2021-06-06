@@ -19,42 +19,25 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="english_ime_input_options">"Парам. введення"</string>
     <string name="vibrate_on_keypress">"Вібр. при натисканні клавіш"</string>
     <string name="sound_on_keypress">"Звук при натиску клав."</string>
     <string name="popup_on_keypress">"Збільшення натиснутих"</string>
     <string name="settings_screen_preferences">"Параметри"</string>
-    <string name="settings_screen_appearance">"Вигляд і розкладка"</string>
     <string name="settings_screen_theme">"Тема"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> мс"</string>
     <string name="settings_system_default">"За умовчанням"</string>
     <string name="auto_cap">"Вел. літери автоматично"</string>
     <string name="auto_cap_summary">"Писати перше слово в кожному реченні з великої літери"</string>
-    <string name="language_selection_title">"Мови"</string>
     <string name="select_language">"Мови"</string>
-    <string name="subtype_en_GB">"Англійська (Велика Британія)"</string>
-    <string name="subtype_en_US">"Англійська (США)"</string>
-    <string name="subtype_es_US">"іспанська (США)"</string>
-    <string name="subtype_hi_ZZ">"Хінґліш"</string>
-    <string name="subtype_sr_ZZ">"сербська (латиниця)"</string>
-    <string name="subtype_with_layout_en_GB">"Англійська (Британія) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_en_US">"Англійська (США) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_es_US">"Іспанська (США) (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_hi_ZZ">"Хінґліш (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_with_layout_sr_ZZ">"сербська (<xliff:g id="KEYBOARD_LAYOUT">%s</xliff:g>)"</string>
-    <string name="subtype_generic_traditional">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (традиційна)"</string>
-    <string name="subtype_generic_compact">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (компактна)"</string>
-    <string name="custom_input_styles_title">"Персональні стилі введення"</string>
-    <string name="add_style">"Додати стиль"</string>
+    <string name="locale_name_en_GB">"Англійська (Велика Британія)"</string>
+    <string name="locale_name_en_US">"Англійська (США)"</string>
+    <string name="locale_name_es_US">"іспанська (США)"</string>
+    <string name="locale_name_hi_ZZ">"Хінґліш"</string>
+    <string name="locale_name_sr_ZZ">"сербська (латиниця)"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
+    <string name="subtype_traditional">"традиційна"</string>
+    <string name="subtype_compact">"компактна"</string>
     <string name="add">"Додати"</string>
-    <string name="remove">"Видалити"</string>
-    <string name="save">"Зберегти"</string>
-    <string name="subtype_locale">"Мова"</string>
-    <string name="keyboard_layout_set">"Розкладка"</string>
-    <string name="custom_input_style_note_message">"Щоб використовувати персональний стиль введення, його потрібно ввімкнути. Увімкнути його?"</string>
-    <string name="enable">"Увімкнути"</string>
-    <string name="not_now">"Не зараз"</string>
-    <string name="custom_input_style_already_exists">"Такий стиль введення вже існує: <xliff:g id="INPUT_STYLE_NAME">%s</xliff:g>"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Вібрація при натисканні клавіш"</string>
     <string name="prefs_keypress_sound_volume_settings">"Гучність натискання клавіш"</string>
     <string name="prefs_key_longpress_timeout_settings">"Затримка довгого натискання"</string>

@@ -24,10 +24,8 @@ import java.util.Arrays;
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.compat.EditorInfoCompatUtils;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodSubtype;
+import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
-
-import static rkr.simplekeyboard.inputmethod.latin.common.Constants.Subtype.ExtraValue.KEYBOARD_LAYOUT_SET;
 
 /**
  * Unique identifier for each keyboard type.
@@ -53,7 +51,7 @@ public final class KeyboardId {
     public static final int ELEMENT_PHONE_SYMBOLS = 8;
     public static final int ELEMENT_NUMBER = 9;
 
-    public final RichInputMethodSubtype mSubtype;
+    public final Subtype mSubtype;
     public final int mThemeId;
     public final int mWidth;
     public final int mHeight;
@@ -153,7 +151,7 @@ public final class KeyboardId {
     }
 
     public Locale getLocale() {
-        return mSubtype.getLocale();
+        return mSubtype.getLocaleObject();
     }
 
     @Override
@@ -171,7 +169,7 @@ public final class KeyboardId {
         return String.format(Locale.ROOT, "[%s %s:%s %dx%d %s %s%s%s%s%s%s %s]",
                 elementIdToName(mElementId),
                 mSubtype.getLocale(),
-                mSubtype.getExtraValueOf(KEYBOARD_LAYOUT_SET),
+                mSubtype.getKeyboardLayoutSet(),
                 mWidth, mHeight,
                 modeName(mMode),
                 actionName(imeAction()),
