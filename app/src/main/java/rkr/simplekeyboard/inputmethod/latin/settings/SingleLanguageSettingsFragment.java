@@ -23,13 +23,19 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.SwitchPreference;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.compat.MenuItemIconColorCompat;
 import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
@@ -43,6 +49,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     public static final String LOCALE_BUNDLE_KEY = "LOCALE";
 
     private RichInputMethodManager mRichImm;
+    private View mView;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -51,6 +58,42 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         RichInputMethodManager.init(getActivity());
         mRichImm = RichInputMethodManager.getInstance();
         addPreferencesFromResource(R.xml.empty_settings);
+
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
+                             final Bundle savedInstanceState) {
+        mView = super.onCreateView(inflater, container, savedInstanceState);
+        return mView;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+        inflater.inflate(R.menu.remove_language, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_remove_language);
+        MenuItemIconColorCompat.matchMenuIconColor(mView, menuItem, getActivity().getActionBar());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        final int itemId = item.getItemId();
+        if (itemId == R.id.action_remove_language) {
+            if (mRichImm.getEnabledLocales().size() <= 1) {
+                Toast.makeText(SingleLanguageSettingsFragment.this.getActivity(),
+                        R.string.layout_not_disabled, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            final String locale = getArguments().getString(LOCALE_BUNDLE_KEY);
+            for (Subtype subtype: mRichImm.getEnabledSubtypesForLocale(locale)) {
+                if (!mRichImm.removeSubtype(subtype))
+                    return false;
+            }
+            getActivity().onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -127,15 +170,15 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                 }
                 final boolean isEnabling = (boolean)newValue;
                 final SubtypePreference pref = (SubtypePreference) preference;
+                final String locale = getArguments().getString(LOCALE_BUNDLE_KEY);
                 if (isEnabling) {
                     return mRichImm.addSubtype(pref.getSubtype());
+                } else if (mRichImm.getEnabledSubtypesForLocale(locale).size() > 1) {
+                    return mRichImm.removeSubtype(pref.getSubtype());
                 } else {
-                    final boolean removed = mRichImm.removeSubtype(pref.getSubtype());
-                    if (!removed) {
-                        Toast.makeText(SingleLanguageSettingsFragment.this.getActivity(),
-                                R.string.layout_not_disabled, Toast.LENGTH_SHORT).show();
-                    }
-                    return removed;
+                    Toast.makeText(SingleLanguageSettingsFragment.this.getActivity(),
+                            R.string.layout_not_disabled, Toast.LENGTH_SHORT).show();
+                    return false;
                 }
             }
         });

@@ -16,15 +16,12 @@
 
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
@@ -37,9 +34,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Locale;
 import java.util.Set;
@@ -47,6 +42,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.compat.MenuItemIconColorCompat;
 import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
@@ -67,7 +63,6 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     private CharSequence[] mUnusedLocaleNames;
     private String[] mUnusedLocaleValues;
     private ViewGroup mContainer;
-    private AlertDialog mAlertDialog;
     private View mView;
 
     @Override
@@ -99,41 +94,8 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
         inflater.inflate(R.menu.add_language, menu);
 
-        // make the icon match the color of the text in the action bar
-        TextView textView = findActionBarTitleView();
-        if (textView != null) {
-            MenuItem menuItem = menu.findItem(R.id.action_add_language);
-            setIconColor(menuItem, textView.getCurrentTextColor());
-        }
-    }
-
-    /**
-     * Try to look up the {@link TextView} from the activity's {@link ActionBar}.
-     * @return the {@link TextView} or null if it wasn't found.
-     */
-    private TextView findActionBarTitleView() {
-        ArrayList<View> views = new ArrayList<>();
-        mView.getRootView().findViewsWithText(views, getActivity().getActionBar().getTitle(),
-                View.FIND_VIEWS_WITH_TEXT);
-        if (views.size() == 1 && views.get(0) instanceof TextView) {
-            return (TextView)views.get(0);
-        }
-        return null;
-    }
-
-    /**
-     * Set a menu item's icon to specific color.
-     * @param menuItem the menu item that should change colors.
-     * @param color the color that the icon should be changed to.
-     */
-    private void setIconColor(final MenuItem menuItem, final int color) {
-        if (menuItem != null) {
-            Drawable drawable = menuItem.getIcon();
-            if (drawable != null) {
-                drawable.mutate();
-                drawable.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
-            }
-        }
+        MenuItem menuItem = menu.findItem(R.id.action_add_language);
+        MenuItemIconColorCompat.matchMenuIconColor(mView, menuItem, getActivity().getActionBar());
     }
 
     @Override
@@ -246,7 +208,7 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
      * Show the popup to add a new language.
      */
     private void showAddLanguagePopup() {
-        mAlertDialog = new AlertDialog.Builder(getActivity())
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.add_language)
                 .setItems(mUnusedLocaleNames,
                         new DialogInterface.OnClickListener() {
@@ -267,9 +229,9 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
                     }
                 })
                 .create();
-        mAlertDialog.show();
+        alertDialog.show();
         // disable the add button since nothing is checked by default
-        mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
 
     /**

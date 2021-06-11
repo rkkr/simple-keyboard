@@ -166,6 +166,32 @@ public class RichInputMethodManager {
         }
 
         /**
+         * Get all of the enabled languages.
+         * @return the enabled languages.
+         */
+        public synchronized Set<Locale> getAllLocales() {
+            final Set<Locale> locales = new HashSet<>();
+            for (final Subtype subtype: mSubtypes) {
+                locales.add(subtype.getLocaleObject());
+            }
+            return locales;
+        }
+
+        /**
+         * Get all of the enabled subtypes for language.
+         * @param locale filter by Locale.
+         * @return the enabled subtypes.
+         */
+        public synchronized Set<Subtype> getAllForLocale(final String locale) {
+            final Set<Subtype> subtypes = new HashSet<>();
+            for (final Subtype subtype: mSubtypes) {
+                if (subtype.getLocale().equals(locale))
+                    subtypes.add(subtype);
+            }
+            return subtypes;
+        }
+
+        /**
          * Get all of the enabled subtypes.
          * @param sortForDisplay whether the subtypes should be sorted alphabetically by the display
          *                      name as opposed to having no particular order.
@@ -387,6 +413,23 @@ public class RichInputMethodManager {
      */
     public Set<Subtype> getEnabledSubtypes(final boolean sortForDisplay) {
         return mSubtypeList.getAll(sortForDisplay);
+    }
+
+    /**
+     * Get all of the enabled languages.
+     * @return the enabled languages.
+     */
+    public Set<Locale> getEnabledLocales() {
+        return mSubtypeList.getAllLocales();
+    }
+
+    /**
+     * Get all of the enabled subtypes for language.
+     * @param locale filter by Locale.
+     * @return the enabled subtypes.
+     */
+    public Set<Subtype> getEnabledSubtypesForLocale(final String locale) {
+        return mSubtypeList.getAllForLocale(locale);
     }
 
     /**
