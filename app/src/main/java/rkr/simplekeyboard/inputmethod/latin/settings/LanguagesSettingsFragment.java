@@ -60,9 +60,11 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     private static final boolean DEBUG_SUBTYPE_ID = false;
 
     private RichInputMethodManager mRichImm;
+    private CharSequence[] mUsedLocaleNames;
+    private String[] mUsedLocaleValues;
     private CharSequence[] mUnusedLocaleNames;
     private String[] mUnusedLocaleValues;
-    private ViewGroup mContainer;
+    private AlertDialog mAlertDialog;
     private View mView;
 
     @Override
@@ -80,7 +82,6 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
         mView = super.onCreateView(inflater, container, savedInstanceState);
-        mContainer = container;
         return mView;
     }
 
@@ -92,10 +93,15 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
 
     @Override
     public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+        inflater.inflate(R.menu.remove_language, menu);
         inflater.inflate(R.menu.add_language, menu);
 
-        MenuItem menuItem = menu.findItem(R.id.action_add_language);
-        MenuItemIconColorCompat.matchMenuIconColor(mView, menuItem, getActivity().getActionBar());
+        MenuItem addLanguageMenuItem = menu.findItem(R.id.action_add_language);
+        MenuItemIconColorCompat.matchMenuIconColor(mView, addLanguageMenuItem,
+                getActivity().getActionBar());
+        MenuItem removeLanguageMenuItem = menu.findItem(R.id.action_remove_language);
+        MenuItemIconColorCompat.matchMenuIconColor(mView, removeLanguageMenuItem,
+                getActivity().getActionBar());
     }
 
     @Override
@@ -103,6 +109,8 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
         final int itemId = item.getItemId();
         if (itemId == R.id.action_add_language) {
             showAddLanguagePopup();
+        } else if (itemId == R.id.action_remove_language) {
+            showRemoveLanguagePopup();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -126,6 +134,7 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
 
         buildLanguagePreferences(usedLocales, group, context);
         setAdditionalLocaleEntries(unusedLocales);
+        setExistingLocaleEntries(usedLocales);
     }
 
     /**
@@ -205,22 +214,67 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     }
 
     /**
+     * Set the list of used languages that can be removed.
+     * @param locales the enabled locales for this IME.
+     */
+    private void setExistingLocaleEntries(final SortedSet<Locale> locales) {
+        mUsedLocaleNames = new CharSequence[locales.size()];
+        mUsedLocaleValues = new String[locales.size()];
+        int i = 0;
+        for (Locale locale : locales) {
+            final String localeString = LocaleUtils.getLocaleString(locale);
+            mUsedLocaleValues[i] = localeString;
+            mUsedLocaleNames[i] =
+                    LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(localeString);
+            i++;
+        }
+    }
+
+    /**
      * Show the popup to add a new language.
      */
     private void showAddLanguagePopup() {
-        AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+        final boolean[] checkedItems = new boolean[mUnusedLocaleNames.length];
+        mAlertDialog = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.add_language)
-                .setItems(mUnusedLocaleNames,
-                        new DialogInterface.OnClickListener() {
+                .setMultiChoiceItems(mUnusedLocaleNames, checkedItems,
+                        new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(final DialogInterface dialogInterface,
+                                                final int which, final boolean isChecked) {
+                                // make sure the add button is only enabled when at least one
+                                // language is checked
+                                if (isChecked) {
+                                    mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                                            .setEnabled(true);
+                                    return;
+                                }
+                                for (final boolean itemChecked : checkedItems) {
+                                    if (itemChecked) {
+                                        // button should already be enabled - nothing to do
+                                        return;
+                                    }
+                                }
+                                mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                                        .setEnabled(false);
+                            }
+                        })
+                .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(final DialogInterface dialogInterface, final int which) {
-                        String selectedLocale = mUnusedLocaleValues[which];
-                        final Subtype subtype = SubtypeLocaleUtils.getDefaultSubtype(
-                                selectedLocale,
-                                LanguagesSettingsFragment.this.getResources());
-                        mRichImm.addSubtype(subtype);
+                    public void onClick(final DialogInterface dialog, final int which) {
+                        // enable the default layout for all of the checked languages
+                        for (int i = 0; i < checkedItems.length; i++) {
+                            if (!checkedItems[i]) {
+                                continue;
+                            }
+                            final Subtype subtype = SubtypeLocaleUtils.getDefaultSubtype(
+                                    mUnusedLocaleValues[i],
+                                    LanguagesSettingsFragment.this.getResources());
+                            mRichImm.addSubtype(subtype);
+                        }
 
-                        openSingleLanguageSettings(selectedLocale);
+                        // refresh the list of enabled languages
+                        buildContent();
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -229,25 +283,68 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
                     }
                 })
                 .create();
-        alertDialog.show();
+        mAlertDialog.show();
         // disable the add button since nothing is checked by default
-        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+        mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
 
-    /**
-     * Open a language specific settings screen.
-     * @param locale the locale for the setting screen to open.
-     */
-    private void openSingleLanguageSettings(final String locale) {
-        final FragmentManager fragmentManager = getFragmentManager();
-        final FragmentTransaction transaction = fragmentManager.beginTransaction();
-        final Fragment fragment = new SingleLanguageSettingsFragment();
-        final Bundle extras = new Bundle();
-        extras.putString(LOCALE_BUNDLE_KEY, locale);
-        fragment.setArguments(extras);
-        transaction.replace(mContainer.getId(), fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+    private void showRemoveLanguagePopup() {
+        final boolean[] checkedItems = new boolean[mUsedLocaleNames.length];
+        mAlertDialog = new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.remove_language)
+                .setMultiChoiceItems(mUsedLocaleNames, checkedItems,
+                        new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(final DialogInterface dialogInterface,
+                                                final int which, final boolean isChecked) {
+                                // make sure the remove button is only enabled when at least one
+                                // language is checked (action will do something) and at least one
+                                // language is unchecked (don't remove all languages)
+                                boolean hasCheckedItem = false;
+                                boolean hasUncheckedItem = false;
+                                for (final boolean itemChecked : checkedItems) {
+                                    if (itemChecked) {
+                                        hasCheckedItem = true;
+                                    } else {
+                                        hasUncheckedItem = true;
+                                    }
+                                    if (hasCheckedItem && hasUncheckedItem) {
+                                        break;
+                                    }
+                                }
+                                mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                                        .setEnabled(hasCheckedItem && hasUncheckedItem);
+                            }
+                        })
+                .setPositiveButton(R.string.remove, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(final DialogInterface dialog, final int which) {
+                        // disable the layouts for all of the checked languages
+                        for (int i = 0; i < checkedItems.length; i++) {
+                            Log.w(TAG, mUsedLocaleNames[i] + ": " + checkedItems[i]);
+                            if (!checkedItems[i]) {
+                                continue;
+                            }
+                            final Set<Subtype> subtypes =
+                                    mRichImm.getEnabledSubtypesForLocale(mUsedLocaleValues[i]);
+                            for (final Subtype subtype : subtypes) {
+                                mRichImm.removeSubtype(subtype);
+                            }
+                        }
+
+                        // refresh the list of enabled languages
+                        buildContent();
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(final DialogInterface dialog, final int which) {
+                    }
+                })
+                .create();
+        mAlertDialog.show();
+        // disable the remove button since nothing is checked by default
+        mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
 
     /**
