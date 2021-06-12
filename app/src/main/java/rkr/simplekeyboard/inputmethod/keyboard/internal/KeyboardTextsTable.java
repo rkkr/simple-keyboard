@@ -346,7 +346,8 @@ public final class KeyboardTextsTable {
         // U+20AC: "€" EURO SIGN
         // U+00A5: "¥" YEN SIGN
         // U+20B1: "₱" PESO SIGN
-        /* morekeys_currency_dollar */ "\u00A2,\u00A3,\u20AC,\u00A5,\u20B1",
+        // U+20B9: "₹" INDIAN RUPEE SIGN
+        /* morekeys_currency_dollar */ "\u00A2,\u00A3,\u20AC,\u00A5,\u20B1,\u20B9",
         // U+00B1: "±" PLUS-MINUS SIGN
         /* morekeys_plus */ "\u00B1",
         /* morekeys_less_than */ "!fixedColumnOrder!3,!text/keyspec_left_single_angle_quote,!text/keyspec_less_than_equal,!text/keyspec_left_double_angle_quote",
