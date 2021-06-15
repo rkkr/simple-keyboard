@@ -42,6 +42,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     public static final String LOCALE_BUNDLE_KEY = "LOCALE";
 
     private RichInputMethodManager mRichImm;
+    private Subtype mSubtypeToRemove;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -63,6 +64,30 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         }
 
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onPause() {
+        if (mSubtypeToRemove != null) {
+            // notify the user that the unchecked subtype wasn't actually removed since nothing else
+            // was added to replace it
+            Toast.makeText(SingleLanguageSettingsFragment.this.getActivity(),
+                    R.string.layout_not_disabled, Toast.LENGTH_SHORT).show();
+            // set the corresponding preference to be checked in case the user returns to this
+            // activity
+            final PreferenceGroup group = getPreferenceScreen();
+            for (int i = 0; i < group.getPreferenceCount(); i++) {
+                if (!(group.getPreference(i) instanceof SubtypePreference)) {
+                    continue;
+                }
+                final SubtypePreference pref = (SubtypePreference) group.getPreference(i);
+                if (mSubtypeToRemove.equals(pref.getSubtype())) {
+                    pref.setChecked(true);
+                    break;
+                }
+            }
+        }
+        super.onPause();
     }
 
     /**
@@ -127,14 +152,23 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                 final boolean isEnabling = (boolean)newValue;
                 final SubtypePreference pref = (SubtypePreference) preference;
                 if (isEnabling) {
-                    return mRichImm.addSubtype(pref.getSubtype());
+                    final boolean added = mRichImm.addSubtype(pref.getSubtype());
+                    // remove the subtype that is pending to be removed (already unchecked)
+                    if (added && mSubtypeToRemove != null
+                            && (mSubtypeToRemove.equals(pref.getSubtype())
+                            || mRichImm.removeSubtype(mSubtypeToRemove))) {
+                        mSubtypeToRemove = null;
+                    }
+                    return added;
                 } else {
                     final boolean removed = mRichImm.removeSubtype(pref.getSubtype());
                     if (!removed) {
-                        Toast.makeText(SingleLanguageSettingsFragment.this.getActivity(),
-                                R.string.layout_not_disabled, Toast.LENGTH_SHORT).show();
+                        // Allow the preference to be unchecked even though the subtype isn't
+                        // actually removed. It will actually be removed when a different subtype
+                        // is checked.
+                        mSubtypeToRemove = pref.getSubtype();
                     }
-                    return removed;
+                    return true;
                 }
             }
         });
