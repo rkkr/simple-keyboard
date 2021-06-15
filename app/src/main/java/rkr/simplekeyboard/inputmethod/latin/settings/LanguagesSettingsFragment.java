@@ -17,9 +17,6 @@
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -113,6 +110,13 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
             showRemoveLanguagePopup();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu (Menu menu) {
+        if (mUsedLocaleNames != null) {
+            menu.findItem(R.id.action_remove_language).setVisible(mUsedLocaleNames.length > 1);
+        }
     }
 
     /**
@@ -274,6 +278,7 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
                         }
 
                         // refresh the list of enabled languages
+                        getActivity().invalidateOptionsMenu();
                         buildContent();
                     }
                 })
@@ -333,6 +338,7 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
                         }
 
                         // refresh the list of enabled languages
+                        getActivity().invalidateOptionsMenu();
                         buildContent();
                     }
                 })
