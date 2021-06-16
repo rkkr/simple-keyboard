@@ -158,7 +158,8 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                 final SubtypePreference pref = (SubtypePreference) preference;
                 if (isEnabling) {
                     final boolean added = mRichImm.addSubtype(pref.getSubtype());
-                    // remove the subtype that is pending to be removed (already unchecked)
+                    // remove the subtype that is pending to be removed (already unchecked) if it
+                    // isn't getting re-enabled now
                     if (added && mSubtypeToRemove != null
                             && (mSubtypeToRemove.equals(pref.getSubtype())
                             || mRichImm.removeSubtype(mSubtypeToRemove))) {

@@ -137,8 +137,7 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
         final SortedSet<Locale> unusedLocales = getUnusedLocales(usedLocales, comparator);
 
         buildLanguagePreferences(usedLocales, group, context);
-        setAdditionalLocaleEntries(unusedLocales);
-        setExistingLocaleEntries(usedLocales);
+        setLocaleEntries(usedLocales, unusedLocales);
     }
 
     /**
@@ -201,34 +200,30 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
     }
 
     /**
-     * Set the list of unused languages that can be added.
-     * @param locales the unused locales that are supported in this IME.
+     * Set the lists of used languages that can be removed and unused languages that can be added.
+     * @param usedLocales the enabled locales for this IME.
+     * @param unusedLocales the unused locales that are supported in this IME.
      */
-    private void setAdditionalLocaleEntries(final SortedSet<Locale> locales) {
-        mUnusedLocaleNames = new CharSequence[locales.size()];
-        mUnusedLocaleValues = new String[locales.size()];
+    private void setLocaleEntries(final SortedSet<Locale> usedLocales,
+                                  final SortedSet<Locale> unusedLocales) {
+        mUsedLocaleNames = new CharSequence[usedLocales.size()];
+        mUsedLocaleValues = new String[usedLocales.size()];
         int i = 0;
-        for (Locale locale : locales) {
-            final String localeString = LocaleUtils.getLocaleString(locale);
-            mUnusedLocaleValues[i] = localeString;
-            mUnusedLocaleNames[i] =
-                    LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(localeString);
-            i++;
-        }
-    }
-
-    /**
-     * Set the list of used languages that can be removed.
-     * @param locales the enabled locales for this IME.
-     */
-    private void setExistingLocaleEntries(final SortedSet<Locale> locales) {
-        mUsedLocaleNames = new CharSequence[locales.size()];
-        mUsedLocaleValues = new String[locales.size()];
-        int i = 0;
-        for (Locale locale : locales) {
+        for (Locale locale : usedLocales) {
             final String localeString = LocaleUtils.getLocaleString(locale);
             mUsedLocaleValues[i] = localeString;
             mUsedLocaleNames[i] =
+                    LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(localeString);
+            i++;
+        }
+
+        mUnusedLocaleNames = new CharSequence[unusedLocales.size()];
+        mUnusedLocaleValues = new String[unusedLocales.size()];
+        i = 0;
+        for (Locale locale : unusedLocales) {
+            final String localeString = LocaleUtils.getLocaleString(locale);
+            mUnusedLocaleValues[i] = localeString;
+            mUnusedLocaleNames[i] =
                     LocaleResourceUtils.getLocaleDisplayNameInSystemLocale(localeString);
             i++;
         }
@@ -293,6 +288,9 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
         mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
 
+    /**
+     * Show the popup to remove an existing language.
+     */
     private void showRemoveLanguagePopup() {
         final boolean[] checkedItems = new boolean[mUsedLocaleNames.length];
         mAlertDialog = new AlertDialog.Builder(getActivity())
@@ -326,7 +324,6 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
                     public void onClick(final DialogInterface dialog, final int which) {
                         // disable the layouts for all of the checked languages
                         for (int i = 0; i < checkedItems.length; i++) {
-                            Log.w(TAG, mUsedLocaleNames[i] + ": " + checkedItems[i]);
                             if (!checkedItems[i]) {
                                 continue;
                             }
