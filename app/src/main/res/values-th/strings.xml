@@ -38,6 +38,7 @@
     <string name="subtype_traditional">"ดั้งเดิม"</string>
     <string name="subtype_compact">"แบบกะทัดรัด"</string>
     <string name="add">"เพิ่ม"</string>
+    <string name="remove">"ลบ"</string>
     <string name="prefs_keypress_vibration_duration_settings">"ระยะเวลาการสั่นเมื่อกดแป้นพิมพ์"</string>
     <string name="prefs_keypress_sound_volume_settings">"ระดับเสียงเมื่อกดแป้นพิมพ์"</string>
     <string name="prefs_key_longpress_timeout_settings">"การหน่วงเวลาของการกดแป้นค้าง"</string>

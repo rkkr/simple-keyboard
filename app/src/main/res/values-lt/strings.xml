@@ -39,6 +39,7 @@
     <string name="subtype_traditional">"tradicinė"</string>
     <string name="subtype_compact">"kompaktiška"</string>
     <string name="add">"Pridėti"</string>
+    <string name="remove">"Pašalinti"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Vibrav. paspaudus mygt. trukmė"</string>
     <string name="prefs_keypress_sound_volume_settings">"Garso paspaudus mygt. garsumas"</string>
     <string name="prefs_key_longpress_timeout_settings">"Klavišo ilgo paspaudimo delsa"</string>

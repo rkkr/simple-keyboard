@@ -38,6 +38,7 @@
     <string name="subtype_traditional">"பாரம்பரியமானது"</string>
     <string name="subtype_compact">"வசதியான"</string>
     <string name="add">"சேர்"</string>
+    <string name="remove">"அகற்று"</string>
     <string name="prefs_keypress_vibration_duration_settings">"விசையழுத்த அதிர்வின் காலஅளவு"</string>
     <string name="prefs_keypress_sound_volume_settings">"விசையழுத்த ஒலியளவு"</string>
     <string name="prefs_key_longpress_timeout_settings">"விசைக்கான நீண்ட அழுத்த நேரம்"</string>
