@@ -25,6 +25,7 @@ import android.preference.PreferenceGroup;
 import android.preference.SwitchPreference;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -42,6 +43,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     public static final String LOCALE_BUNDLE_KEY = "LOCALE";
 
     private RichInputMethodManager mRichImm;
+    private List<SubtypePreference> mSubtypePreferences;
     private Subtype mSubtypeToRemove;
 
     @Override
@@ -75,12 +77,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                     R.string.layout_not_disabled, Toast.LENGTH_SHORT).show();
             // set the corresponding preference to be checked in case the user returns to this
             // activity
-            final PreferenceGroup group = getPreferenceScreen();
-            for (int i = 0; i < group.getPreferenceCount(); i++) {
-                if (!(group.getPreference(i) instanceof SubtypePreference)) {
-                    continue;
-                }
-                final SubtypePreference pref = (SubtypePreference) group.getPreference(i);
+            for (final SubtypePreference pref : mSubtypePreferences) {
                 if (mSubtypeToRemove.equals(pref.getSubtype())) {
                     pref.setChecked(true);
                     break;
@@ -122,10 +119,18 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         final Set<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
         final List<Subtype> subtypes =
                 SubtypeLocaleUtils.getSubtypes(locale, context.getResources());
+        mSubtypePreferences = new ArrayList<>();
         for (final Subtype subtype : subtypes) {
-            final boolean isEnabled = enabledSubtypes.contains(subtype);
-            final SubtypePreference pref = createSubtypePreference(subtype, isEnabled, context);
+            final boolean isSubtypeEnabled = enabledSubtypes.contains(subtype);
+            final SubtypePreference pref =
+                    createSubtypePreference(subtype, isSubtypeEnabled, context);
+            if (subtypes.size() == 1) {
+                // if this is the only subtype for the language, it can't be removed without
+                // removing the whole language
+                pref.setEnabled(false);
+            }
             group.addPreference(pref);
+            mSubtypePreferences.add(pref);
         }
     }
 
@@ -161,19 +166,38 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                     }
                     return added;
                 } else {
-                    final boolean removed = mRichImm.removeSubtype(pref.getSubtype());
-                    if (!removed) {
-                        // Allow the preference to be unchecked even though the subtype isn't
-                        // actually removed. It will actually be removed when a different subtype
-                        // is checked.
-                        mSubtypeToRemove = pref.getSubtype();
+                    if (hasMultipleSubtypesChecked()) {
+                        mRichImm.removeSubtype(pref.getSubtype());
+                        return true;
                     }
+                    // Skip removing the subtype for now, but allow the preference to be unchecked
+                    // even though the subtype isn't actually removed. It will be removed when a
+                    // different subtype is checked.
+                    mSubtypeToRemove = pref.getSubtype();
                     return true;
                 }
             }
         });
 
         return pref;
+    }
+
+    /**
+     * Check if there are multiple subtype preferences for this language that are checked.
+     * @return whether there are multiple subtype preferences that are checked.
+     */
+    private boolean hasMultipleSubtypesChecked() {
+        int count = 0;
+        for (final SubtypePreference pref : mSubtypePreferences) {
+            if (!pref.isChecked()) {
+                continue;
+            }
+            count++;
+            if (count > 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
