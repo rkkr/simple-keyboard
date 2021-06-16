@@ -233,34 +233,10 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
      * Show the popup to add a new language.
      */
     private void showAddLanguagePopup() {
-        final boolean[] checkedItems = new boolean[mUnusedLocaleNames.length];
-        mAlertDialog = new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.add_language)
-                .setMultiChoiceItems(mUnusedLocaleNames, checkedItems,
-                        new DialogInterface.OnMultiChoiceClickListener() {
-                            @Override
-                            public void onClick(final DialogInterface dialogInterface,
-                                                final int which, final boolean isChecked) {
-                                // make sure the add button is only enabled when at least one
-                                // language is checked
-                                if (isChecked) {
-                                    mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                                            .setEnabled(true);
-                                    return;
-                                }
-                                for (final boolean itemChecked : checkedItems) {
-                                    if (itemChecked) {
-                                        // button should already be enabled - nothing to do
-                                        return;
-                                    }
-                                }
-                                mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                                        .setEnabled(false);
-                            }
-                        })
-                .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
+        showMultiChoiceDialog(mUnusedLocaleNames, R.string.add_language, R.string.add, true,
+                new OnMultiChoiceDialogAcceptListener() {
                     @Override
-                    public void onClick(final DialogInterface dialog, final int which) {
+                    public void onClick(boolean[] checkedItems) {
                         // enable the default layout for all of the checked languages
                         for (int i = 0; i < checkedItems.length; i++) {
                             if (!checkedItems[i]) {
@@ -276,52 +252,17 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
                         getActivity().invalidateOptionsMenu();
                         buildContent();
                     }
-                })
-                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(final DialogInterface dialog, final int which) {
-                    }
-                })
-                .create();
-        mAlertDialog.show();
-        // disable the add button since nothing is checked by default
-        mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                });
     }
 
     /**
      * Show the popup to remove an existing language.
      */
     private void showRemoveLanguagePopup() {
-        final boolean[] checkedItems = new boolean[mUsedLocaleNames.length];
-        mAlertDialog = new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.remove_language)
-                .setMultiChoiceItems(mUsedLocaleNames, checkedItems,
-                        new DialogInterface.OnMultiChoiceClickListener() {
-                            @Override
-                            public void onClick(final DialogInterface dialogInterface,
-                                                final int which, final boolean isChecked) {
-                                // make sure the remove button is only enabled when at least one
-                                // language is checked (action will do something) and at least one
-                                // language is unchecked (don't remove all languages)
-                                boolean hasCheckedItem = false;
-                                boolean hasUncheckedItem = false;
-                                for (final boolean itemChecked : checkedItems) {
-                                    if (itemChecked) {
-                                        hasCheckedItem = true;
-                                    } else {
-                                        hasUncheckedItem = true;
-                                    }
-                                    if (hasCheckedItem && hasUncheckedItem) {
-                                        break;
-                                    }
-                                }
-                                mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                                        .setEnabled(hasCheckedItem && hasUncheckedItem);
-                            }
-                        })
-                .setPositiveButton(R.string.remove, new DialogInterface.OnClickListener() {
+        showMultiChoiceDialog(mUsedLocaleNames, R.string.remove_language, R.string.remove, false,
+                new OnMultiChoiceDialogAcceptListener() {
                     @Override
-                    public void onClick(final DialogInterface dialog, final int which) {
+                    public void onClick(boolean[] checkedItems) {
                         // disable the layouts for all of the checked languages
                         for (int i = 0; i < checkedItems.length; i++) {
                             if (!checkedItems[i]) {
@@ -338,6 +279,56 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
                         getActivity().invalidateOptionsMenu();
                         buildContent();
                     }
+                });
+    }
+
+    /**
+     * Show a multi-select popup.
+     * @param names the list of the choice display names.
+     * @param titleRes the title of the dialog.
+     * @param positiveButtonRes the text for the positive button.
+     * @param allowAllChecked whether the positive button should be enabled when all items are
+     *                       checked.
+     * @param listener the listener for when the user clicks the positive button.
+     */
+    private void showMultiChoiceDialog(final CharSequence[] names, final int titleRes,
+                                       final int positiveButtonRes, final boolean allowAllChecked,
+                                       final OnMultiChoiceDialogAcceptListener listener) {
+        final boolean[] checkedItems = new boolean[names.length];
+        mAlertDialog = new AlertDialog.Builder(getActivity())
+                .setTitle(titleRes)
+                .setMultiChoiceItems(names, checkedItems,
+                        new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(final DialogInterface dialogInterface,
+                                                final int which, final boolean isChecked) {
+                                // make sure the positive button is only enabled when at least one
+                                // item is checked and when not all of the items are checked (unless
+                                // allowAllChecked is true)
+                                boolean hasCheckedItem = false;
+                                boolean hasUncheckedItem = false;
+                                for (final boolean itemChecked : checkedItems) {
+                                    if (itemChecked) {
+                                        hasCheckedItem = true;
+                                        if (allowAllChecked) {
+                                            break;
+                                        }
+                                    } else {
+                                        hasUncheckedItem = true;
+                                    }
+                                    if (hasCheckedItem && hasUncheckedItem) {
+                                        break;
+                                    }
+                                }
+                                mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(
+                                        hasCheckedItem && (hasUncheckedItem || allowAllChecked));
+                            }
+                        })
+                .setPositiveButton(positiveButtonRes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(final DialogInterface dialog, final int which) {
+                        listener.onClick(checkedItems);
+                    }
                 })
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
@@ -346,8 +337,20 @@ public final class LanguagesSettingsFragment extends PreferenceFragment {
                 })
                 .create();
         mAlertDialog.show();
-        // disable the remove button since nothing is checked by default
+        // disable the positive button since nothing is checked by default
         mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+    }
+
+    /**
+     * Interface used to add some code to run when the positive button on a multi-select dialog is
+     * clicked.
+     */
+    private interface OnMultiChoiceDialogAcceptListener {
+        /**
+         * Handler triggered when the positive button of the dialog is clicked.
+         * @param checkedItems a list of whether each item in the dialog was checked.
+         */
+        void onClick(final boolean[] checkedItems);
     }
 
     /**
