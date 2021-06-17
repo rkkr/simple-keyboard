@@ -24,7 +24,11 @@ import android.inputmethodservice.InputMethodService;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.IBinder;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.RelativeSizeSpan;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodInfo;
@@ -631,13 +635,22 @@ public class RichInputMethodManager {
                     && subtypeInfo.virtualSubtype.equals(currentSubtype)) {
                 currentSubtypeIndex = i;
             }
-            final String text;
+
+            final SpannableString itemTitle;
+            final SpannableString itemSubtitle;
             if (!TextUtils.isEmpty(subtypeInfo.subtypeName)) {
-                text = subtypeInfo.subtypeName + "\n";
+                itemTitle = new SpannableString(subtypeInfo.subtypeName);
+                itemSubtitle = new SpannableString("\n" + subtypeInfo.imeName);
             } else {
-                text = "";
+                itemTitle = new SpannableString(subtypeInfo.imeName);
+                itemSubtitle = new SpannableString("");
             }
-            items[i++] = text + subtypeInfo.imeName;
+            itemTitle.setSpan(new RelativeSizeSpan(0.9f), 0,itemTitle.length(),
+                    Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            itemSubtitle.setSpan(new RelativeSizeSpan(0.85f), 0,itemSubtitle.length(),
+                    Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+
+            items[i++] = new SpannableStringBuilder().append(itemTitle).append(itemSubtitle);
         }
         final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
