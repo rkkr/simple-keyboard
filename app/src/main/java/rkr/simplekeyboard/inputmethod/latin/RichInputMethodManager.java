@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.inputmethodservice.InputMethodService;
 import android.os.AsyncTask;
@@ -533,62 +534,6 @@ public class RichInputMethodManager {
     }
 
     /**
-     * Check if there are multiple IMEs that are enabled in the system or if this IME has multiple
-     * subtypes.
-     * @param shouldIncludeAuxiliarySubtypes whether IMEs with only auxiliary subtypes should be
-     *                                      counted.
-     * @return whether the are multiple enabled IMEs or subtypes.
-     */
-    public boolean hasMultipleEnabledImesOrSubtypes(final boolean shouldIncludeAuxiliarySubtypes) {
-        return hasMultipleEnabledSubtypes()
-                || hasMultipleEnabledImes(shouldIncludeAuxiliarySubtypes);
-    }
-
-    /**
-     * Check if there are multiple IMEs that are enabled in the system.
-     * @param shouldIncludeAuxiliarySubtypes whether IMEs with only auxiliary subtypes should be
-     *                                      counted.
-     * @return whether there are multiple enabled IMEs.
-     */
-    private boolean hasMultipleEnabledImes(final boolean shouldIncludeAuxiliarySubtypes) {
-        final List<InputMethodInfo> imiList = mImmService.getEnabledInputMethodList();
-
-        // Number of the filtered IMEs
-        int filteredImisCount = 0;
-
-        for (InputMethodInfo imi : imiList) {
-            // We can return true immediately after we find two or more filtered IMEs.
-            if (filteredImisCount > 1) {
-                return true;
-            }
-            final List<InputMethodSubtype> subtypes =
-                    mImmService.getEnabledInputMethodSubtypeList(imi, true);
-            // IMEs that have no subtypes should be counted.
-            if (subtypes.isEmpty()) {
-                ++filteredImisCount;
-                continue;
-            }
-
-            int auxCount = 0;
-            for (InputMethodSubtype subtype : subtypes) {
-                if (subtype.isAuxiliary()) {
-                    ++auxCount;
-                }
-            }
-            final int nonAuxCount = subtypes.size() - auxCount;
-
-            // IMEs that have one or more non-auxiliary subtypes should be counted.
-            // If shouldIncludeAuxiliarySubtypes is true, IMEs that have two or more auxiliary
-            // subtypes should be counted as well.
-            if (nonAuxCount > 0 || (shouldIncludeAuxiliarySubtypes && auxCount > 1)) {
-                ++filteredImisCount;
-            }
-        }
-
-        return filteredImisCount > 1;
-    }
-
-    /**
      * Check if the IME should offer ways to switch to a next input method (eg: a globe key).
      * @param binder supplies the identifying token given to an input method when it was started,
      *              which allows it to perform this operation on itself.
@@ -602,13 +547,6 @@ public class RichInputMethodManager {
             return false;
         }
         return mImmService.shouldOfferSwitchingToNextInputMethod(binder);
-    }
-
-    /**
-     * Show the system's IME picker popup window.
-     */
-    public void showInputMethodPicker() {
-        mImmService.showInputMethodPicker();
     }
 
     /**
@@ -626,6 +564,10 @@ public class RichInputMethodManager {
         final CharSequence title = context.getString(R.string.change_keyboard);
 
         final List<SubtypeInfo> subtypeInfoList = getEnabledSubtypeInfoOfAllImes(context);
+        if (subtypeInfoList.size() < 2) {
+            // if there aren't multiple options, there is no reason to show the picker
+            return null;
+        }
 
         final CharSequence[] items = new CharSequence[subtypeInfoList.size()];
         final Subtype currentSubtype = getCurrentSubtype();
@@ -721,14 +663,16 @@ public class RichInputMethodManager {
 
         for (InputMethodInfo imi : imiList) {
             final CharSequence imeName = imi.loadLabel(packageManager);
+            final String imiId = imi.getId();
+            final String packageName = imi.getPackageName();
 
-            if (imi.getPackageName().equals(context.getPackageName())) {
+            if (packageName.equals(context.getPackageName())) {
                 for (final Subtype subtype : getEnabledSubtypes(true)) {
                     final SubtypeInfo subtypeInfo = new SubtypeInfo();
                     subtypeInfo.virtualSubtype = subtype;
                     subtypeInfo.subtypeName = subtype.getName();
                     subtypeInfo.imeName = imeName;
-                    subtypeInfo.imiId = imi.getId();
+                    subtypeInfo.imiId = imiId;
                     subtypeInfoList.add(subtypeInfo);
                 }
                 continue;
@@ -736,25 +680,26 @@ public class RichInputMethodManager {
 
             final List<InputMethodSubtype> subtypes =
                     mImmService.getEnabledInputMethodSubtypeList(imi, true);
-            // IMEs that have no subtypes should still be returned.
+            // IMEs that have no subtypes should still be returned
             if (subtypes.isEmpty()) {
                 final SubtypeInfo subtypeInfo = new SubtypeInfo();
                 subtypeInfo.imeName = imeName;
-                subtypeInfo.imiId = imi.getId();
+                subtypeInfo.imiId = imiId;
                 subtypeInfoList.add(subtypeInfo);
                 continue;
             }
 
+            final ApplicationInfo applicationInfo = imi.getServiceInfo().applicationInfo;
             for (InputMethodSubtype subtype : subtypes) {
                 if (subtype.isAuxiliary()) {
                     continue;
                 }
                 final SubtypeInfo subtypeInfo = new SubtypeInfo();
                 subtypeInfo.systemSubtype = subtype;
-                subtypeInfo.subtypeName = subtype.getDisplayName(context, imi.getPackageName(),
-                        imi.getServiceInfo().applicationInfo);
+                subtypeInfo.subtypeName = subtype.getDisplayName(context, packageName,
+                        applicationInfo);
                 subtypeInfo.imeName = imeName;
-                subtypeInfo.imiId = imi.getId();
+                subtypeInfo.imiId = imiId;
                 subtypeInfoList.add(subtypeInfo);
             }
         }
