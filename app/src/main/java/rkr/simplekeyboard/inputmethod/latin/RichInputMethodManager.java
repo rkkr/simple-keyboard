@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.inputmethodservice.InputMethodService;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -695,11 +696,31 @@ public class RichInputMethodManager {
      * @return a list with info for all of the subtypes.
      */
     private List<SubtypeInfo> getEnabledSubtypeInfoOfAllImes(final Context context) {
-        final List<InputMethodInfo> imiList = mImmService.getEnabledInputMethodList();
         final List<SubtypeInfo> subtypeInfoList = new ArrayList<>();
+        final PackageManager packageManager = context.getPackageManager();
+
+        final Set<InputMethodInfo> imiList = new TreeSet<>(new Comparator<InputMethodInfo>() {
+            @Override
+            public int compare(InputMethodInfo a, InputMethodInfo b) {
+                if (a.equals(b)) {
+                    // ensure that this is consistent with equals
+                    return 0;
+                }
+                final String labelA = a.loadLabel(packageManager).toString();
+                final String labelB = b.loadLabel(packageManager).toString();
+                final int result = labelA.compareToIgnoreCase(labelB);
+                if (result != 0) {
+                    return result;
+                }
+                // ensure that non-equal objects are distinguished to be consistent with
+                // equals
+                return a.hashCode() > b.hashCode() ? 1 : -1;
+            }
+        });
+        imiList.addAll(mImmService.getEnabledInputMethodList());
 
         for (InputMethodInfo imi : imiList) {
-            final CharSequence imeName = imi.loadLabel(context.getPackageManager());
+            final CharSequence imeName = imi.loadLabel(packageManager);
 
             if (imi.getPackageName().equals(context.getPackageName())) {
                 for (final Subtype subtype : getEnabledSubtypes(true)) {
