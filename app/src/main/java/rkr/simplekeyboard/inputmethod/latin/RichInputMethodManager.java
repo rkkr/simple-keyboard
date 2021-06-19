@@ -23,7 +23,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.inputmethodservice.InputMethodService;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.IBinder;
 import android.text.Spannable;
@@ -45,6 +44,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.concurrent.Executors;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
@@ -61,7 +61,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 // non final for easy mocking.
 public class RichInputMethodManager {
     private static final String TAG = RichInputMethodManager.class.getSimpleName();
-    private static final boolean DEBUG = false;
 
     private RichInputMethodManager() {
         // This utility class is not publicly instantiable.
@@ -661,7 +660,7 @@ public class RichInputMethodManager {
         });
         imiList.addAll(mImmService.getEnabledInputMethodList());
 
-        for (InputMethodInfo imi : imiList) {
+        for (final InputMethodInfo imi : imiList) {
             final CharSequence imeName = imi.loadLabel(packageManager);
             final String imiId = imi.getId();
             final String packageName = imi.getPackageName();
@@ -690,7 +689,7 @@ public class RichInputMethodManager {
             }
 
             final ApplicationInfo applicationInfo = imi.getServiceInfo().applicationInfo;
-            for (InputMethodSubtype subtype : subtypes) {
+            for (final InputMethodSubtype subtype : subtypes) {
                 if (subtype.isAuxiliary()) {
                     continue;
                 }
@@ -731,12 +730,11 @@ public class RichInputMethodManager {
             return;
         }
         final InputMethodManager imm = mImmService;
-        new AsyncTask<Void, Void, Void>() {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
             @Override
-            protected Void doInBackground(Void... params) {
+            public void run() {
                 imm.setInputMethodAndSubtype(token, imiId, subtype);
-                return null;
             }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        });
     }
 }
