@@ -695,8 +695,10 @@ public class RichInputMethodManager {
                 }
                 final SubtypeInfo subtypeInfo = new SubtypeInfo();
                 subtypeInfo.systemSubtype = subtype;
-                subtypeInfo.subtypeName = subtype.getDisplayName(context, packageName,
-                        applicationInfo);
+                if (!subtype.overridesImplicitlyEnabledSubtype()) {
+                    subtypeInfo.subtypeName = subtype.getDisplayName(context, packageName,
+                            applicationInfo);
+                }
                 subtypeInfo.imeName = imeName;
                 subtypeInfo.imiId = imiId;
                 subtypeInfoList.add(subtypeInfo);
