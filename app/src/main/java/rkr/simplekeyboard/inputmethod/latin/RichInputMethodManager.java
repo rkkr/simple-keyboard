@@ -20,8 +20,16 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.inputmethodservice.InputMethodService;
 import android.os.Build;
 import android.os.IBinder;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.RelativeSizeSpan;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodInfo;
@@ -29,7 +37,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -37,6 +44,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.concurrent.Executors;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
@@ -53,7 +61,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 // non final for easy mocking.
 public class RichInputMethodManager {
     private static final String TAG = RichInputMethodManager.class.getSimpleName();
-    private static final boolean DEBUG = false;
 
     private RichInputMethodManager() {
         // This utility class is not publicly instantiable.
@@ -526,62 +533,6 @@ public class RichInputMethodManager {
     }
 
     /**
-     * Check if there are multiple IMEs that are enabled in the system or if this IME has multiple
-     * subtypes.
-     * @param shouldIncludeAuxiliarySubtypes whether IMEs with only auxiliary subtypes should be
-     *                                      counted.
-     * @return whether the are multiple enabled IMEs or subtypes.
-     */
-    public boolean hasMultipleEnabledImesOrSubtypes(final boolean shouldIncludeAuxiliarySubtypes) {
-        return hasMultipleEnabledSubtypes()
-                || hasMultipleEnabledImes(shouldIncludeAuxiliarySubtypes);
-    }
-
-    /**
-     * Check if there are multiple IMEs that are enabled in the system.
-     * @param shouldIncludeAuxiliarySubtypes whether IMEs with only auxiliary subtypes should be
-     *                                      counted.
-     * @return whether there are multiple enabled IMEs.
-     */
-    private boolean hasMultipleEnabledImes(final boolean shouldIncludeAuxiliarySubtypes) {
-        final List<InputMethodInfo> imiList = mImmService.getEnabledInputMethodList();
-
-        // Number of the filtered IMEs
-        int filteredImisCount = 0;
-
-        for (InputMethodInfo imi : imiList) {
-            // We can return true immediately after we find two or more filtered IMEs.
-            if (filteredImisCount > 1) {
-                return true;
-            }
-            final List<InputMethodSubtype> subtypes =
-                    mImmService.getEnabledInputMethodSubtypeList(imi, true);
-            // IMEs that have no subtypes should be counted.
-            if (subtypes.isEmpty()) {
-                ++filteredImisCount;
-                continue;
-            }
-
-            int auxCount = 0;
-            for (InputMethodSubtype subtype : subtypes) {
-                if (subtype.isAuxiliary()) {
-                    ++auxCount;
-                }
-            }
-            final int nonAuxCount = subtypes.size() - auxCount;
-
-            // IMEs that have one or more non-auxiliary subtypes should be counted.
-            // If shouldIncludeAuxiliarySubtypes is true, IMEs that have two or more auxiliary
-            // subtypes should be counted as well.
-            if (nonAuxCount > 0 || (shouldIncludeAuxiliarySubtypes && auxCount > 1)) {
-                ++filteredImisCount;
-            }
-        }
-
-        return filteredImisCount > 1;
-    }
-
-    /**
      * Check if the IME should offer ways to switch to a next input method (eg: a globe key).
      * @param binder supplies the identifying token given to an input method when it was started,
      *              which allows it to perform this operation on itself.
@@ -598,44 +549,64 @@ public class RichInputMethodManager {
     }
 
     /**
-     * Show the system's IME picker popup window.
-     */
-    public void showInputMethodPicker() {
-        mImmService.showInputMethodPicker();
-    }
-
-    /**
      * Show a popup to pick the current subtype.
      * @param context the context for this application.
      * @param windowToken identifier for the window.
+     * @param inputMethodService the input method service for this IME.
      * @return the dialog that was created.
      */
-    public AlertDialog showSubtypePicker(final Context context, final IBinder windowToken) {
+    public AlertDialog showSubtypePicker(final Context context, final IBinder windowToken,
+                                         final InputMethodService inputMethodService) {
         if (windowToken == null) {
             return null;
         }
         final CharSequence title = context.getString(R.string.change_keyboard);
 
-        final Set<Subtype> subtypes = mSubtypeList.getAll(true);
+        final List<SubtypeInfo> subtypeInfoList = getEnabledSubtypeInfoOfAllImes(context);
+        if (subtypeInfoList.size() < 2) {
+            // if there aren't multiple options, there is no reason to show the picker
+            return null;
+        }
 
-        final CharSequence[] items = new CharSequence[subtypes.size()];
+        final CharSequence[] items = new CharSequence[subtypeInfoList.size()];
         final Subtype currentSubtype = getCurrentSubtype();
         int currentSubtypeIndex = 0;
         int i = 0;
-        for (final Subtype subtype : subtypes) {
-            if (subtype.equals(currentSubtype)) {
+        for (final SubtypeInfo subtypeInfo : subtypeInfoList) {
+            if (subtypeInfo.virtualSubtype != null
+                    && subtypeInfo.virtualSubtype.equals(currentSubtype)) {
                 currentSubtypeIndex = i;
             }
-            items[i++] = subtype.getName();
+
+            final SpannableString itemTitle;
+            final SpannableString itemSubtitle;
+            if (!TextUtils.isEmpty(subtypeInfo.subtypeName)) {
+                itemTitle = new SpannableString(subtypeInfo.subtypeName);
+                itemSubtitle = new SpannableString("\n" + subtypeInfo.imeName);
+            } else {
+                itemTitle = new SpannableString(subtypeInfo.imeName);
+                itemSubtitle = new SpannableString("");
+            }
+            itemTitle.setSpan(new RelativeSizeSpan(0.9f), 0,itemTitle.length(),
+                    Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            itemSubtitle.setSpan(new RelativeSizeSpan(0.85f), 0,itemSubtitle.length(),
+                    Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+
+            items[i++] = new SpannableStringBuilder().append(itemTitle).append(itemSubtitle);
         }
         final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface di, int position) {
                 di.dismiss();
                 int i = 0;
-                for (final Subtype subtype : subtypes) {
+                for (final SubtypeInfo subtypeInfo : subtypeInfoList) {
                     if (i == position) {
-                        setCurrentSubtype(subtype);
+                        if (subtypeInfo.virtualSubtype != null) {
+                            setCurrentSubtype(subtypeInfo.virtualSubtype);
+                        } else {
+                            switchToTargetIme(subtypeInfo.imiId, subtypeInfo.systemSubtype,
+                                    inputMethodService);
+                        }
                         break;
                     }
                     i++;
@@ -658,5 +629,114 @@ public class RichInputMethodManager {
 
         dialog.show();
         return dialog;
+    }
+
+    /**
+     * Get info for all of virtual subtypes of this IME and system subtypes of all other IMEs.
+     * @param context the context for this application.
+     * @return a list with info for all of the subtypes.
+     */
+    private List<SubtypeInfo> getEnabledSubtypeInfoOfAllImes(final Context context) {
+        final List<SubtypeInfo> subtypeInfoList = new ArrayList<>();
+        final PackageManager packageManager = context.getPackageManager();
+
+        final Set<InputMethodInfo> imiList = new TreeSet<>(new Comparator<InputMethodInfo>() {
+            @Override
+            public int compare(InputMethodInfo a, InputMethodInfo b) {
+                if (a.equals(b)) {
+                    // ensure that this is consistent with equals
+                    return 0;
+                }
+                final String labelA = a.loadLabel(packageManager).toString();
+                final String labelB = b.loadLabel(packageManager).toString();
+                final int result = labelA.compareToIgnoreCase(labelB);
+                if (result != 0) {
+                    return result;
+                }
+                // ensure that non-equal objects are distinguished to be consistent with
+                // equals
+                return a.hashCode() > b.hashCode() ? 1 : -1;
+            }
+        });
+        imiList.addAll(mImmService.getEnabledInputMethodList());
+
+        for (final InputMethodInfo imi : imiList) {
+            final CharSequence imeName = imi.loadLabel(packageManager);
+            final String imiId = imi.getId();
+            final String packageName = imi.getPackageName();
+
+            if (packageName.equals(context.getPackageName())) {
+                for (final Subtype subtype : getEnabledSubtypes(true)) {
+                    final SubtypeInfo subtypeInfo = new SubtypeInfo();
+                    subtypeInfo.virtualSubtype = subtype;
+                    subtypeInfo.subtypeName = subtype.getName();
+                    subtypeInfo.imeName = imeName;
+                    subtypeInfo.imiId = imiId;
+                    subtypeInfoList.add(subtypeInfo);
+                }
+                continue;
+            }
+
+            final List<InputMethodSubtype> subtypes =
+                    mImmService.getEnabledInputMethodSubtypeList(imi, true);
+            // IMEs that have no subtypes should still be returned
+            if (subtypes.isEmpty()) {
+                final SubtypeInfo subtypeInfo = new SubtypeInfo();
+                subtypeInfo.imeName = imeName;
+                subtypeInfo.imiId = imiId;
+                subtypeInfoList.add(subtypeInfo);
+                continue;
+            }
+
+            final ApplicationInfo applicationInfo = imi.getServiceInfo().applicationInfo;
+            for (final InputMethodSubtype subtype : subtypes) {
+                if (subtype.isAuxiliary()) {
+                    continue;
+                }
+                final SubtypeInfo subtypeInfo = new SubtypeInfo();
+                subtypeInfo.systemSubtype = subtype;
+                if (!subtype.overridesImplicitlyEnabledSubtype()) {
+                    subtypeInfo.subtypeName = subtype.getDisplayName(context, packageName,
+                            applicationInfo);
+                }
+                subtypeInfo.imeName = imeName;
+                subtypeInfo.imiId = imiId;
+                subtypeInfoList.add(subtypeInfo);
+            }
+        }
+
+        return subtypeInfoList;
+    }
+
+    /**
+     * Info for a virtual or system subtype.
+     */
+    private static class SubtypeInfo {
+        public InputMethodSubtype systemSubtype;
+        public Subtype virtualSubtype;
+        public CharSequence subtypeName;
+        public CharSequence imeName;
+        public String imiId;
+    }
+
+    /**
+     * Switch to a different input method.
+     * @param imiId the ID for the input method to be switched to.
+     * @param subtype the subtype for the input method to be switched to.
+     * @param context the input method service for this IME.
+     */
+    private void switchToTargetIme(final String imiId, final InputMethodSubtype subtype,
+                                   final InputMethodService context) {
+        final IBinder token = context.getWindow().getWindow().getAttributes().token;
+        if (token == null) {
+            return;
+        }
+        final InputMethodManager imm = mImmService;
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                imm.setInputMethodAndSubtype(token, imiId, subtype);
+            }
+        });
     }
 }

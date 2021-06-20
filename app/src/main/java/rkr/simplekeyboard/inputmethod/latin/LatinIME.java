@@ -704,16 +704,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (isShowingOptionDialog()) {
             return false;
         }
-        if (mRichImm.hasMultipleEnabledSubtypes()) {
-            mOptionsDialog = mRichImm.showSubtypePicker(this,
-                    mKeyboardSwitcher.getMainKeyboardView().getWindowToken());
-            return true;
-        }
-        if (mRichImm.hasMultipleEnabledImesOrSubtypes(true /* include aux subtypes */)) {
-            mRichImm.showInputMethodPicker();
-            return true;
-        }
-        return false;
+        mOptionsDialog = mRichImm.showSubtypePicker(this,
+                mKeyboardSwitcher.getMainKeyboardView().getWindowToken(), this);
+        return mOptionsDialog != null;
     }
 
     @Override
