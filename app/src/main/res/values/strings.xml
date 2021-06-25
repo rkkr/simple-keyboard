@@ -113,5 +113,4 @@
     <string name="remove_language">Remove language</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> keyboard layouts</string>
     <string name="change_keyboard">Change keyboard</string>
-    <string name="layout_not_disabled">At least one keyboard layout must be enabled</string>
 </resources>

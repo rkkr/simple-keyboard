@@ -44,7 +44,6 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
 
     private RichInputMethodManager mRichImm;
     private List<SubtypePreference> mSubtypePreferences;
-    private Subtype mSubtypeToRemove;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -66,25 +65,6 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         }
 
         super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
-    public void onPause() {
-        if (mSubtypeToRemove != null) {
-            // notify the user that the unchecked subtype wasn't actually removed since nothing else
-            // was added to replace it
-            Toast.makeText(SingleLanguageSettingsFragment.this.getActivity(),
-                    R.string.layout_not_disabled, Toast.LENGTH_SHORT).show();
-            // set the corresponding preference to be checked in case the user returns to this
-            // activity
-            for (final SubtypePreference pref : mSubtypePreferences) {
-                if (mSubtypeToRemove.equals(pref.getSubtype())) {
-                    pref.setChecked(true);
-                    break;
-                }
-            }
-        }
-        super.onPause();
     }
 
     /**
@@ -121,16 +101,17 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                 SubtypeLocaleUtils.getSubtypes(locale, context.getResources());
         mSubtypePreferences = new ArrayList<>();
         for (final Subtype subtype : subtypes) {
-            final boolean isSubtypeEnabled = enabledSubtypes.contains(subtype);
-            final SubtypePreference pref =
-                    createSubtypePreference(subtype, isSubtypeEnabled, context);
-            if (subtypes.size() == 1) {
-                // if this is the only subtype for the language, it can't be removed without
-                // removing the whole language
-                pref.setEnabled(false);
-            }
+            final boolean isChecked = enabledSubtypes.contains(subtype);
+            final SubtypePreference pref = createSubtypePreference(subtype, isChecked, context);
             group.addPreference(pref);
             mSubtypePreferences.add(pref);
+        }
+
+        // if there is only one subtype that is checked, the preference for it should be disabled to
+        // prevent all of the subtypes for the language from being removed
+        final List<SubtypePreference> checkedPrefs = getCheckedSubtypePreferences();
+        if (checkedPrefs.size() == 1) {
+            checkedPrefs.get(0).setEnabled(false);
         }
     }
 
@@ -156,26 +137,34 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                 }
                 final boolean isEnabling = (boolean)newValue;
                 final SubtypePreference pref = (SubtypePreference) preference;
+                final List<SubtypePreference> checkedPrefs = getCheckedSubtypePreferences();
+                if (checkedPrefs.size() == 1) {
+                    checkedPrefs.get(0).setEnabled(false);
+                }
                 if (isEnabling) {
                     final boolean added = mRichImm.addSubtype(pref.getSubtype());
-                    // remove the subtype that is pending to be removed (already unchecked) if it
-                    // isn't getting re-enabled now
-                    if (added && mSubtypeToRemove != null
-                            && (mSubtypeToRemove.equals(pref.getSubtype())
-                            || mRichImm.removeSubtype(mSubtypeToRemove))) {
-                        mSubtypeToRemove = null;
+                    // if only one subtype was checked before, the preference would have been
+                    // disabled, but now that there are two, it can be enabled to allow it to be
+                    // unchecked
+                    if (added && checkedPrefs.size() == 1) {
+                        checkedPrefs.get(0).setEnabled(true);
                     }
                     return added;
                 } else {
-                    if (hasMultipleSubtypesChecked()) {
-                        mRichImm.removeSubtype(pref.getSubtype());
-                        return true;
+                    final boolean removed = mRichImm.removeSubtype(pref.getSubtype());
+                    // if there is going to be only one subtype that is checked, the preference for
+                    // it should be disabled to prevent all of the subtypes for the language from
+                    // being removed
+                    if (removed && checkedPrefs.size() == 2) {
+                        final SubtypePreference onlyCheckedPref;
+                        if (checkedPrefs.get(0).equals(pref)) {
+                            onlyCheckedPref = checkedPrefs.get(1);
+                        } else {
+                            onlyCheckedPref = checkedPrefs.get(0);
+                        }
+                        onlyCheckedPref.setEnabled(false);
                     }
-                    // Skip removing the subtype for now, but allow the preference to be unchecked
-                    // even though the subtype isn't actually removed. It will be removed when a
-                    // different subtype is checked.
-                    mSubtypeToRemove = pref.getSubtype();
-                    return true;
+                    return removed;
                 }
             }
         });
@@ -184,21 +173,17 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     }
 
     /**
-     * Check if there are multiple subtype preferences for this language that are checked.
-     * @return whether there are multiple subtype preferences that are checked.
+     * Get a list of all of the subtype preferences that are currently checked.
+     * @return a list of all of the subtype preferences that are checked.
      */
-    private boolean hasMultipleSubtypesChecked() {
-        int count = 0;
+    private List<SubtypePreference> getCheckedSubtypePreferences() {
+        final List<SubtypePreference> prefs = new ArrayList<>();
         for (final SubtypePreference pref : mSubtypePreferences) {
-            if (!pref.isChecked()) {
-                continue;
-            }
-            count++;
-            if (count > 1) {
-                return true;
+            if (pref.isChecked()) {
+                prefs.add(pref);
             }
         }
-        return false;
+        return prefs;
     }
 
     /**
