@@ -80,7 +80,8 @@
             <Key
                 latin:keySpec="ü"
                 latin:moreKeys="!text/morekeys_u" />
-        </case
+        </case>
+        <case
             latin:showNumberRow="true">
             <Key
                 latin:keySpec="!text/keyspec_q"
@@ -117,7 +118,6 @@
             <Key
                 latin:keySpec="ü"
                 latin:moreKeys="!text/morekeys_u" />
-        <case>
         </case>
         <default>
             <Key
