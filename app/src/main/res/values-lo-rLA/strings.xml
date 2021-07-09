@@ -38,6 +38,7 @@
     <string name="subtype_traditional">"ດັ້ງ​ເດີມ"</string>
     <string name="subtype_compact">"ກະ​ທັດ​ຮັດ"</string>
     <string name="add">"ເພີ່ມ"</string>
+    <string name="remove">"ລຶບອອກ"</string>
     <string name="prefs_keypress_vibration_duration_settings">"ໄລຍະເວລາຂອງການສັ່ນໃນການກົດປຸ່ມ"</string>
     <string name="prefs_keypress_sound_volume_settings">"ລະດັບສຽງຂອງການກົດປຸ່ມ"</string>
     <string name="prefs_key_longpress_timeout_settings">"ໄລຍະເວລາຂອງການກົດປຸ່ມ"</string>

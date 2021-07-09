@@ -85,6 +85,8 @@
 
     <!-- Title of the button to add a language in the settings dialog [CHAR LIMIT=15] -->
     <string name="add">Add</string>
+    <!-- Title of the button to remove a language in the settings dialog [CHAR LIMIT=15] -->
+    <string name="remove">Remove</string>
 
     <!-- Title of the settings for keypress vibration duration [CHAR LIMIT=35] -->
     <string name="prefs_keypress_vibration_duration_settings">Keypress vibration duration</string>
@@ -113,5 +115,4 @@
     <string name="remove_language">Remove language</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> keyboard layouts</string>
     <string name="change_keyboard">Change keyboard</string>
-    <string name="layout_not_disabled">At least one keyboard layout must be enabled</string>
 </resources>

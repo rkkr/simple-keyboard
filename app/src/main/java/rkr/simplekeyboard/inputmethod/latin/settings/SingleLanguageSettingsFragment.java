@@ -23,19 +23,13 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.SwitchPreference;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.compat.MenuItemIconColorCompat;
 import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
@@ -49,7 +43,7 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
     public static final String LOCALE_BUNDLE_KEY = "LOCALE";
 
     private RichInputMethodManager mRichImm;
-    private View mView;
+    private List<SubtypePreference> mSubtypePreferences;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -58,42 +52,6 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         RichInputMethodManager.init(getActivity());
         mRichImm = RichInputMethodManager.getInstance();
         addPreferencesFromResource(R.xml.empty_settings);
-
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
-                             final Bundle savedInstanceState) {
-        mView = super.onCreateView(inflater, container, savedInstanceState);
-        return mView;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
-        inflater.inflate(R.menu.remove_language, menu);
-
-        MenuItem menuItem = menu.findItem(R.id.action_remove_language);
-        MenuItemIconColorCompat.matchMenuIconColor(mView, menuItem, getActivity().getActionBar());
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
-        final int itemId = item.getItemId();
-        if (itemId == R.id.action_remove_language) {
-            if (mRichImm.getEnabledLocales().size() <= 1) {
-                Toast.makeText(SingleLanguageSettingsFragment.this.getActivity(),
-                        R.string.layout_not_disabled, Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            final String locale = getArguments().getString(LOCALE_BUNDLE_KEY);
-            for (Subtype subtype: mRichImm.getEnabledSubtypesForLocale(locale)) {
-                if (!mRichImm.removeSubtype(subtype))
-                    return false;
-            }
-            getActivity().onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -141,10 +99,19 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
         final Set<Subtype> enabledSubtypes = mRichImm.getEnabledSubtypes(false);
         final List<Subtype> subtypes =
                 SubtypeLocaleUtils.getSubtypes(locale, context.getResources());
+        mSubtypePreferences = new ArrayList<>();
         for (final Subtype subtype : subtypes) {
-            final boolean isEnabled = enabledSubtypes.contains(subtype);
-            final SubtypePreference pref = createSubtypePreference(subtype, isEnabled, context);
+            final boolean isChecked = enabledSubtypes.contains(subtype);
+            final SubtypePreference pref = createSubtypePreference(subtype, isChecked, context);
             group.addPreference(pref);
+            mSubtypePreferences.add(pref);
+        }
+
+        // if there is only one subtype that is checked, the preference for it should be disabled to
+        // prevent all of the subtypes for the language from being removed
+        final List<SubtypePreference> checkedPrefs = getCheckedSubtypePreferences();
+        if (checkedPrefs.size() == 1) {
+            checkedPrefs.get(0).setEnabled(false);
         }
     }
 
@@ -170,20 +137,53 @@ public final class SingleLanguageSettingsFragment extends PreferenceFragment {
                 }
                 final boolean isEnabling = (boolean)newValue;
                 final SubtypePreference pref = (SubtypePreference) preference;
-                final String locale = getArguments().getString(LOCALE_BUNDLE_KEY);
+                final List<SubtypePreference> checkedPrefs = getCheckedSubtypePreferences();
+                if (checkedPrefs.size() == 1) {
+                    checkedPrefs.get(0).setEnabled(false);
+                }
                 if (isEnabling) {
-                    return mRichImm.addSubtype(pref.getSubtype());
-                } else if (mRichImm.getEnabledSubtypesForLocale(locale).size() > 1) {
-                    return mRichImm.removeSubtype(pref.getSubtype());
+                    final boolean added = mRichImm.addSubtype(pref.getSubtype());
+                    // if only one subtype was checked before, the preference would have been
+                    // disabled, but now that there are two, it can be enabled to allow it to be
+                    // unchecked
+                    if (added && checkedPrefs.size() == 1) {
+                        checkedPrefs.get(0).setEnabled(true);
+                    }
+                    return added;
                 } else {
-                    Toast.makeText(SingleLanguageSettingsFragment.this.getActivity(),
-                            R.string.layout_not_disabled, Toast.LENGTH_SHORT).show();
-                    return false;
+                    final boolean removed = mRichImm.removeSubtype(pref.getSubtype());
+                    // if there is going to be only one subtype that is checked, the preference for
+                    // it should be disabled to prevent all of the subtypes for the language from
+                    // being removed
+                    if (removed && checkedPrefs.size() == 2) {
+                        final SubtypePreference onlyCheckedPref;
+                        if (checkedPrefs.get(0).equals(pref)) {
+                            onlyCheckedPref = checkedPrefs.get(1);
+                        } else {
+                            onlyCheckedPref = checkedPrefs.get(0);
+                        }
+                        onlyCheckedPref.setEnabled(false);
+                    }
+                    return removed;
                 }
             }
         });
 
         return pref;
+    }
+
+    /**
+     * Get a list of all of the subtype preferences that are currently checked.
+     * @return a list of all of the subtype preferences that are checked.
+     */
+    private List<SubtypePreference> getCheckedSubtypePreferences() {
+        final List<SubtypePreference> prefs = new ArrayList<>();
+        for (final SubtypePreference pref : mSubtypePreferences) {
+            if (pref.isChecked()) {
+                prefs.add(pref);
+            }
+        }
+        return prefs;
     }
 
     /**
