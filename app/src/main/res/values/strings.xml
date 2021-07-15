@@ -71,6 +71,8 @@
     <string name="subtype_compact">Compact</string>
     <!-- Description for Bulgarian (BDS) keyboard layout. -->
     <string name="subtype_bds">BDS</string>
+    <!-- Description for Turkish (Q) keyboard layout. -->
+    <string name="subtype_q">Q</string>
     <!-- Description for Turkish (F) keyboard layout. -->
     <string name="subtype_f">F</string>
 

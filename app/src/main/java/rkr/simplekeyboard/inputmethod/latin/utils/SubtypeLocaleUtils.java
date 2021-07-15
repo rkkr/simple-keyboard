@@ -237,6 +237,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_TAMIL = "tamil";
     public static final String LAYOUT_TELUGU = "telugu";
     public static final String LAYOUT_THAI = "thai";
+    public static final String LAYOUT_TURKISH_Q = "turkish_q";
     public static final String LAYOUT_TURKISH_F = "turkish_f";
     public static final String LAYOUT_URDU = "urdu";
     public static final String LAYOUT_UZBEK = "uzbek";
@@ -429,6 +430,7 @@ public final class SubtypeLocaleUtils {
                     break;
                 case LOCALE_TURKISH:
                     addLayout(LAYOUT_QWERTY);
+                    addLayout(LAYOUT_TURKISH_Q, R.string.subtype_q);
                     addLayout(LAYOUT_TURKISH_F, R.string.subtype_f);
                     addGenericLayouts();
                     break;
