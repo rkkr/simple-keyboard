@@ -23,6 +23,7 @@
     <string name="sound_on_keypress">"Tuşa basıldığında ses çıkar"</string>
     <string name="popup_on_keypress">"Tuşa basıldığında pop-up aç"</string>
     <string name="settings_screen_preferences">"Tercihler"</string>
+    <string name="settings_screen_key_press">Tuşa basma</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Sistem varsayılanı"</string>
@@ -47,6 +48,7 @@
     <string name="keyboard_color">Özel klavye rengi ayarla</string>
     <string name="hide_special_chars">Özel karakterleri gizle</string>
     <string name="hide_language_switch_key">Dil değiştirme tuşunu gizle</string>
+    <string name="pref_enable_ime_switch">Diğer klavyelere geç</string>
     <string name="show_number_row">Ayrık rakam satırını göster</string>
     <string name="space_swipe">Boşluk tuşunda kaydırarak imleci taşı</string>
     <string name="delete_swipe">Sil tuşu kaydırması</string>
