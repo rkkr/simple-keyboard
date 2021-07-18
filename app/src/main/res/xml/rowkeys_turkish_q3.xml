@@ -58,10 +58,12 @@
                 latin:additionalMoreKeys="\\?" />
             <Key
                 latin:keySpec="ö"
-                latin:moreKeys="!text/morekeys_o" />
+                latin:keyHintLabel="/"
+                latin:additionalMoreKeys="/" />
             <Key
                 latin:keySpec="ç"
-                latin:moreKeys="!text/morekeys_c" />
+                latin:keyHintLabel="^"
+                latin:additionalMoreKeys="^" />
         </case>
         <default>
             <Key
@@ -84,11 +86,9 @@
             <Key
                 latin:keySpec="m" />
             <Key
-                latin:keySpec="ö"
-                latin:moreKeys="!text/morekeys_o" />
+                latin:keySpec="ö" />
             <Key
-                latin:keySpec="ç"
-                latin:moreKeys="!text/morekeys_c" />
+                latin:keySpec="ç" />
         </default>
     </switch>
 </merge>
