@@ -34,7 +34,6 @@
     <string name="locale_name_es_US">"Spanish (US)"</string>
     <string name="locale_name_hi_ZZ">"Hinglish"</string>
     <string name="locale_name_sr_ZZ">"Serbian (Latin)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Traditional"</string>
     <string name="subtype_compact">"Compact"</string>
     <string name="add">"Idagdag"</string>

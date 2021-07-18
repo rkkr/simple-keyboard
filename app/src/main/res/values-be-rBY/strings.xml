@@ -34,7 +34,6 @@
     <string name="locale_name_es_US">"iспанская (ЗША)"</string>
     <string name="locale_name_hi_ZZ">"Хінгліш"</string>
     <string name="locale_name_sr_ZZ">"Сербская (лацініца)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"традыцыйная"</string>
     <string name="subtype_compact">"кампактная"</string>
     <string name="add">"Дадаць"</string>

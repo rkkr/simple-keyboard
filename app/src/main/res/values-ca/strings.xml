@@ -24,7 +24,6 @@
     <string name="popup_on_keypress">"Amplia en prémer tecles"</string>
     <string name="settings_screen_preferences">"Preferències"</string>
     <string name="settings_screen_theme">"Tema"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Predeterminat"</string>
     <string name="auto_cap">"Majúscules automàtiques"</string>
     <string name="auto_cap_summary">"Posa en majúscula la primera paraula de cada frase"</string>
@@ -34,7 +33,6 @@
     <string name="locale_name_es_US">"Espanyol (EUA)"</string>
     <string name="locale_name_hi_ZZ">"Hinglish"</string>
     <string name="locale_name_sr_ZZ">"Serbi (llatí)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicional"</string>
     <string name="subtype_compact">"compacte"</string>
     <string name="add">"Afegeix"</string>

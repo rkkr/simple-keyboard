@@ -24,7 +24,6 @@
     <string name="popup_on_keypress">"Nagyobb billentyű gombnyomásra"</string>
     <string name="settings_screen_preferences">"Beállítások"</string>
     <string name="settings_screen_theme">"Téma"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Alapértelmezett"</string>
     <string name="auto_cap">"Automatikusan nagy kezdőbetű"</string>
     <string name="auto_cap_summary">"Minden mondat első szava nagybetűvel"</string>
@@ -34,7 +33,6 @@
     <string name="locale_name_es_US">"spanyol (USA)"</string>
     <string name="locale_name_hi_ZZ">"Hinglish (hindi-angol)"</string>
     <string name="locale_name_sr_ZZ">"Szerb (latin)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"hagyományos"</string>
     <string name="subtype_compact">"kompakt"</string>
     <string name="add">"Hozzáadás"</string>

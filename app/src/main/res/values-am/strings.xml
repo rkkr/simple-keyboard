@@ -34,7 +34,6 @@
     <string name="locale_name_es_US">"ስፓኒሽኛ (ዩኤስ)"</string>
     <string name="locale_name_hi_ZZ">"ሂንግሊሽ"</string>
     <string name="locale_name_sr_ZZ">"ሰርብያኛ (ላቲን)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ተለምዷዊ"</string>
     <string name="subtype_compact">"እስግ"</string>
     <string name="add">"አክል"</string>

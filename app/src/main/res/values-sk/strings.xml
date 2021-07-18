@@ -24,7 +24,6 @@
     <string name="popup_on_keypress">"Detail znaku pri stlačení"</string>
     <string name="settings_screen_preferences">"Predvoľby"</string>
     <string name="settings_screen_theme">"Motív"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Predvolené"</string>
     <string name="auto_cap">"Veľké písmená automaticky"</string>
     <string name="auto_cap_summary">"Písanie prvého slova v každej vete veľkým písmenom"</string>
@@ -34,7 +33,6 @@
     <string name="locale_name_es_US">"španielčina (USA)"</string>
     <string name="locale_name_hi_ZZ">"Hinglish"</string>
     <string name="locale_name_sr_ZZ">"srbčina (latinka)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradičná"</string>
     <string name="subtype_compact">"kompaktná"</string>
     <string name="add">"Pridať"</string>

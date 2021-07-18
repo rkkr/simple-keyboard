@@ -34,7 +34,6 @@
     <string name="locale_name_es_US">"اسپانیایی (امریکا)"</string>
     <string name="locale_name_hi_ZZ">"هندی انگلیسی"</string>
     <string name="locale_name_sr_ZZ">"صربی (لاتین)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"سنتی"</string>
     <string name="subtype_compact">"فشرده"</string>
     <string name="add">"افزودن"</string>

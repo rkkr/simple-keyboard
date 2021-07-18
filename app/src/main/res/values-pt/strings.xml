@@ -24,8 +24,8 @@
     <string name="popup_on_keypress">"Exibir pop-up ao digitar"</string>
     <string name="settings_screen_preferences">"Preferências"</string>
     <string name="settings_screen_key_press">"Pressionar tecla"</string>
+    <string name="settings_screen_appearance">Aparência</string>
     <string name="settings_screen_theme">"Tema"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Padrão do sistema"</string>
     <string name="auto_cap">"Capitalização automática"</string>
     <string name="auto_cap_summary">"Iniciar a primeira palavra de cada frase com letra maiúscula"</string>
@@ -35,7 +35,6 @@
     <string name="locale_name_es_US">"espanhol (EUA)"</string>
     <string name="locale_name_hi_ZZ">"Hindi-inglês"</string>
     <string name="locale_name_sr_ZZ">"Sérvio (Latino)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicional"</string>
     <string name="subtype_compact">"compacto"</string>
     <string name="add">"Adicionar"</string>
@@ -54,4 +53,9 @@
     <string name="delete_swipe">Deslizar para excluir</string>
     <string name="matching_navbar_color">Usar cor correspondente à barra de navegação</string>
     <string name="setup_message">O Simple Keyboard não está ativado. Clique em OK para abrir as configurações &amp; de idiomas e entrada. Você precisará selecionar Simple Keyboard no teclado atual para usá-lo.</string>
+    <string name="user_languages">Idiomas de teclado ativados</string>
+    <string name="add_language">Adicionar idioma</string>
+    <string name="remove_language">Remover idioma</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> layouts de teclado</string>
+    <string name="change_keyboard">Mudar teclado</string>
 </resources>

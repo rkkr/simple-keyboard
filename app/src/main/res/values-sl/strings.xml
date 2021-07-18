@@ -24,7 +24,6 @@
     <string name="popup_on_keypress">"Povečaj črko ob pritisku"</string>
     <string name="settings_screen_preferences">"Nastavitve"</string>
     <string name="settings_screen_theme">"Tema"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Privzeto v sistemu"</string>
     <string name="auto_cap">"Samod. velike začetnice"</string>
     <string name="auto_cap_summary">"Prvo besedo stavka piši z veliko začetnico"</string>
@@ -34,7 +33,6 @@
     <string name="locale_name_es_US">"španščina (ZDA)"</string>
     <string name="locale_name_hi_ZZ">"Hindujska angleščina"</string>
     <string name="locale_name_sr_ZZ">"Srbščina (latinica)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicionalna"</string>
     <string name="subtype_compact">"kompaktna"</string>
     <string name="add">"Dodaj"</string>

@@ -24,7 +24,6 @@
     <string name="popup_on_keypress">"Појавен прозорец на притискање копче"</string>
     <string name="settings_screen_preferences">"Претпочитани поставки"</string>
     <string name="settings_screen_theme">"Тема"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Стандардно за системот"</string>
     <string name="auto_cap">"Автоматска голема буква"</string>
     <string name="auto_cap_summary">"Прави првиот збор од секоја реченица да почнува со голема буква"</string>
@@ -34,7 +33,6 @@
     <string name="locale_name_es_US">"шпански (САД)"</string>
     <string name="locale_name_hi_ZZ">"Хинглиш"</string>
     <string name="locale_name_sr_ZZ">"Српски (латиница)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"традиционален"</string>
     <string name="subtype_compact">"Компактна"</string>
     <string name="add">"Додај"</string>

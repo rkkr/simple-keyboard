@@ -34,7 +34,6 @@
     <string name="locale_name_es_US">"الإسبانية (الأميركية)"</string>
     <string name="locale_name_hi_ZZ">"هنجليزية"</string>
     <string name="locale_name_sr_ZZ">"الصربية (اللاتينية)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"التقليدية"</string>
     <string name="subtype_compact">"مكثفة"</string>
     <string name="add">"إضافة"</string>

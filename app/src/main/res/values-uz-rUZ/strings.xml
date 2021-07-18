@@ -24,7 +24,6 @@
     <string name="popup_on_keypress">"Tugma bosilganda qalqib chiqish"</string>
     <string name="settings_screen_preferences">"Sozlamalar"</string>
     <string name="settings_screen_theme">"Mavzu"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Tizim standarti"</string>
     <string name="auto_cap">"Avtomatik bosh harf"</string>
     <string name="auto_cap_summary">"Har bir gapning birinchi so‘zini bosh harf bilan boshlash"</string>
@@ -34,7 +33,6 @@
     <string name="locale_name_es_US">"Ispan (AQSH)"</string>
     <string name="locale_name_hi_ZZ">"Hinglish"</string>
     <string name="locale_name_sr_ZZ">"Serb (Lotin)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"an’anaviy"</string>
     <string name="subtype_compact">"ixcham"</string>
     <string name="add">"Qo‘shish"</string>

@@ -34,7 +34,6 @@
     <string name="locale_name_es_US">"स्पेनिस (युएस्)"</string>
     <string name="locale_name_hi_ZZ">"हिङ्लिस"</string>
     <string name="locale_name_sr_ZZ">"सर्बियाई (ल्याटिन)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"परम्परागत"</string>
     <string name="subtype_compact">"संकुचित"</string>
     <string name="add">"थप्नुहोस्"</string>

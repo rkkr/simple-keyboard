@@ -24,7 +24,6 @@
     <string name="popup_on_keypress">"Pop-up bij toetsaanslag"</string>
     <string name="settings_screen_preferences">"Voorkeuren"</string>
     <string name="settings_screen_theme">"Thema"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Systeemstandaard"</string>
     <string name="auto_cap">"Auto-hoofdlettergebruik"</string>
     <string name="auto_cap_summary">"Het eerste woord van elke zin met een hoofdletter schrijven"</string>
@@ -34,7 +33,6 @@
     <string name="locale_name_es_US">"Spaans (VS)"</string>
     <string name="locale_name_hi_ZZ">"Hindi-Engels"</string>
     <string name="locale_name_sr_ZZ">"Servisch (Latijns)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"traditioneel"</string>
     <string name="subtype_compact">"compact"</string>
     <string name="add">"Toevoegen"</string>

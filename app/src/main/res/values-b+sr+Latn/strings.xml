@@ -24,7 +24,6 @@
     <string name="popup_on_keypress">"Iskačući prozor prilikom pritiska tastera"</string>
     <string name="settings_screen_preferences">"Podešavanja"</string>
     <string name="settings_screen_theme">"Tema"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Podrazumevano"</string>
     <string name="auto_cap">"Automatski unos velikih slova"</string>
     <string name="auto_cap_summary">"Pisanje velikog slova na početku svake rečenice"</string>
@@ -34,7 +33,6 @@
     <string name="locale_name_es_US">"španski (SAD)"</string>
     <string name="locale_name_hi_ZZ">"hengleski"</string>
     <string name="locale_name_sr_ZZ">"srpski (latinica)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicionalni"</string>
     <string name="subtype_compact">"kompaktna"</string>
     <string name="add">"Dodaj"</string>

@@ -23,6 +23,7 @@
     <string name="sound_on_keypress">"按键音效"</string>
     <string name="popup_on_keypress">"按键时弹出显示字符"</string>
     <string name="settings_screen_preferences">"偏好设置"</string>
+    <string name="settings_screen_appearance">外观</string>
     <string name="settings_screen_key_press">"按键"</string>
     <string name="settings_screen_theme">"主题背景"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>毫秒"</string>
@@ -54,4 +55,9 @@
     <string name="delete_swipe">删除滑动</string>
     <string name="matching_navbar_color">使用匹配的导航栏颜色</string>
     <string name="setup_message">Simple Keyboard未被启用。点击OK打开语言&amp;输入设定。您需要在当前键盘中选择“Simple Keyboard”来使用它。</string>
+    <string name="user_languages">启用的键盘语言</string>
+    <string name="add_language">添加语言</string>
+    <string name="remove_language">删除语言</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> 键盘布局</string>
+    <string name="change_keyboard">Change keyboard</string>
 </resources>

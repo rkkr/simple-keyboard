@@ -34,7 +34,6 @@
     <string name="locale_name_es_US">"ಸ್ಪ್ಯಾನಿಷ್ (US)"</string>
     <string name="locale_name_hi_ZZ">"ಹಿಂಗ್ಲಿಷ್"</string>
     <string name="locale_name_sr_ZZ">"ಸರ್ಬಿಯನ್ (ಲ್ಯಾಟಿನ್)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ಸಾಂಪ್ರದಾಯಿಕ"</string>
     <string name="subtype_compact">"ಕಾಂಪ್ಯಾಕ್ಟ್‌‌"</string>
     <string name="add">"ಸೇರಿಸು"</string>

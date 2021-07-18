@@ -34,7 +34,6 @@
     <string name="locale_name_es_US">"സ്‌പാനിഷ് (യുഎസ്)"</string>
     <string name="locale_name_hi_ZZ">"ഹിംഗ്ലീഷ്"</string>
     <string name="locale_name_sr_ZZ">"സെർബിയൻ (ലാറ്റിൻ)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"പരമ്പരാഗതം"</string>
     <string name="subtype_compact">"കോം‌പാക്‌ട്"</string>
     <string name="add">"ചേര്‍ക്കുക"</string>

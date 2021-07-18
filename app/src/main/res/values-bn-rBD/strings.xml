@@ -34,7 +34,6 @@
     <string name="locale_name_es_US">"স্প্যানিশ (US)"</string>
     <string name="locale_name_hi_ZZ">"Hinglish"</string>
     <string name="locale_name_sr_ZZ">"সার্বিয়ান (ল্যাটিন)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"ঐতিহ্যবাহি"</string>
     <string name="subtype_compact">"কম্প্যাক্ট"</string>
     <string name="add">"জুড়ুন"</string>

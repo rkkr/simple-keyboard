@@ -24,7 +24,6 @@
     <string name="popup_on_keypress">"Klahvivajutusel kuva hüpik"</string>
     <string name="settings_screen_preferences">"Eelistused"</string>
     <string name="settings_screen_theme">"Teema"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Süsteemi vaikeväärt."</string>
     <string name="auto_cap">"Automaatne suurtähtede kasutamine"</string>
     <string name="auto_cap_summary">"Iga lause esimese sõna kirjutamine suure algustähega"</string>
@@ -34,7 +33,6 @@
     <string name="locale_name_es_US">"hispaania (USA)"</string>
     <string name="locale_name_hi_ZZ">"Hindi-inglise"</string>
     <string name="locale_name_sr_ZZ">"Serbia (ladina)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"traditsiooniline"</string>
     <string name="subtype_compact">"kompaktne"</string>
     <string name="add">"Lisa"</string>

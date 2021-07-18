@@ -24,7 +24,6 @@
     <string name="popup_on_keypress">"Povećani font na pritisak tipke"</string>
     <string name="settings_screen_preferences">"Postavke"</string>
     <string name="settings_screen_theme">"Tema"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Zadano sustavom"</string>
     <string name="auto_cap">"Autom. veliko početno slovo"</string>
     <string name="auto_cap_summary">"Napiši velikim slovom prvu riječ svake rečenice"</string>
@@ -34,7 +33,6 @@
     <string name="locale_name_es_US">"španjolski (SAD)"</string>
     <string name="locale_name_hi_ZZ">"Hinglish"</string>
     <string name="locale_name_sr_ZZ">"Srpski (latinica)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradicionalni"</string>
     <string name="subtype_compact">"kompaktna"</string>
     <string name="add">"Dodaj"</string>

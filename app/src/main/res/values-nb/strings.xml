@@ -25,7 +25,6 @@
     <string name="settings_screen_preferences">"Innstillinger"</string>
     <string name="settings_screen_key_press">"Tastetrykk"</string>
     <string name="settings_screen_theme">"Tema"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Systemstandard"</string>
     <string name="auto_cap">"Stor forbokstav"</string>
     <string name="auto_cap_summary">"Bruk stor forbokstav i det første ordet i hver setning"</string>
@@ -35,7 +34,6 @@
     <string name="locale_name_es_US">"spansk (USA)"</string>
     <string name="locale_name_hi_ZZ">"Hinglish"</string>
     <string name="locale_name_sr_ZZ">"Serbisk (latin)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"tradisjonelt"</string>
     <string name="subtype_compact">"kompakt"</string>
     <string name="add">"Legg til"</string>

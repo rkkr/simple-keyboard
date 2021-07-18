@@ -35,7 +35,6 @@
     <string name="locale_name_es_US">"Tiếng Tây Ban Nha (Mỹ)"</string>
     <string name="locale_name_hi_ZZ">"Tiếng Anh-Hindi"</string>
     <string name="locale_name_sr_ZZ">"Tiếng Serbia (La tinh)"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g> (<xliff:g id="LAYOUT">%s</xliff:g>)"</string>
     <string name="subtype_traditional">"Truyền thống"</string>
     <string name="subtype_compact">"Viết tắt"</string>
     <string name="add">"Thêm"</string>
