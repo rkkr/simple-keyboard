@@ -69,10 +69,12 @@
                 latin:moreKeys="!text/morekeys_l" />
             <Key
                 latin:keySpec="ş"
-                latin:moreKeys="!text/morekeys_s" />
+                latin:keyHintLabel="&#x00D7;"
+                latin:additionalMoreKeys="&#x00D7;" />
             <Key
                 latin:keySpec="i"
-                latin:moreKeys="!text/morekeys_i" />
+                latin:keyHintLabel="&#x00F7;"
+                latin:additionalMoreKeys="&#x00F7;" />
         </case>
         <default>
             <Key 
@@ -102,11 +104,9 @@
                 latin:keySpec="l"
                 latin:moreKeys="!text/morekeys_l" />
             <Key
-                latin:keySpec="ş"
-                latin:moreKeys="!text/morekeys_s" />
+                latin:keySpec="ş" />
             <Key
-                latin:keySpec="i"
-                latin:moreKeys="!text/morekeys_i" />
+                latin:keySpec="i" />
         </default>
     </switch>    
 </merge>
