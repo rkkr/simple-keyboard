@@ -76,10 +76,12 @@
                 latin:additionalMoreKeys="!text/keyspec_right_curly_bracket" />
             <Key
                 latin:keySpec="ğ"
-                latin:moreKeys="!text/morekeys_g" />
+                latin:keyHintLabel="&#x00B0;"
+                latin:additionalMoreKeys="&#x00B0;" />
             <Key
                 latin:keySpec="ü"
-                latin:moreKeys="!text/morekeys_u" />
+                latin:keyHintLabel="~"
+                latin:additionalMoreKeys="~" />
         </case>
         <case
             latin:showNumberRow="true">
@@ -113,64 +115,62 @@
             <Key
                 latin:keySpec="p" />
             <Key
-                latin:keySpec="ğ"
-                latin:moreKeys="!text/morekeys_g" />
+                latin:keySpec="ğ" />
             <Key
-                latin:keySpec="ü"
-                latin:moreKeys="!text/morekeys_u" />
+                latin:keySpec="ü" />
         </case>
         <default>
             <Key
                 latin:keySpec="!text/keyspec_q"
-                latin:keyHintLabel="1"
-                latin:additionalMoreKeys="1"
                 latin:moreKeys="!text/morekeys_q" />
             <Key
                 latin:keySpec="!text/keyspec_w"
-                latin:keyHintLabel="2"
-                latin:additionalMoreKeys="2"
+                latin:keyHintLabel="1"
+                latin:additionalMoreKeys="1"
                 latin:moreKeys="!text/morekeys_w" />
             <Key
                 latin:keySpec="e"
-                latin:keyHintLabel="3"
-                latin:additionalMoreKeys="3"
+                latin:keyHintLabel="2"
+                latin:additionalMoreKeys="2"
                 latin:moreKeys="!text/morekeys_e" />
             <Key
                 latin:keySpec="r"
-                latin:keyHintLabel="4"
-                latin:additionalMoreKeys="4"
+                latin:keyHintLabel="3"
+                latin:additionalMoreKeys="3"
                 latin:moreKeys="!text/morekeys_r" />
             <Key
                 latin:keySpec="t"
-                latin:keyHintLabel="5"
-                latin:additionalMoreKeys="5"
+                latin:keyHintLabel="4"
+                latin:additionalMoreKeys="4"
                 latin:moreKeys="!text/morekeys_t" />
             <Key
                 latin:keySpec="!text/keyspec_y"
-                latin:keyHintLabel="6"
-                latin:additionalMoreKeys="6"
+                latin:keyHintLabel="5"
+                latin:additionalMoreKeys="5"
                 latin:moreKeys="!text/morekeys_y" />
             <Key
                 latin:keySpec="u"
-                latin:keyHintLabel="7"
-                latin:additionalMoreKeys="7"
+                latin:keyHintLabel="6"
+                latin:additionalMoreKeys="6"
                 latin:moreKeys="!text/morekeys_u" />
             <Key
                 latin:keySpec="ı"
-                latin:keyHintLabel="8"
-                latin:additionalMoreKeys="8"
+                latin:keyHintLabel="7"
+                latin:additionalMoreKeys="7"
                 latin:moreKeys="!text/morekeys_i" />
             <Key
                 latin:keySpec="o"
-                latin:keyHintLabel="9"
-                latin:additionalMoreKeys="9"
+                latin:keyHintLabel="8"
+                latin:additionalMoreKeys="8"
                 latin:moreKeys="!text/morekeys_o" />
             <Key
                 latin:keySpec="p"
+                latin:keyHintLabel="9"
+                latin:additionalMoreKeys="9" />
+            <Key
+                latin:keySpec="ğ"
                 latin:keyHintLabel="0"
                 latin:additionalMoreKeys="0" />
-            <Key
-                latin:keySpec="ğ" />
             <Key
                 latin:keySpec="ü" />
         </default>
