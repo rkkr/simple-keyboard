@@ -1,4 +1,4 @@
-# Simple Keyboard
+# Simple Keyboard Gboard Style
 
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/simple-keyboard/localized.svg)](https://crowdin.com/project/simple-keyboard)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L8UYVTA49G2U2&source=url)
@@ -10,6 +10,7 @@
 ## About
 
 Features:
+- Gboard keyboard layout (WIP)
 - Small size (<1MB)
 - Adjustable keyboard height for more screen space
 - Number row
