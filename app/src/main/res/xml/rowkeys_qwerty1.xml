@@ -27,8 +27,8 @@
             latin:showExtraChars="true">
             <Key
                 latin:keySpec="!text/keyspec_q"
-                latin:keyHintLabel="_"
-                latin:additionalMoreKeys="_"
+                latin:keyHintLabel="%"
+                latin:additionalMoreKeys="%"
                 latin:moreKeys="!text/morekeys_q" />
             <Key
                 latin:keySpec="!text/keyspec_w"
