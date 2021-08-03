@@ -256,6 +256,9 @@ public final class InputLogic {
                     handleNonSpecialCharacterEvent(event, inputTransaction);
                 }
                 break;
+            case Constants.CODE_SPACE:
+                handleSpace(event, inputTransaction);
+                break;
             default:
                 handleNonSpecialCharacterEvent(event, inputTransaction);
                 break;
@@ -301,6 +304,15 @@ public final class InputLogic {
         sendKeyCodePoint(event.mCodePoint);
 
         inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
+    }
+
+    private void handleSpace(final Event event, final InputTransaction inputTransaction) {
+        if (mConnection.lastCharacterIsSpace() && !mConnection.hasSelection()) {
+            mConnection.deleteTextBeforeCursor(1);
+            sendKeyCodePoint(Constants.CODE_PERIOD);
+        }
+
+        handleNonSpecialCharacterEvent(event, inputTransaction);
     }
 
     /**

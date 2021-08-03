@@ -560,6 +560,10 @@ public final class RichInputConnection {
         return mExpectedSelStart != INVALID_CURSOR_POSITION && mExpectedSelEnd != INVALID_CURSOR_POSITION;
     }
 
+    public boolean lastCharacterIsSpace() {
+        return canDeleteCharacters() && getTextBeforeCursor(1, 0).charAt(0) == ' ';
+    }
+
     /**
      * Some chars, such as emoji consist of 2 chars (surrogate pairs). We should treat them as one character.
      */
