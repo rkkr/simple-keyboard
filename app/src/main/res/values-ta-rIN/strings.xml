@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"விசையழுத்தத்தின்போது ஒலியெழுப்பு"</string>
     <string name="popup_on_keypress">"விழை அழுத்தத்தின்போது பாப்அப் செய்"</string>
     <string name="settings_screen_preferences">"விருப்பங்கள்"</string>
+    <string name="settings_screen_key_press">விசை அழுத்தல்</string>
+    <string name="settings_screen_appearance">தோற்றம்</string>
     <string name="settings_screen_theme">"தீம்"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>மி.வி."</string>
     <string name="settings_system_default">"அமைப்பின் இயல்புநிலை"</string>
@@ -46,9 +48,15 @@
     <string name="keyboard_color">தனிப்பயன் விசைப்பலகை வண்ணத்தை அமை</string>
     <string name="hide_special_chars">சிறப்பு எழுத்துக்களை மறை</string>
     <string name="hide_language_switch_key">மொழிமாற்றம் விசையை மறை</string>
+    <string name="pref_enable_ime_switch">பிற விசைப்பலகைக்கு மாறு</string>
     <string name="show_number_row">தனி எண் வரிசை காட்டு</string>
     <string name="space_swipe">இடைவெளி தேய்க்க காட்டி நகர்தல்</string>
     <string name="delete_swipe">தேய்க்கையில் அழி</string>
     <string name="matching_navbar_color">பொருந்தும் வழிசெலுத்தல் பட்டை நிறத்தைப் பயன்படுத்து</string>
     <string name="setup_message">எளிய விசைப்பலகை இயக்கப்படவில்லை. மொழிகளைத் திறக்க சரியை தொடு &amp; உள்ளீட்டு அமைப்புகள். எளிய விசைப்பலகை பயன்படுத்த உங்கள் தற்போதைய விசைப்பலகையில் அதை தேர்ந்தெடுக்க வேண்டும்.</string>
+    <string name="user_languages">இயக்கப்பட்ட விசைப்பலகை மொழிகள்</string>
+    <string name="add_language">மொழியை சேர்</string>
+    <string name="remove_language">மொழியை நீக்கு</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> விசைப்பலகை தளவமைப்பு</string>
+    <string name="change_keyboard">விசைப்பலகையை மாற்று</string>
 </resources>

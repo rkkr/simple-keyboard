@@ -102,7 +102,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public static final class UIHandler extends LeakGuardHandlerWrapper<LatinIME> {
         private static final int MSG_UPDATE_SHIFT_STATE = 0;
         private static final int MSG_PENDING_IMS_CALLBACK = 1;
-        private static final int MSG_REOPEN_DICTIONARIES = 5;
         private static final int MSG_RESET_CACHES = 7;
         private static final int MSG_WAIT_FOR_DICTIONARY_LOAD = 8;
         private static final int MSG_DEALLOCATE_MEMORY = 9;
@@ -156,10 +155,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 latinIme.deallocateMemory();
                 break;
             }
-        }
-
-        public void postReopenDictionaries() {
-            sendMessage(obtainMessage(MSG_REOPEN_DICTIONARIES));
         }
 
         public void postResetCaches(final boolean tryResumeSuggestions, final int remainingTries) {
@@ -839,7 +834,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // the screen. Anything we do right now will delay this, so wait until the next frame
         // before we do the rest, like reopening dictionaries and updating suggestions. So we
         // post a message.
-        mHandler.postReopenDictionaries();
         loadSettings();
         if (mKeyboardSwitcher.getMainKeyboardView() != null) {
             // Reload keyboard because the current language has been changed.

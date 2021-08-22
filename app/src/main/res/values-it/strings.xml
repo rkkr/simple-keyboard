@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"Suono tasti"</string>
     <string name="popup_on_keypress">"Popup tasti"</string>
     <string name="settings_screen_preferences">"Preferenze"</string>
+    <string name="settings_screen_key_press">Pressione tasti</string>
+    <string name="settings_screen_appearance">Aspetto</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="settings_system_default">"Predefinito"</string>
     <string name="auto_cap">"Maiuscole automatiche"</string>
@@ -46,9 +48,14 @@
     <string name="hide_special_chars">Nascondi caratteri speciali</string>
     <string name="hide_language_switch_key">Nascondi tasto per cambiare lingua</string>
     <string name="pref_enable_ime_switch">"Passa a un'altra tastiera"</string>
-    <string name="show_number_row">Mostra riga numeri separata</string>
+    <string name="show_number_row">Mostra numeri in una riga separata</string>
     <string name="space_swipe">Muovi cursore scorrendo sulla barra spaziatrice</string>
     <string name="delete_swipe">Cancella scorrendo sul tasto cancella</string>
-    <string name="matching_navbar_color">Usa un colore in tema per la barra di navigazione</string>
+    <string name="matching_navbar_color">Colora anche la barra di navigazione</string>
     <string name="setup_message">Simple Keyboard non è abilitata. Premi OK per aprire le impostazioni di lingua ed inserimento. Dovrai selezionare Simple Keyboard come tastiera corrente per usarla.</string>
+    <string name="user_languages">Lingue tastiera attive</string>
+    <string name="add_language">Aggiungi lingua</string>
+    <string name="remove_language">Rimuovi lingua</string>
+    <string name="generic_language_layouts">Layout della tastiera in <xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g></string>
+    <string name="change_keyboard">Cambia tastiera</string>
 </resources>

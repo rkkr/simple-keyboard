@@ -21,10 +21,11 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupOnly="true"
         android:icon="@drawable/ic_launcher_keyboard"
         android:label="@string/english_ime_name"
         android:supportsRtl="true">
-        <!-- Services -->
+
         <service
             android:name=".latin.LatinIME"
             android:label="@string/english_ime_name"
@@ -49,7 +50,8 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Broadcast receivers -->
+        </activity>
+
         <receiver
             android:name=".latin.SystemBroadcastReceiver"
             android:exported="false">

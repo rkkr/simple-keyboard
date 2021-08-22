@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"යතුරු එබිම මත හඬ"</string>
     <string name="popup_on_keypress">"යතුරු එබීම මත උත්පතනය"</string>
     <string name="settings_screen_preferences">"අභිරුචි"</string>
+    <string name="settings_screen_key_press">යතුර එබීම</string>
+    <string name="settings_screen_appearance">පෙනුම</string>
     <string name="settings_screen_theme">"තේමාව"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"පද්ධති සුපුරුදු"</string>
@@ -42,9 +44,16 @@
     <string name="prefs_keypress_sound_volume_settings">"යතුරු එබීම් හඬ තීව්‍රතාවය"</string>
     <string name="prefs_key_longpress_timeout_settings">"යතුරු දිගු එබීම් ප්‍රමාදය"</string>
     <string name="button_default">"සුපුරුදු"</string>
-    <string name="prefs_keyboard_height_settings">කීබෝඩයේ උස</string>
-    <string name="keyboard_color">කැමති පාටක් යොදන්න</string>
-    <string name="hide_special_chars">විශේශ අක්ශර සඟවන්න</string>
+    <string name="prefs_keyboard_height_settings">යතුරුපුවරුවේ උස</string>
+    <string name="keyboard_color">අභිරුචි වර්ණයක් සකසන්න</string>
+    <string name="hide_special_chars">විශේෂ අකුරු සඟවන්න</string>
     <string name="hide_language_switch_key">භාෂාව මාරුකරන යතුර සඟවන්න</string>
-    <string name="show_number_row">වෙනමම අංක පේලියක් පෙන්වන්න</string>
+    <string name="pref_enable_ime_switch">වෙනත් යතුරුපුවරුවකට මාරුවන්න</string>
+    <string name="show_number_row">වෙනම අංක පේලියක් පෙන්වන්න</string>
+    <string name="setup_message">සිම්පල් කීබෝඩ් සබල කර නැත. භාෂා ආදාන සැකසුම් විවෘත කිරීමට "හරි" ඔබන්න. එය භාවිතා කිරීමට ඔබගේ වත්මන් යතුරු පුවරුව තුළ සිම්පල් කීබෝඩ් තේරිය යුතුය.</string>
+    <string name="user_languages">සබල කර ඇති භාෂා</string>
+    <string name="add_language">භාෂාවක් එකතුකරන්න</string>
+    <string name="remove_language">භාෂාව ඉවත්කරන්න</string>
+    <string name="generic_language_layouts">යතුරුපුවරු පිරිසැලසුම් <xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g></string>
+    <string name="change_keyboard">යතුරුපුවරුව වෙනස්කරන්න</string>
 </resources>

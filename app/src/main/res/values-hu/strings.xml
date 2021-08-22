@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"Hangjelzés gombnyomásra"</string>
     <string name="popup_on_keypress">"Nagyobb billentyű gombnyomásra"</string>
     <string name="settings_screen_preferences">"Beállítások"</string>
+    <string name="settings_screen_key_press">Gombnyomás</string>
+    <string name="settings_screen_appearance">Megjelenés</string>
     <string name="settings_screen_theme">"Téma"</string>
     <string name="settings_system_default">"Alapértelmezett"</string>
     <string name="auto_cap">"Automatikusan nagy kezdőbetű"</string>
@@ -41,4 +43,17 @@
     <string name="prefs_keypress_sound_volume_settings">"Gombnyomás hangereje"</string>
     <string name="prefs_key_longpress_timeout_settings">"Hosszú nyomás késleltetése"</string>
     <string name="button_default">"Alapértelmezett"</string>
+    <string name="prefs_keyboard_height_settings">Billentyűzet magassága</string>
+    <string name="keyboard_color">Egyéni háttérszín beállítása</string>
+    <string name="hide_special_chars">Speciális karakterek elrejtése</string>
+    <string name="hide_language_switch_key">A nyelvváltó gomb elrejtése</string>
+    <string name="pref_enable_ime_switch">Váltás más billentyűzetekre</string>
+    <string name="show_number_row">Számok megjelenítése külön sorban</string>
+    <string name="space_swipe">Kurzor mozgatása a Szóköz billentytűn történő húzással</string>
+    <string name="delete_swipe">Törlés a Törlés billenytűről való húzással</string>
+    <string name="matching_navbar_color">Azonos szín használata a navigációs sávhoz</string>
+    <string name="user_languages">Hozzáadott nyelvek</string>
+    <string name="add_language">Nyelv hozzáadása</string>
+    <string name="remove_language">Nyelv eltávolítása</string>
+    <string name="change_keyboard">Billentyűzetváltás</string>
 </resources>
