@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"Zvuk při stisku klávesy"</string>
     <string name="popup_on_keypress">"Detail znaku při stisku klávesy"</string>
     <string name="settings_screen_preferences">"Předvolby"</string>
+    <string name="settings_screen_key_press">Stisk klávesy</string>
+    <string name="settings_screen_appearance">Vzhled</string>
     <string name="settings_screen_theme">"Motiv"</string>
     <string name="settings_system_default">"Výchozí nastavení"</string>
     <string name="auto_cap">"Velká písmena automaticky"</string>
@@ -45,8 +47,14 @@
     <string name="keyboard_color">Nastavit barvu klávesnice</string>
     <string name="hide_special_chars">Skrýt speciální znaky</string>
     <string name="hide_language_switch_key">Skrýt klávesu pro přepínání jazyka</string>
+    <string name="pref_enable_ime_switch">Změna na jiné klávesnice</string>
     <string name="show_number_row">Zobrazit řádek s čísly</string>
     <string name="space_swipe">Pohybovat kurzorem táhnutím po mezerníku</string>
     <string name="delete_swipe">Mazat text táhnutím po Backspace</string>
+    <string name="matching_navbar_color">Změnit barvu navigační lišty</string>
     <string name="setup_message">Simple Keyboard není povolený. Tlačítkem OK se dostanete do nabídky dostupných virtuálních klávesnic. Zde prosím povolte Simple Keyboard. Poté je nutné nastavit Simple Keyboard jako výchozí klávesnici.</string>
+    <string name="user_languages">Povolené jazyky klávesnice</string>
+    <string name="add_language">Přidat jazyk</string>
+    <string name="remove_language">Odstranit jazyk</string>
+    <string name="change_keyboard">Změnit klávesnici</string>
 </resources>
