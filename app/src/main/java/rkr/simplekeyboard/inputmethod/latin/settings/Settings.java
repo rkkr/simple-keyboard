@@ -101,28 +101,14 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                 Log.w(TAG, "onSharedPreferenceChanged called before loadSettings.");
                 return;
             }
-            loadSettings(mContext, mSettingsValues.mLocale, mSettingsValues.mInputAttributes);
+            loadSettings(mSettingsValues.mInputAttributes);
         } finally {
             mSettingsValuesLock.unlock();
         }
     }
 
-    public void loadSettings(final Context context, final Locale locale,
-            final InputAttributes inputAttributes) {
-        mSettingsValuesLock.lock();
-        mContext = context;
-        try {
-            final SharedPreferences prefs = mPrefs;
-            final RunInLocale<SettingsValues> job = new RunInLocale<SettingsValues>() {
-                @Override
-                protected SettingsValues job(final Resources res) {
-                    return new SettingsValues(prefs, res, inputAttributes);
-                }
-            };
-            mSettingsValues = job.runInLocale(mRes, locale);
-        } finally {
-            mSettingsValuesLock.unlock();
-        }
+    public void loadSettings(final InputAttributes inputAttributes) {
+        mSettingsValues = new SettingsValues(mPrefs, mRes, inputAttributes);
     }
 
     // TODO: Remove this method and add proxy method to SettingsValues.
