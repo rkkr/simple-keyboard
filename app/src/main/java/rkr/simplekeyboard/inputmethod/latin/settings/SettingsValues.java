@@ -27,10 +27,6 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 
-/**
- * When you call the constructor of this class, you may want to change the current system locale by
- * using {@link rkr.simplekeyboard.inputmethod.latin.utils.RunInLocale}.
- */
 // Non-final for testing via mock library.
 public class SettingsValues {
     public static final float DEFAULT_SIZE_SCALE = 1.0f; // 100%

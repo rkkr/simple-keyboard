@@ -30,8 +30,6 @@ import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
  * A helper class to deal with displaying locales.
   */
 public final class LocaleResourceUtils {
-    static final String TAG = LocaleResourceUtils.class.getSimpleName();
-
     // This reference class {@link R} must be located in the same package as LatinIME.java.
     private static final String RESOURCE_PACKAGE_NAME = R.class.getPackage().getName();
 
@@ -163,13 +161,7 @@ public final class LocaleResourceUtils {
 
         final String displayName;
         if (exceptionalNameResId != null) {
-            final RunInLocale<String> getExceptionalName = new RunInLocale<String>() {
-                @Override
-                protected String job(final Resources res) {
-                    return res.getString(exceptionalNameResId);
-                }
-            };
-            displayName = getExceptionalName.runInLocale(sResources, displayLocale);
+            displayName = sResources.getString(exceptionalNameResId);
         } else {
             displayName = LocaleUtils.constructLocaleFromString(localeString)
                     .getDisplayName(displayLocale);

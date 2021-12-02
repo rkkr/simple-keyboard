@@ -23,7 +23,6 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.util.Log;
 
-import java.util.Locale;
 import java.util.concurrent.locks.ReentrantLock;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -32,7 +31,6 @@ import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.RunInLocale;
 
 public final class Settings implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = Settings.class.getSimpleName();
@@ -60,7 +58,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     private static final float UNDEFINED_PREFERENCE_VALUE_FLOAT = -1.0f;
     private static final int UNDEFINED_PREFERENCE_VALUE_INT = -1;
 
-    private Context mContext;
     private Resources mRes;
     private SharedPreferences mPrefs;
     private SettingsValues mSettingsValues;
@@ -81,7 +78,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     }
 
     private void onCreate(final Context context) {
-        mContext = context;
         mRes = context.getResources();
         mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(context);
         mPrefs.registerOnSharedPreferenceChangeListener(this);

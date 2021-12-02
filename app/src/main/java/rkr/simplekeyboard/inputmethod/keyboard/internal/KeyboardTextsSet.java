@@ -23,7 +23,6 @@ import android.text.TextUtils;
 import java.util.Locale;
 
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
-import rkr.simplekeyboard.inputmethod.latin.utils.RunInLocale;
 
 // TODO: Make this an immutable class.
 public final class KeyboardTextsSet {
@@ -34,7 +33,6 @@ public final class KeyboardTextsSet {
     private static final int MAX_REFERENCE_INDIRECTION = 10;
 
     private Resources mResources;
-    private Locale mResourceLocale;
     private String mResourcePackageName;
     private String[] mTextsTable;
 
@@ -50,7 +48,6 @@ public final class KeyboardTextsSet {
             final String resourcePackageName) {
         mResources = res;
         // Null means the current system locale.
-        mResourceLocale = locale;
         mResourcePackageName = resourcePackageName;
         mTextsTable = KeyboardTextsTable.getTextsTable(locale);
     }
@@ -132,15 +129,8 @@ public final class KeyboardTextsSet {
         if (prefix.equals(PREFIX_TEXT)) {
             sb.append(getText(name));
         } else { // PREFIX_RESOURCE
-            final String resourcePackageName = mResourcePackageName;
-            final RunInLocale<String> getTextJob = new RunInLocale<String>() {
-                @Override
-                protected String job(final Resources res) {
-                    final int resId = res.getIdentifier(name, "string", resourcePackageName);
-                    return res.getString(resId);
-                }
-            };
-            sb.append(getTextJob.runInLocale(mResources, mResourceLocale));
+            final int resId = mResources.getIdentifier(name, "string", mResourcePackageName);
+            sb.append(mResources.getString(resId));
         }
         return end - 1;
     }
