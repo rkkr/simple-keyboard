@@ -397,7 +397,7 @@ public final class InputLogic {
             final CharSequence selectedText =
                     mConnection.getSelectedText(0 /* flags, 0 for no styles */);
             if (TextUtils.isEmpty(selectedText)) return; // Race condition with the input connection
-            mRecapitalizeStatus.start(selectionStart, selectionEnd, selectedText.toString(), settingsValues.mLocale);
+            mRecapitalizeStatus.start(selectionStart, selectionEnd, selectedText.toString(), mLatinIME.getCurrentLayoutLocale());
             // We trim leading and trailing whitespace.
             mRecapitalizeStatus.trim();
         }

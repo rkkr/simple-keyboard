@@ -34,7 +34,6 @@ public class SettingsValues {
     // From resources:
     public final SpacingAndPunctuations mSpacingAndPunctuations;
     // From configuration:
-    public final Locale mLocale;
     public final boolean mHasHardwareKeyboard;
     public final int mDisplayOrientation;
     // From preferences, in the same order as xml/prefs.xml:
@@ -64,7 +63,6 @@ public class SettingsValues {
 
     public SettingsValues(final SharedPreferences prefs, final Resources res,
             final InputAttributes inputAttributes) {
-        mLocale = res.getConfiguration().locale;
         // Get the resources
         mSpacingAndPunctuations = new SpacingAndPunctuations(res);
 

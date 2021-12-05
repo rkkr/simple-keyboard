@@ -703,10 +703,14 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return mOptionsDialog != null;
     }
 
+    public Locale getCurrentLayoutLocale() {
+        return mRichImm.getCurrentSubtype().getLocaleObject();
+    }
+
     @Override
     public void onMovePointer(int steps) {
         if (mInputLogic.mConnection.hasCursorPosition()) {
-            if (TextUtils.getLayoutDirectionFromLocale(mSettings.getCurrent().mLocale) == View.LAYOUT_DIRECTION_RTL)
+            if (TextUtils.getLayoutDirectionFromLocale(getCurrentLayoutLocale()) == View.LAYOUT_DIRECTION_RTL)
                 steps = -steps;
 
             steps = mInputLogic.mConnection.getUnicodeSteps(steps, true);
