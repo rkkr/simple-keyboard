@@ -36,19 +36,18 @@
         name="KeyboardView.LXX_System"
         parent="KeyboardView"
     >
-        <!--<item name="android:background">?android:background</item>-->
-        <item name="android:background">?android:colorBackground</item>
+        <item name="android:background">@color/background_lxx_system</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_lxx_system</item>
         <item name="functionalKeyBackground">@drawable/btn_keyboard_key_lxx_system</item>
         <item name="spacebarBackground">@drawable/btn_keyboard_spacebar_lxx_system</item>
-        <item name="keyTextColor">?android:textColorPrimary</item>
-        <item name="keyTextInactivatedColor">?android:textColorPrimary</item>
-        <item name="functionalTextColor">?android:textColorPrimary</item>
-        <item name="keyHintLetterColor">?android:textColorSecondary</item>
-        <item name="keyHintLabelColor">?android:textColorSecondary</item>
-        <item name="keyShiftedLetterHintInactivatedColor">?android:textColorSecondary</item>
-        <item name="keyShiftedLetterHintActivatedColor">?android:textColorPrimary</item>
-        <item name="keyPreviewTextColor">?android:textColorPrimary</item>
+        <item name="keyTextColor">@color/key_text_color_lxx_system</item>
+        <item name="keyTextInactivatedColor">@color/key_text_inactive_color_lxx_system</item>
+        <item name="functionalTextColor">@color/key_functional_text_color_lxx_system</item>
+        <item name="keyHintLetterColor">@color/key_hint_letter_color_lxx_system</item>
+        <item name="keyHintLabelColor">@color/key_text_inactive_color_lxx_system</item>
+        <item name="keyShiftedLetterHintInactivatedColor">@color/key_text_inactive_color_lxx_system</item>
+        <item name="keyShiftedLetterHintActivatedColor">@color/key_text_color_lxx_system</item>
+        <item name="keyPreviewTextColor">@color/key_text_color_lxx_system</item>
     </style>
     <style
         name="MainKeyboardView.LXX_System"
@@ -59,8 +58,8 @@
         <item name="keyPreviewWidth">@dimen/config_key_preview_width_lxx</item>
         <item name="keyPreviewOffset">@dimen/config_key_preview_offset_lxx</item>
         <item name="keyPreviewDismissAnimator">@anim/key_preview_dismiss_lxx</item>
-        <item name="slidingKeyInputPreviewColor">?android:textColorPrimary</item>
-        <item name="languageOnSpacebarTextColor">?android:textColorPrimary</item>
+        <item name="slidingKeyInputPreviewColor">@color/sliding_key_input_preview_color_lxx_system</item>
+        <item name="languageOnSpacebarTextColor">@color/language_on_spacebar_text_color_lxx_system</item>
     </style>
     <style
         name="MoreKeysKeyboard.LXX_System"

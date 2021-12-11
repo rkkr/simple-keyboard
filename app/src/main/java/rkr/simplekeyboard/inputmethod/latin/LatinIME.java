@@ -84,6 +84,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     static final long DELAY_DEALLOCATE_MEMORY_MILLIS = TimeUnit.SECONDS.toMillis(10);
 
     final Settings mSettings;
+    private Locale mLocale;
     private int mOriginalNavBarColor = 0;
     private int mOriginalNavBarFlags = 0;
     final InputLogic mInputLogic = new InputLogic(this /* LatinIME */);
@@ -311,6 +312,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void loadSettings() {
+        mLocale = mRichImm.getCurrentSubtype().getLocaleObject();
         final EditorInfo editorInfo = getCurrentInputEditorInfo();
         final InputAttributes inputAttributes = new InputAttributes(editorInfo, isFullscreenMode());
         mSettings.loadSettings(inputAttributes);
@@ -704,7 +706,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     public Locale getCurrentLayoutLocale() {
-        return mRichImm.getCurrentSubtype().getLocaleObject();
+        return mLocale;
     }
 
     @Override

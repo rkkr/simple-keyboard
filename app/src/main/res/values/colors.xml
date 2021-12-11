@@ -19,21 +19,25 @@
 -->
 
 <resources>
-   <!-- Color resources for LXX_Light theme.
-         15%:0x26 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6 -->
+    <!-- Color resources for LXX_Light theme. -->
+    <color name="background_lxx_light">#ECEFF1</color>
     <color name="key_text_color_lxx_light">#37474F</color>
     <color name="key_functional_text_color_lxx_light">#CC37474F</color>
     <color name="key_text_inactive_color_lxx_light">#B337474F</color>
     <color name="key_hint_letter_color_lxx_light">#B337474F</color>
     <color name="language_on_spacebar_text_color_lxx_light">#B337474F</color>
     <color name="sliding_key_input_preview_color_lxx_light">#B34DB6AC</color>
-    <color name="key_background_pressed_lxx_light">#2637474F</color>
-    <!-- Color resources for LXX_Dark theme.
-         10%:0x19 50%:0x80 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6  -->
+    <color name="key_background_normal_lxx_light">#22222222</color>
+    <color name="key_background_pressed_lxx_light">#596367</color>
+    <!-- Color resources for LXX_Dark theme. -->
+    <color name="background_lxx_dark">#263238</color>
     <color name="key_text_color_lxx_dark">#CCFFFFFF</color>
     <color name="key_functional_text_color_lxx_dark">#CCFFFFFF</color>
     <color name="key_text_inactive_color_lxx_dark">#80FFFFFF</color>
     <color name="key_hint_letter_color_lxx_dark">#80FFFFFF</color>
     <color name="sliding_key_input_preview_color_lxx_dark">#B380CBC4</color>
-    <color name="key_background_pressed_lxx_dark">#19FFFFFF</color>
-</resources>
+    <color name="key_background_normal_lxx_dark">#66222222</color>
+    <color name="key_background_pressed_lxx_dark">#F3F5F6</color>
+    <!-- Dimensions for all themes. -->
+    <dimen name="button_corner_radius_lxx">4dp</dimen>
+ </resources>
