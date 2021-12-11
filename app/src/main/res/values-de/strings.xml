@@ -22,6 +22,8 @@
     <string name="vibrate_on_keypress">"Bei Tastendruck vibrieren"</string>
     <string name="sound_on_keypress">"Ton bei Tastendruck"</string>
     <string name="popup_on_keypress">"Pop-up bei Tastendruck"</string>
+    <string name="settings_screen_key_press">Tastendruck</string>
+    <string name="settings_screen_appearance">Aussehen</string>
     <string name="settings_screen_preferences">"Einstellungen"</string>
     <string name="settings_screen_theme">"Design"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
@@ -52,4 +54,9 @@
     <string name="delete_swipe">Durch Wischen löschen</string>
     <string name="matching_navbar_color">Passende Farbe der Navigationsleiste verwenden</string>
     <string name="setup_message">Simple Keyboard ist nicht aktiviert. Klicken Sie auf OK, um die Sprache &amp; Eingabe Einstellungen zu öffnen. Sie müssen Simple Keyboard in Ihrer aktuellen Tastatur auswählen, um sie zu verwenden.</string>
+    <string name="user_languages">Aktivierte Tastatursprachen</string>
+    <string name="add_language">Sprache hinzufügen</string>
+    <string name="remove_language">Sprache entfernen</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> tastaturlayouts</string>
+    <string name="change_keyboard">Tastatur ändern</string>
 </resources>
