@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2012, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<resources>
+    <!-- Color resources for LXX_System theme. -->
+    <color name="background_lxx_system">#ff303030</color>
+    <color name="background_secondary_lxx_system">#ff212121</color>
+    <color name="key_text_color_lxx_system">#ffffffff</color>
+    <color name="key_functional_text_color_lxx_system">#ffffffff</color>
+    <color name="key_text_inactive_color_lxx_system">#ffffffff</color>
+    <color name="key_hint_letter_color_lxx_system">#b2ffffff</color>
+    <color name="language_on_spacebar_text_color_lxx_system">#ffffffff</color>
+    <color name="sliding_key_input_preview_color_lxx_system">#ffffffff</color>
+    <color name="key_background_normal_lxx_system">#ff5a595b</color>
+    <color name="key_background_pressed_lxx_system">#20ffffff</color>
+</resources>
