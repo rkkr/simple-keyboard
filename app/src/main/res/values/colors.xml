@@ -19,6 +19,8 @@
 -->
 
 <resources>
+    <color name="ic_launcher_background">#ECEFF1</color>
+
     <!-- Color resources for LXX_Light theme. -->
     <color name="background_lxx_light">#ECEFF1</color>
     <color name="key_text_color_lxx_light">#37474F</color>
