@@ -16,7 +16,7 @@
         <item name="iconSpaceKeyForNumberLayout">@drawable/sym_keyboard_space_lxx_light</item>
         <item name="iconShiftKeyShifted">@drawable/sym_keyboard_shift_locked_lxx_system</item>
         <item name="iconLanguageSwitchKey">@drawable/sym_keyboard_language_switch_lxx_system</item>
-        <item name="iconZwnjKey">@drawable/sym_keyboard_zwnj_lxx_light</item>
-        <item name="iconZwjKey">@drawable/sym_keyboard_zwj_lxx_light</item>
+        <item name="iconZwnjKey">@drawable/sym_keyboard_zwnj_lxx_system</item>
+        <item name="iconZwjKey">@drawable/sym_keyboard_zwj_lxx_system</item>
     </style>
 </resources>
