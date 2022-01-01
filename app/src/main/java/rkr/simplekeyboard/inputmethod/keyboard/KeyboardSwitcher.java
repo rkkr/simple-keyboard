@@ -43,7 +43,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private static final String TAG = KeyboardSwitcher.class.getSimpleName();
 
     private InputView mCurrentInputView;
-    private int mCurrentUiMode;
     private View mMainKeyboardFrame;
     private MainKeyboardView mKeyboardView;
     private LatinIME mLatinIME;
@@ -78,24 +77,20 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mState = new KeyboardState(this);
     }
 
-    public void updateKeyboardTheme(final int uiMode) {
+    public void updateKeyboardTheme() {
         final boolean themeUpdated = updateKeyboardThemeAndContextThemeWrapper(
-                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME), uiMode);
+                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME));
         if (themeUpdated && mKeyboardView != null) {
-            mLatinIME.setInputView(onCreateInputView(uiMode));
+            mLatinIME.setInputView(onCreateInputView());
         }
     }
 
     private boolean updateKeyboardThemeAndContextThemeWrapper(final Context context,
-            final KeyboardTheme keyboardTheme, final int uiMode) {
-        if (mThemeContext == null || !keyboardTheme.equals(mKeyboardTheme) || mCurrentUiMode != uiMode) {
-            mKeyboardTheme = keyboardTheme;
-            mCurrentUiMode = uiMode;
-            mThemeContext = new ContextThemeWrapper(context, keyboardTheme.mStyleId);
-            KeyboardLayoutSet.onKeyboardThemeChanged();
-            return true;
-        }
-        return false;
+            final KeyboardTheme keyboardTheme) {
+        mKeyboardTheme = keyboardTheme;
+        mThemeContext = new ContextThemeWrapper(context, keyboardTheme.mStyleId);
+        KeyboardLayoutSet.onKeyboardThemeChanged();
+        return true;
     }
 
     public void loadKeyboard(final EditorInfo editorInfo, final SettingsValues settingsValues,
@@ -363,13 +358,13 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         }
     }
 
-    public View onCreateInputView(final int uiMode) {
+    public View onCreateInputView() {
         if (mKeyboardView != null) {
             mKeyboardView.closing();
         }
 
         updateKeyboardThemeAndContextThemeWrapper(
-                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */), uiMode);
+                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */));
         mCurrentInputView = (InputView)LayoutInflater.from(mThemeContext).inflate(
                 R.layout.input_view, null);
         mMainKeyboardFrame = mCurrentInputView.findViewById(R.id.main_keyboard_frame);

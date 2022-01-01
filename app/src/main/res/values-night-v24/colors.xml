@@ -24,7 +24,6 @@
     <color name="background_secondary_lxx_system">#ff212121</color>
     <color name="key_text_color_lxx_system">#ffffffff</color>
     <color name="key_functional_text_color_lxx_system">#ffffffff</color>
-    <color name="key_shift_locked_color_lxx_system">#80CBC4</color>
     <color name="key_text_inactive_color_lxx_system">#ffffffff</color>
     <color name="key_hint_letter_color_lxx_system">#b2ffffff</color>
     <color name="language_on_spacebar_text_color_lxx_system">#ffffffff</color>
