@@ -43,6 +43,8 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private static final String TAG = KeyboardSwitcher.class.getSimpleName();
 
     private InputView mCurrentInputView;
+    private int mCurrentUiMode;
+    private int mCurrentTextColor = 0x000000;
     private View mMainKeyboardFrame;
     private MainKeyboardView mKeyboardView;
     private LatinIME mLatinIME;
@@ -77,20 +79,33 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mState = new KeyboardState(this);
     }
 
-    public void updateKeyboardTheme() {
+    public void updateKeyboardTheme(final int uiMode) {
         final boolean themeUpdated = updateKeyboardThemeAndContextThemeWrapper(
-                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME));
+                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME), uiMode);
         if (themeUpdated && mKeyboardView != null) {
-            mLatinIME.setInputView(onCreateInputView());
+            mLatinIME.setInputView(onCreateInputView(uiMode));
         }
     }
 
     private boolean updateKeyboardThemeAndContextThemeWrapper(final Context context,
-            final KeyboardTheme keyboardTheme) {
-        mKeyboardTheme = keyboardTheme;
-        mThemeContext = new ContextThemeWrapper(context, keyboardTheme.mStyleId);
-        KeyboardLayoutSet.onKeyboardThemeChanged();
-        return true;
+            final KeyboardTheme keyboardTheme, final int uiMode) {
+        int newTextColor = 0x000000;
+        if (mKeyboardView != null && mKeyboardView.mKeyVisualAttributes != null) {
+            newTextColor = mKeyboardView.mKeyVisualAttributes.mTextColor;
+        }
+
+        if (mThemeContext == null
+                || !keyboardTheme.equals(mKeyboardTheme)
+                || mCurrentUiMode != uiMode
+                || (newTextColor != 0x000000 && newTextColor != mCurrentTextColor)) {
+            mKeyboardTheme = keyboardTheme;
+            mCurrentUiMode = uiMode;
+            mCurrentTextColor = newTextColor;
+            mThemeContext = new ContextThemeWrapper(context, keyboardTheme.mStyleId);
+            KeyboardLayoutSet.onKeyboardThemeChanged();
+            return true;
+        }
+        return false;
     }
 
     public void loadKeyboard(final EditorInfo editorInfo, final SettingsValues settingsValues,
@@ -358,13 +373,13 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         }
     }
 
-    public View onCreateInputView() {
+    public View onCreateInputView(final int uiMode) {
         if (mKeyboardView != null) {
             mKeyboardView.closing();
         }
 
         updateKeyboardThemeAndContextThemeWrapper(
-                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */));
+                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */), uiMode);
         mCurrentInputView = (InputView)LayoutInflater.from(mThemeContext).inflate(
                 R.layout.input_view, null);
         mMainKeyboardFrame = mCurrentInputView.findViewById(R.id.main_keyboard_frame);

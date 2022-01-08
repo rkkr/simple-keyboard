@@ -76,7 +76,7 @@ import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
  */
 public class KeyboardView extends View {
     // XML attributes
-    private final KeyVisualAttributes mKeyVisualAttributes;
+    public final KeyVisualAttributes mKeyVisualAttributes;
     // Default keyLabelFlags from {@link KeyboardTheme}.
     // Currently only "alignHintLabelToBottom" is supported.
     private final int mDefaultKeyLabelFlags;
