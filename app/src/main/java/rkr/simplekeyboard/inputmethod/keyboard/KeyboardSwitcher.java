@@ -44,7 +44,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
     private InputView mCurrentInputView;
     private int mCurrentUiMode;
-    private int mCurrentTextColor = 0x000000;
+    private int mCurrentTextColor = 0;
     private View mMainKeyboardFrame;
     private MainKeyboardView mKeyboardView;
     private LatinIME mLatinIME;
@@ -89,15 +89,12 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
     private boolean updateKeyboardThemeAndContextThemeWrapper(final Context context,
             final KeyboardTheme keyboardTheme, final int uiMode) {
-        int newTextColor = 0x000000;
-        if (mKeyboardView != null && mKeyboardView.mKeyVisualAttributes != null) {
-            newTextColor = mKeyboardView.mKeyVisualAttributes.mTextColor;
-        }
+        int newTextColor = context.getResources().getColor(R.color.key_text_color_lxx_system);
 
         if (mThemeContext == null
                 || !keyboardTheme.equals(mKeyboardTheme)
                 || mCurrentUiMode != uiMode
-                || (newTextColor != 0x000000 && newTextColor != mCurrentTextColor)) {
+                || newTextColor != mCurrentTextColor) {
             mKeyboardTheme = keyboardTheme;
             mCurrentUiMode = uiMode;
             mCurrentTextColor = newTextColor;
