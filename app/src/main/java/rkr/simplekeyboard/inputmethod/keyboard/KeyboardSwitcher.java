@@ -18,6 +18,7 @@ package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -44,7 +45,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
     private InputView mCurrentInputView;
     private int mCurrentUiMode;
-    private int mCurrentTextColor = 0;
+    private int mCurrentTextColor = 0x0;
     private View mMainKeyboardFrame;
     private MainKeyboardView mKeyboardView;
     private LatinIME mLatinIME;
@@ -89,7 +90,10 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
     private boolean updateKeyboardThemeAndContextThemeWrapper(final Context context,
             final KeyboardTheme keyboardTheme, final int uiMode) {
-        int newTextColor = context.getResources().getColor(R.color.key_text_color_lxx_system);
+        int newTextColor = 0x0;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            newTextColor = context.getResources().getColor(R.color.key_text_color_lxx_system);
+        }
 
         if (mThemeContext == null
                 || !keyboardTheme.equals(mKeyboardTheme)
