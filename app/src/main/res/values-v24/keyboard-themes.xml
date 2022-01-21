@@ -28,4 +28,13 @@
         <item>5</item>
         <item>6</item>
     </integer-array>
+
+    <array name="keyboard_theme_colors" translatable="false" tools:ignore="InconsistentArrays">
+        <item>@color/background_lxx_light</item>
+        <item>@color/background_lxx_dark</item>
+        <item>@color/background_lxx_light</item>
+        <item>@color/background_lxx_dark</item>
+        <item>@color/background_lxx_system</item>
+        <item>@color/background_lxx_system</item>
+    </array>
 </resources>

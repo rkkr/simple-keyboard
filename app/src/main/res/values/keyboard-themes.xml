@@ -36,12 +36,10 @@
         <item>2</item>
     </integer-array>
 
-    <array name="keyboard_theme_colors" translatable="false">
-        <item>#ECEFF1</item>
-        <item>#263238</item>
-        <item>#ECEFF1</item>
-        <item>#263238</item>
-        <item>@android:color/transparent</item>
-        <item>@android:color/transparent</item>
+    <array name="keyboard_theme_colors" translatable="false" tools:ignore="InconsistentArrays">
+        <item>@color/background_lxx_light</item>
+        <item>@color/background_lxx_dark</item>
+        <item>@color/background_lxx_light</item>
+        <item>@color/background_lxx_dark</item>
     </array>
 </resources>
