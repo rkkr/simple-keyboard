@@ -50,9 +50,9 @@
     <string name="hide_language_switch_key">භාෂාව මාරුකරන යතුර සඟවන්න</string>
     <string name="pref_enable_ime_switch">වෙනත් යතුරුපුවරුවකට මාරුවන්න</string>
     <string name="show_number_row">වෙනම අංක පේලියක් පෙන්වන්න</string>
-    <string name="space_swipe">ස්පේස් බටනය භාවිතයෙන් කර්සරයඑහා මෙහා කිරීමේ හැකියාව </string>
-    <string name="delete_swipe">ඩිලිට් බටනය භාවිතයෙන් වචන සිලෙක්ට් කිරීමේ හැකියාව </string>
-    <string name="matching_navbar_color">නැවිගේෂන් තීරුව සමග ගැළපෙන වර්ණයක් භාවිතා කරන්න</string>
+    <string name="space_swipe">අවකාශ යතුර තල්ලුවෙන් දර්ශකය ගෙනයන්න</string>
+    <string name="delete_swipe">තල්ලු කිරීම මකන්න</string>
+    <string name="matching_navbar_color">යාත්‍රණ තීරුවට ගැළපෙන පාටක් භාවිතා කරන්න</string>
     <string name="setup_message">සිම්පල් කීබෝඩ් සබල කර නැත. භාෂා ආදාන සැකසුම් විවෘත කිරීමට "හරි" ඔබන්න. එය භාවිතා කිරීමට ඔබගේ වත්මන් යතුරු පුවරුව තුළ සිම්පල් කීබෝඩ් තේරිය යුතුය.</string>
     <string name="user_languages">සබල කර ඇති භාෂා</string>
     <string name="add_language">භාෂාවක් එකතුකරන්න</string>
