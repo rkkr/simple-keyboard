@@ -389,7 +389,6 @@ public final class SubtypeLocaleUtils {
                     addGenericLayouts();
                     break;
                 case LOCALE_CZECH:
-                case LOCALE_GERMAN:
                 case LOCALE_CROATIAN:
                 case LOCALE_HUNGARIAN:
                 case LOCALE_SLOVENIAN:
@@ -422,6 +421,7 @@ public final class SubtypeLocaleUtils {
                     addLayout(LAYOUT_NORDIC);
                     addGenericLayouts();
                     break;
+                case LOCALE_GERMAN:
                 case LOCALE_GERMAN_SWITZERLAND:
                 case LOCALE_FRENCH_SWITZERLAND:
                 case LOCALE_ITALIAN_SWITZERLAND:
