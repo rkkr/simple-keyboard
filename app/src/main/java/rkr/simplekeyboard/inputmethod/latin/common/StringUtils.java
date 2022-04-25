@@ -244,12 +244,13 @@ public final class StringUtils {
         if (label == null) {
             return label;
         }
-        titleCaseLabel = label.toUpperCase(getLocaleUsedForToTitleCase(locale))
-        if (titleCaseLabel == "SS"){
-            // The java function String.toUpperCase() converts the sharp S (ß, U+00DF) into 'SS' instead of ẞ (U+1E9E). That's wrong.
-            titleCaseLabel = "\u+1E9E";
+        switch(label){
+            // The java function String.toUpperCase() converts the sharp S (ß, U+00DF) into 'SS' instead of ẞ (U+1E9E). This is the fix.
+            "\u+00DF": 
+                return "\u+1E9E";
+            default:
+                return label.toUpperCase(getLocaleUsedForToTitleCase(locale));
         }
-        return titleCaseLabel;
     }
 
     public static int toTitleCaseOfKeyCode(final int code, final Locale locale) {
