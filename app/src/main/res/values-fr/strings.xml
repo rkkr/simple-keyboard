@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"Émettre un son à chaque touche"</string>
     <string name="popup_on_keypress">"Agrandir les caractères"</string>
     <string name="settings_screen_preferences">"Préférences"</string>
+    <string name="settings_screen_key_press">Appui sur une touche</string>
+    <string name="settings_screen_appearance">Apparence</string>
     <string name="settings_screen_theme">"Thème"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> ms"</string>
     <string name="settings_system_default">"Paramètres par défaut"</string>
@@ -46,9 +48,15 @@
     <string name="keyboard_color">Définir une couleur de clavier personnalisée</string>
     <string name="hide_special_chars">Masquer les caractères spéciaux</string>
     <string name="hide_language_switch_key">Masquer la touche de sélection de langue</string>
+    <string name="pref_enable_ime_switch">Passer à d'autres claviers</string>
     <string name="show_number_row">Afficher la ligne de chiffres</string>
     <string name="space_swipe">Glisser sur Espace pour déplacer le curseur</string>
     <string name="delete_swipe">Supprimer le glissement</string>
     <string name="matching_navbar_color">Utiliser la couleur de la barre correspondante</string>
     <string name="setup_message">Simple Keyboard n\'est pas activé. Appuyez sur OK pour ouvir les parametres de langues et de saisies. Sélectionnez Simple Keyboard comme clavier pour l\'utiliser.</string>
+    <string name="user_languages">Langues du clavier activées</string>
+    <string name="add_language">Ajouter une langue</string>
+    <string name="remove_language">Supprimer la langue</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> dispositions du clavier</string>
+    <string name="change_keyboard">Changer de clavier</string>
 </resources>
