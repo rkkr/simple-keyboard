@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"Geluid bij toetsaanslag"</string>
     <string name="popup_on_keypress">"Pop-up bij toetsaanslag"</string>
     <string name="settings_screen_preferences">"Voorkeuren"</string>
+    <string name="settings_screen_key_press">Toetsaanslag</string>
+    <string name="settings_screen_appearance">Uiterlijk</string>
     <string name="settings_screen_theme">"Thema"</string>
     <string name="settings_system_default">"Systeemstandaard"</string>
     <string name="auto_cap">"Auto-hoofdlettergebruik"</string>
@@ -45,7 +47,15 @@
     <string name="keyboard_color">Kies aangepaste toetsenbordkleur</string>
     <string name="hide_special_chars">Verberg speciale karakters</string>
     <string name="hide_language_switch_key">Verberg taalkeuzetoets</string>
+    <string name="pref_enable_ime_switch">Naar andere toetsenborden overschakelen</string>
     <string name="show_number_row">Aparte nummerrij</string>
     <string name="space_swipe">Spatie-swipe beweegt cursor</string>
     <string name="delete_swipe">Verwijder swipe</string>
+    <string name="matching_navbar_color">Gebruik bijpassende navigatiebalk kleur</string>
+    <string name="setup_message">Simple Keyboard is niet ingeschakeld. Klik op OK om Talen &amp; Invoerinstellingen te openen. Selecteer Simple Keyboard als je het als huidig toetsenbord wilt gebruiken.</string>
+    <string name="user_languages">Geactiveerde toetsenbord talen</string>
+    <string name="add_language">Taal toevoegen</string>
+    <string name="remove_language">Taal verwijderen</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" voorbeeld="English (US)">%s</xliff:g> toetsenbordindelingen</string>
+    <string name="change_keyboard">Toetsenbord wisselen</string>
 </resources>
