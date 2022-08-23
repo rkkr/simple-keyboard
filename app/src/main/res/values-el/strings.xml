@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"Ήχος πλήκτρων"</string>
     <string name="popup_on_keypress">"Εμφάνιση με το πάτημα πλήκτρου"</string>
     <string name="settings_screen_preferences">"Προτιμήσεις"</string>
+    <string name="settings_screen_key_press">Πάτημα κουμπιού</string>
+    <string name="settings_screen_appearance">Εμφάνιση</string>
     <string name="settings_screen_theme">"Θέμα"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>χλστ. δ."</string>
     <string name="settings_system_default">"Προεπιλογή"</string>
@@ -52,4 +54,7 @@
     <string name="delete_swipe">Αφαίρεση της ολίσθησης</string>
     <string name="matching_navbar_color">Χρήση αντίστοιχου χρώματος γραμμής πλοήγησης</string>
     <string name="setup_message">Το Simple Keyboard δεν είναι ενεργοποιημένο. Πατήστε OK για να ανοίξετε τις ρυθμίσεις Γλώσσας &amp; Εισαγωγής. Θα πρέπει να επιλέξετε το Simple Keyboard ως τρέχον πληκτρολόγιο ώστε να μπορείτε να το χρησιμοποιήσετε.</string>
+    <string name="add_language">Προσθήκη γλώσσας</string>
+    <string name="remove_language">Αφαίρεση γλώσσας</string>
+    <string name="change_keyboard">Αλλαγή πληκτρολογίου</string>
 </resources>
