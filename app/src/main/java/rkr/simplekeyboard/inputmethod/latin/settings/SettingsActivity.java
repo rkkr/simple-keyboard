@@ -58,8 +58,8 @@ public class SettingsActivity extends PreferenceActivity {
                     dialog.dismiss();
                 }
             });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
+             builder.setNegativeButton(R.string.setup_cancel, new DialogInterface.OnClickListener() {
+                 public void onClick(DialogInterface dialog, int id) {
                     finish();
                 }
             });
