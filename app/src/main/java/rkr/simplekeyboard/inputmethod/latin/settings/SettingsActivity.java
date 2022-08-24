@@ -50,7 +50,7 @@ public class SettingsActivity extends PreferenceActivity {
             final Context context = this;
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.setup_message);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     Intent intent = new Intent(android.provider.Settings.ACTION_INPUT_METHOD_SETTINGS);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -58,7 +58,7 @@ public class SettingsActivity extends PreferenceActivity {
                     dialog.dismiss();
                 }
             });
-            builder.setNegativeButton(R.string.setup_cancel, new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     finish();
                 }
