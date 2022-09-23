@@ -28,8 +28,19 @@
     <Row
         latin:keyWidth="10%p"
     >
-        <include
-            latin:keyboardLayout="@xml/rowkeys_symbols1" />
+        <switch>
+            <!-- Bengali numbers row for bengali keyboard layouts -->
+            <case
+                latin:languageCode="bn"
+            >
+                <include
+                    latin:keyboardLayout="@xml/rowkeys_bengali_numbers" />
+            </case>
+            <default>
+                <include
+                    latin:keyboardLayout="@xml/rowkeys_symbols1" />
+            </default>
+        </switch>
     </Row>
     <Row
         latin:keyWidth="10%p"
