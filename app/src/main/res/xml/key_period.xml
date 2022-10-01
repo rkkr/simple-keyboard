@@ -30,6 +30,17 @@
                 latin:keyLabelFlags="hasPopupHint"
                 latin:moreKeys="!text/morekeys_punctuation,!text/morekeys_z" />
         </case>
+        <!-- Different period symbol (।) for Bijoy subtype layout -->
+        <case
+            latin:keyboardLayoutSet="bengali_bijoy"
+        >
+            <Key
+                latin:keySpec="&#x964;"
+                latin:keyHintLabel="!text/keyhintlabel_period"
+                latin:keyLabelFlags="hasPopupHint|hasShiftedLetterHint"
+                latin:moreKeys="!text/morekeys_period"
+                latin:backgroundType="functional" />
+        </case>
         <default>
             <Key
                 latin:keySpec="!text/keyspec_period"
