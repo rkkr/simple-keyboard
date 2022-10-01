@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"صوت عند الضغط على مفتاح"</string>
     <string name="popup_on_keypress">"انبثاق عند ضغط مفتاح"</string>
     <string name="settings_screen_preferences">"التفضيلات"</string>
+    <string name="settings_screen_key_press">ضغط المفتاح</string>
+    <string name="settings_screen_appearance">مظهر</string>
     <string name="settings_screen_theme">"المظهر"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> مللي ثانية"</string>
     <string name="settings_system_default">"الإعداد الافتراضي للنظام"</string>
@@ -49,4 +51,7 @@
     <string name="show_number_row">إظهار الأرقام في صف منفصل</string>
     <string name="space_swipe">سحب مفتاح المسافة لنقل المؤشر</string>
     <string name="delete_swipe">الحذف بالسحب</string>
+    <string name="add_language">إضافة لغة</string>
+    <string name="remove_language">إزالة اللغة</string>
+    <string name="change_keyboard">تغيير لوحة المفاتيح</string>
 </resources>
