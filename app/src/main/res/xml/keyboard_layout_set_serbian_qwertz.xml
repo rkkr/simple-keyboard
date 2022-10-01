@@ -22,8 +22,7 @@
     <Element
         latin:allowRedundantMoreKeys="false"
         latin:elementKeyboard="@xml/kbd_serbian_qwertz"
-        latin:elementName="alphabet"
-        latin:enableProximityCharsCorrection="true" />
+        latin:elementName="alphabet" />
     <Element
         latin:elementKeyboard="@xml/kbd_symbols"
         latin:elementName="symbols" />

@@ -22,12 +22,10 @@
     xmlns:latin="http://schemas.android.com/apk/res-auto">
     <Element
         latin:elementName="alphabet"
-        latin:elementKeyboard="@xml/kbd_hindi"
-        latin:enableProximityCharsCorrection="true" />
+        latin:elementKeyboard="@xml/kbd_hindi" />
     <Element
         latin:elementName="alphabetAutomaticShifted"
-        latin:elementKeyboard="@xml/kbd_hindi"
-        latin:enableProximityCharsCorrection="true" />
+        latin:elementKeyboard="@xml/kbd_hindi" />
     <!-- On these shifted alphabet layouts the proximity characters correction should be disabled
          because the letters on these layouts aren't the ones in different case of the above
          unshifted layouts. -->

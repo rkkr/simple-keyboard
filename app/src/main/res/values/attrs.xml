@@ -386,8 +386,6 @@
             <enum name="number" value="9"  />
         </attr>
         <attr name="elementKeyboard" format="reference"/>
-        <!-- Enable proximity characters correction. Disabled by default. -->
-        <attr name="enableProximityCharsCorrection" format="boolean" />
         <!-- Indicates if the keyboard layout supports being split or not. false by default -->
         <attr name="allowRedundantMoreKeys" format="boolean" />
     </declare-styleable>

@@ -22,7 +22,6 @@
     <Element
         latin:elementName="alphabet"
         latin:elementKeyboard="@xml/kbd_uzbek"
-        latin:enableProximityCharsCorrection="true"
         latin:allowRedundantMoreKeys="true" />
     <Element
         latin:elementKeyboard="@xml/kbd_symbols"
