@@ -112,16 +112,12 @@ public final class ColorDialogPreference extends DialogPreference
     }
 
     @Override
-    public void onProgressChanged(final SeekBar seekBar, final int progress,
-                                  final boolean fromUser) {
+    public void onProgressChanged(final SeekBar seekBar, final int progress, final boolean fromUser) {
         int color = Color.rgb(
                 mSeekBarRed.getProgress(),
                 mSeekBarGreen.getProgress(),
                 mSeekBarBlue.getProgress());
         setHeaderText(color);
-        if (!fromUser) {
-            seekBar.setProgress(progress);
-        }
     }
 
     @Override

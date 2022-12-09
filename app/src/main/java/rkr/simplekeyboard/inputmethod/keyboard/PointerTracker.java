@@ -609,8 +609,8 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         if (oldKey != null && oldKey.getCode() == Constants.CODE_SPACE && Settings.getInstance().getCurrent().mSpaceSwipeEnabled) {
             //Pointer slider
             int steps = (x - mStartX) / sPointerStep;
-            final int longpressTimeout = Settings.getInstance().getCurrent().mKeyLongpressTimeout / MULTIPLIER_FOR_LONG_PRESS_TIMEOUT_IN_SLIDING_INPUT;
-            if (steps != 0 && mStartTime + longpressTimeout < System.currentTimeMillis()) {
+            final int swipeIgnoreTime = Settings.getInstance().getCurrent().mKeyLongpressTimeout / MULTIPLIER_FOR_LONG_PRESS_TIMEOUT_IN_SLIDING_INPUT;
+            if (steps != 0 && mStartTime + swipeIgnoreTime < System.currentTimeMillis()) {
                 mCursorMoved = true;
                 mStartX += steps * sPointerStep;
                 sListener.onMovePointer(steps);

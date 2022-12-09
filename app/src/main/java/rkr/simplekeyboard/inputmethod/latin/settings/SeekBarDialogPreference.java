@@ -128,13 +128,9 @@ public final class SeekBarDialogPreference extends DialogPreference
     }
 
     @Override
-    public void onProgressChanged(final SeekBar seekBar, final int progress,
-            final boolean fromUser) {
+    public void onProgressChanged(final SeekBar seekBar, final int progress, final boolean fromUser) {
         final int value = getClippedValueFromProgress(progress);
         mValueView.setText(mValueProxy.getValueText(value));
-        if (!fromUser) {
-            mSeekBar.setProgress(getProgressFromValue(value));
-        }
     }
 
     @Override
