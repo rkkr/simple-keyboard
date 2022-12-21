@@ -1,5 +1,3 @@
-This keyboard is created for those who only need a keyboard and nothing more.
-
 Features:
 * Small size (<1MB)
 * Adjustable keyboard height for more screen space
