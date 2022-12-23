@@ -31,15 +31,18 @@
                         latin:keySpec="Q" />
                     <!-- U+10ED: "ჭ" GEORGIAN LETTER CHAR -->
                     <Key
-                        latin:keySpec="&#x10ED;" />
+                        latin:keySpec="&#x10ED;"
+                        latin:keyLabelFlags="preserveCase" />
                     <Key
                         latin:keySpec="E" />
                     <!-- U+10E6: "ღ" GEORGIAN LETTER GHAN -->
                     <Key
-                        latin:keySpec="&#x10E6;" />
+                        latin:keySpec="&#x10E6;"
+                        latin:keyLabelFlags="preserveCase" />
                     <!-- U+10D7: "თ" GEORGIAN LETTER TAN -->
                     <Key
-                        latin:keySpec="&#x10D7;" />
+                        latin:keySpec="&#x10D7;"
+                        latin:keyLabelFlags="preserveCase" />
                     <Key
                         latin:keySpec="Y" />
                     <Key
@@ -103,6 +106,7 @@
                     <!-- U+10ED: "ჭ" GEORGIAN LETTER CHAR -->
                     <Key
                         latin:keySpec="&#x10ED;"
+                        latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="2"
                         latin:additionalMoreKeys="2" />
                     <Key
@@ -112,11 +116,13 @@
                     <!-- U+10E6: "ღ" GEORGIAN LETTER GHAN -->
                     <Key
                         latin:keySpec="&#x10E6;"
+                        latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="4"
                         latin:additionalMoreKeys="4" />
                     <!-- U+10D7: "თ" GEORGIAN LETTER TAN -->
                     <Key
                         latin:keySpec="&#x10D7;"
+                        latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="5"
                         latin:additionalMoreKeys="5" />
                     <Key

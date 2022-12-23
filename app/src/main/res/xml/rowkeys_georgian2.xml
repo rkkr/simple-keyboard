@@ -29,7 +29,8 @@
                 latin:keySpec="A" />
             <!-- U+10E8: "შ" GEORGIAN LETTER SHIN -->
             <Key
-                latin:keySpec="&#x10E8;" />
+                latin:keySpec="&#x10E8;"
+                latin:keyLabelFlags="preserveCase" />
             <Key
                 latin:keySpec="D" />
             <Key
@@ -40,7 +41,8 @@
                 latin:keySpec="H" />
             <!-- U+10DF: "ჟ" GEORGIAN LETTER ZHAR -->
             <Key
-                latin:keySpec="&#x10DF;" />
+                latin:keySpec="&#x10DF;"
+                latin:keyLabelFlags="preserveCase" />
             <Key
                 latin:keySpec="K" />
             <Key
