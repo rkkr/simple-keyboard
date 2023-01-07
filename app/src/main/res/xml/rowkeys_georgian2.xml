@@ -25,28 +25,50 @@
         <case
             latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked"
         >
+            <!-- U+10D0: "ა" GEORGIAN LETTER AN
+                 U+10FA: "ჺ" GEORGIAN LETTER AIN -->
             <Key
-                latin:keySpec="A" />
+                latin:keySpec="&#x10D0;"
+                latin:moreKeys="&#x10FA;"
+                latin:keyLabelFlags="preserveCase" />
             <!-- U+10E8: "შ" GEORGIAN LETTER SHIN -->
             <Key
                 latin:keySpec="&#x10E8;"
                 latin:keyLabelFlags="preserveCase" />
+            <!-- U+10D3: "დ" GEORGIAN LETTER DON -->
             <Key
-                latin:keySpec="D" />
+                latin:keySpec="&#x10D3;"
+                latin:keyLabelFlags="preserveCase" />
+            <!-- U+10E4: "ფ" GEORGIAN LETTER PHAR
+                 U+10F6: "ჶ" GEORGIAN LETTER FI -->
             <Key
-                latin:keySpec="F" />
+                latin:keySpec="&#x10E4;"
+                latin:moreKeys="&#x10F6;"
+                latin:keyLabelFlags="preserveCase" />
+            <!-- U+10D2: "გ" GEORGIAN LETTER GAN
+                 U+10F9: "ჹ" GEORGIAN LETTER TURNED GAN -->
             <Key
-                latin:keySpec="G" />
+                latin:keySpec="&#x10D2;"
+                latin:moreKeys="&#x10F9;"
+                latin:keyLabelFlags="preserveCase" />
+            <!-- U+10F0: "ჰ" GEORGIAN LETTER HAE
+                 U+10F5: "ჵ" GEORGIAN LETTER HOE -->
             <Key
-                latin:keySpec="H" />
+                latin:keySpec="&#x10F0;"
+                latin:moreKeys="&#x10F5;"
+                latin:keyLabelFlags="preserveCase" />
             <!-- U+10DF: "ჟ" GEORGIAN LETTER ZHAR -->
             <Key
                 latin:keySpec="&#x10DF;"
                 latin:keyLabelFlags="preserveCase" />
+            <!-- U+10D9: "კ" GEORGIAN LETTER KAN -->
             <Key
-                latin:keySpec="K" />
+                latin:keySpec="&#x10D9;"
+                latin:keyLabelFlags="preserveCase" />
+            <!-- U+10DA: "ლ" GEORGIAN LETTER LAS -->
             <Key
-                latin:keySpec="L" />
+                latin:keySpec="&#x10DA;"
+                latin:keyLabelFlags="preserveCase" />
         </case>
         <default>
             <!-- U+10D0: "ა" GEORGIAN LETTER AN
