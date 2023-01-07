@@ -27,12 +27,14 @@
         >
             <!-- U+10EB: "ძ" GEORGIAN LETTER JIL -->
             <Key
-                latin:keySpec="&#x10EB;" />
+                latin:keySpec="&#x10EB;"
+                latin:keyLabelFlags="preserveCase" />
             <Key
                 latin:keySpec="X" />
             <!-- U+10E9: "ჩ" GEORGIAN LETTER CHIN -->
             <Key
-                latin:keySpec="&#x10E9;" />
+                latin:keySpec="&#x10E9;"
+                latin:keyLabelFlags="preserveCase" />
             <Key
                 latin:keySpec="V" />
             <Key
