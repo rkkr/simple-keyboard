@@ -27,14 +27,20 @@
                 <case
                     latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked"
                 >
+                    <!-- U+10E5: "ქ" GEORGIAN LETTER GHAN -->
                     <Key
-                        latin:keySpec="Q" />
+                        latin:keySpec="&#x10E5;"
+                        latin:keyLabelFlags="preserveCase" />
                     <!-- U+10ED: "ჭ" GEORGIAN LETTER CHAR -->
                     <Key
                         latin:keySpec="&#x10ED;"
                         latin:keyLabelFlags="preserveCase" />
+                    <!-- U+10D4: "ე" GEORGIAN LETTER EN
+                         U+10F1: "ჱ" GEORGIAN LETTER HE -->
                     <Key
-                        latin:keySpec="E" />
+                        latin:keySpec="&#x10D4;"
+                        latin:moreKeys="&#x10F1;"
+                        latin:keyLabelFlags="preserveCase" />
                     <!-- U+10E6: "ღ" GEORGIAN LETTER GHAN -->
                     <Key
                         latin:keySpec="&#x10E6;"
@@ -43,16 +49,30 @@
                     <Key
                         latin:keySpec="&#x10D7;"
                         latin:keyLabelFlags="preserveCase" />
+                    <!-- U+10E7: "ყ" GEORGIAN LETTER QAR
+                         U+10F8: "ჸ" GEORGIAN LETTER ELIFI -->
                     <Key
-                        latin:keySpec="Y" />
+                        latin:keySpec="&#x10E7;"
+                        latin:moreKeys="&#x10F8;"
+                        latin:keyLabelFlags="preserveCase" />
+                    <!-- U+10E3: "უ" GEORGIAN LETTER UN -->
                     <Key
-                        latin:keySpec="U" />
+                        latin:keySpec="&#x10E3;"
+                        latin:keyLabelFlags="preserveCase" />
+                    <!-- U+10D8: "ი" GEORGIAN LETTER IN
+                         U+10F2: "ჲ" GEORGIAN LETTER HIE -->
                     <Key
-                        latin:keySpec="I" />
+                        latin:keySpec="&#x10D8;"
+                        latin:moreKeys="&#x10F2;"
+                        latin:keyLabelFlags="preserveCase" />
+                    <!-- U+10DD: "ო" GEORGIAN LETTER ON -->
                     <Key
-                        latin:keySpec="O" />
+                        latin:keySpec="&#x10DD;"
+                        latin:keyLabelFlags="preserveCase" />
+                    <!-- U+10DE: "პ" GEORGIAN LETTER PAR -->
                     <Key
-                        latin:keySpec="P" />
+                        latin:keySpec="&#x10DE;"
+                        latin:keyLabelFlags="preserveCase" />
                 </case>
                 <default>
                     <!-- U+10E5: "ქ" GEORGIAN LETTER GHAN -->
@@ -99,8 +119,10 @@
                 <case
                     latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked"
                     >
+                    <!-- U+10E5: "ქ" GEORGIAN LETTER GHAN -->
                     <Key
-                        latin:keySpec="Q"
+                        latin:keySpec="&#x10E5;"
+                        latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="1"
                         latin:additionalMoreKeys="1" />
                     <!-- U+10ED: "ჭ" GEORGIAN LETTER CHAR -->
@@ -109,8 +131,12 @@
                         latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="2"
                         latin:additionalMoreKeys="2" />
+                    <!-- U+10D4: "ე" GEORGIAN LETTER EN
+                         U+10F1: "ჱ" GEORGIAN LETTER HE -->
                     <Key
-                        latin:keySpec="E"
+                        latin:keySpec="&#x10D4;"
+                        latin:moreKeys="&#x10F1;"
+                        latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="3"
                         latin:additionalMoreKeys="3" />
                     <!-- U+10E6: "ღ" GEORGIAN LETTER GHAN -->
@@ -125,24 +151,38 @@
                         latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="5"
                         latin:additionalMoreKeys="5" />
+                    <!-- U+10E7: "ყ" GEORGIAN LETTER QAR
+                         U+10F8: "ჸ" GEORGIAN LETTER ELIFI -->
                     <Key
-                        latin:keySpec="Y"
+                        latin:keySpec="&#x10E7;"
+                        latin:moreKeys="&#x10F8;"
+                        latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="6"
                         latin:additionalMoreKeys="6" />
+                    <!-- U+10E3: "უ" GEORGIAN LETTER UN -->
                     <Key
-                        latin:keySpec="U"
+                        latin:keySpec="&#x10E3;"
+                        latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="7"
                         latin:additionalMoreKeys="7" />
+                    <!-- U+10D8: "ი" GEORGIAN LETTER IN
+                         U+10F2: "ჲ" GEORGIAN LETTER HIE -->
                     <Key
-                        latin:keySpec="I"
+                        latin:keySpec="&#x10D8;"
+                        latin:moreKeys="&#x10F2;"
+                        latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="8"
                         latin:additionalMoreKeys="8" />
+                    <!-- U+10DD: "ო" GEORGIAN LETTER ON -->
                     <Key
-                        latin:keySpec="O"
+                        latin:keySpec="&#x10DD;"
+                        latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="9"
                         latin:additionalMoreKeys="9" />
+                    <!-- U+10DE: "პ" GEORGIAN LETTER PAR -->
                     <Key
-                        latin:keySpec="P"
+                        latin:keySpec="&#x10DE;"
+                        latin:keyLabelFlags="preserveCase"
                         latin:keyHintLabel="0"
                         latin:additionalMoreKeys="0" />
                 </case>

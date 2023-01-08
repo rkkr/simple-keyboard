@@ -23,26 +23,42 @@
 >
     <switch>
         <case
-            latin:keyboardLayoutSetElement="alphabetManualShifted"
+            latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked"
         >
             <!-- U+10EB: "ძ" GEORGIAN LETTER JIL -->
             <Key
                 latin:keySpec="&#x10EB;"
                 latin:keyLabelFlags="preserveCase" />
+            <!-- U+10EE: "ხ" GEORGIAN LETTER XAN
+                 U+10F4: "ჴ" GEORGIAN LETTER HAR -->
             <Key
-                latin:keySpec="X" />
+                latin:keySpec="&#x10EE;"
+                latin:moreKeys="&#x10F4;"
+                latin:keyLabelFlags="preserveCase" />
             <!-- U+10E9: "ჩ" GEORGIAN LETTER CHIN -->
             <Key
                 latin:keySpec="&#x10E9;"
                 latin:keyLabelFlags="preserveCase" />
+            <!-- U+10D5: "ვ" GEORGIAN LETTER VIN
+                 U+10F3: "ჳ" GEORGIAN LETTER WE -->
             <Key
-                latin:keySpec="V" />
+                latin:keySpec="&#x10D5;"
+                latin:moreKeys="&#x10F3;"
+                latin:keyLabelFlags="preserveCase" />
+            <!-- U+10D1: "ბ" GEORGIAN LETTER BAN -->
             <Key
-                latin:keySpec="B" />
+                latin:keySpec="&#x10D1;"
+                latin:keyLabelFlags="preserveCase" />
+            <!-- U+10DC: "ნ" GEORGIAN LETTER NAR
+                 U+10FC: "ჼ" MODIFIER LETTER GEORGIAN NAR -->
             <Key
-                latin:keySpec="N" />
+                latin:keySpec="&#x10DC;"
+                latin:moreKeys="&#x10FC;"
+                latin:keyLabelFlags="preserveCase" />
+            <!-- U+10DB: "მ" GEORGIAN LETTER MAN -->
             <Key
-                latin:keySpec="M" />
+                latin:keySpec="&#x10DB;"
+                latin:keyLabelFlags="preserveCase" />
         </case>
         <default>
             <!-- U+10D6: "ზ" GEORGIAN LETTER ZEN -->
