@@ -76,9 +76,11 @@
             <Key
                 latin:keySpec="&#x10D0;"
                 latin:moreKeys="&#x10FA;" />
-            <!-- U+10E1: "ს" GEORGIAN LETTER SAN -->
+            <!-- U+10E1: "ს" GEORGIAN LETTER SAN
+                 U+10E8: "შ" GEORGIAN LETTER SHIN -->
             <Key
-                latin:keySpec="&#x10E1;" />
+                latin:keySpec="&#x10E1;"
+                latin:moreKeys="&#x10E8;" />
             <!-- U+10D3: "დ" GEORGIAN LETTER DON -->
             <Key
                 latin:keySpec="&#x10D3;" />
@@ -98,10 +100,11 @@
                 latin:keySpec="&#x10F0;"
                 latin:moreKeys="&#x10F5;" />
             <!-- U+10EF: "ჯ" GEORGIAN LETTER JHAN
+                 U+10DF: "ჟ" GEORGIAN LETTER ZHAR
                  U+10F7: "ჷ" GEORGIAN LETTER YN -->
             <Key
                 latin:keySpec="&#x10EF;"
-                latin:moreKeys="&#x10F7;" />
+                latin:moreKeys="&#x10DF;,&#x10F7;" />
             <!-- U+10D9: "კ" GEORGIAN LETTER KAN -->
             <Key
                 latin:keySpec="&#x10D9;" />

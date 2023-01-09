@@ -61,17 +61,21 @@
                 latin:keyLabelFlags="preserveCase" />
         </case>
         <default>
-            <!-- U+10D6: "ზ" GEORGIAN LETTER ZEN -->
+            <!-- U+10D6: "ზ" GEORGIAN LETTER ZEN
+                 U+10EB: "ძ" GEORGIAN LETTER JIL -->
             <Key
-                latin:keySpec="&#x10D6;" />
+                latin:keySpec="&#x10D6;"
+                latin:moreKeys="&#x10EB;" />
             <!-- U+10EE: "ხ" GEORGIAN LETTER XAN
                  U+10F4: "ჴ" GEORGIAN LETTER HAR -->
             <Key
                 latin:keySpec="&#x10EE;"
                 latin:moreKeys="&#x10F4;" />
-            <!-- U+10EA: "ც" GEORGIAN LETTER CAN -->
+            <!-- U+10EA: "ც" GEORGIAN LETTER CAN
+                 U+10E9: "ჩ" GEORGIAN LETTER CHIN -->
             <Key
-                latin:keySpec="&#x10EA;" />
+                latin:keySpec="&#x10EA;"
+                latin:moreKeys="&#x10E9;" />
             <!-- U+10D5: "ვ" GEORGIAN LETTER VIN
                  U+10F3: "ჳ" GEORGIAN LETTER WE -->
             <Key

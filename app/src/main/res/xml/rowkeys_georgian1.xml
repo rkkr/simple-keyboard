@@ -78,20 +78,26 @@
                     <!-- U+10E5: "ქ" GEORGIAN LETTER GHAN -->
                     <Key
                         latin:keySpec="&#x10E5;" />
-                    <!-- U+10EC: "წ" GEORGIAN LETTER CIL -->
+                    <!-- U+10EC: "წ" GEORGIAN LETTER CIL
+                         U+10ED: "ჭ" GEORGIAN LETTER CHAR -->
                     <Key
-                        latin:keySpec="&#x10EC;" />
+                        latin:keySpec="&#x10EC;"
+                        latin:moreKeys="&#x10ED;" />
                     <!-- U+10D4: "ე" GEORGIAN LETTER EN
                          U+10F1: "ჱ" GEORGIAN LETTER HE -->
                     <Key
                         latin:keySpec="&#x10D4;"
                         latin:moreKeys="&#x10F1;" />
-                    <!-- U+10E0: "რ" GEORGIAN LETTER RAE -->
+                    <!-- U+10E0: "რ" GEORGIAN LETTER RAE
+                         U+10E6: "ღ" GEORGIAN LETTER GHAN -->
                     <Key
-                        latin:keySpec="&#x10E0;" />
-                    <!-- U+10E2: "ტ" GEORGIAN LETTER TAR -->
+                        latin:keySpec="&#x10E0;"
+                        latin:moreKeys="&#x10E6;" />
+                    <!-- U+10E2: "ტ" GEORGIAN LETTER TAR
+                         U+10D7: "თ" GEORGIAN LETTER TAN -->
                     <Key
-                        latin:keySpec="&#x10E2;" />
+                        latin:keySpec="&#x10E2;"
+                        latin:moreKeys="&#x10D7;" />
                     <!-- U+10E7: "ყ" GEORGIAN LETTER QAR
                          U+10F8: "ჸ" GEORGIAN LETTER ELIFI -->
                     <Key
@@ -192,9 +198,11 @@
                         latin:keySpec="&#x10E5;"
                         latin:keyHintLabel="1"
                         latin:additionalMoreKeys="1" />
-                    <!-- U+10EC: "წ" GEORGIAN LETTER CIL -->
+                    <!-- U+10EC: "წ" GEORGIAN LETTER CIL
+                         U+10ED: "ჭ" GEORGIAN LETTER CHAR -->
                     <Key
                         latin:keySpec="&#x10EC;"
+                        latin:moreKeys="&#x10ED;"
                         latin:keyHintLabel="2"
                         latin:additionalMoreKeys="2" />
                     <!-- U+10D4: "ე" GEORGIAN LETTER EN
@@ -204,14 +212,18 @@
                         latin:moreKeys="&#x10F1;"
                         latin:keyHintLabel="3"
                         latin:additionalMoreKeys="3" />
-                    <!-- U+10E0: "რ" GEORGIAN LETTER RAE -->
+                    <!-- U+10E0: "რ" GEORGIAN LETTER RAE
+                         U+10E6: "ღ" GEORGIAN LETTER GHAN -->
                     <Key
                         latin:keySpec="&#x10E0;"
+                        latin:moreKeys="&#x10E6;"
                         latin:keyHintLabel="4"
                         latin:additionalMoreKeys="4" />
-                    <!-- U+10E2: "ტ" GEORGIAN LETTER TAR -->
+                    <!-- U+10E2: "ტ" GEORGIAN LETTER TAR
+                         U+10D7: "თ" GEORGIAN LETTER TAN -->
                     <Key
                         latin:keySpec="&#x10E2;"
+                        latin:moreKeys="&#x10D7;"
                         latin:keyHintLabel="5"
                         latin:additionalMoreKeys="5" />
                     <!-- U+10E7: "ყ" GEORGIAN LETTER QAR
