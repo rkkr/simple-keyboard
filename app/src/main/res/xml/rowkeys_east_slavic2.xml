@@ -34,8 +34,8 @@
             <!-- U+0432: "в" CYRILLIC SMALL LETTER VE -->
             <Key
                 latin:keySpec="&#x0432;"
-                latin:keyHintLabel="$"
-                latin:additionalMoreKeys="$" />
+                latin:keyHintLabel="!text/keyspec_currency"
+                latin:additionalMoreKeys="!text/keyspec_currency" />
             <!-- U+0430: "а" CYRILLIC SMALL LETTER A -->
             <Key
                 latin:keySpec="&#x0430;"
