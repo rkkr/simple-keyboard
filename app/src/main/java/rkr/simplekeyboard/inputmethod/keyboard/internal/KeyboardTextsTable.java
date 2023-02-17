@@ -3064,8 +3064,10 @@ public final class KeyboardTextsTable {
         /* keyspec_currency ~ */ Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP ? "\u20BD" : "\u20B1",
         null, null, null, null, null, null, null, null, null, null,
         /* ~ morekeys_k */
+        // U+0435 + U+0301: "е" CYRILLIC SMALL LETTER IE + ◌́ COMBINING ACUTE ACCENT
         // U+0451: "ё" CYRILLIC SMALL LETTER IO
-        /* morekeys_cyrillic_ie */ "\u0451",
+        // U+0463: "ѣ" CYRILLIC SMALL LETTER YAT
+        /* morekeys_cyrillic_ie */ "\u0435\u0301,\u0451,\u0463",
         /* keyspec_nordic_row1_11 ~ */
         null, null, null, null,
         /* ~ morekeys_nordic_row2_10 */
@@ -3079,6 +3081,35 @@ public final class KeyboardTextsTable {
         /* keyspec_east_slavic_row3_5 */ "\u0438",
         // U+044A: "ъ" CYRILLIC SMALL LETTER HARD SIGN
         /* morekeys_cyrillic_soft_sign */ "\u044A",
+        null, null, null, null, null, null, null, null, null, null,/* #32-41 */
+        null, null, null, null, null, null, null, null, null, null,/* #42-51 */
+        null, null, null, null, null, null, null, null, null, null,/* #52-61 */
+        null, null, null, null, null, null, null, null, null, null,/* #62-71 */
+        null, null, null, null, null, null, null, null, null, null,/* #72-86 */
+        null, null, null, null, null,
+        // U+044B + U+0301: "ы" CYRILLIC SMALL LETTER YERU + ◌́ COMBINING ACUTE ACCENT
+        // U+A651: "ꙑ" CYRILLIC SMALL LETTER YERU WITH BACK YER
+        /* #87: morekeys_east_slavic_row2_2 */ "\u044B\u0301,\uA651",
+        // U+0443 + U+0301: "у" CYRILLIC SMALL LETTER U + ◌́ COMBINING ACUTE ACCENT
+        // U+045E: "ў" CYRILLIC SMALL LETTER SHORT U
+        /* morekeys_cyrillic_u */ "\u0443\u0301,\u045E",
+        /* morekeys_cyrillic_en */ null,
+        // U+0491: "ґ" CYRILLIC SMALL LETTER GHE WITH UPTURN
+        /* morekeys_cyrillic_ghe */ "\u0491",
+        // U+043E + U+0301: "о" CYRILLIC SMALL LETTER O + ◌́ COMBINING ACUTE ACCENT
+        /* #91: morekeys_cyrillic_o */ "\u043e\u0301",
+        // U+0438 + U+0301: "и" CYRILLIC SMALL LETTER I + ◌́ COMBINING ACUTE ACCENT
+        // U+0456: "і" CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I
+        // U+0457: "ї" CYRILLIC SMALL LETTER YI
+        /* morekeys_cyrillic_i */ "\u0438\u0301,\u0456,\u0457",
+        null, null, null, null, null, null, null, null, null, /* #93-101 */
+        null, null, null, null, null, null, null, null, null, null, /* #102-111 */
+        null, null, null, null, null, null, null, /* #112-118 */
+        // U+044D + U+0301: "э" CYRILLIC SMALL LETTER E + ◌́ COMBINING ACUTE ACCENT
+        // U+0454: "є" CYRILLIC SMALL LETTER UKRAINIAN IE
+        /* #119: morekeys_east_slavic_row2_11 */ "\u044d\u0301,\u0454",
+        /* #120: morekeys_cyrillic_ka */ null,
+        /* #121: morekeys_cyrillic_a */ "\u0430\u0301",
     };
 
     /* Locale si_LK: Sinhalese (Sri Lanka) */
@@ -3686,6 +3717,13 @@ public final class KeyboardTextsTable {
         /* morekeys_cyrillic_en */ null,
         // U+0491: "ґ" CYRILLIC SMALL LETTER GHE WITH UPTURN
         /* morekeys_cyrillic_ghe */ "\u0491",
+        /* morekeys_cyrillic_o */ null,
+        /* morekeys_cyrillic_i */ null,
+        null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null,
+        // U+044D: "э" CYRILLIC SMALL LETTER E
+        /* morekeys_east_slavic_row2_11 */ "\u044d",
     };
 
     /* Locale ur: Urdu */

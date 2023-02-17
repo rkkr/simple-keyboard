@@ -41,8 +41,10 @@
                 latin:keySpec="&#x043C;"
                 latin:keyHintLabel=":"
                 latin:additionalMoreKeys=":" />
+            <!-- This button's keyspec is "и" or "і" -->
             <Key
                 latin:keySpec="!text/keyspec_east_slavic_row3_5"
+                latin:moreKeys="!text/morekeys_cyrillic_i"
                 latin:keyHintLabel=";"
                 latin:additionalMoreKeys=";" />
             <!-- U+0442: "т" CYRILLIC SMALL LETTER TE -->
@@ -80,8 +82,10 @@
             <!-- U+043C: "м" CYRILLIC SMALL LETTER EM -->
             <Key
                 latin:keySpec="&#x043C;" />
+            <!-- This button's keyspec is "и" or "і" -->
             <Key
-                latin:keySpec="!text/keyspec_east_slavic_row3_5" />
+                latin:keySpec="!text/keyspec_east_slavic_row3_5"
+                latin:moreKeys="!text/morekeys_cyrillic_i" />
             <!-- U+0442: "т" CYRILLIC SMALL LETTER TE -->
             <Key
                 latin:keySpec="&#x0442;" />
