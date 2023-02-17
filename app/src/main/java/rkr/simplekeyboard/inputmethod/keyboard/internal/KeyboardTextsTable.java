@@ -224,6 +224,8 @@ public final class KeyboardTextsTable {
         /* 162: 0 */ "morekeys_single_quote",
         /* 163: 0 */ "morekeys_double_quote",
         /* 164: 0 */ "morekeys_tablet_double_quote",
+        /* 165: 0 */ "morekeys_cyrillic_ya",
+        /* 166: 0 */ "morekeys_cyrillic_yu",
     };
 
     private static final String EMPTY = "";
@@ -435,6 +437,8 @@ public final class KeyboardTextsTable {
         /* morekeys_single_quote */ "!fixedColumnOrder!5,!text/single_quotes,!text/single_angle_quotes",
         /* morekeys_double_quote */ "!fixedColumnOrder!5,!text/double_quotes,!text/double_angle_quotes",
         /* morekeys_tablet_double_quote */ "!fixedColumnOrder!6,!text/double_quotes,!text/single_quotes,!text/double_angle_quotes,!text/single_angle_quotes",
+        /* morekeys_cyrillic_ya */ EMPTY,
+        /* morekeys_cyrillic_yu */ EMPTY,
     };
 
     /* Locale af: Afrikaans */
@@ -2022,7 +2026,7 @@ public final class KeyboardTextsTable {
         // U+058F: "֏" ARMENIAN DRAM SIGN
         // TODO: Enable this when we have glyph for the following letter
         // <string name="keyspec_currency">&#x058F;</string>
-        // 
+        //
         // U+055D: "՝" ARMENIAN COMMA
         /* keyspec_comma */ "\u055D",
         /* morekeys_tablet_comma */ null,
@@ -3110,6 +3114,53 @@ public final class KeyboardTextsTable {
         /* #119: morekeys_east_slavic_row2_11 */ "\u044d\u0301,\u0454",
         /* #120: morekeys_cyrillic_ka */ null,
         /* #121: morekeys_cyrillic_a */ "\u0430\u0301",
+        /* #122: "morekeys_currency_dollar" */ null,
+        /* #123: "morekeys_plus" */ null,
+        /* #124: "morekeys_less_than" */ null,
+        /* #125: "morekeys_greater_than" */ null,
+        /* #126: "morekeys_exclamation" */ null,
+        /* #127: "morekeys_currency_generic" */ null,
+        /* #128: "morekeys_symbols_1" */ null,
+        /* #129: "morekeys_symbols_2" */ null,
+        /* #130: "morekeys_symbols_3" */ null,
+        /* #131: "morekeys_symbols_4" */ null,
+        /* #132: "morekeys_symbols_5" */ null,
+        /* #133: "morekeys_symbols_6" */ null,
+        /* #134: "morekeys_symbols_7" */ null,
+        /* #135: "morekeys_symbols_8" */ null,
+        /* #136: "morekeys_symbols_9" */ null,
+        /* #137: "morekeys_symbols_0" */ null,
+        /* #138: "morekeys_am_pm" */ null,
+        /* #139: "keyspec_settings" */ null,
+        /* #140: "keyspec_action_next" */ null,
+        /* #141: "keyspec_action_previous" */ null,
+        /* #142: "keylabel_to_more_symbol" */ null,
+        /* #143: "keylabel_tablet_to_more_symbol" */ null,
+        /* #144: "keylabel_to_phone_numeric" */ null,
+        /* #145: "keylabel_to_phone_symbols" */ null,
+        /* #146: "keylabel_time_am" */ null,
+        /* #147: "keylabel_time_pm" */ null,
+        /* #148: "keyspecs_left_parenthesis_more_keys" */ null,
+        /* #149: "keyspecs_right_parenthesis_more_keys" */ null,
+        /* #150: "single_laqm_raqm" */ null,
+        /* #151: "single_raqm_laqm" */ null,
+        /* #152: "double_laqm_raqm" */ null,
+        /* #153: "double_raqm_laqm" */ null,
+        /* #154: "single_lqm_rqm" */ null,
+        /* #155: "single_9qm_lqm" */ null,
+        /* #156: "single_9qm_rqm" */ null,
+        /* #157: "single_rqm_9qm" */ null,
+        /* #158: "double_lqm_rqm" */ null,
+        /* #159: "double_9qm_lqm" */ null,
+        /* #160: "double_9qm_rqm" */ null,
+        /* #161: "double_rqm_9qm" */ null,
+        /* #162: "morekeys_single_quote" */ null,
+        /* #163: "morekeys_double_quote" */ null,
+        /* #164: "morekeys_tablet_double_quote" */ null,
+            // U+044F + U+0301: "я" CYRILLIC SMALL LETTER YA + ◌́ COMBINING ACUTE ACCENT
+        /* #165: "morekeys_cyrillic_ya" */ "\u044f\u0301",
+            // U+044E + U+0301: "ю" CYRILLIC SMALL LETTER YU + ◌́ COMBINING ACUTE ACCENT
+        /* #166: "morekeys_cyrillic_yu" */ "\u044e\u0301",
     };
 
     /* Locale si_LK: Sinhalese (Sri Lanka) */

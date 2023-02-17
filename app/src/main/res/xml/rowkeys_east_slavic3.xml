@@ -24,6 +24,7 @@
             <!-- U+044F: "я" CYRILLIC SMALL LETTER YA -->
             <Key
                 latin:keySpec="&#x044F;"
+                latin:moreKeys="!text/morekeys_cyrillic_ya"
                 latin:keyHintLabel="*"
                 latin:additionalMoreKeys="*" />
             <!-- U+0447: "ч" CYRILLIC SMALL LETTER CHE -->
@@ -66,13 +67,15 @@
             <!-- U+044E: "ю" CYRILLIC SMALL LETTER YU -->
             <Key
                 latin:keySpec="&#x044E;"
+                latin:moreKeys="!text/morekeys_cyrillic_yu"
                 latin:keyHintLabel="&gt;"
                 latin:additionalMoreKeys="&gt;" />
         </case>
         <default>
             <!-- U+044F: "я" CYRILLIC SMALL LETTER YA -->
             <Key
-                latin:keySpec="&#x044F;"/>
+                latin:keySpec="&#x044F;"
+                latin:moreKeys="!text/morekeys_cyrillic_ya" />
             <!-- U+0447: "ч" CYRILLIC SMALL LETTER CHE -->
             <Key
                 latin:keySpec="&#x0447;" />
@@ -98,7 +101,8 @@
                 latin:keySpec="&#x0431;" />
             <!-- U+044E: "ю" CYRILLIC SMALL LETTER YU -->
             <Key
-                latin:keySpec="&#x044E;" />
+                latin:keySpec="&#x044E;"
+                latin:moreKeys="!text/morekeys_cyrillic_yu" />
         </default>
     </switch>
 </merge>
