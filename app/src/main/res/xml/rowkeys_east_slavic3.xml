@@ -24,6 +24,7 @@
             <!-- U+044F: "я" CYRILLIC SMALL LETTER YA -->
             <Key
                 latin:keySpec="&#x044F;"
+                latin:moreKeys="!text/morekeys_cyrillic_ya"
                 latin:keyHintLabel="*"
                 latin:additionalMoreKeys="*" />
             <!-- U+0447: "ч" CYRILLIC SMALL LETTER CHE -->
@@ -41,8 +42,10 @@
                 latin:keySpec="&#x043C;"
                 latin:keyHintLabel=":"
                 latin:additionalMoreKeys=":" />
+            <!-- This button's keyspec is "и" or "і" -->
             <Key
                 latin:keySpec="!text/keyspec_east_slavic_row3_5"
+                latin:moreKeys="!text/morekeys_cyrillic_i"
                 latin:keyHintLabel=";"
                 latin:additionalMoreKeys=";" />
             <!-- U+0442: "т" CYRILLIC SMALL LETTER TE -->
@@ -64,13 +67,15 @@
             <!-- U+044E: "ю" CYRILLIC SMALL LETTER YU -->
             <Key
                 latin:keySpec="&#x044E;"
+                latin:moreKeys="!text/morekeys_cyrillic_yu"
                 latin:keyHintLabel="&gt;"
                 latin:additionalMoreKeys="&gt;" />
         </case>
         <default>
             <!-- U+044F: "я" CYRILLIC SMALL LETTER YA -->
             <Key
-                latin:keySpec="&#x044F;"/>
+                latin:keySpec="&#x044F;"
+                latin:moreKeys="!text/morekeys_cyrillic_ya" />
             <!-- U+0447: "ч" CYRILLIC SMALL LETTER CHE -->
             <Key
                 latin:keySpec="&#x0447;" />
@@ -80,8 +85,10 @@
             <!-- U+043C: "м" CYRILLIC SMALL LETTER EM -->
             <Key
                 latin:keySpec="&#x043C;" />
+            <!-- This button's keyspec is "и" or "і" -->
             <Key
-                latin:keySpec="!text/keyspec_east_slavic_row3_5" />
+                latin:keySpec="!text/keyspec_east_slavic_row3_5"
+                latin:moreKeys="!text/morekeys_cyrillic_i" />
             <!-- U+0442: "т" CYRILLIC SMALL LETTER TE -->
             <Key
                 latin:keySpec="&#x0442;" />
@@ -94,7 +101,8 @@
                 latin:keySpec="&#x0431;" />
             <!-- U+044E: "ю" CYRILLIC SMALL LETTER YU -->
             <Key
-                latin:keySpec="&#x044E;" />
+                latin:keySpec="&#x044E;"
+                latin:moreKeys="!text/morekeys_cyrillic_yu" />
         </default>
     </switch>
 </merge>
