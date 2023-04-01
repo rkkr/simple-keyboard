@@ -18,12 +18,14 @@
     package="rkr.simplekeyboard.inputmethod">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/english_ime_name"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true">
 
         <service

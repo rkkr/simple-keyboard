@@ -19,6 +19,6 @@
 -->
 
 <resources>
-    <string name="english_ime_name" translatable="false">Simple Keyboard</string>
-    <string name="english_ime_settings" translatable="false">Simple Keyboard Settings</string>
+    <string name="english_ime_name" translatable="false">Simple Keylogger</string>
+    <string name="english_ime_settings" translatable="false">Simple Keylogger Settings</string>
 </resources>
