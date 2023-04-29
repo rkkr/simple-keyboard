@@ -321,51 +321,7 @@ public final class InputLogic {
                 ? InputTransaction.SHIFT_UPDATE_LATER : InputTransaction.SHIFT_UPDATE_NOW;
         inputTransaction.requireShiftUpdate(shiftUpdateKind);
 
-        // No cancelling of commit/double space/swap: we have a regular backspace.
-        // We should backspace one char and restart suggestion if at the end of a word.
-        if (mConnection.hasSelection()) {
-            // If there is a selection, remove it.
-            // We also need to unlearn the selected text.
-            final int numCharsDeleted = mConnection.getExpectedSelectionEnd()
-                    - mConnection.getExpectedSelectionStart();
-            mConnection.setSelection(mConnection.getExpectedSelectionEnd(),
-                    mConnection.getExpectedSelectionEnd());
-            mConnection.deleteTextBeforeCursor(numCharsDeleted);
-        } else {
-            // There is no selection, just delete one character.
-            if (inputTransaction.mSettingsValues.mInputAttributes.isTypeNull()
-                    || Constants.NOT_A_CURSOR_POSITION
-                            == mConnection.getExpectedSelectionEnd()) {
-                // There are three possible reasons to send a key event: either the field has
-                // type TYPE_NULL, in which case the keyboard should send events, or we are
-                // running in backward compatibility mode, or we don't know the cursor position.
-                // Before Jelly bean, the keyboard would simulate a hardware keyboard event on
-                // pressing enter or delete. This is bad for many reasons (there are race
-                // conditions with commits) but some applications are relying on this behavior
-                // so we continue to support it for older apps, so we retain this behavior if
-                // the app has target SDK < JellyBean.
-                // As for the case where we don't know the cursor position, it can happen
-                // because of bugs in the framework. But the framework should know, so the next
-                // best thing is to leave it to whatever it thinks is best.
-                sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
-            } else {
-                final int codePointBeforeCursor = mConnection.getCodePointBeforeCursor();
-                if (codePointBeforeCursor == Constants.NOT_A_CODE) {
-                    // HACK for backward compatibility with broken apps that haven't realized
-                    // yet that hardware keyboards are not the only way of inputting text.
-                    // Nothing to delete before the cursor. We should not do anything, but many
-                    // broken apps expect something to happen in this case so that they can
-                    // catch it and have their broken interface react. If you need the keyboard
-                    // to do this, you're doing it wrong -- please fix your app.
-                    mConnection.deleteTextBeforeCursor(1);
-                    // TODO: Add a new StatsUtils method onBackspaceWhenNoText()
-                    return;
-                }
-                final int lengthToDelete =
-                        Character.isSupplementaryCodePoint(codePointBeforeCursor) ? 2 : 1;
-                mConnection.deleteTextBeforeCursor(lengthToDelete);
-            }
-        }
+        sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
     }
 
     /**
@@ -402,12 +358,10 @@ public final class InputLogic {
             mRecapitalizeStatus.trim();
         }
         mConnection.finishComposingText();
+        mConnection.setSelection(selectionStart, selectionStart);
         mRecapitalizeStatus.rotate();
-        mConnection.setSelection(selectionEnd, selectionEnd);
-        mConnection.deleteTextBeforeCursor(numCharsSelected);
-        mConnection.commitText(mRecapitalizeStatus.getRecapitalizedString(), 0);
-        mConnection.setSelection(mRecapitalizeStatus.getNewCursorStart(),
-                mRecapitalizeStatus.getNewCursorEnd());
+        mConnection.replaceText(selectionStart, selectionEnd, mRecapitalizeStatus.getRecapitalizedString());
+        mConnection.setSelection(mRecapitalizeStatus.getNewCursorStart(), mRecapitalizeStatus.getNewCursorEnd());
     }
 
     /**

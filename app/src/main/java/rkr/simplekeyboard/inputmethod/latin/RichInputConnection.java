@@ -413,34 +413,10 @@ public final class RichInputConnection {
         }
     }
 
-    public void deleteTextBeforeCursor(final int beforeLength) {
-        if (DEBUG_BATCH_NESTING) checkBatchEdit();
-        // TODO: the following is incorrect if the cursor is not immediately after the composition.
-        // Right now we never come here in this case because we reset the composing state before we
-        // come here in this case, but we need to fix this.
-        final int remainingChars = mComposingText.length() - beforeLength;
-        if (remainingChars >= 0) {
-            mComposingText.setLength(remainingChars);
-        } else {
-            mComposingText.setLength(0);
-            // Never cut under 0
-            final int len = Math.max(mCommittedTextBeforeComposingText.length()
-                    + remainingChars, 0);
-            mCommittedTextBeforeComposingText.setLength(len);
-        }
-        if (mExpectedSelStart > beforeLength) {
-            mExpectedSelStart -= beforeLength;
-            mExpectedSelEnd -= beforeLength;
-        } else {
-            // There are fewer characters before the cursor in the buffer than we are being asked to
-            // delete. Only delete what is there, and update the end with the amount deleted.
-            mExpectedSelEnd -= mExpectedSelStart;
-            mExpectedSelStart = 0;
-        }
-        if (isConnected()) {
-            mIC.deleteSurroundingText(beforeLength, 0);
-        }
-        if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
+    public void replaceText(final int startPosition, final int endPosition, CharSequence text) {
+        mIC.setComposingRegion(startPosition, endPosition);
+        mIC.setComposingText(text, startPosition);
+        mIC.finishComposingText();
     }
 
     public void performEditorAction(final int actionId) {
