@@ -357,7 +357,6 @@ public final class InputLogic {
             // We trim leading and trailing whitespace.
             mRecapitalizeStatus.trim();
         }
-        mConnection.finishComposingText();
         mConnection.setSelection(selectionStart, selectionStart);
         mRecapitalizeStatus.rotate();
         mConnection.replaceText(selectionStart, selectionEnd, mRecapitalizeStatus.getRecapitalizedString());
