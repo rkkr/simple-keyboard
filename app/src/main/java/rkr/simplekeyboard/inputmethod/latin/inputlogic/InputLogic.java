@@ -88,10 +88,8 @@ public final class InputLogic {
     public InputTransaction onTextInput(final SettingsValues settingsValues, final Event event) {
         final String rawText = event.getTextToCommit().toString();
         final InputTransaction inputTransaction = new InputTransaction(settingsValues);
-        mConnection.beginBatchEdit();
         final String text = performSpecificTldProcessingOnTextInput(rawText);
         mConnection.commitText(text, 1);
-        mConnection.endBatchEdit();
         // Space state must be updated before calling updateShiftState
         inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
         return inputTransaction;
@@ -128,7 +126,6 @@ public final class InputLogic {
      */
     public InputTransaction onCodeInput(final SettingsValues settingsValues, final Event event) {
         final InputTransaction inputTransaction = new InputTransaction(settingsValues);
-        mConnection.beginBatchEdit();
 
         Event currentEvent = event;
         while (null != currentEvent) {
@@ -141,7 +138,6 @@ public final class InputLogic {
             }
             currentEvent = currentEvent.mNextEvent;
         }
-        mConnection.endBatchEdit();
         return inputTransaction;
     }
 
@@ -357,10 +353,12 @@ public final class InputLogic {
             // We trim leading and trailing whitespace.
             mRecapitalizeStatus.trim();
         }
+        mConnection.beginBatchEdit();
         mConnection.setSelection(selectionStart, selectionStart);
         mRecapitalizeStatus.rotate();
         mConnection.replaceText(selectionStart, selectionEnd, mRecapitalizeStatus.getRecapitalizedString());
         mConnection.setSelection(mRecapitalizeStatus.getNewCursorStart(), mRecapitalizeStatus.getNewCursorEnd());
+        mConnection.endBatchEdit();
     }
 
     /**
