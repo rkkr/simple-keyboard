@@ -24,6 +24,7 @@
     <string name="popup_on_keypress">"Bật lên khi nhấn phím"</string>
     <string name="settings_screen_preferences">"Tùy chọn"</string>
     <string name="settings_screen_key_press">"Nhấn phím"</string>
+    <string name="settings_screen_appearance">"Bề ngoài"</string>
     <string name="settings_screen_theme">"Chủ đề"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> mili giây"</string>
     <string name="settings_system_default">"Mặc định của hệ thống"</string>
@@ -43,14 +44,19 @@
     <string name="prefs_keypress_sound_volume_settings">"Âm lượng khi nhấn phím"</string>
     <string name="prefs_key_longpress_timeout_settings">"Thời gian trễ nhấn và giữ phím"</string>
     <string name="button_default">"Mặc định"</string>
-    <string name="prefs_keyboard_height_settings">Chiều cao bàn phím</string>
-    <string name="keyboard_color">Tuỳ chọn màu bàn phím</string>
-    <string name="hide_special_chars">Ẩn ký tự đặc biệt</string>
-    <string name="hide_language_switch_key">Ẩn phím chuyển ngôn ngữ</string>
-    <string name="pref_enable_ime_switch">Chuyển sang các bàn phím khác</string>
-    <string name="show_number_row">Hiển thị bàn phím số</string>
-    <string name="space_swipe">Vuốt phím space để di chuyển con trỏ</string>
-    <string name="delete_swipe">Xoá vuốt</string>
+    <string name="prefs_keyboard_height_settings">"Chiều cao bàn phím"</string>
+    <string name="keyboard_color">"Tuỳ chọn màu bàn phím"</string>
+    <string name="hide_special_chars">"Ẩn ký tự đặc biệt"</string>
+    <string name="hide_language_switch_key">"Ẩn phím chuyển ngôn ngữ"</string>
+    <string name="pref_enable_ime_switch">"Chuyển sang các bàn phím khác"</string>
+    <string name="show_number_row">"Hiển thị bàn phím số"</string>
+    <string name="space_swipe">"Vuốt phím space để di chuyển con trỏ"</string>
+    <string name="delete_swipe">"Xoá vuốt"</string>
     <string name="matching_navbar_color">Sử dụng màu thanh điều hướng phù hợp</string>
-    <string name="setup_message">Simple Keyboard không được bật. Nhấp vào OK để mở Ngôn ngữ &amp; Nhập vào cài đặt. Bạn sẽ cần chọn Simple Keyboard trong bàn phím hiện tại của mình để sử dụng nó.</string>
+    <string name="setup_message">"Simple Keyboard không được bật. Nhấp vào OK để mở Ngôn ngữ &amp; Nhập vào cài đặt. Bạn sẽ cần chọn Simple Keyboard trong bàn phím hiện tại của mình để sử dụng nó."</string>
+    <string name="user_languages">"Đã bật ngôn ngữ bàn phím"</string>
+    <string name="add_language">"Thêm ngôn ngữ"</string>
+    <string name="remove_language">"Xóa ngôn ngữ"</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g>" bố cục bàn phím"</string>
+    <string name="change_keyboard">Thay đổi bàn phím</string>
 </resources>
