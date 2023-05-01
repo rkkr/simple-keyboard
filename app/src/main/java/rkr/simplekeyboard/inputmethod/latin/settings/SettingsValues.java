@@ -21,11 +21,8 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.view.inputmethod.EditorInfo;
 
-import java.util.Locale;
-
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
-import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 
 // Non-final for testing via mock library.
 public class SettingsValues {
