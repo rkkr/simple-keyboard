@@ -37,7 +37,7 @@ public final class KeyboardTheme {
     public static final int THEME_ID_DARK = 4;
     public static final int THEME_ID_SYSTEM = 5;
     public static final int THEME_ID_SYSTEM_BORDER = 6;
-    public static final int DEFAULT_THEME_ID = THEME_ID_LIGHT;
+    public static final int DEFAULT_THEME_ID = THEME_ID_DARK;
 
     /* package private for testing */
     static final KeyboardTheme[] KEYBOARD_THEMES = {
@@ -106,7 +106,7 @@ public final class KeyboardTheme {
     public static KeyboardTheme getKeyboardTheme(final SharedPreferences prefs) {
         final String themeIdString = prefs.getString(KEYBOARD_THEME_KEY, null);
         if (themeIdString == null) {
-            return searchKeyboardThemeById(THEME_ID_LIGHT);
+            return searchKeyboardThemeById(THEME_ID_DARK);
         }
         try {
             final int themeId = Integer.parseInt(themeIdString);

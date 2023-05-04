@@ -29,11 +29,11 @@
     <CheckBoxPreference
         android:key="pref_hide_special_chars"
         android:title="@string/hide_special_chars"
-        android:defaultValue="false" />
+        android:defaultValue="true" />
     <CheckBoxPreference
         android:key="pref_hide_language_switch_key"
         android:title="@string/hide_language_switch_key"
-        android:defaultValue="false" />
+        android:defaultValue="true" />
     <CheckBoxPreference
         android:key="pref_enable_ime_switch"
         android:title="@string/pref_enable_ime_switch"
