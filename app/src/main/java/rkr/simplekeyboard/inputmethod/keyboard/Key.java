@@ -37,7 +37,6 @@ import rkr.simplekeyboard.inputmethod.keyboard.internal.MoreKeySpec;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 
-import static rkr.simplekeyboard.inputmethod.keyboard.internal.KeyboardIconsSet.ICON_UNDEFINED;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_OUTPUT_TEXT;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_SHIFT;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_SWITCH_ALPHA_SYMBOL;

@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 33
-    buildToolsVersion '33.0.0'
+    buildToolsVersion '33.0.2'
     defaultConfig {
         applicationId "rkr.simplekeyboard.inputmethod"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 98
-        versionName "5.13"
+        versionCode 99
+        versionName "5.14"
     }
     buildTypes {
         release {
@@ -16,6 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'rkr.simplekeyboard.inputmethod'
 }
 
 dependencies {

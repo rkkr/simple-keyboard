@@ -23,7 +23,6 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.SwitchPreference;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
