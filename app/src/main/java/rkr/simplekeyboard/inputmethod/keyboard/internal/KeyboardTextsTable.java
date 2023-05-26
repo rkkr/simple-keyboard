@@ -3071,7 +3071,7 @@ public final class KeyboardTextsTable {
         // U+0435 + U+0301: "е" CYRILLIC SMALL LETTER IE + ◌́ COMBINING ACUTE ACCENT
         // U+0451: "ё" CYRILLIC SMALL LETTER IO
         // U+0463: "ѣ" CYRILLIC SMALL LETTER YAT
-        /* morekeys_cyrillic_ie */ "\u0435\u0301,\u0451,\u0463",
+        /* morekeys_cyrillic_ie */ "\u0451,\u0435\u0301,\u0463",
         /* keyspec_nordic_row1_11 ~ */
         null, null, null, null,
         /* ~ morekeys_nordic_row2_10 */
