@@ -206,11 +206,8 @@ public final class InputLogic {
                 handleLanguageSwitchKey();
                 break;
             case Constants.CODE_SHIFT_ENTER:
-                final Event tmpEvent = Event.createSoftwareKeypressEvent(Constants.CODE_ENTER,
-                        event.mKeyCode, event.mX, event.mY, event.isKeyRepeat());
-                handleNonSpecialCharacterEvent(tmpEvent, inputTransaction);
-                // Shift + Enter is treated as a functional key but it results in adding a new
-                // line, so that does affect the contents of the editor.
+                sendDownUpKeyEvent(KeyEvent.KEYCODE_ENTER, KeyEvent.META_SHIFT_ON);
+                // Shift + Enter is not supported in all devices
                 break;
             default:
                 throw new RuntimeException("Unknown key code : " + event.mKeyCode);
@@ -496,12 +493,16 @@ public final class InputLogic {
      * @param keyCode the key code to send inside the key event.
      */
     public void sendDownUpKeyEvent(final int keyCode) {
+        sendDownUpKeyEvent(keyCode, 0);
+    }
+
+    public void sendDownUpKeyEvent(final int keyCode, final int metaState) {
         final long eventTime = SystemClock.uptimeMillis();
         mConnection.sendKeyEvent(new KeyEvent(eventTime, eventTime,
-                KeyEvent.ACTION_DOWN, keyCode, 0, 0, KeyCharacterMap.VIRTUAL_KEYBOARD, 0,
+                KeyEvent.ACTION_DOWN, keyCode, 0, metaState, KeyCharacterMap.VIRTUAL_KEYBOARD, 0,
                 KeyEvent.FLAG_SOFT_KEYBOARD | KeyEvent.FLAG_KEEP_TOUCH_MODE));
         mConnection.sendKeyEvent(new KeyEvent(SystemClock.uptimeMillis(), eventTime,
-                KeyEvent.ACTION_UP, keyCode, 0, 0, KeyCharacterMap.VIRTUAL_KEYBOARD, 0,
+                KeyEvent.ACTION_UP, keyCode, 0, metaState, KeyCharacterMap.VIRTUAL_KEYBOARD, 0,
                 KeyEvent.FLAG_SOFT_KEYBOARD | KeyEvent.FLAG_KEEP_TOUCH_MODE));
     }
 
