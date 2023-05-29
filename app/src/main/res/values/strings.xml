@@ -75,6 +75,8 @@
     <string name="subtype_q">Q</string>
     <!-- Description for Turkish (F) keyboard layout. -->
     <string name="subtype_f">F</string>
+    <!-- Description for Georgian Mkhedruli keyboard layout. -->
+    <string name="subtype_georgian_mkhedruli">Mkhedruli</string>
     <!-- Description for Bengali (Bijoy) keyboard layout. -->
     <string name="subtype_bijoy">Bijoy</string>
 
