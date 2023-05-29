@@ -2422,8 +2422,9 @@ public final class KeyboardTextsTable {
         // U+00F4: "ô" LATIN SMALL LETTER O WITH CIRCUMFLEX
         // U+0153: "œ" LATIN SMALL LIGATURE OE
         // U+0151: "ő" LATIN SMALL LETTER O WITH DOUBLE ACUTE
+        // U+014D: "ō" LATIN SMALL LETTER O WITH MACRON
         // U+00F8: "ø" LATIN SMALL LETTER O WITH STROKE
-        /* morekeys_o */ "\u00F6,\u00F5,\u00F2,\u00F3,\u00F4,\u0153,\u0151,\u00F8",
+        /* morekeys_o */ "\u00F6,\u00F5,\u00F2,\u00F3,\u00F4,\u0153,\u0151,\u014D,\u00F8",
         // U+0117: "ė" LATIN SMALL LETTER E WITH DOT ABOVE
         // U+0119: "ę" LATIN SMALL LETTER E WITH OGONEK
         // U+0113: "ē" LATIN SMALL LETTER E WITH MACRON
@@ -2510,15 +2511,16 @@ public final class KeyboardTextsTable {
         // U+00E6: "æ" LATIN SMALL LETTER AE
         // U+0105: "ą" LATIN SMALL LETTER A WITH OGONEK
         /* morekeys_a */ "\u0101,\u00E0,\u00E1,\u00E2,\u00E3,\u00E4,\u00E5,\u00E6,\u0105",
-        // U+00F2: "ò" LATIN SMALL LETTER O WITH GRAVE
+        // U+014D: "ō" LATIN SMALL LETTER O WITH MACRON
         // U+00F3: "ó" LATIN SMALL LETTER O WITH ACUTE
         // U+00F4: "ô" LATIN SMALL LETTER O WITH CIRCUMFLEX
-        // U+00F5: "õ" LATIN SMALL LETTER O WITH TILDE
         // U+00F6: "ö" LATIN SMALL LETTER O WITH DIAERESIS
+        // U+00F2: "ò" LATIN SMALL LETTER O WITH GRAVE
         // U+0153: "œ" LATIN SMALL LIGATURE OE
         // U+0151: "ő" LATIN SMALL LETTER O WITH DOUBLE ACUTE
         // U+00F8: "ø" LATIN SMALL LETTER O WITH STROKE
-        /* morekeys_o */ "\u00F2,\u00F3,\u00F4,\u00F5,\u00F6,\u0153,\u0151,\u00F8",
+        // U+00F5: "õ" LATIN SMALL LETTER O WITH TILDE
+        /* morekeys_o */ "\u014D,\u00F3,\u00F4,\u00F6,\u00F2,\u0153,\u0151,\u00F8,\u00F5",
         // U+0113: "ē" LATIN SMALL LETTER E WITH MACRON
         // U+0117: "ė" LATIN SMALL LETTER E WITH DOT ABOVE
         // U+00E8: "è" LATIN SMALL LETTER E WITH GRAVE
