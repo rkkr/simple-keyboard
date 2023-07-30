@@ -477,7 +477,7 @@ public final class SubtypeLocaleUtils {
                     addLayout(LAYOUT_HEBREW);
                     break;
                 case LOCALE_GEORGIAN_GEORGIA:
-                    addLayout(LAYOUT_GEORGIAN);
+                    addLayout(LAYOUT_GEORGIAN, R.string.subtype_georgian_mkhedruli);
                     break;
                 case LOCALE_KHMER_CAMBODIA:
                     addLayout(LAYOUT_KHMER);
