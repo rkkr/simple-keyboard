@@ -233,6 +233,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_QWERTZ = "qwertz";
     public static final String LAYOUT_SERBIAN = "serbian";
     public static final String LAYOUT_SERBIAN_QWERTZ = "serbian_qwertz";
+    public static final String LAYOUT_SLAVIC_PHONETIC = "slavic_phonetic";
     public static final String LAYOUT_SPANISH = "spanish";
     public static final String LAYOUT_SWISS = "swiss";
     public static final String LAYOUT_TAMIL = "tamil";
@@ -446,6 +447,9 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_KAZAKH:
                 case LOCALE_KYRGYZ:
                 case LOCALE_RUSSIAN:
+                    addLayout(LAYOUT_EAST_SLAVIC);
+                    addLayout(LAYOUT_SLAVIC_PHONETIC, R.string.subtype_phonetic);
+                    break;
                 case LOCALE_UKRAINIAN:
                     addLayout(LAYOUT_EAST_SLAVIC);
                     break;
