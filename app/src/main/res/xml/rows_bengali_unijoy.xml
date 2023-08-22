@@ -25,14 +25,14 @@
         latin:keyWidth="10%p"
         >
         <include
-            latin:keyboardLayout="@xml/rowkeys_bengali_bijoy1" />
+            latin:keyboardLayout="@xml/rowkeys_bengali_unijoy1" />
     </Row>
     <Row
         latin:keyLabelFlags="fontNormal"
         latin:keyWidth="10%p"
         >
         <include
-            latin:keyboardLayout="@xml/rowkeys_bengali_bijoy2"
+            latin:keyboardLayout="@xml/rowkeys_bengali_unijoy2"
             latin:keyXPos="5%p" />
     </Row>
     <Row
@@ -44,7 +44,7 @@
             latin:keyWidth="14%p" />
         <include
             latin:keyXPos="15%p"
-            latin:keyboardLayout="@xml/rowkeys_bengali_bijoy3" />
+            latin:keyboardLayout="@xml/rowkeys_bengali_unijoy3" />
         <Key
             latin:keyStyle="deleteKeyStyle"
             latin:keyXPos="86%p"
