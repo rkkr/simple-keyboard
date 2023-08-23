@@ -27,20 +27,9 @@
         latin:keyboardLayout="@xml/key_styles_currency" />
     <Row
         latin:keyWidth="9.0%p"
-    >
-        <switch>
-            <!-- Bengali numbers row for bengali keyboard layouts -->
-            <case
-                latin:languageCode="bn"
-            >
-                <include
-                    latin:keyboardLayout="@xml/rowkeys_bengali_numbers" />
-            </case>
-            <default>
-                <include
-                    latin:keyboardLayout="@xml/rowkeys_symbols1" />
-            </default>
-        </switch>
+        >
+        <include
+            latin:keyboardLayout="@xml/rowkeys_symbols1" />
         <Key
             latin:keyStyle="deleteKeyStyle"
             latin:keyWidth="fillRight" />

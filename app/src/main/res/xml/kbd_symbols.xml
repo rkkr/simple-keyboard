@@ -19,8 +19,8 @@
 -->
 
 <switch xmlns:latin="http://schemas.android.com/apk/res-auto">
-    <case latin:languageCode="bn|fa|ur">
-        <!-- The bengali, bengali_akkhor, farsi, and urdu keyboards currently don't support a
+    <case latin:languageCode="fa|ur">
+        <!-- The farsi, and urdu keyboards currently don't support a
              separate number row. -->
         <Keyboard>
             <include

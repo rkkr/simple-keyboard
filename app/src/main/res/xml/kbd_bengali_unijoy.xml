@@ -26,13 +26,13 @@
             latin:rowHeight="20%p">
             <include latin:keyboardLayout="@xml/key_styles_common" />
             <include latin:keyboardLayout="@xml/row_qwerty0" />
-            <include latin:keyboardLayout="@xml/rows_bengali" />
+            <include latin:keyboardLayout="@xml/rows_bengali_unijoy" />
         </Keyboard>
     </case>
     <default>
         <Keyboard>
             <include latin:keyboardLayout="@xml/key_styles_common" />
-            <include latin:keyboardLayout="@xml/rows_bengali" />
+            <include latin:keyboardLayout="@xml/rows_bengali_unijoy" />
         </Keyboard>
     </default>
 </switch>
