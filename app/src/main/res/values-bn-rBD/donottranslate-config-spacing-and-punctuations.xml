@@ -2,7 +2,7 @@
 <!--
 /*
 **
-** Copyright 2014, The Android Open Source Project
+** Copyright 2013, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -17,7 +17,9 @@
 ** limitations under the License.
 */
 -->
-
-<Keyboard xmlns:latin="http://schemas.android.com/apk/res-auto" >
-    <include latin:keyboardLayout="@xml/rows_bengali_bijoy" />
-</Keyboard>
+<resources>
+    <!-- U+0964: "।" DEVANAGARI DANDA  -->
+    <integer name="sentence_separator">2404</integer>
+    <!-- Symbols that terminate sentences and require capitalization on the next char -->
+    <string name="symbols_sentence_terminators">.?!।॥</string>
+</resources>

@@ -19,37 +19,50 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="vibrate_on_keypress">"কীপ্রেস এর সময় কম্পন"</string>
-    <string name="sound_on_keypress">"কীপ্রেস এর সময়ের শব্দ"</string>
-    <string name="popup_on_keypress">"কীপ্রেস এর ফলে পপআপ"</string>
-    <string name="settings_screen_preferences">"পছন্দসমূহ"</string>
-    <string name="settings_screen_theme">"থিম"</string>
-    <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>মিলি.সে."</string>
-    <string name="settings_system_default">"সিস্টেম ডিফল্ট"</string>
-    <string name="auto_cap">"স্বতঃ-ক্যাপিটালাইজেশন"</string>
-    <string name="auto_cap_summary">"প্রতিটি বাক্যের প্রথম শব্দ বড় হাতের করুন"</string>
-    <string name="select_language">"ভাষাগুলি"</string>
-    <string name="locale_name_en_GB">"ইংরেজি (UK)"</string>
-    <string name="locale_name_en_US">"ইংরেজি (US)"</string>
-    <string name="locale_name_es_US">"স্প্যানিশ (US)"</string>
-    <string name="locale_name_hi_ZZ">"Hinglish"</string>
-    <string name="locale_name_sr_ZZ">"সার্বিয়ান (ল্যাটিন)"</string>
-    <string name="subtype_traditional">"ঐতিহ্যবাহি"</string>
-    <string name="subtype_compact">"কম্প্যাক্ট"</string>
-    <string name="add">"জুড়ুন"</string>
-    <string name="remove">"সরান"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"কীপ্রেস কম্পন সময়কাল"</string>
-    <string name="prefs_keypress_sound_volume_settings">"কীপ্রেস সাউন্ড ভলিউম"</string>
-    <string name="prefs_key_longpress_timeout_settings">"কী প্রেসে দীর্ঘ বিলম্ব"</string>
-    <string name="button_default">"ডিফল্ট"</string>
-    <string name="prefs_keyboard_height_settings">কীবোর্ডের উচ্চতা</string>
-    <string name="keyboard_color">কীবোর্ডের ভিন্ন রং নির্ধারণ করো</string>
-    <string name="hide_special_chars">বিশেষ চিহ্ন লুকাও</string>
-    <string name="hide_language_switch_key">ভাষা পরিবর্তনের কী লুকাও</string>
-    <string name="show_number_row">আলাদা নম্বরের সারি দেখাও</string>
-    <string name="space_swipe">স্পেস সোয়াইপ দিয়ে কার্সর সরাও</string>
-    <string name="delete_swipe">সোয়াইপ মুছো</string>
-    <string name="matching_navbar_color">ন্যাভিগেশন বারে মানানসই রং ব্যবহার করো</string>
-    <string name="setup_message">সিম্পল কিবোর্ড সক্রিয় করা নেই। ভাষা সেটিংস &amp; পরিবর্তন করতে OK/আচ্ছা টিপ দাও। তোমার কীবোর্ডে সিম্পল কীবোর্ড বা Simple Keyboard টিপ দিতে হবে।</string>
-
+    <string name="vibrate_on_keypress">কিপ্রেস কম্পন</string>
+    <string name="sound_on_keypress">কিপ্রেসের শব্দ</string>
+    <string name="popup_on_keypress">কিপ্রেস পপআপ</string>
+    <string name="settings_screen_preferences">অভিরুচি</string>
+    <string name="settings_screen_key_press">কিপ্রেস</string>
+    <string name="settings_screen_appearance">অবয়ব</string>
+    <string name="settings_screen_theme">থিম</string>
+    <string name="abbreviation_unit_milliseconds"><xliff:g id="MILLISECONDS">%s</xliff:g> মিলিসেকেন্ড</string>
+    <string name="settings_system_default">সিস্টেম ডিফল্ট</string>
+    <string name="auto_cap">অটো-ক্যাপিটালাইজেশন</string>
+    <string name="auto_cap_summary">বাক্যের প্রথম শব্দ বড়ো হাতের বর্ণ দিয়ে শুরু হবে</string>
+    <string name="select_language">ভাষা</string>
+    <string name="locale_name_en_GB">ইংরেজি (ইউকে)</string>
+    <string name="locale_name_en_US">ইংরেজি (ইউএস)</string>
+    <string name="locale_name_es_US">স্প্যানিশ (ইউএস)</string>
+    <string name="locale_name_hi_ZZ">হিংলিশ</string>
+    <string name="locale_name_sr_ZZ">সার্বিয়ান (ল্যাটিন)</string>
+    <string name="subtype_traditional">প্রথাগত</string>
+    <string name="subtype_compact">সংক্ষিপ্ত</string>
+    <string name="subtype_bds">বিডিএস</string>
+    <string name="subtype_q">কিউ</string>
+    <string name="subtype_f">এফ</string>
+    <string name="subtype_akkhor">অক্ষর</string>
+    <string name="add">যোগ করুন</string>
+    <string name="remove">অপসারণ করুন</string>
+    <string name="prefs_keypress_vibration_duration_settings">কিপ্রেস কম্পনের স্থিতিকাল</string>
+    <string name="prefs_keypress_sound_volume_settings">কিপ্রেস শব্দের ভলিউম</string>
+    <string name="prefs_key_longpress_timeout_settings">দীর্ঘ কিপ্রেসের বিলম্ব</string>
+    <string name="button_default">ডিফল্ট</string>
+    <string name="prefs_keyboard_height_settings">কিবোর্ডের উচ্চতা</string>
+    <string name="keyboard_color">কিবোর্ডের কাস্টম রং</string>
+    <string name="hide_special_chars">বিশেষ অক্ষর লুকান</string>
+    <string name="hide_language_switch_key">ভাষা পরিবর্তন বোতাম লুকান</string>
+    <string name="pref_enable_ime_switch">অন্য কিবোর্ডে পরিবর্তন</string>
+    <string name="show_number_row">পৃথক নম্বর সারি প্রদর্শন</string>
+    <string name="space_swipe">কার্সর সরাতে স্পেস সোয়াইপ</string>
+    <string name="delete_swipe">বিলোপ সোয়াইপ</string>
+    <string name="matching_navbar_color">ন্যাভিগেশন বারে সদৃশ রং</string>
+    <string name="setup_message">Simple Keyboard সক্রিয় নয়। ভাষা ও ইনপুট সেটিংস খোলার জন্য ঠিক আছে ক্লিক করুন। Simple Keyboard ব্যবহার করার জন্য বর্তমান কিবোর্ড হিসেবে নির্বাচন করতে হবে।</string>
+    <string name="user_languages">কিবোর্ডের সক্রিয় ভাষা</string>
+    <string name="add_language">ভাষা সংযোজন</string>
+    <string name="remove_language">ভাষা অপসারণ</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> কিবোর্ড লেআউট</string>
+    <string name="change_keyboard">কিবোর্ড পরিবর্তন</string>
+    <string name="privacy_policy">গোপনীয়তা নীতি</string>
+    <string name="license">লাইসেন্স</string>
 </resources>
