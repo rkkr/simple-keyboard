@@ -16,6 +16,7 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -202,6 +203,13 @@ public final class ResourceUtils {
         // Keyboard height will not exceed maxKeyboardHeight and will not be less than
         // minKeyboardHeight.
         return (int)Math.max(Math.min(keyboardHeight, maxKeyboardHeight), minKeyboardHeight);
+    }
+
+    public static int getKeyboardBottomOffset(final Resources res,
+                                              final SettingsValues settingsValues) {
+        return res.getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT
+                ? (int)(settingsValues.mBottomOffsetPortrait * res.getDisplayMetrics().density)
+                : 0;
     }
 
     public static boolean isValidFraction(final float fraction) {

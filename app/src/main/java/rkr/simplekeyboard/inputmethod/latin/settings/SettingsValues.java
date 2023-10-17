@@ -58,6 +58,8 @@ public class SettingsValues {
     // Debug settings
     public final float mKeyboardHeightScale;
 
+    public final int mBottomOffsetPortrait;
+
     public SettingsValues(final SharedPreferences prefs, final Resources res,
             final InputAttributes inputAttributes) {
         // Get the resources
@@ -81,6 +83,7 @@ public class SettingsValues {
         mKeypressSoundVolume = Settings.readKeypressSoundVolume(prefs, res);
         mKeyPreviewPopupDismissDelay = res.getInteger(R.integer.config_key_preview_linger_timeout);
         mKeyboardHeightScale = Settings.readKeyboardHeight(prefs, DEFAULT_SIZE_SCALE);
+        mBottomOffsetPortrait = Settings.readBottomOffsetPortrait(prefs);
         mDisplayOrientation = res.getConfiguration().orientation;
         mHideSpecialChars = Settings.readHideSpecialChars(prefs);
         mShowNumberRow = Settings.readShowNumberRow(prefs);

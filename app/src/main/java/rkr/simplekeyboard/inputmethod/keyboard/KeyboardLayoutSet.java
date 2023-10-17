@@ -98,6 +98,7 @@ public final class KeyboardLayoutSet {
         int mKeyboardThemeId;
         int mKeyboardWidth;
         int mKeyboardHeight;
+        int mKeyboardBottomOffset;
         boolean mShowMoreKeys;
         boolean mShowNumberRow;
         // Sparse array of KeyboardLayoutSet element parameters indexed by element's id.
@@ -219,9 +220,11 @@ public final class KeyboardLayoutSet {
             return this;
         }
 
-        public Builder setKeyboardGeometry(final int keyboardWidth, final int keyboardHeight) {
+        public Builder setKeyboardGeometry(final int keyboardWidth, final int keyboardHeight,
+                                           final int keyboardBottomOffset) {
             mParams.mKeyboardWidth = keyboardWidth;
             mParams.mKeyboardHeight = keyboardHeight;
+            mParams.mKeyboardBottomOffset = keyboardBottomOffset;
             return this;
         }
 
