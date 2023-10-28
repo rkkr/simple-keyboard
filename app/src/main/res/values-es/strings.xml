@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"Sonar al pulsar tecla"</string>
     <string name="popup_on_keypress">"Ampliar al pulsar tecla"</string>
     <string name="settings_screen_preferences">"Preferencias"</string>
+    <string name="settings_screen_key_press">Presionar tecla</string>
+    <string name="settings_screen_appearance">Apariencia</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="settings_system_default">"Predeterminado"</string>
     <string name="auto_cap">"Mayúsculas automáticas"</string>
@@ -51,4 +53,8 @@
     <string name="delete_swipe">Deslizar para eliminar</string>
     <string name="matching_navbar_color">Usar el color correspondiente de la barra de navegación</string>
     <string name="setup_message">Simple Keyboard no está habilitado. Haga clic en OK para abrir Idiomas &amp; Ajustes de entrada. Necesitará seleccionar Simple Keyboard en su teclado actual para usarlo.</string>
+    <string name="user_languages">Idiomas habilitados de teclado</string>
+    <string name="add_language">Añadir idioma</string>
+    <string name="remove_language">Remover idioma</string>
+    <string name="change_keyboard">Cambiar teclado</string>
 </resources>
