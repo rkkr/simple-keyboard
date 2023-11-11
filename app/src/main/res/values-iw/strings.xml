@@ -23,6 +23,8 @@
     <string name="sound_on_keypress">"צלילים בעת לחיצה על מקשים"</string>
     <string name="popup_on_keypress">"חלון קופץ בלחיצה על מקש"</string>
     <string name="settings_screen_preferences">"העדפות"</string>
+    <string name="settings_screen_key_press">לחיצת מקש</string>
+    <string name="settings_screen_appearance">נראות</string>
     <string name="settings_screen_theme">"עיצוב"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> אלפ\' שניה"</string>
     <string name="settings_system_default">"ברירת מחדל של המערכת"</string>
@@ -42,4 +44,18 @@
     <string name="prefs_keypress_sound_volume_settings">"עוצמת קול של לחיצת מקש"</string>
     <string name="prefs_key_longpress_timeout_settings">"השהיית לחיצה ארוכה על מקש"</string>
     <string name="button_default">"ברירת מחדל"</string>
+    <string name="prefs_keyboard_height_settings">הסר שפה</string>
+    <string name="keyboard_color">בחר צבע למקלדת</string>
+    <string name="hide_special_chars">הסתר תווים מיוחדים</string>
+    <string name="hide_language_switch_key">הסתר מקש "החלפת שפה"</string>
+    <string name="pref_enable_ime_switch">החלף למקלדות אחרות</string>
+    <string name="show_number_row">הצג שורה נפרדת למספרים</string>
+    <string name="space_swipe">נווט בטקסט בעזרת "רווח"</string>
+    <string name="delete_swipe">החלק למחיקה</string>
+    <string name="matching_navbar_color">תאם לצבע "שורת הניווט"</string>
+    <string name="setup_message">"מקלדת פשוטה" אינה פעילה. לחץ "אישור" לפתיחת הגדרות "שפות וקלט". תתבקש לבחור "מקלדת פשוטה" במקלדת הנוכחית שלך כדי להשתמש בה.</string>
+    <string name="user_languages">הפעל "שפות מקלדת"</string>
+    <string name="add_language">הוסף שפה</string>
+    <string name="remove_language">הסר שפה</string>
+    <string name="change_keyboard">החלף מקלדת</string>
 </resources>
