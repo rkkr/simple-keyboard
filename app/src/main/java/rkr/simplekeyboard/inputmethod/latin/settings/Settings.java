@@ -48,6 +48,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEYPRESS_SOUND_VOLUME = "pref_keypress_sound_volume";
     public static final String PREF_KEY_LONGPRESS_TIMEOUT = "pref_key_longpress_timeout";
     public static final String PREF_KEYBOARD_HEIGHT = "pref_keyboard_height";
+    public static final String PREF_BOTTOM_OFFSET_PORTRAIT = "pref_bottom_offset_portrait";
     public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
     public static final String PREF_HIDE_SPECIAL_CHARS = "pref_hide_special_chars";
     public static final String PREF_SHOW_NUMBER_ROW = "pref_show_number_row";
@@ -216,6 +217,12 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
             final float defaultValue) {
         return prefs.getFloat(PREF_KEYBOARD_HEIGHT, defaultValue);
     }
+
+    public static int readBottomOffsetPortrait(final SharedPreferences prefs) {
+        return prefs.getInt(PREF_BOTTOM_OFFSET_PORTRAIT, DEFAULT_BOTTOM_OFFSET);
+    }
+
+    public static final int DEFAULT_BOTTOM_OFFSET = 0;
 
     public static int readKeyboardDefaultColor(final Context context) {
         final int[] keyboardThemeColors = context.getResources().getIntArray(R.array.keyboard_theme_colors);
