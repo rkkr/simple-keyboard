@@ -38,7 +38,6 @@
     <string name="locale_name_sr_ZZ">"Сербский (латиница)"</string>
     <string name="subtype_traditional">традиционный</string>
     <string name="subtype_compact">"компактная"</string>
-    <string name="subtype_generic_layout"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> (<xliff:g id="LAYOUT" example="QWERTY">%s</xliff:g>)</string>
 
     <!-- Description for Bulgarian (BDS) keyboard layout. -->
     <string name="subtype_bds">BDS</string>
