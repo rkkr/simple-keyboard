@@ -24,9 +24,15 @@
     <Row
         latin:keyWidth="7.0%p"
     >
-        <Key
-            latin:keyWidth="9.0%p"
-            latin:keyStyle="settingsKeyStyle" />
+        <switch>
+            <case
+                latin:clobberSettingsKey="false"
+                >
+                <Key
+                    latin:keyStyle="settingsKeyStyle"
+                    latin:keyWidth="11.538%p" />
+            </case>
+        </switch>
         <switch>
             <case
                 latin:languageSwitchKeyEnabled="true"

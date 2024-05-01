@@ -16,6 +16,7 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard;
 
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -93,6 +94,7 @@ public final class KeyboardLayoutSet {
         int mMode;
         // TODO: Use {@link InputAttributes} instead of these variables.
         EditorInfo mEditorInfo;
+        boolean mNoSettingsKey;
         boolean mLanguageSwitchKeyEnabled;
         Subtype mSubtype;
         int mKeyboardThemeId;
@@ -212,6 +214,9 @@ public final class KeyboardLayoutSet {
             params.mMode = getKeyboardMode(editorInfo);
             // TODO: Consolidate those with {@link InputAttributes}.
             params.mEditorInfo = editorInfo;
+
+            final KeyguardManager kgMgr = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+            params.mNoSettingsKey = kgMgr.isKeyguardLocked();
         }
 
         public Builder setKeyboardTheme(final int themeId) {

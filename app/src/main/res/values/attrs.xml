@@ -341,6 +341,7 @@
         <attr name="navigateNext" format="boolean" />
         <attr name="navigatePrevious" format="boolean" />
         <attr name="passwordInput" format="boolean" />
+        <attr name="clobberSettingsKey" format="boolean" />
         <attr name="languageSwitchKeyEnabled" format="boolean" />
         <attr name="isMultiLine" format="boolean" />
         <attr name="imeAction" format="enum">
