@@ -25,5 +25,7 @@
         android:supportsSwitchingToNextInputMethod="true">
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
         android:imeSubtypeMode="keyboard"
+        android:imeSubtypeLocale="en_US"
+        android:languageTag="en-US"
         android:isAsciiCapable="true" />
 </input-method>
