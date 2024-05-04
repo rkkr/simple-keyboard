@@ -31,13 +31,14 @@
     <string name="auto_cap">"Заглавные автоматически"</string>
     <string name="auto_cap_summary">"Писать первое слово предложения с прописной буквы"</string>
     <string name="select_language">"Язык"</string>
-    <string name="locale_name_en_GB">"английский (Великобритания)"</string>
-    <string name="locale_name_en_US">"английский (США)"</string>
+    <string name="locale_name_en_GB">"Английский (Великобритания)"</string>
+    <string name="locale_name_en_US">"Английский (США)"</string>
     <string name="locale_name_es_US">"Испанский (США)"</string>
     <string name="locale_name_hi_ZZ">"Хинглиш"</string>
     <string name="locale_name_sr_ZZ">"Сербский (латиница)"</string>
-    <string name="subtype_traditional">"классическая"</string>
-    <string name="subtype_compact">"компактная раскладка"</string>
+    <string name="subtype_traditional">традиционная</string>
+    <string name="subtype_compact">"компактная"</string>
+ 
     <string name="add">"Добавить"</string>
     <string name="remove">"Удалить"</string>
     <string name="prefs_keypress_vibration_duration_settings">"Вибросигнал при нажатии клавиш"</string>
@@ -51,12 +52,14 @@
     <string name="pref_enable_ime_switch">Переключение на другие клавиатуры</string>
     <string name="show_number_row">Показать ряд цифр</string>
     <string name="space_swipe">Перемещать курсор пробелом</string>
-    <string name="delete_swipe">Удалить свайпом</string>
+    <string name="delete_swipe">Удалить смахиванией</string>
     <string name="matching_navbar_color">Использовать соответствующий цвет панели навигации</string>
-    <string name="setup_message">Simple Keyboard не включен. Нажмите "ОК", чтобы выбрать языки &amp; в настройках ввода. Вам нужо будет выбрать приложение Simple Keyboard текущей клавиатурой, чтобы использовать её.</string>
+    <string name="setup_message">Simple Keyboard не включена. Нажмите «ОК», чтобы выбрать языки в настройках ввода. Вам нужно будет выбрать приложение Simple Keyboard текущей клавиатурой, чтобы использовать её.</string>
     <string name="user_languages">Включенные языки</string>
     <string name="add_language">Добавить язык</string>
     <string name="remove_language">Удалить язык</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> раскладка клавиатуры</string>
     <string name="change_keyboard">Сменить клавиатуру</string>
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="license">Лицензия</string>
 </resources>
