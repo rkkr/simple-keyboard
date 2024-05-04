@@ -36,17 +36,8 @@
     <string name="locale_name_es_US">"Испанский (США)"</string>
     <string name="locale_name_hi_ZZ">"Хинглиш"</string>
     <string name="locale_name_sr_ZZ">"Сербский (латиница)"</string>
-    <string name="subtype_traditional">традиционный</string>
+    <string name="subtype_traditional">традиционная</string>
     <string name="subtype_compact">"компактная"</string>
-
-    <!-- Description for Bulgarian (BDS) keyboard layout. -->
-    <string name="subtype_bds">BDS</string>
-    <!-- Description for Turkish (Q) keyboard layout. -->
-    <string name="subtype_q">Q</string>
-    <!-- Description for Turkish (F) keyboard layout. -->
-    <string name="subtype_f">F</string>
-    <!-- Description for Bengali (Akkhor) keyboard layout. -->
-    <string name="subtype_akkhor">Akkhor</string>
  
     <string name="add">"Добавить"</string>
     <string name="remove">"Удалить"</string>
