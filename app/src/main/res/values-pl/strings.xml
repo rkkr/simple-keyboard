@@ -53,9 +53,11 @@
     <string name="delete_swipe">Usuń poprzez przesunięcie</string>
     <string name="matching_navbar_color">Dopasuj kolor paska nawigacji</string>
     <string name="setup_message">Simple Keyboard nie jest włączona. Kliknij OK, żeby otworzyć ustawienia języka i wprowadzania. Następnie wybierz Simple Keyboard w ustawieniach klawiatury.</string>
-    <string name="user_languages">Aktywne języki</string>
+    <string name="user_languages">Włączone języki</string>
     <string name="add_language">Dodaj język</string>
     <string name="remove_language">Usuń język</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> układ klawiatury</string>
     <string name="change_keyboard">Zmień klawiaturę</string>
+    <string name="privacy_policy">Polityka prywatności</string>
+    <string name="license">Licencja</string>
 </resources>
