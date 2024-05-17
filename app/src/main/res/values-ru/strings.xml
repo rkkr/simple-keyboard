@@ -54,8 +54,8 @@
     <string name="space_swipe">Перемещать курсор пробелом</string>
     <string name="delete_swipe">Удалить смахиванией</string>
     <string name="matching_navbar_color">Использовать соответствующий цвет панели навигации</string>
-    <string name="setup_message">Simple Keyboard не включена. Нажмите «ОК», чтобы выбрать языки в настройках ввода. Вам нужно будет выбрать приложение Simple Keyboard текущей клавиатурой, чтобы использовать её.</string>
-    <string name="user_languages">Включенные языки</string>
+    <string name="setup_message">Simple Keyboard не включена. Нажмите «ОК», чтобы выбрать языки в настройках ввода. Вам нужно будет выбрать Simple Keyboard текущей клавиатурой, чтобы использовать её.</string>
+    <string name="user_languages">Включённые языки</string>
     <string name="add_language">Добавить язык</string>
     <string name="remove_language">Удалить язык</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> раскладка клавиатуры</string>

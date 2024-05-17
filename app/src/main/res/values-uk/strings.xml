@@ -33,9 +33,9 @@
     <string name="select_language">"Мови"</string>
     <string name="locale_name_en_GB">"Англійська (Велика Британія)"</string>
     <string name="locale_name_en_US">"Англійська (США)"</string>
-    <string name="locale_name_es_US">"іспанська (США)"</string>
+    <string name="locale_name_es_US">"Іспанська (США)"</string>
     <string name="locale_name_hi_ZZ">"Хінґліш"</string>
-    <string name="locale_name_sr_ZZ">"сербська (латиниця)"</string>
+    <string name="locale_name_sr_ZZ">"Сербська (латиниця)"</string>
     <string name="subtype_traditional">"традиційна"</string>
     <string name="subtype_compact">"компактна"</string>
     <string name="add">"Додати"</string>
@@ -53,10 +53,12 @@
     <string name="space_swipe">Переміщати курсор ковзанням по пробілу</string>
     <string name="delete_swipe">Видаляти ковзанням</string>
     <string name="matching_navbar_color">Автопідбір кольору для навігаційної панелі</string>
-    <string name="setup_message">Simple Keyboard не увімкнута. Нажміть ОК для відкриття налаштувань Мови та введення. Виберіть Simple Keyboard вашою поточною клавіатурою, щоб використовувати її.</string>
-    <string name="user_languages">Увімкнені розкладки клавіатури</string>
+    <string name="setup_message">Simple Keyboard не увімкнута. Натисніть «ОК», щоб вибрати мови в налаштуваннях введення. Вам потрібно буде вибрати Simple Keyboard поточною клавіатурою, щоб використовувати її.</string>
+    <string name="user_languages">Увімкнені мови</string>
     <string name="add_language">Додати мову</string>
     <string name="remove_language">Видалити мову</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> розкладки клавіатури</string>
     <string name="change_keyboard">Змінити клавіатуру</string>
+    <string name="privacy_policy">Політика конфіденційності</string>
+    <string name="license">Ліцензія</string>
 </resources>

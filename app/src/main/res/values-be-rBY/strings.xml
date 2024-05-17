@@ -31,9 +31,9 @@
     <string name="auto_cap">"Аўтаматычна рабіць літары вялікімі"</string>
     <string name="auto_cap_summary">"Пісаць з загалоўнай літары першае слова ў кожным сказе"</string>
     <string name="select_language">"Мовы"</string>
-    <string name="locale_name_en_GB">"англійская (Вялікабрытанія)"</string>
-    <string name="locale_name_en_US">"англійская (ЗША)"</string>
-    <string name="locale_name_es_US">"iспанская (ЗША)"</string>
+    <string name="locale_name_en_GB">"Англійская (Вялікабрытанія)"</string>
+    <string name="locale_name_en_US">"Англійская (ЗША)"</string>
+    <string name="locale_name_es_US">"Іспанская (ЗША)"</string>
     <string name="locale_name_hi_ZZ">"Хінгліш"</string>
     <string name="locale_name_sr_ZZ">"Сербская (лацініца)"</string>
     <string name="subtype_traditional">"традыцыйная"</string>
@@ -53,10 +53,12 @@
     <string name="space_swipe">Перамяшчэнне курсора прабелам</string>
     <string name="delete_swipe">Выдаліць рух</string>
     <string name="matching_navbar_color">Выкарыстоўвайце адпаведны колер панэлі навігацыі</string>
-    <string name="setup_message">Simple keyboard не ўключана. Націсніце "OK", каб адкрыць мовы ў наладах уводу. Вам трэба будзе абраць Simple keyboard бягучай клавіятуры, каб выкарыстоўваць яе.</string>
-    <string name="user_languages">Уключаныя мовы</string>
+    <string name="setup_message">Simple Keyboard не ўключана. Націсніце «ОК», каб адкрыць мовы ў наладах ўводу. Вам трэба будзе абраць Simple Keyboard бягучай клавіятурай, каб выкарыстоўваць яе.</string>
+    <string name="user_languages">Ўключаныя мовы</string>
     <string name="add_language">Дадаць мову</string>
     <string name="remove_language">Выдаліць мову</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> раскладкі клавіятуры</string>
     <string name="change_keyboard">Змяніць клавіятуру</string>
+    <string name="privacy_policy">Палітыка прыватнасці</string>
+    <string name="license">Ліцэнзія</string>
 </resources>
