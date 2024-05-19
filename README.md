@@ -1,6 +1,8 @@
 # Simple Keyboard
 
+[<img alt="CI" src="https://github.com/rkkr/simple-keyboard/actions/workflows/ci.yml/badge.svg">](https://github.com/rkkr/simple-keyboard/actions/workflows/ci.yml)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/simple-keyboard/localized.svg)](https://crowdin.com/project/simple-keyboard)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
 
 <img src="images/screenshot-0.png"
       alt="closeup"
