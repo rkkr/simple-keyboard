@@ -4,8 +4,8 @@ android {
     defaultConfig {
         applicationId "rkr.simplekeyboard.inputmethod"
         compileSdk 34
-        minSdkVersion 19
-        targetSdkVersion 34
+        minSdk 19
+        targetSdk 34
         versionCode 103
         versionName "5.17"
     }
@@ -15,6 +15,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
     namespace 'rkr.simplekeyboard.inputmethod'
 }
 
