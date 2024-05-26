@@ -40,6 +40,7 @@ import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_OUTPUT_TEXT;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_SHIFT;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_SWITCH_ALPHA_SYMBOL;
+import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_TRANS_OUT;
 import static rkr.simplekeyboard.inputmethod.latin.common.Constants.CODE_UNSPECIFIED;
 
 /**
@@ -52,7 +53,7 @@ public class Key implements Comparable<Key> {
     private final int mCode;
 
     /** Label to display */
-    private final String mLabel;
+    private String mLabel;
     /** Hint label to display on the key in conjunction with the label */
     private final String mHintLabel;
     /** Flags of the label */
@@ -359,6 +360,11 @@ public class Key implements Comparable<Key> {
         mOptionalAttributes = OptionalAttributes.newInstance(outputText, altCode);
         mKeyVisualAttributes = KeyVisualAttributes.newInstance(keyAttr);
         mHashCode = computeHashCode(this);
+
+        // let the key string is empty for the initial state
+        if (code == CODE_TRANS_OUT){
+            mLabel = "";
+        }
     }
 
     /**
@@ -493,6 +499,10 @@ public class Key implements Comparable<Key> {
 
     public String getLabel() {
         return mLabel;
+    }
+
+    public void setLabel(final String label) {
+        mLabel = label;
     }
 
     public String getHintLabel() {

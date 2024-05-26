@@ -54,6 +54,9 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_SPACE_SWIPE = "pref_space_swipe";
     public static final String PREF_DELETE_SWIPE = "pref_delete_swipe";
     public static final String PREF_MATCHING_NAVBAR_COLOR = "pref_matching_navbar_color";
+    public static final String PREF_OPENAI_TEMPERATURE = "pref_open_ai_temperature";
+    public static final String PREF_OPENAI_MODEL = "pref_open_ai_model";
+    public static final String PREF_OPENAI_API_KEY = "pref_open_ai_api_key";
 
     private static final float UNDEFINED_PREFERENCE_VALUE_FLOAT = -1.0f;
     private static final int UNDEFINED_PREFERENCE_VALUE_INT = -1;
@@ -201,6 +204,18 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                 PREF_VIBRATION_DURATION_SETTINGS, UNDEFINED_PREFERENCE_VALUE_INT);
         return (milliseconds != UNDEFINED_PREFERENCE_VALUE_INT) ? milliseconds
                 : readDefaultKeypressVibrationDuration(res);
+    }
+
+    public static float readOpenAITemperature(final SharedPreferences prefs) {
+        return prefs.getInt(PREF_OPENAI_TEMPERATURE, 50) / 100f;
+    }
+
+    public static String readOpenAIModel(final SharedPreferences prefs) {
+        return prefs.getString(PREF_OPENAI_MODEL, "gpt-3.5-turbo-16k");
+    }
+
+    public static String readOpenAIAPIKey(final SharedPreferences prefs){
+        return prefs.getString(PREF_OPENAI_API_KEY,"");
     }
 
     // Default keypress vibration duration for unknown devices.

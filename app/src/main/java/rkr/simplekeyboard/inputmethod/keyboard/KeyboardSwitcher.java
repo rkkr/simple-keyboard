@@ -374,6 +374,10 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         }
     }
 
+    public View getMainKeyboardFrame(){
+        return mMainKeyboardFrame;
+    }
+
     public View onCreateInputView(final int uiMode) {
         if (mKeyboardView != null) {
             mKeyboardView.closing();

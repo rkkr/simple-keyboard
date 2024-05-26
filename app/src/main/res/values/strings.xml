@@ -36,6 +36,9 @@
     <!-- Settings screen title for keyboard theme settings [CHAR LIMIT=33] -->
     <string name="settings_screen_theme">Theme</string>
 
+    <!-- Settings screen title for appearance preferences [CHAR LIMIT=33] -->
+    <string name="settings_translator">Translator</string>
+
     <!-- Units abbreviation for the duration (milliseconds) [CHAR LIMIT=10] -->
     <string name="abbreviation_unit_milliseconds"><xliff:g id="MILLISECONDS">%s</xliff:g>ms</string>
     <!-- The text that represents the current settings value is the system default [CHAR LIMIT=25] -->
@@ -104,6 +107,9 @@
 
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
     <string name="keyboard_color">Set custom keyboard color</string>
+    <string name="open_api_key">API Key</string>
+    <string name="open_api_model">Model</string>
+    <string name="open_api_temperature">Temperature</string>
     <string name="hide_special_chars">Hide special characters</string>
     <string name="hide_language_switch_key">Hide language switch key</string>
     <string name="pref_enable_ime_switch">Switch to other keyboards</string>

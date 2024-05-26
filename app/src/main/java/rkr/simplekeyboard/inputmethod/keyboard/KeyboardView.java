@@ -495,6 +495,13 @@ public class KeyboardView extends View {
         invalidate();
     }
 
+    public void onDrawKeyTransOut(String label){
+        Key key = mKeyboard.getKey(Constants.CODE_TRANS_OUT);
+        key.setLabel(label);
+        invalidateAllKeys();
+        setKeyboard(mKeyboard);
+    }
+
     /**
      * Invalidates a key so that it will be redrawn on the next repaint. Use this method if only
      * one key is changing it's content. Any changes that affect the position or size of the key

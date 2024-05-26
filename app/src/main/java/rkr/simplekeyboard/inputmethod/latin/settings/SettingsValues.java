@@ -58,6 +58,11 @@ public class SettingsValues {
     // Debug settings
     public final float mKeyboardHeightScale;
 
+    public final String mOpenAIAPIKey;
+
+    public final String mOpenAIModel;
+    public final float mOpenAITemperature;
+
     public SettingsValues(final SharedPreferences prefs, final Resources res,
             final InputAttributes inputAttributes) {
         // Get the resources
@@ -87,6 +92,9 @@ public class SettingsValues {
         mSpaceSwipeEnabled = Settings.readSpaceSwipeEnabled(prefs);
         mDeleteSwipeEnabled = Settings.readDeleteSwipeEnabled(prefs);
         mUseMatchingNavbarColor = Settings.readUseMatchingNavbarColor(prefs);
+        mOpenAIAPIKey = Settings.readOpenAIAPIKey(prefs);
+        mOpenAIModel = Settings.readOpenAIModel(prefs);
+        mOpenAITemperature = Settings.readOpenAITemperature(prefs);
     }
 
     public boolean isWordSeparator(final int code) {

@@ -101,6 +101,9 @@ public final class Constants {
     // Code value representing the code is not specified.
     public static final int CODE_UNSPECIFIED = -13;
 
+    // Code for translation output button.
+    public static final int CODE_TRANS_OUT = -14;
+
     public static boolean isLetterCode(final int code) {
         return code >= CODE_SPACE;
     }
@@ -121,6 +124,7 @@ public final class Constants {
         case CODE_TAB: return "tab";
         case CODE_ENTER: return "enter";
         case CODE_SPACE: return "space";
+        case CODE_TRANS_OUT: return "transOut";
         default:
             if (code < CODE_SPACE) return String.format("\\u%02X", code);
             if (code < 0x100) return String.format("%c", code);

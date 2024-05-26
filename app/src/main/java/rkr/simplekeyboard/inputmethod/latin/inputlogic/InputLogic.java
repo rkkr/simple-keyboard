@@ -21,11 +21,13 @@ import android.text.TextUtils;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 
 import java.util.TreeSet;
 
 import rkr.simplekeyboard.inputmethod.event.Event;
 import rkr.simplekeyboard.inputmethod.event.InputTransaction;
+import rkr.simplekeyboard.inputmethod.latin.GPTTranslator;
 import rkr.simplekeyboard.inputmethod.latin.LatinIME;
 import rkr.simplekeyboard.inputmethod.latin.RichInputConnection;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
@@ -43,7 +45,7 @@ public final class InputLogic {
     final LatinIME mLatinIME;
 
     // This has package visibility so it can be accessed from InputLogicHandler.
-    public final RichInputConnection mConnection;
+    public final TranslatorInputConnection mConnection;
     private final RecapitalizeStatus mRecapitalizeStatus = new RecapitalizeStatus();
 
     public final TreeSet<Long> mCurrentlyPressedHardwareKeys = new TreeSet<>();
@@ -55,7 +57,7 @@ public final class InputLogic {
      */
     public InputLogic(final LatinIME latinIME) {
         mLatinIME = latinIME;
-        mConnection = new RichInputConnection(latinIME);
+        mConnection = new TranslatorInputConnection(new RichInputConnection(latinIME),new GPTTranslator(latinIME));
     }
 
     /**
@@ -64,8 +66,13 @@ public final class InputLogic {
      * Call this when input starts or restarts in some editor (typically, in onStartInputView).
      */
     public void startInput() {
+        mConnection.setInput();
         mRecapitalizeStatus.disable(); // Do not perform recapitalize until the cursor is moved once
         mCurrentlyPressedHardwareKeys.clear();
+    }
+
+    public void setStringView(TextView originalStringView){
+        mConnection.setOriginalStringView(originalStringView);
     }
 
     /**
@@ -209,6 +216,9 @@ public final class InputLogic {
                 sendDownUpKeyEvent(KeyEvent.KEYCODE_ENTER, KeyEvent.META_SHIFT_ON);
                 // Shift + Enter is not supported in all devices
                 break;
+            case Constants.CODE_TRANS_OUT:
+                mConnection.commitTransOut();
+                break;
             default:
                 throw new RuntimeException("Unknown key code : " + event.mKeyCode);
         }
@@ -225,34 +235,38 @@ public final class InputLogic {
      */
     private void handleNonFunctionalEvent(final Event event,
             final InputTransaction inputTransaction) {
-        switch (event.mCodePoint) {
-            case Constants.CODE_ENTER:
-                final EditorInfo editorInfo = getCurrentInputEditorInfo();
-                final int imeOptionsActionId =
-                        InputTypeUtils.getImeOptionsActionIdFromEditorInfo(editorInfo);
-                if (InputTypeUtils.IME_ACTION_CUSTOM_LABEL == imeOptionsActionId) {
-                    // Either we have an actionLabel and we should performEditorAction with
-                    // actionId regardless of its value.
-                    performEditorAction(editorInfo.actionId);
-                } else if (EditorInfo.IME_ACTION_NONE != imeOptionsActionId) {
-                    // We didn't have an actionLabel, but we had another action to execute.
-                    // EditorInfo.IME_ACTION_NONE explicitly means no action. In contrast,
-                    // EditorInfo.IME_ACTION_UNSPECIFIED is the default value for an action, so it
-                    // means there should be an action and the app didn't bother to set a specific
-                    // code for it - presumably it only handles one. It does not have to be treated
-                    // in any specific way: anything that is not IME_ACTION_NONE should be sent to
-                    // performEditorAction.
-                    performEditorAction(imeOptionsActionId);
-                } else {
-                    // No action label, and the action from imeOptions is NONE: this is a regular
-                    // enter key that should input a carriage return.
+            switch (event.mCodePoint) {
+                case Constants.CODE_ENTER:
+                    final EditorInfo editorInfo = getCurrentInputEditorInfo();
+                    final int imeOptionsActionId =
+                            InputTypeUtils.getImeOptionsActionIdFromEditorInfo(editorInfo);
+                    if (InputTypeUtils.IME_ACTION_CUSTOM_LABEL == imeOptionsActionId) {
+                        // Either we have an actionLabel and we should performEditorAction with
+                        // actionId regardless of its value.
+                        performEditorAction(editorInfo.actionId);
+                    } else if (EditorInfo.IME_ACTION_NONE != imeOptionsActionId) {
+                        // We didn't have an actionLabel, but we had another action to execute.
+                        // EditorInfo.IME_ACTION_NONE explicitly means no action. In contrast,
+                        // EditorInfo.IME_ACTION_UNSPECIFIED is the default value for an action, so it
+                        // means there should be an action and the app didn't bother to set a specific
+                        // code for it - presumably it only handles one. It does not have to be treated
+                        // in any specific way: anything that is not IME_ACTION_NONE should be sent to
+                        // performEditorAction.
+                        performEditorAction(imeOptionsActionId);
+                    } else {
+                        // No action label, and the action from imeOptions is NONE: this is a regular
+                        // enter key that should input a carriage return.
+                        handleNonSpecialCharacterEvent(event, inputTransaction);
+                    }
+                    break;
+
+                case Constants.CODE_TRANS_OUT:
+                    mConnection.commitTransOut();
+                    break;
+                default:
                     handleNonSpecialCharacterEvent(event, inputTransaction);
-                }
-                break;
-            default:
-                handleNonSpecialCharacterEvent(event, inputTransaction);
-                break;
-        }
+                    break;
+            }
     }
 
     /**

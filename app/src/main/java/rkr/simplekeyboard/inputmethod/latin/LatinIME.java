@@ -41,6 +41,8 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -54,6 +56,7 @@ import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils.InsetsUpdater;
 import rkr.simplekeyboard.inputmethod.event.Event;
 import rkr.simplekeyboard.inputmethod.event.InputTransaction;
+import rkr.simplekeyboard.inputmethod.keyboard.Key;
 import rkr.simplekeyboard.inputmethod.keyboard.Keyboard;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardActionListener;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardId;
@@ -91,6 +94,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     // TODO: Move these {@link View}s to {@link KeyboardSwitcher}.
     private View mInputView;
+
+    private View mMainFrameView;
     private InsetsUpdater mInsetsUpdater;
 
     private RichInputMethodManager mRichImm;
@@ -351,7 +356,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public View onCreateInputView() {
-        return mKeyboardSwitcher.onCreateInputView(getResources().getConfiguration().uiMode);
+        View v = mKeyboardSwitcher.onCreateInputView(getResources().getConfiguration().uiMode);
+        TextView originalStringView = mKeyboardSwitcher.getMainKeyboardFrame().findViewById(R.id.original_string_view);
+        mInputLogic.setStringView(originalStringView);
+        return v;
     }
 
     @Override
@@ -360,6 +368,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mInputView = view;
         mInsetsUpdater = ViewOutlineProviderCompatUtils.setInsetsOutlineProvider(view);
         updateSoftInputWindowLayoutParameters();
+    }
+
+    public void setMainFrameView(final View view){
+        mMainFrameView = view;
     }
 
     @Override
@@ -908,6 +920,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void onReleaseKey(final int primaryCode, final boolean withSliding) {
         mKeyboardSwitcher.onReleaseKey(primaryCode, withSliding, getCurrentAutoCapsState(),
                 getCurrentRecapitalizeState());
+        // this is might decrease the performance, but I still don't know
+        // where's the keyboard initialized.
+        Keyboard keyboard = mKeyboardSwitcher.getKeyboard();
+        mInputLogic.mConnection.setTransOutKey(keyboard.getKey(Constants.CODE_TRANS_OUT));
+        mInputLogic.mConnection.setKeyboardView(mKeyboardSwitcher.getMainKeyboardView());
     }
 
     // receive ringer mode change.

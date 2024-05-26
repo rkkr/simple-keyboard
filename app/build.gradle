@@ -4,7 +4,7 @@ android {
     defaultConfig {
         applicationId "rkr.simplekeyboard.inputmethod"
         compileSdk 34
-        minSdkVersion 19
+        minSdkVersion 26
         targetSdkVersion 34
         versionCode 103
         versionName "5.17"
@@ -15,8 +15,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    splits {
+        abi {
+            enable true
+            reset()
+            include "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+            universalApk true  // This will create an APK that includes all architectures.
+        }
+    }
     namespace 'rkr.simplekeyboard.inputmethod'
 }
 
 dependencies {
+    implementation('com.theokanning.openai-gpt3-java:service:0.18.2')
+    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2')
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
 }

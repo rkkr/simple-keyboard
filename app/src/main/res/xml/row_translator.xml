@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:latin="http://schemas.android.com/apk/res-auto">
+    <Row
+        latin:keyWidth="100%p"
+        >
+        <Key
+            latin:keySpec="!code/key_trans_out|!code/key_trans_out"
+            latin:keyActionFlags="isRepeatable|noKeyPreview"/>
+        </Row>
+</merge>

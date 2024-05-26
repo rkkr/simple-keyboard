@@ -42,7 +42,7 @@ import rkr.simplekeyboard.inputmethod.latin.utils.DebugLogUtils;
  * all the time to find out what text is in the buffer, when we need it to determine caps mode
  * for example.
  */
-public final class RichInputConnection {
+public class RichInputConnection {
     private static final String TAG = "RichInputConnection";
     private static final boolean DBG = false;
     private static final boolean DEBUG_PREVIOUS_TEXT = false;
@@ -537,5 +537,9 @@ public final class RichInputConnection {
             }
         }
         return steps;
+    }
+
+    public InputMethodService getParent(){
+        return mParent;
     }
 }

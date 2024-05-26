@@ -395,5 +395,6 @@
         <attr name="maxValue" format="integer" />
         <attr name="minValue" format="integer" />
         <attr name="stepValue" format="integer" />
+        <attr name="defPref" format="boolean" />
     </declare-styleable>
 </resources>
