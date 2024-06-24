@@ -59,4 +59,6 @@
     <string name="remove_language">Sprache entfernen</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> Tastaturlayouts</string>
     <string name="change_keyboard">Tastatur ändern</string>
+    <string name="privacy_policy">Datenschutzerklärung</string>
+    <string name="license">Lizenz</string>
 </resources>

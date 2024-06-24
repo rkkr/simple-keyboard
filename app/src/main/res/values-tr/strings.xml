@@ -58,4 +58,6 @@
     <string name="remove_language">Dil kaldır</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> klavye düzenleri</string>
     <string name="change_keyboard">Klavyeyi değiştir</string>
+    <string name="privacy_policy">Gizlilik Politikası</string>
+    <string name="license">Lisans</string>
 </resources>

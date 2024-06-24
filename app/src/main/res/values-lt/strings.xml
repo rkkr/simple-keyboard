@@ -58,4 +58,6 @@
     <string name="remove_language">Pašalinti kalbą</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> klaviatūros išdėstymai</string>
     <string name="change_keyboard">Keisti klaviatūrą</string>
+    <string name="privacy_policy">Privatumo politika</string>
+    <string name="license">Licenzija</string>
 </resources>
