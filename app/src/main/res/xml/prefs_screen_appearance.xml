@@ -36,4 +36,10 @@
         latin:minValue="@integer/config_min_keyboar_height"
         latin:maxValue="@integer/config_max_keyboar_height"
         latin:stepValue="@integer/config_keyboar_height_step" />
+    <rkr.simplekeyboard.inputmethod.latin.settings.SeekBarDialogPreference
+        android:key="pref_bottom_offset_portrait"
+        android:title="@string/prefs_bottom_offset_portrait_settings"
+        latin:minValue="@integer/config_min_bottom_offset_portrait"
+        latin:maxValue="@integer/config_max_bottom_offset_portrait"
+        latin:stepValue="@integer/config_bottom_offset_step" />
 </PreferenceScreen>
