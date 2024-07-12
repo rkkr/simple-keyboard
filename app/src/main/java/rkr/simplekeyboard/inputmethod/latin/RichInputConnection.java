@@ -388,6 +388,7 @@ public final class RichInputConnection {
     }
 
     public void replaceText(final int startPosition, final int endPosition, CharSequence text) {
+        RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
         mIC.setComposingRegion(startPosition, endPosition);
         mIC.setComposingText(text, startPosition);
         mIC.finishComposingText();
@@ -401,6 +402,7 @@ public final class RichInputConnection {
     }
 
     public void sendKeyEvent(final KeyEvent keyEvent) {
+        RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
         if (DEBUG_BATCH_NESTING) checkBatchEdit();
         if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
             if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
@@ -475,6 +477,7 @@ public final class RichInputConnection {
         if (mExpectedSelStart == start && mExpectedSelEnd == end) {
             return;
         }
+        RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
 
         mExpectedSelStart = start;
         mExpectedSelEnd = end;
