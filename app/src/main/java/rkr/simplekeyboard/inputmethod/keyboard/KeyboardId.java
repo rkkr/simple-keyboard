@@ -55,6 +55,7 @@ public final class KeyboardId {
     public final int mThemeId;
     public final int mWidth;
     public final int mHeight;
+    public final int mBottomOffset;
     public final int mMode;
     public final int mElementId;
     public final EditorInfo mEditorInfo;
@@ -71,6 +72,7 @@ public final class KeyboardId {
         mThemeId = params.mKeyboardThemeId;
         mWidth = params.mKeyboardWidth;
         mHeight = params.mKeyboardHeight;
+        mBottomOffset = params.mKeyboardBottomOffset;
         mMode = params.mMode;
         mElementId = elementId;
         mEditorInfo = params.mEditorInfo;
@@ -90,6 +92,7 @@ public final class KeyboardId {
                 id.mMode,
                 id.mWidth,
                 id.mHeight,
+                id.mBottomOffset,
                 id.passwordInput(),
                 id.mClobberSettingsKey,
                 id.mLanguageSwitchKeyEnabled,
@@ -110,6 +113,7 @@ public final class KeyboardId {
                 && other.mMode == mMode
                 && other.mWidth == mWidth
                 && other.mHeight == mHeight
+                && other.mBottomOffset == mBottomOffset
                 && other.passwordInput() == passwordInput()
                 && other.mClobberSettingsKey == mClobberSettingsKey
                 && other.mLanguageSwitchKeyEnabled == mLanguageSwitchKeyEnabled
@@ -170,11 +174,11 @@ public final class KeyboardId {
 
     @Override
     public String toString() {
-        return String.format(Locale.ROOT, "[%s %s:%s %dx%d %s %s%s%s%s%s%s %s]",
+        return String.format(Locale.ROOT, "[%s %s:%s %dx%d +%d %s %s%s%s%s%s%s %s]",
                 elementIdToName(mElementId),
                 mSubtype.getLocale(),
                 mSubtype.getKeyboardLayoutSet(),
-                mWidth, mHeight,
+                mWidth, mHeight, mBottomOffset,
                 modeName(mMode),
                 actionName(imeAction()),
                 (navigateNext() ? " navigateNext" : ""),
