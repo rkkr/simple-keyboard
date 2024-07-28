@@ -226,7 +226,7 @@ public final class KeyboardLayoutSet {
         }
 
         public Builder setKeyboardGeometry(final int keyboardWidth, final int keyboardHeight,
-                                           final int keyboardBottomOffset) {
+                final int keyboardBottomOffset) {
             mParams.mKeyboardWidth = keyboardWidth;
             mParams.mKeyboardHeight = keyboardHeight;
             mParams.mKeyboardBottomOffset = keyboardBottomOffset;

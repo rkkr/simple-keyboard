@@ -206,7 +206,7 @@ public final class ResourceUtils {
     }
 
     public static int getKeyboardBottomOffset(final Resources res,
-                                              final SettingsValues settingsValues) {
+            final SettingsValues settingsValues) {
         return res.getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT
                 ? (int)(settingsValues.mBottomOffsetPortrait * res.getDisplayMetrics().density)
                 : 0;

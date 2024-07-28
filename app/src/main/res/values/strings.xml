@@ -104,7 +104,7 @@
     <string translatable="false" name="abbreviation_unit_dp"><xliff:g id="DENSITY_INDEPENDENT_PIXELS">%d</xliff:g> dp</string>
 
     <string name="prefs_keyboard_height_settings">Keyboard height</string>
-    <string name="prefs_bottom_offset_portrait_settings">Bottom offset (portrait only)</string>
+    <string name="prefs_bottom_offset_portrait_settings">Bottom offset</string>
     <string name="keyboard_color">Set custom keyboard color</string>
     <string name="hide_special_chars">Hide special characters</string>
     <string name="hide_language_switch_key">Hide language switch key</string>
