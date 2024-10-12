@@ -60,6 +60,6 @@
     <string name="remove_language">Премахни език</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> клавиатурни оформления</string>
     <string name="change_keyboard">Смени клавиатурата</string>
-    <string name="privacy_policy">Privacy Policy</string>
-    <string name="license">License</string>
+    <string name="privacy_policy">Политика за поверителност</string>
+    <string name="license">Лиценз</string>
 </resources>
