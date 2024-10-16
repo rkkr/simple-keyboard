@@ -43,7 +43,7 @@
     <string name="prefs_keypress_sound_volume_settings">"Klahvivajutuse helitugevus"</string>
     <string name="prefs_key_longpress_timeout_settings">"Pika klahvivajutuse viide"</string>
     <string name="button_default">"Vaikeväärtus"</string>
-    <string name="prefs_keyboard_height_settings">Klavjatuuri kõrgus</string>
+    <string name="prefs_keyboard_height_settings">Klaviatuuri kõrgus</string>
     <string name="keyboard_color">Määrake kohandatud klaviatuuri värv</string>
     <string name="hide_special_chars">HPeida eri tähed</string>
     <string name="hide_language_switch_key">Peida keele vahetus nupp</string>
@@ -58,4 +58,6 @@
     <string name="remove_language">Eemalda keel</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> klavjatuuri paigutused</string>
     <string name="change_keyboard">Vaheta klavjatuuri</string>
+    <string name="privacy_policy">Privaatsus poliis</string>
+    <string name="license">Litsents</string>
 </resources>
