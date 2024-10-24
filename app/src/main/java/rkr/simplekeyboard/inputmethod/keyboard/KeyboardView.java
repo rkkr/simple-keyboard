@@ -94,7 +94,9 @@ public class KeyboardView extends View {
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
     public int mCustomColor = 0;
-    private int mSystemBarHeight = 0;
+    // Must be static to persist last known navbar height between View recreations
+    // as setOnApplyWindowInsetsListener is only invoked on layout changes
+    private static int mSystemBarHeight = 0;
 
     // The maximum key label width in the proportion to the key width.
     private static final float MAX_LABEL_RATIO = 0.90f;
