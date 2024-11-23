@@ -18,9 +18,7 @@ package rkr.simplekeyboard.inputmethod.latin;
 
 import android.inputmethodservice.InputMethodService;
 import android.os.SystemClock;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.style.CharacterStyle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.ExtractedText;
@@ -29,7 +27,6 @@ import android.view.inputmethod.InputConnection;
 
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
-import rkr.simplekeyboard.inputmethod.latin.common.UnicodeSurrogate;
 import rkr.simplekeyboard.inputmethod.latin.settings.SpacingAndPunctuations;
 import rkr.simplekeyboard.inputmethod.latin.utils.CapsModeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.DebugLogUtils;
@@ -85,7 +82,8 @@ public final class RichInputConnection {
      * This contains the committed text immediately preceding the cursor and the composing
      * text, if any. It is refreshed when the cursor moves by calling upon the TextView.
      */
-    private final StringBuilder mCommittedTextBeforeComposingText = new StringBuilder();
+    private final StringBuilder mTextBeforeCursor = new StringBuilder();
+    private final StringBuilder mTextAfterCursor = new StringBuilder();
 
     private final InputMethodService mParent;
     private InputConnection mIC;
@@ -110,7 +108,7 @@ public final class RichInputConnection {
         final ExtractedText et = mIC.getExtractedText(r, 0);
         final CharSequence beforeCursor = getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE,
                 0);
-        final StringBuilder internal = new StringBuilder(mCommittedTextBeforeComposingText);
+        final StringBuilder internal = new StringBuilder(mTextBeforeCursor);
         if (null == et || null == beforeCursor) return;
         final int actualLength = Math.min(beforeCursor.length(), internal.length());
         if (internal.length() > actualLength) {
@@ -173,12 +171,31 @@ public final class RichInputConnection {
      */
     public boolean resetCachesUponCursorMoveAndReturnSuccess(final int newSelStart,
             final int newSelEnd) {
+        final int oldSelStart = mExpectedSelStart;
         mExpectedSelStart = newSelStart;
         mExpectedSelEnd = newSelEnd;
-        final boolean didReloadTextSuccessfully = reloadTextCache();
-        if (!didReloadTextSuccessfully) {
-            Log.d(TAG, "Will try to retrieve text later.");
-            return false;
+
+        // Pointer moved left, copy to after cursor text
+        if (newSelStart < oldSelStart
+                && mTextBeforeCursor.length() >= oldSelStart - newSelStart) {
+            final int position = mTextBeforeCursor.length() + newSelStart - oldSelStart;
+            final String textToMove = mTextBeforeCursor.substring(position);
+            mTextAfterCursor.insert(0, textToMove);
+            mTextBeforeCursor.setLength(position);
+        // Pointer moved right, copy to before cursor text
+        } else if (newSelStart > oldSelStart
+                && mTextAfterCursor.length() >= newSelStart - oldSelStart ) {
+            final int position = newSelStart - oldSelStart;
+            final String textToMove = mTextAfterCursor.substring(0, position);
+            mTextBeforeCursor.append(textToMove);
+            mTextAfterCursor.delete(0, position);
+        // Cache copy failed and pointer moved, do a full refresh
+        } else if (newSelStart != oldSelStart) {
+            final boolean didReloadTextSuccessfully = reloadTextCache();
+            if (!didReloadTextSuccessfully) {
+                Log.d(TAG, "Will try to retrieve text later.");
+                return false;
+            }
         }
         return true;
     }
@@ -189,7 +206,8 @@ public final class RichInputConnection {
      * @return true if successful
      */
     private boolean reloadTextCache() {
-        mCommittedTextBeforeComposingText.setLength(0);
+        mTextBeforeCursor.setLength(0);
+        mTextAfterCursor.setLength(0);
         mIC = mParent.getCurrentInputConnection();
         // Call upon the inputconnection directly since our own method is using the cache, and
         // we want to refresh it.
@@ -206,7 +224,21 @@ public final class RichInputConnection {
             Log.e(TAG, "Unable to connect to the editor to retrieve text.");
             return false;
         }
-        mCommittedTextBeforeComposingText.append(textBeforeCursor);
+        mTextBeforeCursor.append(textBeforeCursor);
+
+        final CharSequence textAfterCursor = getTextAfterCursorAndDetectLaggyConnection(
+                OPERATION_RELOAD_TEXT_CACHE,
+                SLOW_INPUT_CONNECTION_ON_FULL_RELOAD_MS,
+                Constants.EDITOR_CONTENTS_CACHE_SIZE,
+                0 /* flags */);
+        if (null == textAfterCursor) {
+            // For some reason the app thinks we are not connected to it. This looks like a
+            // framework bug... Fall back to ground state and return false.
+            Log.e(TAG, "Unable to connect to the editor to retrieve text.");
+            return false;
+        }
+        mTextAfterCursor.append(textAfterCursor);
+
         return true;
     }
 
@@ -228,7 +260,7 @@ public final class RichInputConnection {
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
         if (DEBUG_BATCH_NESTING) checkBatchEdit();
         if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
-        mCommittedTextBeforeComposingText.append(text);
+        mTextBeforeCursor.append(text);
         // TODO: the following is exceedingly error-prone. Right now when the cursor is in the
         // middle of the composing word mComposingText only holds the part of the composing text
         // that is before the cursor, so this actually works, but it's terribly confusing. Fix this.
@@ -273,7 +305,7 @@ public final class RichInputConnection {
         // heavy pressing of delete, for example DEFAULT_TEXT_CACHE_SIZE - 5 times or so.
         // getCapsMode should be updated to be able to return a "not enough info" result so that
         // we can get more context only when needed.
-        if (TextUtils.isEmpty(mCommittedTextBeforeComposingText) && 0 != mExpectedSelStart) {
+        if (TextUtils.isEmpty(mTextBeforeCursor) && 0 != mExpectedSelStart) {
             if (!reloadTextCache()) {
                 Log.w(TAG, "Unable to connect to the editor. "
                         + "Setting caps mode without knowing text.");
@@ -283,18 +315,18 @@ public final class RichInputConnection {
         // never blocks or initiates IPC.
         // TODO: don't call #toString() here. Instead, all accesses to
         // mCommittedTextBeforeComposingText should be done on the main thread.
-        return CapsModeUtils.getCapsMode(mCommittedTextBeforeComposingText.toString(), inputType,
+        return CapsModeUtils.getCapsMode(mTextBeforeCursor.toString(), inputType,
                 spacingAndPunctuations);
     }
 
     public int getCodePointBeforeCursor() {
-        final int length = mCommittedTextBeforeComposingText.length();
+        final int length = mTextBeforeCursor.length();
         if (length < 1) return Constants.NOT_A_CODE;
-        return Character.codePointBefore(mCommittedTextBeforeComposingText, length);
+        return Character.codePointBefore(mTextBeforeCursor, length);
     }
 
     public CharSequence getTextBeforeCursor(final int n, final int flags) {
-        final int cachedLength = mCommittedTextBeforeComposingText.length();
+        final int cachedLength = mTextBeforeCursor.length();
         // If we have enough characters to satisfy the request, or if we have all characters in
         // the text field, then we can return the cached version right away.
         // However, if we don't have an expected cursor position, then we should always
@@ -302,7 +334,7 @@ public final class RichInputConnection {
         // test for this explicitly)
         if (INVALID_CURSOR_POSITION != mExpectedSelStart
                 && (cachedLength >= n || cachedLength >= mExpectedSelStart)) {
-            final StringBuilder s = new StringBuilder(mCommittedTextBeforeComposingText);
+            final StringBuilder s = new StringBuilder(mTextBeforeCursor);
             // We call #toString() here to create a temporary object.
             // In some situations, this method is called on a worker thread, and it's possible
             // the main thread touches the contents of mComposingText while this worker thread
@@ -330,6 +362,7 @@ public final class RichInputConnection {
 
     private CharSequence getTextBeforeCursorAndDetectLaggyConnection(
             final int operation, final long timeout, final int n, final int flags) {
+        Log.w(TAG, "Fetching text before cursor using RPC.");
         mIC = mParent.getCurrentInputConnection();
         if (!isConnected()) {
             return null;
@@ -342,6 +375,7 @@ public final class RichInputConnection {
 
     private CharSequence getTextAfterCursorAndDetectLaggyConnection(
             final int operation, final long timeout, final int n, final int flags) {
+        Log.w(TAG, "Fetching text after cursor using RPC.");
         mIC = mParent.getCurrentInputConnection();
         if (!isConnected()) {
             return null;
@@ -379,36 +413,31 @@ public final class RichInputConnection {
         if (DEBUG_BATCH_NESTING) checkBatchEdit();
         if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
             if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
-            // This method is only called for enter or backspace when speaking to old applications
-            // (target SDK <= 15 (Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)), or for digits.
-            // When talking to new applications we never use this method because it's inherently
-            // racy and has unpredictable results, but for backward compatibility we continue
-            // sending the key events for only Enter and Backspace because some applications
-            // mistakenly catch them to do some stuff.
             switch (keyEvent.getKeyCode()) {
             case KeyEvent.KEYCODE_ENTER:
-                mCommittedTextBeforeComposingText.append("\n");
+                mTextBeforeCursor.append("\n");
                 if (hasCursorPosition()) {
                     mExpectedSelStart += 1;
                     mExpectedSelEnd = mExpectedSelStart;
                 }
                 break;
             case KeyEvent.KEYCODE_DEL:
-                if (mCommittedTextBeforeComposingText.length() > 0) {
-                    mCommittedTextBeforeComposingText.delete(
-                            mCommittedTextBeforeComposingText.length() - 1,
-                            mCommittedTextBeforeComposingText.length());
-                }
-
-                if (mExpectedSelStart > 0 && mExpectedSelStart == mExpectedSelEnd) {
-                    // TODO: Handle surrogate pairs.
-                    mExpectedSelStart -= 1;
+                if (mExpectedSelStart == mExpectedSelEnd) {
+                    // No selection, delete one char before cursor
+                    mTextBeforeCursor.setLength(mTextBeforeCursor.length() - 1);
+                    if (mExpectedSelStart > 0) {
+                        // TODO: Handle surrogate pairs.
+                        mExpectedSelStart -= 1;
+                    }
+                } else {
+                    // With selection, delete after cursor
+                    mTextAfterCursor.delete(0, mExpectedSelEnd - mExpectedSelStart);
                 }
                 mExpectedSelEnd = mExpectedSelStart;
                 break;
             case KeyEvent.KEYCODE_UNKNOWN:
                 if (null != keyEvent.getCharacters()) {
-                    mCommittedTextBeforeComposingText.append(keyEvent.getCharacters());
+                    mTextBeforeCursor.append(keyEvent.getCharacters());
                     if (hasCursorPosition()) {
                         mExpectedSelStart += keyEvent.getCharacters().length();
                         mExpectedSelEnd = mExpectedSelStart;
@@ -417,7 +446,7 @@ public final class RichInputConnection {
                 break;
             default:
                 final String text = StringUtils.newSingleCodePointString(keyEvent.getUnicodeChar());
-                mCommittedTextBeforeComposingText.append(text);
+                mTextBeforeCursor.append(text);
                 if (hasCursorPosition()) {
                     mExpectedSelStart += text.length();
                     mExpectedSelEnd = mExpectedSelStart;
@@ -452,15 +481,9 @@ public final class RichInputConnection {
         }
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
 
-        mExpectedSelStart = start;
-        mExpectedSelEnd = end;
         if (isConnected()) {
-            final boolean isIcValid = mIC.setSelection(start, end);
-            if (!isIcValid) {
-                return;
-            }
+            mIC.setSelection(start, end);
         }
-        reloadTextCache();
     }
 
     public int getExpectedSelectionStart() {
