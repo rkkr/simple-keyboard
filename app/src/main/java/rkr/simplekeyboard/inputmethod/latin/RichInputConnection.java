@@ -87,12 +87,6 @@ public final class RichInputConnection {
      */
     private final StringBuilder mCommittedTextBeforeComposingText = new StringBuilder();
 
-    /**
-     * This variable is a temporary object used in {@link #commitText(CharSequence,int)}
-     * to avoid object creation.
-     */
-    private SpannableStringBuilder mTempObjectForCommitText = new SpannableStringBuilder();
-
     private final InputMethodService mParent;
     private InputConnection mIC;
     private int mNestLevel;
@@ -243,28 +237,7 @@ public final class RichInputConnection {
             mExpectedSelEnd = mExpectedSelStart;
         }
         if (isConnected()) {
-            mTempObjectForCommitText.clear();
-            mTempObjectForCommitText.append(text);
-            final CharacterStyle[] spans = mTempObjectForCommitText.getSpans(
-                    0, text.length(), CharacterStyle.class);
-            for (final CharacterStyle span : spans) {
-                final int spanStart = mTempObjectForCommitText.getSpanStart(span);
-                final int spanEnd = mTempObjectForCommitText.getSpanEnd(span);
-                final int spanFlags = mTempObjectForCommitText.getSpanFlags(span);
-                // We have to adjust the end of the span to include an additional character.
-                // This is to avoid splitting a unicode surrogate pair.
-                // See rkr.simplekeyboard.inputmethod.latin.common.Constants.UnicodeSurrogate
-                // See https://b.corp.google.com/issues/19255233
-                if (0 < spanEnd && spanEnd < mTempObjectForCommitText.length()) {
-                    final char spanEndChar = mTempObjectForCommitText.charAt(spanEnd - 1);
-                    final char nextChar = mTempObjectForCommitText.charAt(spanEnd);
-                    if (UnicodeSurrogate.isLowSurrogate(spanEndChar)
-                            && UnicodeSurrogate.isHighSurrogate(nextChar)) {
-                        mTempObjectForCommitText.setSpan(span, spanStart, spanEnd + 1, spanFlags);
-                    }
-                }
-            }
-            mIC.commitText(mTempObjectForCommitText, newCursorPosition);
+            mIC.commitText(text, newCursorPosition);
         }
     }
 
