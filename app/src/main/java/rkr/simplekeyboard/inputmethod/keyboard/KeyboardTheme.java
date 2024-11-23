@@ -90,7 +90,6 @@ public final class KeyboardTheme {
 
     public static String getKeyboardThemeName(final int themeId) {
         final KeyboardTheme theme = searchKeyboardThemeById(themeId);
-        Log.i("Getting theme ID", Integer.toString(themeId));
         return theme.mThemeName;
     }
 

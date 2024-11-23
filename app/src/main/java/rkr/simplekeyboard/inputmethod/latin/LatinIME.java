@@ -566,8 +566,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // not attempt recorrection. This is true even with a hardware keyboard connected: if the
         // view is not displayed we have no means of showing suggestions anyway, and if it is then
         // we want to show suggestions anyway.
-        if (isInputViewShown()
-                && mInputLogic.onUpdateSelection(newSelStart, newSelEnd)) {
+        if (isInputViewShown() && mInputLogic.onUpdateSelection(newSelStart, newSelEnd)) {
             mKeyboardSwitcher.requestUpdatingShiftState(getCurrentAutoCapsState(),
                     getCurrentRecapitalizeState());
         }
