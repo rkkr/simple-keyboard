@@ -364,12 +364,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         loadKeyboard();
     }
 
-    @Override
-    public void onTextBeforeCursorLoad() {
-        mKeyboardSwitcher.requestUpdatingShiftState(getCurrentAutoCapsState(),
-                getCurrentRecapitalizeState());
-    }
-
     void onStartInputInternal(final EditorInfo editorInfo, final boolean restarting) {
         super.onStartInput(editorInfo, restarting);
 
