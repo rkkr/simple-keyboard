@@ -16,24 +16,18 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
-import android.inputmethodservice.InputMethodService;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.inputmethod.ExtractedText;
-import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
 
 import java.util.concurrent.Executors;
 
-import rkr.simplekeyboard.inputmethod.keyboard.KeyboardActionListener;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.settings.SpacingAndPunctuations;
 import rkr.simplekeyboard.inputmethod.latin.utils.CapsModeUtils;
-import rkr.simplekeyboard.inputmethod.latin.utils.DebugLogUtils;
 
 /**
  * Enrichment class for InputConnection to simplify interaction and add functionality.
@@ -45,9 +39,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.DebugLogUtils;
  */
 public final class RichInputConnection {
     private static final String TAG = "RichInputConnection";
-    private static final boolean DBG = false;
-    private static final boolean DEBUG_PREVIOUS_TEXT = false;
-    private static final boolean DEBUG_BATCH_NESTING = false;
     private static final int INVALID_CURSOR_POSITION = -1;
 
     /**
@@ -59,7 +50,6 @@ public final class RichInputConnection {
      */
     private static final long SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS = 200;
 
-    private static final int OPERATION_GET_TEXT_BEFORE_CURSOR = 0;
     private static final int OPERATION_GET_TEXT_AFTER_CURSOR = 1;
     private static final int OPERATION_RELOAD_TEXT_CACHE = 3;
     private static final String[] OPERATION_NAMES = new String[] {
@@ -89,15 +79,12 @@ public final class RichInputConnection {
     private final StringBuilder mTextBeforeCursor = new StringBuilder();
     private final StringBuilder mTextAfterCursor = new StringBuilder();
 
-    private final InputMethodService mParent;
+    private final LatinIME mLatinIME;
     private InputConnection mIC;
-    private final KeyboardActionListener mListener;
     private int mNestLevel;
 
-    public RichInputConnection(final InputMethodService parent,
-                               final KeyboardActionListener listener) {
-        mParent = parent;
-        mListener = listener;
+    public RichInputConnection(final LatinIME latinIME) {
+        mLatinIME = latinIME;
         mIC = null;
         mNestLevel = 0;
     }
@@ -106,51 +93,15 @@ public final class RichInputConnection {
         return mIC != null;
     }
 
-    private void checkConsistencyForDebug() {
-        final ExtractedTextRequest r = new ExtractedTextRequest();
-        r.hintMaxChars = 0;
-        r.hintMaxLines = 0;
-        r.token = 1;
-        r.flags = 0;
-        final ExtractedText et = mIC.getExtractedText(r, 0);
-        final CharSequence beforeCursor = getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE,
-                0);
-        final StringBuilder internal = new StringBuilder(mTextBeforeCursor);
-        if (null == et || null == beforeCursor) return;
-        final int actualLength = Math.min(beforeCursor.length(), internal.length());
-        if (internal.length() > actualLength) {
-            internal.delete(0, internal.length() - actualLength);
-        }
-        final String reference = (beforeCursor.length() <= actualLength) ? beforeCursor.toString()
-                : beforeCursor.subSequence(beforeCursor.length() - actualLength,
-                        beforeCursor.length()).toString();
-        if (et.selectionStart != mExpectedSelStart
-                || !(reference.equals(internal.toString()))) {
-            final String context = "Expected selection start = " + mExpectedSelStart
-                    + "\nActual selection start = " + et.selectionStart
-                    + "\nExpected text = " + internal.length() + " " + internal
-                    + "\nActual text = " + reference.length() + " " + reference;
-            ((LatinIME)mParent).debugDumpStateAndCrashWithException(context);
-        } else {
-            Log.e(TAG, DebugLogUtils.getStackTrace(2));
-            Log.e(TAG, "Exp <> Actual : " + mExpectedSelStart + " <> " + et.selectionStart);
-        }
-    }
-
     public void beginBatchEdit() {
         if (++mNestLevel == 1) {
-            mIC = mParent.getCurrentInputConnection();
+            mIC = mLatinIME.getCurrentInputConnection();
             if (isConnected()) {
                 mIC.beginBatchEdit();
             }
         } else {
-            if (DBG) {
-                throw new RuntimeException("Nest level too deep");
-            }
             Log.e(TAG, "Nest level too deep : " + mNestLevel);
         }
-        if (DEBUG_BATCH_NESTING) checkBatchEdit();
-        if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
     }
 
     public void endBatchEdit() {
@@ -158,7 +109,6 @@ public final class RichInputConnection {
         if (--mNestLevel == 0 && isConnected()) {
             mIC.endBatchEdit();
         }
-        if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
     }
 
     /**
@@ -172,31 +122,20 @@ public final class RichInputConnection {
      *
      * @param newSelStart the new position of the selection start, as received from the system.
      * @param newSelEnd the new position of the selection end, as received from the system.
-     * @return true if we were able to connect to the editor successfully, false otherwise. When
-     *   this method returns false, the caches could not be correctly refreshed so they were only
-     *   reset: the caller should try again later to return to normal operation.
      */
-    public boolean resetCachesUponCursorMoveAndReturnSuccess(final int newSelStart,
+    public void resetCachesUponCursorMove(final int newSelStart,
             final int newSelEnd) {
         mExpectedSelStart = newSelStart;
         mExpectedSelEnd = newSelEnd;
-        final boolean didReloadTextSuccessfully = reloadTextCache();
-        if (!didReloadTextSuccessfully) {
-            Log.d(TAG, "Will try to retrieve text later.");
-            return false;
-        }
-        return true;
+        reloadTextCache();
     }
 
     /**
      * Reload the cached text from the InputConnection.
-     *
-     * @return true if successful
      */
-    private boolean reloadTextCache() {
+    private void reloadTextCache() {
         // Call upon the inputconnection directly since our own method is using the cache, and
         // we want to refresh it.
-        final Handler handler = new Handler();
         Executors.newSingleThreadExecutor().execute(() -> {
             mTextBeforeCursor.setLength(0);
             final CharSequence textBeforeCursor = getTextBeforeCursorAndDetectLaggyConnection(
@@ -213,18 +152,8 @@ public final class RichInputConnection {
                 return;
             }
             mTextBeforeCursor.append(textBeforeCursor);
-            handler.post(() -> mListener.onTextBeforeCursorLoad());
+            mLatinIME.mHandler.postUpdateShiftState();
         });
-
-        return true;
-    }
-
-    private void checkBatchEdit() {
-        if (mNestLevel != 1) {
-            // TODO: exception instead
-            Log.e(TAG, "Batch edit level incorrect : " + mNestLevel);
-            Log.e(TAG, DebugLogUtils.getStackTrace(4));
-        }
     }
 
     /**
@@ -235,8 +164,6 @@ public final class RichInputConnection {
      */
     public void commitText(final CharSequence text, final int newCursorPosition) {
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
-        if (DEBUG_BATCH_NESTING) checkBatchEdit();
-        if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
         mTextBeforeCursor.append(text);
         // TODO: the following is exceedingly error-prone. Right now when the cursor is in the
         // middle of the composing word mComposingText only holds the part of the composing text
@@ -273,20 +200,12 @@ public final class RichInputConnection {
      * @return the caps modes that should be on as a set of bits
      */
     public int getCursorCapsMode(final int inputType, final SpacingAndPunctuations spacingAndPunctuations) {
-        mIC = mParent.getCurrentInputConnection();
+        mIC = mLatinIME.getCurrentInputConnection();
         if (!isConnected()) {
             return Constants.TextUtils.CAP_MODE_OFF;
         }
-        // TODO: this will generally work, but there may be cases where the buffer contains SOME
-        // information but not enough to determine the caps mode accurately. This may happen after
-        // heavy pressing of delete, for example DEFAULT_TEXT_CACHE_SIZE - 5 times or so.
-        // getCapsMode should be updated to be able to return a "not enough info" result so that
-        // we can get more context only when needed.
         if (TextUtils.isEmpty(mTextBeforeCursor) && 0 != mExpectedSelStart) {
-            if (!reloadTextCache()) {
-                Log.w(TAG, "Unable to connect to the editor. "
-                        + "Setting caps mode without knowing text.");
-            }
+            Log.w(TAG, "Unable to get Caps mode as mTextBeforeCursor is empty.");
         }
         // This never calls InputConnection#getCapsMode - in fact, it's a static method that
         // never blocks or initiates IPC.
@@ -336,7 +255,7 @@ public final class RichInputConnection {
 
     private CharSequence getTextBeforeCursorAndDetectLaggyConnection(
             final int operation, final long timeout, final int n, final int flags) {
-        mIC = mParent.getCurrentInputConnection();
+        mIC = mLatinIME.getCurrentInputConnection();
         if (!isConnected()) {
             return null;
         }
@@ -348,7 +267,7 @@ public final class RichInputConnection {
 
     private CharSequence getTextAfterCursorAndDetectLaggyConnection(
             final int operation, final long timeout, final int n, final int flags) {
-        mIC = mParent.getCurrentInputConnection();
+        mIC = mLatinIME.getCurrentInputConnection();
         if (!isConnected()) {
             return null;
         }
@@ -374,7 +293,7 @@ public final class RichInputConnection {
     }
 
     public void performEditorAction(final int actionId) {
-        mIC = mParent.getCurrentInputConnection();
+        mIC = mLatinIME.getCurrentInputConnection();
         if (isConnected()) {
             mIC.performEditorAction(actionId);
         }
@@ -382,9 +301,7 @@ public final class RichInputConnection {
 
     public void sendKeyEvent(final KeyEvent keyEvent) {
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
-        if (DEBUG_BATCH_NESTING) checkBatchEdit();
         if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
-            if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
             // This method is only called for enter or backspace when speaking to old applications
             // (target SDK <= 15 (Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)), or for digits.
             // When talking to new applications we never use this method because it's inherently
@@ -443,13 +360,10 @@ public final class RichInputConnection {
      *
      * @param start the character index where the selection should start.
      * @param end the character index where the selection should end.
-     * @return Returns true on success, false on failure: either the input connection is no longer
      * valid when setting the selection or when retrieving the text cache at that point, or
      * invalid arguments were passed.
      */
     public void setSelection(int start, int end) {
-        if (DEBUG_BATCH_NESTING) checkBatchEdit();
-        if (DEBUG_PREVIOUS_TEXT) checkConsistencyForDebug();
         if (start < 0 || end < 0) {
             return;
         }

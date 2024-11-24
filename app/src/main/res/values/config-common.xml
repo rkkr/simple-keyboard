@@ -19,8 +19,6 @@
 -->
 
 <resources>
-    <integer name="config_delay_in_milliseconds_to_update_shift_state">100</integer>
-
     <integer name="config_key_repeat_start_timeout">400</integer>
     <integer name="config_key_repeat_interval">50</integer>
 

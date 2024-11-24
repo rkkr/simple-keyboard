@@ -55,7 +55,7 @@ public final class InputLogic {
      */
     public InputLogic(final LatinIME latinIME) {
         mLatinIME = latinIME;
-        mConnection = new RichInputConnection(latinIME, latinIME);
+        mConnection = new RichInputConnection(latinIME);
     }
 
     /**
@@ -481,7 +481,7 @@ public final class InputLogic {
      */
     // TODO: how is this different from startInput ?!
     private void resetEntireInputState(final int newSelStart, final int newSelEnd) {
-        mConnection.resetCachesUponCursorMoveAndReturnSuccess(newSelStart, newSelEnd);
+        mConnection.resetCachesUponCursorMove(newSelStart, newSelEnd);
     }
 
     /**
@@ -525,30 +525,5 @@ public final class InputLogic {
         }
 
         mConnection.commitText(StringUtils.newSingleCodePointString(codePoint), 1);
-    }
-
-    /**
-     * Retry resetting caches in the rich input connection.
-     *
-     * When the editor can't be accessed we can't reset the caches, so we schedule a retry.
-     * This method handles the retry, and re-schedules a new retry if we still can't access.
-     * We only retry up to 5 times before giving up.
-     *
-     * @param tryResumeSuggestions Whether we should resume suggestions or not.
-     * @param remainingTries How many times we may try again before giving up.
-     * @return whether true if the caches were successfully reset, false otherwise.
-     */
-    public boolean retryResetCachesAndReturnSuccess(final boolean tryResumeSuggestions,
-            final int remainingTries, final LatinIME.UIHandler handler) {
-        if (!mConnection.resetCachesUponCursorMoveAndReturnSuccess(
-                mConnection.getExpectedSelectionStart(), mConnection.getExpectedSelectionEnd())) {
-            if (0 < remainingTries) {
-                handler.postResetCaches(tryResumeSuggestions, remainingTries - 1);
-                return false;
-            }
-            // If remainingTries is 0, we should stop waiting for new tries, however we'll still
-            // return true as we need to perform other tasks (for example, loading the keyboard).
-        }
-        return true;
     }
 }
