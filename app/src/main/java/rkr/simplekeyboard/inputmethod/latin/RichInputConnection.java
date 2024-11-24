@@ -20,7 +20,6 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.SurroundingText;
 
@@ -113,39 +112,6 @@ public final class RichInputConnection {
         mExpectedSelStart = newSelStart;
         mExpectedSelEnd = newSelEnd;
         reloadTextCache();
-    }
-
-    public void resetCachesUponStartInput(final EditorInfo editorInfo) {
-        mTextBeforeCursor.setLength(0);
-        mTextAfterCursor.setLength(0);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            final CharSequence textBeforeCursor = editorInfo.getInitialTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
-            final CharSequence textAfterCursor = editorInfo.getInitialTextAfterCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
-            if (null != textBeforeCursor && null != textAfterCursor) {
-                mExpectedSelStart = editorInfo.initialSelStart;
-                mExpectedSelEnd = editorInfo.initialSelEnd;
-                mTextBeforeCursor.append(textBeforeCursor);
-                mTextAfterCursor.append(textAfterCursor);
-                return;
-            } else {
-                Log.e(TAG, "Unable get text from editorInfo.");
-            }
-        }
-
-        mExpectedSelStart = INVALID_CURSOR_POSITION;
-        mExpectedSelEnd = INVALID_CURSOR_POSITION;
-    }
-
-    public void resetCachesUponStartInputView(final EditorInfo editorInfo) {
-        // editorInfo.initialSelStart and editorInfo.initialSelEnd are not updated when reopening
-        // the keyboard. Only read them on first call.
-        if (mExpectedSelStart == INVALID_CURSOR_POSITION || mExpectedSelEnd == INVALID_CURSOR_POSITION) {
-            mExpectedSelStart = editorInfo.initialSelStart;
-            mExpectedSelEnd = editorInfo.initialSelEnd;
-
-            reloadTextCache();
-        }
     }
 
     /**

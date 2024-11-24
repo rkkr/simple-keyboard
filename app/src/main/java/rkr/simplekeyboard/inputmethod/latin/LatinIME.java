@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioManager;
@@ -363,7 +364,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             return;
         }
         mRichImm.setCurrentSubtype(primaryHintLocale);
-        mInputLogic.mConnection.resetCachesUponStartInput(editorInfo);
     }
 
     void onStartInputViewInternal(final EditorInfo editorInfo, final boolean restarting) {
@@ -396,7 +396,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     + ", word caps = "
                     + ((editorInfo.inputType & InputType.TYPE_TEXT_FLAG_CAP_WORDS) != 0));
         }
-        Log.i(TAG, "Starting input view. Cursor position = "
+        Log.i(TAG, "Starting input. Cursor position = "
                 + editorInfo.initialSelStart + "," + editorInfo.initialSelEnd);
 
         // In landscape mode, this method gets called without the input view being created.
@@ -425,7 +425,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // it can adjust its combiners if needed.
             mInputLogic.startInput();
 
-            mInputLogic.mConnection.resetCachesUponStartInputView(editorInfo);
+            mInputLogic.mConnection.resetCachesUponCursorMove(
+                    editorInfo.initialSelStart, editorInfo.initialSelEnd);
         }
 
         if (isDifferentTextField ||
@@ -494,11 +495,17 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             final int composingSpanStart, final int composingSpanEnd) {
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
                 composingSpanStart, composingSpanEnd);
-        Log.i(TAG, "Selection updated. Cursor position = " + newSelStart + "," + newSelEnd);
+        if (DebugFlags.DEBUG_ENABLED) {
+            Log.i(TAG, "onUpdateSelection: oss=" + oldSelStart + ", ose=" + oldSelEnd
+                    + ", nss=" + newSelStart + ", nse=" + newSelEnd
+                    + ", cs=" + composingSpanStart + ", ce=" + composingSpanEnd);
+        }
 
-        // This is invoked before onStartInputView
-        // Don't call selection update events if onStartInputView wasn't called before
-        if (mInputView != null) {
+        // This call happens whether our view is displayed or not, but if it's not then we should
+        // not attempt recorrection. This is true even with a hardware keyboard connected: if the
+        // view is not displayed we have no means of showing suggestions anyway, and if it is then
+        // we want to show suggestions anyway.
+        if (isInputViewShown()) {
             mInputLogic.onUpdateSelection(newSelStart, newSelEnd);
         }
     }
