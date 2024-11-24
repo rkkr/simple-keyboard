@@ -71,24 +71,6 @@ public final class StringUtils {
         return containsInArray(text, extraValues.split(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT));
     }
 
-    public static String removeFromCommaSplittableTextIfExists(final String text,
-            final String extraValues) {
-        if (TextUtils.isEmpty(extraValues)) {
-            return EMPTY_STRING;
-        }
-        final String[] elements = extraValues.split(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT);
-        if (!containsInArray(text, elements)) {
-            return extraValues;
-        }
-        final ArrayList<String> result = new ArrayList<>(elements.length - 1);
-        for (final String element : elements) {
-            if (!text.equals(element)) {
-                result.add(element);
-            }
-        }
-        return TextUtils.join(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT, result);
-    }
-
     public static String capitalizeFirstCodePoint(final String s,
             final Locale locale) {
         if (s.length() <= 1) {

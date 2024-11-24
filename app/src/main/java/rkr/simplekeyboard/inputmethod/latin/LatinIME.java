@@ -47,7 +47,6 @@ import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.EditorInfoCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils;
@@ -107,14 +106,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
         public UIHandler(final LatinIME ownerInstance) {
             super(ownerInstance);
-        }
-
-        public void onCreate() {
-            final LatinIME latinIme = getOwnerInstance();
-            if (latinIme == null) {
-                return;
-            }
-            final Resources res = latinIme.getResources();
         }
 
         @Override
@@ -268,8 +259,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         KeyboardSwitcher.init(this);
         AudioAndHapticFeedbackManager.init(this);
         super.onCreate();
-
-        mHandler.onCreate();
 
         // TODO: Resolve mutual dependencies of {@link #loadSettings()} and
         // {@link #resetDictionaryFacilitatorIfNecessary()}.
@@ -516,9 +505,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // not attempt recorrection. This is true even with a hardware keyboard connected: if the
         // view is not displayed we have no means of showing suggestions anyway, and if it is then
         // we want to show suggestions anyway.
-        if (isInputViewShown() && mInputLogic.onUpdateSelection(newSelStart, newSelEnd)) {
-            //mKeyboardSwitcher.requestUpdatingShiftState(getCurrentAutoCapsState(),
-            //        getCurrentRecapitalizeState());
+        if (isInputViewShown()) {
+            mInputLogic.onUpdateSelection(newSelStart, newSelEnd);
         }
     }
 
@@ -883,14 +871,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-    }
-
-    public void debugDumpStateAndCrashWithException(final String context) {
-        final SettingsValues settingsValues = mSettings.getCurrent();
-        final StringBuilder s = new StringBuilder(settingsValues.toString());
-        s.append("\nAttributes : ").append(settingsValues.mInputAttributes)
-                .append("\nContext : ").append(context);
-        throw new RuntimeException(s.toString());
     }
 
     @Override

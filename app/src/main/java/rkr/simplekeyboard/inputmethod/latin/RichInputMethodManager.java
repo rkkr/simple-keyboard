@@ -423,14 +423,6 @@ public class RichInputMethodManager {
     }
 
     /**
-     * Get all of the enabled languages.
-     * @return the enabled languages.
-     */
-    public Set<Locale> getEnabledLocales() {
-        return mSubtypeList.getAllLocales();
-    }
-
-    /**
      * Get all of the enabled subtypes for language.
      * @param locale filter by Locale.
      * @return the enabled subtypes.

@@ -101,16 +101,14 @@ public final class InputLogic {
      * do the necessary adjustments.
      * @param newSelStart new selection start
      * @param newSelEnd new selection end
-     * @return whether the cursor has moved as a result of user interaction.
      */
-    public boolean onUpdateSelection(final int newSelStart, final int newSelEnd) {
+    public void onUpdateSelection(final int newSelStart, final int newSelEnd) {
         resetEntireInputState(newSelStart, newSelEnd);
 
         // The cursor has been moved : we now accept to perform recapitalization
         mRecapitalizeStatus.enable();
         // Stop the last recapitalization, if started.
         mRecapitalizeStatus.stop();
-        return true;
     }
 
     /**
@@ -178,7 +176,7 @@ public final class InputLogic {
                 // Backspace is a functional key, but it affects the contents of the editor.
                 break;
             case Constants.CODE_SHIFT:
-                performRecapitalization(inputTransaction.mSettingsValues);
+                performRecapitalization();
                 inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
                 break;
             case Constants.CODE_CAPSLOCK:
@@ -326,9 +324,8 @@ public final class InputLogic {
 
     /**
      * Performs a recapitalization event.
-     * @param settingsValues The current settings values.
      */
-    private void performRecapitalization(final SettingsValues settingsValues) {
+    private void performRecapitalization() {
         if (!mConnection.hasSelection() || !mRecapitalizeStatus.mIsEnabled()) {
             return; // No selection or recapitalize is disabled for now
         }

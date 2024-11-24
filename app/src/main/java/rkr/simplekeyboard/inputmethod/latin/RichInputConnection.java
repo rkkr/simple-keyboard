@@ -16,7 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
-import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;

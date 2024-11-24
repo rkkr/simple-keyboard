@@ -141,6 +141,7 @@ public final class KeyboardState {
     private static final int SHIFT_LOCK_SHIFTED = 3;
 
     public void onSaveKeyboardState() {
+        // TODO: this is not used
         final SavedKeyboardState state = mSavedKeyboardState;
         state.mIsAlphabetMode = mIsAlphabetMode;
         if (mIsAlphabetMode) {
