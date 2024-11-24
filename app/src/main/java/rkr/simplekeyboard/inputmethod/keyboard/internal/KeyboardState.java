@@ -92,16 +92,12 @@ public final class KeyboardState {
     private final SavedKeyboardState mSavedKeyboardState = new SavedKeyboardState();
 
     static final class SavedKeyboardState {
-        public boolean mIsValid;
         public boolean mIsAlphabetMode;
         public boolean mIsAlphabetShiftLocked;
         public int mShiftMode;
 
         @Override
         public String toString() {
-            if (!mIsValid) {
-                return "INVALID";
-            }
             if (mIsAlphabetMode) {
                 return mIsAlphabetShiftLocked ? "ALPHABET_SHIFT_LOCKED"
                         : "ALPHABET_" + shiftModeToString(mShiftMode);
@@ -125,13 +121,7 @@ public final class KeyboardState {
         mPrevSymbolsKeyboardWasShifted = false;
         mShiftKeyState.onRelease();
         mSymbolKeyState.onRelease();
-        if (mSavedKeyboardState.mIsValid) {
-            onRestoreKeyboardState(autoCapsFlags, recapitalizeMode);
-            mSavedKeyboardState.mIsValid = false;
-        } else {
-            // Reset keyboard to alphabet mode.
-            setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
-        }
+        setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
     }
 
     // Constants for {@link SavedKeyboardState#mShiftMode} and {@link #setShifted(int)}.
@@ -139,47 +129,6 @@ public final class KeyboardState {
     private static final int MANUAL_SHIFT = 1;
     private static final int AUTOMATIC_SHIFT = 2;
     private static final int SHIFT_LOCK_SHIFTED = 3;
-
-    public void onSaveKeyboardState() {
-        // TODO: this is not used
-        final SavedKeyboardState state = mSavedKeyboardState;
-        state.mIsAlphabetMode = mIsAlphabetMode;
-        if (mIsAlphabetMode) {
-            state.mIsAlphabetShiftLocked = mAlphabetShiftState.isShiftLocked();
-            state.mShiftMode = mAlphabetShiftState.isAutomaticShifted() ? AUTOMATIC_SHIFT
-                    : (mAlphabetShiftState.isShiftedOrShiftLocked() ? MANUAL_SHIFT : UNSHIFT);
-        } else {
-            state.mIsAlphabetShiftLocked = mPrevMainKeyboardWasShiftLocked;
-            state.mShiftMode = mIsSymbolShifted ? MANUAL_SHIFT : UNSHIFT;
-        }
-        state.mIsValid = true;
-        if (DEBUG_EVENT) {
-            Log.d(TAG, "onSaveKeyboardState: saved=" + state + " " + this);
-        }
-    }
-
-    private void onRestoreKeyboardState(final int autoCapsFlags, final int recapitalizeMode) {
-        final SavedKeyboardState state = mSavedKeyboardState;
-        if (DEBUG_EVENT) {
-            Log.d(TAG, "onRestoreKeyboardState: saved=" + state
-                    + " " + stateToString(autoCapsFlags, recapitalizeMode));
-        }
-        mPrevMainKeyboardWasShiftLocked = state.mIsAlphabetShiftLocked;
-        if (state.mIsAlphabetMode) {
-            setAlphabetKeyboard(autoCapsFlags, recapitalizeMode);
-            setShiftLocked(state.mIsAlphabetShiftLocked);
-            if (!state.mIsAlphabetShiftLocked) {
-                setShifted(state.mShiftMode);
-            }
-            return;
-        }
-        // Symbol mode
-        if (state.mShiftMode == MANUAL_SHIFT) {
-            setSymbolsShiftedKeyboard();
-        } else {
-            setSymbolsKeyboard();
-        }
-    }
 
     private void setShifted(final int shiftMode) {
         if (DEBUG_INTERNAL_ACTION) {
