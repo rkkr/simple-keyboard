@@ -16,10 +16,12 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.SurroundingText;
 
 import java.util.concurrent.Executors;
 
@@ -123,26 +125,46 @@ public final class RichInputConnection {
             return;
         }
         Executors.newSingleThreadExecutor().execute(() -> {
-            final CharSequence textBeforeCursor = mIC.getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
-            mTextBeforeCursor.setLength(0);
-            if (null == textBeforeCursor) {
-                mExpectedSelStart = INVALID_CURSOR_POSITION;
-                mExpectedSelEnd = INVALID_CURSOR_POSITION;
-                Log.e(TAG, "Unable get text before cursor.");
-                return;
-            }
-            mTextBeforeCursor.append(textBeforeCursor);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                final SurroundingText textAroundCursor =
+                        mIC.getSurroundingText(Constants.EDITOR_CONTENTS_CACHE_SIZE, Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
+                mTextBeforeCursor.setLength(0);
+                mTextAfterCursor.setLength(0);
+                if (null == textAroundCursor) {
+                    mExpectedSelStart = INVALID_CURSOR_POSITION;
+                    mExpectedSelEnd = INVALID_CURSOR_POSITION;
+                    Log.e(TAG, "Unable get text before cursor.");
+                    return;
+                }
+                mTextBeforeCursor.append(
+                        textAroundCursor.getText().subSequence(0, textAroundCursor.getSelectionStart()));
+                mTextAfterCursor.append(
+                        textAroundCursor.getText().subSequence(textAroundCursor.getSelectionStart(), textAroundCursor.getText().length()));
 
-            // All callbacks that need text before cursor are here
-            mLatinIME.mHandler.postUpdateShiftState();
+                // All callbacks that need text before cursor are here
+                mLatinIME.mHandler.postUpdateShiftState();
+            } else {
+                final CharSequence textBeforeCursor = mIC.getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
+                mTextBeforeCursor.setLength(0);
+                if (null == textBeforeCursor) {
+                    mExpectedSelStart = INVALID_CURSOR_POSITION;
+                    mExpectedSelEnd = INVALID_CURSOR_POSITION;
+                    Log.e(TAG, "Unable get text before cursor.");
+                    return;
+                }
+                mTextBeforeCursor.append(textBeforeCursor);
 
-            final CharSequence textAfterCursor = mIC.getTextAfterCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
-            mTextAfterCursor.setLength(0);
-            if (null == textAfterCursor) {
-                Log.e(TAG, "Unable to get text after cursor.");
-                return;
+                // All callbacks that need text before cursor are here
+                mLatinIME.mHandler.postUpdateShiftState();
+
+                final CharSequence textAfterCursor = mIC.getTextAfterCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
+                mTextAfterCursor.setLength(0);
+                if (null == textAfterCursor) {
+                    Log.e(TAG, "Unable to get text after cursor.");
+                    return;
+                }
+                mTextAfterCursor.append(textAfterCursor);
             }
-            mTextAfterCursor.append(textAfterCursor);
         });
     }
 

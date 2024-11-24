@@ -103,8 +103,7 @@ public final class InputLogic {
      * @param newSelEnd new selection end
      */
     public void onUpdateSelection(final int newSelStart, final int newSelEnd) {
-        resetEntireInputState(newSelStart, newSelEnd);
-
+        mConnection.resetCachesUponCursorMove(newSelStart, newSelEnd);
         // The cursor has been moved : we now accept to perform recapitalization
         mRecapitalizeStatus.enable();
         // Stop the last recapitalization, if started.
@@ -465,20 +464,6 @@ public final class InputLogic {
      */
     private void onSettingsKeyPressed() {
         mLatinIME.launchSettings();
-    }
-
-    /**
-     * Resets the whole input state to the starting state.
-     *
-     * This will clear the composing word, reset the last composed word, clear the suggestion
-     * strip and tell the input connection about it so that it can refresh its caches.
-     *
-     * @param newSelStart the new selection start, in java characters.
-     * @param newSelEnd the new selection end, in java characters.
-     */
-    // TODO: how is this different from startInput ?!
-    private void resetEntireInputState(final int newSelStart, final int newSelEnd) {
-        mConnection.resetCachesUponCursorMove(newSelStart, newSelEnd);
     }
 
     /**
