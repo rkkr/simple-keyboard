@@ -101,16 +101,16 @@ public final class InputLogic {
      * do the necessary adjustments.
      * @param newSelStart new selection start
      * @param newSelEnd new selection end
-     * @return whether the cursor has moved as a result of user interaction.
      */
-    public boolean onUpdateSelection(final int newSelStart, final int newSelEnd) {
-        resetEntireInputState(newSelStart, newSelEnd);
+    public void onUpdateSelection(final int newSelStart, final int newSelEnd) {
+        mConnection.updateSelection(newSelStart, newSelEnd);
+    }
 
-        // The cursor has been moved : we now accept to perform recapitalization
+    public void reloadTextCache() {
+        mConnection.reloadTextCache();
+
         mRecapitalizeStatus.enable();
-        // Stop the last recapitalization, if started.
         mRecapitalizeStatus.stop();
-        return true;
     }
 
     /**
@@ -471,20 +471,6 @@ public final class InputLogic {
     }
 
     /**
-     * Resets the whole input state to the starting state.
-     *
-     * This will clear the composing word, reset the last composed word, clear the suggestion
-     * strip and tell the input connection about it so that it can refresh its caches.
-     *
-     * @param newSelStart the new selection start, in java characters.
-     * @param newSelEnd the new selection end, in java characters.
-     */
-    // TODO: how is this different from startInput ?!
-    private void resetEntireInputState(final int newSelStart, final int newSelEnd) {
-        mConnection.resetCachesUponCursorMoveAndReturnSuccess(newSelStart, newSelEnd);
-    }
-
-    /**
      * Sends a DOWN key event followed by an UP key event to the editor.
      *
      * If possible at all, avoid using this method. It causes all sorts of race conditions with
@@ -525,30 +511,5 @@ public final class InputLogic {
         }
 
         mConnection.commitText(StringUtils.newSingleCodePointString(codePoint), 1);
-    }
-
-    /**
-     * Retry resetting caches in the rich input connection.
-     *
-     * When the editor can't be accessed we can't reset the caches, so we schedule a retry.
-     * This method handles the retry, and re-schedules a new retry if we still can't access.
-     * We only retry up to 5 times before giving up.
-     *
-     * @param tryResumeSuggestions Whether we should resume suggestions or not.
-     * @param remainingTries How many times we may try again before giving up.
-     * @return whether true if the caches were successfully reset, false otherwise.
-     */
-    public boolean retryResetCachesAndReturnSuccess(final boolean tryResumeSuggestions,
-            final int remainingTries, final LatinIME.UIHandler handler) {
-        if (!mConnection.resetCachesUponCursorMoveAndReturnSuccess(
-                mConnection.getExpectedSelectionStart(), mConnection.getExpectedSelectionEnd())) {
-            if (0 < remainingTries) {
-                handler.postResetCaches(tryResumeSuggestions, remainingTries - 1);
-                return false;
-            }
-            // If remainingTries is 0, we should stop waiting for new tries, however we'll still
-            // return true as we need to perform other tasks (for example, loading the keyboard).
-        }
-        return true;
     }
 }

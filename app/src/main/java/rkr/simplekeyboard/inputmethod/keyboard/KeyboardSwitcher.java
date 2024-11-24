@@ -133,12 +133,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         }
     }
 
-    public void saveKeyboardState() {
-        if (getKeyboard() != null) {
-            mState.onSaveKeyboardState();
-        }
-    }
-
     public void onHideWindow() {
         if (mKeyboardView != null) {
             mKeyboardView.onHideWindow();

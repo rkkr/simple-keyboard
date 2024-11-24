@@ -110,39 +110,15 @@ public final class RichInputConnection {
         }
     }
 
-    /**
-     * Reset the cached text and retrieve it again from the editor.
-     *
-     * This should be called when the cursor moved. It's possible that we can't connect to
-     * the application when doing this; notably, this happens sometimes during rotation, probably
-     * because of a race condition in the framework. In this case, we just can't retrieve the
-     * data, so we empty the cache and note that we don't know the new cursor position, and we
-     * return false so that the caller knows about this and can retry later.
-     *
-     * @param newSelStart the new position of the selection start, as received from the system.
-     * @param newSelEnd the new position of the selection end, as received from the system.
-     * @return true if we were able to connect to the editor successfully, false otherwise. When
-     *   this method returns false, the caches could not be correctly refreshed so they were only
-     *   reset: the caller should try again later to return to normal operation.
-     */
-    public boolean resetCachesUponCursorMoveAndReturnSuccess(final int newSelStart,
-            final int newSelEnd) {
+    public void updateSelection(final int newSelStart, final int newSelEnd) {
         mExpectedSelStart = newSelStart;
         mExpectedSelEnd = newSelEnd;
-        final boolean didReloadTextSuccessfully = reloadTextCache();
-        if (!didReloadTextSuccessfully) {
-            Log.d(TAG, "Will try to retrieve text later.");
-            return false;
-        }
-        return true;
     }
 
     /**
      * Reload the cached text from the InputConnection.
-     *
-     * @return true if successful
      */
-    private boolean reloadTextCache() {
+    public void reloadTextCache() {
         mTextBeforeCursor.setLength(0);
         mIC = mParent.getCurrentInputConnection();
         // Call upon the inputconnection directly since our own method is using the cache, and
@@ -158,10 +134,8 @@ public final class RichInputConnection {
             mExpectedSelStart = INVALID_CURSOR_POSITION;
             mExpectedSelEnd = INVALID_CURSOR_POSITION;
             Log.e(TAG, "Unable to connect to the editor to retrieve text.");
-            return false;
         }
         mTextBeforeCursor.append(textBeforeCursor);
-        return true;
     }
 
     /**
@@ -211,17 +185,6 @@ public final class RichInputConnection {
         mIC = mParent.getCurrentInputConnection();
         if (!isConnected()) {
             return Constants.TextUtils.CAP_MODE_OFF;
-        }
-        // TODO: this will generally work, but there may be cases where the buffer contains SOME
-        // information but not enough to determine the caps mode accurately. This may happen after
-        // heavy pressing of delete, for example DEFAULT_TEXT_CACHE_SIZE - 5 times or so.
-        // getCapsMode should be updated to be able to return a "not enough info" result so that
-        // we can get more context only when needed.
-        if (TextUtils.isEmpty(mTextBeforeCursor) && 0 != mExpectedSelStart) {
-            if (!reloadTextCache()) {
-                Log.w(TAG, "Unable to connect to the editor. "
-                        + "Setting caps mode without knowing text.");
-            }
         }
         // This never calls InputConnection#getCapsMode - in fact, it's a static method that
         // never blocks or initiates IPC.
