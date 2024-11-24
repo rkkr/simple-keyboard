@@ -55,7 +55,7 @@ public final class InputLogic {
      */
     public InputLogic(final LatinIME latinIME) {
         mLatinIME = latinIME;
-        mConnection = new RichInputConnection(latinIME);
+        mConnection = new RichInputConnection(latinIME, latinIME);
     }
 
     /**

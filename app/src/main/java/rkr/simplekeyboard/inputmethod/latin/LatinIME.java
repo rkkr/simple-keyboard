@@ -104,7 +104,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         private static final int MSG_UPDATE_SHIFT_STATE = 0;
         private static final int MSG_PENDING_IMS_CALLBACK = 1;
         private static final int MSG_RESET_CACHES = 7;
-        private static final int MSG_WAIT_FOR_DICTIONARY_LOAD = 8;
         private static final int MSG_DEALLOCATE_MEMORY = 9;
 
         private static final int ARG1_TRUE = 1;
@@ -148,9 +147,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                             settingsValues, latinIme.getCurrentAutoCapsState(),
                             latinIme.getCurrentRecapitalizeState());
                 }
-                break;
-            case MSG_WAIT_FOR_DICTIONARY_LOAD:
-                Log.i(TAG, "Timeout waiting for dictionary load");
                 break;
             case MSG_DEALLOCATE_MEMORY:
                 latinIme.deallocateMemory();
@@ -394,6 +390,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         loadKeyboard();
     }
 
+    @Override
+    public void onTextBeforeCursorLoad() {
+        mKeyboardSwitcher.requestUpdatingShiftState(getCurrentAutoCapsState(),
+                getCurrentRecapitalizeState());
+    }
+
     void onStartInputInternal(final EditorInfo editorInfo, final boolean restarting) {
         super.onStartInput(editorInfo, restarting);
 
@@ -474,6 +476,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 // connected to it and that means we can't refresh the cache. In this case, schedule
                 // a refresh later.
                 // We try resetting the caches up to 5 times before giving up.
+
+                // TODO: cleanup
                 mHandler.postResetCaches(isDifferentTextField, 5 /* remainingTries */);
                 // mLastSelection{Start,End} are reset later in this method, no need to do it here
                 needToCallLoadKeyboardLater = true;
@@ -566,10 +570,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // not attempt recorrection. This is true even with a hardware keyboard connected: if the
         // view is not displayed we have no means of showing suggestions anyway, and if it is then
         // we want to show suggestions anyway.
-        if (isInputViewShown()
-                && mInputLogic.onUpdateSelection(newSelStart, newSelEnd)) {
-            mKeyboardSwitcher.requestUpdatingShiftState(getCurrentAutoCapsState(),
-                    getCurrentRecapitalizeState());
+        if (isInputViewShown() && mInputLogic.onUpdateSelection(newSelStart, newSelEnd)) {
+            //mKeyboardSwitcher.requestUpdatingShiftState(getCurrentAutoCapsState(),
+            //        getCurrentRecapitalizeState());
         }
     }
 
@@ -855,6 +858,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
      */
     private void updateStateAfterInputTransaction(final InputTransaction inputTransaction) {
         switch (inputTransaction.getRequiredShiftUpdate()) {
+            // TODO: cleanup
         case InputTransaction.SHIFT_UPDATE_LATER:
             mHandler.postUpdateShiftState();
             break;
