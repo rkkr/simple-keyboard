@@ -651,7 +651,6 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             printTouchEvent("onUpEvent  :", x, y, eventTime);
         }
 
-        sTimerProxy.cancelUpdateBatchInputTimer(this);
         if (mCurrentKey != null && mCurrentKey.isModifier()) {
             // Before processing an up event of modifier key, all pointers already being
             // tracked should be released.

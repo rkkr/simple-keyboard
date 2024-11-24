@@ -104,7 +104,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         private static final int MSG_UPDATE_SHIFT_STATE = 0;
         private static final int MSG_PENDING_IMS_CALLBACK = 1;
         private static final int MSG_RESET_CACHES = 7;
-        private static final int MSG_WAIT_FOR_DICTIONARY_LOAD = 8;
         private static final int MSG_DEALLOCATE_MEMORY = 9;
 
         private static final int ARG1_TRUE = 1;
@@ -148,9 +147,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                             settingsValues, latinIme.getCurrentAutoCapsState(),
                             latinIme.getCurrentRecapitalizeState());
                 }
-                break;
-            case MSG_WAIT_FOR_DICTIONARY_LOAD:
-                Log.i(TAG, "Timeout waiting for dictionary load");
                 break;
             case MSG_DEALLOCATE_MEMORY:
                 latinIme.deallocateMemory();

@@ -81,15 +81,4 @@ public interface TimerProxy {
      * @return true if detecting double tapped shift key is on going.
      */
     boolean isInDoubleTapShiftKeyTimeout();
-
-    /**
-     * Cancel a timer of firing updating batch input.
-     * @param tracker the {@link PointerTracker} that resumes moving or ends gesture input.
-     */
-    void cancelUpdateBatchInputTimer(PointerTracker tracker);
-
-    /**
-     * Cancel all timers of firing updating batch input.
-     */
-    void cancelAllUpdateBatchInputTimers();
 }
