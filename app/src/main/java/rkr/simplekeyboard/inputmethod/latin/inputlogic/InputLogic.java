@@ -343,8 +343,7 @@ public final class InputLogic {
         // If we have a recapitalize in progress, use it; otherwise, start a new one.
         if (!mRecapitalizeStatus.isStarted()
                 || !mRecapitalizeStatus.isSetAt(selectionStart, selectionEnd)) {
-            final CharSequence selectedText =
-                    mConnection.getSelectedText(0 /* flags, 0 for no styles */);
+            final CharSequence selectedText = mConnection.getSelectedText();
             if (TextUtils.isEmpty(selectedText)) return; // Race condition with the input connection
             mRecapitalizeStatus.start(selectionStart, selectionEnd, selectedText.toString(), mLatinIME.getCurrentLayoutLocale());
             // We trim leading and trailing whitespace.
