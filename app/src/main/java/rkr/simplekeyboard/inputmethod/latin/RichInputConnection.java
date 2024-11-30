@@ -17,11 +17,15 @@
 package rkr.simplekeyboard.inputmethod.latin;
 
 import android.inputmethodservice.InputMethodService;
+import android.os.Build;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.SurroundingText;
+
+import java.util.concurrent.Executors;
 
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
@@ -41,24 +45,6 @@ public final class RichInputConnection {
     private static final int INVALID_CURSOR_POSITION = -1;
 
     /**
-     * The amount of time a {@link #reloadTextCache} call needs to take for the keyboard to enter
-     */
-    private static final long SLOW_INPUT_CONNECTION_ON_FULL_RELOAD_MS = 1000;
-    /**
-     * The amount of time a {@link #getTextBeforeCursor} call needs
-     */
-    private static final long SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS = 200;
-
-    private static final int OPERATION_GET_TEXT_BEFORE_CURSOR = 0;
-    private static final int OPERATION_GET_TEXT_AFTER_CURSOR = 1;
-    private static final int OPERATION_RELOAD_TEXT_CACHE = 3;
-    private static final String[] OPERATION_NAMES = new String[] {
-            "GET_TEXT_BEFORE_CURSOR",
-            "GET_TEXT_AFTER_CURSOR",
-            "GET_WORD_RANGE_AT_CURSOR",
-            "RELOAD_TEXT_CACHE"};
-
-    /**
      * This variable contains an expected value for the selection start position. This is where the
      * cursor or selection start may end up after all the keyboard-triggered updates have passed. We
      * keep this to compare it to the actual selection start to guess whether the move was caused by
@@ -76,14 +62,16 @@ public final class RichInputConnection {
      * This contains the committed text immediately preceding the cursor and the composing
      * text, if any. It is refreshed when the cursor moves by calling upon the TextView.
      */
-    private final StringBuilder mTextBeforeCursor = new StringBuilder();
+    private String mTextBeforeCursor = "";
+    private String mTextAfterCursor = "";
+    private String mTextSelection = "";
 
-    private final InputMethodService mParent;
+    private final LatinIME mLatinIME;
     private InputConnection mIC;
     private int mNestLevel;
 
-    public RichInputConnection(final InputMethodService parent) {
-        mParent = parent;
+    public RichInputConnection(final LatinIME latinIME) {
+        mLatinIME = latinIME;
         mIC = null;
         mNestLevel = 0;
     }
@@ -94,7 +82,7 @@ public final class RichInputConnection {
 
     public void beginBatchEdit() {
         if (++mNestLevel == 1) {
-            mIC = mParent.getCurrentInputConnection();
+            mIC = mLatinIME.getCurrentInputConnection();
             if (isConnected()) {
                 mIC.beginBatchEdit();
             }
@@ -119,23 +107,59 @@ public final class RichInputConnection {
      * Reload the cached text from the InputConnection.
      */
     public void reloadTextCache() {
-        mTextBeforeCursor.setLength(0);
-        mIC = mParent.getCurrentInputConnection();
-        // Call upon the inputconnection directly since our own method is using the cache, and
-        // we want to refresh it.
-        final CharSequence textBeforeCursor = getTextBeforeCursorAndDetectLaggyConnection(
-                OPERATION_RELOAD_TEXT_CACHE,
-                SLOW_INPUT_CONNECTION_ON_FULL_RELOAD_MS,
-                Constants.EDITOR_CONTENTS_CACHE_SIZE,
-                0 /* flags */);
-        if (null == textBeforeCursor) {
-            // For some reason the app thinks we are not connected to it. This looks like a
-            // framework bug... Fall back to ground state and return false.
-            mExpectedSelStart = INVALID_CURSOR_POSITION;
-            mExpectedSelEnd = INVALID_CURSOR_POSITION;
-            Log.e(TAG, "Unable to connect to the editor to retrieve text.");
+        mIC = mLatinIME.getCurrentInputConnection();
+        if (!isConnected()) {
+            return;
         }
-        mTextBeforeCursor.append(textBeforeCursor);
+        // To check if selection changed before text was retrieved
+        final int expectedSelStart = mExpectedSelStart;
+        final int expectedSelEnd = mExpectedSelEnd;
+
+        Executors.newSingleThreadExecutor().execute(() -> {
+            //TODO: use single getText call for new SKDs
+            final CharSequence textBeforeCursor = mIC.getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
+            if (expectedSelStart != mExpectedSelStart) {
+                Log.w(TAG, "Selection start modified before thread completion.");
+                return;
+            }
+            if (null == textBeforeCursor) {
+                Log.e(TAG, "Unable get text before cursor.");
+                mTextBeforeCursor = "";
+                return;
+            } else {
+                mTextBeforeCursor = textBeforeCursor.toString();
+            }
+
+            // All callbacks that need text before cursor are here
+            mLatinIME.mHandler.postUpdateShiftState();
+
+            final CharSequence textAfterCursor = mIC.getTextAfterCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
+            if (expectedSelEnd != mExpectedSelEnd) {
+                Log.w(TAG, "Selection end modified before thread completion.");
+                return;
+            }
+            if (null == textAfterCursor) {
+                Log.e(TAG, "Unable get text after cursor.");
+                mTextAfterCursor = "";
+            } else {
+                mTextAfterCursor = textAfterCursor.toString();
+            }
+            if (hasSelection()) {
+                final CharSequence textSelection = mIC.getSelectedText(0);
+                if (expectedSelStart != mExpectedSelStart || expectedSelEnd != mExpectedSelEnd) {
+                    Log.e(TAG, "Selection range modified before thread completion.");
+                    return;
+                }
+                if (null == textSelection) {
+                    Log.e(TAG, "Unable get text selection.");
+                    mTextSelection = "";
+                } else {
+                    mTextSelection = textSelection.toString();
+                }
+            } else {
+                mTextSelection = "";
+            }
+        });
     }
 
     /**
@@ -146,7 +170,7 @@ public final class RichInputConnection {
      */
     public void commitText(final CharSequence text, final int newCursorPosition) {
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
-        mTextBeforeCursor.append(text);
+        mTextBeforeCursor += text;
         // TODO: the following is exceedingly error-prone. Right now when the cursor is in the
         // middle of the composing word mComposingText only holds the part of the composing text
         // that is before the cursor, so this actually works, but it's terribly confusing. Fix this.
@@ -159,8 +183,8 @@ public final class RichInputConnection {
         }
     }
 
-    public CharSequence getSelectedText(final int flags) {
-        return isConnected() ?  mIC.getSelectedText(flags) : null;
+    public CharSequence getSelectedText() {
+        return mTextSelection;
     }
 
     public boolean canDeleteCharacters() {
@@ -182,7 +206,7 @@ public final class RichInputConnection {
      * @return the caps modes that should be on as a set of bits
      */
     public int getCursorCapsMode(final int inputType, final SpacingAndPunctuations spacingAndPunctuations) {
-        mIC = mParent.getCurrentInputConnection();
+        mIC = mLatinIME.getCurrentInputConnection();
         if (!isConnected()) {
             return Constants.TextUtils.CAP_MODE_OFF;
         }
@@ -190,7 +214,7 @@ public final class RichInputConnection {
         // never blocks or initiates IPC.
         // TODO: don't call #toString() here. Instead, all accesses to
         // mCommittedTextBeforeComposingText should be done on the main thread.
-        return CapsModeUtils.getCapsMode(mTextBeforeCursor.toString(), inputType,
+        return CapsModeUtils.getCapsMode(mTextBeforeCursor, inputType,
                 spacingAndPunctuations);
     }
 
@@ -200,71 +224,26 @@ public final class RichInputConnection {
         return Character.codePointBefore(mTextBeforeCursor, length);
     }
 
-    public CharSequence getTextBeforeCursor(final int n, final int flags) {
-        final int cachedLength = mTextBeforeCursor.length();
-        // If we have enough characters to satisfy the request, or if we have all characters in
-        // the text field, then we can return the cached version right away.
-        // However, if we don't have an expected cursor position, then we should always
-        // go fetch the cache again (as it happens, INVALID_CURSOR_POSITION < 0, so we need to
-        // test for this explicitly)
-        if (INVALID_CURSOR_POSITION != mExpectedSelStart
-                && (cachedLength >= n || cachedLength >= mExpectedSelStart)) {
-            final StringBuilder s = new StringBuilder(mTextBeforeCursor);
-            // We call #toString() here to create a temporary object.
-            // In some situations, this method is called on a worker thread, and it's possible
-            // the main thread touches the contents of mComposingText while this worker thread
-            // is suspended, because mComposingText is a StringBuilder. This may lead to crashes,
-            // so we call #toString() on it. That will result in the return value being strictly
-            // speaking wrong, but since this is used for basing bigram probability off, and
-            // it's only going to matter for one getSuggestions call, it's fine in the practice.
-            if (s.length() > n) {
-                s.delete(0, s.length() - n);
-            }
-            return s;
+    public CharSequence getTextBeforeCursor(final int n) {
+        if (INVALID_CURSOR_POSITION != mExpectedSelStart) {
+            final String textBeforeCursor = mTextBeforeCursor;
+            if (textBeforeCursor.length() > n)
+                return textBeforeCursor.subSequence(textBeforeCursor.length() - n, textBeforeCursor.length() - 1);
+
+            return textBeforeCursor;
         }
-        return getTextBeforeCursorAndDetectLaggyConnection(
-                OPERATION_GET_TEXT_BEFORE_CURSOR,
-                SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS,
-                n, flags);
+        return "";
     }
 
-    public CharSequence getTextAfterCursor(final int n, final int flags) {
-        return getTextAfterCursorAndDetectLaggyConnection(
-                OPERATION_GET_TEXT_AFTER_CURSOR,
-                SLOW_INPUT_CONNECTION_ON_PARTIAL_RELOAD_MS,
-                n, flags);
-    }
+    public CharSequence getTextAfterCursor(final int n) {
+        if (INVALID_CURSOR_POSITION != mExpectedSelEnd) {
+            final String textAfterCursor = mTextAfterCursor;
+            if (textAfterCursor.length() > n)
+                return textAfterCursor.subSequence(0, n);
 
-    private CharSequence getTextBeforeCursorAndDetectLaggyConnection(
-            final int operation, final long timeout, final int n, final int flags) {
-        mIC = mParent.getCurrentInputConnection();
-        if (!isConnected()) {
-            return null;
+            return  textAfterCursor;
         }
-        final long startTime = SystemClock.uptimeMillis();
-        final CharSequence result = mIC.getTextBeforeCursor(n, flags);
-        detectLaggyConnection(operation, timeout, startTime);
-        return result;
-    }
-
-    private CharSequence getTextAfterCursorAndDetectLaggyConnection(
-            final int operation, final long timeout, final int n, final int flags) {
-        mIC = mParent.getCurrentInputConnection();
-        if (!isConnected()) {
-            return null;
-        }
-        final long startTime = SystemClock.uptimeMillis();
-        final CharSequence result = mIC.getTextAfterCursor(n, flags);
-        detectLaggyConnection(operation, timeout, startTime);
-        return result;
-    }
-
-    private void detectLaggyConnection(final int operation, final long timeout, final long startTime) {
-        final long duration = SystemClock.uptimeMillis() - startTime;
-        if (duration >= timeout) {
-            final String operationName = OPERATION_NAMES[operation];
-            Log.w(TAG, "Slow InputConnection: " + operationName + " took " + duration + " ms.");
-        }
+        return "";
     }
 
     public void replaceText(final int startPosition, final int endPosition, CharSequence text) {
@@ -275,7 +254,7 @@ public final class RichInputConnection {
     }
 
     public void performEditorAction(final int actionId) {
-        mIC = mParent.getCurrentInputConnection();
+        mIC = mLatinIME.getCurrentInputConnection();
         if (isConnected()) {
             mIC.performEditorAction(actionId);
         }
@@ -292,17 +271,15 @@ public final class RichInputConnection {
             // mistakenly catch them to do some stuff.
             switch (keyEvent.getKeyCode()) {
             case KeyEvent.KEYCODE_ENTER:
-                mTextBeforeCursor.append("\n");
+                mTextBeforeCursor += "\n";
                 if (hasCursorPosition()) {
                     mExpectedSelStart += 1;
                     mExpectedSelEnd = mExpectedSelStart;
                 }
                 break;
             case KeyEvent.KEYCODE_DEL:
-                if (mTextBeforeCursor.length() > 0) {
-                    mTextBeforeCursor.delete(
-                            mTextBeforeCursor.length() - 1,
-                            mTextBeforeCursor.length());
+                if (!mTextBeforeCursor.isEmpty()) {
+                    mTextBeforeCursor = mTextBeforeCursor.substring(0, mTextBeforeCursor.length() - 1);
                 }
 
                 if (mExpectedSelStart > 0 && mExpectedSelStart == mExpectedSelEnd) {
@@ -313,7 +290,7 @@ public final class RichInputConnection {
                 break;
             case KeyEvent.KEYCODE_UNKNOWN:
                 if (null != keyEvent.getCharacters()) {
-                    mTextBeforeCursor.append(keyEvent.getCharacters());
+                    mTextBeforeCursor += keyEvent.getCharacters();
                     if (hasCursorPosition()) {
                         mExpectedSelStart += keyEvent.getCharacters().length();
                         mExpectedSelEnd = mExpectedSelStart;
@@ -322,7 +299,7 @@ public final class RichInputConnection {
                 break;
             default:
                 final String text = StringUtils.newSingleCodePointString(keyEvent.getUnicodeChar());
-                mTextBeforeCursor.append(text);
+                mTextBeforeCursor += text;
                 if (hasCursorPosition()) {
                     mExpectedSelStart += text.length();
                     mExpectedSelEnd = mExpectedSelStart;
@@ -392,8 +369,8 @@ public final class RichInputConnection {
         int steps = 0;
         if (chars < 0) {
             CharSequence charsBeforeCursor = rightSidePointer && hasSelection() ?
-                    getSelectedText(0) :
-                    getTextBeforeCursor(-chars * 2, 0);
+                    getSelectedText() :
+                    getTextBeforeCursor(-chars * 2);
             if (charsBeforeCursor != null) {
                 for (int i = charsBeforeCursor.length() - 1; i >= 0 && chars < 0; i--, chars++, steps--) {
                     if (Character.isSurrogate(charsBeforeCursor.charAt(i))) {
@@ -404,8 +381,8 @@ public final class RichInputConnection {
             }
         } else if (chars > 0) {
             CharSequence charsAfterCursor = !rightSidePointer && hasSelection() ?
-                    getSelectedText(0) :
-                    getTextAfterCursor(chars * 2, 0);
+                    getSelectedText() :
+                    getTextAfterCursor(chars * 2);
             if (charsAfterCursor != null) {
                 for (int i = 0; i < charsAfterCursor.length() && chars > 0; i++, chars--, steps++) {
                     if (Character.isSurrogate(charsAfterCursor.charAt(i))) {

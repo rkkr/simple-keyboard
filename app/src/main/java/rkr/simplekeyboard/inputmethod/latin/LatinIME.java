@@ -105,20 +105,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         private static final int MSG_PENDING_IMS_CALLBACK = 1;
         private static final int MSG_DEALLOCATE_MEMORY = 9;
 
-        private int mDelayInMillisecondsToUpdateShiftState;
-
         public UIHandler(final LatinIME ownerInstance) {
             super(ownerInstance);
-        }
-
-        public void onCreate() {
-            final LatinIME latinIme = getOwnerInstance();
-            if (latinIme == null) {
-                return;
-            }
-            final Resources res = latinIme.getResources();
-            mDelayInMillisecondsToUpdateShiftState = res.getInteger(
-                    R.integer.config_delay_in_milliseconds_to_update_shift_state);
         }
 
         @Override
@@ -141,8 +129,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
         public void postUpdateShiftState() {
             removeMessages(MSG_UPDATE_SHIFT_STATE);
-            sendMessageDelayed(obtainMessage(MSG_UPDATE_SHIFT_STATE),
-                    mDelayInMillisecondsToUpdateShiftState);
+            sendMessage(obtainMessage(MSG_UPDATE_SHIFT_STATE));
         }
 
         public void postDeallocateMemory() {
@@ -273,8 +260,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         KeyboardSwitcher.init(this);
         AudioAndHapticFeedbackManager.init(this);
         super.onCreate();
-
-        mHandler.onCreate();
 
         // TODO: Resolve mutual dependencies of {@link #loadSettings()} and
         // {@link #resetDictionaryFacilitatorIfNecessary()}.
