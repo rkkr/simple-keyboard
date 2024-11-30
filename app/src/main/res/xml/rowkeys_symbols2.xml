@@ -40,7 +40,8 @@
             <Key
                 latin:keySpec="\@" />
             <Key
-                latin:keySpec="\#" />
+                latin:keySpec="\#"
+                latin:moreKeys="&#x2116;" /> <!-- U+2116: "№" NUMERO SIGN -->
         </default>
     </switch>
     <Key
