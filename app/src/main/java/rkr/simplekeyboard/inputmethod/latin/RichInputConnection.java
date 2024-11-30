@@ -116,9 +116,10 @@ public final class RichInputConnection {
         final int expectedSelEnd = mExpectedSelEnd;
 
         Executors.newSingleThreadExecutor().execute(() -> {
+            //TODO: use single getText call for new SKDs
             final CharSequence textBeforeCursor = mIC.getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
             if (expectedSelStart != mExpectedSelStart) {
-                Log.e(TAG, "Selection modified before thread completion.");
+                Log.w(TAG, "Selection start modified before thread completion.");
                 return;
             }
             if (null == textBeforeCursor) {
@@ -134,7 +135,7 @@ public final class RichInputConnection {
 
             final CharSequence textAfterCursor = mIC.getTextAfterCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
             if (expectedSelEnd != mExpectedSelEnd) {
-                Log.e(TAG, "Selection modified before thread completion.");
+                Log.w(TAG, "Selection end modified before thread completion.");
                 return;
             }
             if (null == textAfterCursor) {
@@ -146,7 +147,7 @@ public final class RichInputConnection {
             if (hasSelection()) {
                 final CharSequence textSelection = mIC.getSelectedText(0);
                 if (expectedSelStart != mExpectedSelStart || expectedSelEnd != mExpectedSelEnd) {
-                    Log.e(TAG, "Selection modified before thread completion.");
+                    Log.e(TAG, "Selection range modified before thread completion.");
                     return;
                 }
                 if (null == textSelection) {
