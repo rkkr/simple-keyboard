@@ -116,48 +116,70 @@ public final class RichInputConnection {
         final int expectedSelEnd = mExpectedSelEnd;
 
         Executors.newSingleThreadExecutor().execute(() -> {
-            //TODO: use single getText call for new SKDs
-            final CharSequence textBeforeCursor = mIC.getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
-            if (expectedSelStart != mExpectedSelStart) {
-                Log.w(TAG, "Selection start modified before thread completion.");
-                return;
-            }
-            if (null == textBeforeCursor) {
-                Log.e(TAG, "Unable get text before cursor.");
-                mTextBeforeCursor = "";
-                return;
-            } else {
-                mTextBeforeCursor = textBeforeCursor.toString();
-            }
-
-            // All callbacks that need text before cursor are here
-            mLatinIME.mHandler.postUpdateShiftState();
-
-            final CharSequence textAfterCursor = mIC.getTextAfterCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
-            if (expectedSelEnd != mExpectedSelEnd) {
-                Log.w(TAG, "Selection end modified before thread completion.");
-                return;
-            }
-            if (null == textAfterCursor) {
-                Log.e(TAG, "Unable get text after cursor.");
-                mTextAfterCursor = "";
-            } else {
-                mTextAfterCursor = textAfterCursor.toString();
-            }
-            if (hasSelection()) {
-                final CharSequence textSelection = mIC.getSelectedText(0);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                final SurroundingText textAroundCursor =
+                        mIC.getSurroundingText(Constants.EDITOR_CONTENTS_CACHE_SIZE, Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
                 if (expectedSelStart != mExpectedSelStart || expectedSelEnd != mExpectedSelEnd) {
-                    Log.e(TAG, "Selection range modified before thread completion.");
+                    Log.w(TAG, "Selection range modified before thread completion.");
                     return;
                 }
-                if (null == textSelection) {
-                    Log.e(TAG, "Unable get text selection.");
+                if (null == textAroundCursor) {
+                    Log.e(TAG, "Unable get text around cursor.");
+                    mTextBeforeCursor = "";
+                    mTextAfterCursor = "";
                     mTextSelection = "";
-                } else {
-                    mTextSelection = textSelection.toString();
+                    return;
                 }
+                final CharSequence text = textAroundCursor.getText();
+                mTextBeforeCursor = text.subSequence(0, textAroundCursor.getSelectionStart()).toString();
+                mTextSelection = text.subSequence(textAroundCursor.getSelectionStart(), textAroundCursor.getSelectionEnd()).toString();
+                mTextAfterCursor = text.subSequence(textAroundCursor.getSelectionEnd(), text.length()).toString();
+
+                // All callbacks that need text before cursor are here
+                mLatinIME.mHandler.postUpdateShiftState();
             } else {
-                mTextSelection = "";
+                final CharSequence textBeforeCursor = mIC.getTextBeforeCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
+                if (expectedSelStart != mExpectedSelStart) {
+                    Log.w(TAG, "Selection start modified before thread completion.");
+                    return;
+                }
+                if (null == textBeforeCursor) {
+                    Log.e(TAG, "Unable get text before cursor.");
+                    mTextBeforeCursor = "";
+                    return;
+                } else {
+                    mTextBeforeCursor = textBeforeCursor.toString();
+                }
+
+                // All callbacks that need text before cursor are here
+                mLatinIME.mHandler.postUpdateShiftState();
+
+                final CharSequence textAfterCursor = mIC.getTextAfterCursor(Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
+                if (expectedSelEnd != mExpectedSelEnd) {
+                    Log.w(TAG, "Selection end modified before thread completion.");
+                    return;
+                }
+                if (null == textAfterCursor) {
+                    Log.e(TAG, "Unable get text after cursor.");
+                    mTextAfterCursor = "";
+                } else {
+                    mTextAfterCursor = textAfterCursor.toString();
+                }
+                if (hasSelection()) {
+                    final CharSequence textSelection = mIC.getSelectedText(0);
+                    if (expectedSelStart != mExpectedSelStart || expectedSelEnd != mExpectedSelEnd) {
+                        Log.w(TAG, "Selection range modified before thread completion.");
+                        return;
+                    }
+                    if (null == textSelection) {
+                        Log.e(TAG, "Unable get text selection.");
+                        mTextSelection = "";
+                    } else {
+                        mTextSelection = textSelection.toString();
+                    }
+                } else {
+                    mTextSelection = "";
+                }
             }
         });
     }
