@@ -173,18 +173,6 @@ public class RichInputMethodManager {
         }
 
         /**
-         * Get all of the enabled languages.
-         * @return the enabled languages.
-         */
-        public synchronized Set<Locale> getAllLocales() {
-            final Set<Locale> locales = new HashSet<>();
-            for (final Subtype subtype: mSubtypes) {
-                locales.add(subtype.getLocaleObject());
-            }
-            return locales;
-        }
-
-        /**
          * Get all of the enabled subtypes for language.
          * @param locale filter by Locale.
          * @return the enabled subtypes.
