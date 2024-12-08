@@ -16,10 +16,7 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
-import android.inputmethodservice.InputMethodService;
 import android.os.Build;
-import android.os.SystemClock;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputConnection;
@@ -269,6 +266,22 @@ public final class RichInputConnection {
     }
 
     public void replaceText(final int startPosition, final int endPosition, CharSequence text) {
+        if (mExpectedSelStart != mExpectedSelEnd) {
+            Log.e(TAG, "replaceText called with text range selected");
+            return;
+        }
+        if (mExpectedSelStart != startPosition) {
+            Log.e(TAG, "replaceText called with range not starting with current cursor position");
+            return;
+        }
+
+        final String textAfterCursor = mTextAfterCursor;
+        if (textAfterCursor.length() < endPosition - startPosition) {
+            Log.e(TAG, "replaceText called with range longer than current text");
+            return;
+        }
+        mTextAfterCursor = text + textAfterCursor.substring(endPosition - startPosition);
+
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
         mIC.setComposingRegion(startPosition, endPosition);
         mIC.setComposingText(text, startPosition);
@@ -300,15 +313,19 @@ public final class RichInputConnection {
                 }
                 break;
             case KeyEvent.KEYCODE_DEL:
-                if (!mTextBeforeCursor.isEmpty()) {
-                    mTextBeforeCursor = mTextBeforeCursor.substring(0, mTextBeforeCursor.length() - 1);
+                if (hasSelection()) {
+                    mTextSelection = "";
+                    mExpectedSelEnd = mExpectedSelStart;
+                } else {
+                    final int steps = getUnicodeSteps(-1, false);
+                    String textBeforeCursor = mTextBeforeCursor;
+                    if (!textBeforeCursor.isEmpty()) {
+                        mTextBeforeCursor = textBeforeCursor.substring(0, textBeforeCursor.length() + steps);
+                    }
+                    if (mExpectedSelStart > 0) {
+                        mExpectedSelStart += steps;
+                    }
                 }
-
-                if (mExpectedSelStart > 0 && mExpectedSelStart == mExpectedSelEnd) {
-                    // TODO: Handle surrogate pairs.
-                    mExpectedSelStart -= 1;
-                }
-                mExpectedSelEnd = mExpectedSelStart;
                 break;
             case KeyEvent.KEYCODE_UNKNOWN:
                 if (null != keyEvent.getCharacters()) {
@@ -341,7 +358,6 @@ public final class RichInputConnection {
      *
      * @param start the character index where the selection should start.
      * @param end the character index where the selection should end.
-     * @return Returns true on success, false on failure: either the input connection is no longer
      * valid when setting the selection or when retrieving the text cache at that point, or
      * invalid arguments were passed.
      */
@@ -354,15 +370,17 @@ public final class RichInputConnection {
         }
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
 
+        final int textStart = mExpectedSelStart - mTextBeforeCursor.length();
+        final String textRange = mTextBeforeCursor + mTextSelection + mTextAfterCursor;
+        mTextBeforeCursor = textRange.substring(0, start - textStart);
+        mTextSelection = textRange.substring(start - textStart, end - textStart);
+        mTextAfterCursor = textRange.substring(end - textStart);
+
         mExpectedSelStart = start;
         mExpectedSelEnd = end;
         if (isConnected()) {
-            final boolean isIcValid = mIC.setSelection(start, end);
-            if (!isIcValid) {
-                return;
-            }
+            mIC.setSelection(start, end);
         }
-        reloadTextCache();
     }
 
     public int getExpectedSelectionStart() {
@@ -393,24 +411,26 @@ public final class RichInputConnection {
             CharSequence charsBeforeCursor = rightSidePointer && hasSelection() ?
                     getSelectedText() :
                     getTextBeforeCursor(-chars * 2);
-            if (charsBeforeCursor != null) {
-                for (int i = charsBeforeCursor.length() - 1; i >= 0 && chars < 0; i--, chars++, steps--) {
-                    if (Character.isSurrogate(charsBeforeCursor.charAt(i))) {
-                        steps--;
-                        i--;
-                    }
+            if (charsBeforeCursor == null || charsBeforeCursor == "") {
+                return chars;
+            }
+            for (int i = charsBeforeCursor.length() - 1; i >= 0 && chars < 0; i--, chars++, steps--) {
+                if (Character.isSurrogate(charsBeforeCursor.charAt(i))) {
+                    steps--;
+                    i--;
                 }
             }
         } else if (chars > 0) {
             CharSequence charsAfterCursor = !rightSidePointer && hasSelection() ?
                     getSelectedText() :
                     getTextAfterCursor(chars * 2);
-            if (charsAfterCursor != null) {
-                for (int i = 0; i < charsAfterCursor.length() && chars > 0; i++, chars--, steps++) {
-                    if (Character.isSurrogate(charsAfterCursor.charAt(i))) {
-                        steps++;
-                        i++;
-                    }
+            if (charsAfterCursor == null || charsAfterCursor == "") {
+                return chars;
+            }
+            for (int i = 0; i < charsAfterCursor.length() && chars > 0; i++, chars--, steps++) {
+                if (Character.isSurrogate(charsAfterCursor.charAt(i))) {
+                    steps++;
+                    i++;
                 }
             }
         }

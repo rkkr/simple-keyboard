@@ -18,13 +18,10 @@ package rkr.simplekeyboard.inputmethod.latin.common;
 
 import android.text.TextUtils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
 public final class StringUtils {
-    private static final String EMPTY_STRING = "";
-
     private StringUtils() {
         // This utility class is not publicly instantiable.
     }
