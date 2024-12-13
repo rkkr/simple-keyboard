@@ -16,9 +16,11 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
+import android.annotation.TargetApi;
 import android.os.Build;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.SurroundingText;
 
@@ -100,6 +102,36 @@ public final class RichInputConnection {
         mExpectedSelEnd = newSelEnd;
     }
 
+    @TargetApi(Build.VERSION_CODES.S)
+    private void setTextAroundCursor(final SurroundingText textAroundCursor) {
+        if (null == textAroundCursor) {
+            Log.e(TAG, "Unable get text around cursor.");
+            mTextBeforeCursor = "";
+            mTextAfterCursor = "";
+            mTextSelection = "";
+            return;
+        }
+        final CharSequence text = textAroundCursor.getText();
+        mTextBeforeCursor = text.subSequence(0, textAroundCursor.getSelectionStart()).toString();
+        mTextSelection = text.subSequence(textAroundCursor.getSelectionStart(), textAroundCursor.getSelectionEnd()).toString();
+        mTextAfterCursor = text.subSequence(textAroundCursor.getSelectionEnd(), text.length()).toString();
+    }
+
+    /**
+     * Reload the cached text from the EditorInfo.
+     */
+    public void reloadTextCache(final EditorInfo editorInfo) {
+        updateSelection(editorInfo.initialSelStart, editorInfo.initialSelEnd);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            final SurroundingText textAroundCursor = editorInfo
+                    .getInitialSurroundingText(Constants.EDITOR_CONTENTS_CACHE_SIZE, Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
+            setTextAroundCursor(textAroundCursor);
+        } else {
+            reloadTextCache();
+        }
+    }
+
     /**
      * Reload the cached text from the InputConnection.
      */
@@ -120,17 +152,7 @@ public final class RichInputConnection {
                     Log.w(TAG, "Selection range modified before thread completion.");
                     return;
                 }
-                if (null == textAroundCursor) {
-                    Log.e(TAG, "Unable get text around cursor.");
-                    mTextBeforeCursor = "";
-                    mTextAfterCursor = "";
-                    mTextSelection = "";
-                    return;
-                }
-                final CharSequence text = textAroundCursor.getText();
-                mTextBeforeCursor = text.subSequence(0, textAroundCursor.getSelectionStart()).toString();
-                mTextSelection = text.subSequence(textAroundCursor.getSelectionStart(), textAroundCursor.getSelectionEnd()).toString();
-                mTextAfterCursor = text.subSequence(textAroundCursor.getSelectionEnd(), text.length()).toString();
+                setTextAroundCursor(textAroundCursor);
 
                 // All callbacks that need text before cursor are here
                 mLatinIME.mHandler.postUpdateShiftState();

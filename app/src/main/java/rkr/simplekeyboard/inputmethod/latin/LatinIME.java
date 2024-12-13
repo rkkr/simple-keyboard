@@ -424,7 +424,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // it can adjust its combiners if needed.
             mInputLogic.startInput();
 
-            mInputLogic.mConnection.reloadTextCache();
+            // Some applications call onStartInputView without updating EditorInfo. In these cases
+            // selection will be incorrect.
+            mInputLogic.mConnection.reloadTextCache(editorInfo);
         }
 
         if (isDifferentTextField ||
@@ -493,11 +495,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             final int composingSpanStart, final int composingSpanEnd) {
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
                 composingSpanStart, composingSpanEnd);
-        if (DebugFlags.DEBUG_ENABLED) {
-            Log.i(TAG, "onUpdateSelection: oss=" + oldSelStart + ", ose=" + oldSelEnd
-                    + ", nss=" + newSelStart + ", nse=" + newSelEnd
-                    + ", cs=" + composingSpanStart + ", ce=" + composingSpanEnd);
-        }
+        Log.i(TAG, "Update Selection. Cursor position = " + newSelStart + "," + newSelEnd);
 
         mInputLogic.onUpdateSelection(newSelStart, newSelEnd);
         if (isInputViewShown()) {
