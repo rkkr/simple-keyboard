@@ -121,6 +121,7 @@ public final class RichInputConnection {
      * Reload the cached text from the EditorInfo.
      */
     public void reloadTextCache(final EditorInfo editorInfo) {
+        mIC = mLatinIME.getCurrentInputConnection();
         updateSelection(editorInfo.initialSelStart, editorInfo.initialSelEnd);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
