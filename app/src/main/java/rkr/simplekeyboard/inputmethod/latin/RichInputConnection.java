@@ -340,13 +340,13 @@ public final class RichInputConnection {
                     mTextSelection = "";
                     mExpectedSelEnd = mExpectedSelStart;
                 } else {
-                    final int steps = getUnicodeSteps(-1, false);
+                    final int steps = -getUnicodeSteps(-1, false);
                     String textBeforeCursor = mTextBeforeCursor;
-                    if (!textBeforeCursor.isEmpty()) {
-                        mTextBeforeCursor = textBeforeCursor.substring(0, textBeforeCursor.length() + steps);
+                    if (!textBeforeCursor.isEmpty() && textBeforeCursor.length() >= steps) {
+                        mTextBeforeCursor = textBeforeCursor.substring(0, textBeforeCursor.length() - steps);
                     }
                     if (mExpectedSelStart > 0) {
-                        mExpectedSelStart += steps;
+                        mExpectedSelStart -= steps;
                     }
                 }
                 break;
@@ -385,19 +385,23 @@ public final class RichInputConnection {
      * invalid arguments were passed.
      */
     public void setSelection(int start, int end) {
-        if (start < 0 || end < 0) {
+        if (start < 0 || end < 0 || start > end) {
             return;
         }
         if (mExpectedSelStart == start && mExpectedSelEnd == end) {
             return;
         }
-        RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
 
         final int textStart = mExpectedSelStart - mTextBeforeCursor.length();
         final String textRange = mTextBeforeCursor + mTextSelection + mTextAfterCursor;
-        mTextBeforeCursor = textRange.substring(0, start - textStart);
-        mTextSelection = textRange.substring(start - textStart, end - textStart);
-        mTextAfterCursor = textRange.substring(end - textStart);
+        if (textRange.length() > end - textStart && start - textStart > 0 && textStart > 0) {
+            // Parameters might be partially updated by background thread, skip in such case
+            mTextBeforeCursor = textRange.substring(0, start - textStart);
+            mTextSelection = textRange.substring(start - textStart, end - textStart);
+            mTextAfterCursor = textRange.substring(end - textStart);
+        }
+
+        RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
 
         mExpectedSelStart = start;
         mExpectedSelEnd = end;

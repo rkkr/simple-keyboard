@@ -666,8 +666,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             steps = mInputLogic.mConnection.getUnicodeSteps(steps, false);
             final int end = mInputLogic.mConnection.getExpectedSelectionEnd();
             final int start = mInputLogic.mConnection.getExpectedSelectionStart() + steps;
-            if (start > end)
-                return;
             mInputLogic.mConnection.setSelection(start, end);
         } else {
             for (; steps < 0; steps++)
