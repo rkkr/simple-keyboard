@@ -59,5 +59,7 @@
     <string name="add_language">添加语言</string>
     <string name="remove_language">删除语言</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> 键盘布局</string>
-    <string name="change_keyboard">Change keyboard</string>
+    <string name="change_keyboard">更改键盘</string>
+    <string name="privacy_policy">隐私政策</string>
+    <string name="license">许可证</string>
 </resources>
