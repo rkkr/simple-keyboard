@@ -198,7 +198,7 @@ public final class InputLogic {
                 onSettingsKeyPressed();
                 break;
             case Constants.CODE_PASTE:
-                onPasteKeyPressed();
+                mConnection.pasteClipboard();
                 break;
             case Constants.CODE_ACTION_NEXT:
                 performEditorAction(EditorInfo.IME_ACTION_NEXT);
@@ -470,10 +470,6 @@ public final class InputLogic {
      */
     private void onSettingsKeyPressed() {
         mLatinIME.launchSettings();
-    }
-
-    private void onPasteKeyPressed() {
-        mConnection.pasteClipboard();
     }
 
     /**

@@ -328,7 +328,7 @@ public final class RichInputConnection {
 
             CharSequence pasteData = clipboard.getPrimaryClip().getItemAt(0).getText();
             if (pasteData != null && pasteData.length() > 0) {
-                commitText(pasteData, 1);
+                mLatinIME.onTextInput(pasteData.toString());
             }
         }
     }
