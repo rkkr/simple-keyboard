@@ -324,7 +324,8 @@ public final class RichInputConnection {
 
     public void pasteClipboard() {
         ClipboardManager clipboard = (ClipboardManager) mLatinIME.getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard.hasPrimaryClip() && clipboard.getPrimaryClipDescription().hasMimeType(MIMETYPE_TEXT_PLAIN)) {
+        if (clipboard.hasPrimaryClip() && clipboard.getPrimaryClip().getItemCount() > 0) {
+
             CharSequence pasteData = clipboard.getPrimaryClip().getItemAt(0).getText();
             if (pasteData != null && pasteData.length() > 0) {
                 commitText(pasteData, 1);
