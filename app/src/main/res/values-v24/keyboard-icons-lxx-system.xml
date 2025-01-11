@@ -4,6 +4,7 @@
         <item name="iconShiftKey">@drawable/sym_keyboard_shift_lxx_system</item>
         <item name="iconDeleteKey">@drawable/sym_keyboard_delete_lxx_system</item>
         <item name="iconSettingsKey">@drawable/sym_keyboard_settings_lxx_system</item>
+        <item name="iconPasteKey">@drawable/sym_keyboard_paste_lxx_system</item>
         <item name="iconSpaceKey">@null</item>
         <item name="iconEnterKey">@drawable/sym_keyboard_return_lxx_system</item>
         <item name="iconGoKey">@drawable/sym_keyboard_go_lxx_system</item>
