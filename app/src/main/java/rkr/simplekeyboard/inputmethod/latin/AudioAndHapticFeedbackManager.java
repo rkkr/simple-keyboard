@@ -22,6 +22,8 @@ import android.os.Vibrator;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 
+import java.util.concurrent.Executors;
+
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 
@@ -54,8 +56,10 @@ public final class AudioAndHapticFeedbackManager {
     }
 
     private void initInternal(final Context context) {
-        mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        Executors.newSingleThreadExecutor().execute(() -> {
+            mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+            mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        });
     }
 
     public boolean hasVibrator() {
@@ -99,7 +103,14 @@ public final class AudioAndHapticFeedbackManager {
             sound = AudioManager.FX_KEYPRESS_STANDARD;
             break;
         }
-        mAudioManager.playSoundEffect(sound, mSettingsValues.mKeypressSoundVolume);
+        playSoundEffect(sound, mSettingsValues.mKeypressSoundVolume);
+    }
+
+    public void playSoundEffect(final int effectType, final float volume) {
+        if (mAudioManager == null) {
+            return;
+        }
+        mAudioManager.playSoundEffect(effectType, volume);
     }
 
     public void performHapticFeedback(final View viewToPerformHapticFeedbackOn) {
