@@ -111,7 +111,6 @@ public final class KeyPressSettingsFragment extends SubScreenFragment {
         }
         final SharedPreferences prefs = getSharedPreferences();
         final Resources res = getResources();
-        final AudioManager am = (AudioManager)getActivity().getSystemService(Context.AUDIO_SERVICE);
         pref.setInterface(new SeekBarDialogPreference.ValueProxy() {
             private static final float PERCENTAGE_FLOAT = 100.0f;
 
@@ -153,7 +152,7 @@ public final class KeyPressSettingsFragment extends SubScreenFragment {
 
             @Override
             public void feedbackValue(final int value) {
-                am.playSoundEffect(
+                AudioAndHapticFeedbackManager.getInstance().playSoundEffect(
                         AudioManager.FX_KEYPRESS_STANDARD, getValueFromPercentage(value));
             }
         });

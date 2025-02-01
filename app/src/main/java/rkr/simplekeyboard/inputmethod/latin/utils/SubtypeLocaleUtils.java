@@ -298,7 +298,10 @@ public final class SubtypeLocaleUtils {
             if (bestLocale != null && !addedLocales.contains(bestLocale)) {
                 addedLocales.add(bestLocale);
                 final String bestLocaleString = LocaleUtils.getLocaleString(bestLocale);
-                subtypes.add(getDefaultSubtype(bestLocaleString, resources));
+                final Subtype bestSubtype = getDefaultSubtype(bestLocaleString, resources);
+                if (bestSubtype != null) {
+                    subtypes.add(bestSubtype);
+                }
             }
         }
         if (subtypes.size() == 0) {
