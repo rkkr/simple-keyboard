@@ -17,6 +17,8 @@
 package rkr.simplekeyboard.inputmethod.latin;
 
 import android.annotation.TargetApi;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -315,6 +317,16 @@ public final class RichInputConnection {
         mIC = mLatinIME.getCurrentInputConnection();
         if (isConnected()) {
             mIC.performEditorAction(actionId);
+        }
+    }
+
+    public void pasteClipboard() {
+        ClipboardManager clipboard = (ClipboardManager) mLatinIME.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard.hasPrimaryClip() && clipboard.getPrimaryClip().getItemCount() > 0) {
+            CharSequence pasteData = clipboard.getPrimaryClip().getItemAt(0).getText();
+            if (pasteData != null && pasteData.length() > 0) {
+                mLatinIME.onTextInput(pasteData.toString());
+            }
         }
     }
 

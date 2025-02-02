@@ -16,6 +16,7 @@
 
 package rkr.simplekeyboard.inputmethod.latin.inputlogic;
 
+import android.content.ClipboardManager;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.KeyCharacterMap;
@@ -195,6 +196,9 @@ public final class InputLogic {
                 break;
             case Constants.CODE_SETTINGS:
                 onSettingsKeyPressed();
+                break;
+            case Constants.CODE_PASTE:
+                mConnection.pasteClipboard();
                 break;
             case Constants.CODE_ACTION_NEXT:
                 performEditorAction(EditorInfo.IME_ACTION_NEXT);
