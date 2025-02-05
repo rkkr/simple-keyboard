@@ -223,7 +223,13 @@ public final class StringUtils {
         if (label == null) {
             return label;
         }
-        return label.toUpperCase(getLocaleUsedForToTitleCase(locale));
+        switch(label){
+            // The java function String.toUpperCase() converts the sharp S (ß, U+00DF) into 'SS' instead of ẞ (U+1E9E). This is the fix.
+            case "\u00DF":
+                return "\u1E9E";
+            default:
+                return label.toUpperCase(getLocaleUsedForToTitleCase(locale));
+        }
     }
 
     public static int toTitleCaseOfKeyCode(final int code, final Locale locale) {
