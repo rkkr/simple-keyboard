@@ -1,0 +1,7 @@
+files:
+  - source: /app/src/main/res/values/strings.xml
+    translation: /app/src/main/res/values-%android_code%/%original_file_name%
+  - source: metadata/en-US/full_description.txt
+    translation: metadata/%locale%/full_description.txt
+  - source: metadata/en-US/short_description.txt
+    translation: metadata/%locale%/short_description.txt
