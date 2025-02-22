@@ -22,7 +22,6 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Insets;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.PorterDuff;
@@ -30,10 +29,8 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.WindowInsets;
 
 import java.util.HashSet;
 
@@ -94,9 +91,6 @@ public class KeyboardView extends View {
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
     public int mCustomColor = 0;
-    // Must be static to persist last known navbar height between View recreations
-    // as setOnApplyWindowInsetsListener is only invoked on layout changes
-    private static int mSystemBarHeight = 0;
 
     // The maximum key label width in the proportion to the key width.
     private static final float MAX_LABEL_RATIO = 0.90f;
@@ -157,14 +151,6 @@ public class KeyboardView extends View {
         keyAttr.recycle();
 
         mPaint.setAntiAlias(true);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            setOnApplyWindowInsetsListener((v, windowInsets) -> {
-                Insets insets = windowInsets.getInsets(WindowInsets.Type.systemBars());
-                mSystemBarHeight = insets.bottom;
-                return WindowInsets.CONSUMED;
-            });
-        }
     }
 
     private static void blendAlpha(final Paint paint, final int alpha) {
@@ -217,7 +203,7 @@ public class KeyboardView extends View {
         }
         // The main keyboard expands to the entire this {@link KeyboardView}.
         final int width = keyboard.mOccupiedWidth + getPaddingLeft() + getPaddingRight();
-        final int height = keyboard.mOccupiedHeight + getPaddingTop() + getPaddingBottom() + mSystemBarHeight;
+        final int height = keyboard.mOccupiedHeight + getPaddingTop() + getPaddingBottom();
         setMeasuredDimension(width, height);
     }
 
