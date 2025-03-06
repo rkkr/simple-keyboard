@@ -146,6 +146,9 @@ public final class RichInputConnection {
         final int expectedSelEnd = mExpectedSelEnd;
 
         Executors.newSingleThreadExecutor().execute(() -> {
+            if (!isConnected()) {
+                return;
+            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 final SurroundingText textAroundCursor =
                         mIC.getSurroundingText(Constants.EDITOR_CONTENTS_CACHE_SIZE, Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
@@ -394,7 +397,7 @@ public final class RichInputConnection {
 
         final int textStart = mExpectedSelStart - mTextBeforeCursor.length();
         final String textRange = mTextBeforeCursor + mTextSelection + mTextAfterCursor;
-        if (textRange.length() > end - textStart && start - textStart > 0 && textStart > 0) {
+        if (textRange.length() > end - textStart && start - textStart >= 0 && textStart >= 0) {
             // Parameters might be partially updated by background thread, skip in such case
             mTextBeforeCursor = textRange.substring(0, start - textStart);
             mTextSelection = textRange.substring(start - textStart, end - textStart);
