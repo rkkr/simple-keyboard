@@ -69,13 +69,13 @@ public final class SubtypeLocaleUtils {
     private static final String LOCALE_CROATIAN = "hr";
     private static final String LOCALE_HUNGARIAN = "hu";
     private static final String LOCALE_ARMENIAN_ARMENIA = "hy_AM";
-    // Java uses the deprecated "in" code instead of the standard "id" code for Indonesian.
-    private static final String LOCALE_INDONESIAN = "in";
+    private static final String LOCALE_INDONESIAN_1 = "in"; // Android 14
+    private static final String LOCALE_INDONESIAN_2 = "id"; // Android 15
     private static final String LOCALE_ICELANDIC = "is";
     private static final String LOCALE_ITALIAN = "it";
     private static final String LOCALE_ITALIAN_SWITZERLAND = "it_CH";
-    // Java uses the deprecated "iw" code instead of the standard "he" code for Hebrew.
-    private static final String LOCALE_HEBREW = "iw";
+    private static final String LOCALE_HEBREW_1 = "iw"; // Android 14
+    private static final String LOCALE_HEBREW_2 = "he"; // Android 15
     private static final String LOCALE_GEORGIAN_GEORGIA = "ka_GE";
     private static final String LOCALE_KAZAKH = "kk";
     private static final String LOCALE_KHMER_CAMBODIA = "km_KH";
@@ -149,11 +149,13 @@ public final class SubtypeLocaleUtils {
             LOCALE_CROATIAN,
             LOCALE_HUNGARIAN,
             LOCALE_ARMENIAN_ARMENIA,
-            LOCALE_INDONESIAN,
+            LOCALE_INDONESIAN_1,
+            LOCALE_INDONESIAN_2,
             LOCALE_ICELANDIC,
             LOCALE_ITALIAN,
             LOCALE_ITALIAN_SWITZERLAND,
-            LOCALE_HEBREW,
+            LOCALE_HEBREW_1,
+            LOCALE_HEBREW_2,
             LOCALE_GEORGIAN_GEORGIA,
             LOCALE_KAZAKH,
             LOCALE_KHMER_CAMBODIA,
@@ -374,7 +376,8 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_ENGLISH_GREAT_BRITAIN:
                 case LOCALE_ENGLISH_UNITED_STATES:
                 case LOCALE_FRENCH_CANADA:
-                case LOCALE_INDONESIAN:
+                case LOCALE_INDONESIAN_1:
+                case LOCALE_INDONESIAN_2:
                 case LOCALE_ICELANDIC:
                 case LOCALE_ITALIAN:
                 case LOCALE_LITHUANIAN:
@@ -476,7 +479,8 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_ARMENIAN_ARMENIA:
                     addLayout(LAYOUT_ARMENIAN_PHONETIC);
                     break;
-                case LOCALE_HEBREW:
+                case LOCALE_HEBREW_1:
+                case LOCALE_HEBREW_2:
                     addLayout(LAYOUT_HEBREW);
                     break;
                 case LOCALE_GEORGIAN_GEORGIA:
