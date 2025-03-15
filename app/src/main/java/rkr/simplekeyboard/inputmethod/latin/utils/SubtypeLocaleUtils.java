@@ -215,6 +215,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_BULGARIAN = "bulgarian";
     public static final String LAYOUT_BULGARIAN_BDS = "bulgarian_bds";
     public static final String LAYOUT_EAST_SLAVIC = "east_slavic";
+    public static final String LAYOUT_ERGOL = "ergol";
     public static final String LAYOUT_FARSI = "farsi";
     public static final String LAYOUT_GEORGIAN = "georgian";
     public static final String LAYOUT_GREEK = "greek";
@@ -375,7 +376,6 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_ENGLISH_INDIA:
                 case LOCALE_ENGLISH_GREAT_BRITAIN:
                 case LOCALE_ENGLISH_UNITED_STATES:
-                case LOCALE_FRENCH_CANADA:
                 case LOCALE_INDONESIAN_1:
                 case LOCALE_INDONESIAN_2:
                 case LOCALE_ICELANDIC:
@@ -403,7 +403,16 @@ public final class SubtypeLocaleUtils {
                     addLayout(LAYOUT_QWERTZ);
                     addGenericLayouts();
                     break;
+                case LOCALE_FRENCH_CANADA:
+                    addLayout(LAYOUT_QWERTY);
+                    addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
+                    addGenericLayouts();
+                    break;
                 case LOCALE_FRENCH:
+                    addLayout(LAYOUT_AZERTY);
+                    addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
+                    addGenericLayouts();
+                    break;
                 case LOCALE_DUTCH_BELGIUM:
                     addLayout(LAYOUT_AZERTY);
                     addGenericLayouts();
@@ -429,8 +438,12 @@ public final class SubtypeLocaleUtils {
                     addLayout(LAYOUT_NORDIC);
                     addGenericLayouts();
                     break;
-                case LOCALE_GERMAN_SWITZERLAND:
                 case LOCALE_FRENCH_SWITZERLAND:
+                    addLayout(LAYOUT_SWISS);
+                    addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
+                    addGenericLayouts();
+                    break;
+                case LOCALE_GERMAN_SWITZERLAND:
                 case LOCALE_ITALIAN_SWITZERLAND:
                     addLayout(LAYOUT_SWISS);
                     addGenericLayouts();
