@@ -57,5 +57,8 @@
     <string name="user_languages">הפעל "שפות מקלדת"</string>
     <string name="add_language">הוסף שפה</string>
     <string name="remove_language">הסר שפה</string>
+    <string name="generic_language_layouts"> פריסות מקלדת<xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g></string>
     <string name="change_keyboard">החלף מקלדת</string>
+    <string name="privacy_policy">מדיניות פרטיות</string>
+    <string name="license">רשיון</string>
 </resources>
