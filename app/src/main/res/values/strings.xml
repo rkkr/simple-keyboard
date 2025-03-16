@@ -77,6 +77,8 @@
     <string name="subtype_f">F</string>
     <!-- Description for Bengali (Akkhor) keyboard layout. -->
     <string name="subtype_akkhor">Akkhor</string>
+    <!-- Description for Ergo-L keyboard layout. -->
+    <string name="subtype_ergol">Ergo-L</string>
 
     <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
     <string name="keyboard_theme_light_border" translatable="false">Material Light Border</string>
