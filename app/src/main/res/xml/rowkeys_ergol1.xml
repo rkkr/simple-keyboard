@@ -60,7 +60,6 @@
                 latin:additionalMoreKeys="*" />
             <Key
                 latin:keySpec="!"
-                latin:moreKeys="!text/morekeys_punctuation"
                 latin:keyHintLabel="\'"
                 latin:additionalMoreKeys="\'" />
             <Key

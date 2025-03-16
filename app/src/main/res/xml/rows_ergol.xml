@@ -25,7 +25,13 @@
         <include latin:keyboardLayout="@xml/rowkeys_ergol2" />
     </Row>
     <Row latin:keyWidth="10%p">
+        <Key
+            latin:keyStyle="shiftKeyStyle"
+            latin:keyWidth="15%p" />
         <include latin:keyboardLayout="@xml/rowkeys_ergol3" />
+        <Key
+            latin:keyStyle="deleteKeyStyle"
+            latin:keyWidth="15%p" />
     </Row>
-    <include latin:keyboardLayout="@xml/row_ergol4" />
+    <include latin:keyboardLayout="@xml/row_qwerty4" />
 </merge>

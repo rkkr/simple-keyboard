@@ -28,12 +28,38 @@
             <Key
                 latin:keySpec="x"
                 latin:moreKeys="!text/morekeys_x"
-                latin:keyHintLabel="[]"
-                latin:additionalMoreKeys="!text/keyspec_left_square_bracket,!text/keyspec_right_square_bracket" />
+                latin:keyHintLabel="["
+                latin:additionalMoreKeys="!text/keyspec_left_square_bracket" />
         </case>
         <default>
             <Key latin:keySpec="z" latin:moreKeys="!text/morekeys_z" />
             <Key latin:keySpec="x" latin:moreKeys="!text/morekeys_x" />
+        </default>
+    </switch>
+    <switch>
+        <case
+            latin:showExtraChars="true"
+            latin:keyboardLayoutSetElement="alphabetManualShifted"
+        >
+            <Key
+                latin:keySpec="!text/keyspec_symbols_question"
+                latin:keyHintLabel="]"
+                latin:additionalMoreKeys="!text/keyspec_right_square_bracket" />
+        </case>
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted">
+            <Key latin:keySpec="!text/keyspec_symbols_question" />
+        </case>
+        <case latin:showExtraChars="true">
+            <Key
+                latin:keySpec="-"
+                latin:moreKeys="‑,–,—"
+                latin:keyHintLabel="]"
+                latin:additionalMoreKeys="!text/keyspec_right_square_bracket" />
+            </case>
+        <default>
+            <Key
+                latin:keySpec="-"
+                latin:moreKeys="‑–—" />
         </default>
     </switch>
     <switch>
@@ -54,6 +80,32 @@
         </default>
     </switch>
     <switch>
+        <case
+            latin:showExtraChars="true"
+            latin:keyboardLayoutSetElement="alphabetManualShifted"
+        >
+            <Key
+                latin:keySpec=":"
+                latin:keyHintLabel="|"
+                latin:additionalMoreKeys="\\|" />
+        </case>
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted">
+            <Key latin:keySpec=":" />
+        </case>
+        <case latin:showExtraChars="true">
+            <Key
+                latin:keySpec="."
+                latin:moreKeys="…"
+                latin:keyHintLabel="|"
+                latin:additionalMoreKeys="\\|" />
+            </case>
+        <default>
+            <Key
+                latin:keySpec="."
+                latin:moreKeys="…"/>
+        </default>
+    </switch>
+    <switch>
         <case latin:showExtraChars="true">
             <Key
                 latin:keySpec="h"
@@ -69,6 +121,35 @@
         <default>
             <Key latin:keySpec="h" latin:moreKeys="!text/morekeys_h" />
             <Key latin:keySpec="g" latin:moreKeys="!text/morekeys_g" />
+        </default>
+    </switch>
+    <switch>
+        <case
+            latin:showExtraChars="true"
+            latin:keyboardLayoutSetElement="alphabetManualShifted"
+        >
+            <Key
+                latin:keySpec=";"
+                latin:moreKeys="·"
+                latin:keyHintLabel=":"
+                latin:additionalMoreKeys=":" />
+        </case>
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted">
+            <Key
+                latin:keySpec=";"
+                latin:moreKeys="·"/>
+        </case>
+        <case latin:showExtraChars="true">
+            <Key
+                latin:keySpec=","
+                latin:moreKeys="·"
+                latin:keyHintLabel=":"
+                latin:additionalMoreKeys=":" />
+            </case>
+        <default>
+            <Key
+                latin:keySpec=","
+                latin:moreKeys="·" />
         </default>
     </switch>
     <switch>

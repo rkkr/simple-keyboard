@@ -35,5 +35,5 @@
             latin:keyStyle="shiftKeyStyle"
             latin:keyWidth="fillRight" />
     </Row>
-    <include latin:keyboardLayout="@xml/row_ergol4" />
+    <include latin:keyboardLayout="@xml/row_qwerty4" />
 </merge>
