@@ -37,8 +37,10 @@ import android.util.Printer;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.view.WindowInsets;
 import android.view.inputmethod.EditorInfo;
 
 import java.io.FileDescriptor;
@@ -90,6 +92,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     // TODO: Move these {@link View}s to {@link KeyboardSwitcher}.
     private View mInputView;
     private InsetsUpdater mInsetsUpdater;
+    private android.graphics.Insets mInsets;
 
     private RichInputMethodManager mRichImm;
     final KeyboardSwitcher mKeyboardSwitcher;
@@ -608,6 +611,17 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             ViewLayoutUtils.updateLayoutHeightOf(inputArea, layoutHeight);
             ViewLayoutUtils.updateLayoutGravityOf(inputArea, Gravity.BOTTOM);
             ViewLayoutUtils.updateLayoutHeightOf(mInputView, layoutHeight);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                ViewLayoutUtils.applyViewInsets(mInputView, mInsets);
+
+                mInputView.setOnApplyWindowInsetsListener((view, windowInsets) -> {
+                    mInsets = windowInsets.getInsets(WindowInsets.Type.systemBars());
+                    ViewLayoutUtils.applyViewInsets(mInputView, mInsets);
+
+                    return WindowInsets.CONSUMED;
+                });
+            }
         }
     }
 
