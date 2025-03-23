@@ -388,6 +388,7 @@ public final class InputLogic {
             case SubtypeLocaleUtils.LAYOUT_BENGALI:
             case SubtypeLocaleUtils.LAYOUT_BENGALI_AKKHOR:
             case SubtypeLocaleUtils.LAYOUT_BENGALI_UNIJOY:
+            case SubtypeLocaleUtils.LAYOUT_ERGOL:
             case SubtypeLocaleUtils.LAYOUT_FARSI:
             case SubtypeLocaleUtils.LAYOUT_GEORGIAN:
             case SubtypeLocaleUtils.LAYOUT_HEBREW:
