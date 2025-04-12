@@ -38,7 +38,6 @@
     <string name="subtype_compact">"kompakt"</string>
     <string name="add">"Lägg till"</string>
     <string name="remove">"Ta bort"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Vibrationslängd för tangenter"</string>
     <string name="prefs_keypress_sound_volume_settings">"Ljudvolym för tangenter"</string>
     <string name="prefs_key_longpress_timeout_settings">"Fördröjning vid långt tryck"</string>
     <string name="button_default">"Standard"</string>

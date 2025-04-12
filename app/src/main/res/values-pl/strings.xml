@@ -39,7 +39,6 @@
     <string name="subtype_compact">"kompaktowa"</string>
     <string name="add">"Dodaj"</string>
     <string name="remove">"Usuń"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Wibracja przy naciśniętym klawiszu"</string>
     <string name="prefs_keypress_sound_volume_settings">"Głośność przy naciśniętym klawiszu"</string>
     <string name="prefs_key_longpress_timeout_settings">"Opóźnienie przy długim naciśnięciu"</string>
     <string name="button_default">"Domyślne"</string>

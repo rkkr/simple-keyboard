@@ -37,7 +37,6 @@
     <string name="subtype_compact">"kompakt"</string>
     <string name="add">"Tilføj"</string>
     <string name="remove">"Fjern"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Vibrationstid ved tastetryk"</string>
     <string name="prefs_keypress_sound_volume_settings">"Lydstyrke ved tastetryk"</string>
     <string name="prefs_key_longpress_timeout_settings">"Forsinket langt tastetryk"</string>
     <string name="button_default">"Standard"</string>

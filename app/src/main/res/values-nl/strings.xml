@@ -39,7 +39,6 @@
     <string name="subtype_compact">"compact"</string>
     <string name="add">"Toevoegen"</string>
     <string name="remove">"Verwijderen"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Trilingsduur bij toetsgebruik"</string>
     <string name="prefs_keypress_sound_volume_settings">"Geluidsvolume bij toetsgebruik"</string>
     <string name="prefs_key_longpress_timeout_settings">"Lengte toetsinvoer"</string>
     <string name="button_default">"Standaard"</string>

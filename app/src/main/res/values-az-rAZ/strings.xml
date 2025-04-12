@@ -38,7 +38,6 @@
     <string name="subtype_compact">"Kompakt"</string>
     <string name="add">"Əlavə et"</string>
     <string name="remove">"Ləğv et"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Vibrasiyalı klikləmə müddəti"</string>
     <string name="prefs_keypress_sound_volume_settings">"Səsli klikləmə səsi"</string>
     <string name="prefs_key_longpress_timeout_settings">"Klavişi uzun müddət basmada gecikmə"</string>
     <string name="button_default">"Defolt"</string>

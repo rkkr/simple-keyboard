@@ -38,7 +38,6 @@
     <string name="subtype_compact">"kompakte"</string>
     <string name="add">"Shto"</string>
     <string name="remove">"Hiq"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Kohëzgjatja e dridhjes nga shtypja e tastit"</string>
     <string name="prefs_keypress_sound_volume_settings">"Volumi i tingullit të tastit"</string>
     <string name="prefs_key_longpress_timeout_settings">"Vonesa e shtypjes së gjatë të tastit"</string>
     <string name="button_default">"I parazgjedhur"</string>

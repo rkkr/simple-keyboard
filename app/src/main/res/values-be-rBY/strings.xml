@@ -40,7 +40,6 @@
     <string name="subtype_compact">"кампактная"</string>
     <string name="add">"Дадаць"</string>
     <string name="remove">"Выдаліць"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Працягласць вібрацыі пры націску клавіш"</string>
     <string name="prefs_keypress_sound_volume_settings">"Гучнасць гуку пры націску клавіш"</string>
     <string name="prefs_key_longpress_timeout_settings">"Затрымка доўгага націску клавішы"</string>
     <string name="button_default">"Па змаўчанні"</string>

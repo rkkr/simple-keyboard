@@ -39,7 +39,6 @@
     <string name="subtype_compact">"tiivis"</string>
     <string name="add">"Lisää"</string>
     <string name="remove">"Poista"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Painalluksen värinän kesto"</string>
     <string name="prefs_keypress_sound_volume_settings">"Näppäinpainalluksen äänenvoimakkuus"</string>
     <string name="prefs_key_longpress_timeout_settings">"Pitkän painalluksen viive"</string>
     <string name="button_default">"Oletusarvot"</string>

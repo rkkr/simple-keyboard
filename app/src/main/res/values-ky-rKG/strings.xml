@@ -38,7 +38,6 @@
     <string name="subtype_compact">"Чакан"</string>
     <string name="add">"Кошуу"</string>
     <string name="remove">"Алып салуу"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Басылган баскычтын дирлдөө узактгы"</string>
     <string name="prefs_keypress_sound_volume_settings">"Басылган баскычтын үнүнүн катуулугу"</string>
     <string name="prefs_key_longpress_timeout_settings">"Баскычты көпкө басуунун узактыгы"</string>
     <string name="button_default">"Демейки"</string>

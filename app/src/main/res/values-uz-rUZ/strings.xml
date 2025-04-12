@@ -37,7 +37,6 @@
     <string name="subtype_compact">"ixcham"</string>
     <string name="add">"Qo‘shish"</string>
     <string name="remove">"Olib tashlash"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Tugma bosilganda tebranish vaqti"</string>
     <string name="prefs_keypress_sound_volume_settings">"Tugma bosilgandagi ovoz"</string>
     <string name="prefs_key_longpress_timeout_settings">"Tugmani bosib turish"</string>
     <string name="button_default">"Standart"</string>

@@ -38,7 +38,6 @@
     <string name="subtype_compact">"संक्षिप्त"</string>
     <string name="add">"जोडा"</string>
     <string name="remove">"काढा"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"की दाबल्यावर कंपन कालावधी"</string>
     <string name="prefs_keypress_sound_volume_settings">"की दाबल्यावर आवाजाची तीव्रता"</string>
     <string name="prefs_key_longpress_timeout_settings">"की जास्त दाबण्यात विलंब"</string>
     <string name="button_default">"डीफॉल्ट"</string>

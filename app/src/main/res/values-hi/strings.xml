@@ -38,7 +38,6 @@
     <string name="subtype_compact">"संक्षिप्त"</string>
     <string name="add">"जोड़ें"</string>
     <string name="remove">"निकालें"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"बटन दबाने पर कंपन अवधि"</string>
     <string name="prefs_keypress_sound_volume_settings">"बटन दबाने पर आवाज़ का स्तर"</string>
     <string name="prefs_key_longpress_timeout_settings">"बटन दबाए रखने की समयाविधि"</string>
     <string name="button_default">"सामान्य"</string>

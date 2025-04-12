@@ -39,7 +39,6 @@
     <string name="subtype_compact">"കോം‌പാക്‌ട്"</string>
     <string name="add">"ചേര്‍ക്കുക"</string>
     <string name="remove">"നീക്കംചെയ്യുക"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"കീ അമർത്തുമ്പോഴുള്ള വൈബ്രേഷൻ ദൈർഘ്യം"</string>
     <string name="prefs_keypress_sound_volume_settings">"കീ അമർത്തുമ്പോഴുള്ള ശബ്‌ദ വോളിയം"</string>
     <string name="prefs_key_longpress_timeout_settings">"കീ അമർത്തിപ്പിടിക്കുന്നതിലെ കാലതാമസം"</string>
     <string name="button_default">"സ്ഥിരമായത്"</string>

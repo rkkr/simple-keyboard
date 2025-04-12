@@ -38,7 +38,6 @@
     <string name="subtype_compact">"እስግ"</string>
     <string name="add">"አክል"</string>
     <string name="remove">"አስወግድ"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"የቁልፍ ጭነት ንዝረት ርዝመት"</string>
     <string name="prefs_keypress_sound_volume_settings">"የቁልፍ ጭነት ድምጽ መጠን"</string>
     <string name="prefs_key_longpress_timeout_settings">"የሰሌዳ ቁልፍ ጠቅታ በመጫን መዘግየት"</string>
     <string name="button_default">"ነባሪ"</string>

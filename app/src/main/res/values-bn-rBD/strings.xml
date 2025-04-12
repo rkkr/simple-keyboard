@@ -44,7 +44,6 @@
     <string name="subtype_akkhor">অক্ষর</string>
     <string name="add">যোগ করুন</string>
     <string name="remove">অপসারণ করুন</string>
-    <string name="prefs_keypress_vibration_duration_settings">কিপ্রেস কম্পনের স্থিতিকাল</string>
     <string name="prefs_keypress_sound_volume_settings">কিপ্রেস শব্দের ভলিউম</string>
     <string name="prefs_key_longpress_timeout_settings">দীর্ঘ কিপ্রেসের বিলম্ব</string>
     <string name="button_default">ডিফল্ট</string>

@@ -41,7 +41,6 @@
  
     <string name="add">"Добавить"</string>
     <string name="remove">"Удалить"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Вибросигнал при нажатии клавиш"</string>
     <string name="prefs_keypress_sound_volume_settings">"Звук при нажатии клавиш"</string>
     <string name="prefs_key_longpress_timeout_settings">"Долгое нажатие"</string>
     <string name="button_default">"По умолчанию"</string>

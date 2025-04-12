@@ -40,7 +40,6 @@
     <string name="subtype_compact">"Viết tắt"</string>
     <string name="add">"Thêm"</string>
     <string name="remove">"Xóa"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Thời gian rung khi nhấn phím"</string>
     <string name="prefs_keypress_sound_volume_settings">"Âm lượng khi nhấn phím"</string>
     <string name="prefs_key_longpress_timeout_settings">"Thời gian trễ nhấn và giữ phím"</string>
     <string name="button_default">"Mặc định"</string>

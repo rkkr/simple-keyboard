@@ -38,7 +38,6 @@
     <string name="subtype_compact">"કોમ્પેક્ટ"</string>
     <string name="add">"ઉમેરો"</string>
     <string name="remove">"દૂર કરો"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"કીપ્રેસ વાઇબ્રેશન અવધિ"</string>
     <string name="prefs_keypress_sound_volume_settings">"કીપ્રેસ ધ્વનિ વોલ્યુમ"</string>
     <string name="prefs_key_longpress_timeout_settings">"લાંબા કી પ્રેસનો વિલંબ"</string>
     <string name="button_default">"ડિફોલ્ટ"</string>

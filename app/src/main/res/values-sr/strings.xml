@@ -37,7 +37,6 @@
     <string name="subtype_compact">"компактна"</string>
     <string name="add">"Додај"</string>
     <string name="remove">"Уклони"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Трајање вибрације при притиску"</string>
     <string name="prefs_keypress_sound_volume_settings">"Јачина звука при притиску"</string>
     <string name="prefs_key_longpress_timeout_settings">"Одлагање при дугом притиску"</string>
     <string name="button_default">"Подразумевано"</string>

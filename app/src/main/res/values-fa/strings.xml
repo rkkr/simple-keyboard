@@ -40,7 +40,6 @@
     <string name="subtype_compact">"فشرده"</string>
     <string name="add">"افزودن"</string>
     <string name="remove">"حذف"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"طول مدت لرزش در اثر فشردن کلید"</string>
     <string name="prefs_keypress_sound_volume_settings">"میزان صدای فشردن کلید"</string>
     <string name="prefs_key_longpress_timeout_settings">"تأخیر فشار طولانی کلید"</string>
     <string name="button_default">"پیش‌فرض"</string>

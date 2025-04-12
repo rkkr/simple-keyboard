@@ -38,7 +38,6 @@
     <string name="subtype_compact">"Compact"</string>
     <string name="add">"Idagdag"</string>
     <string name="remove">"Alisin"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Tagal ng vibration ng keypress"</string>
     <string name="prefs_keypress_sound_volume_settings">"Volume ng tunog ng keypress"</string>
     <string name="prefs_key_longpress_timeout_settings">"Delay sa long press ng key"</string>
     <string name="button_default">"Default"</string>

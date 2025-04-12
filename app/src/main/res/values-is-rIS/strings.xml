@@ -37,7 +37,6 @@
     <string name="subtype_compact">"lítið"</string>
     <string name="add">"Bæta við"</string>
     <string name="remove">"Fjarlægja"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Lengd lyklatitrings"</string>
     <string name="prefs_keypress_sound_volume_settings">"Styrkur lyklahljóða"</string>
     <string name="prefs_key_longpress_timeout_settings">"Töf áður en lykli er haldið inni"</string>
     <string name="button_default">"Sjálfgefið"</string>

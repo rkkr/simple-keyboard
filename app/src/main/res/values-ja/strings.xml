@@ -40,7 +40,6 @@
     <string name="subtype_compact">"コンパクト"</string>
     <string name="add">"追加"</string>
     <string name="remove">"削除"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"キー操作バイブの振動時間"</string>
     <string name="prefs_keypress_sound_volume_settings">"キー操作音の音量"</string>
     <string name="prefs_key_longpress_timeout_settings">"キーの長押し時間"</string>
     <string name="button_default">"デフォルト"</string>

@@ -38,7 +38,6 @@
     <string name="subtype_compact">"კომპაქტური"</string>
     <string name="add">"დამატება"</string>
     <string name="remove">"ამოშლა"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"კლავიშზე დაჭერის ვიბრაციის ხანგრძლივობა"</string>
     <string name="prefs_keypress_sound_volume_settings">"კლავიშზე დაჭერის ხმა"</string>
     <string name="prefs_key_longpress_timeout_settings">"კლავიშზე გრძელი დაჭერის დაყოვნება"</string>
     <string name="button_default">"ნაგულისხმევი"</string>
