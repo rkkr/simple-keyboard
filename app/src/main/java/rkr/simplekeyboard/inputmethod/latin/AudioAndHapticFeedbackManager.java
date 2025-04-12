@@ -67,17 +67,6 @@ public final class AudioAndHapticFeedbackManager {
         return mVibrator != null && mVibrator.hasVibrator();
     }
 
-    public void vibrate() {
-        if (mVibrator == null) {
-            return;
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            mVibrator.vibrate(VibrationEffect.createPredefined (VibrationEffect.EFFECT_CLICK));
-        } else {
-            mVibrator.vibrate(DEFAULT_KEYPRESS_VIBRATION_DURATION);
-        }
-    }
-
     private boolean reevaluateIfSoundIsOn() {
         if (mSettingsValues == null || !mSettingsValues.mSoundOn || mAudioManager == null) {
             return false;
@@ -119,11 +108,25 @@ public final class AudioAndHapticFeedbackManager {
     }
 
     public void performHapticFeedback() {
-        if (!mSettingsValues.mVibrateOn) {
+        if (!mSettingsValues.mVibrateOn || mVibrator == null) {
             return;
         }
 
-        vibrate();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            mVibrator.vibrate(VibrationEffect.createPredefined (VibrationEffect.EFFECT_CLICK));
+        } else {
+            mVibrator.vibrate(DEFAULT_KEYPRESS_VIBRATION_DURATION);
+        }
+    }
+
+    public void performTickFeedback() {
+        if (!mSettingsValues.mVibrateOn || mVibrator == null) {
+            return;
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            mVibrator.vibrate(VibrationEffect.createPredefined (VibrationEffect.EFFECT_TICK));
+        }
     }
 
     public void onSettingsChanged(final SettingsValues settingsValues) {

@@ -656,15 +656,19 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     @Override
-    public void onMovePointer(int steps) {
+    public void onMoveCursorPointer(int steps) {
         if (mInputLogic.mConnection.hasCursorPosition()) {
             if (TextUtils.getLayoutDirectionFromLocale(getCurrentLayoutLocale()) == View.LAYOUT_DIRECTION_RTL)
                 steps = -steps;
 
             steps = mInputLogic.mConnection.getUnicodeSteps(steps, true);
+            if (steps == 0) {
+                return;
+            }
             final int end = mInputLogic.mConnection.getExpectedSelectionEnd() + steps;
             final int start = mInputLogic.mConnection.hasSelection() ? mInputLogic.mConnection.getExpectedSelectionStart() : end;
             mInputLogic.mConnection.setSelection(start, end);
+            hapticTickFeedback();
         } else {
             for (; steps < 0; steps++)
                 mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_LEFT);
@@ -677,9 +681,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void onMoveDeletePointer(int steps) {
         if (mInputLogic.mConnection.hasCursorPosition()) {
             steps = mInputLogic.mConnection.getUnicodeSteps(steps, false);
+            if (steps == 0) {
+                return;
+            }
             final int end = mInputLogic.mConnection.getExpectedSelectionEnd();
             final int start = mInputLogic.mConnection.getExpectedSelectionStart() + steps;
             mInputLogic.mConnection.setSelection(start, end);
+            hapticTickFeedback();
         } else {
             for (; steps < 0; steps++)
                 mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
@@ -827,13 +835,17 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 return;
             }
         }
-        final AudioAndHapticFeedbackManager feedbackManager =
-                AudioAndHapticFeedbackManager.getInstance();
+        final AudioAndHapticFeedbackManager feedbackManager = AudioAndHapticFeedbackManager.getInstance();
         if (repeatCount == 0) {
             // TODO: Reconsider how to perform haptic feedback when repeating key.
             feedbackManager.performHapticFeedback();
         }
         feedbackManager.performAudioFeedback(code);
+    }
+
+    private void hapticTickFeedback() {
+        final AudioAndHapticFeedbackManager feedbackManager = AudioAndHapticFeedbackManager.getInstance();
+        feedbackManager.performTickFeedback();
     }
 
     // Callback of the {@link KeyboardActionListener}. This is called when a key is depressed;

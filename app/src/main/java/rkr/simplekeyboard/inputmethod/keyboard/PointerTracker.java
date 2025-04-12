@@ -613,7 +613,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             if (steps != 0 && mStartTime + swipeIgnoreTime < System.currentTimeMillis()) {
                 mCursorMoved = true;
                 mStartX += steps * sPointerStep;
-                sListener.onMovePointer(steps);
+                sListener.onMoveCursorPointer(steps);
             }
             return;
         }
