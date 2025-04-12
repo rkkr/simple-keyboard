@@ -166,21 +166,17 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         prefs.edit().putString(PREF_ENABLED_SUBTYPES, prefSubtypes).apply();
     }
 
-    public static float readKeypressSoundVolume(final SharedPreferences prefs,
-            final Resources res) {
+    public static float readKeypressSoundVolume(final SharedPreferences prefs) {
         final float volume = prefs.getFloat(
                 PREF_KEYPRESS_SOUND_VOLUME, UNDEFINED_PREFERENCE_VALUE_FLOAT);
         return (volume != UNDEFINED_PREFERENCE_VALUE_FLOAT) ? volume
-                : readDefaultKeypressSoundVolume(res);
+                : readDefaultKeypressSoundVolume();
     }
 
-    // Default keypress sound volume for unknown devices.
-    // The negative value means system default.
-    private static final String DEFAULT_KEYPRESS_SOUND_VOLUME = Float.toString(-1.0f);
+    private static final float DEFAULT_KEYPRESS_SOUND_VOLUME = 0.5f;
 
-    public static float readDefaultKeypressSoundVolume(final Resources res) {
-        return Float.parseFloat(ResourceUtils.getDeviceOverrideValue(res,
-                R.array.keypress_volumes, DEFAULT_KEYPRESS_SOUND_VOLUME));
+    public static float readDefaultKeypressSoundVolume() {
+        return DEFAULT_KEYPRESS_SOUND_VOLUME;
     }
 
     public static int readKeyLongpressTimeout(final SharedPreferences prefs,

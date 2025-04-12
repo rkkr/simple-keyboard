@@ -88,12 +88,12 @@ public final class KeyPressSettingsFragment extends SubScreenFragment {
 
             @Override
             public int readValue(final String key) {
-                return getPercentageFromValue(Settings.readKeypressSoundVolume(prefs, res));
+                return getPercentageFromValue(Settings.readKeypressSoundVolume(prefs));
             }
 
             @Override
             public int readDefaultValue(final String key) {
-                return getPercentageFromValue(Settings.readDefaultKeypressSoundVolume(res));
+                return getPercentageFromValue(Settings.readDefaultKeypressSoundVolume());
             }
 
             @Override
