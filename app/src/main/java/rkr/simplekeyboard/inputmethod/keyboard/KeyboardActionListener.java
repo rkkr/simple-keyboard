@@ -74,9 +74,10 @@ public interface KeyboardActionListener {
      * @return true if the request has been consumed, false otherwise.
      */
     boolean onCustomRequest(int requestCode);
-    void onMovePointer(int steps);
+    void onMoveCursorPointer(int steps);
     void onMoveDeletePointer(int steps);
     void onUpWithDeletePointerActive();
+    void onUpWithSpacePointerActive();
 
     KeyboardActionListener EMPTY_LISTENER = new Adapter();
 
@@ -96,10 +97,12 @@ public interface KeyboardActionListener {
             return false;
         }
         @Override
-        public void onMovePointer(int steps) {}
+        public void onMoveCursorPointer(int steps) {}
         @Override
         public void onMoveDeletePointer(int steps) {}
         @Override
         public void onUpWithDeletePointerActive() {}
+        @Override
+        public void onUpWithSpacePointerActive() {}
     }
 }

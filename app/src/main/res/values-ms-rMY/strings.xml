@@ -38,7 +38,6 @@
     <string name="subtype_compact">"Sarat"</string>
     <string name="add">"Tambah"</string>
     <string name="remove">"Alih Keluar"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Tempoh getaran tekan kekunci"</string>
     <string name="prefs_keypress_sound_volume_settings">"Kelantangan bunyi tekan kekunci"</string>
     <string name="prefs_key_longpress_timeout_settings">"Lengah tekan lama kekunci"</string>
     <string name="button_default">"Lalai"</string>

@@ -40,7 +40,6 @@
     <string name="subtype_compact">"Συμπαγές"</string>
     <string name="add">"Προσθήκη"</string>
     <string name="remove">"Κατάργηση"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Διάρκεια δόνησης πατήμ. πλήκτ."</string>
     <string name="prefs_keypress_sound_volume_settings">"Ένταση ήχου πατήματος πλήκτρου"</string>
     <string name="prefs_key_longpress_timeout_settings">"Καθυστέρηση παρατεταμένου πατήματος"</string>
     <string name="button_default">"Προεπιλογή"</string>

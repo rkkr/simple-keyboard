@@ -41,7 +41,6 @@
     <string name="subtype_bds">"БДС"</string>
     <string name="add">"Добавяне"</string>
     <string name="remove">"Премахване"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Продълж. на вибриране при натискане"</string>
     <string name="prefs_keypress_sound_volume_settings">"Сила на звука при натиск. на клавиш"</string>
     <string name="prefs_key_longpress_timeout_settings">"Забавяне при продълж. натискане"</string>
     <string name="button_default">"Стандартно"</string>

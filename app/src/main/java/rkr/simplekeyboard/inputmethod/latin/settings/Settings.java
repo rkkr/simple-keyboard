@@ -44,7 +44,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_HIDE_LANGUAGE_SWITCH_KEY = "pref_hide_language_switch_key";
     public static final String PREF_ENABLE_IME_SWITCH = "pref_enable_ime_switch";
     public static final String PREF_ENABLED_SUBTYPES = "pref_enabled_subtypes";
-    public static final String PREF_VIBRATION_DURATION_SETTINGS = "pref_vibration_duration_settings";
     public static final String PREF_KEYPRESS_SOUND_VOLUME = "pref_keypress_sound_volume";
     public static final String PREF_KEY_LONGPRESS_TIMEOUT = "pref_key_longpress_timeout";
     public static final String PREF_KEYBOARD_HEIGHT = "pref_keyboard_height";
@@ -167,21 +166,17 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         prefs.edit().putString(PREF_ENABLED_SUBTYPES, prefSubtypes).apply();
     }
 
-    public static float readKeypressSoundVolume(final SharedPreferences prefs,
-            final Resources res) {
+    public static float readKeypressSoundVolume(final SharedPreferences prefs) {
         final float volume = prefs.getFloat(
                 PREF_KEYPRESS_SOUND_VOLUME, UNDEFINED_PREFERENCE_VALUE_FLOAT);
         return (volume != UNDEFINED_PREFERENCE_VALUE_FLOAT) ? volume
-                : readDefaultKeypressSoundVolume(res);
+                : readDefaultKeypressSoundVolume();
     }
 
-    // Default keypress sound volume for unknown devices.
-    // The negative value means system default.
-    private static final String DEFAULT_KEYPRESS_SOUND_VOLUME = Float.toString(-1.0f);
+    private static final float DEFAULT_KEYPRESS_SOUND_VOLUME = 0.5f;
 
-    public static float readDefaultKeypressSoundVolume(final Resources res) {
-        return Float.parseFloat(ResourceUtils.getDeviceOverrideValue(res,
-                R.array.keypress_volumes, DEFAULT_KEYPRESS_SOUND_VOLUME));
+    public static float readDefaultKeypressSoundVolume() {
+        return DEFAULT_KEYPRESS_SOUND_VOLUME;
     }
 
     public static int readKeyLongpressTimeout(final SharedPreferences prefs,
@@ -194,23 +189,6 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static int readDefaultKeyLongpressTimeout(final Resources res) {
         return res.getInteger(R.integer.config_default_longpress_key_timeout);
-    }
-
-    public static int readKeypressVibrationDuration(final SharedPreferences prefs,
-            final Resources res) {
-        final int milliseconds = prefs.getInt(
-                PREF_VIBRATION_DURATION_SETTINGS, UNDEFINED_PREFERENCE_VALUE_INT);
-        return (milliseconds != UNDEFINED_PREFERENCE_VALUE_INT) ? milliseconds
-                : readDefaultKeypressVibrationDuration(res);
-    }
-
-    // Default keypress vibration duration for unknown devices.
-    // The negative value means system default.
-    private static final String DEFAULT_KEYPRESS_VIBRATION_DURATION = Integer.toString(-1);
-
-    public static int readDefaultKeypressVibrationDuration(final Resources res) {
-        return Integer.parseInt(ResourceUtils.getDeviceOverrideValue(res,
-                R.array.keypress_vibration_durations, DEFAULT_KEYPRESS_VIBRATION_DURATION));
     }
 
     public static float readKeyboardHeight(final SharedPreferences prefs,

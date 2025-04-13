@@ -39,7 +39,6 @@
     <string name="subtype_compact">"kompaktne"</string>
     <string name="add">"Lisa"</string>
     <string name="remove">"Eemalda"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Klahvivajutuse vibreerimise kestus"</string>
     <string name="prefs_keypress_sound_volume_settings">"Klahvivajutuse helitugevus"</string>
     <string name="prefs_key_longpress_timeout_settings">"Pika klahvivajutuse viide"</string>
     <string name="button_default">"Vaikeväärtus"</string>

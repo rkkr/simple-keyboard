@@ -38,7 +38,6 @@
     <string name="subtype_compact">"kompaktan"</string>
     <string name="add">"Dodaj"</string>
     <string name="remove">"Ukloni"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Trajanje vibracije pritisnute tipke"</string>
     <string name="prefs_keypress_sound_volume_settings">"Jačina zvuka pritisnute tipke"</string>
     <string name="prefs_key_longpress_timeout_settings">"Odgoda dugog pritiska tipke"</string>
     <string name="button_default">"Zadano"</string>

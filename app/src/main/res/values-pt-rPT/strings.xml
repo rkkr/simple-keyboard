@@ -37,7 +37,6 @@
     <string name="subtype_compact">"compacto"</string>
     <string name="add">"Adicionar"</string>
     <string name="remove">"Remover"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Duração vibr. ao premir teclas"</string>
     <string name="prefs_keypress_sound_volume_settings">"Volume do som ao premir teclas"</string>
     <string name="prefs_key_longpress_timeout_settings">"Atraso ao manter tecla premida"</string>
     <string name="button_default">"Predefinido"</string>

@@ -38,7 +38,6 @@
     <string name="subtype_compact">"បង្រួម"</string>
     <string name="add">"បន្ថែម"</string>
     <string name="remove">"លុប​ចេញ"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"ថិរវេលា​​ញ័រ​​ពេល​ចុច​គ្រាប់ចុច"</string>
     <string name="prefs_keypress_sound_volume_settings">"កម្រិត​សំឡេង​ពេល​ចុច​គ្រាប់​ចុច"</string>
     <string name="prefs_key_longpress_timeout_settings">"ពន្យារពេល​​​ចុច​គ្រាប់​ចុច​ឲ្យ​​យូរ"</string>
     <string name="button_default">"លំនាំដើម"</string>

@@ -18,9 +18,9 @@ package rkr.simplekeyboard.inputmethod.latin;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.os.Build;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.view.HapticFeedbackConstants;
-import android.view.View;
 
 import java.util.concurrent.Executors;
 
@@ -34,6 +34,7 @@ import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
  * complexity of settings and the like.
  */
 public final class AudioAndHapticFeedbackManager {
+    private static final long DEFAULT_KEYPRESS_VIBRATION_DURATION = 15;
     private AudioManager mAudioManager;
     private Vibrator mVibrator;
 
@@ -64,13 +65,6 @@ public final class AudioAndHapticFeedbackManager {
 
     public boolean hasVibrator() {
         return mVibrator != null && mVibrator.hasVibrator();
-    }
-
-    public void vibrate(final long milliseconds) {
-        if (mVibrator == null) {
-            return;
-        }
-        mVibrator.vibrate(milliseconds);
     }
 
     private boolean reevaluateIfSoundIsOn() {
@@ -113,19 +107,25 @@ public final class AudioAndHapticFeedbackManager {
         mAudioManager.playSoundEffect(effectType, volume);
     }
 
-    public void performHapticFeedback(final View viewToPerformHapticFeedbackOn) {
-        if (!mSettingsValues.mVibrateOn) {
+    public void performHapticFeedback() {
+        if (!mSettingsValues.mVibrateOn || mVibrator == null) {
             return;
         }
-        if (mSettingsValues.mKeypressVibrationDuration >= 0) {
-            vibrate(mSettingsValues.mKeypressVibrationDuration);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            mVibrator.vibrate(VibrationEffect.createPredefined (VibrationEffect.EFFECT_CLICK));
+        } else {
+            mVibrator.vibrate(DEFAULT_KEYPRESS_VIBRATION_DURATION);
+        }
+    }
+
+    public void performTickFeedback() {
+        if (!mSettingsValues.mVibrateOn || mVibrator == null) {
             return;
         }
-        // Go ahead with the system default
-        if (viewToPerformHapticFeedbackOn != null) {
-            viewToPerformHapticFeedbackOn.performHapticFeedback(
-                    HapticFeedbackConstants.KEYBOARD_TAP,
-                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            mVibrator.vibrate(VibrationEffect.createPredefined (VibrationEffect.EFFECT_TICK));
         }
     }
 

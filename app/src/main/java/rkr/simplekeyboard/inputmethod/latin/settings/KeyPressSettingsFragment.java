@@ -51,56 +51,10 @@ public final class KeyPressSettingsFragment extends SubScreenFragment {
 
         if (!AudioAndHapticFeedbackManager.getInstance().hasVibrator()) {
             removePreference(Settings.PREF_VIBRATE_ON);
-            removePreference(Settings.PREF_VIBRATION_DURATION_SETTINGS);
         }
 
-        setupKeypressVibrationDurationSettings();
         setupKeypressSoundVolumeSettings();
         setupKeyLongpressTimeoutSettings();
-    }
-
-    private void setupKeypressVibrationDurationSettings() {
-        final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(
-                Settings.PREF_VIBRATION_DURATION_SETTINGS);
-        if (pref == null) {
-            return;
-        }
-        final SharedPreferences prefs = getSharedPreferences();
-        final Resources res = getResources();
-        pref.setInterface(new SeekBarDialogPreference.ValueProxy() {
-            @Override
-            public void writeValue(final int value, final String key) {
-                prefs.edit().putInt(key, value).apply();
-            }
-
-            @Override
-            public void writeDefaultValue(final String key) {
-                prefs.edit().remove(key).apply();
-            }
-
-            @Override
-            public int readValue(final String key) {
-                return Settings.readKeypressVibrationDuration(prefs, res);
-            }
-
-            @Override
-            public int readDefaultValue(final String key) {
-                return Settings.readDefaultKeypressVibrationDuration(res);
-            }
-
-            @Override
-            public void feedbackValue(final int value) {
-                AudioAndHapticFeedbackManager.getInstance().vibrate(value);
-            }
-
-            @Override
-            public String getValueText(final int value) {
-                if (value < 0) {
-                    return res.getString(R.string.settings_system_default);
-                }
-                return res.getString(R.string.abbreviation_unit_milliseconds, value);
-            }
-        });
     }
 
     private void setupKeypressSoundVolumeSettings() {
@@ -134,12 +88,12 @@ public final class KeyPressSettingsFragment extends SubScreenFragment {
 
             @Override
             public int readValue(final String key) {
-                return getPercentageFromValue(Settings.readKeypressSoundVolume(prefs, res));
+                return getPercentageFromValue(Settings.readKeypressSoundVolume(prefs));
             }
 
             @Override
             public int readDefaultValue(final String key) {
-                return getPercentageFromValue(Settings.readDefaultKeypressSoundVolume(res));
+                return getPercentageFromValue(Settings.readDefaultKeypressSoundVolume());
             }
 
             @Override

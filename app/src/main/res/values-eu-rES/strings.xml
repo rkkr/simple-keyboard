@@ -37,7 +37,6 @@
     <string name="subtype_compact">"trinkoa"</string>
     <string name="add">"Gehitu"</string>
     <string name="remove">"Kendu"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Tekla sakatzearen dardararen iraupena"</string>
     <string name="prefs_keypress_sound_volume_settings">"Tekla sakatzearen bolumena"</string>
     <string name="prefs_key_longpress_timeout_settings">"Luze sakatzearen atzerapena"</string>
     <string name="button_default">"Lehenetsia"</string>

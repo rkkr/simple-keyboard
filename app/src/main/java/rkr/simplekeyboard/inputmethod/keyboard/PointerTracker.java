@@ -149,6 +149,10 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         return sPointerTrackerQueue.isAnyInDraggingFinger();
     }
 
+    public static boolean isAnyInCursorMove() {
+        return sPointerTrackerQueue.isAnyInCursorMove();
+    }
+
     public static void cancelAllPointerTrackers() {
         sPointerTrackerQueue.cancelAllPointerTrackers();
     }
@@ -288,6 +292,11 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
     @Override
     public boolean isInDraggingFinger() {
         return mIsInDraggingFinger;
+    }
+
+    @Override
+    public boolean isInCursorMove() {
+        return mCursorMoved;
     }
 
     public Key getKey() {
@@ -613,7 +622,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
             if (steps != 0 && mStartTime + swipeIgnoreTime < System.currentTimeMillis()) {
                 mCursorMoved = true;
                 mStartX += steps * sPointerStep;
-                sListener.onMovePointer(steps);
+                sListener.onMoveCursorPointer(steps);
             }
             return;
         }
@@ -686,8 +695,11 @@ public final class PointerTracker implements PointerTrackerQueue.Element {
         // Release the last pressed key.
         setReleasedKeyGraphics(currentKey, true /* withAnimation */);
 
-        if(mCursorMoved && currentKey.getCode() == Constants.CODE_DELETE) {
+        if (mCursorMoved && currentKey.getCode() == Constants.CODE_DELETE) {
             sListener.onUpWithDeletePointerActive();
+        }
+        if (mCursorMoved && currentKey.getCode() == Constants.CODE_SPACE) {
+            sListener.onUpWithSpacePointerActive();
         }
 
         if (isShowingMoreKeysPanel()) {

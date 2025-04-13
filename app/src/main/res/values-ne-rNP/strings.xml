@@ -38,7 +38,6 @@
     <string name="subtype_compact">"संकुचित"</string>
     <string name="add">"थप्नुहोस्"</string>
     <string name="remove">"हटाउनुहोस्"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"कुञ्जी थिचाइ भाइब्रेसन अवधि"</string>
     <string name="prefs_keypress_sound_volume_settings">"कुञ्जी थिचाइ आवाज भोल्युम"</string>
     <string name="prefs_key_longpress_timeout_settings">"कुञ्जीको लामो थिचाइमा ढिलाइ"</string>
     <string name="button_default">"पूर्वनिर्धारित"</string>

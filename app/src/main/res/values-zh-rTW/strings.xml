@@ -40,7 +40,6 @@
     <string name="subtype_compact">"精簡"</string>
     <string name="add">"新增"</string>
     <string name="remove">"移除"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"按鍵震動持續時間"</string>
     <string name="prefs_keypress_sound_volume_settings">"按鍵音量"</string>
     <string name="prefs_key_longpress_timeout_settings">"按鍵長按延遲"</string>
     <string name="button_default">"預設"</string>

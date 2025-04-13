@@ -40,7 +40,6 @@
     <string name="subtype_compact">"مكثفة"</string>
     <string name="add">"إضافة"</string>
     <string name="remove">"إزالة"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"مدة اهتزاز الضغط على المفاتيح"</string>
     <string name="prefs_keypress_sound_volume_settings">"مستوى صوت الضغط على المفاتيح"</string>
     <string name="prefs_key_longpress_timeout_settings">"تأخير الضغط الطويل للمفاتيح"</string>
     <string name="button_default">"الافتراضية"</string>

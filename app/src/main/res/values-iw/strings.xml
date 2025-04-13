@@ -40,7 +40,6 @@
     <string name="subtype_compact">"קומפקטית"</string>
     <string name="add">"הוסף"</string>
     <string name="remove">"הסר"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"משך רטט של לחיצת מקש"</string>
     <string name="prefs_keypress_sound_volume_settings">"עוצמת קול של לחיצת מקש"</string>
     <string name="prefs_key_longpress_timeout_settings">"השהיית לחיצה ארוכה על מקש"</string>
     <string name="button_default">"ברירת מחדל"</string>

@@ -40,7 +40,6 @@
     <string name="subtype_compact">"සංයුක්ත"</string>
     <string name="add">"එක් කරන්න"</string>
     <string name="remove">"ඉවත් කරන්න"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"යතුරු එබිම් කම්පන කාලපරිච්ඡේදය"</string>
     <string name="prefs_keypress_sound_volume_settings">"යතුරු එබීම් හඬ තීව්‍රතාවය"</string>
     <string name="prefs_key_longpress_timeout_settings">"යතුරු දිගු එබීම් ප්‍රමාදය"</string>
     <string name="button_default">"සුපුරුදු"</string>

@@ -463,6 +463,10 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         return PointerTracker.isAnyInDraggingFinger();
     }
 
+    public boolean isInCursorMove() {
+        return PointerTracker.isAnyInCursorMove();
+    }
+
     @Override
     public void onShowMoreKeysPanel(final MoreKeysPanel panel) {
         locatePreviewPlacerView();

@@ -39,7 +39,6 @@
     <string name="subtype_compact">"Kompakt"</string>
     <string name="add">"Ekle"</string>
     <string name="remove">"Kaldır"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Tuşa basma titreşim süresi"</string>
     <string name="prefs_keypress_sound_volume_settings">"Tuşa basma ses seviyesi"</string>
     <string name="prefs_key_longpress_timeout_settings">"Tuşa uzun basma gecikmesi"</string>
     <string name="button_default">"Varsayılan"</string>

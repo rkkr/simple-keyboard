@@ -37,7 +37,6 @@
     <string name="subtype_compact">"kompaktna"</string>
     <string name="add">"Dodaj"</string>
     <string name="remove">"Odstrani"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Trajanje vibr. ob prit. tipke"</string>
     <string name="prefs_keypress_sound_volume_settings">"Glasn. zvoka ob pritisku tipke"</string>
     <string name="prefs_key_longpress_timeout_settings">"Zakasn. za dolg pritisk tipke"</string>
     <string name="button_default">"Privzeto"</string>

@@ -41,7 +41,6 @@
     <string name="subtype_compact">"紧凑型"</string>
     <string name="add">"添加"</string>
     <string name="remove">"删除"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"按键振动时长"</string>
     <string name="prefs_keypress_sound_volume_settings">"按键音量"</string>
     <string name="prefs_key_longpress_timeout_settings">"按键长按延迟"</string>
     <string name="button_default">"默认"</string>

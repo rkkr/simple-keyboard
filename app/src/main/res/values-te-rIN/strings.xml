@@ -38,7 +38,6 @@
     <string name="subtype_compact">"కాంపాక్ట్"</string>
     <string name="add">"జోడించండి"</string>
     <string name="remove">"తీసివేయి"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"కీని నొక్కినప్పుడు వైబ్రేషన్ వ్యవధి"</string>
     <string name="prefs_keypress_sound_volume_settings">"కీని నొక్కినప్పుడు చేసే ధ్వని వాల్యూమ్"</string>
     <string name="prefs_key_longpress_timeout_settings">"కీని ఎక్కువసేపు నొక్కి ఉంచాల్సిన సమయంలో ఆలస్యం"</string>
     <string name="button_default">"డిఫాల్ట్"</string>

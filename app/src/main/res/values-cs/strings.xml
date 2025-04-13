@@ -39,7 +39,6 @@
     <string name="subtype_compact">"kompaktní"</string>
     <string name="add">"Přidat"</string>
     <string name="remove">"Odebrat"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Délka vibrace při stisknutí klávesy"</string>
     <string name="prefs_keypress_sound_volume_settings">"Hlasitost stisknutí klávesy"</string>
     <string name="prefs_key_longpress_timeout_settings">"Prodleva dlouhého stisknutí"</string>
     <string name="button_default">"Výchozí"</string>

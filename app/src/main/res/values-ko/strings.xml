@@ -39,7 +39,6 @@
     <string name="subtype_compact">"컴팩트"</string>
     <string name="add">"추가"</string>
     <string name="remove">"삭제"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"키를 누를 때 진동 시간"</string>
     <string name="prefs_keypress_sound_volume_settings">"키를 누를 때 소리 볼륨"</string>
     <string name="prefs_key_longpress_timeout_settings">"키 길게 누르기 지연"</string>
     <string name="button_default">"기본값"</string>

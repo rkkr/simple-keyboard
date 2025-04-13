@@ -38,7 +38,6 @@
     <string name="subtype_compact">"шағын"</string>
     <string name="add">"Қосу"</string>
     <string name="remove">"Өшіру"</string>
-    <string name="prefs_keypress_vibration_duration_settings">"Пернені басқан кездегі діріл ұзақтығы"</string>
     <string name="prefs_keypress_sound_volume_settings">"Пернені басқан кездегі дыбыс деңгейі"</string>
     <string name="prefs_key_longpress_timeout_settings">"Пернені ұзақ басу кідірісі"</string>
     <string name="button_default">"Әдепкі"</string>
