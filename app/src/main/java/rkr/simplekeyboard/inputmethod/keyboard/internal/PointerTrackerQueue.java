@@ -27,6 +27,7 @@ public final class PointerTrackerQueue {
     public interface Element {
         boolean isModifier();
         boolean isInDraggingFinger();
+        boolean isInCursorMove();
         void onPhantomUpEvent(long eventTime);
         void cancelTrackingForAction();
     }
@@ -192,6 +193,20 @@ public final class PointerTrackerQueue {
             for (int index = 0; index < arraySize; index++) {
                 final Element element = expandableArray.get(index);
                 if (element.isInDraggingFinger()) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+    public boolean isAnyInCursorMove() {
+        synchronized (mExpandableArrayOfActivePointers) {
+            final ArrayList<Element> expandableArray = mExpandableArrayOfActivePointers;
+            final int arraySize = mArraySize;
+            for (int index = 0; index < arraySize; index++) {
+                final Element element = expandableArray.get(index);
+                if (element.isInCursorMove()) {
                     return true;
                 }
             }

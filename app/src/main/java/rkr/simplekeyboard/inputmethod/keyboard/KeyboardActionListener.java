@@ -77,6 +77,7 @@ public interface KeyboardActionListener {
     void onMoveCursorPointer(int steps);
     void onMoveDeletePointer(int steps);
     void onUpWithDeletePointerActive();
+    void onUpWithSpacePointerActive();
 
     KeyboardActionListener EMPTY_LISTENER = new Adapter();
 
@@ -101,5 +102,7 @@ public interface KeyboardActionListener {
         public void onMoveDeletePointer(int steps) {}
         @Override
         public void onUpWithDeletePointerActive() {}
+        @Override
+        public void onUpWithSpacePointerActive() {}
     }
 }

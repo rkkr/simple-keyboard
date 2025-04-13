@@ -497,6 +497,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             final int composingSpanStart, final int composingSpanEnd) {
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
                 composingSpanStart, composingSpanEnd);
+        final MainKeyboardView keyboardView = mKeyboardSwitcher.getMainKeyboardView();
+        if (keyboardView != null && keyboardView.isInCursorMove()) {
+            return;
+        }
+
         Log.i(TAG, "Update Selection. Cursor position = " + newSelStart + "," + newSelEnd);
 
         mInputLogic.onUpdateSelection(newSelStart, newSelEnd);
@@ -698,6 +703,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void onUpWithDeletePointerActive() {
         if (mInputLogic.mConnection.hasSelection())
             mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
+    }
+
+    @Override
+    public void onUpWithSpacePointerActive() {
+        mInputLogic.reloadTextCache();
     }
 
     private boolean isShowingOptionDialog() {

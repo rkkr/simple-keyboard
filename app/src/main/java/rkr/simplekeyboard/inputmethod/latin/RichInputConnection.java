@@ -397,7 +397,7 @@ public final class RichInputConnection {
 
         final int textStart = mExpectedSelStart - mTextBeforeCursor.length();
         final String textRange = mTextBeforeCursor + mTextSelection + mTextAfterCursor;
-        if (textRange.length() > end - textStart && start - textStart >= 0 && textStart >= 0) {
+        if (textRange.length() >= end - textStart && start - textStart >= 0 && textStart >= 0) {
             // Parameters might be partially updated by background thread, skip in such case
             mTextBeforeCursor = textRange.substring(0, start - textStart);
             mTextSelection = textRange.substring(start - textStart, end - textStart);
