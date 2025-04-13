@@ -679,6 +679,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_LEFT);
             for (; steps > 0; steps--)
                 mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DPAD_RIGHT);
+            hapticTickFeedback();
         }
     }
 
@@ -696,6 +697,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         } else {
             for (; steps < 0; steps++)
                 mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
+            hapticTickFeedback();
         }
     }
 
