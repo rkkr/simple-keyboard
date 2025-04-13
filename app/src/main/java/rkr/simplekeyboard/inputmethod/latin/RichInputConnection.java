@@ -314,6 +314,18 @@ public final class RichInputConnection {
         mIC.finishComposingText();
     }
 
+    public void deleteSelectedText() {
+        if (mExpectedSelStart == mExpectedSelEnd) {
+            Log.e(TAG, "deleteSelectedText called with text range not selected");
+            return;
+        }
+
+        final int selectionLength = mExpectedSelEnd - mExpectedSelStart;
+        mTextSelection = "";
+        setSelection(mExpectedSelStart, mExpectedSelStart);
+        mIC.deleteSurroundingText(0, selectionLength);
+    }
+
     public void performEditorAction(final int actionId) {
         mIC = mLatinIME.getCurrentInputConnection();
         if (isConnected()) {

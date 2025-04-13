@@ -702,7 +702,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public void onUpWithDeletePointerActive() {
         if (mInputLogic.mConnection.hasSelection())
-            mInputLogic.sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
+            mInputLogic.mConnection.deleteSelectedText();
     }
 
     @Override
