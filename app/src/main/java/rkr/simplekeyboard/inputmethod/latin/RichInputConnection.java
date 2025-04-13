@@ -320,10 +320,12 @@ public final class RichInputConnection {
             return;
         }
 
+        beginBatchEdit();
         final int selectionLength = mExpectedSelEnd - mExpectedSelStart;
         mTextSelection = "";
         setSelection(mExpectedSelStart, mExpectedSelStart);
         mIC.deleteSurroundingText(0, selectionLength);
+        endBatchEdit();
     }
 
     public void performEditorAction(final int actionId) {
