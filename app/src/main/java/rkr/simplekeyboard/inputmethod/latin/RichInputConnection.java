@@ -314,6 +314,18 @@ public final class RichInputConnection {
         mIC.finishComposingText();
     }
 
+    public void deleteTextBeforeCursor(final int numChars) {
+        String textBeforeCursor = mTextBeforeCursor;
+        if (!textBeforeCursor.isEmpty() && textBeforeCursor.length() >= numChars) {
+            mTextBeforeCursor = textBeforeCursor.substring(0, textBeforeCursor.length() - numChars);
+        }
+        if (mExpectedSelStart >= numChars) {
+            mExpectedSelStart -= numChars;
+        }
+
+        mIC.deleteSurroundingText(numChars, 0);
+    }
+
     public void deleteSelectedText() {
         if (mExpectedSelStart == mExpectedSelEnd) {
             Log.e(TAG, "deleteSelectedText called with text range not selected");
@@ -350,21 +362,6 @@ public final class RichInputConnection {
                 if (hasCursorPosition()) {
                     mExpectedSelStart += 1;
                     mExpectedSelEnd = mExpectedSelStart;
-                }
-                break;
-            case KeyEvent.KEYCODE_DEL:
-                if (hasSelection()) {
-                    mTextSelection = "";
-                    mExpectedSelEnd = mExpectedSelStart;
-                } else {
-                    final int steps = -getUnicodeSteps(-1, false);
-                    String textBeforeCursor = mTextBeforeCursor;
-                    if (!textBeforeCursor.isEmpty() && textBeforeCursor.length() >= steps) {
-                        mTextBeforeCursor = textBeforeCursor.substring(0, textBeforeCursor.length() - steps);
-                    }
-                    if (mExpectedSelStart > 0) {
-                        mExpectedSelStart -= steps;
-                    }
                 }
                 break;
             case KeyEvent.KEYCODE_UNKNOWN:

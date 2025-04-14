@@ -314,7 +314,15 @@ public final class InputLogic {
                 ? InputTransaction.SHIFT_UPDATE_LATER : InputTransaction.SHIFT_UPDATE_NOW;
         inputTransaction.requireShiftUpdate(shiftUpdateKind);
 
-        sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
+        if (mConnection.hasSelection()) {
+            mConnection.deleteSelectedText();
+        } else if (mConnection.hasCursorPosition()) {
+            final int codePointBeforeCursor = mConnection.getCodePointBeforeCursor();
+            final int numChars = Character.isSupplementaryCodePoint(codePointBeforeCursor) ? 2 : 1;;
+            mConnection.deleteTextBeforeCursor(numChars);
+        } else {
+            sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
+        }
     }
 
     /**
