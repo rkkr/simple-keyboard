@@ -219,6 +219,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_FARSI = "farsi";
     public static final String LAYOUT_GEORGIAN = "georgian";
     public static final String LAYOUT_GREEK = "greek";
+    public static final String LAYOUT_HCESAR = "hcesar";
     public static final String LAYOUT_HEBREW = "hebrew";
     public static final String LAYOUT_HINDI = "hindi";
     public static final String LAYOUT_HINDI_COMPACT = "hindi_compact";
@@ -387,6 +388,7 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_POLISH:
                 case LOCALE_PORTUGUESE_BRAZIL:
                 case LOCALE_PORTUGUESE_PORTUGAL:
+                    addLayout(LAYOUT_HCESAR);				
                 case LOCALE_ROMANIAN:
                 case LOCALE_SLOVAK:
                 case LOCALE_SWAHILI:
