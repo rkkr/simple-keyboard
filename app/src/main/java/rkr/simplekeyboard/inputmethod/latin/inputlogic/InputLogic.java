@@ -316,12 +316,14 @@ public final class InputLogic {
 
         if (mConnection.hasSelection()) {
             mConnection.deleteSelectedText();
-        } else if (mConnection.hasCursorPosition()) {
-            final int codePointBeforeCursor = mConnection.getCodePointBeforeCursor();
-            final int numChars = Character.isSupplementaryCodePoint(codePointBeforeCursor) ? 2 : 1;;
-            mConnection.deleteTextBeforeCursor(numChars);
         } else {
-            sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
+            final int codePointBeforeCursor = mConnection.getCodePointBeforeCursor();
+            if (codePointBeforeCursor == Constants.NOT_A_CODE) {
+                sendDownUpKeyEvent(KeyEvent.KEYCODE_DEL);
+            } else {
+                final int numChars = Character.isSupplementaryCodePoint(codePointBeforeCursor) ? 2 : 1;
+                mConnection.deleteTextBeforeCursor(numChars);
+            }
         }
     }
 
