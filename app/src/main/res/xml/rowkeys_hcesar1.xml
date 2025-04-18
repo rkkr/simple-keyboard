@@ -28,6 +28,21 @@
             latin:showNumberRow="true"
             latin:showExtraChars="true">
             <Key
+                latin:keySpec="h"
+                latin:keyHintLabel="_"
+                latin:additionalMoreKeys="_"
+                latin:moreKeys="!text/morekeys_h" />
+            <Key
+                latin:keySpec="c"
+                latin:keyHintLabel="\\"
+                latin:additionalMoreKeys="\\\\"
+                latin:moreKeys="!text/morekeys_c" />
+            <Key
+                latin:keySpec="e"
+                latin:keyHintLabel="|"
+                latin:additionalMoreKeys="\\|"
+                latin:moreKeys="!text/morekeys_e" />
+            <Key
                 latin:keySpec="s"
                 latin:keyHintLabel="="
                 latin:additionalMoreKeys="=" />
@@ -63,6 +78,15 @@
         </case>
         <case latin:showNumberRow="true">
             <Key
+                latin:keySpec="h"
+                latin:moreKeys="!text/morekeys_h" />
+            <Key
+                latin:keySpec="c"
+                latin:moreKeys="!text/morekeys_c" />
+            <Key
+                latin:keySpec="e"
+                latin:moreKeys="!text/morekeys_e" />		
+            <Key
                 latin:keySpec="s" />
             <Key
                 latin:keySpec="a"
@@ -83,6 +107,21 @@
                 latin:moreKeys="!text/morekeys_," />
         </case>
         <default>
+            <Key
+                latin:keySpec="h"
+                latin:keyHintLabel="1"
+                latin:additionalMoreKeys="1"
+                latin:moreKeys="!text/morekeys_h" />
+            <Key
+                latin:keySpec="c"
+                latin:keyHintLabel="2"
+                latin:additionalMoreKeys="2"
+                latin:moreKeys="!text/morekeys_c" />
+            <Key
+                latin:keySpec="e"
+                latin:keyHintLabel="3"
+                latin:additionalMoreKeys="3"
+                latin:moreKeys="!text/morekeys_e" />
             <Key
                 latin:keySpec="s"
                 latin:keyHintLabel="4"
