@@ -269,28 +269,6 @@ public final class RichInputConnection {
         return Character.codePointBefore(mTextBeforeCursor, length);
     }
 
-    public CharSequence getTextBeforeCursor(final int n) {
-        if (INVALID_CURSOR_POSITION != mExpectedSelStart) {
-            final String textBeforeCursor = mTextBeforeCursor;
-            if (textBeforeCursor.length() > n)
-                return textBeforeCursor.subSequence(textBeforeCursor.length() - n, textBeforeCursor.length() - 1);
-
-            return textBeforeCursor;
-        }
-        return "";
-    }
-
-    public CharSequence getTextAfterCursor(final int n) {
-        if (INVALID_CURSOR_POSITION != mExpectedSelEnd) {
-            final String textAfterCursor = mTextAfterCursor;
-            if (textAfterCursor.length() > n)
-                return textAfterCursor.subSequence(0, n);
-
-            return  textAfterCursor;
-        }
-        return "";
-    }
-
     public void replaceText(final int startPosition, final int endPosition, CharSequence text) {
         if (mExpectedSelStart != mExpectedSelEnd) {
             Log.e(TAG, "replaceText called with text range selected");
@@ -312,6 +290,18 @@ public final class RichInputConnection {
         mIC.setComposingRegion(startPosition, endPosition);
         mIC.setComposingText(text, startPosition);
         mIC.finishComposingText();
+    }
+
+    public void deleteTextBeforeCursor(final int numChars) {
+        String textBeforeCursor = mTextBeforeCursor;
+        if (!textBeforeCursor.isEmpty() && textBeforeCursor.length() >= numChars) {
+            mTextBeforeCursor = textBeforeCursor.substring(0, textBeforeCursor.length() - numChars);
+        }
+        if (mExpectedSelStart >= numChars) {
+            mExpectedSelStart -= numChars;
+        }
+
+        mIC.deleteSurroundingText(numChars, 0);
     }
 
     public void deleteSelectedText() {
@@ -350,21 +340,6 @@ public final class RichInputConnection {
                 if (hasCursorPosition()) {
                     mExpectedSelStart += 1;
                     mExpectedSelEnd = mExpectedSelStart;
-                }
-                break;
-            case KeyEvent.KEYCODE_DEL:
-                if (hasSelection()) {
-                    mTextSelection = "";
-                    mExpectedSelEnd = mExpectedSelStart;
-                } else {
-                    final int steps = -getUnicodeSteps(-1, false);
-                    String textBeforeCursor = mTextBeforeCursor;
-                    if (!textBeforeCursor.isEmpty() && textBeforeCursor.length() >= steps) {
-                        mTextBeforeCursor = textBeforeCursor.substring(0, textBeforeCursor.length() - steps);
-                    }
-                    if (mExpectedSelStart > 0) {
-                        mExpectedSelStart -= steps;
-                    }
                 }
                 break;
             case KeyEvent.KEYCODE_UNKNOWN:
@@ -448,34 +423,48 @@ public final class RichInputConnection {
 
     /**
      * Some chars, such as emoji consist of 2 chars (surrogate pairs). We should treat them as one character.
+     * Some chars are joined with ZERO WIDTH JOINER (U+200D), pairs need to be counted
      */
     public int getUnicodeSteps(int chars, boolean rightSidePointer) {
         int steps = 0;
         if (chars < 0) {
             CharSequence charsBeforeCursor = rightSidePointer && hasSelection() ?
                     getSelectedText() :
-                    getTextBeforeCursor(-chars * 2);
+                    mTextBeforeCursor;
             if (charsBeforeCursor == null || charsBeforeCursor == "") {
                 return chars;
             }
-            for (int i = charsBeforeCursor.length() - 1; i >= 0 && chars < 0; i--, chars++, steps--) {
-                if (Character.isSurrogate(charsBeforeCursor.charAt(i))) {
-                    steps--;
-                    i--;
+            for (int i = charsBeforeCursor.length() - 1; i >= 0 && chars < 0; i--, steps--) {
+                if (i > 1 && charsBeforeCursor.charAt(i - 1) == '\u200d') {
+                    continue;
                 }
+                if (charsBeforeCursor.charAt(i) == '\u200d') {
+                    continue;
+                }
+                if (Character.isSurrogate(charsBeforeCursor.charAt(i)) &&
+                        !Character.isHighSurrogate(charsBeforeCursor.charAt(i))) {
+                    continue;
+                }
+                chars++;
             }
         } else if (chars > 0) {
             CharSequence charsAfterCursor = !rightSidePointer && hasSelection() ?
                     getSelectedText() :
-                    getTextAfterCursor(chars * 2);
+                    mTextAfterCursor;
             if (charsAfterCursor == null || charsAfterCursor == "") {
                 return chars;
             }
-            for (int i = 0; i < charsAfterCursor.length() && chars > 0; i++, chars--, steps++) {
-                if (Character.isSurrogate(charsAfterCursor.charAt(i))) {
-                    steps++;
-                    i++;
+            for (int i = 0; i < charsAfterCursor.length() && chars > 0; i++, steps++) {
+                if (i < charsAfterCursor.length() - 1 && charsAfterCursor.charAt(i + 1) == '\u200d') {
+                    continue;
                 }
+                if (charsAfterCursor.charAt(i) == '\u200d') {
+                    continue;
+                }
+                if (Character.isHighSurrogate(charsAfterCursor.charAt(i))) {
+                    continue;
+                }
+                chars--;
             }
         }
         return steps;
