@@ -21,6 +21,8 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.view.HapticFeedbackConstants;
+import android.view.View;
 
 import java.util.concurrent.Executors;
 
@@ -107,15 +109,17 @@ public final class AudioAndHapticFeedbackManager {
         mAudioManager.playSoundEffect(effectType, volume);
     }
 
-    public void performHapticFeedback() {
+    public void performHapticFeedback(final View viewToPerformHapticFeedbackOn) {
         if (!mSettingsValues.mVibrateOn || mVibrator == null) {
             return;
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             mVibrator.vibrate(VibrationEffect.createPredefined (VibrationEffect.EFFECT_CLICK));
-        } else {
-            mVibrator.vibrate(DEFAULT_KEYPRESS_VIBRATION_DURATION);
+        } else if (viewToPerformHapticFeedbackOn != null) {
+            viewToPerformHapticFeedbackOn.performHapticFeedback(
+                    HapticFeedbackConstants.KEYBOARD_TAP,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         }
     }
 
