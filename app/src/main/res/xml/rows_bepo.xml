@@ -39,11 +39,11 @@
         <Key
             latin:keyStyle="shiftKeyStyle" />
         <include
-            latin:keyXPos="11%p"
+            latin:keyXPos="10%p"
             latin:keyboardLayout="@xml/rowkeys_bepo3" />
         <Key
             latin:keyStyle="deleteKeyStyle"
-            latin:keyXPos="91%p" />
+            latin:keyXPos="90%p" />
     </Row>
     <include
         latin:keyboardLayout="@xml/row_qwerty4" />
