@@ -351,6 +351,8 @@ public final class RichInputConnection {
                     }
                 }
                 break;
+            case KeyEvent.KEYCODE_DEL:
+                break;
             default:
                 final String text = StringUtils.newSingleCodePointString(keyEvent.getUnicodeChar());
                 mTextBeforeCursor += text;
