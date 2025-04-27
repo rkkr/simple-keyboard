@@ -212,6 +212,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_BENGALI = "bengali";
     public static final String LAYOUT_BENGALI_AKKHOR = "bengali_akkhor";
     public static final String LAYOUT_BENGALI_UNIJOY = "bengali_unijoy";
+    public static final String LAYOUT_BEPO = "bepo";
     public static final String LAYOUT_BULGARIAN = "bulgarian";
     public static final String LAYOUT_BULGARIAN_BDS = "bulgarian_bds";
     public static final String LAYOUT_EAST_SLAVIC = "east_slavic";
@@ -410,6 +411,7 @@ public final class SubtypeLocaleUtils {
                     break;
                 case LOCALE_FRENCH:
                     addLayout(LAYOUT_AZERTY);
+                    addLayout(LAYOUT_BEPO);
                     addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
                     addGenericLayouts();
                     break;
@@ -439,6 +441,7 @@ public final class SubtypeLocaleUtils {
                     addGenericLayouts();
                     break;
                 case LOCALE_FRENCH_SWITZERLAND:
+                    addLayout(LAYOUT_BEPO);
                     addLayout(LAYOUT_SWISS);
                     addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
                     addGenericLayouts();
