@@ -406,13 +406,13 @@ public final class SubtypeLocaleUtils {
                     break;
                 case LOCALE_FRENCH_CANADA:
                     addLayout(LAYOUT_QWERTY);
-                    addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
+                    addLayout(LAYOUT_ERGOL);
                     addGenericLayouts();
                     break;
                 case LOCALE_FRENCH:
                     addLayout(LAYOUT_AZERTY);
                     addLayout(LAYOUT_BEPO);
-                    addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
+                    addLayout(LAYOUT_ERGOL);
                     addGenericLayouts();
                     break;
                 case LOCALE_DUTCH_BELGIUM:
@@ -443,7 +443,7 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_FRENCH_SWITZERLAND:
                     addLayout(LAYOUT_BEPO);
                     addLayout(LAYOUT_SWISS);
-                    addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
+                    addLayout(LAYOUT_ERGOL);
                     addGenericLayouts();
                     break;
                 case LOCALE_GERMAN_SWITZERLAND:

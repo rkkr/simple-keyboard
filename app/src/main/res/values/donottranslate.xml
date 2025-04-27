@@ -42,6 +42,7 @@
     <!-- Predefined keyboard layouts for additional subtype -->
     <string-array name="predefined_layouts">
         <item>bepo</item>
+        <item>ergol</item>
         <item>qwerty</item>
         <item>qwertz</item>
         <item>azerty</item>
@@ -54,6 +55,7 @@
     <!-- Predefined keyboard layout display names -->
     <string-array name="predefined_layout_display_names">
         <item>BEPO</item>
+        <item>Ergo-L</item>
         <item>QWERTY</item>
         <item>QWERTZ</item>
         <item>AZERTY</item>
