@@ -51,7 +51,6 @@
     <string name="show_number_row">הצג שורה נפרדת למספרים</string>
     <string name="space_swipe">נווט בטקסט בעזרת "רווח"</string>
     <string name="delete_swipe">החלק למחיקה</string>
-    <string name="matching_navbar_color">תאם לצבע "שורת הניווט"</string>
     <string name="setup_message">"מקלדת פשוטה" אינה פעילה. לחץ "אישור" לפתיחת הגדרות "שפות וקלט". תתבקש לבחור "מקלדת פשוטה" במקלדת הנוכחית שלך כדי להשתמש בה.</string>
     <string name="user_languages">הפעל "שפות מקלדת"</string>
     <string name="add_language">הוסף שפה</string>

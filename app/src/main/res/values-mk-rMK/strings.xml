@@ -50,7 +50,6 @@
     <string name="show_number_row">Покажи одделен ред со броеви</string>
     <string name="space_swipe">Помеси го курсорот преку лентата за празно место</string>
     <string name="delete_swipe">Избриши со лизгање</string>
-    <string name="matching_navbar_color">Користи иста боја на лентата за навигација</string>
     <string name="setup_message">Simple Keyboard не е овозможена. Кликнете OK за да ги отворите поставките за јазици и внесувања. Треба да изберете Simple Keyboard како стандардна тастатура за да ја користите.</string>
     <string name="user_languages">Овозможени јазици на тастатурата</string>
     <string name="add_language">Додади јазик</string>

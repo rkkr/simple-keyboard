@@ -34,11 +34,6 @@ public final class AppearanceSettingsFragment extends SubScreenFragment {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.prefs_screen_appearance);
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P
-                || Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
-            removePreference(Settings.PREF_MATCHING_NAVBAR_COLOR);
-        }
-
         setupKeyboardHeightSettings();
         setupBottomOffsetPortraitSettings();
         setupKeyboardColorSettings();

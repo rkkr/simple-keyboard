@@ -50,7 +50,6 @@
     <string name="show_number_row">Kuva eraldi numbririda</string>
     <string name="space_swipe">Space pühi kursori liigutus</string>
     <string name="delete_swipe">Kustuta pühkimine</string>
-    <string name="matching_navbar_color">Kasuta sobivat navigatsiooni riba värvi</string>
     <string name="setup_message">Lihtne klaviatuur pole lubatud. Klõpsake nuppu OK, et avada Keeled &amp; Sisestusseaded. Selle kasutamiseks peate oma praegusel klaviatuuril valima lihtsa klaviatuuri.</string>
     <string name="user_languages">Lubatud klavjatuuri keeled</string>
     <string name="add_language">Lisa keel</string>

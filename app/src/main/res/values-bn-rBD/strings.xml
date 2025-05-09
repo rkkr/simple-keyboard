@@ -55,7 +55,6 @@
     <string name="show_number_row">পৃথক নম্বর সারি প্রদর্শন</string>
     <string name="space_swipe">কার্সর সরাতে স্পেস সোয়াইপ</string>
     <string name="delete_swipe">বিলোপ সোয়াইপ</string>
-    <string name="matching_navbar_color">ন্যাভিগেশন বারে সদৃশ রং</string>
     <string name="setup_message">Simple Keyboard সক্রিয় নয়। ভাষা ও ইনপুট সেটিংস খোলার জন্য ঠিক আছে ক্লিক করুন। Simple Keyboard ব্যবহার করার জন্য বর্তমান কিবোর্ড হিসেবে নির্বাচন করতে হবে।</string>
     <string name="user_languages">কিবোর্ডের সক্রিয় ভাষা</string>
     <string name="add_language">ভাষা সংযোজন</string>

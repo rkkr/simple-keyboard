@@ -50,7 +50,6 @@
     <string name="show_number_row">Számok megjelenítése külön sorban</string>
     <string name="space_swipe">Kurzor mozgatása a Szóköz billentytűn történő húzással</string>
     <string name="delete_swipe">Törlés a Törlés billenytűről való húzással</string>
-    <string name="matching_navbar_color">Azonos szín használata a navigációs sávhoz</string>
     <string name="user_languages">Hozzáadott nyelvek</string>
     <string name="add_language">Nyelv hozzáadása</string>
     <string name="remove_language">Nyelv eltávolítása</string>

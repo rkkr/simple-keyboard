@@ -51,7 +51,6 @@
     <string name="show_number_row">別の番号行を表示</string>
     <string name="space_swipe">スペーススワイプカーソル移動</string>
     <string name="delete_swipe">スワイプを削除</string>
-    <string name="matching_navbar_color">一致するナビゲーションバーの色を使用する</string>
     <string name="setup_message">シンプルキーボードが有効になっていません. [OK]をクリックして言語を開きます. 入力設定. 使用するには、現在のキーボードでシンプルキーボードを選択する必要があります</string>
     <string name="add_language">言語を追加</string>
     <string name="remove_language">言語を削除</string>
