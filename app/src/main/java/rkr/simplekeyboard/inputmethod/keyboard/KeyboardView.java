@@ -34,6 +34,8 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.WindowInsets;
+import android.view.WindowManager;
+import android.view.WindowMetrics;
 
 import java.util.HashSet;
 
@@ -158,12 +160,11 @@ public class KeyboardView extends View {
 
         mPaint.setAntiAlias(true);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            setOnApplyWindowInsetsListener((v, windowInsets) -> {
-                Insets insets = windowInsets.getInsets(WindowInsets.Type.systemBars());
-                mSystemBarHeight = insets.bottom;
-                return WindowInsets.CONSUMED;
-            });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            WindowMetrics metrics = windowManager.getCurrentWindowMetrics();
+            Insets insets = metrics.getWindowInsets().getInsets(WindowInsets.Type.navigationBars());
+            mSystemBarHeight = insets.bottom;
         }
     }
 

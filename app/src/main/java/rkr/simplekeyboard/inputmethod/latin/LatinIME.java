@@ -929,7 +929,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void setNavigationBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && mSettings.getCurrent().mUseMatchingNavbarColor) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            final Window window = getWindow().getWindow();
+            if (window == null) {
+                return;
+            }
+            window.setNavigationBarContrastEnforced(false);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && mSettings.getCurrent().mUseMatchingNavbarColor) {
             final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(this);
             final int keyboardColor = Settings.readKeyboardColor(prefs, this);
             final Window window = getWindow().getWindow();
@@ -950,7 +956,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void clearNavigationBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && mSettings.getCurrent().mUseMatchingNavbarColor) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            return;
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && mSettings.getCurrent().mUseMatchingNavbarColor) {
             final Window window = getWindow().getWindow();
             if (window == null) {
                 return;
