@@ -160,7 +160,7 @@ public class KeyboardView extends View {
 
         mPaint.setAntiAlias(true);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
             WindowMetrics metrics = windowManager.getCurrentWindowMetrics();
             Insets insets = metrics.getWindowInsets().getInsets(WindowInsets.Type.navigationBars());
