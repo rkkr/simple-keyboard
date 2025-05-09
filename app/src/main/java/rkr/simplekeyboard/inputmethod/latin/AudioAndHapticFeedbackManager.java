@@ -24,6 +24,7 @@ import android.os.Vibrator;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
@@ -36,7 +37,7 @@ import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
  * complexity of settings and the like.
  */
 public final class AudioAndHapticFeedbackManager {
-    private static final long DEFAULT_KEYPRESS_VIBRATION_DURATION = 15;
+    private ExecutorService mBackgroundThread;
     private AudioManager mAudioManager;
     private Vibrator mVibrator;
 
@@ -59,7 +60,8 @@ public final class AudioAndHapticFeedbackManager {
     }
 
     private void initInternal(final Context context) {
-        Executors.newSingleThreadExecutor().execute(() -> {
+        mBackgroundThread = Executors.newSingleThreadExecutor();
+        mBackgroundThread.execute(() -> {
             mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
             mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         });
@@ -106,21 +108,25 @@ public final class AudioAndHapticFeedbackManager {
         if (mAudioManager == null) {
             return;
         }
-        mAudioManager.playSoundEffect(effectType, volume);
+
+        mBackgroundThread.execute(() -> {
+            mAudioManager.playSoundEffect(effectType, volume);
+        });
     }
 
     public void performHapticFeedback(final View viewToPerformHapticFeedbackOn) {
         if (!mSettingsValues.mVibrateOn || mVibrator == null) {
             return;
         }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            mVibrator.vibrate(VibrationEffect.createPredefined (VibrationEffect.EFFECT_CLICK));
-        } else if (viewToPerformHapticFeedbackOn != null) {
-            viewToPerformHapticFeedbackOn.performHapticFeedback(
-                    HapticFeedbackConstants.KEYBOARD_TAP,
-                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-        }
+        mBackgroundThread.execute(() -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                mVibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK));
+            } else if (viewToPerformHapticFeedbackOn != null) {
+                viewToPerformHapticFeedbackOn.performHapticFeedback(
+                        HapticFeedbackConstants.KEYBOARD_TAP,
+                        HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+            }
+        });
     }
 
     public void performTickFeedback() {

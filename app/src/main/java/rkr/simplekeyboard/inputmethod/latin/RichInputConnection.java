@@ -24,6 +24,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.SurroundingText;
 
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
@@ -68,11 +69,13 @@ public final class RichInputConnection {
     private final LatinIME mLatinIME;
     private InputConnection mIC;
     private int mNestLevel;
+    private final ExecutorService mBackgroundThread;
 
     public RichInputConnection(final LatinIME latinIME) {
         mLatinIME = latinIME;
         mIC = null;
         mNestLevel = 0;
+        mBackgroundThread = Executors.newSingleThreadExecutor();
     }
 
     public boolean isConnected() {
@@ -145,7 +148,7 @@ public final class RichInputConnection {
         final int expectedSelStart = mExpectedSelStart;
         final int expectedSelEnd = mExpectedSelEnd;
 
-        Executors.newSingleThreadExecutor().execute(() -> {
+        mBackgroundThread.execute(() -> {
             if (!isConnected()) {
                 return;
             }
