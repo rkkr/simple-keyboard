@@ -22,7 +22,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
-import android.content.SharedPreferences;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioManager;
 import android.os.Build;
@@ -66,7 +65,6 @@ import rkr.simplekeyboard.inputmethod.latin.settings.SettingsActivity;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 import rkr.simplekeyboard.inputmethod.latin.utils.ApplicationUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
-import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 
 /**
@@ -460,7 +458,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void onWindowShown() {
         super.onWindowShown();
         if (isInputViewShown())
-            fitNavigationBar();
+            clearNavigationBar();
     }
 
     @Override
@@ -928,7 +926,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return shouldSwitchToOtherInputMethods(token);
     }
 
-    private void fitNavigationBar() {
+    private void clearNavigationBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             final Window window = getWindow().getWindow();
             if (window == null) {
