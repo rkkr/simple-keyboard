@@ -50,7 +50,6 @@
     <string name="show_number_row">Mostra numeri in una riga separata</string>
     <string name="space_swipe">Muovi cursore scorrendo sulla barra spaziatrice</string>
     <string name="delete_swipe">Cancella scorrendo sul tasto cancella</string>
-    <string name="matching_navbar_color">Colora anche la barra di navigazione</string>
     <string name="setup_message">Simple Keyboard non è abilitata. Premi OK per aprire le impostazioni di lingua ed inserimento. Dovrai selezionare Simple Keyboard come tastiera corrente per usarla.</string>
     <string name="user_languages">Lingue tastiera attive</string>
     <string name="add_language">Aggiungi lingua</string>

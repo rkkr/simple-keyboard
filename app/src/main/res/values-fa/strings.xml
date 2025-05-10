@@ -51,7 +51,6 @@
     <string name="show_number_row">نمایش جداگانه ی شماره ردیف</string>
     <string name="space_swipe">حرکت مکان نما توسط سوایپ کلید فاصله</string>
     <string name="delete_swipe">حذف سوایپ</string>
-    <string name="matching_navbar_color">استفاده از رنگ منطبق نوار پیمایش</string>
     <string name="setup_message">Simple Keyboard فعال نشده است. دکمه‌ی تائید را برای باز کردن تنظیمات زبان و ورودی بفشارید. برای استفاده از صفحه‌کلید Simple Keyboard را در صفحه‌ی باز شده انتخاب کنید.</string>
     <string name="user_languages">زبان‌های فعال صفحه‌کلید</string>
     <string name="add_language">افزودن زبان</string>

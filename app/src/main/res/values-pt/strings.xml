@@ -50,7 +50,6 @@
     <string name="show_number_row">Mostrar números em linha separada</string>
     <string name="space_swipe">Deslizar a barra de espaço para mover o cursor</string>
     <string name="delete_swipe">Deslizar para excluir</string>
-    <string name="matching_navbar_color">Usar cor correspondente à barra de navegação</string>
     <string name="setup_message">O Simple Keyboard não está ativado. Clique em OK para abrir as configurações &amp; de idiomas e entrada. Você precisará selecionar Simple Keyboard no teclado atual para usá-lo.</string>
     <string name="user_languages">Idiomas de teclado ativados</string>
     <string name="add_language">Adicionar idioma</string>

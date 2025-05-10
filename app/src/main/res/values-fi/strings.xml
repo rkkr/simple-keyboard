@@ -50,7 +50,6 @@
     <string name="show_number_row">Näytä erillinen numerorivi</string>
     <string name="space_swipe">Liikuta kursoria pyyhkäisemällä välilyöntiä</string>
     <string name="delete_swipe">Poista pyyhkäisemällä</string>
-    <string name="matching_navbar_color">Käytä samaa navigointipalkin väriä</string>
     <string name="setup_message">Simple Keyboard ei ole käytössä. Paina OK avataksesi Kielten ja syöttötapojen asetukset. Sinun pitää valita Simple Keyboard nykyisessä näppäimistössä käyttääksesi sitä.</string>
     <string name="user_languages">Käytössä olevat näppäimistön kielet</string>
     <string name="add_language">Lisää kieli</string>

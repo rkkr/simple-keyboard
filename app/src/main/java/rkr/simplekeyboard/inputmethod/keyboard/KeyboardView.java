@@ -94,9 +94,6 @@ public class KeyboardView extends View {
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
     public int mCustomColor = 0;
-    // Must be static to persist last known navbar height between View recreations
-    // as setOnApplyWindowInsetsListener is only invoked on layout changes
-    private static int mSystemBarHeight = 0;
 
     // The maximum key label width in the proportion to the key width.
     private static final float MAX_LABEL_RATIO = 0.90f;
@@ -157,14 +154,6 @@ public class KeyboardView extends View {
         keyAttr.recycle();
 
         mPaint.setAntiAlias(true);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            setOnApplyWindowInsetsListener((v, windowInsets) -> {
-                Insets insets = windowInsets.getInsets(WindowInsets.Type.systemBars());
-                mSystemBarHeight = insets.bottom;
-                return WindowInsets.CONSUMED;
-            });
-        }
     }
 
     private static void blendAlpha(final Paint paint, final int alpha) {
@@ -217,8 +206,16 @@ public class KeyboardView extends View {
         }
         // The main keyboard expands to the entire this {@link KeyboardView}.
         final int width = keyboard.mOccupiedWidth + getPaddingLeft() + getPaddingRight();
-        final int height = keyboard.mOccupiedHeight + getPaddingTop() + getPaddingBottom() + mSystemBarHeight;
+        final int height = keyboard.mOccupiedHeight + getPaddingTop() + getPaddingBottom() + getSystemBarHeight();
         setMeasuredDimension(width, height);
+    }
+
+    private int getSystemBarHeight() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            final Insets insets = getRootWindowInsets().getInsets(WindowInsets.Type.navigationBars());
+            return insets.bottom;
+        }
+        return 0;
     }
 
     @Override

@@ -51,7 +51,6 @@
     <string name="show_number_row">顯示獨立的數字列</string>
     <string name="space_swipe">滑動空白鍵以移動光標</string>
     <string name="delete_swipe">滑動刪除</string>
-    <string name="matching_navbar_color">使用匹配導航列的顏色</string>
     <string name="setup_message">Simple Keyboard尚未被啟用。點擊OK開啟語言&amp;輸入設定。您需要在目前使用鍵盤中選擇“Simple Keyboard”來使用它。</string>
     <string name="user_languages">使用的鍵盤語言</string>
     <string name="add_language">增加語言</string>

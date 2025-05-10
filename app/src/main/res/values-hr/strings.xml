@@ -50,7 +50,6 @@
     <string name="show_number_row">Prikaži zaseban red brojeva</string>
     <string name="space_swipe">Pomiči pokazivač potezom preko razmaknice</string>
     <string name="delete_swipe">Brisanje potezima preko tipkovnice</string>
-    <string name="matching_navbar_color">Koristi podudarajuću boju navigacijske trake</string>
     <string name="setup_message">Simple Keyboard nije omogućen. Dodirnite OK za otvaranje odjeljka Jezici i unos u postavkama. Da biste koristili Simple Keyboard, odaberite tu opciju u postavkama.</string>
     <string name="user_languages">Omogućeni jezici tipkovnice</string>
     <string name="add_language">Dodaj jezik</string>

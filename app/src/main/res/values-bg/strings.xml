@@ -52,7 +52,6 @@
     <string name="show_number_row">Показвай отделен ред с цифри</string>
     <string name="space_swipe">Местене на курсора с плъзгане върху интервал</string>
     <string name="delete_swipe">Изтриване с плъзгане</string>
-    <string name="matching_navbar_color">Използвайте съвпадащия цвят на навигационната лента</string>
     <string name="setup_message">Simple Keyboard не е активирана. Щракнете върху OK, за да отворите настройките за въвеждане на езици. Ще трябва да изберете Simple Keyboard в текущата клавиатура, за да я използвате.</string>
     <string name="user_languages">Активирани клавиатурни езици</string>
     <string name="add_language">Добави език</string>
