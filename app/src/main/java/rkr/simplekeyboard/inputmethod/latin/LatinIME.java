@@ -21,6 +21,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioManager;
@@ -38,6 +39,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.view.WindowInsetsController;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 
@@ -65,6 +67,7 @@ import rkr.simplekeyboard.inputmethod.latin.settings.SettingsActivity;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
 import rkr.simplekeyboard.inputmethod.latin.utils.ApplicationUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LeakGuardHandlerWrapper;
+import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 
 /**
@@ -82,8 +85,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     final Settings mSettings;
     private Locale mLocale;
-    private int mOriginalNavBarColor = 0;
-    private int mOriginalNavBarFlags = 0;
     final InputLogic mInputLogic = new InputLogic(this /* LatinIME */);
 
     // TODO: Move these {@link View}s to {@link KeyboardSwitcher}.
@@ -927,13 +928,19 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     private void clearNavigationBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             final Window window = getWindow().getWindow();
             if (window == null) {
                 return;
             }
             window.setNavigationBarContrastEnforced(false);
             window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+            final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(this);
+            final int keyboardColor = Settings.readKeyboardColor(prefs, this);
+            final int flags = ResourceUtils.isBrightColor(keyboardColor) ?
+                    WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS : ~WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
+            window.getInsetsController().setSystemBarsAppearance(flags, flags);
         }
     }
 }

@@ -211,7 +211,7 @@ public class KeyboardView extends View {
     }
 
     private int getSystemBarHeight() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             final Insets insets = getRootWindowInsets().getInsets(WindowInsets.Type.navigationBars());
             return insets.bottom;
         }
