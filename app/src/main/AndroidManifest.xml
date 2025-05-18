@@ -14,6 +14,54 @@
      limitations under the License.
 -->
 
+<!--<manifest xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+<!--    <uses-permission android:name="android.permission.VIBRATE" />-->
+
+<!--    <application-->
+<!--        android:allowBackup="true"-->
+<!--        android:fullBackupOnly="true"-->
+<!--        android:icon="@mipmap/ic_launcher"-->
+<!--        android:label="@string/keyboard_name"-->
+<!--        android:supportsRtl="true">-->
+
+<!--        <service-->
+<!--            android:name=".latin.LatinIME"-->
+<!--            android:label="@string/subtype_hiero_ar_keyboard"-->
+<!--            android:directBootAware="true"-->
+<!--            android:exported="false"-->
+<!--            android:permission="android.permission.BIND_INPUT_METHOD">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.view.InputMethod" />-->
+<!--            </intent-filter>-->
+
+<!--            <meta-data-->
+<!--                android:name="android.view.im"-->
+<!--                android:resource="@xml/method" />-->
+<!--        </service>-->
+
+<!--        <activity-->
+<!--            android:name=".latin.settings.SettingsActivity"-->
+<!--            android:label="@string/subtype_hiero_ar_keyboard"-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/platformSettingsTheme">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+<!--        <receiver-->
+<!--            android:name=".latin.SystemBroadcastReceiver"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.LOCALE_CHANGED" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+<!--    </application>-->
+
+<!--</manifest>-->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.VIBRATE" />

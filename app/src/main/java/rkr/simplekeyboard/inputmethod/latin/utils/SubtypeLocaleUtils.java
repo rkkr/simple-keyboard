@@ -117,10 +117,10 @@ public final class SubtypeLocaleUtils {
     private static final String LOCALE_ZULU = "zu";
 
     private static final String[] sSupportedLocales = new String[] {
+            LOCALE_ARABIC,
             LOCALE_ENGLISH_UNITED_STATES,
             LOCALE_ENGLISH_GREAT_BRITAIN,
             LOCALE_AFRIKAANS,
-            LOCALE_ARABIC,
             LOCALE_AZERBAIJANI_AZERBAIJAN,
             LOCALE_BELARUSIAN_BELARUS,
             LOCALE_BULGARIAN,
@@ -207,6 +207,7 @@ public final class SubtypeLocaleUtils {
     }
 
     public static final String LAYOUT_ARABIC = "arabic";
+    public static final String LAYOUT_HERIO_AR = "hiero_ar";
     public static final String LAYOUT_ARMENIAN_PHONETIC = "armenian_phonetic";
     public static final String LAYOUT_AZERTY = "azerty";
     public static final String LAYOUT_BENGALI = "bengali";
@@ -288,15 +289,21 @@ public final class SubtypeLocaleUtils {
      * @return the default list of subtypes based on the system's languages.
      */
     public static List<Subtype> getDefaultSubtypes(final Resources resources) {
+        // First try to add Arabic as the default subtype
+        final ArrayList<Subtype> subtypes = new ArrayList<>();
+        final Subtype arabicSubtype = getSubtypes(LOCALE_ARABIC, resources).get(0);
+        subtypes.add(arabicSubtype);
+
+        // Then add other system locales if they're supported
         final ArrayList<Locale> supportedLocales = new ArrayList<>(sSupportedLocales.length);
         for (final String localeString : sSupportedLocales) {
             supportedLocales.add(LocaleUtils.constructLocaleFromString(localeString));
         }
 
         final List<Locale> systemLocales = LocaleUtils.getSystemLocales();
-
-        final ArrayList<Subtype> subtypes = new ArrayList<>();
         final HashSet<Locale> addedLocales = new HashSet<>();
+        addedLocales.add(LocaleUtils.constructLocaleFromString(LOCALE_ARABIC));
+
         for (final Locale systemLocale : systemLocales) {
             final Locale bestLocale = LocaleUtils.findBestLocale(systemLocale, supportedLocales);
             if (bestLocale != null && !addedLocales.contains(bestLocale)) {
@@ -308,10 +315,7 @@ public final class SubtypeLocaleUtils {
                 }
             }
         }
-        if (subtypes.size() == 0) {
-            // there needs to be at least one default subtype
-            subtypes.add(getSubtypes(LOCALE_ENGLISH_UNITED_STATES, resources).get(0));
-        }
+
         return subtypes;
     }
 
@@ -462,6 +466,7 @@ public final class SubtypeLocaleUtils {
                     addGenericLayouts();
                     break;
                 case LOCALE_ARABIC:
+                    addLayout(LAYOUT_HERIO_AR, R.string.subtype_hiero_ar_keyboard);
                     addLayout(LAYOUT_ARABIC);
                     break;
                 case LOCALE_BELARUSIAN_BELARUS:

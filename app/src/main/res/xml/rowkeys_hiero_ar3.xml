@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:latin="http://schemas.android.com/apk/res-auto">
+
+    <!--    "ذ"-->
+    <Key
+        latin:keySpec="&#78585;"/>
+
+
+
+    <!-- U+0621: "ء" ARABIC LETTER HAMZA -->
+    <Key
+        latin:keySpec="&#78283;"
+        latin:keyHintLabel="&#x0621;" />
+
+    <!-- U+0624: "ؤ" ARABIC LETTER WAW WITH HAMZA ABOVE -->
+    <Key
+        latin:keySpec="&#78517;"
+        latin:keyHintLabel="&#x0624;" />
+<!--     U+0631: "ر" ARABIC LETTER REH-->
+    <Key latin:keySpec="&#77963;"
+        latin:keyHintLabel="&#x0631;"/>
+    <!-- U+0649: "ى" ARABIC LETTER ALEF MAKSURA
+         U+0626: "ئ" ARABIC LETTER YEH WITH HAMZA ABOVE -->
+    <Key
+        latin:keySpec="&#78525;"
+        latin:keyHintLabel="&#x0649;" />
+    <!-- U+0629: "ة" ARABIC LETTER TEH MARBUTA -->
+    <Key latin:keySpec="&#78799;"
+        latin:keyHintLabel="&#x0629;"/>
+    <!-- U+0648: "و" ARABIC LETTER WAW -->
+    <Key latin:keySpec="&#78592;"
+        latin:keyHintLabel="&#x0648;"/>
+    <!-- U+0632: "ز" ARABIC LETTER ZAIN
+         U+0698: "ژ" ARABIC LETTER JEH -->
+    <Key
+        latin:keySpec="&#78467;"
+        latin:keyHintLabel="&#x0632;" />
+    <!-- U+0638: "ظ" ARABIC LETTER ZAH -->
+    <Key latin:keySpec="&#77991;"
+        latin:keyHintLabel="&#x0638;"
+        />
+    <!-- U+062F: "د" ARABIC LETTER DAL -->
+    <Key latin:keySpec="&#77991;"
+         latin:keyHintLabel="&#x062F;"/>
+</merge>
