@@ -92,5 +92,5 @@
          U+0920: "ठ" DEVANAGARI LETTER TTHA -->
     <Key
         latin:keySpec="&#x091F;"
-        latin:moreKeys="&#x133CF;" />
+        latin:moreKeys="&#x0920;" />
 </merge>
