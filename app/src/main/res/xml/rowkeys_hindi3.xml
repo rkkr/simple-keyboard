@@ -437,6 +437,11 @@
         />
         </case>
         <default>
+            <!--    "𓋹"-->
+            <Key
+                latin:keySpec="&#78585;"
+                />
+
             <!--    "ز"-->
             <Key
                 latin:keySpec="&#78467;"
