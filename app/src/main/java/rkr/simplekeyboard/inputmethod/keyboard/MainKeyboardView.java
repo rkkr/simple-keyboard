@@ -619,6 +619,9 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     private String layoutLanguageOnSpacebar(final Paint paint,
                                             final Subtype subtype, final int width) {
         // Choose appropriate language name to fit into the width.
+        if ("hi".equals(subtype.getLocale())) {
+            return "\uD80C\uDF03\uD80C\uDD53\uD80C\uDCA7\uD80C\uDD71\uD80C\uDEB9 \uD80C\uDC2D";
+        }
         if (mLanguageOnSpacebarFormatType == LanguageOnSpacebarUtils.FORMAT_TYPE_FULL_LOCALE) {
             final String fullText =
                     LocaleResourceUtils.getLocaleDisplayNameInLocale(subtype.getLocale());
