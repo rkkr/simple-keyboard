@@ -213,15 +213,12 @@ public final class SubtypeLocaleUtils {
      * @return the default list of subtypes based on the system's languages.
      */
     public static List<Subtype> getDefaultSubtypes(final Resources resources) {
+        // First try to add Arabic as the default subtype
         final ArrayList<Subtype> subtypes = new ArrayList<>();
-
-
         final Subtype hindiSubtype = getSubtypes(LOCALE_HINDI, resources).get(0);
         subtypes.add(hindiSubtype);
 
-        final Subtype arabicSubtype = getSubtypes("ar", resources).get(0);
-        subtypes.add(arabicSubtype);
-
+        // Then add other system locales if they're supported
         final ArrayList<Locale> supportedLocales = new ArrayList<>(sSupportedLocales.length);
         for (final String localeString : sSupportedLocales) {
             supportedLocales.add(LocaleUtils.constructLocaleFromString(localeString));
@@ -230,7 +227,6 @@ public final class SubtypeLocaleUtils {
         final List<Locale> systemLocales = LocaleUtils.getSystemLocales();
         final HashSet<Locale> addedLocales = new HashSet<>();
         addedLocales.add(LocaleUtils.constructLocaleFromString(LOCALE_HINDI));
-        addedLocales.add(LocaleUtils.constructLocaleFromString("ar"));
 
         for (final Locale systemLocale : systemLocales) {
             final Locale bestLocale = LocaleUtils.findBestLocale(systemLocale, supportedLocales);
