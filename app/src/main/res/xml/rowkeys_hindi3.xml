@@ -29,16 +29,12 @@
             &#x132D4; : "𓋔" EGYPTIAN HIEROGLYPH S4
             &#x132D5; : "𓋕" EGYPTIAN HIEROGLYPH S5
             &#x132D6; : "𓋖" EGYPTIAN HIEROGLYPH S6
-            &#x132D7; : "𓋗" EGYPTIAN HIEROGLYPH S7
-            &#x132D8; : "𓋘" EGYPTIAN HIEROGLYPH S8
             &#x132D9; : "𓋙" EGYPTIAN HIEROGLYPH S9
             &#x132DA; : "𓋚" EGYPTIAN HIEROGLYPH S10
             &#x132DB; : "𓋛" EGYPTIAN HIEROGLYPH S11
             &#x132DC; : "𓋜" EGYPTIAN HIEROGLYPH S12
             &#x132DD; : "𓋝" EGYPTIAN HIEROGLYPH S13
             &#x132DE; : "𓋞" EGYPTIAN HIEROGLYPH S14
-            &#x132DF; : "𓋟" EGYPTIAN HIEROGLYPH S15
-            &#x132E0; : "𓋠" EGYPTIAN HIEROGLYPH S16
             &#x132E1; : "𓋡" EGYPTIAN HIEROGLYPH S17
             &#x132E2; : "𓋢" EGYPTIAN HIEROGLYPH S18
             &#x132E3; : "𓋣" EGYPTIAN HIEROGLYPH S19
@@ -65,8 +61,6 @@
             &#x132F8; : "𓋸" EGYPTIAN HIEROGLYPH S40
             &#x132F9; : "𓋹" EGYPTIAN HIEROGLYPH S41
             &#x132FA; : "𓋺" EGYPTIAN HIEROGLYPH S42
-            &#x132FB; : "𓋻" EGYPTIAN HIEROGLYPH S43
-            &#x132FC; : "𓋼" EGYPTIAN HIEROGLYPH S44
             &#x132FD; : "𓋽" EGYPTIAN HIEROGLYPH S45
             &#x132FE; : "𓋾" EGYPTIAN HIEROGLYPH S46
             &#x132FF; : "𓋿" EGYPTIAN HIEROGLYPH S47
@@ -80,7 +74,7 @@
             -->
             <Key
                 latin:keySpec="&#x132D1;"
-                latin:moreKeys="&#x132D2;,&#x132D3;,&#x132D4;,&#x132D5;,&#x132D6;,&#x132D7;,&#x132D8;,&#x132D9;,&#x132DA;,&#x132DB;,&#x132DC;,&#x132DD;,&#x132DE;,&#x132DF;,&#x132E0;,&#x132E1;,&#x132E2;,&#x132E3;,&#x132E4;,&#x132E5;,&#x132E6;,&#x132E7;,&#x132E8;,&#x132E9;,&#x132EA;,&#x132EB;,&#x132EC;,&#x132ED;,&#x132EE;,&#x132EF;,&#x132F0;,&#x132F1;,&#x132F2;,&#x132F3;,&#x132F4;,&#x132F5;,&#x132F6;,&#x132F7;,&#x132F8;,&#x132F9;,&#x132FA;,&#x132FB;,&#x132FC;,&#x132FD;,&#x132FE;,&#x132FF;,&#x13300;,&#x13301;,&#x13302;,&#x13303;,&#x13304;,&#x13305;,&#x13306;"
+                latin:moreKeys="&#x132D2;,&#x132D3;,&#x132D4;,&#x132D5;,&#x132D6;,&#x132D9;,&#x132DA;,&#x132DB;,&#x132DC;,&#x132DD;,&#x132DE;,&#x132E1;,&#x132E2;,&#x132E3;,&#x132E4;,&#x132E5;,&#x132E6;,&#x132E7;,&#x132E8;,&#x132E9;,&#x132EA;,&#x132EB;,&#x132EC;,&#x132ED;,&#x132EE;,&#x132EF;,&#x132F0;,&#x132F1;,&#x132F2;,&#x132F3;,&#x132F4;,&#x132F5;,&#x132F6;,&#x132F7;,&#x132F8;,&#x132F9;,&#x132FA;,&#x132FD;,&#x132FE;,&#x132FF;,&#x13300;,&#x13301;,&#x13302;,&#x13303;,&#x13304;,&#x13305;,&#x13306;"
                 />
 
                         <!--
