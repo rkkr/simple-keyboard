@@ -21,77 +21,158 @@
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <switch>
         <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
-            <!-- U+0911: "ऑ" DEVANAGARI LETTER CANDRA O -->
-            <Key latin:keySpec="&#x0911;" />
-            <!-- Because the font rendering system prior to API version 16 can't automatically
-                 render dotted circle for incomplete combining letter of some scripts, different
-                 set of Key definitions are needed based on the API version. -->
-            <include latin:keyboardLayout="@xml/keystyle_devanagari_sign_candrabindu" />
-            <Key latin:keyStyle="baseKeyDevanagariSignCandrabindu" />
-            <!-- U+0923: "ण" DEVANAGARI LETTER NNA -->
-            <Key latin:keySpec="&#x0923;" />
-            <!-- U+0929: "ऩ" DEVANAGARI LETTER NNNA -->
-            <Key latin:keySpec="&#x0929;" />
-            <!-- U+0933: "ळ" DEVANAGARI LETTER LLA
-                 U+0934: "ऴ" DEVANAGARI LETTER LLLA -->
+                       <!--
+            Key (S1-S45):
+            &#x132D1; : "𓋑" EGYPTIAN HIEROGLYPH S1
+            &#x132D2; : "𓋒" EGYPTIAN HIEROGLYPH S2
+            &#x132D3; : "𓋓" EGYPTIAN HIEROGLYPH S3
+            &#x132D4; : "𓋔" EGYPTIAN HIEROGLYPH S4
+            &#x132D5; : "𓋕" EGYPTIAN HIEROGLYPH S5
+            &#x132D6; : "𓋖" EGYPTIAN HIEROGLYPH S6
+            &#x132D7; : "𓋗" EGYPTIAN HIEROGLYPH S7
+            &#x132D8; : "𓋘" EGYPTIAN HIEROGLYPH S8
+            &#x132D9; : "𓋙" EGYPTIAN HIEROGLYPH S9
+            &#x132DA; : "𓋚" EGYPTIAN HIEROGLYPH S10
+            &#x132DB; : "𓋛" EGYPTIAN HIEROGLYPH S11
+            &#x132DC; : "𓋜" EGYPTIAN HIEROGLYPH S12
+            &#x132DD; : "𓋝" EGYPTIAN HIEROGLYPH S13
+            &#x132DE; : "𓋞" EGYPTIAN HIEROGLYPH S14
+            &#x132DF; : "𓋟" EGYPTIAN HIEROGLYPH S15
+            &#x132E0; : "𓋠" EGYPTIAN HIEROGLYPH S16
+            &#x132E1; : "𓋡" EGYPTIAN HIEROGLYPH S17
+            &#x132E2; : "𓋢" EGYPTIAN HIEROGLYPH S18
+            &#x132E3; : "𓋣" EGYPTIAN HIEROGLYPH S19
+            &#x132E4; : "𓋤" EGYPTIAN HIEROGLYPH S20
+            &#x132E5; : "𓋥" EGYPTIAN HIEROGLYPH S21
+            &#x132E6; : "𓋦" EGYPTIAN HIEROGLYPH S22
+            &#x132E7; : "𓋧" EGYPTIAN HIEROGLYPH S23
+            &#x132E8; : "𓋨" EGYPTIAN HIEROGLYPH S24
+            &#x132E9; : "𓋩" EGYPTIAN HIEROGLYPH S25
+            &#x132EA; : "𓋪" EGYPTIAN HIEROGLYPH S26
+            &#x132EB; : "𓋫" EGYPTIAN HIEROGLYPH S27
+            &#x132EC; : "𓋬" EGYPTIAN HIEROGLYPH S28
+            &#x132ED; : "𓋭" EGYPTIAN HIEROGLYPH S29
+            &#x132EE; : "𓋮" EGYPTIAN HIEROGLYPH S30
+            &#x132EF; : "𓋯" EGYPTIAN HIEROGLYPH S31
+            &#x132F0; : "𓋰" EGYPTIAN HIEROGLYPH S32
+            &#x132F1; : "𓋱" EGYPTIAN HIEROGLYPH S33
+            &#x132F2; : "𓋲" EGYPTIAN HIEROGLYPH S34
+            &#x132F3; : "𓋳" EGYPTIAN HIEROGLYPH S35
+            &#x132F4; : "𓋴" EGYPTIAN HIEROGLYPH S36
+            &#x132F5; : "𓋵" EGYPTIAN HIEROGLYPH S37
+            &#x132F6; : "𓋶" EGYPTIAN HIEROGLYPH S38
+            &#x132F7; : "𓋷" EGYPTIAN HIEROGLYPH S39
+            &#x132F8; : "𓋸" EGYPTIAN HIEROGLYPH S40
+            &#x132F9; : "𓋹" EGYPTIAN HIEROGLYPH S41
+            &#x132FA; : "𓋺" EGYPTIAN HIEROGLYPH S42
+            &#x132FB; : "𓋻" EGYPTIAN HIEROGLYPH S43
+            &#x132FC; : "𓋼" EGYPTIAN HIEROGLYPH S44
+            &#x132FD; : "𓋽" EGYPTIAN HIEROGLYPH S45
+            &#x132FE; : "𓋾" EGYPTIAN HIEROGLYPH S46
+            &#x132FF; : "𓋿" EGYPTIAN HIEROGLYPH S47
+            &#x13300; : "𓌀" EGYPTIAN HIEROGLYPH S48
+            &#x13301; : "𓌁" EGYPTIAN HIEROGLYPH S49
+            &#x13302; : "𓌂" EGYPTIAN HIEROGLYPH S50
+            &#x13303; : "𓌃" EGYPTIAN HIEROGLYPH S51
+            &#x13304; : "𓌄" EGYPTIAN HIEROGLYPH S52
+            &#x13305; : "𓌅" EGYPTIAN HIEROGLYPH S53
+            &#x13306; : "𓌆" EGYPTIAN HIEROGLYPH S54
+            -->
             <Key
-                latin:keySpec="&#x0933;"
-                latin:moreKeys="&#x0934;" />
-            <!-- U+0936: "श" DEVANAGARI LETTER SHA -->
-            <Key latin:keySpec="&#x0936;" />
-            <!-- U+0937: "ष" DEVANAGARI LETTER SSA -->
-            <Key latin:keySpec="&#x0937;" />
-            <!-- Because the font rendering system prior to API version 16 can't automatically
-                 render dotted circle for incomplete combining letter of some scripts, different
-                 set of Key definitions are needed based on the API version. -->
-            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_vocalic_r" />
-            <Key latin:keyStyle="baseKeyDevanagariVowelSignVocalicR" />
-            <!-- U+091E: "ञ" DEVANAGARI LETTER NYA -->
-            <Key latin:keySpec="&#x091E;" />
+                latin:keySpec="&#x132D1;"
+                latin:moreKeys="&#x132D2;,&#x132D3;,&#x132D4;,&#x132D5;,&#x132D6;,&#x132D7;,&#x132D8;,&#x132D9;,&#x132DA;,&#x132DB;,&#x132DC;,&#x132DD;,&#x132DE;,&#x132DF;,&#x132E0;,&#x132E1;,&#x132E2;,&#x132E3;,&#x132E4;,&#x132E5;,&#x132E6;,&#x132E7;,&#x132E8;,&#x132E9;,&#x132EA;,&#x132EB;,&#x132EC;,&#x132ED;,&#x132EE;,&#x132EF;,&#x132F0;,&#x132F1;,&#x132F2;,&#x132F3;,&#x132F4;,&#x132F5;,&#x132F6;,&#x132F7;,&#x132F8;,&#x132F9;,&#x132FA;,&#x132FB;,&#x132FC;,&#x132FD;,&#x132FE;,&#x132FF;,&#x13300;,&#x13301;,&#x13302;,&#x13303;,&#x13304;,&#x13305;,&#x13306;"
+                />
         </case>
         <default>
-            <!-- Because the font rendering system prior to API version 16 can't automatically
-                 render dotted circle for incomplete combining letter of some scripts, different
-                 set of Key definitions are needed based on the API version. -->
-            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_candra_o" />
-            <Key latin:keyStyle="baseKeyDevanagariVowelSignCandraO" />
-            <!-- Because the font rendering system prior to API version 16 can't automatically
-                 render dotted circle for incomplete combining letter of some scripts, different
-                 set of Key definitions are needed based on the API version. -->
-            <include latin:keyboardLayout="@xml/keystyle_devanagari_sign_anusvara" />
-            <Key latin:keyStyle="baseKeyDevanagariSignAnusvara" />
-            <!-- U+092E: "म" DEVANAGARI LETTER MA
-                 U+0950: "ॐ" DEVANAGARI OM -->
+            <!--    "ز"-->
             <Key
-                latin:keySpec="&#x092E;"
-                latin:moreKeys="&#x0950;" />
-            <!-- U+0928: "न" DEVANAGARI LETTER NA
-                 U+091E: "ञ" DEVANAGARI LETTER NYA
-                 U+0919: "ङ" DEVANAGARI LETTER NGA
-                 U+0928/U+093C: "ऩ" DEVANAGARI LETTER NA/DEVANAGARI SIGN NUKTA -->
+                latin:keySpec="&#78467;"
+                latin:keyHintLabel="&#1586;"
+                />
+
+
+
+            <!--
+            &#1573;
+            : "ء" ARABIC LETTER HAMZA -->
             <Key
-                latin:keySpec="&#x0928;"
-                latin:moreKeys="&#x091E;,&#x0919;,&#x0928;&#x093C;" />
-            <!-- U+0935: "व" DEVANAGARI LETTER VA -->
-            <Key latin:keySpec="&#x0935;" />
-            <!-- U+0932: "ल" DEVANAGARI LETTER LA
-                 U+090C: "ऌ" DEVANAGARI LETTER VOCALIC L
-                 U+0961: "ॡ" DEVANAGARI LETTER VOCALIC LL -->
-            <Key
-                latin:keySpec="&#x0932;"
-                latin:moreKeys="&#x090C;,&#x0961;" />
-            <!-- U+0938: "स" DEVANAGARI LETTER SA -->
-            <Key latin:keySpec="&#x0938;" />
-            <!-- U+092F: "य" DEVANAGARI LETTER YA
-                 U+095F: "य़" DEVANAGARI LETTER YYA -->
-            <Key
-                latin:keySpec="&#x092F;"
-                latin:moreKeys="&#x095F;" />
-            <!-- Because the font rendering system prior to API version 16 can't automatically
-                 render dotted circle for incomplete combining letter of some scripts, different
-                 set of Key definitions are needed based on the API version. -->
-            <include latin:keyboardLayout="@xml/keystyle_devanagari_sign_nukta" />
-            <Key latin:keyStyle="baseKeyDevanagariSignNukta" />
+                latin:keySpec="&#78283;"
+                latin:keyHintLabel="&#1573;" />
+
+            <!-- U+0624: "ؤ" ARABIC LETTER WAW WITH HAMZA ABOVE -->
+<!--            <Key-->
+<!--                latin:keySpec="&#78517;"-->
+<!--                latin:keyHintLabel="&#x0624;" />-->
+            <!--     U+0631: "ر" ARABIC LETTER REH-->
+            <Key latin:keySpec="&#77963;"
+                latin:keyHintLabel="&#x0631;"/>
+<!--            &lt;!&ndash; U+0649: "ى" ARABIC LETTER ALEF MAKSURA-->
+<!--                 U+0626: "ئ" ARABIC LETTER YEH WITH HAMZA ABOVE &ndash;&gt;-->
+<!--            <Key-->
+<!--                latin:keySpec="&#78525;"-->
+<!--                latin:keyHintLabel="&#x0649;" />-->
+            <!-- U+0629: "ة" ARABIC LETTER TEH MARBUTA -->
+<!--            <Key latin:keySpec="&#78799;"-->
+<!--                latin:keyHintLabel="&#x0629;"/>-->
+            <!-- U+0648: "و" ARABIC LETTER WAW -->
+            <Key latin:keySpec="&#78193;"
+                latin:keyHintLabel="&#x0648;"/>
+<!--            &lt;!&ndash; U+0632: "ز" ARABIC LETTER ZAIN-->
+<!--                 U+0698: "ژ" ARABIC LETTER JEH &ndash;&gt;-->
+<!--            <Key-->
+<!--                latin:keySpec="&#78467;"-->
+<!--                latin:keyHintLabel="&#x0632;" />-->
+<!--            &lt;!&ndash; U+0638: "ظ" ARABIC LETTER ZAH &ndash;&gt;-->
+<!--            <Key latin:keySpec="&#77991;"-->
+<!--                latin:keyHintLabel="&#x0638;"-->
+<!--                />-->
+            <!-- U+062F: "د" ARABIC LETTER DAL -->
+            <Key latin:keySpec="&#77991;"
+                latin:keyHintLabel="&#x062F;"/>
+
+
+<!--            &lt;!&ndash; Because the font rendering system prior to API version 16 can't automatically-->
+<!--                 render dotted circle for incomplete combining letter of some scripts, different-->
+<!--                 set of Key definitions are needed based on the API version. &ndash;&gt;-->
+<!--            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_candra_o" />-->
+<!--            <Key latin:keyStyle="baseKeyDevanagariVowelSignCandraO" />-->
+<!--            &lt;!&ndash; Because the font rendering system prior to API version 16 can't automatically-->
+<!--                 render dotted circle for incomplete combining letter of some scripts, different-->
+<!--                 set of Key definitions are needed based on the API version. &ndash;&gt;-->
+<!--            <include latin:keyboardLayout="@xml/keystyle_devanagari_sign_anusvara" />-->
+<!--            <Key latin:keyStyle="baseKeyDevanagariSignAnusvara" />-->
+<!--            &lt;!&ndash; U+092E: "म" DEVANAGARI LETTER MA-->
+<!--                 U+0950: "ॐ" DEVANAGARI OM &ndash;&gt;-->
+<!--            <Key-->
+<!--                latin:keySpec="&#x092E;"-->
+<!--                latin:moreKeys="&#x0950;" />-->
+<!--            &lt;!&ndash; U+0928: "न" DEVANAGARI LETTER NA-->
+<!--                 U+091E: "ञ" DEVANAGARI LETTER NYA-->
+<!--                 U+0919: "ङ" DEVANAGARI LETTER NGA-->
+<!--                 U+0928/U+093C: "ऩ" DEVANAGARI LETTER NA/DEVANAGARI SIGN NUKTA &ndash;&gt;-->
+<!--            <Key-->
+<!--                latin:keySpec="&#x0928;"-->
+<!--                latin:moreKeys="&#x091E;,&#x0919;,&#x0928;&#x093C;" />-->
+<!--            &lt;!&ndash; U+0935: "व" DEVANAGARI LETTER VA &ndash;&gt;-->
+<!--            <Key latin:keySpec="&#x0935;" />-->
+<!--            &lt;!&ndash; U+0932: "ल" DEVANAGARI LETTER LA-->
+<!--                 U+090C: "ऌ" DEVANAGARI LETTER VOCALIC L-->
+<!--                 U+0961: "ॡ" DEVANAGARI LETTER VOCALIC LL &ndash;&gt;-->
+<!--            <Key-->
+<!--                latin:keySpec="&#x0932;"-->
+<!--                latin:moreKeys="&#x090C;,&#x0961;" />-->
+<!--            &lt;!&ndash; U+0938: "स" DEVANAGARI LETTER SA &ndash;&gt;-->
+<!--            <Key latin:keySpec="&#x0938;" />-->
+<!--            &lt;!&ndash; U+092F: "य" DEVANAGARI LETTER YA-->
+<!--                 U+095F: "य़" DEVANAGARI LETTER YYA &ndash;&gt;-->
+<!--            <Key-->
+<!--                latin:keySpec="&#x092F;"-->
+<!--                latin:moreKeys="&#x095F;" />-->
+<!--            &lt;!&ndash; Because the font rendering system prior to API version 16 can't automatically-->
+<!--                 render dotted circle for incomplete combining letter of some scripts, different-->
+<!--                 set of Key definitions are needed based on the API version. &ndash;&gt;-->
+<!--            <include latin:keyboardLayout="@xml/keystyle_devanagari_sign_nukta" />-->
+<!--            <Key latin:keyStyle="baseKeyDevanagariSignNukta" />-->
         </default>
     </switch>
 </merge>

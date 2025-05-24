@@ -21,111 +21,703 @@
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <switch>
         <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
-            <!-- U+0913: "ओ" DEVANAGARI LETTER O
-                 U+0913/U+0902: "ओं" DEVANAGARI LETTER O/DEVANAGARI SIGN ANUSVARA
-                 U+0911: "ऑ" DEVANAGARI LETTER CANDRA O
-                 U+0912: "ऒ" DEVANAGARI LETTER SHORT O -->
+            <!--
+ Second key (F18-F35):
+ &#x13111; : "𓄑" EGYPTIAN HIEROGLYPH F18
+ &#x13112; : "𓄒" EGYPTIAN HIEROGLYPH F19
+ &#x13113; : "𓄓" EGYPTIAN HIEROGLYPH F20
+ &#x13114; : "𓄔" EGYPTIAN HIEROGLYPH F21
+ &#x13115; : "𓄕" EGYPTIAN HIEROGLYPH F21A
+ &#x13116; : "𓄖" EGYPTIAN HIEROGLYPH F22
+ &#x13117; : "𓄗" EGYPTIAN HIEROGLYPH F23
+ &#x13118; : "𓄘" EGYPTIAN HIEROGLYPH F24
+ &#x13119; : "𓄙" EGYPTIAN HIEROGLYPH F25
+ &#x1311A; : "𓄚" EGYPTIAN HIEROGLYPH F26
+ &#x1311B; : "𓄛" EGYPTIAN HIEROGLYPH F27
+ &#x1311C; : "𓄜" EGYPTIAN HIEROGLYPH F28
+ &#x1311D; : "𓄝" EGYPTIAN HIEROGLYPH F29
+ &#x1311E; : "𓄞" EGYPTIAN HIEROGLYPH F30
+ &#x1311F; : "𓄟" EGYPTIAN HIEROGLYPH F31
+ &#x13120; : "𓄠" EGYPTIAN HIEROGLYPH F31A
+ &#x13121; : "𓄡" EGYPTIAN HIEROGLYPH F32
+ &#x13122; : "𓄢" EGYPTIAN HIEROGLYPH F33
+ &#x13123; : "𓄣" EGYPTIAN HIEROGLYPH F34
+ &#x13124; : "𓄤" EGYPTIAN HIEROGLYPH F35
+ -->
             <Key
-                latin:keySpec="&#x0913;"
-                latin:moreKeys="&#x0913;&#x0902;,&#x0911;,&#x0912;" />
-            <!-- U+090F: "ए" DEVANAGARI LETTER E
-                 U+090F/U+0902: "एं" DEVANAGARI LETTER E/DEVANAGARI SIGN ANUSVARA
-                 U+090F/U+0901: "एँ" DEVANAGARI LETTER E/DEVANAGARI SIGN CANDRABINDU
-                 U+090D: "ऍ" DEVANAGARI LETTER CANDRA E
-                 U+090E: "ऎ" DEVANAGARI LETTER SHORT E -->
+                latin:keySpec="&#x13111;"
+                latin:moreKeys="&#x13112;,&#x13113;,&#x13114;,&#x13115;,&#x13116;,&#x13117;,&#x13118;,&#x13119;,&#x1311A;,&#x1311B;,&#x1311C;,&#x1311D;,&#x1311E;,&#x1311F;,&#x13120;,&#x13121;,&#x13122;,&#x13123;,&#x13124;"
+                />
+
+            <!--
+            Third key (F36-F52):
+            &#x13125; : "𓄥" EGYPTIAN HIEROGLYPH F36
+            &#x13126; : "𓄦" EGYPTIAN HIEROGLYPH F37
+            &#x13127; : "𓄧" EGYPTIAN HIEROGLYPH F37A
+            &#x13128; : "𓄨" EGYPTIAN HIEROGLYPH F38
+            &#x13129; : "𓄩" EGYPTIAN HIEROGLYPH F38A
+            &#x1312A; : "𓄪" EGYPTIAN HIEROGLYPH F39
+            &#x1312B; : "𓄫" EGYPTIAN HIEROGLYPH F40
+            &#x1312C; : "𓄬" EGYPTIAN HIEROGLYPH F41
+            &#x1312D; : "𓄭" EGYPTIAN HIEROGLYPH F42
+            &#x1312E; : "𓄮" EGYPTIAN HIEROGLYPH F43
+            &#x1312F; : "𓄯" EGYPTIAN HIEROGLYPH F44
+            &#x13130; : "𓄰" EGYPTIAN HIEROGLYPH F45
+            &#x13131; : "𓄱" EGYPTIAN HIEROGLYPH F45A
+            &#x13132; : "𓄲" EGYPTIAN HIEROGLYPH F46
+            &#x13133; : "𓄳" EGYPTIAN HIEROGLYPH F46A
+            &#x13134; : "𓄴" EGYPTIAN HIEROGLYPH F47
+            &#x13135; : "𓄵" EGYPTIAN HIEROGLYPH F47A
+            &#x13136; : "𓄶" EGYPTIAN HIEROGLYPH F48
+            &#x13137; : "𓄷" EGYPTIAN HIEROGLYPH F49
+            &#x13138; : "𓄸" EGYPTIAN HIEROGLYPH F50
+            &#x13139; : "𓄹" EGYPTIAN HIEROGLYPH F51
+            &#x1313A; : "𓄺" EGYPTIAN HIEROGLYPH F51A
+            &#x1313B; : "𓄻" EGYPTIAN HIEROGLYPH F51B
+            &#x1313C; : "𓄼" EGYPTIAN HIEROGLYPH F51C
+            &#x1313D; : "𓄽" EGYPTIAN HIEROGLYPH F52
+            &#x1313E; : "𓄾" EGYPTIAN HIEROGLYPH F52A
+            -->
             <Key
-                latin:keySpec="&#x090F;"
-                latin:moreKeys="&#x090F;&#x0902;,&#x090F;&#x0901;,&#x090D;,&#x090E;" />
-            <!-- U+0905: "अ" DEVANAGARI LETTER A
-                 U+0905/U+0902: "अं" DEVANAGARI LETTER A/DEVANAGARI SIGN ANUSVARA
-                 U+0905/U+0901: "अँ" DEVANAGARI LETTER A/DEVANAGARI SIGN CANDRABINDU -->
+                latin:keySpec="&#x13125;"
+                latin:moreKeys="&#x13126;,&#x13127;,&#x13128;,&#x13129;,&#x1312A;,&#x1312B;,&#x1312C;,&#x1312D;,&#x1312E;,&#x1312F;,&#x13130;,&#x13131;,&#x13132;,&#x13133;,&#x13134;,&#x13135;,&#x13136;,&#x13137;,&#x13138;,&#x13139;,&#x1313A;,&#x1313B;,&#x1313C;,&#x1313D;,&#x1313E;"
+                />
+
+            <!--
+            First key (G1-G27):
+            &#x1313F; : "𓄿" EGYPTIAN HIEROGLYPH G1 (Egyptian vulture)
+            &#x13140; : "𓅀" EGYPTIAN HIEROGLYPH G2 (two Egyptian vultures)
+            &#x13141; : "𓅁" EGYPTIAN HIEROGLYPH G3 (combination of Egyptian vulture and sickle)
+            &#x13142; : "𓅂" EGYPTIAN HIEROGLYPH G4 (buzzard)
+            &#x13143; : "𓅃" EGYPTIAN HIEROGLYPH G5 (falcon)
+            &#x13144; : "𓅄" EGYPTIAN HIEROGLYPH G6 (combination of falcon and flagellum)
+            &#x13145; : "𓅅" EGYPTIAN HIEROGLYPH G6A (falcon on basket)
+            &#x13146; : "𓅆" EGYPTIAN HIEROGLYPH G7 (falcon on standard)
+            &#x13147; : "𓅇" EGYPTIAN HIEROGLYPH G7A (falcon in boat)
+            &#x13148; : "𓅈" EGYPTIAN HIEROGLYPH G7B (falcon in boat)
+            &#x13149; : "𓅉" EGYPTIAN HIEROGLYPH G8 (falcon on collar of beads)
+            &#x1314A; : "𓅊" EGYPTIAN HIEROGLYPH G9 (falcon with sun on head)
+            &#x1314B; : "𓅋" EGYPTIAN HIEROGLYPH G10 (falcon in Sokar barque)
+            &#x1314C; : "𓅌" EGYPTIAN HIEROGLYPH G11 (image of falcon)
+            &#x1314D; : "𓅍" EGYPTIAN HIEROGLYPH G11A (image of falcon on standard)
+            &#x1314E; : "𓅎" EGYPTIAN HIEROGLYPH G12 (combination of image of falcon and flagellum)
+            &#x1314F; : "𓅏" EGYPTIAN HIEROGLYPH G13 (image of falcon with two plumes)
+            &#x13150; : "𓅐" EGYPTIAN HIEROGLYPH G14 (vulture)
+            &#x13151; : "𓅑" EGYPTIAN HIEROGLYPH G15 (combination of vulture and flagellum)
+            &#x13152; : "𓅒" EGYPTIAN HIEROGLYPH G16 (vulture and cobra each on a basket)
+            &#x13153; : "𓅓" EGYPTIAN HIEROGLYPH G17 (owl)
+            &#x13154; : "𓅔" EGYPTIAN HIEROGLYPH G18 (two owls)
+            &#x13155; : "𓅕" EGYPTIAN HIEROGLYPH G19 (combination of owl and forearm with conical loaf)
+            &#x13156; : "𓅖" EGYPTIAN HIEROGLYPH G20 (combination of owl and forearm)
+            &#x13157; : "𓅗" EGYPTIAN HIEROGLYPH G20A (combination of owl and mouth)
+            &#x13158; : "𓅘" EGYPTIAN HIEROGLYPH G21 (guineafowl)
+            &#x13159; : "𓅙" EGYPTIAN HIEROGLYPH G22 (hoopoe)
+            &#x1315A; : "𓅚" EGYPTIAN HIEROGLYPH G23 (lapwing)
+            &#x1315B; : "𓅛" EGYPTIAN HIEROGLYPH G24 (lapwing with twisted wings)
+            &#x1315C; : "𓅜" EGYPTIAN HIEROGLYPH G25 (northern bald ibis)
+            &#x1315D; : "𓅝" EGYPTIAN HIEROGLYPH G26 (sacred Ibis on standard)
+            &#x1315E; : "𓅞" EGYPTIAN HIEROGLYPH G26A (sacred Ibis)
+            &#x1315F; : "𓅟" EGYPTIAN HIEROGLYPH G27 (flamingo)
+            -->
             <Key
-                latin:keySpec="&#x0905;"
-                latin:moreKeys="&#x0905;&#x0902;,&#x0905;&#x0901;" />
-            <!-- U+0907: "इ" DEVANAGARI LETTER I
-                 U+0907/U+0902: "इं" DEVANAGARI LETTER I/DEVANAGARI SIGN ANUSVARA
-                 U+0907/U+0901: "इं" DEVANAGARI LETTER I/DEVANAGARI SIGN CANDRABINDU -->
+                latin:keySpec="&#x1313F;"
+                latin:moreKeys="&#x13140;,&#x13141;,&#x13142;,&#x13143;,&#x13144;,&#x13145;,&#x13146;,&#x13147;,&#x13148;,&#x13149;,&#x1314A;,&#x1314B;,&#x1314C;,&#x1314D;,&#x1314E;,&#x1314F;,&#x13150;,&#x13151;,&#x13152;,&#x13153;,&#x13154;,&#x13155;,&#x13156;,&#x13157;,&#x13158;,&#x13159;,&#x1315A;,&#x1315B;,&#x1315C;,&#x1315D;,&#x1315E;,&#x1315F;"
+                />
+
+            <!--
+            Second key (G28-G54):
+            &#x13160; : "𓅠" EGYPTIAN HIEROGLYPH G28 (glossy ibis)
+            &#x13161; : "𓅡" EGYPTIAN HIEROGLYPH G29 (saddle-billed stork)
+            &#x13162; : "𓅢" EGYPTIAN HIEROGLYPH G30 (three saddle-billed storks)
+            &#x13163; : "𓅣" EGYPTIAN HIEROGLYPH G31 (heron)
+            &#x13164; : "𓅤" EGYPTIAN HIEROGLYPH G32 (heron on perch)
+            &#x13165; : "𓅥" EGYPTIAN HIEROGLYPH G33 (cattle egret)
+            &#x13166; : "𓅦" EGYPTIAN HIEROGLYPH G34 (ostrich)
+            &#x13167; : "𓅧" EGYPTIAN HIEROGLYPH G35 (cormorant)
+            &#x13168; : "𓅨" EGYPTIAN HIEROGLYPH G36 (swallow)
+            &#x13169; : "𓅩" EGYPTIAN HIEROGLYPH G36A (swallow (low))
+            &#x1316A; : "𓅪" EGYPTIAN HIEROGLYPH G37 (sparrow)
+            &#x1316B; : "𓅫" EGYPTIAN HIEROGLYPH G37A (sparrow (low))
+            &#x1316C; : "𓅬" EGYPTIAN HIEROGLYPH G38 (goose)
+            &#x1316D; : "𓅭" EGYPTIAN HIEROGLYPH G39 (pintail duck)
+            &#x1316E; : "𓅮" EGYPTIAN HIEROGLYPH G40 (pintail flying)
+            &#x1316F; : "𓅯" EGYPTIAN HIEROGLYPH G41 (pintail alighting)
+            &#x13170; : "𓅰" EGYPTIAN HIEROGLYPH G42 (widgeon)
+            &#x13171; : "𓅱" EGYPTIAN HIEROGLYPH G43 (quail chick)
+            &#x13172; : "𓅲" EGYPTIAN HIEROGLYPH G43A (combination of quail chick and flat loaf)
+            &#x13173; : "𓅳" EGYPTIAN HIEROGLYPH G44 (two quail chicks)
+            &#x13174; : "𓅴" EGYPTIAN HIEROGLYPH G45 (combination of quail chick and forearm)
+            &#x13175; : "𓅵" EGYPTIAN HIEROGLYPH G45A (combination of quail chick and forearm with conical loaf)
+            &#x13176; : "𓅶" EGYPTIAN HIEROGLYPH G46 (combination of quail chick and sickle)
+            &#x13177; : "𓅷" EGYPTIAN HIEROGLYPH G47 (duckling)
+            &#x13178; : "𓅸" EGYPTIAN HIEROGLYPH G48 (three ducklings in nest)
+            &#x13179; : "𓅹" EGYPTIAN HIEROGLYPH G49 (three ducklings in pool)
+            &#x1317A; : "𓅺" EGYPTIAN HIEROGLYPH G50 (two plovers)
+            &#x1317B; : "𓅻" EGYPTIAN HIEROGLYPH G51 (bird pecking at fish)
+            &#x1317C; : "𓅼" EGYPTIAN HIEROGLYPH G52 (goose picking up grain)
+            &#x1317D; : "𓅽" EGYPTIAN HIEROGLYPH G53 (human-headed bird with bowl with smoke)
+            &#x1317E; : "𓅾" EGYPTIAN HIEROGLYPH G54
+            -->
             <Key
-                latin:keySpec="&#x0907;"
-                latin:moreKeys="&#x0907;&#x0902;,&#x0907;&#x0901;" />
-            <!-- U+0909: "उ" DEVANAGARI LETTER U
-                 U+0909/U+0902: "उं" DEVANAGARI LETTER U/DEVANAGARI SIGN ANUSVARA
-                 U+0909/U+0901: "उँ" DEVANAGARI LETTER U/DEVANAGARI SIGN CANDRABINDU -->
+                latin:keySpec="&#x13160;"
+                latin:moreKeys="&#x13161;,&#x13162;,&#x13163;,&#x13164;,&#x13165;,&#x13166;,&#x13167;,&#x13168;,&#x13169;,&#x1316A;,&#x1316B;,&#x1316C;,&#x1316D;,&#x1316E;,&#x1316F;,&#x13170;,&#x13171;,&#x13172;,&#x13173;,&#x13174;,&#x13175;,&#x13176;,&#x13177;,&#x13178;,&#x13179;,&#x1317A;,&#x1317B;,&#x1317C;,&#x1317D;,&#x1317E;"
+                />
+
+         <!--
+            Key (H1-I15):
+            &#x1317F; : "𓅿" EGYPTIAN HIEROGLYPH H1 (head of pintail)
+            &#x13180; : "𓆀" EGYPTIAN HIEROGLYPH H2 (head of heron)
+            &#x13181; : "𓆁" EGYPTIAN HIEROGLYPH H3 (head of spoonbill)
+            &#x13182; : "𓆂" EGYPTIAN HIEROGLYPH H4 (head of vulture)
+            &#x13183; : "𓆃" EGYPTIAN HIEROGLYPH H5 (wing)
+            &#x13184; : "𓆄" EGYPTIAN HIEROGLYPH H6 (feather)
+            &#x13185; : "𓆅" EGYPTIAN HIEROGLYPH H6A (hieratic feather)
+            &#x13186; : "𓆆" EGYPTIAN HIEROGLYPH H7 (bird foot)
+            &#x13187; : "𓆇" EGYPTIAN HIEROGLYPH H8 (egg)
+            &#x13188; : "𓆈" EGYPTIAN HIEROGLYPH I1 (gecko)
+            &#x13189; : "𓆉" EGYPTIAN HIEROGLYPH I2 (turtle)
+            &#x1318A; : "𓆊" EGYPTIAN HIEROGLYPH I3 (crocodile)
+            &#x1318B; : "𓆋" EGYPTIAN HIEROGLYPH I4 (crocodile on shrine)
+            &#x1318C; : "𓆌" EGYPTIAN HIEROGLYPH I5 (crocodile with curved tail)
+            &#x1318D; : "𓆍" EGYPTIAN HIEROGLYPH I5A (image of crocodile)
+            &#x1318E; : "𓆎" EGYPTIAN HIEROGLYPH I6 (crocodile scales)
+            &#x1318F; : "𓆏" EGYPTIAN HIEROGLYPH I7 (frog)
+            &#x13190; : "𓆐" EGYPTIAN HIEROGLYPH I8 (tadpole)
+            &#x13191; : "𓆑" EGYPTIAN HIEROGLYPH I9 (horned viper)
+            &#x13192; : "𓆒" EGYPTIAN HIEROGLYPH I9A (horned viper crawling out of enclosure)
+            &#x13193; : "𓆓" EGYPTIAN HIEROGLYPH I10 (cobra in repose)
+            &#x13194; : "𓆔" EGYPTIAN HIEROGLYPH I10A (cobra with feather)
+            &#x13195; : "𓆕" EGYPTIAN HIEROGLYPH I11 (two cobras)
+            &#x13196; : "𓆖" EGYPTIAN HIEROGLYPH I11A (combination of cobra, flat loaf and sandy tract)
+            &#x13197; : "𓆗" EGYPTIAN HIEROGLYPH I12 (cobra erect as on the forehead of the Pharaoh)
+            &#x13198; : "𓆘" EGYPTIAN HIEROGLYPH I13 (erect cobra on basket)
+            &#x13199; : "𓆙" EGYPTIAN HIEROGLYPH I14 (snake)
+            &#x1319A; : "𓆚" EGYPTIAN HIEROGLYPH I15
+            -->
             <Key
-                latin:keySpec="&#x0909;"
-                latin:moreKeys="&#x0909;&#x0902;,&#x0909;&#x0901;" />
-            <!-- U+092B: "फ" DEVANAGARI LETTER PHA
-                 U+092B/U+093C: "फ़" DEVANAGARI LETTER PHA/DEVANAGARI SIGN NUKTA -->
+                latin:keySpec="&#x1317F;"
+                latin:moreKeys="&#x13180;,&#x13181;,&#x13182;,&#x13183;,&#x13184;,&#x13185;,&#x13186;,&#x13187;,&#x13188;,&#x13189;,&#x1318A;,&#x1318B;,&#x1318C;,&#x1318D;,&#x1318E;,&#x1318F;,&#x13190;,&#x13191;,&#x13192;,&#x13193;,&#x13194;,&#x13195;,&#x13196;,&#x13197;,&#x13198;,&#x13199;,&#x1319A;"
+                />
+
+            <!--
+            Key (K1-M16A):
+            &#x1319B; : "𓆛" EGYPTIAN HIEROGLYPH K1 (tilapia)
+            &#x1319C; : "𓆜" EGYPTIAN HIEROGLYPH K2 (barbel)
+            &#x1319D; : "𓆝" EGYPTIAN HIEROGLYPH K3 (mullet)
+            &#x1319E; : "𓆞" EGYPTIAN HIEROGLYPH K4 (elephant-snout fish)
+            &#x1319F; : "𓆟" EGYPTIAN HIEROGLYPH K5 (Petrocephalus bane)
+            &#x131A0; : "𓆠" EGYPTIAN HIEROGLYPH K6 (fish scale)
+            &#x131A1; : "𓆡" EGYPTIAN HIEROGLYPH K7 (puffer)
+            &#x131A2; : "𓆢" EGYPTIAN HIEROGLYPH K8 (catfish)
+            &#x131A3; : "𓆣" EGYPTIAN HIEROGLYPH L1 (dung beetle)
+            &#x131A4; : "𓆤" EGYPTIAN HIEROGLYPH L2 (bee)
+            &#x131A5; : "𓆥" EGYPTIAN HIEROGLYPH L2A (combination of bee, sedge and two flat loafs)
+            &#x131A6; : "𓆦" EGYPTIAN HIEROGLYPH L3 (fly)
+            &#x131A7; : "𓆧" EGYPTIAN HIEROGLYPH L4 (locust)
+            &#x131A8; : "𓆨" EGYPTIAN HIEROGLYPH L5 (centipede)
+            &#x131A9; : "𓆩" EGYPTIAN HIEROGLYPH L6 (shell)
+            &#x131AA; : "𓆪" EGYPTIAN HIEROGLYPH L6A (L6 reversed)
+            &#x131AB; : "𓆫" EGYPTIAN HIEROGLYPH L7 (scorpion)
+            &#x131AC; : "𓆬" EGYPTIAN HIEROGLYPH L8
+            &#x131AD; : "𓆭" EGYPTIAN HIEROGLYPH M1 (tree)
+            &#x131AE; : "𓆮" EGYPTIAN HIEROGLYPH M1A (combination of tree and branch)
+            &#x131AF; : "𓆯" EGYPTIAN HIEROGLYPH M1B (combination of tree and horned viper)
+            &#x131B0; : "𓆰" EGYPTIAN HIEROGLYPH M2 (plant)
+            &#x131B1; : "𓆱" EGYPTIAN HIEROGLYPH M3 (branch)
+            &#x131B2; : "𓆲" EGYPTIAN HIEROGLYPH M3A (combination of owl and branch)
+            &#x131B3; : "𓆳" EGYPTIAN HIEROGLYPH M4 (palm branch)
+            &#x131B4; : "𓆴" EGYPTIAN HIEROGLYPH M5 (combination of palm branch and flat loaf)
+            &#x131B5; : "𓆵" EGYPTIAN HIEROGLYPH M6 (combination of palm branch and mouth)
+            &#x131B6; : "𓆶" EGYPTIAN HIEROGLYPH M7 (combination of palm branch and stool)
+            &#x131B7; : "𓆷" EGYPTIAN HIEROGLYPH M8 (pool with lotus flowers)
+            &#x131B8; : "𓆸" EGYPTIAN HIEROGLYPH M9 (lotus flower)
+            &#x131B9; : "𓆹" EGYPTIAN HIEROGLYPH M10 (lotus bud with straight stem)
+            &#x131BA; : "𓆺" EGYPTIAN HIEROGLYPH M10A (lotus bud with winding stem)
+            &#x131BB; : "𓆻" EGYPTIAN HIEROGLYPH M11 (flower on long twisted stalk)
+            &#x131BC; : "𓆼" EGYPTIAN HIEROGLYPH M12 (one lotus plant)
+            &#x131BD; : "𓆽" EGYPTIAN HIEROGLYPH M12A (two lotus plants)
+            &#x131BE; : "𓆾" EGYPTIAN HIEROGLYPH M12B (three lotus plants)
+            &#x131BF; : "𓆿" EGYPTIAN HIEROGLYPH M12C (four lotus plants)
+            &#x131C0; : "𓇀" EGYPTIAN HIEROGLYPH M12D (five lotus plants)
+            &#x131C1; : "𓇁" EGYPTIAN HIEROGLYPH M12E (six lotus plants)
+            &#x131C2; : "𓇂" EGYPTIAN HIEROGLYPH M12F (seven lotus plants)
+            &#x131C3; : "𓇃" EGYPTIAN HIEROGLYPH M12G (eight lotus plants)
+            &#x131C4; : "𓇄" EGYPTIAN HIEROGLYPH M12H (nine lotus plants)
+            &#x131C5; : "𓇅" EGYPTIAN HIEROGLYPH M13 (papyrus stem)
+            &#x131C6; : "𓇆" EGYPTIAN HIEROGLYPH M14 (combination of papyrus and cobra)
+            &#x131C7; : "𓇇" EGYPTIAN HIEROGLYPH M15 (clump of papyrus with buds)
+            &#x131C8; : "𓇈" EGYPTIAN HIEROGLYPH M15A (combination of clump of papyrus with buds and village)
+            &#x131C9; : "𓇉" EGYPTIAN HIEROGLYPH M16 (clump of papyrus)
+            &#x131CA; : "𓇊" EGYPTIAN HIEROGLYPH M16A (combination of clump of papyrus and village)
+            -->
             <Key
-                latin:keySpec="&#x092B;"
-                latin:moreKeys="&#x092B;&#x093C;" />
-            <!-- U+0931: "ऱ" DEVANAGARI LETTER RRA
-                 U+094D/U+0930: "्र" DEVANAGARI SIGN VIRAMA/DEVANAGARI LETTER RA
-                 U+0930/U+094D: "र्" DEVANAGARI LETTER RA/DEVANAGARI SIGN VIRAMA -->
+                latin:keySpec="&#x1319B;"
+                latin:moreKeys="&#x1319C;,&#x1319D;,&#x1319E;,&#x1319F;,&#x131A0;,&#x131A1;,&#x131A2;,&#x131A3;,&#x131A4;,&#x131A5;,&#x131A6;,&#x131A7;,&#x131A8;,&#x131A9;,&#x131AA;,&#x131AB;,&#x131AC;,&#x131AD;,&#x131AE;,&#x131AF;,&#x131B0;,&#x131B1;,&#x131B2;,&#x131B3;,&#x131B4;,&#x131B5;,&#x131B6;,&#x131B7;,&#x131B8;,&#x131B9;,&#x131BA;,&#x131BB;,&#x131BC;,&#x131BD;,&#x131BE;,&#x131BF;,&#x131C0;,&#x131C1;,&#x131C2;,&#x131C3;,&#x131C4;,&#x131C5;,&#x131C6;,&#x131C7;,&#x131C8;,&#x131C9;,&#x131CA;"
+                />
+
+            <!--
+            Key (M17-M44):
+            &#x131CB; : "𓇋" EGYPTIAN HIEROGLYPH M17 (reed)
+            &#x131CC; : "𓇌" EGYPTIAN HIEROGLYPH M17A (two reeds)
+            &#x131CD; : "𓇍" EGYPTIAN HIEROGLYPH M18 (combination of reed and legs walking)
+            &#x131CE; : "𓇎" EGYPTIAN HIEROGLYPH M19 (heaped conical cakes between reed and club)
+            &#x131CF; : "𓇏" EGYPTIAN HIEROGLYPH M20 (field of reeds)
+            &#x131D0; : "𓇐" EGYPTIAN HIEROGLYPH M21 (reeds with root)
+            &#x131D1; : "𓇑" EGYPTIAN HIEROGLYPH M22 (rush)
+            &#x131D2; : "𓇒" EGYPTIAN HIEROGLYPH M22A (two rushes)
+            &#x131D3; : "𓇓" EGYPTIAN HIEROGLYPH M23 (sedge)
+            &#x131D4; : "𓇔" EGYPTIAN HIEROGLYPH M24 (combination of sedge and mouth)
+            &#x131D5; : "𓇕" EGYPTIAN HIEROGLYPH M24A (lily)
+            &#x131D6; : "𓇖" EGYPTIAN HIEROGLYPH M25 (combination of flowering sedge and mouth)
+            &#x131D7; : "𓇗" EGYPTIAN HIEROGLYPH M26 (flowering sedge)
+            &#x131D8; : "𓇘" EGYPTIAN HIEROGLYPH M27 (combination of flowering sedge and forearm)
+            &#x131D9; : "𓇙" EGYPTIAN HIEROGLYPH M28 (combination of flowering sedge and hobble)
+            &#x131DA; : "𓇚" EGYPTIAN HIEROGLYPH M28A (three lilies on village)
+            &#x131DB; : "𓇛" EGYPTIAN HIEROGLYPH M29 (Carob seed-pod)
+            &#x131DC; : "𓇜" EGYPTIAN HIEROGLYPH M30 (root)
+            &#x131DD; : "𓇝" EGYPTIAN HIEROGLYPH M31 (rhizome)
+            &#x131DE; : "𓇞" EGYPTIAN HIEROGLYPH M31A (tree in vase)
+            &#x131DF; : "𓇟" EGYPTIAN HIEROGLYPH M32 (rhizome)
+            &#x131E0; : "𓇠" EGYPTIAN HIEROGLYPH M33 (3 grains horizontally)
+            &#x131E1; : "𓇡" EGYPTIAN HIEROGLYPH M33A (3 grains vertically)
+            &#x131E2; : "𓇢" EGYPTIAN HIEROGLYPH M33B (3 grains in triangular arrangement)
+            &#x131E3; : "𓇣" EGYPTIAN HIEROGLYPH M34 (ear of emmer)
+            &#x131E4; : "𓇤" EGYPTIAN HIEROGLYPH M35 (stack of grain)
+            &#x131E5; : "𓇥" EGYPTIAN HIEROGLYPH M36 (bundle of flax)
+            &#x131E6; : "𓇦" EGYPTIAN HIEROGLYPH M37 (bundle of flax)
+            &#x131E7; : "𓇧" EGYPTIAN HIEROGLYPH M38 (wide bundle of flax)
+            &#x131E8; : "𓇨" EGYPTIAN HIEROGLYPH M39 (basket of fruit or grain)
+            &#x131E9; : "𓇩" EGYPTIAN HIEROGLYPH M40 (bundle of reeds)
+            &#x131EA; : "𓇪" EGYPTIAN HIEROGLYPH M40A (bundle of reeds)
+            &#x131EB; : "𓇫" EGYPTIAN HIEROGLYPH M41 (piece of wood)
+            &#x131EC; : "𓇬" EGYPTIAN HIEROGLYPH M42 (flower)
+            &#x131ED; : "𓇭" EGYPTIAN HIEROGLYPH M43 (vine on trellis)
+            &#x131EE; : "𓇮" EGYPTIAN HIEROGLYPH M44
+            -->
             <Key
-                latin:keySpec="&#x0931;"
-                latin:moreKeys="&#x094D;&#x0930;,&#x0930;&#x094D;" />
-            <!-- U+0916: "ख" DEVANAGARI LETTER KHA
-                 U+0916/U+093C: "ख़" DEVANAGARI LETTER KHA/DEVANAGARI SIGN NUKTA -->
+                latin:keySpec="&#x131CB;"
+                latin:moreKeys="&#x131CC;,&#x131CD;,&#x131CE;,&#x131CF;,&#x131D0;,&#x131D1;,&#x131D2;,&#x131D3;,&#x131D4;,&#x131D5;,&#x131D6;,&#x131D7;,&#x131D8;,&#x131D9;,&#x131DA;,&#x131DB;,&#x131DC;,&#x131DD;,&#x131DE;,&#x131DF;,&#x131E0;,&#x131E1;,&#x131E2;,&#x131E3;,&#x131E4;,&#x131E5;,&#x131E6;,&#x131E7;,&#x131E8;,&#x131E9;,&#x131EA;,&#x131EB;,&#x131EC;,&#x131ED;,&#x131EE;"
+                />
+            
+            <!--
+            Key (N1-N42):
+            &#x131EF; : "𓇯" EGYPTIAN HIEROGLYPH N1
+            &#x131F0; : "𓇰" EGYPTIAN HIEROGLYPH N2
+            &#x131F1; : "𓇱" EGYPTIAN HIEROGLYPH N3
+            &#x131F2; : "𓇲" EGYPTIAN HIEROGLYPH N4
+            &#x131F3; : "𓇳" EGYPTIAN HIEROGLYPH N5
+            &#x131F4; : "𓇴" EGYPTIAN HIEROGLYPH N6
+            &#x131F5; : "𓇵" EGYPTIAN HIEROGLYPH N7
+            &#x131F6; : "𓇶" EGYPTIAN HIEROGLYPH N8
+            &#x131F7; : "𓇷" EGYPTIAN HIEROGLYPH N9
+            &#x131F8; : "𓇸" EGYPTIAN HIEROGLYPH N10
+            &#x131F9; : "𓇹" EGYPTIAN HIEROGLYPH N11
+            &#x131FA; : "𓇺" EGYPTIAN HIEROGLYPH N12
+            &#x131FB; : "𓇻" EGYPTIAN HIEROGLYPH N13
+            &#x131FC; : "𓇼" EGYPTIAN HIEROGLYPH N14
+            &#x131FD; : "𓇽" EGYPTIAN HIEROGLYPH N15
+            &#x131FE; : "𓇾" EGYPTIAN HIEROGLYPH N16
+            &#x131FF; : "𓇿" EGYPTIAN HIEROGLYPH N17
+            &#x13200; : "𓈀" EGYPTIAN HIEROGLYPH N18
+            &#x13201; : "𓈁" EGYPTIAN HIEROGLYPH N18A
+            &#x13202; : "𓈂" EGYPTIAN HIEROGLYPH N18B
+            &#x13203; : "𓈃" EGYPTIAN HIEROGLYPH N19
+            &#x13204; : "𓈄" EGYPTIAN HIEROGLYPH N20
+            &#x13205; : "𓈅" EGYPTIAN HIEROGLYPH N21
+            &#x13206; : "𓈆" EGYPTIAN HIEROGLYPH N22
+            &#x13207; : "𓈇" EGYPTIAN HIEROGLYPH N23
+            &#x13208; : "𓈈" EGYPTIAN HIEROGLYPH N24
+            &#x13209; : "𓈉" EGYPTIAN HIEROGLYPH N25
+            &#x1320A; : "𓈊" EGYPTIAN HIEROGLYPH N25A
+            &#x1320B; : "𓈋" EGYPTIAN HIEROGLYPH N26
+            &#x1320C; : "𓈌" EGYPTIAN HIEROGLYPH N27
+            &#x1320D; : "𓈍" EGYPTIAN HIEROGLYPH N28
+            &#x1320E; : "𓈎" EGYPTIAN HIEROGLYPH N29
+            &#x1320F; : "𓈏" EGYPTIAN HIEROGLYPH N30
+            &#x13210; : "𓈐" EGYPTIAN HIEROGLYPH N31
+            &#x13211; : "𓈑" EGYPTIAN HIEROGLYPH N32
+            &#x13212; : "𓈒" EGYPTIAN HIEROGLYPH N33
+            &#x13213; : "𓈓" EGYPTIAN HIEROGLYPH N33A
+            &#x13214; : "𓈔" EGYPTIAN HIEROGLYPH N34
+            &#x13215; : "𓈕" EGYPTIAN HIEROGLYPH N34A
+            &#x13216; : "𓈖" EGYPTIAN HIEROGLYPH N35
+            &#x13217; : "𓈗" EGYPTIAN HIEROGLYPH N35A
+            &#x13218; : "𓈘" EGYPTIAN HIEROGLYPH N36
+            &#x13219; : "𓈙" EGYPTIAN HIEROGLYPH N37
+            &#x1321A; : "𓈚" EGYPTIAN HIEROGLYPH N37A
+            &#x1321B; : "𓈛" EGYPTIAN HIEROGLYPH N38
+            &#x1321C; : "𓈜" EGYPTIAN HIEROGLYPH N39
+            &#x1321D; : "𓈝" EGYPTIAN HIEROGLYPH N40
+            &#x1321E; : "𓈞" EGYPTIAN HIEROGLYPH N41
+            &#x1321F; : "𓈟" EGYPTIAN HIEROGLYPH N42
+            -->
             <Key
-                latin:keySpec="&#x0916;"
-                latin:moreKeys="&#x0916;&#x093C;" />
-            <!-- U+0925: "थ" DEVANAGARI LETTER THA -->
-            <Key latin:keySpec="&#x0925;" />
-            <!-- U+091B: "छ" DEVANAGARI LETTER CHA -->
-            <Key latin:keySpec="&#x091B;" />
-            <!-- U+0920: "ठ" DEVANAGARI LETTER TTHA -->
-            <Key latin:keySpec="&#x133CF;" />
+                latin:keySpec="&#x131EF;"
+                latin:moreKeys="&#x131F0;,&#x131F1;,&#x131F2;,&#x131F3;,&#x131F4;,&#x131F5;,&#x131F6;,&#x131F7;,&#x131F8;,&#x131F9;,&#x131FA;,&#x131FB;,&#x131FC;,&#x131FD;,&#x131FE;,&#x131FF;,&#x13200;,&#x13201;,&#x13202;,&#x13203;,&#x13204;,&#x13205;,&#x13206;,&#x13207;,&#x13208;,&#x13209;,&#x1320A;,&#x1320B;,&#x1320C;,&#x1320D;,&#x1320E;,&#x1320F;,&#x13210;,&#x13211;,&#x13212;,&#x13213;,&#x13214;,&#x13215;,&#x13216;,&#x13217;,&#x13218;,&#x13219;,&#x1321A;,&#x1321B;,&#x1321C;,&#x1321D;,&#x1321E;,&#x1321F;"
+                />
+
+            <!--
+            Key (NL1-NU22A):
+            &#x13220; : "𓈠" EGYPTIAN HIEROGLYPH NL1
+            &#x13221; : "𓈡" EGYPTIAN HIEROGLYPH NL2
+            &#x13222; : "𓈢" EGYPTIAN HIEROGLYPH NL3
+            &#x13223; : "𓈣" EGYPTIAN HIEROGLYPH NL4
+            &#x13224; : "𓈤" EGYPTIAN HIEROGLYPH NL5
+            &#x13225; : "𓈥" EGYPTIAN HIEROGLYPH NL5A
+            &#x13226; : "𓈦" EGYPTIAN HIEROGLYPH NL6
+            &#x13227; : "𓈧" EGYPTIAN HIEROGLYPH NL7
+            &#x13228; : "𓈨" EGYPTIAN HIEROGLYPH NL8
+            &#x13229; : "𓈩" EGYPTIAN HIEROGLYPH NL9
+            &#x1322A; : "𓈪" EGYPTIAN HIEROGLYPH NL10
+            &#x1322B; : "𓈫" EGYPTIAN HIEROGLYPH NL11
+            &#x1322C; : "𓈬" EGYPTIAN HIEROGLYPH NL12
+            &#x1322D; : "𓈭" EGYPTIAN HIEROGLYPH NL13
+            &#x1322E; : "𓈮" EGYPTIAN HIEROGLYPH NL14
+            &#x1322F; : "𓈯" EGYPTIAN HIEROGLYPH NL15
+            &#x13230; : "𓈰" EGYPTIAN HIEROGLYPH NL16
+            &#x13231; : "𓈱" EGYPTIAN HIEROGLYPH NL17
+            &#x13232; : "𓈲" EGYPTIAN HIEROGLYPH NL17A
+            &#x13233; : "𓈳" EGYPTIAN HIEROGLYPH NL18
+            &#x13234; : "𓈴" EGYPTIAN HIEROGLYPH NL19
+            &#x13235; : "𓈵" EGYPTIAN HIEROGLYPH NL20
+            &#x13236; : "𓈶" EGYPTIAN HIEROGLYPH NU1
+            &#x13237; : "𓈷" EGYPTIAN HIEROGLYPH NU2
+            &#x13238; : "𓈸" EGYPTIAN HIEROGLYPH NU3
+            &#x13239; : "𓈹" EGYPTIAN HIEROGLYPH NU4
+            &#x1323A; : "𓈺" EGYPTIAN HIEROGLYPH NU5
+            &#x1323B; : "𓈻" EGYPTIAN HIEROGLYPH NU6
+            &#x1323C; : "𓈼" EGYPTIAN HIEROGLYPH NU7
+            &#x1323D; : "𓈽" EGYPTIAN HIEROGLYPH NU8
+            &#x1323E; : "𓈾" EGYPTIAN HIEROGLYPH NU9
+            &#x1323F; : "𓈿" EGYPTIAN HIEROGLYPH NU10
+            &#x13240; : "𓉀" EGYPTIAN HIEROGLYPH NU10A
+            &#x13241; : "𓉁" EGYPTIAN HIEROGLYPH NU11
+            &#x13242; : "𓉂" EGYPTIAN HIEROGLYPH NU11A
+            &#x13243; : "𓉃" EGYPTIAN HIEROGLYPH NU12
+            &#x13244; : "𓉄" EGYPTIAN HIEROGLYPH NU13
+            &#x13245; : "𓉅" EGYPTIAN HIEROGLYPH NU14
+            &#x13246; : "𓉆" EGYPTIAN HIEROGLYPH NU15
+            &#x13247; : "𓉇" EGYPTIAN HIEROGLYPH NU16
+            &#x13248; : "𓉈" EGYPTIAN HIEROGLYPH NU17
+            &#x13249; : "𓉉" EGYPTIAN HIEROGLYPH NU18
+            &#x1324A; : "𓉊" EGYPTIAN HIEROGLYPH NU18A
+            &#x1324B; : "𓉋" EGYPTIAN HIEROGLYPH NU19
+            &#x1324C; : "𓉌" EGYPTIAN HIEROGLYPH NU20
+            &#x1324D; : "𓉍" EGYPTIAN HIEROGLYPH NU21
+            &#x1324E; : "𓉎" EGYPTIAN HIEROGLYPH NU22
+            &#x1324F; : "𓉏" EGYPTIAN HIEROGLYPH NU22A
+            -->
+            <Key
+                latin:keySpec="&#x13220;"
+                latin:moreKeys="&#x13221;,&#x13222;,&#x13223;,&#x13224;,&#x13225;,&#x13226;,&#x13227;,&#x13228;,&#x13229;,&#x1322A;,&#x1322B;,&#x1322C;,&#x1322D;,&#x1322E;,&#x1322F;,&#x13230;,&#x13231;,&#x13232;,&#x13233;,&#x13234;,&#x13235;,&#x13236;,&#x13237;,&#x13238;,&#x13239;,&#x1323A;,&#x1323B;,&#x1323C;,&#x1323D;,&#x1323E;,&#x1323F;,&#x13240;,&#x13241;,&#x13242;,&#x13243;,&#x13244;,&#x13245;,&#x13246;,&#x13247;,&#x13248;,&#x13249;,&#x1324A;,&#x1324B;,&#x1324C;,&#x1324D;,&#x1324E;,&#x1324F;"
+                />
+
+            <!--
+            Key (O1-O51):
+            &#x13250; : "𓉐" EGYPTIAN HIEROGLYPH O1 (house)
+            &#x13251; : "𓉑" EGYPTIAN HIEROGLYPH O1A (combination of house and ankh)
+            &#x13252; : "𓉒" EGYPTIAN HIEROGLYPH O2 (combination of house and mace with round head)
+            &#x13253; : "𓉓" EGYPTIAN HIEROGLYPH O3 (combination of house, oar, tall loaf and beer jug)
+            &#x13254; : "𓉔" EGYPTIAN HIEROGLYPH O4 (shelter)
+            &#x13255; : "𓉕" EGYPTIAN HIEROGLYPH O5 (winding wall from upper-left corner)
+            &#x13256; : "𓉖" EGYPTIAN HIEROGLYPH O5A (winding wall from lower-left corner)
+            &#x13257; : "𓉗" EGYPTIAN HIEROGLYPH O6 (enclosure)
+            &#x13258; : "𓉘" EGYPTIAN HIEROGLYPH O6A (opening of ḥwt-enclosure)
+            &#x13259; : "𓉙" EGYPTIAN HIEROGLYPH O6B (opening of ḥwt-enclosure)
+            &#x1325A; : "𓉚" EGYPTIAN HIEROGLYPH O6C (opening of ḥwt-enclosure)
+            &#x1325B; : "𓉛" EGYPTIAN HIEROGLYPH O6D (closing of ḥwt-enclosure)
+            &#x1325C; : "𓉜" EGYPTIAN HIEROGLYPH O6E (closing of ḥwt-enclosure)
+            &#x1325D; : "𓉝" EGYPTIAN HIEROGLYPH O6F (closing of ḥwt-enclosure)
+            &#x1325E; : "𓉞" EGYPTIAN HIEROGLYPH O7 (combination of enclosure and flat loaf)
+            &#x1325F; : "𓉟" EGYPTIAN HIEROGLYPH O8 (combination of enclosure, flat loaf and wooden column)
+            &#x13260; : "𓉠" EGYPTIAN HIEROGLYPH O9 (combination of enclosure, flat loaf and basket)
+            &#x13261; : "𓉡" EGYPTIAN HIEROGLYPH O10 (combination of enclosure and falcon)
+            &#x13262; : "𓉢" EGYPTIAN HIEROGLYPH O10A (combination of enclosure and ankh)
+            &#x13263; : "𓉣" EGYPTIAN HIEROGLYPH O10B (combination of enclosure and bee)
+            &#x13264; : "𓉤" EGYPTIAN HIEROGLYPH O10C (combination of shrine in profile and face)
+            &#x13265; : "𓉥" EGYPTIAN HIEROGLYPH O11 (palace)
+            &#x13266; : "𓉦" EGYPTIAN HIEROGLYPH O12 (combination of palace and forearm)
+            &#x13267; : "𓉧" EGYPTIAN HIEROGLYPH O13 (battlemented enclosure)
+            &#x13268; : "𓉨" EGYPTIAN HIEROGLYPH O14 (part of battlemented enclosure)
+            &#x13269; : "𓉩" EGYPTIAN HIEROGLYPH O15 (enclosure with cup and flat loaf)
+            &#x1326A; : "𓉪" EGYPTIAN HIEROGLYPH O16 (gateway with serpents)
+            &#x1326B; : "𓉫" EGYPTIAN HIEROGLYPH O17 (open gateway with serpents)
+            &#x1326C; : "𓉬" EGYPTIAN HIEROGLYPH O18 (shrine in profile)
+            &#x1326D; : "𓉭" EGYPTIAN HIEROGLYPH O19 (shrine with fence)
+            &#x1326E; : "𓉮" EGYPTIAN HIEROGLYPH O19A (shrine)
+            &#x1326F; : "𓉯" EGYPTIAN HIEROGLYPH O20 (shrine)
+            &#x13270; : "𓉰" EGYPTIAN HIEROGLYPH O20A (shrine)
+            &#x13271; : "𓉱" EGYPTIAN HIEROGLYPH O21 (façade of shrine)
+            &#x13272; : "𓉲" EGYPTIAN HIEROGLYPH O22 (booth with pole)
+            &#x13273; : "𓉳" EGYPTIAN HIEROGLYPH O23 (double platform)
+            &#x13274; : "𓉴" EGYPTIAN HIEROGLYPH O24 (pyramid)
+            &#x13275; : "𓉵" EGYPTIAN HIEROGLYPH O24A (pedestal of sun temple)
+            &#x13276; : "𓉶" EGYPTIAN HIEROGLYPH O25 (obelisk)
+            &#x13277; : "𓉷" EGYPTIAN HIEROGLYPH O25A (obelisk and pedestal of sun temple)
+            &#x13278; : "𓉸" EGYPTIAN HIEROGLYPH O26 (stela)
+            &#x13279; : "𓉹" EGYPTIAN HIEROGLYPH O27 (hall of columns)
+            &#x1327A; : "𓉺" EGYPTIAN HIEROGLYPH O28 (column)
+            &#x1327B; : "𓉻" EGYPTIAN HIEROGLYPH O29 (horizontal wooden column)
+            &#x1327C; : "𓉼" EGYPTIAN HIEROGLYPH O29A (vertical wooden column)
+            &#x1327D; : "𓉽" EGYPTIAN HIEROGLYPH O30 (support)
+            &#x1327E; : "𓉾" EGYPTIAN HIEROGLYPH O30A (four supports)
+            &#x1327F; : "𓉿" EGYPTIAN HIEROGLYPH O31 (door)
+            &#x13280; : "𓊀" EGYPTIAN HIEROGLYPH O32 (gateway)
+            &#x13281; : "𓊁" EGYPTIAN HIEROGLYPH O33 (façade of palace)
+            &#x13282; : "𓊂" EGYPTIAN HIEROGLYPH O33A (closing of srḫ-enclosure)
+            &#x13283; : "𓊃" EGYPTIAN HIEROGLYPH O34 (door bolt)
+            &#x13284; : "𓊄" EGYPTIAN HIEROGLYPH O35 (combination of bolt and legs)
+            &#x13285; : "𓊅" EGYPTIAN HIEROGLYPH O36 (wall)
+            &#x13286; : "𓊆" EGYPTIAN HIEROGLYPH O36A (opening of oval fortified wall enclosure)
+            &#x13287; : "𓊇" EGYPTIAN HIEROGLYPH O36B (closing of oval fortified wall enclosure)
+            &#x13288; : "𓊈" EGYPTIAN HIEROGLYPH O36C (opening of square fortified wall enclosure)
+            &#x13289; : "𓊉" EGYPTIAN HIEROGLYPH O36D (closure of square fortified wall enclosure)
+            &#x1328A; : "𓊊" EGYPTIAN HIEROGLYPH O37 (falling wall)
+            &#x1328B; : "𓊋" EGYPTIAN HIEROGLYPH O38 (corner of wall)
+            &#x1328C; : "𓊌" EGYPTIAN HIEROGLYPH O39 (stone)
+            &#x1328D; : "𓊍" EGYPTIAN HIEROGLYPH O40 (stair single)
+            &#x1328E; : "𓊎" EGYPTIAN HIEROGLYPH O41 (double stairway)
+            &#x1328F; : "𓊏" EGYPTIAN HIEROGLYPH O42 (fence)
+            &#x13290; : "𓊐" EGYPTIAN HIEROGLYPH O43 (low fence)
+            &#x13291; : "𓊑" EGYPTIAN HIEROGLYPH O44 (emblem of Min)
+            &#x13292; : "𓊒" EGYPTIAN HIEROGLYPH O45 (domed building)
+            &#x13293; : "𓊓" EGYPTIAN HIEROGLYPH O46 (domed building)
+            &#x13294; : "𓊔" EGYPTIAN HIEROGLYPH O47 (enclosed mound)
+            &#x13295; : "𓊕" EGYPTIAN HIEROGLYPH O48 (enclosed mound)
+            &#x13296; : "𓊖" EGYPTIAN HIEROGLYPH O49 (village)
+            &#x13297; : "𓊗" EGYPTIAN HIEROGLYPH O50 (threshing floor)
+            &#x13298; : "𓊘" EGYPTIAN HIEROGLYPH O50A (hieratic threshing floor)
+            &#x13299; : "𓊙" EGYPTIAN HIEROGLYPH O50B (O50A reversed)
+            &#x1329A; : "𓊚" EGYPTIAN HIEROGLYPH O51 (pile of grain)
+            -->
+            <Key
+                latin:keySpec="&#x13250;"
+                latin:moreKeys="&#x13251;,&#x13252;,&#x13253;,&#x13254;,&#x13255;,&#x13256;,&#x13257;,&#x13258;,&#x13259;,&#x1325A;,&#x1325B;,&#x1325C;,&#x1325D;,&#x1325E;,&#x1325F;,&#x13260;,&#x13261;,&#x13262;,&#x13263;,&#x13264;,&#x13265;,&#x13266;,&#x13267;,&#x13268;,&#x13269;,&#x1326A;,&#x1326B;,&#x1326C;,&#x1326D;,&#x1326E;,&#x1326F;,&#x13270;,&#x13271;,&#x13272;,&#x13273;,&#x13274;,&#x13275;,&#x13276;,&#x13277;,&#x13278;,&#x13279;,&#x1327A;,&#x1327B;,&#x1327C;,&#x1327D;,&#x1327E;,&#x1327F;,&#x13280;,&#x13281;,&#x13282;,&#x13283;,&#x13284;,&#x13285;,&#x13286;,&#x13287;,&#x13288;,&#x13289;,&#x1328A;,&#x1328B;,&#x1328C;,&#x1328D;,&#x1328E;,&#x1328F;,&#x13290;,&#x13291;,&#x13292;,&#x13293;,&#x13294;,&#x13295;,&#x13296;,&#x13297;,&#x13298;,&#x13299;,&#x1329A;"
+                />
+
+            <!--
+            Key (P1-R14):
+            &#x1329B; : "𓊛" EGYPTIAN HIEROGLYPH P1 (ships and parts of ships)
+            &#x1329C; : "𓊜" EGYPTIAN HIEROGLYPH P2 (ships and parts of ships)
+            &#x1329D; : "𓊝" EGYPTIAN HIEROGLYPH P3 (ships and parts of ships)
+            &#x1329E; : "𓊞" EGYPTIAN HIEROGLYPH P4 (ships and parts of ships)
+            &#x1329F; : "𓊟" EGYPTIAN HIEROGLYPH P5 (ships and parts of ships)
+            &#x132A0; : "𓊠" EGYPTIAN HIEROGLYPH P6 (ships and parts of ships)
+            &#x132A1; : "𓊡" EGYPTIAN HIEROGLYPH P7 (ships and parts of ships)
+            &#x132A2; : "𓊢" EGYPTIAN HIEROGLYPH P8 (ships and parts of ships)
+            &#x132A3; : "𓊣" EGYPTIAN HIEROGLYPH P9 (ships and parts of ships)
+            &#x132A4; : "𓊤" EGYPTIAN HIEROGLYPH P10 (ships and parts of ships)
+            &#x132A5; : "𓊥" EGYPTIAN HIEROGLYPH P11 (ships and parts of ships)
+            &#x132A6; : "𓊦" EGYPTIAN HIEROGLYPH P12 (ships and parts of ships)
+            &#x132A7; : "𓊧" EGYPTIAN HIEROGLYPH P13 (ships and parts of ships)
+            &#x132A8; : "𓊨" EGYPTIAN HIEROGLYPH Q1 (domestic and funerary furniture)
+            &#x132A9; : "𓊩" EGYPTIAN HIEROGLYPH Q2 (domestic and funerary furniture)
+            &#x132AA; : "𓊪" EGYPTIAN HIEROGLYPH Q3 (domestic and funerary furniture)
+            &#x132AB; : "𓊫" EGYPTIAN HIEROGLYPH Q4 (domestic and funerary furniture)
+            &#x132AC; : "𓊬" EGYPTIAN HIEROGLYPH Q5 (domestic and funerary furniture)
+            &#x132AD; : "𓊭" EGYPTIAN HIEROGLYPH Q6 (domestic and funerary furniture)
+            &#x132AE; : "𓊮" EGYPTIAN HIEROGLYPH Q7 (domestic and funerary furniture)
+            &#x132AF; : "𓊯" EGYPTIAN HIEROGLYPH R1 (temple furniture and sacred emblems)
+            &#x132B0; : "𓊰" EGYPTIAN HIEROGLYPH R2 (temple furniture and sacred emblems)
+            &#x132B1; : "𓊱" EGYPTIAN HIEROGLYPH R3 (temple furniture and sacred emblems)
+            &#x132B2; : "𓊲" EGYPTIAN HIEROGLYPH R4 (temple furniture and sacred emblems)
+            &#x132B3; : "𓊳" EGYPTIAN HIEROGLYPH R5 (temple furniture and sacred emblems)
+            &#x132B4; : "𓊴" EGYPTIAN HIEROGLYPH R6 (temple furniture and sacred emblems)
+            &#x132B5; : "𓊵" EGYPTIAN HIEROGLYPH R7 (temple furniture and sacred emblems)
+            &#x132B6; : "𓊶" EGYPTIAN HIEROGLYPH R8 (temple furniture and sacred emblems)
+            &#x132B7; : "𓊷" EGYPTIAN HIEROGLYPH R9 (temple furniture and sacred emblems)
+            &#x132B8; : "𓊸" EGYPTIAN HIEROGLYPH R10 (temple furniture and sacred emblems)
+            &#x132B9; : "𓊹" EGYPTIAN HIEROGLYPH R11 (temple furniture and sacred emblems)
+            &#x132BA; : "𓊺" EGYPTIAN HIEROGLYPH R12 (temple furniture and sacred emblems)
+            &#x132BB; : "𓊻" EGYPTIAN HIEROGLYPH R13 (temple furniture and sacred emblems)
+            &#x132BC; : "𓊼" EGYPTIAN HIEROGLYPH R14 (temple furniture and sacred emblems)
+            &#x132BD; : "𓊽" EGYPTIAN HIEROGLYPH R15 (temple furniture and sacred emblems)
+            &#x132BE; : "𓊾" EGYPTIAN HIEROGLYPH R16 (temple furniture and sacred emblems)
+            &#x132BF; : "𓊿" EGYPTIAN HIEROGLYPH R17 (temple furniture and sacred emblems)
+            &#x132C0; : "𓋀" EGYPTIAN HIEROGLYPH R18 (temple furniture and sacred emblems)
+            &#x132C1; : "𓋁" EGYPTIAN HIEROGLYPH R19 (temple furniture and sacred emblems)
+            &#x132C2; : "𓋂" EGYPTIAN HIEROGLYPH R20 (temple furniture and sacred emblems)
+            &#x132C3; : "𓋃" EGYPTIAN HIEROGLYPH R21 (temple furniture and sacred emblems)
+            &#x132C4; : "𓋄" EGYPTIAN HIEROGLYPH R22 (temple furniture and sacred emblems)
+            &#x132C5; : "𓋅" EGYPTIAN HIEROGLYPH R23 (temple furniture and sacred emblems)
+            &#x132C6; : "𓋆" EGYPTIAN HIEROGLYPH R24 (temple furniture and sacred emblems)
+            &#x132C7; : "𓋇" EGYPTIAN HIEROGLYPH R25 (temple furniture and sacred emblems)
+            &#x132C8; : "𓋈" EGYPTIAN HIEROGLYPH R26 (temple furniture and sacred emblems)
+            &#x132C9; : "𓋉" EGYPTIAN HIEROGLYPH R27 (temple furniture and sacred emblems)
+            &#x132CA; : "𓋊" EGYPTIAN HIEROGLYPH R28 (temple furniture and sacred emblems)
+            &#x132CB; : "𓋋" EGYPTIAN HIEROGLYPH R29 (temple furniture and sacred emblems)
+            &#x132CC; : "𓋌" EGYPTIAN HIEROGLYPH R30 (temple furniture and sacred emblems)
+            &#x132CD; : "𓋍" EGYPTIAN HIEROGLYPH R31 (temple furniture and sacred emblems)
+            &#x132CE; : "𓋎" EGYPTIAN HIEROGLYPH R32 (temple furniture and sacred emblems)
+            &#x132CF; : "𓋏" EGYPTIAN HIEROGLYPH R33 (temple furniture and sacred emblems)
+            &#x132D0; : "𓋐" EGYPTIAN HIEROGLYPH R34 (temple furniture and sacred emblems)
+            -->
+            <Key
+                latin:keySpec="&#x1329B;"
+                latin:moreKeys="&#x1329C;,&#x1329D;,&#x1329E;,&#x1329F;,&#x132A0;,&#x132A1;,&#x132A2;,&#x132A3;,&#x132A4;,&#x132A5;,&#x132A6;,&#x132A7;,&#x132A8;,&#x132A9;,&#x132AA;,&#x132AB;,&#x132AC;,&#x132AD;,&#x132AE;,&#x132AF;,&#x132B0;,&#x132B1;,&#x132B2;,&#x132B3;,&#x132B4;,&#x132B5;,&#x132B6;,&#x132B7;,&#x132B8;,&#x132B9;,&#x132BA;,&#x132BB;,&#x132BC;,&#x132BD;,&#x132BE;,&#x132BF;,&#x132C0;,&#x132C1;,&#x132C2;,&#x132C3;,&#x132C4;,&#x132C5;,&#x132C6;,&#x132C7;,&#x132C8;,&#x132C9;,&#x132CA;,&#x132CB;,&#x132CC;,&#x132CD;,&#x132CE;,&#x132CF;,&#x132D0;"
+                />
+
+ 
         </case>
         <default>
-            <!-- Because the font rendering system prior to API version 16 can't automatically
-                 render dotted circle for incomplete combining letter of some scripts, different
-                 set of Key definitions are needed based on the API version. -->
-            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_o" />
-            <Key latin:keyStyle="baseKeyDevanagariVowelSignO" />
-            <!-- Because the font rendering system prior to API version 16 can't automatically
-                 render dotted circle for incomplete combining letter of some scripts, different
-                 set of Key definitions are needed based on the API version. -->
-            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_e" />
-            <Key latin:keyStyle="baseKeyDevanagariVowelSignE" />
-            <!-- Because the font rendering system prior to API version 16 can't automatically
-                 render dotted circle for incomplete combining letter of some scripts, different
-                 set of Key definitions are needed based on the API version. -->
-            <include latin:keyboardLayout="@xml/keystyle_devanagari_sign_virama" />
-            <Key latin:keyStyle="baseKeyDevanagariSignVirama" />
-            <!-- Because the font rendering system prior to API version 16 can't automatically
-                 render dotted circle for incomplete combining letter of some scripts, different
-                 set of Key definitions are needed based on the API version. -->
-            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_i" />
-            <Key latin:keyStyle="baseKeyDevanagariVowelSignI" />
-            <!-- Because the font rendering system prior to API version 16 can't automatically
-                 render dotted circle for incomplete combining letter of some scripts, different
-                 set of Key definitions are needed based on the API version. -->
-            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_u" />
-            <Key latin:keyStyle="baseKeyDevanagariVowelSignU" />
-            <!-- U+092A: "प" DEVANAGARI LETTER PA -->
-            <Key latin:keySpec="&#x092A;" />
-            <!-- U+0930: "र" DEVANAGARI LETTER RA
-                 U+090B: "ऋ" DEVANAGARI LETTER VOCALIC R
-                 U+0930/U+093C: "ऱ" DEVANAGARI LETTER RA/DEVANAGARI SIGN NUKTA
-                 U+0960: "ॠ" DEVANAGARI LETTER VOCALIC RR -->
+            <!-- U+0634: "ش" ARABIC LETTER SHEEN
+            U+78361: 𓈙
+            U+1303B: "𓀻"
+            U+1331E: "𓌞"
+            -->
             <Key
-                latin:keySpec="&#x0930;"
-                latin:moreKeys="&#x090B;,&#x0930;&#x093C;,&#x0960;" />
-            <!-- U+0915: "क" DEVANAGARI LETTER KA
-                 U+0915/U+093C: "क़" DEVANAGARI LETTER KA/DEVANAGARI SIGN NUKTA -->
+                latin:keySpec="&#78361;"
+                latin:keyHintLabel="&#x0634;"
+                latin:moreKeys="&#x1303B;,&#x1331E;"
+                />
+            <!--
+            &#78580; : 𓋴
+            &#x0633; : "س" ARABIC LETTER SEEN
+            &#x1316D; : "𓅭"
+            &#78626; : 𓌢
+             -->
             <Key
-                latin:keySpec="&#x0915;"
-                latin:moreKeys="&#x0915;&#x093C;" />
-            <!-- U+0924: "त" DEVANAGARI LETTER TA
-                 U+0924/U+094D/U+0930: "त्र" DEVANAGARI LETTER TA/DEVANAGARI SIGN VIRAMA/DEVANAGARI LETTER RA -->
+                latin:keySpec="&#78580;"
+                latin:keyHintLabel="&#x0633;"
+                latin:moreKeys="&#x1316D;,&#78626;"
+                />
+            <!--
+            &#78284; : 𓇌
+           &#x064A;  : "ي" ARABIC LETTER YEH
+            -->
             <Key
-                latin:keySpec="&#x0924;"
-                latin:moreKeys="&#x0924;&#x094D;&#x0930;" />
-            <!-- U+091A: "च" DEVANAGARI LETTER CA -->
-            <Key latin:keySpec="&#x091A;" />
-            <!-- U+091F: "ट" DEVANAGARI LETTER TTA -->
-            <Key latin:keySpec="&#x131CB;" />
+                latin:keySpec="&#78284;"
+                latin:keyHintLabel="&#x064A;"/>
+            <!--
+             &#78016; : 𓃀
+             &#x0628; : "ب" ARABIC LETTER BEH
+             &#x1316E; : "𓅮"
+            -->
+            <Key
+                latin:keySpec="&#78016;"
+                latin:keyHintLabel="&#x0628;"
+                latin:moreKeys="&#x1316E;"/>
+            <!--
+            &#78061; : 𓃭
+            &#x0644; : "ل" ARABIC LETTER LAM
+            -->
+            <Key
+                latin:keySpec="&#78061;"
+                latin:keyHintLabel="&#x0644;" />
+            <!--
+            &#78061; : 𓄿
+            &#x0627; : أ
+            &#x13039; : "𓁹" EGYPTIAN HIEROGLYPH D053
+            &#x1312B; : "𓄫" EGYPTIAN HIEROGLYPH F027
+            &#x1334B; : "𓍋" EGYPTIAN HIEROGLYPH U007
+            &#x1311C; : "𓅜" EGYPTIAN HIEROGLYPH E015
+            &#x130F0; : "𓃰" EGYPTIAN HIEROGLYPH D070
+            -->
+            <Key
+                latin:keySpec="&#78143;"
+                latin:keyHintLabel="&#x0627;"
+                latin:moreKeys="&#78144;,&#x13039;,&#x1312B;,&#x1334B;,&#x1311C;,&#x130F0;"/>
+            <!--
+            &#78799; : 𓏏
+            &#x062A; : "ت" ARABIC LETTER TEH
+            &#x13343; : "𓍃" EGYPTIAN HIEROGLYPH U011
+            &#x13036; : "𓁶" EGYPTIAN HIEROGLYPH D050
+            &#x13102; : "𓅂" EGYPTIAN HIEROGLYPH E002
+            -->
+            <Key
+                latin:keySpec="&#78799;"
+                latin:keyHintLabel="&#x062A;"
+                latin:moreKeys="&#x13343;,&#x13036;,&#x13102;"/>
+
+            <!-- U+0646: "ن" ARABIC LETTER NOON
+             &#78358; : 𓈖
+             -->
+            <Key
+                latin:keySpec="&#78358;"
+                latin:keyHintLabel="&#x0646;"
+                latin:moreKeys="&#x13124;,&#x132B9;,&#x132DE;"
+                />
+            <!--
+             &#78163; : 𓅓
+             U+0645: "م" ARABIC LETTER MEEM
+             &#78164; : 𓅔
+             &#x13338; : "𓌸" EGYPTIAN HIEROGLYPH T038
+             &#x13217; : "𓈗" EGYPTIAN HIEROGLYPH N035
+             &#x1311F; : "𓄟" EGYPTIAN HIEROGLYPH F019
+             &#x13419; : "𓐙" EGYPTIAN HIEROGLYPH V028
+             &#x13110; : "𓅐" EGYPTIAN HIEROGLYPH E010
+            -->
+            <Key
+                latin:keySpec="&#78163;"
+                latin:keyHintLabel="&#x0645;"
+                latin:moreKeys="&#78164;,&#x13338;,&#x13217;,&#x1311F;,&#x13419;,&#x13110;"
+                />
+            <!-- U+0643: "ك" ARABIC LETTER KAF
+                 &#x13093; : "𓂓" ARABIC LETTER GAF
+                 U+06A9: "ک" ARABIC LETTER KEHEH
+                 1318E: "𓆎" EGYPTIAN HIEROGLYPH F046
+                 -->
+            <Key
+                latin:keySpec="&#78753;"
+                latin:keyHintLabel="&#x0643;"
+                latin:moreKeys="&#x13093;,&#x1318E;"
+                />
+<!--            &lt;!&ndash; U+0637: "ط" ARABIC LETTER TAH &ndash;&gt;-->
+<!--            <Key-->
+<!--                latin:keySpec="&#78799;"-->
+<!--                latin:keyHintLabel="&#x0637;"-->
+<!--                />-->
+<!--            &lt;!&ndash; Because the font rendering system prior to API version 16 can't automatically-->
+<!--                 render dotted circle for incomplete combining letter of some scripts, different-->
+<!--                 set of Key definitions are needed based on the API version. &ndash;&gt;-->
+<!--            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_o" />-->
+<!--            <Key latin:keyStyle="baseKeyDevanagariVowelSignO" />-->
+<!--            &lt;!&ndash; Because the font rendering system prior to API version 16 can't automatically-->
+<!--                 render dotted circle for incomplete combining letter of some scripts, different-->
+<!--                 set of Key definitions are needed based on the API version. &ndash;&gt;-->
+<!--            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_e" />-->
+<!--            <Key latin:keyStyle="baseKeyDevanagariVowelSignE" />-->
+<!--            &lt;!&ndash; Because the font rendering system prior to API version 16 can't automatically-->
+<!--                 render dotted circle for incomplete combining letter of some scripts, different-->
+<!--                 set of Key definitions are needed based on the API version. &ndash;&gt;-->
+<!--            <include latin:keyboardLayout="@xml/keystyle_devanagari_sign_virama" />-->
+<!--            <Key latin:keyStyle="baseKeyDevanagariSignVirama" />-->
+<!--            &lt;!&ndash; Because the font rendering system prior to API version 16 can't automatically-->
+<!--                 render dotted circle for incomplete combining letter of some scripts, different-->
+<!--                 set of Key definitions are needed based on the API version. &ndash;&gt;-->
+<!--            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_i" />-->
+<!--            <Key latin:keyStyle="baseKeyDevanagariVowelSignI" />-->
+<!--            &lt;!&ndash; Because the font rendering system prior to API version 16 can't automatically-->
+<!--                 render dotted circle for incomplete combining letter of some scripts, different-->
+<!--                 set of Key definitions are needed based on the API version. &ndash;&gt;-->
+<!--            <include latin:keyboardLayout="@xml/keystyle_devanagari_vowel_sign_u" />-->
+<!--            <Key latin:keyStyle="baseKeyDevanagariVowelSignU" />-->
+<!--            &lt;!&ndash; U+092A: "प" DEVANAGARI LETTER PA &ndash;&gt;-->
+<!--            <Key latin:keySpec="&#x092A;" />-->
+<!--            &lt;!&ndash; U+0930: "र" DEVANAGARI LETTER RA-->
+<!--                 U+090B: "ऋ" DEVANAGARI LETTER VOCALIC R-->
+<!--                 U+0930/U+093C: "ऱ" DEVANAGARI LETTER RA/DEVANAGARI SIGN NUKTA-->
+<!--                 U+0960: "ॠ" DEVANAGARI LETTER VOCALIC RR &ndash;&gt;-->
+<!--            <Key-->
+<!--                latin:keySpec="&#x0930;"-->
+<!--                latin:moreKeys="&#x090B;,&#x0930;&#x093C;,&#x0960;" />-->
+<!--            &lt;!&ndash; U+0915: "क" DEVANAGARI LETTER KA-->
+<!--                 U+0915/U+093C: "क़" DEVANAGARI LETTER KA/DEVANAGARI SIGN NUKTA &ndash;&gt;-->
+<!--            <Key-->
+<!--                latin:keySpec="&#x0915;"-->
+<!--                latin:moreKeys="&#x0915;&#x093C;" />-->
+<!--            &lt;!&ndash; U+0924: "त" DEVANAGARI LETTER TA-->
+<!--                 U+0924/U+094D/U+0930: "त्र" DEVANAGARI LETTER TA/DEVANAGARI SIGN VIRAMA/DEVANAGARI LETTER RA &ndash;&gt;-->
+<!--            <Key-->
+<!--                latin:keySpec="&#x0924;"-->
+<!--                latin:moreKeys="&#x0924;&#x094D;&#x0930;" />-->
+<!--            &lt;!&ndash; U+091A: "च" DEVANAGARI LETTER CA &ndash;&gt;-->
+<!--            <Key latin:keySpec="&#x091A;" />-->
+<!--            &lt;!&ndash; U+091F: "ट" DEVANAGARI LETTER TTA &ndash;&gt;-->
+<!--            <Key latin:keySpec="&#x131CB;" />-->
+
+
+
         </default>
     </switch>
 </merge>
