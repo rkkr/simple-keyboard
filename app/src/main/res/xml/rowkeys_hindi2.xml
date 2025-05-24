@@ -75,7 +75,7 @@
             <!-- U+091B: "छ" DEVANAGARI LETTER CHA -->
             <Key latin:keySpec="&#x091B;" />
             <!-- U+0920: "ठ" DEVANAGARI LETTER TTHA -->
-            <Key latin:keySpec="&#x0920;" />
+            <Key latin:keySpec="&#x133CF;" />
         </case>
         <default>
             <!-- Because the font rendering system prior to API version 16 can't automatically
@@ -125,7 +125,7 @@
             <!-- U+091A: "च" DEVANAGARI LETTER CA -->
             <Key latin:keySpec="&#x091A;" />
             <!-- U+091F: "ट" DEVANAGARI LETTER TTA -->
-            <Key latin:keySpec="&#x091F;" />
+            <Key latin:keySpec="&#x131CB;" />
         </default>
     </switch>
 </merge>
