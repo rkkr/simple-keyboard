@@ -119,82 +119,7 @@ public final class SubtypeLocaleUtils {
     private static final String[] sSupportedLocales = new String[] {
             LOCALE_ARABIC,
             LOCALE_ENGLISH_UNITED_STATES,
-            LOCALE_ENGLISH_GREAT_BRITAIN,
-            LOCALE_AFRIKAANS,
-            LOCALE_AZERBAIJANI_AZERBAIJAN,
-            LOCALE_BELARUSIAN_BELARUS,
-            LOCALE_BULGARIAN,
-            LOCALE_BENGALI_BANGLADESH,
-            LOCALE_BENGALI_INDIA,
-            LOCALE_CATALAN,
-            LOCALE_CZECH,
-            LOCALE_DANISH,
-            LOCALE_GERMAN,
-            LOCALE_GERMAN_SWITZERLAND,
-            LOCALE_GREEK,
-            LOCALE_ENGLISH_INDIA,
-            LOCALE_ESPERANTO,
-            LOCALE_SPANISH,
-            LOCALE_SPANISH_UNITED_STATES,
-            LOCALE_SPANISH_LATIN_AMERICA,
-            LOCALE_ESTONIAN_ESTONIA,
-            LOCALE_BASQUE_SPAIN,
-            LOCALE_PERSIAN,
-            LOCALE_FINNISH,
-            LOCALE_FRENCH,
-            LOCALE_FRENCH_CANADA,
-            LOCALE_FRENCH_SWITZERLAND,
-            LOCALE_GALICIAN_SPAIN,
             LOCALE_HINDI,
-            LOCALE_CROATIAN,
-            LOCALE_HUNGARIAN,
-            LOCALE_ARMENIAN_ARMENIA,
-            LOCALE_INDONESIAN_1,
-            LOCALE_INDONESIAN_2,
-            LOCALE_ICELANDIC,
-            LOCALE_ITALIAN,
-            LOCALE_ITALIAN_SWITZERLAND,
-            LOCALE_HEBREW_1,
-            LOCALE_HEBREW_2,
-            LOCALE_GEORGIAN_GEORGIA,
-            LOCALE_KAZAKH,
-            LOCALE_KHMER_CAMBODIA,
-            LOCALE_KANNADA_INDIA,
-            LOCALE_KYRGYZ,
-            LOCALE_LAO_LAOS,
-            LOCALE_LITHUANIAN,
-            LOCALE_LATVIAN,
-            LOCALE_MACEDONIAN,
-            LOCALE_MALAYALAM_INDIA,
-            LOCALE_MONGOLIAN_MONGOLIA,
-            LOCALE_MARATHI_INDIA,
-            LOCALE_MALAY_MALAYSIA,
-            LOCALE_NORWEGIAN_BOKMAL,
-            LOCALE_NEPALI_NEPAL,
-            LOCALE_DUTCH,
-            LOCALE_DUTCH_BELGIUM,
-            LOCALE_POLISH,
-            LOCALE_PORTUGUESE_BRAZIL,
-            LOCALE_PORTUGUESE_PORTUGAL,
-            LOCALE_ROMANIAN,
-            LOCALE_RUSSIAN,
-            LOCALE_SLOVAK,
-            LOCALE_SLOVENIAN,
-            LOCALE_SERBIAN,
-            LOCALE_SERBIAN_LATIN,
-            LOCALE_SWEDISH,
-            LOCALE_SWAHILI,
-            LOCALE_TAMIL_INDIA,
-            LOCALE_TAMIL_SINGAPORE,
-            LOCALE_TELUGU_INDIA,
-            LOCALE_THAI,
-            LOCALE_TAGALOG,
-            LOCALE_TURKISH,
-            LOCALE_UKRAINIAN,
-            LOCALE_URDU,
-            LOCALE_UZBEK_UZBEKISTAN,
-            LOCALE_VIETNAMESE,
-            LOCALE_ZULU
     };
 
     /**
@@ -207,7 +132,6 @@ public final class SubtypeLocaleUtils {
     }
 
     public static final String LAYOUT_ARABIC = "arabic";
-    public static final String LAYOUT_HERIO_AR = "hiero_ar";
     public static final String LAYOUT_ARMENIAN_PHONETIC = "armenian_phonetic";
     public static final String LAYOUT_AZERTY = "azerty";
     public static final String LAYOUT_BENGALI = "bengali";
@@ -289,12 +213,15 @@ public final class SubtypeLocaleUtils {
      * @return the default list of subtypes based on the system's languages.
      */
     public static List<Subtype> getDefaultSubtypes(final Resources resources) {
-        // First try to add Arabic as the default subtype
         final ArrayList<Subtype> subtypes = new ArrayList<>();
-        final Subtype arabicSubtype = getSubtypes(LOCALE_ARABIC, resources).get(0);
+
+
+        final Subtype hindiSubtype = getSubtypes(LOCALE_HINDI, resources).get(0);
+        subtypes.add(hindiSubtype);
+
+        final Subtype arabicSubtype = getSubtypes("ar", resources).get(0);
         subtypes.add(arabicSubtype);
 
-        // Then add other system locales if they're supported
         final ArrayList<Locale> supportedLocales = new ArrayList<>(sSupportedLocales.length);
         for (final String localeString : sSupportedLocales) {
             supportedLocales.add(LocaleUtils.constructLocaleFromString(localeString));
@@ -302,7 +229,8 @@ public final class SubtypeLocaleUtils {
 
         final List<Locale> systemLocales = LocaleUtils.getSystemLocales();
         final HashSet<Locale> addedLocales = new HashSet<>();
-        addedLocales.add(LocaleUtils.constructLocaleFromString(LOCALE_ARABIC));
+        addedLocales.add(LocaleUtils.constructLocaleFromString(LOCALE_HINDI));
+        addedLocales.add(LocaleUtils.constructLocaleFromString("ar"));
 
         for (final Locale systemLocale : systemLocales) {
             final Locale bestLocale = LocaleUtils.findBestLocale(systemLocale, supportedLocales);
@@ -466,7 +394,6 @@ public final class SubtypeLocaleUtils {
                     addGenericLayouts();
                     break;
                 case LOCALE_ARABIC:
-                    addLayout(LAYOUT_HERIO_AR, R.string.subtype_hiero_ar_keyboard);
                     addLayout(LAYOUT_ARABIC);
                     break;
                 case LOCALE_BELARUSIAN_BELARUS:

@@ -18,7 +18,6 @@
 */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="subtype_hiero_ar_keyboard">Hieroglyphic</string>
     <!-- Option to provide vibrate/haptic feedback on keypress -->
 <string name="vibrate_on_keypress">Vibrate on keypress</string>
 

@@ -149,6 +149,9 @@ public final class LocaleResourceUtils {
 
     private static String getLocaleDisplayNameInternal(final String localeString,
                                                        final Locale displayLocale) {
+        if (localeString.equals("hi")) {
+            return "Egyptian";
+        }
         final Integer exceptionalNameResId;
         if (displayLocale.equals(Locale.ROOT)
                 && sExceptionalLocaleDisplayedInRootLocale.containsKey(localeString)) {
