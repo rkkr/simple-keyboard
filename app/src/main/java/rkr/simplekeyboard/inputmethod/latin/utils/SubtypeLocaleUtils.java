@@ -213,21 +213,19 @@ public final class SubtypeLocaleUtils {
      * @return the default list of subtypes based on the system's languages.
      */
     public static List<Subtype> getDefaultSubtypes(final Resources resources) {
-        // First try to add Arabic as the default subtype
         final ArrayList<Subtype> subtypes = new ArrayList<>();
+        final HashSet<Locale> addedLocales = new HashSet<>();
+
         final Subtype hindiSubtype = getSubtypes(LOCALE_HINDI, resources).get(0);
         subtypes.add(hindiSubtype);
+        addedLocales.add(LocaleUtils.constructLocaleFromString(LOCALE_HINDI));
 
-        // Then add other system locales if they're supported
         final ArrayList<Locale> supportedLocales = new ArrayList<>(sSupportedLocales.length);
         for (final String localeString : sSupportedLocales) {
             supportedLocales.add(LocaleUtils.constructLocaleFromString(localeString));
         }
 
         final List<Locale> systemLocales = LocaleUtils.getSystemLocales();
-        final HashSet<Locale> addedLocales = new HashSet<>();
-        addedLocales.add(LocaleUtils.constructLocaleFromString(LOCALE_HINDI));
-
         for (final Locale systemLocale : systemLocales) {
             final Locale bestLocale = LocaleUtils.findBestLocale(systemLocale, supportedLocales);
             if (bestLocale != null && !addedLocales.contains(bestLocale)) {
@@ -238,6 +236,10 @@ public final class SubtypeLocaleUtils {
                     subtypes.add(bestSubtype);
                 }
             }
+        }
+
+        if (subtypes.size() == 1) {
+            subtypes.add(getSubtypes(LOCALE_ENGLISH_UNITED_STATES, resources).get(0));
         }
 
         return subtypes;
@@ -300,6 +302,10 @@ public final class SubtypeLocaleUtils {
             // The first subtype that is specified to be built here for each locale will be
             // considered the default.
             switch (mLocale) {
+                case LOCALE_HINDI:
+                    addLayout(LAYOUT_HINDI);
+                    addLayout(LAYOUT_HINDI_COMPACT, R.string.subtype_compact);
+                    break;
                 case LOCALE_AFRIKAANS:
                 case LOCALE_AZERBAIJANI_AZERBAIJAN:
                 case LOCALE_ENGLISH_INDIA:
@@ -416,10 +422,7 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_PERSIAN:
                     addLayout(LAYOUT_FARSI);
                     break;
-                case LOCALE_HINDI:
-                    addLayout(LAYOUT_HINDI);
-                    addLayout(LAYOUT_HINDI_COMPACT, R.string.subtype_compact);
-                    break;
+
                 case LOCALE_ARMENIAN_ARMENIA:
                     addLayout(LAYOUT_ARMENIAN_PHONETIC);
                     break;
