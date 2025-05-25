@@ -51,7 +51,7 @@
     <string name="show_number_row">"Hiển thị bàn phím số"</string>
     <string name="space_swipe">"Vuốt phím space để di chuyển con trỏ"</string>
     <string name="delete_swipe">"Xoá vuốt"</string>
-    <string name="setup_message">"Simple Keyboard không được bật. Nhấp vào OK để mở Ngôn ngữ &amp; Nhập vào cài đặt. Bạn sẽ cần chọn Simple Keyboard trong bàn phím hiện tại của mình để sử dụng nó."</string>
+    <string name="setup_message">"Hieroglyphs Keyboard không được bật. Nhấp vào OK để mở Ngôn ngữ &amp; Nhập vào cài đặt. Bạn sẽ cần chọn Hieroglyphs Keyboard trong bàn phím hiện tại của mình để sử dụng nó."</string>
     <string name="user_languages">"Đã bật ngôn ngữ bàn phím"</string>
     <string name="add_language">"Thêm ngôn ngữ"</string>
     <string name="remove_language">"Xóa ngôn ngữ"</string>

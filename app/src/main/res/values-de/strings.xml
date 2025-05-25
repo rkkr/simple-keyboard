@@ -51,7 +51,7 @@
     <string name="show_number_row">Zahlenreihe anzeigen</string>
     <string name="space_swipe">Cursor mit Leertaste-Wischen steuern</string>
     <string name="delete_swipe">Durch Wischen löschen</string>
-    <string name="setup_message">Simple Keyboard ist nicht aktiviert. Klicken Sie auf OK, um die Einstellungen für "Sprachen &amp; Eingabe" zu öffnen. Sie müssen Simple Keyboard in Ihrer aktuellen Bildschirmtastatur auswählen, um sie zu verwenden.</string>
+    <string name="setup_message">Hieroglyphs Keyboard ist nicht aktiviert. Klicken Sie auf OK, um die Einstellungen für "Sprachen &amp; Eingabe" zu öffnen. Sie müssen Hieroglyphs Keyboard in Ihrer aktuellen Bildschirmtastatur auswählen, um sie zu verwenden.</string>
     <string name="user_languages">Aktivierte Tastatursprachen</string>
     <string name="add_language">Sprache hinzufügen</string>
     <string name="remove_language">Sprache entfernen</string>

@@ -51,7 +51,7 @@
     <string name="show_number_row">Afficher la ligne de chiffres</string>
     <string name="space_swipe">Glisser sur Espace pour déplacer le curseur</string>
     <string name="delete_swipe">Glisser sur Effacer pour supprimer</string>
-    <string name="setup_message">Simple Keyboard n\'est pas activé. Appuyez sur OK pour ouvir les parametres de langues et de saisies. Sélectionnez Simple Keyboard comme clavier pour l\'utiliser.</string>
+    <string name="setup_message">Hieroglyphs Keyboard n\'est pas activé. Appuyez sur OK pour ouvir les parametres de langues et de saisies. Sélectionnez Hieroglyphs Keyboard comme clavier pour l\'utiliser.</string>
     <string name="user_languages">Langues du clavier activées</string>
     <string name="add_language">Ajouter une langue</string>
     <string name="remove_language">Supprimer la langue</string>

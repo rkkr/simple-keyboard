@@ -51,7 +51,7 @@
     <string name="show_number_row">Εμφάνιση ξεχωριστής σειράς αριθμών</string>
     <string name="space_swipe">Ολίσθηση στη γραμμή διαστήματος για μετακίνηση του δρομέα</string>
     <string name="delete_swipe">Αφαίρεση της ολίσθησης</string>
-    <string name="setup_message">Το Simple Keyboard δεν είναι ενεργοποιημένο. Πατήστε OK για να ανοίξετε τις ρυθμίσεις Γλώσσας &amp; Εισαγωγής. Θα πρέπει να επιλέξετε το Simple Keyboard ως τρέχον πληκτρολόγιο ώστε να μπορείτε να το χρησιμοποιήσετε.</string>
+    <string name="setup_message">Το Hieroglyphs Keyboard δεν είναι ενεργοποιημένο. Πατήστε OK για να ανοίξετε τις ρυθμίσεις Γλώσσας &amp; Εισαγωγής. Θα πρέπει να επιλέξετε το Hieroglyphs Keyboard ως τρέχον πληκτρολόγιο ώστε να μπορείτε να το χρησιμοποιήσετε.</string>
     <string name="add_language">Προσθήκη γλώσσας</string>
     <string name="remove_language">Αφαίρεση γλώσσας</string>
     <string name="change_keyboard">Αλλαγή πληκτρολογίου</string>

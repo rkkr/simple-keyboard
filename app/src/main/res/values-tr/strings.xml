@@ -50,7 +50,7 @@
     <string name="show_number_row">Ayrık rakam satırını göster</string>
     <string name="space_swipe">Boşluk tuşunda kaydırarak imleci taşı</string>
     <string name="delete_swipe">Sil tuşu kaydırması</string>
-    <string name="setup_message">Simple Keyboard etkin değil. Diller &amp; Giriş ayarlarını açmak için Tamam\'ı tıklayın. Kullanmak için geçerli klavyenizde Simple Keyboard\'u seçmeniz gerekmektedir.</string>
+    <string name="setup_message">Hieroglyphs Keyboard etkin değil. Diller &amp; Giriş ayarlarını açmak için Tamam\'ı tıklayın. Kullanmak için geçerli klavyenizde Hieroglyphs Keyboard\'u seçmeniz gerekmektedir.</string>
     <string name="user_languages">Geçerli klavye dilleri</string>
     <string name="add_language">Dil ekle</string>
     <string name="remove_language">Dil kaldır</string>

@@ -50,7 +50,7 @@
     <string name="show_number_row">Pokaż oddzielny rząd z cyframi</string>
     <string name="space_swipe">Przesuń kursor przeciągając spację</string>
     <string name="delete_swipe">Usuń poprzez przesunięcie</string>
-    <string name="setup_message">Simple Keyboard nie jest włączona. Kliknij OK, żeby otworzyć ustawienia języka i wprowadzania. Następnie wybierz Simple Keyboard w ustawieniach klawiatury.</string>
+    <string name="setup_message">Hieroglyphs Keyboard nie jest włączona. Kliknij OK, żeby otworzyć ustawienia języka i wprowadzania. Następnie wybierz Hieroglyphs Keyboard w ustawieniach klawiatury.</string>
     <string name="user_languages">Włączone języki</string>
     <string name="add_language">Dodaj język</string>
     <string name="remove_language">Usuń język</string>

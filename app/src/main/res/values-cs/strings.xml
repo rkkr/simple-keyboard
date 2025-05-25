@@ -50,7 +50,7 @@
     <string name="show_number_row">Zobrazit řádek s čísly</string>
     <string name="space_swipe">Pohybovat kurzorem táhnutím po mezerníku</string>
     <string name="delete_swipe">Mazat text táhnutím po Backspace</string>
-    <string name="setup_message">Simple Keyboard není povolený. Tlačítkem OK se dostanete do nabídky dostupných virtuálních klávesnic. Zde prosím povolte Simple Keyboard. Poté je nutné nastavit Simple Keyboard jako výchozí klávesnici.</string>
+    <string name="setup_message">Hieroglyphs Keyboard není povolený. Tlačítkem OK se dostanete do nabídky dostupných virtuálních klávesnic. Zde prosím povolte Hieroglyphs Keyboard. Poté je nutné nastavit Hieroglyphs Keyboard jako výchozí klávesnici.</string>
     <string name="user_languages">Povolené jazyky klávesnice</string>
     <string name="add_language">Přidat jazyk</string>
     <string name="remove_language">Odstranit jazyk</string>

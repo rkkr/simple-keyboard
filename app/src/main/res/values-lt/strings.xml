@@ -50,7 +50,7 @@
     <string name="show_number_row">Rodyti skaičių eilutę</string>
     <string name="space_swipe">Judinti kursorių tarpo klavišu</string>
     <string name="delete_swipe">Trynimo klavišo braukimas</string>
-    <string name="setup_message">Simple Keyboard yra neįjungta. Spauskite OK kad atidaryti Kalbos ir įvestis nustatymus. Simple Keyboard galėsite pasirinkti dabartinėje klaviatūroje.</string>
+    <string name="setup_message">Hieroglyphs Keyboard yra neįjungta. Spauskite OK kad atidaryti Kalbos ir įvestis nustatymus. Hieroglyphs Keyboard galėsite pasirinkti dabartinėje klaviatūroje.</string>
     <string name="user_languages">Įjungtos klaviatūros kalbos</string>
     <string name="add_language">Pridėti kalbą</string>
     <string name="remove_language">Pašalinti kalbą</string>

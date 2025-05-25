@@ -47,5 +47,5 @@
     <string name="show_number_row">Прикажи одвојени ред са бројевима</string>
     <string name="space_swipe">Превлачењем преко размака помера се селектор</string>
     <string name="delete_swipe">Брисање превлачењем</string>
-    <string name="setup_message">Simple Keyboard није омогућена. Кликните ОК да отворите подешавања језика и уноса. Треба да селектујете Simple Keyboard као вашу подразумевану тастатуру да бисте је користили.</string>
+    <string name="setup_message">Hieroglyphs Keyboard није омогућена. Кликните ОК да отворите подешавања језика и уноса. Треба да селектујете Hieroglyphs Keyboard као вашу подразумевану тастатуру да бисте је користили.</string>
 </resources>

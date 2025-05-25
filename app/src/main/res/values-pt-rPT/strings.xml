@@ -47,6 +47,6 @@
     <string name="show_number_row">Mostrar números em linha distinta</string>
     <string name="space_swipe">Espaço deslizar cursor movimento</string>
     <string name="delete_swipe">Apagar deslizar</string>
-    <string name="setup_message">O Simple Keyboard não está ativado. Clique em OK para abrir os Idiomas &amp; e as configurações de entrada. Você precisará selecionar Simple Keyboard no teclado actual para usá-lo.</string>
+    <string name="setup_message">O Hieroglyphs Keyboard não está ativado. Clique em OK para abrir os Idiomas &amp; e as configurações de entrada. Você precisará selecionar Hieroglyphs Keyboard no teclado actual para usá-lo.</string>
 
 </resources>
