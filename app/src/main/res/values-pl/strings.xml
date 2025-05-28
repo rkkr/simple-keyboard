@@ -57,5 +57,5 @@
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> układ klawiatury</string>
     <string name="change_keyboard">Zmień klawiaturę</string>
     <string name="privacy_policy">Polityka prywatności</string>
-    <string name="license">Licencja</string>
+    <string name="donation">Donation</string>
 </resources>

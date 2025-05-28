@@ -62,5 +62,5 @@
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> কিবোর্ড লেআউট</string>
     <string name="change_keyboard">কিবোর্ড পরিবর্তন</string>
     <string name="privacy_policy">গোপনীয়তা নীতি</string>
-    <string name="license">লাইসেন্স</string>
+    <string name="donation">Donation</string>
 </resources>

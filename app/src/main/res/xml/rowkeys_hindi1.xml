@@ -174,6 +174,7 @@
             -->
             <Key
                 latin:keySpec="&#x1309D;"
+                latin:keyLetterSize="45%"
                 latin:moreKeys="&#x1309E;,&#x1309F;,&#x130A0;,&#x130A1;,&#x130A2;,&#x130A3;,&#x130A4;,&#x130A5;,&#x130A7;,&#x130A8;,&#x130A9;,&#x130AA;,&#x130AB;,&#x130AC;,&#x130AD;,&#x130AE;,&#x130AF;,&#x130B0;,&#x130B1;,&#x130B2;,&#x130B3;,&#x130B4;,&#x130B5;,&#x130B6;,&#x130B7;,&#x130B8;,&#x130B9;,&#x130BA;,&#x130BB;,&#x130BC;,&#x130BD;,&#x130BE;,&#x130BF;,&#x130C0;,&#x130C1;,&#x130C2;,&#x130C3;,&#x130C4;,&#x130C5;"
                 />
 
@@ -193,6 +194,7 @@
             &#x130D1; : "𓃑" EGYPTIAN HIEROGLYPH D141
             -->
             <Key
+                latin:keyLetterSize="40%"
                 latin:keySpec="&#x130C6;"
                 latin:moreKeys="&#x130C7;,&#x130C8;,&#x130C9;,&#x130CA;,&#x130CB;,&#x130CC;,&#x130CD;,&#x130CE;,&#x130CF;,&#x130D0;,&#x130D1;"
                 />
@@ -389,7 +391,6 @@
         <default>
             <!-- U+062B: "ث" ARABIC LETTER THEH
                 𓍿
-                 U+0663: "٣" ARABIC-INDIC DIGIT THREE
                  &#78199; : 𓅷
                  -->
             <Key
@@ -398,7 +399,6 @@
                 latin:additionalMoreKeys="&#78199;"
                 />
             <!-- U+0642: "ق" ARABIC LETTER QAF
-                 U+0664: "٤" ARABIC-INDIC DIGIT FOUR
                  U+06A8: "ڨ" ARABIC LETTER QAF WITH THREE DOTS ABOVE -->
             <!-- TODO: DroidSansArabic lacks the glyph of U+06A8 ARABIC LETTER QAF WITH THREE DOTS ABOVE -->
             <Key
@@ -407,25 +407,26 @@
             <!-- U+0641: "ف" ARABIC LETTER FEH
                  U+0665: "٥" ARABIC-INDIC DIGIT FIVE
                  U+06A4: "ڤ" ARABIC LETTER VEH
-                 U+06A2: "ڢ" ARABIC LETTER FEH WITH DOT MOVED BELOW
-                 U+06A5: "ڥ" ARABIC LETTER FEH WITH THREE DOTS BELOW -->
+ -->
             <!-- TODO: DroidSansArabic lacks the glyph of U+06A2 ARABIC LETTER FEH WITH DOT MOVED BELOW -->
             <!-- TODO: DroidSansArabic lacks the glyph of U+06A5 ARABIC LETTER FEH WITH THREE DOTS BELOW -->
             <Key
                 latin:keySpec="&#78225;"
+                latin:keyLetterSize="45%"
                 latin:keyHintLabel="&#x0641;" />
             <!-- U+063A: "غ" ARABIC LETTER GHAIN
                  U+0666: "٦" ARABIC-INDIC DIGIT SIX -->
             <Key
                 latin:keySpec="&#78113;"
                 latin:keyHintLabel="&#x063A;"
-                latin:additionalMoreKeys="6,&#x0666;" />
+                latin:additionalMoreKeys="&#x0666;" />
             <!-- U+0639: "ع" ARABIC LETTER AIN
                  U+0667: "٧" ARABIC-INDIC DIGIT SEVEN -->
             <Key
                 latin:keySpec="&#77981;"
+                latin:keyLetterSize="45%"
                 latin:keyHintLabel="&#x0639;"
-                latin:additionalMoreKeys="7,&#x0667;" />
+                latin:additionalMoreKeys="&#x0667;" />
             <!-- U+0647: "ه" ARABIC LETTER HEH
                  U+0668: "٨" ARABIC-INDIC DIGIT EIGHT
                  U+FEEB: "ﻫ" ARABIC LETTER HEH INITIAL FORM
@@ -433,33 +434,36 @@
             <Key
                 latin:keySpec="&#78420;"
                 latin:keyHintLabel="&#x0647;"
-                latin:additionalMoreKeys="8,&#x0668;"
-                latin:moreKeys="&#xFEEB;|&#x0647;&#x200D;" />
+                latin:additionalMoreKeys="&#x0668;"
+                latin:keyLetterSize="50%"
+                latin:moreKeys="" />
             <!-- U+062E: "خ" ARABIC LETTER KHAH
                  U+0669: "٩" ARABIC-INDIC DIGIT NINE -->
             <Key
                 latin:keySpec="&#78861;"
                 latin:keyHintLabel="&#x062E;"
-                latin:additionalMoreKeys="9,&#x0669;" />
+                latin:additionalMoreKeys="" />
             <!-- U+062D: "ح" ARABIC LETTER HAH
                  U+0660: "٠" ARABIC-INDIC DIGIT ZERO -->
             <Key
-                latin:keySpec="&#78628;"
+                latin:keySpec="&#78747;"
                 latin:keyHintLabel="&#x062D;"
-                latin:additionalMoreKeys="0,&#x0660;,&#78517;" />
-
-            <!-- U+062C: "ج" ARABIC LETTER JEEM
-                 -->
-            <Key
-                latin:keySpec="&#78227;"
-                latin:keyHintLabel="&#x062C;" />
+                latin:additionalMoreKeys="&#x0660;,&#78517;" />
             <!--
-            &#x0686; : "چ" ARABIC LETTER TCHEH
+            U+062C: "ج" ARABIC LETTER JEEM
+
             &#x133BC; : "𓎼" EGYPTIAN HIEROGLYPH S029
             -->
             <Key
                 latin:keySpec="&#x133BC;"
-                latin:keyHintLabel="&#x0686;"/>
+                latin:keyHintLabel="&#x062C;"/>
+
+            <!--  &#x0686; : "چ" ARABIC LETTER TCHEH
+                 -->
+            <Key
+                latin:keySpec="&#78227;"
+                latin:keyLetterSize="50%"
+                latin:keyHintLabel="&#x0686;" />
 
             <!--
             &#x067E; : "پ" ARABIC LETTER PEH

@@ -58,5 +58,5 @@
     <string name="generic_language_layouts"> פריסות מקלדת<xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g></string>
     <string name="change_keyboard">החלף מקלדת</string>
     <string name="privacy_policy">מדיניות פרטיות</string>
-    <string name="license">רשיון</string>
+    <string name="donation">Donation</string>
 </resources>

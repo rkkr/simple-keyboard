@@ -420,6 +420,7 @@
             -->
             <Key
                 latin:keySpec="&#x1329B;"
+                latin:keyLetterSize="50%"
                 latin:moreKeys="&#x1329C;,&#x1329D;,&#x1329E;,&#x1329F;,&#x132A0;,&#x132A1;,&#x132A2;,&#x132A3;,&#x132A4;,&#x132A5;,&#x132A6;,&#x132A7;,&#x132A8;,&#x132A9;,&#x132AA;,&#x132AB;,&#x132AC;,&#x132AD;,&#x132AE;"
                 />
 
@@ -487,6 +488,7 @@
             <Key
                 latin:keySpec="&#78580;"
                 latin:keyHintLabel="&#x0633;"
+                latin:keyLetterSize="45%"
                 latin:moreKeys="&#x1316D;,&#78626;"
                 />
             <!--
@@ -495,6 +497,7 @@
             -->
             <Key
                 latin:keySpec="&#78284;"
+                latin:keyLetterSize="50%"
                 latin:keyHintLabel="&#x064A;"/>
             <!--
              &#78016; : 𓃀
@@ -503,6 +506,7 @@
             -->
             <Key
                 latin:keySpec="&#78016;"
+                latin:keyLetterSize="40%"
                 latin:keyHintLabel="&#x0628;"
                 latin:moreKeys="&#x1316E;"/>
             <!--
@@ -511,6 +515,7 @@
             -->
             <Key
                 latin:keySpec="&#78061;"
+                latin:keyLetterSize="50%"
                 latin:keyHintLabel="&#x0644;" />
             <!--
             &#78061; : 𓄿
@@ -569,6 +574,26 @@
                 latin:keySpec="&#78753;"
                 latin:keyHintLabel="&#x0643;"
                 latin:moreKeys="&#x13093;,&#x1318E;"
+                />
+                        <!--    "𓋹"
+            
+
+            -->
+            <!--
+            Key (Hieroglyphs):
+            &#x13080; : "𓂀" EGYPTIAN HIEROGLYPH D10
+            &#x131A5; : "𓆥" EGYPTIAN HIEROGLYPH L2A
+            &#x131A4; : "𓆤" EGYPTIAN HIEROGLYPH L2
+            &#x131D3; : "𓇓" EGYPTIAN HIEROGLYPH M23
+            &#x13261; : "𓉡" EGYPTIAN HIEROGLYPH O10
+            &#x1327B; : "𓉻" EGYPTIAN HIEROGLYPH O29
+            &#x13300; : "𓌀" EGYPTIAN HIEROGLYPH S40
+            &#x13376; : "𓍶" EGYPTIAN HIEROGLYPH V9
+            &#x13377; : "𓍷" EGYPTIAN HIEROGLYPH V10
+            -->
+            <Key
+                latin:keySpec="&#x13080;"
+                latin:moreKeys="&#x131A5;,&#x131A4;,&#x131D3;,&#x13261;,&#x1327B;,&#x13300;,&#x13376;,&#x13377;"
                 />
 <!--            &lt;!&ndash; U+0637: "ط" ARABIC LETTER TAH &ndash;&gt;-->
 <!--            <Key-->

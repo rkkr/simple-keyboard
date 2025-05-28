@@ -58,5 +58,5 @@
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> розкладки клавіатури</string>
     <string name="change_keyboard">Змінити клавіатуру</string>
     <string name="privacy_policy">Політика конфіденційності</string>
-    <string name="license">Ліцензія</string>
+    <string name="donation">Donation</string>
 </resources>

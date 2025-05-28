@@ -57,5 +57,5 @@
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> klavjatuuri paigutused</string>
     <string name="change_keyboard">Vaheta klavjatuuri</string>
     <string name="privacy_policy">Privaatsus poliis</string>
-    <string name="license">Litsents</string>
+    <string name="donation">Donation</string>
 </resources>

@@ -437,54 +437,22 @@
         />
         </case>
         <default>
-            <!--    "𓋹"-->
+            <!--    "𓋹"
+            
+            &#x13183; : "𓆃" EGYPTIAN HIEROGLYPH H5 (animals)
+            &#x131A3; : "𓆣" EGYPTIAN HIEROGLYPH L1
+            &#x131B8; : "𓆸" EGYPTIAN HIEROGLYPH M9
+            &#x131F3; : "𓇳" EGYPTIAN HIEROGLYPH N5 (sun)
+            &#x1320C; : "𓈌" EGYPTIAN HIEROGLYPH N27
+            &#x132B5; : "𓊵" EGYPTIAN HIEROGLYPH R4
+            &#x133E2; : "𓏢" EGYPTIAN HIEROGLYPH Y7
+            &#x130E0; : "𓃠" EGYPTIAN HIEROGLYPH E13
+            &#x132BD; : "𓊽" EGYPTIAN HIEROGLYPH R11
+            -->
             <Key
                 latin:keySpec="&#78585;"
+                latin:moreKeys="&#78673;,&#78585;&#78673;&#78580;,&#x13183;,&#x131A3;,&#x131B8;,&#x131F3;,&#x1320C;,&#x132B5;,&#x133E2;,&#x130E0;,&#x132BD;"
                 />
-
-            <!--    "ز"-->
-            <Key
-                latin:keySpec="&#78467;"
-                latin:keyHintLabel="&#1586;"
-                />
-
-            <!--
-            &#1573;
-            : "ء" ARABIC LETTER HAMZA -->
-            <Key
-                latin:keySpec="&#78283;"
-                latin:keyHintLabel="&#1573;" />
-
-            <!-- U+0624: "ؤ" ARABIC LETTER WAW WITH HAMZA ABOVE -->
-<!--            <Key-->
-<!--                latin:keySpec="&#78517;"-->
-<!--                latin:keyHintLabel="&#x0624;" />-->
-            <!--     U+0631: "ر" ARABIC LETTER REH-->
-            <Key latin:keySpec="&#77963;"
-                latin:keyHintLabel="&#x0631;"/>
-<!--            &lt;!&ndash; U+0649: "ى" ARABIC LETTER ALEF MAKSURA-->
-<!--                 U+0626: "ئ" ARABIC LETTER YEH WITH HAMZA ABOVE &ndash;&gt;-->
-<!--            <Key-->
-<!--                latin:keySpec="&#78525;"-->
-<!--                latin:keyHintLabel="&#x0649;" />-->
-            <!-- U+0629: "ة" ARABIC LETTER TEH MARBUTA -->
-<!--            <Key latin:keySpec="&#78799;"-->
-<!--                latin:keyHintLabel="&#x0629;"/>-->
-            <!-- U+0648: "و" ARABIC LETTER WAW -->
-            <Key latin:keySpec="&#78193;"
-                latin:keyHintLabel="&#x0648;"/>
-<!--            &lt;!&ndash; U+0632: "ز" ARABIC LETTER ZAIN-->
-<!--                 U+0698: "ژ" ARABIC LETTER JEH &ndash;&gt;-->
-<!--            <Key-->
-<!--                latin:keySpec="&#78467;"-->
-<!--                latin:keyHintLabel="&#x0632;" />-->
-<!--            &lt;!&ndash; U+0638: "ظ" ARABIC LETTER ZAH &ndash;&gt;-->
-<!--            <Key latin:keySpec="&#77991;"-->
-<!--                latin:keyHintLabel="&#x0638;"-->
-<!--                />-->
-            <!-- U+062F: "د" ARABIC LETTER DAL -->
-            <Key latin:keySpec="&#77991;"
-                latin:keyHintLabel="&#x062F;"/>
             <!--
             First set of hieroglyphs (A001-A027)
             &#x13000; : "𓀀" EGYPTIAN HIEROGLYPH A001
@@ -518,6 +486,32 @@
                 latin:keySpec="&#x13000;"
                 latin:moreKeys="&#x13002;,&#x13003;,&#x13004;,&#x13005;,&#x13006;,&#x13007;,&#x13008;,&#x13009;,&#x1300A;,&#x1300B;,&#x1300C;,&#x1300D;,&#x1300E;,&#x1300F;,&#x13010;,&#x13011;,&#x13012;,&#x13013;,&#x13014;,&#x13015;,&#x13016;,&#x13017;,&#x13018;,&#x13019;,&#x1301A;"
                 />
+            <!--    "ز"-->
+            <Key
+                latin:keySpec="&#78467;"
+                latin:keyHintLabel="&#1586;"
+                latin:keyLetterSize="47%"
+
+                />
+
+            <Key
+                latin:keySpec="&#78283;"
+                latin:keyHintLabel="&#1573;" />
+
+            <!--     U+0631: "ر" ARABIC LETTER REH-->
+            <Key latin:keySpec="&#77963;"
+                latin:keyHintLabel="&#x0631;"/>
+
+            <!-- U+0648: "و" ARABIC LETTER WAW -->
+            <Key latin:keySpec="&#78193;"
+
+                latin:keyHintLabel="&#x0648;"/>
+
+            <!-- U+062F: "د" ARABIC LETTER DAL -->
+            <Key latin:keySpec="&#77991;"
+                latin:keyLetterSize="40%"
+                latin:keyHintLabel="&#x062F;"/>
+
             <!--
             &#x13050; : "𓁐" EGYPTIAN HIEROGLYPH A081
             &#x13051; : "𓁑" EGYPTIAN HIEROGLYPH A082

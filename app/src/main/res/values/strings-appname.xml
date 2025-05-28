@@ -21,6 +21,8 @@
 <resources>
     <string name="english_ime_name" translatable="false">Hieroglyphs Keyboard</string>
     <string name="english_ime_settings" translatable="false">Hieroglyphs Keyboard Settings</string>
-    <string name="privacy_policy_url" translatable="false">https://github.com/rkkr/simple-keyboard/blob/master/PRIVACY.md</string>
-    <string name="license_url" translatable="false">https://github.com/rkkr/simple-keyboard/blob/master/LICENSE</string>
+    <string name="bastet_app_url" translatable="false">https://play.google.com/store/apps/details?id=com.bastet.bastet_app</string>
+    <string name="donation_url" translatable="false">https://www.paypal.com/donate/?hosted_button_id=AV9XQGBF9CQMW</string>
+    <string name="privacy_policy_url" translatable="false">https://bastet-app.com/hieroglyphs-keyboard/privacy-policy</string>
+
 </resources>
