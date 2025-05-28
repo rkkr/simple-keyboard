@@ -31,13 +31,13 @@ public final class KeyboardTheme {
 
     // These should be aligned with Keyboard.themeId and Keyboard.Case.keyboardTheme
     // attributes' values in attrs.xml.
-    public static final int THEME_ID_LIGHT_BORDER = 6;
+    public static final int THEME_ID_LIGHT_BORDER = 1;
     public static final int THEME_ID_DARK_BORDER = 2;
     public static final int THEME_ID_LIGHT = 3;
     public static final int THEME_ID_DARK = 4;
     public static final int THEME_ID_SYSTEM = 5;
-    public static final int THEME_ID_SYSTEM_BORDER = 1;
-    public static final int DEFAULT_THEME_ID = THEME_ID_LIGHT_BORDER;
+    public static final int THEME_ID_SYSTEM_BORDER = 6;
+    public static final int DEFAULT_THEME_ID = THEME_ID_SYSTEM_BORDER;
 
     /* package private for testing */
     static final KeyboardTheme[] KEYBOARD_THEMES = {
