@@ -936,9 +936,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             final int keyboardColor = Settings.readKeyboardColor(prefs, this);
             window.setNavigationBarColor(keyboardColor);
             window.setNavigationBarContrastEnforced(false);
-            final int flags = ResourceUtils.isBrightColor(keyboardColor) ?
-                    WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS : ~WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
-            window.getInsetsController().setSystemBarsAppearance(flags, flags);
+            final int flag = WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
+            if (ResourceUtils.isBrightColor(keyboardColor)) {
+                window.getInsetsController().setSystemBarsAppearance(flag, flag);
+            } else {
+                window.getInsetsController().setSystemBarsAppearance(0, flag);
+            }
         }
     }
 }
