@@ -22,7 +22,6 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Insets;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.PorterDuff;
@@ -30,10 +29,8 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.WindowInsets;
 
 import java.util.HashSet;
 
@@ -206,16 +203,8 @@ public class KeyboardView extends View {
         }
         // The main keyboard expands to the entire this {@link KeyboardView}.
         final int width = keyboard.mOccupiedWidth + getPaddingLeft() + getPaddingRight();
-        final int height = keyboard.mOccupiedHeight + getPaddingTop() + getPaddingBottom() + getSystemBarHeight();
+        final int height = keyboard.mOccupiedHeight + getPaddingTop() + getPaddingBottom();
         setMeasuredDimension(width, height);
-    }
-
-    private int getSystemBarHeight() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            final Insets insets = getRootWindowInsets().getInsets(WindowInsets.Type.navigationBars());
-            return insets.bottom;
-        }
-        return 0;
     }
 
     @Override

@@ -30,6 +30,7 @@
     <rkr.simplekeyboard.inputmethod.keyboard.MainKeyboardView
         android:id="@+id/keyboard_view"
         android:layoutDirection="ltr"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
