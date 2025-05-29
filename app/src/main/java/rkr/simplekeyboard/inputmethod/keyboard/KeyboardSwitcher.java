@@ -18,11 +18,13 @@ package rkr.simplekeyboard.inputmethod.keyboard;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Insets;
 import android.os.Build;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowInsets;
 import android.view.inputmethod.EditorInfo;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -39,6 +41,7 @@ import rkr.simplekeyboard.inputmethod.latin.utils.CapsModeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LanguageOnSpacebarUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.RecapitalizeStatus;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 
 public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private static final String TAG = KeyboardSwitcher.class.getSimpleName();
@@ -46,6 +49,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private InputView mCurrentInputView;
     private int mCurrentUiMode;
     private int mCurrentTextColor = 0x0;
+    private Insets mInsets;
     private View mMainKeyboardFrame;
     private MainKeyboardView mKeyboardView;
     private LatinIME mLatinIME;
@@ -381,6 +385,16 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mMainKeyboardFrame = mCurrentInputView.findViewById(R.id.main_keyboard_frame);
 
         mKeyboardView = (MainKeyboardView) mCurrentInputView.findViewById(R.id.keyboard_view);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            ViewLayoutUtils.applyViewInsets(mKeyboardView, mInsets);
+
+            mKeyboardView.setOnApplyWindowInsetsListener((view, windowInsets) -> {
+                mInsets = windowInsets.getInsets(WindowInsets.Type.systemBars());
+                ViewLayoutUtils.applyViewInsets(view, mInsets);
+                return WindowInsets.CONSUMED;
+            });
+        }
+
         mKeyboardView.setKeyboardActionListener(mLatinIME);
         return mCurrentInputView;
     }

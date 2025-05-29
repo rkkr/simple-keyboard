@@ -95,11 +95,7 @@ public final class ViewLayoutUtils {
 
     public static void applyViewInsets(final View view, final Insets insets) {
         if (insets != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-            mlp.leftMargin = insets.left;
-            mlp.bottomMargin = insets.bottom;
-            mlp.rightMargin = insets.right;
-            view.setLayoutParams(mlp);
+            view.setPadding(insets.left, 0, insets.right, insets.bottom);
         }
     }
 }
