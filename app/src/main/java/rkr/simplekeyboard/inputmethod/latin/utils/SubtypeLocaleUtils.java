@@ -304,7 +304,8 @@ public final class SubtypeLocaleUtils {
             switch (mLocale) {
                 case LOCALE_HINDI:
                     addLayout(LAYOUT_HINDI);
-                    addLayout(LAYOUT_HINDI_COMPACT, R.string.subtype_compact);
+                    // Remove compact layout from Egyptian keyboard
+                    // addLayout(LAYOUT_HINDI_COMPACT, R.string.subtype_compact);
                     break;
                 case LOCALE_AFRIKAANS:
                 case LOCALE_AZERBAIJANI_AZERBAIJAN:
