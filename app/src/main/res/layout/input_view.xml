@@ -18,7 +18,7 @@
 */
 -->
 
-<rkr.simplekeyboard.inputmethod.latin.InputView
+<rkr.hierokeyboard.inputmethod.latin.InputView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -26,4 +26,4 @@
     <include
         android:id="@+id/main_keyboard_frame"
         layout="@layout/main_keyboard_frame" />
-</rkr.simplekeyboard.inputmethod.latin.InputView>
+</rkr.hierokeyboard.inputmethod.latin.InputView>

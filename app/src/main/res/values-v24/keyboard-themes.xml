@@ -19,7 +19,7 @@
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- An element must be a keyboard theme id of
-         {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
+         {@link rkr.hierokeyboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
     <integer-array name="keyboard_theme_ids" translatable="false" tools:ignore="InconsistentArrays">
         <item>3</item>
         <item>4</item>

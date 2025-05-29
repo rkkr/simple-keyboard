@@ -8,7 +8,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     defaultConfig {
-        applicationId "rkr.simplekeyboard.inputmethod"
+        applicationId "rkr.hierokeyboard.inputmethod"
         compileSdk 35
         minSdkVersion 21
         targetSdkVersion 35
@@ -32,7 +32,7 @@ android {
             signingConfig signingConfigs.release
         }
     }
-    namespace 'rkr.simplekeyboard.inputmethod'
+    namespace 'rkr.hierokeyboard.inputmethod'
 }
 
 dependencies {
