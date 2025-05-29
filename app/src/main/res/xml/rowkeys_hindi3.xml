@@ -448,10 +448,12 @@
             &#x133E2; : "𓏢" EGYPTIAN HIEROGLYPH Y7
             &#x130E0; : "𓃠" EGYPTIAN HIEROGLYPH E13
             &#x132BD; : "𓊽" EGYPTIAN HIEROGLYPH R11
+            &#78205; : "𓅽" 
+            &#77971; : "𓂓" 
             -->
             <Key
                 latin:keySpec="&#78585;"
-                latin:moreKeys="&#78673;,&#78585;&#78673;&#78580;,&#x13183;,&#x131A3;,&#x131B8;,&#x131F3;,&#x1320C;,&#x132B5;,&#x133E2;,&#x130E0;,&#x132BD;"
+                latin:moreKeys="&#78673;,&#78585;&#78673;&#78580;,&#x13183;,&#x131A3;,&#x131B8;,&#x131F3;,&#x1320C;,&#x132B5;,&#x133E2;,&#x130E0;,&#x132BD;,&#78205;,&#77971;"
                 />
             <!--
             First set of hieroglyphs (A001-A027)
