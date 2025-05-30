@@ -47,7 +47,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private static final String TAG = KeyboardSwitcher.class.getSimpleName();
 
-    private InputView mCurrentInputView;
     private int mCurrentUiMode;
     private int mCurrentTextColor = 0x0;
     private Insets mInsets;
@@ -381,18 +380,18 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
         updateKeyboardThemeAndContextThemeWrapper(
                 mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */), uiMode);
-        mCurrentInputView = (InputView)LayoutInflater.from(mThemeContext).inflate(
+        final InputView currentInputView = (InputView) LayoutInflater.from(mThemeContext).inflate(
                 R.layout.input_view, null);
-        mMainKeyboardFrame = mCurrentInputView.findViewById(R.id.main_keyboard_frame);
+        mMainKeyboardFrame = currentInputView.findViewById(R.id.main_keyboard_frame);
 
-        mKeyboardView = (MainKeyboardView) mCurrentInputView.findViewById(R.id.keyboard_view);
+        mKeyboardView = (MainKeyboardView) currentInputView.findViewById(R.id.keyboard_view);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             ViewLayoutUtils.applyViewInsets(mKeyboardView, mInsets);
             mKeyboardView.setOnApplyWindowInsetsListener(mWindowInsetsListener);
         }
 
         mKeyboardView.setKeyboardActionListener(mLatinIME);
-        return mCurrentInputView;
+        return currentInputView;
     }
 
     @TargetApi(Build.VERSION_CODES.R)
