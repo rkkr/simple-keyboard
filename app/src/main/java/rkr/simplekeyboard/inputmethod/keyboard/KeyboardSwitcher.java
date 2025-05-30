@@ -16,6 +16,7 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Insets;
@@ -387,15 +388,20 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mKeyboardView = (MainKeyboardView) mCurrentInputView.findViewById(R.id.keyboard_view);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             ViewLayoutUtils.applyViewInsets(mKeyboardView, mInsets);
-
-            mKeyboardView.setOnApplyWindowInsetsListener((view, windowInsets) -> {
-                mInsets = windowInsets.getInsets(WindowInsets.Type.systemBars());
-                ViewLayoutUtils.applyViewInsets(view, mInsets);
-                return WindowInsets.CONSUMED;
-            });
+            mKeyboardView.setOnApplyWindowInsetsListener(mWindowInsetsListener);
         }
 
         mKeyboardView.setKeyboardActionListener(mLatinIME);
         return mCurrentInputView;
     }
+
+    @TargetApi(Build.VERSION_CODES.R)
+    private final View.OnApplyWindowInsetsListener mWindowInsetsListener = new View.OnApplyWindowInsetsListener() {
+        @Override
+        public WindowInsets onApplyWindowInsets(View view, WindowInsets windowInsets) {
+            mInsets = windowInsets.getInsets(WindowInsets.Type.systemBars());
+            ViewLayoutUtils.applyViewInsets(view, mInsets);
+            return WindowInsets.CONSUMED;
+        }
+    };
 }
