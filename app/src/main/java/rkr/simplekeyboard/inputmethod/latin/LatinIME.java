@@ -40,7 +40,6 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowInsetsController;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 
 import java.io.FileDescriptor;
@@ -459,7 +458,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void onWindowShown() {
         super.onWindowShown();
         if (isInputViewShown())
-            clearNavigationBar();
+            setNavigationBarColor();
     }
 
     @Override
@@ -927,20 +926,22 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return shouldSwitchToOtherInputMethods(token);
     }
 
-    private void clearNavigationBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+    private void setNavigationBarColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             final Window window = getWindow().getWindow();
             if (window == null) {
                 return;
             }
-            window.setNavigationBarContrastEnforced(false);
-            window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
             final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(this);
             final int keyboardColor = Settings.readKeyboardColor(prefs, this);
-            final int flags = ResourceUtils.isBrightColor(keyboardColor) ?
-                    WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS : ~WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
-            window.getInsetsController().setSystemBarsAppearance(flags, flags);
+            window.setNavigationBarColor(keyboardColor);
+            window.setNavigationBarContrastEnforced(false);
+            final int flag = WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
+            if (ResourceUtils.isBrightColor(keyboardColor)) {
+                window.getInsetsController().setSystemBarsAppearance(flag, flag);
+            } else {
+                window.getInsetsController().setSystemBarsAppearance(0, flag);
+            }
         }
     }
 }

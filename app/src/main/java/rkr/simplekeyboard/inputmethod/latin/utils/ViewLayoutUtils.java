@@ -16,6 +16,7 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
+import android.annotation.TargetApi;
 import android.graphics.Insets;
 import android.os.Build;
 import android.view.View;
@@ -93,13 +94,10 @@ public final class ViewLayoutUtils {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.R)
     public static void applyViewInsets(final View view, final Insets insets) {
-        if (insets != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-            mlp.leftMargin = insets.left;
-            mlp.bottomMargin = insets.bottom;
-            mlp.rightMargin = insets.right;
-            view.setLayoutParams(mlp);
+        if (insets != null) {
+            view.setPadding(insets.left, 0, insets.right, insets.bottom);
         }
     }
 }

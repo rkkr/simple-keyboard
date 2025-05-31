@@ -16,13 +16,16 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Insets;
 import android.os.Build;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowInsets;
 import android.view.inputmethod.EditorInfo;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -39,13 +42,14 @@ import rkr.simplekeyboard.inputmethod.latin.utils.CapsModeUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LanguageOnSpacebarUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.RecapitalizeStatus;
 import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
+import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 
 public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private static final String TAG = KeyboardSwitcher.class.getSimpleName();
 
-    private InputView mCurrentInputView;
     private int mCurrentUiMode;
     private int mCurrentTextColor = 0x0;
+    private Insets mInsets;
     private View mMainKeyboardFrame;
     private MainKeyboardView mKeyboardView;
     private LatinIME mLatinIME;
@@ -376,12 +380,27 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
 
         updateKeyboardThemeAndContextThemeWrapper(
                 mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */), uiMode);
-        mCurrentInputView = (InputView)LayoutInflater.from(mThemeContext).inflate(
+        final InputView currentInputView = (InputView) LayoutInflater.from(mThemeContext).inflate(
                 R.layout.input_view, null);
-        mMainKeyboardFrame = mCurrentInputView.findViewById(R.id.main_keyboard_frame);
+        mMainKeyboardFrame = currentInputView.findViewById(R.id.main_keyboard_frame);
 
-        mKeyboardView = (MainKeyboardView) mCurrentInputView.findViewById(R.id.keyboard_view);
+        mKeyboardView = (MainKeyboardView) currentInputView.findViewById(R.id.keyboard_view);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            ViewLayoutUtils.applyViewInsets(mKeyboardView, mInsets);
+            mKeyboardView.setOnApplyWindowInsetsListener(mWindowInsetsListener);
+        }
+
         mKeyboardView.setKeyboardActionListener(mLatinIME);
-        return mCurrentInputView;
+        return currentInputView;
     }
+
+    @TargetApi(Build.VERSION_CODES.R)
+    private final View.OnApplyWindowInsetsListener mWindowInsetsListener = new View.OnApplyWindowInsetsListener() {
+        @Override
+        public WindowInsets onApplyWindowInsets(View view, WindowInsets windowInsets) {
+            mInsets = windowInsets.getInsets(WindowInsets.Type.systemBars());
+            ViewLayoutUtils.applyViewInsets(view, mInsets);
+            return WindowInsets.CONSUMED;
+        }
+    };
 }
