@@ -16,7 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
-import android.annotation.TargetApi;
 import android.graphics.Insets;
 import android.os.Build;
 import android.view.View;
@@ -94,9 +93,8 @@ public final class ViewLayoutUtils {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.R)
     public static void applyViewInsets(final View view, final Insets insets) {
-        if (insets != null) {
+        if (insets != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             view.setPadding(insets.left, 0, insets.right, insets.bottom);
         }
     }

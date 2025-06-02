@@ -135,7 +135,9 @@ public final class AudioAndHapticFeedbackManager {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            mVibrator.vibrate(VibrationEffect.createPredefined (VibrationEffect.EFFECT_TICK));
+            mBackgroundThread.execute(() -> {
+                mVibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_TICK));
+            });
         }
     }
 
