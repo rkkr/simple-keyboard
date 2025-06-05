@@ -17,7 +17,6 @@
 package rkr.simplekeyboard.inputmethod.latin.common;
 
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.LocaleList;
 import android.text.TextUtils;
 
@@ -139,13 +138,9 @@ public final class LocaleUtils {
      */
     public static List<Locale> getSystemLocales() {
         ArrayList<Locale> locales = new ArrayList<>();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
-            for (int i = 0; i < localeList.size(); i++) {
-                locales.add(localeList.get(i));
-            }
-        } else {
-            locales.add(Resources.getSystem().getConfiguration().locale);
+        LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
+        for (int i = 0; i < localeList.size(); i++) {
+            locales.add(localeList.get(i));
         }
         return locales;
     }

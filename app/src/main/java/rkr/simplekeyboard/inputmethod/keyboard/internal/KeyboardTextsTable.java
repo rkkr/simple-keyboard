@@ -16,8 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
-import android.os.Build;
-
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -3167,7 +3165,7 @@ public final class KeyboardTextsTable {
         /* morekeys_s */ null,
         /* single_quotes */ "!text/single_9qm_lqm",
         // U+20BD ₽ RUBLE SIGN
-        /* keyspec_currency ~ */ Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP ? "\u20BD" : "\u20B1",
+        /* keyspec_currency ~ */ "\u20BD",
         null, null, null, null, null, null, null, null, null, null,
         /* ~ morekeys_k */
         // U+0435 + U+0301: "е" CYRILLIC SMALL LETTER IE + ◌́ COMBINING ACUTE ACCENT

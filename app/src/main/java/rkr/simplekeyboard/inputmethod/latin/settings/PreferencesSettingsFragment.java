@@ -17,7 +17,6 @@
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
@@ -43,12 +42,7 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.prefs_screen_preferences);
-
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            removePreference(Settings.PREF_ENABLE_IME_SWITCH);
-        } else {
-            updateImeSwitchEnabledPref();
-        }
+        updateImeSwitchEnabledPref();
     }
 
     @Override
