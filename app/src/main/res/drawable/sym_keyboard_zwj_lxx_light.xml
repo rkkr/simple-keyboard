@@ -3,7 +3,7 @@
     android:height="24dp"
     android:viewportHeight="24"
     android:viewportWidth="24"
-    android:tint="@color/key_functional_text_color_lxx_system">
+    android:tint="@color/key_functional_text_color_lxx_light">
     <path
         android:pathData="@string/icon_zwj_1"
         android:strokeColor="@android:color/white"
