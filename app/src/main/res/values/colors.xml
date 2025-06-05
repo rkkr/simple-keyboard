@@ -21,6 +21,19 @@
 <resources>
     <color name="ic_launcher_background">#ECEFF1</color>
 
+    <!-- Color resources for LXX_System theme. -->
+    <!-- Material theme values @color/material_* are private, so they are copied here. -->
+    <color name="background_lxx_system">#fffafafa</color>
+    <color name="background_secondary_lxx_system">#fff5f5f5</color>
+    <color name="key_text_color_lxx_system">#de000000</color>
+    <color name="key_functional_text_color_lxx_system">#70000000</color>
+    <color name="key_text_inactive_color_lxx_system">#de000000</color>
+    <color name="key_hint_letter_color_lxx_system">#90000000</color>
+    <color name="language_on_spacebar_text_color_lxx_system">#de000000</color>
+    <color name="sliding_key_input_preview_color_lxx_system">#de000000</color>
+    <color name="key_background_normal_lxx_system">#ffd6d7d7</color>
+    <color name="key_background_pressed_lxx_system">#20000000</color>
+    <dimen name="button_corner_radius_lxx_system">2dp</dimen>
     <!-- Color resources for LXX_Light theme. -->
     <color name="background_lxx_light">#ECEFF1</color>
     <color name="key_text_color_lxx_light">#37474F</color>
