@@ -33,7 +33,6 @@
     <color name="sliding_key_input_preview_color_lxx_system">#de000000</color>
     <color name="key_background_normal_lxx_system">#ffd6d7d7</color>
     <color name="key_background_pressed_lxx_system">#20000000</color>
-    <dimen name="button_corner_radius_lxx_system">2dp</dimen>
     <!-- Color resources for LXX_Light theme. -->
     <color name="background_lxx_light">#DDE0E2</color>
     <color name="key_text_color_lxx_light">#37474F</color>
