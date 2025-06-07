@@ -35,15 +35,16 @@
     <color name="key_background_pressed_lxx_system">#20000000</color>
     <dimen name="button_corner_radius_lxx_system">2dp</dimen>
     <!-- Color resources for LXX_Light theme. -->
-    <color name="background_lxx_light">#ECEFF1</color>
+    <color name="background_lxx_light">#DDE0E2</color>
     <color name="key_text_color_lxx_light">#37474F</color>
     <color name="key_functional_text_color_lxx_light">#CC37474F</color>
     <color name="key_text_inactive_color_lxx_light">#B337474F</color>
     <color name="key_hint_letter_color_lxx_light">#B337474F</color>
     <color name="language_on_spacebar_text_color_lxx_light">#B337474F</color>
     <color name="sliding_key_input_preview_color_lxx_light">#B34DB6AC</color>
-    <color name="key_background_normal_lxx_light">#22222222</color>
-    <color name="key_background_pressed_lxx_light">#2637474F</color>
+    <color name="key_background_normal_lxx_light">#65FFFFFF</color>
+    <color name="key_background_function_lxx_light">#65C1C1C1</color>
+    <color name="key_background_pressed_lxx_light">#99E0E0E0</color>
     <!-- Color resources for LXX_Dark theme. -->
     <color name="background_lxx_dark">#263238</color>
     <color name="key_text_color_lxx_dark">#CCFFFFFF</color>
@@ -51,8 +52,9 @@
     <color name="key_text_inactive_color_lxx_dark">#80FFFFFF</color>
     <color name="key_hint_letter_color_lxx_dark">#80FFFFFF</color>
     <color name="sliding_key_input_preview_color_lxx_dark">#B380CBC4</color>
-    <color name="key_background_normal_lxx_dark">#66222222</color>
-    <color name="key_background_pressed_lxx_dark">#19FFFFFF</color>
+    <color name="key_background_normal_lxx_dark">#32FFFFFF</color>
+    <color name="key_background_function_lxx_dark">#327A7A7A</color>
+    <color name="key_background_pressed_lxx_dark">#99FDFDFD</color>
     <!-- Dimensions for all themes. -->
-    <dimen name="button_corner_radius_lxx">4dp</dimen>
+    <dimen name="button_corner_radius_lxx">6dp</dimen>
  </resources>
