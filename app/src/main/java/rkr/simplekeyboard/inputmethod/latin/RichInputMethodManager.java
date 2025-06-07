@@ -23,7 +23,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.inputmethodservice.InputMethodService;
-import android.os.Build;
 import android.os.IBinder;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -519,12 +518,6 @@ public class RichInputMethodManager {
      * @return whether the IME should offer ways to switch to a next input method.
      */
     public boolean shouldOfferSwitchingToOtherInputMethods(final IBinder binder) {
-        // Use the default value instead on Jelly Bean MR2 and previous where
-        // {@link InputMethodManager#shouldOfferSwitchingToNextInputMethod} isn't yet available
-        // and on KitKat where the API is still just a stub to return true always.
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            return false;
-        }
         return mImmService.shouldOfferSwitchingToNextInputMethod(binder);
     }
 
