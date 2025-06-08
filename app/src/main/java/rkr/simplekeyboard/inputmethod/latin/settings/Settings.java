@@ -30,7 +30,6 @@ import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
-import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 
 public final class Settings implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = Settings.class.getSimpleName();
@@ -204,14 +203,18 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static int readKeyboardDefaultColor(final Context context) {
         final int[] keyboardThemeColors = context.getResources().getIntArray(R.array.keyboard_theme_colors);
         final int[] keyboardThemeIds = context.getResources().getIntArray(R.array.keyboard_theme_ids);
-        final int themeId = KeyboardTheme.getKeyboardTheme(context).mThemeId;
+        final int themeId = getKeyboardTheme(context).mThemeId;
         for (int index = 0; index < keyboardThemeIds.length; index++) {
             if (themeId == keyboardThemeIds[index]) {
                 return keyboardThemeColors[index];
             }
         }
 
-        return Color.LTGRAY;
+        return Color.TRANSPARENT;
+    }
+
+    public static KeyboardTheme getKeyboardTheme(final Context context) {
+        return KeyboardTheme.getKeyboardTheme(context);
     }
 
     public static int readKeyboardColor(final SharedPreferences prefs, final Context context) {
