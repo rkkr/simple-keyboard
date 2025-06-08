@@ -31,34 +31,40 @@ public final class KeyboardTheme {
 
     // These should be aligned with Keyboard.themeId and Keyboard.Case.keyboardTheme
     // attributes' values in attrs.xml.
-    public static final int THEME_ID_LIGHT_BORDER = 1;
-    public static final int THEME_ID_DARK_BORDER = 2;
-    public static final int THEME_ID_LIGHT = 3;
-    public static final int THEME_ID_DARK = 4;
-    public static final int THEME_ID_SYSTEM = 5;
-    public static final int THEME_ID_SYSTEM_BORDER = 6;
-    public static final int DEFAULT_THEME_ID = THEME_ID_SYSTEM;
+    private static final int THEME_ID_LIGHT_BORDER = 1;
+    private static final int THEME_ID_DARK_BORDER = 2;
+    private static final int THEME_ID_LIGHT = 3;
+    private static final int THEME_ID_DARK = 4;
+    private static final int THEME_ID_SYSTEM = 5;
+    private static final int THEME_ID_SYSTEM_BORDER = 6;
+    private static final int DEFAULT_THEME_ID = THEME_ID_SYSTEM;
 
     /* package private for testing */
     static final KeyboardTheme[] KEYBOARD_THEMES = {
-        new KeyboardTheme(THEME_ID_LIGHT, "LXXLight", R.style.KeyboardTheme_LXX_Light),
-        new KeyboardTheme(THEME_ID_DARK, "LXXDark", R.style.KeyboardTheme_LXX_Dark),
-        new KeyboardTheme(THEME_ID_LIGHT_BORDER, "LXXLightBorder", R.style.KeyboardTheme_LXX_Light_Border),
-        new KeyboardTheme(THEME_ID_DARK_BORDER, "LXXDarkBorder", R.style.KeyboardTheme_LXX_Dark_Border),
-        new KeyboardTheme(THEME_ID_SYSTEM, "LXXSystem", R.style.KeyboardTheme_LXX_System),
-        new KeyboardTheme(THEME_ID_SYSTEM_BORDER, "LXXSystemBorder", R.style.KeyboardTheme_LXX_System_Border),
+        new KeyboardTheme(THEME_ID_LIGHT, "LXXLight", R.style.KeyboardTheme_LXX_Light, true),
+        new KeyboardTheme(THEME_ID_DARK, "LXXDark", R.style.KeyboardTheme_LXX_Dark, true),
+        new KeyboardTheme(THEME_ID_LIGHT_BORDER, "LXXLightBorder", R.style.KeyboardTheme_LXX_Light_Border, true),
+        new KeyboardTheme(THEME_ID_DARK_BORDER, "LXXDarkBorder", R.style.KeyboardTheme_LXX_Dark_Border, true),
+        new KeyboardTheme(THEME_ID_SYSTEM, "LXXSystem", R.style.KeyboardTheme_LXX_System, false),
+        new KeyboardTheme(THEME_ID_SYSTEM_BORDER, "LXXSystemBorder", R.style.KeyboardTheme_LXX_System_Border, false),
     };
 
     public final int mThemeId;
     public final int mStyleId;
     public final String mThemeName;
+    public final boolean mCustomColorSupport;
 
     // Note: The themeId should be aligned with "themeId" attribute of Keyboard style
     // in values/themes-<style>.xml.
-    private KeyboardTheme(final int themeId, final String themeName, final int styleId) {
+    private KeyboardTheme(
+            final int themeId,
+            final String themeName,
+            final int styleId,
+            final boolean customColorSupport) {
         mThemeId = themeId;
         mThemeName = themeName;
         mStyleId = styleId;
+        mCustomColorSupport = customColorSupport;
     }
 
     @Override
@@ -105,7 +111,7 @@ public final class KeyboardTheme {
     public static KeyboardTheme getKeyboardTheme(final SharedPreferences prefs) {
         final String themeIdString = prefs.getString(KEYBOARD_THEME_KEY, null);
         if (themeIdString == null) {
-            return searchKeyboardThemeById(THEME_ID_LIGHT);
+            return searchKeyboardThemeById(DEFAULT_THEME_ID);
         }
         try {
             final int themeId = Integer.parseInt(themeIdString);

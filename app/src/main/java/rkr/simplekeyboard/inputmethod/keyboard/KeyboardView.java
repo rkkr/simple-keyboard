@@ -91,6 +91,7 @@ public class KeyboardView extends View {
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
     public int mCustomColor = 0;
+    private KeyboardTheme mTheme;
 
     // The maximum key label width in the proportion to the key width.
     private static final float MAX_LABEL_RATIO = 0.90f;
@@ -173,6 +174,7 @@ public class KeyboardView extends View {
         mKeyDrawParams.updateParams(keyHeight, keyboard.mKeyVisualAttributes);
         final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(getContext());
         mCustomColor = Settings.readKeyboardColor(prefs, getContext());
+        mTheme = Settings.getKeyboardTheme(getContext());
         invalidateAllKeys();
         requestLayout();
     }
@@ -259,7 +261,7 @@ public class KeyboardView extends View {
 
         final Paint paint = mPaint;
         final Drawable background = getBackground();
-        if (Color.alpha(mCustomColor) > 0) {
+        if (Color.alpha(mCustomColor) > 0 && mTheme.mCustomColorSupport) {
             if (keyboard.getKey(Constants.CODE_SPACE) == null) {
                 background.setColorFilter(mCustomColor, PorterDuff.Mode.OVERLAY);
             } else {

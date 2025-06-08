@@ -43,7 +43,7 @@
     <color name="sliding_key_input_preview_color_lxx_light">#B34DB6AC</color>
     <color name="key_background_normal_lxx_light">#65FFFFFF</color>
     <color name="key_background_function_lxx_light">#65C1C1C1</color>
-    <color name="key_background_pressed_lxx_light">#99E0E0E0</color>
+    <color name="key_background_pressed_lxx_light">#99BFBFBF</color>
     <!-- Color resources for LXX_Dark theme. -->
     <color name="background_lxx_dark">#263238</color>
     <color name="key_text_color_lxx_dark">#CCFFFFFF</color>
