@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 
 import rkr.hierokeyboard.inputmethod.R;
 import rkr.hierokeyboard.inputmethod.latin.utils.ApplicationUtils;
@@ -63,6 +64,14 @@ public final class SettingsFragment extends InputMethodSettingsFragment {
                 return true;
             }
         });
+
+        findPreference("last_step_switch_keyboard").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                showInputMethodPicker();
+                return true;
+            }
+        });
     }
 
     private void openUrl(String uri) {
@@ -71,6 +80,17 @@ public final class SettingsFragment extends InputMethodSettingsFragment {
             startActivity(browserIntent);
         } catch (ActivityNotFoundException e) {
             Log.e(TAG, "Browser not found");
+        }
+    }
+
+    private void showInputMethodPicker() {
+        try {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.showInputMethodPicker();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error showing input method picker", e);
         }
     }
 }

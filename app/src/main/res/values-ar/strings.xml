@@ -53,4 +53,7 @@
     <string name="add_language">إضافة لغة</string>
     <string name="remove_language">إزالة اللغة</string>
     <string name="change_keyboard">تغيير لوحة المفاتيح</string>
+    <string name="last_step_switch_keyboard">𓉢 اخر خطوة غير الكيبورد</string>
+    <string name="bastet_app">" تحميل تطبيق الترجمة باستت 𓃠"</string>
+    <string name="donation">𓂠 تبرع</string>
 </resources>

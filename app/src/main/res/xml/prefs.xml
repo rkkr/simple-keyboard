@@ -16,6 +16,9 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:key="english_ime_settings">
+    <Preference
+        android:title="@string/last_step_switch_keyboard"
+        android:key="last_step_switch_keyboard" />
     <PreferenceScreen
         android:fragment="rkr.hierokeyboard.inputmethod.latin.settings.PreferencesSettingsFragment"
         android:title="@string/settings_screen_preferences"
