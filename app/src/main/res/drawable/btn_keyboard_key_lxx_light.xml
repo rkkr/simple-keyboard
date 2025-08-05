@@ -25,17 +25,17 @@
     <item android:state_checkable="true" android:state_checked="true" android:state_pressed="true"
           android:drawable="@android:color/transparent" />
     <item android:state_checkable="true" android:state_pressed="true"
-          android:drawable="@color/key_background_pressed_lxx_light" />
+          android:drawable="@drawable/btn_keyboard_key_pressed_lxx_light_border" />
     <item android:state_checkable="true" android:state_checked="true"
-          android:drawable="@color/key_background_pressed_lxx_light" />
+          android:drawable="@drawable/btn_keyboard_key_pressed_lxx_light_border" />
     <item android:state_checkable="true"
           android:drawable="@android:color/transparent" />
 
     <!-- Empty background keys. -->
     <item android:state_empty="true" android:state_pressed="true"
-          android:drawable="@color/key_background_pressed_lxx_light" />
+          android:drawable="@drawable/btn_keyboard_key_pressed_lxx_light_border" />
 
     <!-- Normal keys. -->
     <item android:state_pressed="true"
-          android:drawable="@color/key_background_pressed_lxx_light" />
+          android:drawable="@drawable/btn_keyboard_key_pressed_lxx_light_border" />
 </selector>

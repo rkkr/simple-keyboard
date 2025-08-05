@@ -41,7 +41,7 @@
     <fraction name="config_key_horizontal_gap">1.020%p</fraction>
     <!-- config_more_keys_keyboard_key_height x -0.5 -->
     <dimen name="config_more_keys_keyboard_vertical_correction">-22.4dp</dimen>
-    <dimen name="config_key_preview_offset_lxx">43.6dp</dimen>
+    <dimen name="config_key_preview_offset_lxx">45dp</dimen>
     <dimen name="config_key_preview_height_lxx">122dp</dimen>
     <dimen name="config_key_preview_width_lxx">70dp</dimen>
     <fraction name="config_key_preview_text_ratio">90%</fraction>
