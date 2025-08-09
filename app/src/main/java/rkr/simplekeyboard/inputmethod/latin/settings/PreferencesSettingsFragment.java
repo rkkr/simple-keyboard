@@ -49,6 +49,9 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
         } else {
             updateImeSwitchEnabledPref();
         }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA) {
+            removePreference(Settings.PREF_USE_ON_SCREEN);
+        }
     }
 
     @Override

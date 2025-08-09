@@ -42,6 +42,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_SOUND_ON = "sound_on";
     public static final String PREF_POPUP_ON = "popup_on";
     public static final String PREF_HIDE_LANGUAGE_SWITCH_KEY = "pref_hide_language_switch_key";
+    public static final String PREF_USE_ON_SCREEN = "pref_use_on_screen";
     public static final String PREF_ENABLE_IME_SWITCH = "pref_enable_ime_switch";
     public static final String PREF_ENABLED_SUBTYPES = "pref_enabled_subtypes";
     public static final String PREF_KEYPRESS_SOUND_VOLUME = "pref_keypress_sound_volume";
@@ -135,6 +136,10 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     public static boolean readShowLanguageSwitchKey(final SharedPreferences prefs) {
         return !prefs.getBoolean(PREF_HIDE_LANGUAGE_SWITCH_KEY, false);
+    }
+
+    public static boolean readUseOnScreenKeyboard(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_USE_ON_SCREEN, false);
     }
 
     public static boolean readEnableImeSwitch(final SharedPreferences prefs) {

@@ -38,6 +38,7 @@ public class SettingsValues {
     public final boolean mVibrateOn;
     public final boolean mSoundOn;
     public final boolean mKeyPreviewPopupOn;
+    public final boolean mUseOnScreen;
     public final boolean mShowsLanguageSwitchKey;
     public final boolean mImeSwitchEnabled;
     public final int mKeyLongpressTimeout;
@@ -71,6 +72,7 @@ public class SettingsValues {
         mVibrateOn = Settings.readVibrationEnabled(prefs, res);
         mSoundOn = Settings.readKeypressSoundEnabled(prefs, res);
         mKeyPreviewPopupOn = Settings.readKeyPreviewPopupEnabled(prefs, res);
+        mUseOnScreen = Settings.readUseOnScreenKeyboard(prefs);
         mShowsLanguageSwitchKey = Settings.readShowLanguageSwitchKey(prefs);
         mImeSwitchEnabled = Settings.readEnableImeSwitch(prefs);
         mHasHardwareKeyboard = Settings.readHasHardwareKeyboard(res.getConfiguration());

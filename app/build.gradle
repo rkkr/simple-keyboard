@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 android {
     defaultConfig {
         applicationId "rkr.simplekeyboard.inputmethod"
-        compileSdk 35
+        compileSdk 36
         minSdkVersion 19
-        targetSdkVersion 35
-        versionCode 120
-        versionName "5.34"
+        targetSdkVersion 36
+        versionCode 131
+        versionName "5.35"
     }
     buildTypes {
         release {
