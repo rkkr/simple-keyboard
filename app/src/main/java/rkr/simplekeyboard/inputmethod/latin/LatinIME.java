@@ -291,6 +291,16 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     @Override
+    public boolean onEvaluateInputViewShown() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA) {
+            return super.onEvaluateInputViewShown();
+        } else {
+            super.onEvaluateInputViewShown();
+            return mSettings.getCurrent().mUseOnScreen;
+        }
+    }
+
+    @Override
     public void onConfigurationChanged(final Configuration conf) {
         SettingsValues settingsValues = mSettings.getCurrent();
         if (settingsValues.mHasHardwareKeyboard != Settings.readHasHardwareKeyboard(conf)) {
