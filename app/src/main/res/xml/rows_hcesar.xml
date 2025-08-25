@@ -19,16 +19,16 @@
 -->
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto">
     <Row latin:keyWidth="10%p">
-        <include latin:keyboardLayout="@xml/rowkeys_ergol1" />
+        <include latin:keyboardLayout="@xml/rowkeys_hcesar1" />
     </Row>
     <Row latin:keyWidth="10%p">
-        <include latin:keyboardLayout="@xml/rowkeys_ergol2" />
+        <include latin:keyboardLayout="@xml/rowkeys_hcesar2" />
     </Row>
     <Row latin:keyWidth="10%p">
         <Key
             latin:keyStyle="shiftKeyStyle"
             latin:keyWidth="15%p" />
-        <include latin:keyboardLayout="@xml/rowkeys_ergol3" />
+        <include latin:keyboardLayout="@xml/rowkeys_hcesar3" />
         <Key
             latin:keyStyle="deleteKeyStyle"
             latin:keyWidth="15%p" />
