@@ -21,64 +21,66 @@
     <switch>
         <case latin:showExtraChars="true">
             <Key
-                latin:keySpec="q"
-                latin:moreKeys="!text/morekeys_q"
-                latin:keyHintLabel="^"
-                latin:additionalMoreKeys="^" />
+                latin:keySpec="h"
+                latin:moreKeys="!text/morekeys_h"
+                latin:keyHintLabel="_"
+                latin:additionalMoreKeys="_" />
             <Key
                 latin:keySpec="c"
                 latin:moreKeys="!text/morekeys_c"
+                latin:keyHintLabel="\\"
+                latin:additionalMoreKeys="\\\\" />
+            <Key
+                latin:keySpec="e"
+                latin:moreKeys="!text/morekeys_o"
+                latin:keyHintLabel="|"
+                latin:additionalMoreKeys="\\|" />
+            <Key
+                latin:keySpec="s"
+                latin:keyHintLabel="="
+                latin:additionalMoreKeys="=" />
+            <Key
+                latin:keySpec="a"
+                latin:moreKeys="!text/keyspec_left_square_bracket"
+                latin:keyHintLabel="["
+                latin:additionalMoreKeys="%" />
+            <Key
+                latin:keySpec="r"
+                latin:moreKeys="!text/morekeys_r"
+                latin:keyHintLabel="]@"
+                latin:additionalMoreKeys="!text/keyspec_right_square_bracket" />
+            <Key
+                latin:keySpec="o"
+                latin:moreKeys="!text/morekeys_o"				
                 latin:keyHintLabel="&lt;"
                 latin:additionalMoreKeys="!text/keyspec_less_than" />
             <Key
-                latin:keySpec="o"
-                latin:moreKeys="!text/morekeys_o"
+                latin:keySpec="p"
+                latin:moreKeys="!text/morekeys_p"
                 latin:keyHintLabel="&gt;"
                 latin:additionalMoreKeys="!text/keyspec_greater_than" />
             <Key
-                latin:keySpec="p"
-                latin:keyHintLabel="$"
-                latin:additionalMoreKeys="$" />
+                latin:keySpec="z"
+                latin:moreKeys="!text/morekeys_z"				
+                latin:keyHintLabel="{'"
+                latin:additionalMoreKeys="!text/keyspec_left_curly_bracket'" />
             <Key
-                latin:keySpec="w"
-                latin:moreKeys="!text/morekeys_w"
-                latin:keyHintLabel="%"
-                latin:additionalMoreKeys="%" />
-            <Key
-                latin:keySpec="j"
-                latin:moreKeys="!text/morekeys_j"
-                latin:keyHintLabel="\@"
-                latin:additionalMoreKeys="\@" />
-            <Key
-                latin:keySpec="m"
-                latin:keyHintLabel="&amp;"
-                latin:additionalMoreKeys="&amp;" />
-            <Key
-                latin:keySpec="d"
-                latin:moreKeys="_,!text/morekeys_d"
-                latin:keyHintLabel="*"
-                latin:additionalMoreKeys="*" />
-            <Key
-                latin:keySpec="!"
-                latin:keyHintLabel="\'"
-                latin:additionalMoreKeys="\'" />
-            <Key
-                latin:keySpec="y"
-                latin:moreKeys="!text/morekeys_y"
-                latin:keyHintLabel="`"
-                latin:additionalMoreKeys="`" />
+                latin:keySpec=","
+                latin:moreKeys="!text/keyspec_right_curly_bracket"
+                latin:keyHintLabel="}"
+                latin:additionalMoreKeys="!text/morekeys_," />
         </case>
         <default>
-            <Key latin:keySpec="q" latin:moreKeys="!text/morekeys_q" />
+            <Key latin:keySpec="h" latin:moreKeys="!text/morekeys_h" />
             <Key latin:keySpec="c" latin:moreKeys="!text/morekeys_c" />
-            <Key latin:keySpec="o" latin:moreKeys="!text/morekeys_o" />
-            <Key latin:keySpec="p" />
-            <Key latin:keySpec="w" latin:moreKeys="!text/morekeys_w" />
-            <Key latin:keySpec="j" latin:moreKeys="!text/morekeys_j" />
-            <Key latin:keySpec="m" />
-            <Key latin:keySpec="d" latin:moreKeys="!text/morekeys_d" />
-            <Key latin:keySpec="!" latin:moreKeys="!text/morekeys_!" />
-            <Key latin:keySpec="y" latin:moreKeys="!text/morekeys_!" />
+            <Key latin:keySpec="e" latin:moreKeys="!text/morekeys_e" />
+            <Key latin:keySpec="s" />
+            <Key latin:keySpec="a" latin:moreKeys="!text/morekeys_a" />
+            <Key latin:keySpec="r" latin:moreKeys="!text/morekeys_r" />
+            <Key latin:keySpec="o" />
+            <Key latin:keySpec="p" latin:moreKeys="!text/morekeys_p" />
+            <Key latin:keySpec="z" latin:moreKeys="!text/morekeys_z" />
+            <Key latin:keySpec="," latin:moreKeys="!text/morekeys_," />
         </default>
     </switch>
 </merge>
