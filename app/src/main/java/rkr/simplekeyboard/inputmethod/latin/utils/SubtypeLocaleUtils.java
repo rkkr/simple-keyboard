@@ -220,7 +220,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_FARSI = "farsi";
     public static final String LAYOUT_GEORGIAN = "georgian";
     public static final String LAYOUT_GREEK = "greek";
-    public static final String LAYOUT_HCESAR = "hcesar";	
+    public static final String LAYOUT_HCESAR = "hcesar";
     public static final String LAYOUT_HEBREW = "hebrew";
     public static final String LAYOUT_HINDI = "hindi";
     public static final String LAYOUT_HINDI_COMPACT = "hindi_compact";
