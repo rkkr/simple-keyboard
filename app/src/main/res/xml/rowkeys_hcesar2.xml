@@ -68,11 +68,22 @@
                 latin:moreKeys="!text/morekeys_x"
                 latin:keyHintLabel=")"
                 latin:additionalMoreKeys=")" />
-            <Key
-                latin:keySpec="."
-                latin:moreKeys="!text/morekeys_s"  
-                latin:keyHintLabel="/"
-                latin:additionalMoreKeys="/" />
+            <switch>
+                <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted">
+                    <Key
+                        latin:keySpec="»"
+                        latin:keyHintLabel="-"
+                        latin:additionalMoreKeys="-"
+                        latin:moreKeys="!text/morekeys_l" />
+                </case>
+                <default>
+                    <Key
+                        latin:keySpec="."
+                        latin:keyHintLabel="-"
+                        latin:additionalMoreKeys="-"
+                        latin:moreKeys="!text/morekeys_l" />
+                </default>
+            </switch>
         </case>
         <default>
             <Key

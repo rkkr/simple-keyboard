@@ -25,12 +25,12 @@
         <case latin:showExtraChars="true">
             <Key
                 latin:keySpec="ç"
-                latin:moreKeys="!text/morekeys_j"
+                latin:moreKeys="!text/morekeys_c"
                 latin:keyHintLabel="*"
                 latin:additionalMoreKeys="*" />
             <Key
                 latin:keySpec="j"
-                latin:moreKeys="!text/morekeys_k"
+                latin:moreKeys="!text/morekeys_j"
                 latin:keyHintLabel="&quot;"
                 latin:additionalMoreKeys="&quot;" />
             <Key
@@ -47,12 +47,12 @@
                 latin:additionalMoreKeys=";" />
             <Key
                 latin:keySpec="g"
-                latin:moreKeys="!text/morekeys_w"
+                latin:moreKeys="!text/morekeys_g"
                 latin:keyHintLabel="!"
                 latin:additionalMoreKeys="!" />
             <Key
                 latin:keySpec="k"
-                latin:moreKeys="!text/morekeys_v"
+                latin:moreKeys="!text/morekeys_k"
                 latin:keyHintLabel="\?"
                 latin:additionalMoreKeys="\?" />
         </case>
