@@ -33,14 +33,17 @@
                 latin:additionalMoreKeys="&quot;" />
             <Key
                 latin:keySpec="b"
+                latin:moreKeys="!text/morekeys_b"
                 latin:keyHintLabel="&apos;"
                 latin:additionalMoreKeys="&apos;" />
             <Key
                 latin:keySpec="f"
+                latin:moreKeys="!text/morekeys_f"				
                 latin:keyHintLabel=":"
                 latin:additionalMoreKeys=":" />
             <Key
                 latin:keySpec="v"
+                latin:moreKeys="!text/morekeys_v"				
                 latin:keyHintLabel=";"
                 latin:additionalMoreKeys=";" />
             <Key
@@ -62,11 +65,14 @@
                 latin:keySpec="j"
                 latin:moreKeys="!text/morekeys_j" />
             <Key
-                latin:keySpec="b" />
+                latin:keySpec="b"
+                latin:moreKeys="!text/morekeys_b" />
             <Key
-                latin:keySpec="f" />
+                latin:keySpec="f"
+                latin:moreKeys="!text/morekeys_f" />
             <Key
-                latin:keySpec="v" />
+                latin:keySpec="v"
+                latin:moreKeys="!text/morekeys_v" />
             <Key
                 latin:keySpec="g"
                 latin:moreKeys="!text/morekeys_g" />

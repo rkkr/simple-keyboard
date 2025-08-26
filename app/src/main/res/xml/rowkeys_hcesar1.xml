@@ -33,15 +33,17 @@
                 latin:additionalMoreKeys="\\\\" />
             <Key
                 latin:keySpec="e"
-                latin:moreKeys="!text/morekeys_o"
+                latin:moreKeys="!text/morekeys_e"
                 latin:keyHintLabel="|"
                 latin:additionalMoreKeys="\\|" />
             <Key
                 latin:keySpec="s"
+                latin:moreKeys="!text/morekeys_s"
                 latin:keyHintLabel="="
                 latin:additionalMoreKeys="=" />
             <Key
                 latin:keySpec="a"
+                latin:moreKeys="!text/morekeys_a"				
                 latin:moreKeys="!text/keyspec_left_square_bracket"
                 latin:keyHintLabel="["
                 latin:additionalMoreKeys="%" />
@@ -75,10 +77,10 @@
             <Key latin:keySpec="h" latin:moreKeys="!text/morekeys_h" />
             <Key latin:keySpec="c" latin:moreKeys="!text/morekeys_c" />
             <Key latin:keySpec="e" latin:moreKeys="!text/morekeys_e" />
-            <Key latin:keySpec="s" />
+            <Key latin:keySpec="s" latin:moreKeys="!text/morekeys_s" />
             <Key latin:keySpec="a" latin:moreKeys="!text/morekeys_a" />
             <Key latin:keySpec="r" latin:moreKeys="!text/morekeys_r" />
-            <Key latin:keySpec="o" />
+            <Key latin:keySpec="o" latin:moreKeys="!text/morekeys_o" />
             <Key latin:keySpec="p" latin:moreKeys="!text/morekeys_p" />
             <Key latin:keySpec="z" latin:moreKeys="!text/morekeys_z" />
             <Key latin:keySpec="," latin:moreKeys="!text/morekeys_," />

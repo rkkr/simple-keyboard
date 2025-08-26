@@ -77,7 +77,7 @@
             <Key latin:keySpec="t" latin:moreKeys="!text/morekeys_t" />
             <Key latin:keySpec="d" latin:moreKeys="!text/morekeys_d" />
             <Key latin:keySpec="i" latin:moreKeys="!text/morekeys_i" />
-            <Key latin:keySpec="n" />
+            <Key latin:keySpec="n" latin:moreKeys="!text/morekeys_n" />
             <Key latin:keySpec="u" latin:moreKeys="!text/morekeys_u" />			
             <Key latin:keySpec="l" latin:moreKeys="!text/morekeys_l" />
             <Key latin:keySpec="m" latin:moreKeys="!text/morekeys_m" />
