@@ -387,6 +387,7 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_MALAY_MALAYSIA:
                 case LOCALE_DUTCH:
                 case LOCALE_POLISH:
+                    break;									
                 case LOCALE_PORTUGUESE_BRAZIL:				
                     addLayout(LAYOUT_HCESAR, R.string.subtype_hcesar);					
                     addGenericLayouts();
