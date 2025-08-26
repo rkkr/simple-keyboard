@@ -387,12 +387,6 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_MALAY_MALAYSIA:
                 case LOCALE_DUTCH:
                 case LOCALE_POLISH:
-                    break;
-                case LOCALE_PORTUGUESE_BRAZIL:
-                case LOCALE_PORTUGUESE_PORTUGAL:
-                    addLayout(LAYOUT_HCESAR, R.string.subtype_hcesar);
-                    addGenericLayouts();
-                    break;
                 case LOCALE_ROMANIAN:
                 case LOCALE_SLOVAK:
                 case LOCALE_SWAHILI:
@@ -552,6 +546,11 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_URDU:
                     addLayout(LAYOUT_URDU);
                     break;
+                case LOCALE_PORTUGUESE_BRAZIL:
+                case LOCALE_PORTUGUESE_PORTUGAL:
+                    addLayout(LAYOUT_HCESAR, R.string.subtype_hcesar);
+                    addGenericLayouts();
+                    break;					
             }
             return mSubtypes;
         }
