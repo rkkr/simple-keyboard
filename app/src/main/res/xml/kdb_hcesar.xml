@@ -2,7 +2,7 @@
 <!--
 /*
 **
-** Copyright 2025, The Android Open Source Project
+** Copyright 2012, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -24,14 +24,12 @@
             latin:verticalGap="@fraction/config_key_vertical_gap_5row"
             latin:bonusHeight="@fraction/config_key_bonus_height_5row"
             latin:rowHeight="20%p">
-            <include latin:keyboardLayout="@xml/key_styles_common" />
             <include latin:keyboardLayout="@xml/row_qwerty0" />
             <include latin:keyboardLayout="@xml/rows_hcesar" />
         </Keyboard>
     </case>
     <default>
         <Keyboard>
-            <include latin:keyboardLayout="@xml/key_styles_common" />
             <include latin:keyboardLayout="@xml/rows_hcesar" />
         </Keyboard>
     </default>
