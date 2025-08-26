@@ -44,7 +44,6 @@
             <Key
                 latin:keySpec="a"
                 latin:moreKeys="!text/morekeys_a"				
-                latin:moreKeys="!text/keyspec_left_square_bracket"
                 latin:keyHintLabel="["
                 latin:additionalMoreKeys="%" />
             <Key
