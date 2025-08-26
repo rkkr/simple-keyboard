@@ -81,7 +81,7 @@
                         latin:keySpec="."
                         latin:keyHintLabel="-"
                         latin:additionalMoreKeys="-"
-                        latin:moreKeys="!text/morekeys_l" />
+                        latin:moreKeys="!text/morekeys_period" />
                 </default>
             </switch>
         </case>

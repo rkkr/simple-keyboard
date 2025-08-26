@@ -28,11 +28,13 @@
             latin:keyStyle="toSymbolKeyStyle"
             latin:keyWidth="15%p" />
         <Key
-                latin:keySpec="y" />
+            latin:keySpec="y"
+            latin:moreKeys="!text/morekeys_period" />
         <include
             latin:keyboardLayout="@xml/key_space_5kw" />
         <Key
-                latin:keySpec="w" />
+            latin:keySpec="w"
+            latin:moreKeys="!icon/settings_key|!code/key_settings" />	
         <Key
             latin:keyStyle="enterKeyStyle"
             latin:keyWidth="fillRight" />
