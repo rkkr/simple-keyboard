@@ -69,7 +69,7 @@
                 latin:keyHintLabel=")"
                 latin:additionalMoreKeys=")" />
             <switch>
-                <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted">
+                <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted|alphabetShiftLocked">
                     <Key
                         latin:keySpec="»"
                         latin:keyHintLabel="/"
