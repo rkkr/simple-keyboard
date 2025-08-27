@@ -72,15 +72,15 @@
                 <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted">
                     <Key
                         latin:keySpec="»"
-                        latin:keyHintLabel="-"
-                        latin:additionalMoreKeys="-"
+                        latin:keyHintLabel="/"
+                        latin:additionalMoreKeys="/"
                         latin:moreKeys="!text/morekeys_l" />
                 </case>
                 <default>
                     <Key
                         latin:keySpec="."
-                        latin:keyHintLabel="-"
-                        latin:additionalMoreKeys="-"
+                        latin:keyHintLabel="/"
+                        latin:additionalMoreKeys="/"
                         latin:moreKeys="!text/morekeys_period" />
                 </default>
             </switch>
