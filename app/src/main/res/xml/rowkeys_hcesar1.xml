@@ -81,7 +81,7 @@
                         latin:additionalMoreKeys="0"
                         latin:moreKeys="!text/morekeys_l" />
                 </default>
-            </switch>								
+            </switch>
         </case>
         <case latin:showNumberRow="true">
             <Key
