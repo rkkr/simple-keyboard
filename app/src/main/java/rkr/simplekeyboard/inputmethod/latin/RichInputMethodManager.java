@@ -49,6 +49,7 @@ import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
+import rkr.simplekeyboard.inputmethod.latin.utils.DialogUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypePreferenceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
@@ -585,7 +586,8 @@ public class RichInputMethodManager {
                 }
             }
         };
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(
+                DialogUtils.getPlatformDialogThemeContext(context));
         builder.setSingleChoiceItems(items, currentSubtypeIndex, listener).setTitle(title);
         final AlertDialog dialog = builder.create();
         dialog.setCancelable(true);
