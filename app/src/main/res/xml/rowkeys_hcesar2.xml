@@ -60,7 +60,7 @@
                 latin:additionalMoreKeys="+" />
             <Key
                 latin:keySpec="m"
-                latin:moreKeys="!text/morekeys_t"    
+                latin:moreKeys="!text/morekeys_t"
                 latin:keyHintLabel="("
                 latin:additionalMoreKeys="(" />
             <Key
