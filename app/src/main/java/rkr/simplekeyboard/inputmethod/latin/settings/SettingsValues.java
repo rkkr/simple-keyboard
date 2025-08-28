@@ -69,7 +69,7 @@ public class SettingsValues {
 
         // Get the settings preferences
         mAutoCap = prefs.getBoolean(Settings.PREF_AUTO_CAP, true);
-        mVibrateOn = Settings.readVibrationEnabled(prefs, res);
+        mVibrateOn = Settings.readVibrationEnabled(prefs);
         mSoundOn = Settings.readKeypressSoundEnabled(prefs, res);
         mKeyPreviewPopupOn = Settings.readKeyPreviewPopupEnabled(prefs, res);
         mUseOnScreen = Settings.readUseOnScreenKeyboard(prefs);
@@ -78,7 +78,7 @@ public class SettingsValues {
         mHasHardwareKeyboard = Settings.readHasHardwareKeyboard(res.getConfiguration());
 
         // Compute other readable settings
-        mKeyLongpressTimeout = Settings.readKeyLongpressTimeout(prefs, res);
+        mKeyLongpressTimeout = Settings.readKeyLongpressTimeout(prefs);
         mKeypressSoundVolume = Settings.readKeypressSoundVolume(prefs);
         mKeyPreviewPopupDismissDelay = res.getInteger(R.integer.config_key_preview_linger_timeout);
         mKeyboardHeightScale = Settings.readKeyboardHeight(prefs, DEFAULT_SIZE_SCALE);

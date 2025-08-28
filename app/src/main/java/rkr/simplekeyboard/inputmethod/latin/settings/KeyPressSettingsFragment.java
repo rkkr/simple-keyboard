@@ -133,12 +133,12 @@ public final class KeyPressSettingsFragment extends SubScreenFragment {
 
             @Override
             public int readValue(final String key) {
-                return Settings.readKeyLongpressTimeout(prefs, res);
+                return Settings.readKeyLongpressTimeout(prefs);
             }
 
             @Override
             public int readDefaultValue(final String key) {
-                return Settings.readDefaultKeyLongpressTimeout(res);
+                return Settings.readDefaultKeyLongpressTimeout();
             }
 
             @Override
