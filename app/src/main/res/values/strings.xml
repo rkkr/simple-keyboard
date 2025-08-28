@@ -48,6 +48,7 @@
 
     <!-- Preference for input language selection -->
     <string name="select_language">Languages</string>
+    <string name="select_language_description" translatable="false">en_US:qwerty;en_US:qwertz;lt:qwerty</string>
 
     <!-- Description for English (UK) keyboard subtype [CHAR LIMIT=25]
          (UK) should be an abbreviation of United Kingdom to fit in the CHAR LIMIT. -->
