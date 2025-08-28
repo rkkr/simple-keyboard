@@ -440,8 +440,8 @@ public final class SubtypeLocaleUtils {
                     addGenericLayouts();
                     break;
                 case LOCALE_FRENCH_SWITZERLAND:
-                    addLayout(LAYOUT_BEPO);
                     addLayout(LAYOUT_SWISS);
+                    addLayout(LAYOUT_BEPO);
                     addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
                     addGenericLayouts();
                     break;

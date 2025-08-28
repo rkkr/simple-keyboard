@@ -19,7 +19,6 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.SwitchPreference;
 
@@ -43,12 +42,8 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.prefs_screen_preferences);
+        updateImeSwitchEnabledPref();
 
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            removePreference(Settings.PREF_ENABLE_IME_SWITCH);
-        } else {
-            updateImeSwitchEnabledPref();
-        }
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA) {
             removePreference(Settings.PREF_USE_ON_SCREEN);
         }
@@ -70,23 +65,12 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
      */
     private void updateImeSwitchEnabledPref() {
         final Preference enableImeSwitch = findPreference(Settings.PREF_ENABLE_IME_SWITCH);
-        final Preference hideLanguageSwitchKey =
-                findPreference(Settings.PREF_HIDE_LANGUAGE_SWITCH_KEY);
+        final Preference hideLanguageSwitchKey = findPreference(Settings.PREF_HIDE_LANGUAGE_SWITCH_KEY);
         if (enableImeSwitch == null || hideLanguageSwitchKey == null) {
             return;
         }
-        final boolean hideLanguageSwitchKeyIsChecked;
-        // depending on the version of Android, the preferences could be different types
-        if (hideLanguageSwitchKey instanceof CheckBoxPreference) {
-            hideLanguageSwitchKeyIsChecked =
-                    ((CheckBoxPreference)hideLanguageSwitchKey).isChecked();
-        } else if (hideLanguageSwitchKey instanceof SwitchPreference) {
-            hideLanguageSwitchKeyIsChecked =
-                    ((SwitchPreference)hideLanguageSwitchKey).isChecked();
-        } else {
-            // in case it can be something else, don't bother doing anything
-            return;
-        }
+
+        final boolean hideLanguageSwitchKeyIsChecked = ((SwitchPreference)hideLanguageSwitchKey).isChecked();
         enableImeSwitch.setEnabled(!hideLanguageSwitchKeyIsChecked);
     }
 }
