@@ -86,36 +86,39 @@
             </switch>
         </case>
         <default>
-            <Key
-                latin:keySpec="a"
-                latin:moreKeys="!text/morekeys_a" />
-            <Key
-                latin:keySpec="o"
-                latin:moreKeys="!text/morekeys_o" />
-            <Key
-                latin:keySpec="e"
-                latin:moreKeys="!text/morekeys_e" />
-            <Key
-                latin:keySpec="u"
-                latin:moreKeys="!text/morekeys_u" />
-            <Key
-                latin:keySpec="i"
-                latin:moreKeys="!text/morekeys_i" />
-            <Key
-                latin:keySpec="d"
-                latin:moreKeys="!text/morekeys_d" />
-            <Key
-                latin:keySpec="h"
-                latin:moreKeys="!text/morekeys_h" />
+            <Key latin:keySpec="q"
+                latin:moreKeys="!text/morekeys_q" />
             <Key
                 latin:keySpec="t"
                 latin:moreKeys="!text/morekeys_t" />
             <Key
-                latin:keySpec="n"
-                latin:moreKeys="!text/morekeys_n" />
+                latin:keySpec="d"
+                latin:moreKeys="!text/morekeys_d" />
             <Key
-                latin:keySpec="s"
-                latin:moreKeys="!text/morekeys_s" />
+                latin:keySpec="i" 
+                latin:moreKeys="!text/morekeys_i" />				
+            <Key
+                latin:keySpec="n" />
+            <Key
+                latin:keySpec="u"
+                latin:moreKeys="!text/morekeys_u" />
+            <Key
+                latin:keySpec="l" />
+            <Key
+                latin:keySpec="m" />	
+            <Key
+                latin:keySpec="x" />				
+           <switch>
+                <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted|alphabetShiftLocked">
+                    <Key
+                        latin:keySpec="»" />
+                </case>
+                <default>
+                    <Key
+                        latin:keySpec="." />
+                </default>
+            </switch>
         </default>
     </switch>
 </merge>
+
