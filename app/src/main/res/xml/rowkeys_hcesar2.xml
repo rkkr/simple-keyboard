@@ -22,50 +22,44 @@
     xmlns:latin="http://schemas.android.com/apk/res-auto"
 >
     <switch>
-        <case latin:showExtraChars="true">
+        <case
+            latin:showExtraChars="true">
             <Key
                 latin:keySpec="q"
-                latin:moreKeys="!text/morekeys_q"
                 latin:keyHintLabel="\@"
                 latin:additionalMoreKeys="\@" />
             <Key
                 latin:keySpec="t"
-                latin:moreKeys="!text/morekeys_t"
                 latin:keyHintLabel="#"
-                latin:additionalMoreKeys="#"  />
+                latin:additionalMoreKeys="#" />
             <Key
                 latin:keySpec="d"
-                latin:moreKeys="!text/morekeys_d"
                 latin:keyHintLabel="$"
                 latin:additionalMoreKeys="$" />
             <Key
                 latin:keySpec="i"
-                latin:moreKeys="!text/morekeys_i"
                 latin:keyHintLabel="%"
-                latin:additionalMoreKeys="%" />
+                latin:additionalMoreKeys="%"
+                latin:moreKeys="!text/morekeys_i" />
             <Key
                 latin:keySpec="n"
-                latin:moreKeys="!text/morekeys_n"
                 latin:keyHintLabel="&amp;"
                 latin:additionalMoreKeys="&amp;" />
             <Key
                 latin:keySpec="u"
-                latin:moreKeys="!text/morekeys_u"
                 latin:keyHintLabel="-"
-                latin:additionalMoreKeys="-" />
+                latin:additionalMoreKeys="-"
+                latin:moreKeys="!text/morekeys_u" />
             <Key
                 latin:keySpec="l"
-                latin:moreKeys="!text/morekeys_l"
                 latin:keyHintLabel="+"
                 latin:additionalMoreKeys="+" />
             <Key
                 latin:keySpec="m"
-                latin:moreKeys="!text/morekeys_t"
                 latin:keyHintLabel="("
                 latin:additionalMoreKeys="(" />
             <Key
                 latin:keySpec="x"
-                latin:moreKeys="!text/morekeys_x"
                 latin:keyHintLabel=")"
                 latin:additionalMoreKeys=")" />
             <switch>
@@ -73,30 +67,25 @@
                     <Key
                         latin:keySpec="»"
                         latin:keyHintLabel="/"
-                        latin:additionalMoreKeys="/"
-                        latin:moreKeys="!text/morekeys_l" />
+                        latin:additionalMoreKeys="/" />
                 </case>
                 <default>
                     <Key
                         latin:keySpec="."
                         latin:keyHintLabel="/"
-                        latin:additionalMoreKeys="/"
-                        latin:moreKeys="!text/morekeys_l" />
+                        latin:additionalMoreKeys="/,?" />
                 </default>
             </switch>
         </case>
         <default>
-            <Key latin:keySpec="q"
-                latin:moreKeys="!text/morekeys_q" />
+            <Key latin:keySpec="q" />
             <Key
-                latin:keySpec="t"
-                latin:moreKeys="!text/morekeys_t" />
+                latin:keySpec="t" />
             <Key
-                latin:keySpec="d"
-                latin:moreKeys="!text/morekeys_d" />
+                latin:keySpec="d" />
             <Key
                 latin:keySpec="i" 
-                latin:moreKeys="!text/morekeys_i" />				
+                latin:moreKeys="!text/morekeys_i" />
             <Key
                 latin:keySpec="n" />
             <Key
@@ -105,9 +94,9 @@
             <Key
                 latin:keySpec="l" />
             <Key
-                latin:keySpec="m" />	
+                latin:keySpec="m" />
             <Key
-                latin:keySpec="x" />				
+                latin:keySpec="x" />
            <switch>
                 <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted|alphabetShiftLocked">
                     <Key
@@ -115,10 +104,10 @@
                 </case>
                 <default>
                     <Key
-                        latin:keySpec="." />
+                        latin:keySpec="." 
+                        latin:additionalMoreKeys="?" />
                 </default>
             </switch>
         </default>
     </switch>
 </merge>
-
