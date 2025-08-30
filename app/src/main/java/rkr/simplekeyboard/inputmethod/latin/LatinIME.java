@@ -548,7 +548,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // no visual element will be shown on the screen.
             outInsets.contentTopInsets = inputHeight;
             outInsets.visibleTopInsets = inputHeight;
-            mInsetsUpdater.setInsets(outInsets);
+            //mInsetsUpdater.setInsets(outInsets);
             return;
         }
         final int visibleTopY = inputHeight - visibleKeyboardView.getHeight();
@@ -565,7 +565,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
         outInsets.contentTopInsets = visibleTopY;
         outInsets.visibleTopInsets = visibleTopY;
-        mInsetsUpdater.setInsets(outInsets);
+        //mInsetsUpdater.setInsets(outInsets);
     }
 
     @Override
