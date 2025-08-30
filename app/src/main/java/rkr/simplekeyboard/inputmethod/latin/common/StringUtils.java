@@ -218,12 +218,17 @@ public final class StringUtils {
         return locale;
     }
 
-    public static String toTitleCaseOfKeyLabel(final String label,
-            final Locale locale) {
+    public static String toTitleCaseOfKeyLabel(final String label, final Locale locale) {
         if (label == null) {
-            return label;
+            return null;
         }
-        return label.toUpperCase(getLocaleUsedForToTitleCase(locale));
+        switch (label) {
+            case "\u00DF":
+                // String.toUpperCase() converts the sharp S (ß, U+00DF) into 'SS' instead of ẞ (U+1E9E).
+                return "\u1E9E";
+            default:
+                return label.toUpperCase(getLocaleUsedForToTitleCase(locale));
+        }
     }
 
     public static int toTitleCaseOfKeyCode(final int code, final Locale locale) {
