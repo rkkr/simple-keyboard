@@ -166,6 +166,6 @@ public final class LocaleResourceUtils {
             displayName = LocaleUtils.constructLocaleFromString(localeString)
                     .getDisplayName(displayLocale);
         }
-        return StringUtils.capitalizeFirstCodePoint(displayName, displayLocale);
+        return StringUtils.capitalizeEachWord(displayName, displayLocale);
     }
 }
