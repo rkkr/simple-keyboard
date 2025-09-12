@@ -49,8 +49,6 @@ import java.util.concurrent.TimeUnit;
 
 import rkr.simplekeyboard.inputmethod.compat.EditorInfoCompatUtils;
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
-import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils;
-import rkr.simplekeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils.InsetsUpdater;
 import rkr.simplekeyboard.inputmethod.event.Event;
 import rkr.simplekeyboard.inputmethod.event.InputTransaction;
 import rkr.simplekeyboard.inputmethod.keyboard.Keyboard;
@@ -88,7 +86,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     // TODO: Move these {@link View}s to {@link KeyboardSwitcher}.
     private View mInputView;
-    private InsetsUpdater mInsetsUpdater;
 
     private RichInputMethodManager mRichImm;
     final KeyboardSwitcher mKeyboardSwitcher;
@@ -325,7 +322,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void setInputView(final View view) {
         super.setInputView(view);
         mInputView = view;
-        mInsetsUpdater = ViewOutlineProviderCompatUtils.setInsetsOutlineProvider(view);
         updateSoftInputWindowLayoutParameters();
     }
 
@@ -548,7 +544,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // no visual element will be shown on the screen.
             outInsets.contentTopInsets = inputHeight;
             outInsets.visibleTopInsets = inputHeight;
-            mInsetsUpdater.setInsets(outInsets);
             return;
         }
         final int visibleTopY = inputHeight - visibleKeyboardView.getHeight();
@@ -565,7 +560,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
         outInsets.contentTopInsets = visibleTopY;
         outInsets.visibleTopInsets = visibleTopY;
-        mInsetsUpdater.setInsets(outInsets);
     }
 
     @Override

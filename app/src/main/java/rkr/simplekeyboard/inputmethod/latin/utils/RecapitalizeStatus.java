@@ -152,13 +152,13 @@ public class RecapitalizeStatus {
                 mStringAfter = mStringBefore;
                 break;
             case CAPS_MODE_ALL_LOWER:
-                mStringAfter = mStringBefore.toLowerCase(mLocale);
+                mStringAfter = StringUtils.toLowerCase(mStringBefore, mLocale);
                 break;
             case CAPS_MODE_FIRST_WORD_UPPER:
                 mStringAfter = StringUtils.capitalizeEachWord(mStringBefore, mLocale);
                 break;
             case CAPS_MODE_ALL_UPPER:
-                mStringAfter = mStringBefore.toUpperCase(mLocale);
+                mStringAfter = StringUtils.toUpperCase(mStringBefore, mLocale);
                 break;
             default:
                 mStringAfter = mStringBefore;
