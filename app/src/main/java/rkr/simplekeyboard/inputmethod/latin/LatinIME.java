@@ -342,6 +342,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public void onFinishInputView(final boolean finishingInput) {
+        mInputLogic.clearCaches();
         mRichImm.resetSubtypeCycleOrder();
         mHandler.onFinishInputView(finishingInput);
     }

@@ -124,6 +124,11 @@ public final class RichInputConnection {
      * Reload the cached text from the EditorInfo.
      */
     public void reloadTextCache(final EditorInfo editorInfo) {
+        if (mExpectedSelStart != INVALID_CURSOR_POSITION && mExpectedSelEnd != INVALID_CURSOR_POSITION) {
+            // Updated by onUpdateSelection, don't override as editorInfo might be invalid
+            return;
+        }
+
         mIC = mLatinIME.getCurrentInputConnection();
         updateSelection(editorInfo.initialSelStart, editorInfo.initialSelEnd);
 
@@ -208,6 +213,15 @@ public final class RichInputConnection {
                 }
             }
         });
+    }
+
+    public void clearCaches() {
+        Log.i(TAG, "Clearing text caches.");
+        mExpectedSelStart = INVALID_CURSOR_POSITION;
+        mExpectedSelEnd = INVALID_CURSOR_POSITION;
+        mTextBeforeCursor = "";
+        mTextSelection = "";
+        mTextAfterCursor = "";
     }
 
     /**
