@@ -304,9 +304,14 @@ public final class RichInputConnection {
         mTextAfterCursor = text + textAfterCursor.substring(endPosition - startPosition);
 
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
-        mIC.setComposingRegion(startPosition, endPosition);
-        mIC.setComposingText(text, startPosition);
-        mIC.finishComposingText();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            mIC.replaceText(startPosition, endPosition, text, 0, null);
+        } else {
+            mIC.setComposingRegion(startPosition, endPosition);
+            mIC.setComposingText(text, 0);
+            mIC.finishComposingText();
+        }
     }
 
     public void deleteTextBeforeCursor(final int numChars) {
