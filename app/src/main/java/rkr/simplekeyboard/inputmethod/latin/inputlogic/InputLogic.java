@@ -46,8 +46,6 @@ public final class InputLogic {
     public final RichInputConnection mConnection;
     private final RecapitalizeStatus mRecapitalizeStatus = new RecapitalizeStatus();
 
-    public final TreeSet<Long> mCurrentlyPressedHardwareKeys = new TreeSet<>();
-
     /**
      * Create a new instance of the input logic.
      * @param latinIME the instance of the parent LatinIME. We should remove this when we can.
@@ -65,7 +63,10 @@ public final class InputLogic {
      */
     public void startInput() {
         mRecapitalizeStatus.disable(); // Do not perform recapitalize until the cursor is moved once
-        mCurrentlyPressedHardwareKeys.clear();
+    }
+
+    public void clearCaches() {
+        mConnection.clearCaches();
     }
 
     /**

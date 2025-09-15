@@ -124,6 +124,11 @@ public final class RichInputConnection {
      * Reload the cached text from the EditorInfo.
      */
     public void reloadTextCache(final EditorInfo editorInfo) {
+        if (mExpectedSelStart != INVALID_CURSOR_POSITION && mExpectedSelEnd != INVALID_CURSOR_POSITION) {
+            // Updated by onUpdateSelection, don't override as editorInfo might be invalid
+            return;
+        }
+
         mIC = mLatinIME.getCurrentInputConnection();
         updateSelection(editorInfo.initialSelStart, editorInfo.initialSelEnd);
 
@@ -210,6 +215,15 @@ public final class RichInputConnection {
         });
     }
 
+    public void clearCaches() {
+        Log.i(TAG, "Clearing text caches.");
+        mExpectedSelStart = INVALID_CURSOR_POSITION;
+        mExpectedSelEnd = INVALID_CURSOR_POSITION;
+        mTextBeforeCursor = "";
+        mTextSelection = "";
+        mTextAfterCursor = "";
+    }
+
     /**
      * Calls {@link InputConnection#commitText(CharSequence, int)}.
      *
@@ -282,17 +296,22 @@ public final class RichInputConnection {
             return;
         }
 
+        final int numCharsSelected = endPosition - startPosition;
         final String textAfterCursor = mTextAfterCursor;
-        if (textAfterCursor.length() < endPosition - startPosition) {
+        if (textAfterCursor.length() < numCharsSelected) {
             Log.e(TAG, "replaceText called with range longer than current text");
             return;
         }
-        mTextAfterCursor = text + textAfterCursor.substring(endPosition - startPosition);
+        mTextAfterCursor = text + textAfterCursor.substring(numCharsSelected);
 
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
-        mIC.setComposingRegion(startPosition, endPosition);
-        mIC.setComposingText(text, startPosition);
-        mIC.finishComposingText();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            mIC.replaceText(startPosition, endPosition, text, 0, null);
+        } else {
+            mIC.deleteSurroundingText(0, numCharsSelected);
+            mIC.commitText(text, 0);
+        }
     }
 
     public void deleteTextBeforeCursor(final int numChars) {
