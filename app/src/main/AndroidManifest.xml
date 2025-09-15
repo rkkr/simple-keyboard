@@ -58,6 +58,9 @@
                 <action android:name="android.intent.action.LOCALE_CHANGED" />
             </intent-filter>
         </receiver>
+
+        <meta-data android:name="android.content.APP_RESTRICTIONS"
+            android:resource="@xml/app_restrictions" />
     </application>
 
 </manifest>

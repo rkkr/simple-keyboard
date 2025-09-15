@@ -30,7 +30,6 @@ import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
-import rkr.simplekeyboard.inputmethod.latin.utils.ResourceUtils;
 
 public final class Settings implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = Settings.class.getSimpleName();
@@ -120,11 +119,9 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
                 res.getBoolean(R.bool.config_default_sound_enabled));
     }
 
-    public static boolean readVibrationEnabled(final SharedPreferences prefs,
-            final Resources res) {
+    public static boolean readVibrationEnabled(final SharedPreferences prefs) {
         final boolean hasVibrator = AudioAndHapticFeedbackManager.getInstance().hasVibrator();
-        return hasVibrator && prefs.getBoolean(PREF_VIBRATE_ON,
-                res.getBoolean(R.bool.config_default_vibration_enabled));
+        return hasVibrator && prefs.getBoolean(PREF_VIBRATE_ON, true);
     }
 
     public static boolean readKeyPreviewPopupEnabled(final SharedPreferences prefs,
@@ -183,16 +180,15 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return DEFAULT_KEYPRESS_SOUND_VOLUME;
     }
 
-    public static int readKeyLongpressTimeout(final SharedPreferences prefs,
-            final Resources res) {
+    public static int readKeyLongpressTimeout(final SharedPreferences prefs) {
         final int milliseconds = prefs.getInt(
                 PREF_KEY_LONGPRESS_TIMEOUT, UNDEFINED_PREFERENCE_VALUE_INT);
         return (milliseconds != UNDEFINED_PREFERENCE_VALUE_INT) ? milliseconds
-                : readDefaultKeyLongpressTimeout(res);
+                : readDefaultKeyLongpressTimeout();
     }
 
-    public static int readDefaultKeyLongpressTimeout(final Resources res) {
-        return res.getInteger(R.integer.config_default_longpress_key_timeout);
+    public static int readDefaultKeyLongpressTimeout() {
+        return 300;
     }
 
     public static float readKeyboardHeight(final SharedPreferences prefs,
