@@ -296,21 +296,21 @@ public final class RichInputConnection {
             return;
         }
 
+        final int numCharsSelected = endPosition - startPosition;
         final String textAfterCursor = mTextAfterCursor;
-        if (textAfterCursor.length() < endPosition - startPosition) {
+        if (textAfterCursor.length() < numCharsSelected) {
             Log.e(TAG, "replaceText called with range longer than current text");
             return;
         }
-        mTextAfterCursor = text + textAfterCursor.substring(endPosition - startPosition);
+        mTextAfterCursor = text + textAfterCursor.substring(numCharsSelected);
 
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             mIC.replaceText(startPosition, endPosition, text, 0, null);
         } else {
-            mIC.setComposingRegion(startPosition, endPosition);
-            mIC.setComposingText(text, 0);
-            mIC.finishComposingText();
+            mIC.deleteSurroundingText(0, numCharsSelected);
+            mIC.commitText(text, 0);
         }
     }
 
