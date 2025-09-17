@@ -20,7 +20,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="vibrate_on_keypress">"Vibrar ao primir as teclas"</string>
-    <string name="sound_on_keyprss">"Som ao premir as teclas"</string>
+    <string name="sound_on_keypress">"Som ao premir as teclas"</string>
     <string name="popup_on_keypress">"Mostrar popup ao premir tecla"</string>
     <string name="settings_screen_preferences">"Preferências"</string>
     <string name="settings_screen_theme">"Tema"</string>
