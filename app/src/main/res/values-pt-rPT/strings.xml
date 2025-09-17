@@ -19,14 +19,12 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="vibrate_on_keypress">Vibrar ao premir as teclas</string>
+    <string name="vibrate_on_keypress">"Vibrar ao primir as teclas"</string>
     <string name="sound_on_keypress">"Som ao premir as teclas"</string>
-    <string name="popup_on_keypress">"Mostrar popup ao premir as teclas"</string>
+    <string name="popup_on_keypress">"Mostrar popup ao premir tecla"</string>
     <string name="settings_screen_preferences">"Preferências"</string>
-    <string name="settings_screen_key_press">Pressão de teclas</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="settings_system_default">"Predef. do sistema"</string>
-    <string name="generic_language_layouts">"Esquemas para <xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g>"</string>
     <string name="auto_cap">"Letras maiúsculas automáticas"</string>
     <string name="auto_cap_summary">"Maiúscula no início da frase"</string>
     <string name="select_language">"Idiomas"</string>
@@ -39,21 +37,16 @@
     <string name="subtype_compact">"compacto"</string>
     <string name="add">"Adicionar"</string>
     <string name="remove">"Remover"</string>
-    <string name="change_keyboard">Alterar teclado</string>
-    <string name="prefs_keypress_sound_volume_settings">"Volume ao premir as teclas"</string>
+    <string name="prefs_keypress_sound_volume_settings">"Volume do som ao premir teclas"</string>
     <string name="prefs_key_longpress_timeout_settings">"Atraso ao manter tecla premida"</string>
     <string name="button_default">"Predefinido"</string>
-    <string name="prefs_bottom_offset_portrait_settings">Margem inferior</string>
     <string name="prefs_keyboard_height_settings">Altura do teclado</string>
-    <string name="keyboard_color">Definir cor personalizada</string>
+    <string name="keyboard_color">Definir cor personalizada do teclado</string>
     <string name="hide_special_chars">Ocultar caracteres especiais</string>
-    <string name="hide_language_switch_key">Ocultar tecla para alterar idioma</string>
-    <string name="pref_enable_ime_switch">Mudar para outro teclado</string>
-    <string name="show_number_row">Mostrar números em linha separada</string>
-    <string name="space_swipe">Deslizar espaço para mover o cursor</string>
-    <string name="delete_swipe">Deslizar retrocesso para apagar</string>
-    <string name="setup_message">O Simple Keyboard não está ativado. Clique em OK para abrir as definições de Idioma &amp; entrada. Terá de selecionar o Simple Keyboard como teclado atual para o usar.</string>
-    <string name="privacy_policy">Política de Privacidade</string>
-    <string name="license">Licença</string>
+    <string name="hide_language_switch_key">Ocultar tecla para trocar idiomas</string>
+    <string name="show_number_row">Mostrar números em linha distinta</string>
+    <string name="space_swipe">Espaço deslizar cursor movimento</string>
+    <string name="delete_swipe">Apagar deslizar</string>
+    <string name="setup_message">O Simple Keyboard não está ativado. Clique em OK para abrir os Idiomas &amp; e as configurações de entrada. Você precisará selecionar Simple Keyboard no teclado actual para usá-lo.</string>
 
 </resources>
