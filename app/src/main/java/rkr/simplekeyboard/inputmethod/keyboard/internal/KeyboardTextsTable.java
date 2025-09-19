@@ -16,8 +16,6 @@
 
 package rkr.simplekeyboard.inputmethod.keyboard.internal;
 
-import android.os.Build;
-
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -4387,6 +4385,7 @@ public final class KeyboardTextsTable {
         "is"     , TEXTS_is,    /*  10/ 16 Icelandic */
         "it"     , TEXTS_it,    /*  11/ 66 Italian */
         "iw"     , TEXTS_iw,    /*  20/131 Hebrew */
+        "he"     , TEXTS_iw,    /*  20/131 Hebrew */
         "ka_GE"  , TEXTS_ka_GE, /*   3/ 11 Georgian (Georgia) */
         "kk"     , TEXTS_kk,    /*  15/129 Kazakh */
         "km_KH"  , TEXTS_km_KH, /*   2/130 Khmer (Cambodia) */
