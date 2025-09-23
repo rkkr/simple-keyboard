@@ -1,5 +1,13 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
+ * Copyright (C) 2023 soshial
+ * Copyright (C) 2023 Md. Rifat Hasan Jihan
+ * Copyright (C) 2021 wittmane
+ * Copyright (C) 2021 Luis
+ * Copyright (C) 2020 dioraman
+ * Copyright (C) 2019 Emmanuel
+ * Copyright (C) 2018 Saadat Mateen
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
