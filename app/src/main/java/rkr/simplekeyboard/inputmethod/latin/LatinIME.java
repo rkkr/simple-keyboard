@@ -407,7 +407,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     + ((editorInfo.inputType & InputType.TYPE_TEXT_FLAG_CAP_WORDS) != 0));
         }
         Log.i(TAG, "Starting input. Cursor position = "
-                + editorInfo.initialSelStart + "," + editorInfo.initialSelEnd);
+                + editorInfo.initialSelStart + "," + editorInfo.initialSelEnd +
+                " Restarting = " + restarting);
 
         // In landscape mode, this method gets called without the input view being created.
         if (mainKeyboardView == null) {
@@ -437,7 +438,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
             // Some applications call onStartInputView without updating EditorInfo. In these cases
             // selection will be incorrect.
-            mInputLogic.mConnection.reloadTextCache(editorInfo);
+            mInputLogic.mConnection.reloadTextCache(editorInfo, restarting);
         }
 
         if (isDifferentTextField ||
@@ -450,16 +451,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
             switcher.loadKeyboard(editorInfo, currentSettingsValues, getCurrentAutoCapsState(),
                     getCurrentRecapitalizeState());
-        } else if (restarting) {
+        } else {
             // TODO: Come up with a more comprehensive way to reset the keyboard layout when
             // a keyboard layout set doesn't get reloaded in this method.
             switcher.resetKeyboardStateToAlphabet(getCurrentAutoCapsState(),
-                    getCurrentRecapitalizeState());
-            // In apps like Talk, we come here when the text is sent and the field gets emptied and
-            // we need to re-evaluate the shift state, but not the whole layout which would be
-            // disruptive.
-            // Space state must be updated before calling updateShiftState
-            switcher.requestUpdatingShiftState(getCurrentAutoCapsState(),
                     getCurrentRecapitalizeState());
         }
 

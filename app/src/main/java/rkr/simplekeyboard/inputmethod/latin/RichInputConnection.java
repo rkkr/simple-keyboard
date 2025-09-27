@@ -126,11 +126,13 @@ public final class RichInputConnection {
     /**
      * Reload the cached text from the EditorInfo.
      */
-    public void reloadTextCache(final EditorInfo editorInfo) {
+    public void reloadTextCache(final EditorInfo editorInfo, final boolean restarting) {
         mIC = mLatinIME.getCurrentInputConnection();
 
-        if (mExpectedSelStart != INVALID_CURSOR_POSITION && mExpectedSelEnd != INVALID_CURSOR_POSITION) {
+        if (mExpectedSelStart != INVALID_CURSOR_POSITION && mExpectedSelEnd != INVALID_CURSOR_POSITION
+            && !restarting) {
             // Updated by onUpdateSelection, don't override as editorInfo might be invalid
+            // If restarting, onStartInputView was called instead of onUpdateSelection
             return;
         }
         updateSelection(editorInfo.initialSelStart, editorInfo.initialSelEnd);
@@ -139,6 +141,7 @@ public final class RichInputConnection {
             final SurroundingText textAroundCursor = editorInfo
                     .getInitialSurroundingText(Constants.EDITOR_CONTENTS_CACHE_SIZE, Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
             setTextAroundCursor(textAroundCursor);
+            mLatinIME.mHandler.postUpdateShiftState();
         } else {
             reloadTextCache();
         }
