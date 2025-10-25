@@ -4528,7 +4528,7 @@ public final class KeyboardTextsTable {
         "rm"     , TEXTS_rm,    /*   1/  2 Raeto-Romance */
         "ro"     , TEXTS_ro,    /*   6/ 16 Romanian */
         "ru"     , TEXTS_ru,    /*   9/ 32 Russian */
-        "sah"    , TEXTS_sah,    /*   9/ 32 Sakha */
+        "sah"    , TEXTS_sah,   /*   9/ 32 Sakha */
         "si_LK"  , TEXTS_si_LK, /*   2/ 12 Sinhalese (Sri Lanka) */
         "sk"     , TEXTS_sk,    /*  20/ 22 Slovak */
         "sl"     , TEXTS_sl,    /*   8/ 20 Slovenian */
