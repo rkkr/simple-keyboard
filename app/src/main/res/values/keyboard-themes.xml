@@ -3,6 +3,7 @@
 /*
 **
 ** Copyright 2014, The Android Open Source Project
+** Copyright (C) 2025 Raimondas Rimkus
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -27,13 +28,14 @@
         <item>@string/keyboard_theme_system</item>
         <item>@string/keyboard_theme_system_border</item>
     </string-array>
-    <!-- An element must be a keyboard theme id of
-         {@link rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme#THEME_ID_ICS} etc. -->
+
     <integer-array name="keyboard_theme_ids" translatable="false" tools:ignore="InconsistentArrays">
         <item>3</item>
         <item>4</item>
         <item>1</item>
         <item>2</item>
+        <item>5</item>
+        <item>6</item>
     </integer-array>
 
     <array name="keyboard_theme_colors" translatable="false" tools:ignore="InconsistentArrays">
@@ -41,5 +43,7 @@
         <item>@color/background_lxx_dark</item>
         <item>@color/background_lxx_light</item>
         <item>@color/background_lxx_dark</item>
+        <item>@color/background_lxx_system</item>
+        <item>@color/background_lxx_system</item>
     </array>
 </resources>
