@@ -44,8 +44,6 @@
     <string name="button_default">"Oletusarvot"</string>
     <string name="prefs_keyboard_height_settings">Näppäimistön korkeus</string>
     <string name="keyboard_color">Laita mukautettu näppäimistön väri</string>
-    <string name="hide_special_chars">Piilota erikoismerkit</string>
-    <string name="hide_language_switch_key">Piilota kielen vaihtonappula</string>
     <string name="pref_enable_ime_switch">Vaihda toisiin näppäimistöihin</string>
     <string name="show_number_row">Näytä erillinen numerorivi</string>
     <string name="space_swipe">Liikuta kursoria pyyhkäisemällä välilyöntiä</string>

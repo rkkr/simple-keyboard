@@ -44,9 +44,7 @@
     <string name="button_default">"Zadano"</string>
     <string name="prefs_keyboard_height_settings">Visina tipkovnice</string>
     <string name="keyboard_color">Postavi boju tipkovnice</string>
-    <string name="hide_special_chars">Sakrij posebne znakove</string>
     <string name="pref_enable_ime_switch">Prebaci na drugu tipkovnicu</string>
-    <string name="hide_language_switch_key">Sakrij posebne znakove</string>
     <string name="show_number_row">Prikaži zaseban red brojeva</string>
     <string name="space_swipe">Pomiči pokazivač potezom preko razmaknice</string>
     <string name="delete_swipe">Brisanje potezima preko tipkovnice</string>

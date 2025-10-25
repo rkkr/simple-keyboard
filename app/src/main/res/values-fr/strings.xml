@@ -45,8 +45,6 @@
     <string name="button_default">"Par défaut"</string>
     <string name="prefs_keyboard_height_settings">Hauteur du clavier</string>
     <string name="keyboard_color">Définir une couleur de clavier personnalisée</string>
-    <string name="hide_special_chars">Masquer les caractères spéciaux</string>
-    <string name="hide_language_switch_key">Masquer la touche de sélection de langue</string>
     <string name="pref_enable_ime_switch">Passer à d\'autres claviers</string>
     <string name="show_number_row">Afficher la ligne de chiffres</string>
     <string name="space_swipe">Glisser sur Espace pour déplacer le curseur</string>

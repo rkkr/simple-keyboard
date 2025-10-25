@@ -45,8 +45,6 @@
     <string name="button_default">"Па змаўчанні"</string>
     <string name="prefs_keyboard_height_settings">Вышыня клавіятуры</string>
     <string name="keyboard_color">Назначыць колер клавіятуры</string>
-    <string name="hide_special_chars">Схаваць спецыяльныя сімвалы</string>
-    <string name="hide_language_switch_key">Схаваць кнопку змены мовы</string>
     <string name="pref_enable_ime_switch">Пераключэнне на іншыя клавіятуры</string>
     <string name="show_number_row">Паказаць шэраг з лічбамі</string>
     <string name="space_swipe">Перамяшчэнне курсора прабелам</string>

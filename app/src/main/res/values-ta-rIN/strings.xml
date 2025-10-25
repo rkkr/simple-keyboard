@@ -45,8 +45,6 @@
     <string name="button_default">"இயல்புநிலை"</string>
     <string name="prefs_keyboard_height_settings">விசைப்பலகை உயரம்</string>
     <string name="keyboard_color">தனிப்பயன் விசைப்பலகை வண்ணத்தை அமை</string>
-    <string name="hide_special_chars">சிறப்பு எழுத்துக்களை மறை</string>
-    <string name="hide_language_switch_key">மொழிமாற்றம் விசையை மறை</string>
     <string name="pref_enable_ime_switch">பிற விசைப்பலகைக்கு மாறு</string>
     <string name="show_number_row">தனி எண் வரிசை காட்டு</string>
     <string name="space_swipe">இடைவெளி தேய்க்க காட்டி நகர்தல்</string>

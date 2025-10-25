@@ -44,8 +44,6 @@
     <string name="button_default">"Standard"</string>
     <string name="prefs_keyboard_height_settings">Tastaturhøyde</string>
     <string name="keyboard_color">Still inn tilpasset tastaturfarge</string>
-    <string name="hide_special_chars">Skjul spesielle tegn</string>
-    <string name="hide_language_switch_key">Skjul tast for språkbytte</string>
     <string name="pref_enable_ime_switch">Skift til andre tastaturer</string>
     <string name="show_number_row">Vis separat tallrad</string>
     <string name="space_swipe">Mellomrom-sveip flytter markør</string>

@@ -44,8 +44,6 @@
     <string name="button_default">"Vaikeväärtus"</string>
     <string name="prefs_keyboard_height_settings">Klaviatuuri kõrgus</string>
     <string name="keyboard_color">Määrake kohandatud klaviatuuri värv</string>
-    <string name="hide_special_chars">HPeida eri tähed</string>
-    <string name="hide_language_switch_key">Peida keele vahetus nupp</string>
     <string name="pref_enable_ime_switch">Vaheta teistele klavjatuuridele</string>
     <string name="show_number_row">Kuva eraldi numbririda</string>
     <string name="space_swipe">Space pühi kursori liigutus</string>

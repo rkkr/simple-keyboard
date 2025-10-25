@@ -21,8 +21,6 @@ package rkr.simplekeyboard.inputmethod.latin.settings;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.SwitchPreference;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet;
@@ -33,8 +31,9 @@ import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet;
  * This settings sub screen handles the following input preferences.
  * - Auto-capitalization
  * - Show separate number row
- * - Hide special characters
- * - Hide language switch key
+ * - Show special characters
+ * - Show language switch key
+ * - Show on-screen keyboard
  * - Switch to other keyboards
  * - Space swipe cursor move
  * - Delete swipe
@@ -44,7 +43,6 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.prefs_screen_preferences);
-        updateImeSwitchEnabledPref();
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA) {
             removePreference(Settings.PREF_USE_ON_SCREEN);
@@ -53,26 +51,9 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        if (key.equals(Settings.PREF_HIDE_SPECIAL_CHARS) ||
+        if (key.equals(Settings.PREF_SHOW_SPECIAL_CHARS) ||
                 key.equals(Settings.PREF_SHOW_NUMBER_ROW)) {
             KeyboardLayoutSet.onKeyboardThemeChanged();
-        } else if (key.equals(Settings.PREF_HIDE_LANGUAGE_SWITCH_KEY)) {
-            updateImeSwitchEnabledPref();
         }
-    }
-
-    /**
-     * Enable the preference for switching IMEs only when the preference is set to not hide the
-     * language switch key.
-     */
-    private void updateImeSwitchEnabledPref() {
-        final Preference enableImeSwitch = findPreference(Settings.PREF_ENABLE_IME_SWITCH);
-        final Preference hideLanguageSwitchKey = findPreference(Settings.PREF_HIDE_LANGUAGE_SWITCH_KEY);
-        if (enableImeSwitch == null || hideLanguageSwitchKey == null) {
-            return;
-        }
-
-        final boolean hideLanguageSwitchKeyIsChecked = ((SwitchPreference)hideLanguageSwitchKey).isChecked();
-        enableImeSwitch.setEnabled(!hideLanguageSwitchKeyIsChecked);
     }
 }

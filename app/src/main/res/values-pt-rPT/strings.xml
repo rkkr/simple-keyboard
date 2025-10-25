@@ -42,8 +42,6 @@
     <string name="button_default">"Predefinido"</string>
     <string name="prefs_keyboard_height_settings">Altura do teclado</string>
     <string name="keyboard_color">Definir cor personalizada do teclado</string>
-    <string name="hide_special_chars">Ocultar caracteres especiais</string>
-    <string name="hide_language_switch_key">Ocultar tecla para trocar idiomas</string>
     <string name="show_number_row">Mostrar números em linha distinta</string>
     <string name="space_swipe">Espaço deslizar cursor movimento</string>
     <string name="delete_swipe">Apagar deslizar</string>

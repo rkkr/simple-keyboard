@@ -44,8 +44,6 @@
     <string name="button_default">"സ്ഥിരമായത്"</string>
     <string name="prefs_keyboard_height_settings">"കീബോർഡ് ഉയരം"</string>
     <string name="keyboard_color">"ഇഷ്ടാനുസൃത കീബോർഡ് നിറം സജ്ജമാക്കുക"</string>
-    <string name="hide_special_chars">"പ്രത്യേക പ്രതീകങ്ങൾ മറയ്ക്കുക"</string>
-    <string name="hide_language_switch_key">Hide language switch key</string>
     <string name="pref_enable_ime_switch">"മറ്റ് കീബോർഡുകളിലേക്ക് മാറുക"</string>
     <string name="show_number_row">"വേറിട്ട നമ്പർ വരി കാണിക്കുക"</string>
     <string name="delete_swipe">"നീക്കി ഇല്ലാതാക്കുക"</string>

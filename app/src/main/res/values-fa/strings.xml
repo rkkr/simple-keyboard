@@ -45,8 +45,6 @@
     <string name="button_default">"پیش‌فرض"</string>
     <string name="prefs_keyboard_height_settings">ارتفاع صفحه کلید</string>
     <string name="keyboard_color">تنظیم رنگ صفحه کلید سفارشی</string>
-    <string name="hide_special_chars">پنهان کردن کاراکترهای ویژه</string>
-    <string name="hide_language_switch_key">پنهان کردن کلید تغییر زبان</string>
     <string name="pref_enable_ime_switch">جابجایی به دیگر صفحه‌کلیدها</string>
     <string name="show_number_row">نمایش جداگانه ی شماره ردیف</string>
     <string name="space_swipe">حرکت مکان نما توسط سوایپ کلید فاصله</string>

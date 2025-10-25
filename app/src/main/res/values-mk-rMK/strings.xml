@@ -44,8 +44,6 @@
     <string name="button_default">"Стандардно"</string>
     <string name="prefs_keyboard_height_settings">Висина на тастатурата</string>
     <string name="keyboard_color">Постави боја на тастатурата</string>
-    <string name="hide_special_chars">Сокриј специјални знаци</string>
-    <string name="hide_language_switch_key">Сокриј го копчето за промена на јазик</string>
     <string name="pref_enable_ime_switch">Префрли се на друга тастатура</string>
     <string name="show_number_row">Покажи одделен ред со броеви</string>
     <string name="space_swipe">Помеси го курсорот преку лентата за празно место</string>

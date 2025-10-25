@@ -44,7 +44,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_VIBRATE_ON = "vibrate_on";
     public static final String PREF_SOUND_ON = "sound_on";
     public static final String PREF_POPUP_ON = "popup_on";
-    public static final String PREF_HIDE_LANGUAGE_SWITCH_KEY = "pref_hide_language_switch_key";
+    public static final String PREF_SHOW_LANGUAGE_SWITCH_KEY = "pref_show_language_switch_key";
     public static final String PREF_USE_ON_SCREEN = "pref_use_on_screen";
     public static final String PREF_ENABLE_IME_SWITCH = "pref_enable_ime_switch";
     public static final String PREF_ENABLED_SUBTYPES = "pref_enabled_subtypes";
@@ -53,7 +53,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     public static final String PREF_KEYBOARD_HEIGHT = "pref_keyboard_height";
     public static final String PREF_BOTTOM_OFFSET_PORTRAIT = "pref_bottom_offset_portrait";
     public static final String PREF_KEYBOARD_COLOR = "pref_keyboard_color";
-    public static final String PREF_HIDE_SPECIAL_CHARS = "pref_hide_special_chars";
+    public static final String PREF_SHOW_SPECIAL_CHARS = "pref_show_special_chars";
     public static final String PREF_SHOW_NUMBER_ROW = "pref_show_number_row";
     public static final String PREF_SPACE_SWIPE = "pref_space_swipe";
     public static final String PREF_DELETE_SWIPE = "pref_delete_swipe";
@@ -138,7 +138,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     }
 
     public static boolean readShowLanguageSwitchKey(final SharedPreferences prefs) {
-        return !prefs.getBoolean(PREF_HIDE_LANGUAGE_SWITCH_KEY, false);
+        return prefs.getBoolean(PREF_SHOW_LANGUAGE_SWITCH_KEY, true);
     }
 
     public static boolean readUseOnScreenKeyboard(final SharedPreferences prefs) {
@@ -149,8 +149,8 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         return prefs.getBoolean(PREF_ENABLE_IME_SWITCH, false);
     }
 
-    public static boolean readHideSpecialChars(final SharedPreferences prefs) {
-        return prefs.getBoolean(PREF_HIDE_SPECIAL_CHARS, false);
+    public static boolean readShowSpecialChars(final SharedPreferences prefs) {
+        return prefs.getBoolean(PREF_SHOW_SPECIAL_CHARS, true);
     }
 
     public static boolean readShowNumberRow(final SharedPreferences prefs) {
