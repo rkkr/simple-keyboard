@@ -1,4 +1,4 @@
-# Simple Keyboard
+put# Simple Keyboard
 
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/simple-keyboard/localized.svg)](https://crowdin.com/project/simple-keyboard)
 
