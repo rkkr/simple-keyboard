@@ -362,8 +362,9 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
 
         locatePreviewPlacerView();
         getLocationInWindow(mOriginCoords);
+        final int backgroundColor = mTheme.mCustomColorSupport ? mCustomColor : Color.TRANSPARENT;
         mKeyPreviewChoreographer.placeAndShowKeyPreview(key, keyboard.mIconsSet, getKeyDrawParams(),
-                mOriginCoords, mDrawingPreviewPlacerView, isHardwareAccelerated());
+                mOriginCoords, mDrawingPreviewPlacerView, isHardwareAccelerated(), backgroundColor);
     }
 
     private void dismissKeyPreviewWithoutDelay(final Key key) {
