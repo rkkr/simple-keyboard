@@ -43,8 +43,6 @@
     <string name="button_default">"I parazgjedhur"</string>
     <string name="prefs_keyboard_height_settings">Lartësia e tastierës</string>
     <string name="keyboard_color">Vendos ngjyrë tastiere me porosi</string>
-    <string name="hide_special_chars">Fshih karakteret e veçanta</string>
-    <string name="hide_language_switch_key">Fshi ikonën e ndryshimit të gjuhës</string>
     <string name="pref_enable_ime_switch">Përdor tastierat e tjera</string>
     <string name="show_number_row">Shfaq rrjeshtin e veçantë të numrave</string>
     <string name="space_swipe">Lëvizjet e kursorit në tabin e hapsirës</string>

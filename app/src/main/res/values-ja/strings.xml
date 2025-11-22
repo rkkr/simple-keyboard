@@ -45,8 +45,6 @@
     <string name="button_default">"デフォルト"</string>
     <string name="prefs_keyboard_height_settings">キーボードの高さ</string>
     <string name="keyboard_color">カスタムキーボードの色を設定する</string>
-    <string name="hide_special_chars">特殊文字を隠す</string>
-    <string name="hide_language_switch_key">言語切り替えキーを非表示</string>
     <string name="pref_enable_ime_switch">他のキーボードに切り替える</string>
     <string name="show_number_row">別の番号行を表示</string>
     <string name="space_swipe">スペーススワイプカーソル移動</string>

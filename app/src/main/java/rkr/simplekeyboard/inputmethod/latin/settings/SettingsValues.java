@@ -45,7 +45,7 @@ public class SettingsValues {
     public final boolean mShowsLanguageSwitchKey;
     public final boolean mImeSwitchEnabled;
     public final int mKeyLongpressTimeout;
-    public final boolean mHideSpecialChars;
+    public final boolean mShowSpecialChars;
     public final boolean mShowNumberRow;
     public final boolean mSpaceSwipeEnabled;
     public final boolean mDeleteSwipeEnabled;
@@ -87,7 +87,7 @@ public class SettingsValues {
         mKeyboardHeightScale = Settings.readKeyboardHeight(prefs, DEFAULT_SIZE_SCALE);
         mBottomOffsetPortrait = Settings.readBottomOffsetPortrait(prefs);
         mDisplayOrientation = res.getConfiguration().orientation;
-        mHideSpecialChars = Settings.readHideSpecialChars(prefs);
+        mShowSpecialChars = Settings.readShowSpecialChars(prefs);
         mShowNumberRow = Settings.readShowNumberRow(prefs);
         mSpaceSwipeEnabled = Settings.readSpaceSwipeEnabled(prefs);
         mDeleteSwipeEnabled = Settings.readDeleteSwipeEnabled(prefs);

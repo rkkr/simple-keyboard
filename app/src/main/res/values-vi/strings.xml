@@ -45,8 +45,6 @@
     <string name="button_default">"Mặc định"</string>
     <string name="prefs_keyboard_height_settings">"Chiều cao bàn phím"</string>
     <string name="keyboard_color">"Tuỳ chọn màu bàn phím"</string>
-    <string name="hide_special_chars">"Ẩn ký tự đặc biệt"</string>
-    <string name="hide_language_switch_key">"Ẩn phím chuyển ngôn ngữ"</string>
     <string name="pref_enable_ime_switch">"Chuyển sang các bàn phím khác"</string>
     <string name="show_number_row">"Hiển thị bàn phím số"</string>
     <string name="space_swipe">"Vuốt phím space để di chuyển con trỏ"</string>

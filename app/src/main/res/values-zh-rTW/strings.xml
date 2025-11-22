@@ -45,8 +45,6 @@
     <string name="button_default">"預設"</string>
     <string name="prefs_keyboard_height_settings">鍵盤高度</string>
     <string name="keyboard_color">自訂鍵盤顏色</string>
-    <string name="hide_special_chars">隱藏特殊字元</string>
-    <string name="hide_language_switch_key">隱藏語言切換鍵</string>
     <string name="pref_enable_ime_switch">切換到其他鍵盤</string>
     <string name="show_number_row">顯示獨立的數字列</string>
     <string name="space_swipe">滑動空白鍵以移動光標</string>

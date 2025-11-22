@@ -42,8 +42,6 @@
     <string name="button_default">"Podrazumevano"</string>
     <string name="prefs_keyboard_height_settings">Visina tastature</string>
     <string name="keyboard_color">Postavi boju tastature</string>
-    <string name="hide_special_chars">Sakrij specijalne karaktere</string>
-    <string name="hide_language_switch_key">Sakrij dugme za promenu jezika</string>
     <string name="show_number_row">Prikaži odvojeni red sa brojevima</string>
     <string name="space_swipe">Prevlačenjem preko razmaka pomera se selektor</string>
     <string name="delete_swipe">Brisanje prevlačenjem</string>

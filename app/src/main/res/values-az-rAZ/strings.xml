@@ -43,8 +43,6 @@
     <string name="button_default">"Defolt"</string>
     <string name="prefs_keyboard_height_settings">Klaviatura hündürlüyü</string>
     <string name="keyboard_color">Fərdi klaviatura rəngi təyin et</string>
-    <string name="hide_special_chars">Xüsusi simvolları gizlət</string>
-    <string name="hide_language_switch_key">Dil dəyişmə düyməsini gizlət</string>
     <string name="show_number_row">Nömrə sırası göstər</string>
     <string name="space_swipe">Boşluq sürüşdürmə kursor hərəkəti</string>
     <string name="delete_swipe">Sürüşdürməni sil</string>

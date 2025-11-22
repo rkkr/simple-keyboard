@@ -18,12 +18,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:latin="http://schemas.android.com/apk/res-auto"
     android:title="@string/settings_screen_key_press">
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="vibrate_on"
         android:title="@string/vibrate_on_keypress"
         android:defaultValue="@bool/config_default_vibration_enabled"
         android:persistent="true" />
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="sound_on"
         android:title="@string/sound_on_keypress"
         android:defaultValue="@bool/config_default_sound_enabled"
@@ -33,7 +33,7 @@
         android:title="@string/prefs_keypress_sound_volume_settings"
         android:dependency="sound_on"
         latin:maxValue="100" /> <!-- percent -->
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="popup_on"
         android:title="@string/popup_on_keypress"
         android:defaultValue="@bool/config_default_key_preview_popup"

@@ -42,8 +42,6 @@
     <string name="button_default">"Lehenetsia"</string>
     <string name="prefs_keyboard_height_settings">Teklatuaren altuera</string>
     <string name="keyboard_color">Ezarri teklatuaren kolore pertsonalizatua</string>
-    <string name="hide_special_chars">Ezkutatu karaktere bereziak</string>
-    <string name="hide_language_switch_key">Ezkutatu hizkuntza aldatzeko tekla</string>
     <string name="show_number_row">Erakutsi aparteko zenbakien errenkada</string>
     <string name="space_swipe">Espazioan hatza pasatzean mugitu kurtsorea</string>
     <string name="delete_swipe">Ezabatzeko keinua</string>

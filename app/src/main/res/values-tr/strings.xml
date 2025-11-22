@@ -44,8 +44,6 @@
     <string name="button_default">"Varsayılan"</string>
     <string name="prefs_keyboard_height_settings">Klavye yüksekliği</string>
     <string name="keyboard_color">Özel klavye rengi ayarla</string>
-    <string name="hide_special_chars">Özel karakterleri gizle</string>
-    <string name="hide_language_switch_key">Dil değiştirme tuşunu gizle</string>
     <string name="pref_enable_ime_switch">Diğer klavyelere geç</string>
     <string name="show_number_row">Ayrık rakam satırını göster</string>
     <string name="space_swipe">Boşluk tuşunda kaydırarak imleci taşı</string>
