@@ -5,5 +5,5 @@
     android:viewportHeight="24">
     <path
         android:fillColor="?attr/functionalTextColor"
-        android:pathData="@string/icon_send"/>
+        android:pathData="M2.01,21L23,12 2.01,3 2,10l15,2 -15,2z"/>
 </vector>

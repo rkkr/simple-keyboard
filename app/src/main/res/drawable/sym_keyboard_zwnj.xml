@@ -4,10 +4,10 @@
     android:viewportHeight="24"
     android:viewportWidth="24">
     <path
-        android:pathData="@string/icon_zwj_1"
+        android:pathData="M12,2V5.5 M12,7.5V11 M12,13V16.5 M12,18.5V22"
         android:strokeColor="?attr/functionalTextColor"
         android:strokeWidth="2"/>
     <path
-        android:pathData="@string/icon_zwnj_2"
+        android:pathData="M6,7.5V16.5 L2,12 Z M18,7.5V16.5 L22,12 Z"
         android:fillColor="?attr/functionalTextColor"/>
 </vector>

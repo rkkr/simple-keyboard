@@ -8,6 +8,6 @@
         android:strokeColor="?attr/functionalTextColor"
         android:strokeWidth="2"/>
     <path
-        android:pathData="@string/icon_zwj_2"
+        android:pathData="M2,7.5V16.5 L6,12 Z M22,7.5V16.5 L18,12 Z"
         android:fillColor="?attr/functionalTextColor"/>
 </vector>

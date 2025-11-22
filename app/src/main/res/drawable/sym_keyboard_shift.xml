@@ -7,5 +7,5 @@
         android:strokeColor="?attr/functionalTextColor"
         android:strokeWidth="2"
         android:strokeLineJoin="round"
-        android:pathData="@string/icon_shift"/>
+        android:pathData="M 12,3 1,15 h 7 v 7 h 8 v -7 h 7 z"/>
 </vector>

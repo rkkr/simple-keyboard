@@ -4,7 +4,7 @@
     android:viewportHeight="24"
     android:viewportWidth="32">
     <path
-        android:pathData="@string/icon_space"
+        android:pathData="M2,20H28"
         android:strokeColor="?attr/functionalTextColor"
         android:strokeWidth="2"/>
 </vector>
