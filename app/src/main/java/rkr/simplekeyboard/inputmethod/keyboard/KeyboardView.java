@@ -30,7 +30,6 @@ import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.NinePatchDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -451,12 +450,7 @@ public class KeyboardView extends View {
 
         // Draw key icon.
         if (label == null && icon != null) {
-            final int iconWidth;
-            if (key.getCode() == Constants.CODE_SPACE && icon instanceof NinePatchDrawable) {
-                iconWidth = (int)(keyWidth * mSpacebarIconWidthRatio);
-            } else {
-                iconWidth = Math.min(icon.getIntrinsicWidth(), keyWidth);
-            }
+            final int iconWidth = Math.min(icon.getIntrinsicWidth(), keyWidth);
             final int iconHeight = icon.getIntrinsicHeight();
             final int iconY;
             if (key.isAlignIconToBottom()) {

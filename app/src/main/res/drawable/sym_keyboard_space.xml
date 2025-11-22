@@ -2,10 +2,9 @@
     android:width="32dp"
     android:height="24dp"
     android:viewportHeight="24"
-    android:viewportWidth="32"
-    android:tint="@color/key_functional_text_color_lxx_light">
+    android:viewportWidth="32">
     <path
         android:pathData="@string/icon_space"
-        android:strokeColor="@android:color/white"
+        android:strokeColor="?attr/functionalTextColor"
         android:strokeWidth="2"/>
 </vector>

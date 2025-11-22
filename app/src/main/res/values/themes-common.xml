@@ -19,7 +19,7 @@
 -->
 
 <resources>
-    <style name="KeyboardIcons" />
+    <style name="KeyboardTheme" />
     <style name="InputView" />
     <!-- Default theme values -->
     <style name="Keyboard">
