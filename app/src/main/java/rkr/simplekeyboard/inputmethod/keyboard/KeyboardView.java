@@ -88,7 +88,6 @@ public class KeyboardView extends View {
     private final Drawable mKeyBackground;
     private final Drawable mFunctionalKeyBackground;
     private final Drawable mSpacebarBackground;
-    private final float mSpacebarIconWidthRatio;
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
     protected int mCustomColor = 0;
@@ -134,8 +133,6 @@ public class KeyboardView extends View {
         final Drawable spacebarBackground = keyboardViewAttr.getDrawable(
                 R.styleable.KeyboardView_spacebarBackground);
         mSpacebarBackground = (spacebarBackground != null) ? spacebarBackground : mKeyBackground;
-        mSpacebarIconWidthRatio = keyboardViewAttr.getFloat(
-                R.styleable.KeyboardView_spacebarIconWidthRatio, 1.0f);
         mKeyHintLetterPadding = keyboardViewAttr.getDimension(
                 R.styleable.KeyboardView_keyHintLetterPadding, 0.0f);
         mKeyShiftedLetterHintPadding = keyboardViewAttr.getDimension(

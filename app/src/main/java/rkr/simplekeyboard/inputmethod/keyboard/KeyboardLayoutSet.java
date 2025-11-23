@@ -34,6 +34,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.lang.ref.SoftReference;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -121,6 +122,7 @@ public final class KeyboardLayoutSet {
     private static void clearKeyboardCache() {
         sKeyboardCache.clear();
         sUniqueKeysCache.clear();
+        Arrays.fill(sForcibleKeyboardCache, null);
     }
 
     KeyboardLayoutSet(final Context context, final Params params) {
