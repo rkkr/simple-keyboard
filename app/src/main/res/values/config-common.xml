@@ -28,7 +28,6 @@
     <integer name="config_key_preview_linger_timeout">53</integer>
 
     <bool name="config_default_vibration_enabled">true</bool>
-    <integer name="config_max_vibration_duration">100</integer>
 
     <integer name="config_default_longpress_key_timeout">300</integer>
     <integer name="config_max_longpress_timeout">700</integer>

@@ -78,7 +78,7 @@ public final class KeyboardIconsSet {
         NAME_ZWJ_KEY,                     R.drawable.sym_keyboard_zwj,
     };
 
-    private static int NUM_ICONS = NAMES_AND_ATTR_IDS.length / 2;
+    private static final int NUM_ICONS = NAMES_AND_ATTR_IDS.length / 2;
     private static final String[] ICON_NAMES = new String[NUM_ICONS];
     private final Drawable[] mIcons = new Drawable[NUM_ICONS];
 

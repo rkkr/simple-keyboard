@@ -219,7 +219,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                         }
                         mKeyboardDefined = true;
                         parseKeyboardAttributes(parser);
-                        startKeyboard();
                     }
                     parseKeyboardContent(parser, skip);
                 } else if (TAG_SWITCH.equals(tag)) {
@@ -721,10 +720,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             keyAttrs.recycle();
         }
         XmlParseUtils.checkEndTag(TAG_KEY_STYLE, parser);
-    }
-
-    private void startKeyboard() {
-
     }
 
     private void startRow(final KeyboardRow row) {

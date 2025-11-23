@@ -383,7 +383,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
                 R.layout.input_view, null);
         mMainKeyboardFrame = currentInputView.findViewById(R.id.main_keyboard_frame);
 
-        mKeyboardView = (MainKeyboardView) currentInputView.findViewById(R.id.keyboard_view);
+        mKeyboardView = currentInputView.findViewById(R.id.keyboard_view);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             ViewLayoutUtils.applyViewInsets(mKeyboardView, mInsets);
             mKeyboardView.setOnApplyWindowInsetsListener((View view, WindowInsets windowInsets) -> {
