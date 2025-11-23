@@ -43,6 +43,7 @@
     <string name="prefs_key_longpress_timeout_settings">"Klavišo ilgo paspaudimo delsa"</string>
     <string name="button_default">"Numatytieji"</string>
     <string name="prefs_keyboard_height_settings">Klaviatūros aukštis</string>
+    <string name="prefs_bottom_offset_portrait_settings">Apatinio tarpo aukštis</string>
     <string name="keyboard_color">Keisti klaviatūros spalvą</string>
     <string name="show_special_chars">Rodyti specialius simbolius</string>
     <string name="show_language_switch_key">Rodyti kalbos pasirinkimą</string>
