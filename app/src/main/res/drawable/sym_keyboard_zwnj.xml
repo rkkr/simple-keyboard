@@ -8,6 +8,9 @@
         android:strokeColor="?attr/functionalTextColor"
         android:strokeWidth="2"/>
     <path
-        android:pathData="M6,7.5V16.5 L2,12 Z M18,7.5V16.5 L22,12 Z"
+        android:pathData="M6,7.5V16.5 L2,12 Z"
+        android:fillColor="?attr/functionalTextColor"/>
+    <path
+        android:pathData="M18,7.5V16.5 L22,12 Z"
         android:fillColor="?attr/functionalTextColor"/>
 </vector>
