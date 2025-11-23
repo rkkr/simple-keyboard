@@ -48,8 +48,6 @@
              {@link android.graphics.drawable.StateListDrawable}, with the following possible
              states: normal, pressed. -->
         <attr name="spacebarBackground" format="reference" />
-        <attr name="spacebarIconWidthRatio" format="float" />
-        <!-- Right padding of hint letter to the edge of the key.-->
         <attr name="keyHintLetterPadding" format="dimension" />
         <!-- Bottom padding of popup hint letter to the edge of the key.-->
         <attr name="keyShiftedLetterHintPadding" format="dimension" />

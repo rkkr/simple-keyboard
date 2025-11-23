@@ -313,14 +313,14 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             loadSettings();
         }
 
-        mKeyboardSwitcher.updateKeyboardTheme(conf.uiMode);
+        mKeyboardSwitcher.onConfigurationChanged();
 
         super.onConfigurationChanged(conf);
     }
 
     @Override
     public View onCreateInputView() {
-        return mKeyboardSwitcher.onCreateInputView(getResources().getConfiguration().uiMode);
+        return mKeyboardSwitcher.onCreateInputView();
     }
 
     @Override
@@ -382,7 +382,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // Switch to the null consumer to handle cases leading to early exit below, for which we
         // also wouldn't be consuming gesture data.
         final KeyboardSwitcher switcher = mKeyboardSwitcher;
-        switcher.updateKeyboardTheme(getResources().getConfiguration().uiMode);
+        switcher.updateKeyboardTheme();
         final MainKeyboardView mainKeyboardView = switcher.getMainKeyboardView();
         // If we are starting input in a different text field from before, we'll have to reload
         // settings, so currentSettingsValues can't be final.

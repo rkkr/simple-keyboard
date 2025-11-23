@@ -48,8 +48,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private static final String TAG = KeyboardSwitcher.class.getSimpleName();
 
-    private int mCurrentUiMode;
-    private int mCurrentTextColor = 0x0;
     private Insets mInsets;
     private View mMainKeyboardFrame;
     private MainKeyboardView mKeyboardView;
@@ -85,28 +83,28 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mState = new KeyboardState(this);
     }
 
-    public void updateKeyboardTheme(final int uiMode) {
+    public void updateKeyboardTheme() {
         final boolean themeUpdated = updateKeyboardThemeAndContextThemeWrapper(
-                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME), uiMode);
+                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME));
         if (themeUpdated && mKeyboardView != null) {
-            mLatinIME.setInputView(onCreateInputView(uiMode));
+            mLatinIME.setInputView(onCreateInputView());
+        }
+    }
+
+    public void onConfigurationChanged() {
+        mKeyboardTheme = KeyboardTheme.getKeyboardTheme(mLatinIME);
+        mThemeContext = new ContextThemeWrapper(mLatinIME, mKeyboardTheme.mStyleId);
+        KeyboardLayoutSet.onKeyboardThemeChanged();
+        if (mKeyboardView != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            // Live color pallet reloading doesn't work, need to rerender the View
+            mLatinIME.setInputView(onCreateInputView());
         }
     }
 
     private boolean updateKeyboardThemeAndContextThemeWrapper(final Context context,
-            final KeyboardTheme keyboardTheme, final int uiMode) {
-        int newTextColor = 0x0;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            newTextColor = context.getResources().getColor(R.color.key_text_color_lxx_system);
-        }
-
-        if (mThemeContext == null
-                || !keyboardTheme.equals(mKeyboardTheme)
-                || mCurrentUiMode != uiMode
-                || newTextColor != mCurrentTextColor) {
+            final KeyboardTheme keyboardTheme) {
+        if (mThemeContext == null || !keyboardTheme.equals(mKeyboardTheme)) {
             mKeyboardTheme = keyboardTheme;
-            mCurrentUiMode = uiMode;
-            mCurrentTextColor = newTextColor;
             mThemeContext = new ContextThemeWrapper(context, keyboardTheme.mStyleId);
             KeyboardLayoutSet.onKeyboardThemeChanged();
             return true;
@@ -374,18 +372,18 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         }
     }
 
-    public View onCreateInputView(final int uiMode) {
+    public View onCreateInputView() {
         if (mKeyboardView != null) {
             mKeyboardView.closing();
         }
 
         updateKeyboardThemeAndContextThemeWrapper(
-                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */), uiMode);
+                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */));
         final InputView currentInputView = (InputView) LayoutInflater.from(mThemeContext).inflate(
                 R.layout.input_view, null);
         mMainKeyboardFrame = currentInputView.findViewById(R.id.main_keyboard_frame);
 
-        mKeyboardView = (MainKeyboardView) currentInputView.findViewById(R.id.keyboard_view);
+        mKeyboardView = currentInputView.findViewById(R.id.keyboard_view);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             ViewLayoutUtils.applyViewInsets(mKeyboardView, mInsets);
             mKeyboardView.setOnApplyWindowInsetsListener((View view, WindowInsets windowInsets) -> {

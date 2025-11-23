@@ -105,7 +105,7 @@
                 <default>
                     <Key
                         latin:keySpec="." 
-                        latin:additionalMoreKeys="?" />
+                        latin:additionalMoreKeys="\\?" />
                 </default>
             </switch>
         </default>

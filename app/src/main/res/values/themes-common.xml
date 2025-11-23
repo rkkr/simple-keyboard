@@ -19,7 +19,7 @@
 -->
 
 <resources>
-    <style name="KeyboardIcons" />
+    <style name="KeyboardTheme" />
     <style name="InputView" />
     <!-- Default theme values -->
     <style name="Keyboard">
@@ -69,7 +69,6 @@
         <item name="keyHintLabelRatio">@fraction/config_key_hint_label_ratio_lxx</item>
         <item name="keyHintLabelOffCenterRatio">300%</item>
         <item name="keyLabelFlags">alignHintLabelToBottom</item>
-        <item name="spacebarIconWidthRatio">0.9</item>
     </style>
     <style
         name="MainKeyboardView"

@@ -219,7 +219,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                         }
                         mKeyboardDefined = true;
                         parseKeyboardAttributes(parser);
-                        startKeyboard();
                     }
                     parseKeyboardContent(parser, skip);
                 } else if (TAG_SWITCH.equals(tag)) {
@@ -289,7 +288,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             params.mMaxMoreKeysKeyboardColumn = keyAttr.getInt(
                     R.styleable.Keyboard_Key_maxMoreKeysColumn, 5);
 
-            params.mIconsSet.loadIcons(keyboardAttr);
+            params.mIconsSet.loadIcons(mResources, mContext.getTheme());
             params.mTextsSet.setLocale(params.mId.getLocale(), mContext);
         } finally {
             keyAttr.recycle();
@@ -721,10 +720,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             keyAttrs.recycle();
         }
         XmlParseUtils.checkEndTag(TAG_KEY_STYLE, parser);
-    }
-
-    private void startKeyboard() {
-
     }
 
     private void startRow(final KeyboardRow row) {
