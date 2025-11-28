@@ -107,6 +107,7 @@ public final class SubtypeLocaleUtils {
     private static final String LOCALE_ROMANIAN = "ro";
     private static final String LOCALE_RUSSIAN = "ru";
     private static final String LOCALE_SLOVAK = "sk";
+    private static final String LOCALE_SAKHA = "sah";
     private static final String LOCALE_SLOVENIAN = "sl";
     private static final String LOCALE_SERBIAN = "sr";
     private static final String LOCALE_SERBIAN_LATIN = "sr_ZZ";
@@ -186,6 +187,7 @@ public final class SubtypeLocaleUtils {
             LOCALE_PORTUGUESE_PORTUGAL,
             LOCALE_ROMANIAN,
             LOCALE_RUSSIAN,
+            LOCALE_SAKHA,
             LOCALE_SLOVAK,
             LOCALE_SLOVENIAN,
             LOCALE_SERBIAN,
@@ -244,6 +246,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_NORDIC = "nordic";
     public static final String LAYOUT_QWERTY = "qwerty";
     public static final String LAYOUT_QWERTZ = "qwertz";
+    public static final String LAYOUT_SAKHA = "sakha";
     public static final String LAYOUT_SERBIAN = "serbian";
     public static final String LAYOUT_SERBIAN_QWERTZ = "serbian_qwertz";
     public static final String LAYOUT_SPANISH = "spanish";
@@ -534,6 +537,8 @@ public final class SubtypeLocaleUtils {
                     addLayout(LAYOUT_NEPALI_ROMANIZED);
                     addLayout(LAYOUT_NEPALI_TRADITIONAL, R.string.subtype_traditional);
                     break;
+                case LOCALE_SAKHA:
+                    addLayout(LAYOUT_SAKHA);
                 case LOCALE_SERBIAN:
                     addLayout(LAYOUT_SERBIAN);
                     break;
