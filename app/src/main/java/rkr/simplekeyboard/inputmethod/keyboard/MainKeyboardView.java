@@ -295,10 +295,10 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
      * @param keyboard the keyboard to display in this view
      */
     @Override
-    public void setKeyboard(final Keyboard keyboard) {
+    public void setKeyboard(final Keyboard keyboard, final Context themeContext) {
         // Remove any pending messages, except dismissing preview and key repeat.
         mTimerHandler.cancelLongPressTimers();
-        super.setKeyboard(keyboard);
+        super.setKeyboard(keyboard, themeContext);
         mKeyDetector.setKeyboard(
                 keyboard, -getPaddingLeft(), -getPaddingTop() + getVerticalCorrection());
         PointerTracker.setKeyDetector(mKeyDetector);
@@ -435,7 +435,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
 
         final MoreKeysKeyboardView moreKeysKeyboardView =
                 mMoreKeysKeyboardContainer.findViewById(R.id.more_keys_keyboard_view);
-        moreKeysKeyboardView.setKeyboard(moreKeysKeyboard);
+        moreKeysKeyboardView.setKeyboard(moreKeysKeyboard, getContext());
         mMoreKeysKeyboardContainer.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         final int[] lastCoords = CoordinateUtils.newInstance();

@@ -32,6 +32,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import java.util.HashSet;
 
@@ -77,10 +78,10 @@ import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
  */
 public class KeyboardView extends View {
     // XML attributes
-    private final KeyVisualAttributes mKeyVisualAttributes;
+    private KeyVisualAttributes mKeyVisualAttributes;
     // Default keyLabelFlags from {@link KeyboardTheme}.
     // Currently only "alignHintLabelToBottom" is supported.
-    private final int mDefaultKeyLabelFlags;
+    private int mDefaultKeyLabelFlags;
     private final float mKeyHintLetterPadding;
     private final float mKeyShiftedLetterHintPadding;
     private final float mKeyTextShadowRadius;
@@ -114,6 +115,8 @@ public class KeyboardView extends View {
     private final Canvas mOffscreenCanvas = new Canvas();
     private final Paint mPaint = new Paint();
     private final Paint.FontMetrics mFontMetrics = new Paint.FontMetrics();
+    private final AttributeSet mAttrs;
+    private final int mDefStyle;
 
     public KeyboardView(final Context context, final AttributeSet attrs) {
         this(context, attrs, R.attr.keyboardViewStyle);
@@ -122,6 +125,8 @@ public class KeyboardView extends View {
     public KeyboardView(final Context context, final AttributeSet attrs, final int defStyle) {
         super(context, attrs, defStyle);
 
+        mAttrs = attrs;
+        mDefStyle = defStyle;
         final TypedArray keyboardViewAttr = context.obtainStyledAttributes(attrs,
                 R.styleable.KeyboardView, defStyle, R.style.KeyboardView);
         mKeyBackground = keyboardViewAttr.getDrawable(R.styleable.KeyboardView_keyBackground);
@@ -143,11 +148,13 @@ public class KeyboardView extends View {
                 R.styleable.KeyboardView_verticalCorrection, 0.0f);
         keyboardViewAttr.recycle();
 
-        final TypedArray keyAttr = context.obtainStyledAttributes(attrs,
+        /*final TypedArray keyAttr = context.obtainStyledAttributes(attrs,
                 R.styleable.Keyboard_Key, defStyle, R.style.KeyboardView);
         mDefaultKeyLabelFlags = keyAttr.getInt(R.styleable.Keyboard_Key_keyLabelFlags, 0);
         mKeyVisualAttributes = KeyVisualAttributes.newInstance(keyAttr);
-        keyAttr.recycle();
+        keyAttr.recycle();*/
+
+
 
         mPaint.setAntiAlias(true);
     }
@@ -165,14 +172,26 @@ public class KeyboardView extends View {
      * @see #getKeyboard()
      * @param keyboard the keyboard to display in this view
      */
-    public void setKeyboard(final Keyboard keyboard) {
+    public void setKeyboard(final Keyboard keyboard, final Context themeContext) {
         mKeyboard = keyboard;
+        //final int width = keyboard.mOccupiedWidth + getPaddingLeft() + getPaddingRight();
+        //final int height = keyboard.mOccupiedHeight + getPaddingTop() + getPaddingBottom();
+        //setLayoutParams(new FrameLayout.LayoutParams(width, height));
+
         final int keyHeight = keyboard.mMostCommonKeyHeight;
+
+        final TypedArray keyAttr = themeContext.obtainStyledAttributes(mAttrs,
+                R.styleable.Keyboard_Key, mDefStyle, R.style.KeyboardView);
+        mDefaultKeyLabelFlags = keyAttr.getInt(R.styleable.Keyboard_Key_keyLabelFlags, 0);
+        mKeyVisualAttributes = KeyVisualAttributes.newInstance(keyAttr);
+        keyAttr.recycle();
+
         mKeyDrawParams.updateParams(keyHeight, mKeyVisualAttributes);
         mKeyDrawParams.updateParams(keyHeight, keyboard.mKeyVisualAttributes);
         final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(getContext());
         mCustomColor = Settings.readKeyboardColor(prefs, getContext());
         mTheme = Settings.getKeyboardTheme(getContext());
+
         invalidateAllKeys();
         requestLayout();
     }
@@ -390,6 +409,7 @@ public class KeyboardView extends View {
             }
 
             paint.setColor(key.selectTextColor(params));
+            //paint.setColor(Color.GREEN);
             // Set a drop shadow for the text if the shadow radius is positive value.
             if (mKeyTextShadowRadius > 0.0f) {
                 paint.setShadowLayer(mKeyTextShadowRadius, 0.0f, 0.0f, params.mTextShadowColor);

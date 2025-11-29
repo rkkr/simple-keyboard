@@ -29,6 +29,7 @@
          one of RTL locales, layoutDirection="ltr" is needed in the SDK version 17+. -->
     <rkr.simplekeyboard.inputmethod.keyboard.MainKeyboardView
         android:id="@+id/keyboard_view"
+        android:fitsSystemWindows="true"
         android:layoutDirection="ltr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
