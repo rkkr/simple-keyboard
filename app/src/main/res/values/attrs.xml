@@ -32,6 +32,7 @@
         <attr name="moreKeysKeyboardStyle" format="reference" />
         <!-- MoreKeysKeyboardView style -->
         <attr name="moreKeysKeyboardViewStyle" format="reference" />
+        <attr name="popupPanelBackgroundColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="KeyboardView">

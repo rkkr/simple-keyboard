@@ -27,6 +27,7 @@
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXX_Dark</item>
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Dark</item>
         <item name="functionalTextColor">@color/key_text_color_lxx_dark</item>
+        <item name="popupPanelBackgroundColor">#575757</item>
     </style>
     <style
         name="Keyboard.LXX_Dark_Border"

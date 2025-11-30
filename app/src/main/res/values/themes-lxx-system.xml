@@ -27,6 +27,7 @@
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXX_System</item>
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_System</item>
         <item name="functionalTextColor">@color/key_functional_text_color_lxx_system</item>
+        <item name="popupPanelBackgroundColor">@color/background_secondary_lxx_system</item>
     </style>
     <style
         name="Keyboard.LXX_System"
@@ -73,7 +74,7 @@
         name="MoreKeysKeyboardView.LXX_System"
         parent="KeyboardView.LXX_System"
         >
-        <item name="android:background">@drawable/keyboard_popup_panel_background_system</item>
+        <item name="android:background">@drawable/keyboard_popup_panel_background</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_popup_lxx_system</item>
         <item name="keyTypeface">normal</item>
         <item name="verticalCorrection">@dimen/config_more_keys_keyboard_vertical_correction</item>
