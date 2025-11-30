@@ -40,7 +40,6 @@
     <color name="key_text_inactive_color_lxx_light">#B337474F</color>
     <color name="key_hint_letter_color_lxx_light">#B337474F</color>
     <color name="key_background_normal_lxx_light">#26080B0C</color>
-    <color name="key_background_function_lxx_light">#65C1C1C1</color>
     <color name="key_background_pressed_lxx_light">#400E1214</color>
     <!-- Color resources for LXX_Dark theme. -->
     <color name="background_lxx_dark">#263238</color>
@@ -50,7 +49,6 @@
     <color name="key_text_inactive_color_lxx_dark">#80FFFFFF</color>
     <color name="key_hint_letter_color_lxx_dark">#80FFFFFF</color>
     <color name="key_background_normal_lxx_dark">#2AAAAAAA</color>
-    <color name="key_background_function_lxx_dark">#327A7A7A</color>
     <color name="key_background_pressed_lxx_dark">#4AAAAAAA</color>
     <!-- Dimensions for all themes. -->
     <dimen name="button_corner_radius_lxx">6dp</dimen>
