@@ -81,10 +81,6 @@
         <attr name="touchNoiseThresholdDistance" format="dimension" />
         <!-- Enable key selection by dragging finger -->
         <attr name="keySelectionByDraggingFinger" format="boolean" />
-        <attr name="slidingKeyInputPreviewColor" format="color" />
-        <attr name="slidingKeyInputPreviewWidth" format="dimension" />
-        <attr name="slidingKeyInputPreviewBodyRatio" format="integer" />
-        <attr name="slidingKeyInputPreviewShadowRatio" format="integer" />
         <!-- Key repeat start timeout -->
         <attr name="keyRepeatStartTimeout" format="integer" />
         <!-- Key repeat interval in millisecond. -->

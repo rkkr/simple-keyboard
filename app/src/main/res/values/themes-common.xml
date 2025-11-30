@@ -48,9 +48,6 @@
         <item name="touchNoiseThresholdTime">@integer/config_touch_noise_threshold_time</item>
         <item name="touchNoiseThresholdDistance">@dimen/config_touch_noise_threshold_distance</item>
         <item name="keySelectionByDraggingFinger">@bool/config_key_selection_by_dragging_finger</item>
-        <item name="slidingKeyInputPreviewWidth">@dimen/config_sliding_key_input_preview_width</item>
-        <item name="slidingKeyInputPreviewBodyRatio">@integer/config_sliding_key_input_preview_body_ratio</item>
-        <item name="slidingKeyInputPreviewShadowRatio">@integer/config_sliding_key_input_preview_shadow_ratio</item>
         <item name="keyRepeatStartTimeout">@integer/config_key_repeat_start_timeout</item>
         <item name="keyRepeatInterval">@integer/config_key_repeat_interval</item>
         <item name="longPressShiftLockTimeout">@integer/config_longpress_shift_lock_timeout</item>
