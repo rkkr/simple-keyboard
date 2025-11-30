@@ -27,9 +27,9 @@
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXX_Light</item>
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Light</item>
         <item name="functionalTextColor">@color/key_functional_text_color_lxx_light</item>
-        <item name="popupPanelBackgroundColor">#737373</item>
-        <item name="keyPressedBackgroundColor">#400E1214</item>
-        <item name="keyNormalBackgroundColor">#26080B0C</item>
+        <item name="popupPanelBackgroundColor">@color/background_secondary_lxx_light</item>
+        <item name="keyPressedBackgroundColor">@color/key_background_pressed_lxx_light</item>
+        <item name="keyNormalBackgroundColor">@color/key_background_normal_lxx_light</item>
     </style>
     <style
         name="Keyboard.LXX_Light"
@@ -61,7 +61,6 @@
         <item name="keyPreviewWidth">@dimen/config_key_preview_width_lxx</item>
         <item name="keyPreviewOffset">@dimen/config_key_preview_offset_lxx</item>
         <item name="keyPreviewDismissAnimator">@anim/key_preview_dismiss_lxx</item>
-        <item name="languageOnSpacebarTextColor">@color/language_on_spacebar_text_color_lxx_light</item>
     </style>
     <style
         name="MoreKeysKeyboard.LXX_Light"
