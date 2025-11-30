@@ -48,8 +48,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.ViewLayoutUtils;
 public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private static final String TAG = KeyboardSwitcher.class.getSimpleName();
 
-    private Insets mInsets;
-    private View mMainKeyboardFrame;
     private MainKeyboardView mKeyboardView;
     private LatinIME mLatinIME;
     private RichInputMethodManager mRichImm;
@@ -257,10 +255,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         final int visibility =  isImeSuppressedByHardwareKeyboard(settingsValues, toggleState)
                 ? View.GONE : View.VISIBLE;
         mKeyboardView.setVisibility(visibility);
-        // The visibility of {@link #mKeyboardView} must be aligned with {@link #MainKeyboardFrame}.
-        // @see #getVisibleKeyboardView() and
-        // @see LatinIME#onComputeInset(android.inputmethodservice.InputMethodService.Insets)
-        mMainKeyboardFrame.setVisibility(visibility);
     }
 
     public enum KeyboardSwitchState {
@@ -381,18 +375,8 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
                 mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */));
         final InputView currentInputView = (InputView) LayoutInflater.from(mThemeContext).inflate(
                 R.layout.input_view, null);
-        mMainKeyboardFrame = currentInputView.findViewById(R.id.main_keyboard_frame);
 
         mKeyboardView = currentInputView.findViewById(R.id.keyboard_view);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            ViewLayoutUtils.applyViewInsets(mKeyboardView, mInsets);
-            mKeyboardView.setOnApplyWindowInsetsListener((View view, WindowInsets windowInsets) -> {
-                mInsets = windowInsets.getInsets(WindowInsets.Type.systemBars());
-                ViewLayoutUtils.applyViewInsets(view, mInsets);
-                return WindowInsets.CONSUMED;
-            });
-        }
-
         mKeyboardView.setKeyboardActionListener(mLatinIME);
         return currentInputView;
     }

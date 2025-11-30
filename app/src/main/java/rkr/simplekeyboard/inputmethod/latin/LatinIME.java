@@ -328,6 +328,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         super.setInputView(view);
         mInputView = view;
         updateSoftInputWindowLayoutParameters();
+        view.requestApplyInsets();
     }
 
     @Override
