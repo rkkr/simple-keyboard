@@ -28,6 +28,8 @@
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Light</item>
         <item name="functionalTextColor">@color/key_functional_text_color_lxx_light</item>
         <item name="popupPanelBackgroundColor">#737373</item>
+        <item name="keyPressedBackgroundColor">#400E1214</item>
+        <item name="keyNormalBackgroundColor">#26080B0C</item>
     </style>
     <style
         name="Keyboard.LXX_Light"
@@ -39,9 +41,9 @@
         parent="KeyboardView"
     >
         <item name="android:background">@color/background_lxx_light</item>
-        <item name="keyBackground">@drawable/btn_keyboard_key_lxx_light</item>
-        <item name="functionalKeyBackground">@drawable/btn_keyboard_key_functional_lxx_light</item>
-        <item name="spacebarBackground">@drawable/btn_keyboard_spacebar_lxx_light</item>
+        <item name="keyBackground">@drawable/btn_keyboard_key</item>
+        <item name="functionalKeyBackground">@drawable/btn_keyboard_key</item>
+        <item name="spacebarBackground">@drawable/btn_keyboard_spacebar</item>
         <item name="keyTextColor">@color/key_text_color_lxx_light</item>
         <item name="keyTextInactivatedColor">@color/key_text_inactive_color_lxx_light</item>
         <item name="keyHintLetterColor">@color/key_hint_letter_color_lxx_light</item>
@@ -54,7 +56,7 @@
         name="MainKeyboardView.LXX_Light"
         parent="KeyboardView.LXX_Light"
     >
-        <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background_lxx_light</item>
+        <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background</item>
         <item name="keyPreviewHeight">@dimen/config_key_preview_height_lxx</item>
         <item name="keyPreviewWidth">@dimen/config_key_preview_width_lxx</item>
         <item name="keyPreviewOffset">@dimen/config_key_preview_offset_lxx</item>
@@ -75,7 +77,7 @@
         parent="KeyboardView.LXX_Light"
     >
         <item name="android:background">@drawable/keyboard_popup_panel_background</item>
-        <item name="keyBackground">@drawable/btn_keyboard_key_popup_lxx_light</item>
+        <item name="keyBackground">@drawable/btn_keyboard_key_popup</item>
         <item name="keyTypeface">normal</item>
         <item name="verticalCorrection">@dimen/config_more_keys_keyboard_vertical_correction</item>
     </style>
