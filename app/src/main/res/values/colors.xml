@@ -34,7 +34,7 @@
     <color name="key_background_pressed_lxx_system">#20000000</color>
     <!-- Color resources for LXX_Light theme. -->
     <color name="background_lxx_light">#ECEFF1</color>
-    <color name="background_secondary_lxx_light">#737373</color>
+    <color name="background_secondary_lxx_light">#20000000</color>
     <color name="key_text_color_lxx_light">#37474F</color>
     <color name="key_functional_text_color_lxx_light">#CC37474F</color>
     <color name="key_text_inactive_color_lxx_light">#B337474F</color>
@@ -43,7 +43,7 @@
     <color name="key_background_pressed_lxx_light">#400E1214</color>
     <!-- Color resources for LXX_Dark theme. -->
     <color name="background_lxx_dark">#263238</color>
-    <color name="background_secondary_lxx_dark">#575757</color>
+    <color name="background_secondary_lxx_dark">#20FFFFFF</color>
     <color name="key_text_color_lxx_dark">#CCFFFFFF</color>
     <color name="key_functional_text_color_lxx_dark">#CCFFFFFF</color>
     <color name="key_text_inactive_color_lxx_dark">#80FFFFFF</color>
