@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2025 Raimondas Rimkus
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="42dp"
+    android:height="42dp"
+    android:viewportWidth="42"
+    android:viewportHeight="42">
+    <group
+        android:translateX="12"
+        android:translateY="12">
+        <path
+            android:fillColor="#C8CBCD"
+            android:strokeColor="#C8CBCD"
+            android:strokeWidth="1"
+            android:strokeLineJoin="round"
+            android:pathData="@string/icon_launcher_keys"/>
+        <path
+            android:fillColor="#C8CBCD"
+            android:pathData="@string/icon_launcher_text"/>
+    </group>
+</vector>
