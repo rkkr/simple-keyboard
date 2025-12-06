@@ -259,8 +259,8 @@ public class KeyboardView extends View {
 
         final Paint paint = mPaint;
         final Drawable background = getBackground();
-        if (background != null && Color.alpha(mCustomColor) > 0 && mTheme.mCustomColorSupport) {
-            if (keyboard.getKey(Constants.CODE_SPACE) == null) {
+        if (background != null && mTheme.mCustomColorSupport) {
+            if (keyboard.getClass() == MoreKeysKeyboard.class) {
                 background.setColorFilter(mCustomColor, PorterDuff.Mode.OVERLAY);
             } else {
                 setBackgroundColor(mCustomColor);
