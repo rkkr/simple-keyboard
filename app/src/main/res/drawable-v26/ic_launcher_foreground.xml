@@ -15,19 +15,13 @@
 -->
 
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="28dp"
-    android:height="28dp"
-    android:viewportWidth="28"
-    android:viewportHeight="28">
-    <path
-        android:fillColor="#EAEDEF"
-        android:strokeColor="#EAEDEF"
-        android:strokeWidth="3"
-        android:strokeLineJoin="round"
-        android:pathData="M2,2 26,2 26,26 2,26 z"/>
+    android:width="42dp"
+    android:height="42dp"
+    android:viewportWidth="42"
+    android:viewportHeight="42">
     <group
-        android:translateX="5"
-        android:translateY="5">
+        android:translateX="12"
+        android:translateY="12">
         <path
             android:fillColor="#5695FD"
             android:strokeColor="#5695FD"
