@@ -38,12 +38,14 @@ import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
  * complexity of settings and the like.
  */
 public final class AudioAndHapticFeedbackManager {
+    private static final long TICK_FREQUENCY = 100;
     private ExecutorService mBackgroundThread;
     private AudioManager mAudioManager;
     private Vibrator mVibrator;
 
     private SettingsValues mSettingsValues;
     private boolean mSoundOn;
+    private long mLastTickTime = 0;
 
     private static final AudioAndHapticFeedbackManager sInstance =
             new AudioAndHapticFeedbackManager();
@@ -131,11 +133,14 @@ public final class AudioAndHapticFeedbackManager {
     }
 
     public void performTickFeedback() {
-        if (!mSettingsValues.mVibrateOn || mVibrator == null) {
+        if (!mSettingsValues.mVibrateOn
+                || mVibrator == null
+                || System.currentTimeMillis() - mLastTickTime < TICK_FREQUENCY ) {
             return;
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            mLastTickTime = System.currentTimeMillis();
             mBackgroundThread.execute(() -> {
                 mVibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_TICK));
             });
