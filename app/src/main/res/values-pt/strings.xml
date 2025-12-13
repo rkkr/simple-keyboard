@@ -24,7 +24,7 @@
     <string name="popup_on_keypress">"Exibir pop-up ao digitar"</string>
     <string name="settings_screen_preferences">"Preferências"</string>
     <string name="settings_screen_key_press">Premir tecla</string>
-    <string name="settings_screen_appearance">Aspeto</string>
+    <string name="settings_screen_appearance">Aparência</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="settings_system_default">"Padrão do sistema"</string>
     <string name="auto_cap">"Capitalização automática"</string>
