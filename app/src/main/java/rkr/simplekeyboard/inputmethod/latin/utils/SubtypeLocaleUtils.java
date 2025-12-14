@@ -45,164 +45,27 @@ public final class SubtypeLocaleUtils {
         // This utility class is not publicly instantiable.
     }
 
-    private static final String LOCALE_AFRIKAANS = "af";
-    private static final String LOCALE_ARABIC = "ar";
-    private static final String LOCALE_AZERBAIJANI_AZERBAIJAN = "az_AZ";
-    private static final String LOCALE_BELARUSIAN_BELARUS = "be_BY";
-    private static final String LOCALE_BULGARIAN = "bg";
-    private static final String LOCALE_BENGALI_BANGLADESH = "bn_BD";
-    private static final String LOCALE_BENGALI_INDIA = "bn_IN";
-    private static final String LOCALE_CATALAN = "ca";
-    private static final String LOCALE_CZECH = "cs";
-    private static final String LOCALE_DANISH = "da";
-    private static final String LOCALE_GERMAN = "de";
-    private static final String LOCALE_GERMAN_SWITZERLAND = "de_CH";
-    private static final String LOCALE_GREEK = "el";
-    private static final String LOCALE_ENGLISH_INDIA = "en_IN";
+    // English locales
     private static final String LOCALE_ENGLISH_GREAT_BRITAIN = "en_GB";
     private static final String LOCALE_ENGLISH_UNITED_STATES = "en_US";
-    private static final String LOCALE_ESPERANTO = "eo";
-    private static final String LOCALE_SPANISH = "es";
-    private static final String LOCALE_SPANISH_UNITED_STATES = "es_US";
-    private static final String LOCALE_SPANISH_LATIN_AMERICA = "es_419";
-    private static final String LOCALE_ESTONIAN_ESTONIA = "et_EE";
-    private static final String LOCALE_BASQUE_SPAIN = "eu_ES";
-    private static final String LOCALE_PERSIAN = "fa";
-    private static final String LOCALE_FINNISH = "fi";
-    private static final String LOCALE_FRENCH = "fr";
-    private static final String LOCALE_FRENCH_CANADA = "fr_CA";
-    private static final String LOCALE_FRENCH_SWITZERLAND = "fr_CH";
-    private static final String LOCALE_GALICIAN_SPAIN = "gl_ES";
-    private static final String LOCALE_HINDI = "hi";
-    private static final String LOCALE_CROATIAN = "hr";
-    private static final String LOCALE_HUNGARIAN = "hu";
-    private static final String LOCALE_ARMENIAN_ARMENIA = "hy_AM";
+
+    // Indonesian locales (support both old and new codes)
     private static final String LOCALE_INDONESIAN_1 = "in"; // Android 14
     private static final String LOCALE_INDONESIAN_2 = "id"; // Android 15
-    private static final String LOCALE_ICELANDIC = "is";
-    private static final String LOCALE_ITALIAN = "it";
-    private static final String LOCALE_ITALIAN_SWITZERLAND = "it_CH";
-    private static final String LOCALE_HEBREW_1 = "iw"; // Android 14
-    private static final String LOCALE_HEBREW_2 = "he"; // Android 15
-    private static final String LOCALE_GEORGIAN_GEORGIA = "ka_GE";
-    private static final String LOCALE_KAZAKH = "kk";
-    private static final String LOCALE_KHMER_CAMBODIA = "km_KH";
-    private static final String LOCALE_KANNADA_INDIA = "kn_IN";
-    private static final String LOCALE_KYRGYZ = "ky";
-    private static final String LOCALE_LAO_LAOS = "lo_LA";
-    private static final String LOCALE_LITHUANIAN = "lt";
-    private static final String LOCALE_LATVIAN = "lv";
-    private static final String LOCALE_MACEDONIAN = "mk";
-    private static final String LOCALE_MALAYALAM_INDIA = "ml_IN";
-    private static final String LOCALE_MONGOLIAN_MONGOLIA = "mn_MN";
-    private static final String LOCALE_MARATHI_INDIA = "mr_IN";
-    private static final String LOCALE_MALAY_MALAYSIA = "ms_MY";
-    private static final String LOCALE_NORWEGIAN_BOKMAL = "nb"; // Norwegian Bokmål
-    private static final String LOCALE_NEPALI_NEPAL = "ne_NP";
-    private static final String LOCALE_DUTCH = "nl";
-    private static final String LOCALE_DUTCH_BELGIUM = "nl_BE";
-    private static final String LOCALE_POLISH = "pl";
-    private static final String LOCALE_PORTUGUESE_BRAZIL = "pt_BR";
-    private static final String LOCALE_PORTUGUESE_PORTUGAL = "pt_PT";
-    private static final String LOCALE_ROMANIAN = "ro";
-    private static final String LOCALE_RUSSIAN = "ru";
-    private static final String LOCALE_SLOVAK = "sk";
-    private static final String LOCALE_SLOVENIAN = "sl";
-    private static final String LOCALE_SERBIAN = "sr";
-    private static final String LOCALE_SERBIAN_LATIN = "sr_ZZ";
-    private static final String LOCALE_SWEDISH = "sv";
-    private static final String LOCALE_SWAHILI = "sw";
-    private static final String LOCALE_TAMIL_INDIA = "ta_IN";
-    private static final String LOCALE_TAMIL_SINGAPORE = "ta_SG";
-    private static final String LOCALE_TELUGU_INDIA = "te_IN";
-    private static final String LOCALE_THAI = "th";
-    private static final String LOCALE_TAGALOG = "tl";
-    private static final String LOCALE_TURKISH = "tr";
-    private static final String LOCALE_UKRAINIAN = "uk";
-    private static final String LOCALE_URDU = "ur";
-    private static final String LOCALE_UZBEK_UZBEKISTAN = "uz_UZ";
-    private static final String LOCALE_VIETNAMESE = "vi";
-    private static final String LOCALE_ZULU = "zu";
+
+    // Chinese/Mandarin locales
+    private static final String LOCALE_CHINESE_SIMPLIFIED = "zh_CN";
+    private static final String LOCALE_CHINESE_TRADITIONAL_TAIWAN = "zh_TW";
+    private static final String LOCALE_CHINESE_HONGKONG = "zh_HK";
 
     private static final String[] sSupportedLocales = new String[] {
             LOCALE_ENGLISH_UNITED_STATES,
             LOCALE_ENGLISH_GREAT_BRITAIN,
-            LOCALE_AFRIKAANS,
-            LOCALE_ARABIC,
-            LOCALE_AZERBAIJANI_AZERBAIJAN,
-            LOCALE_BELARUSIAN_BELARUS,
-            LOCALE_BULGARIAN,
-            LOCALE_BENGALI_BANGLADESH,
-            LOCALE_BENGALI_INDIA,
-            LOCALE_CATALAN,
-            LOCALE_CZECH,
-            LOCALE_DANISH,
-            LOCALE_GERMAN,
-            LOCALE_GERMAN_SWITZERLAND,
-            LOCALE_GREEK,
-            LOCALE_ENGLISH_INDIA,
-            LOCALE_ESPERANTO,
-            LOCALE_SPANISH,
-            LOCALE_SPANISH_UNITED_STATES,
-            LOCALE_SPANISH_LATIN_AMERICA,
-            LOCALE_ESTONIAN_ESTONIA,
-            LOCALE_BASQUE_SPAIN,
-            LOCALE_PERSIAN,
-            LOCALE_FINNISH,
-            LOCALE_FRENCH,
-            LOCALE_FRENCH_CANADA,
-            LOCALE_FRENCH_SWITZERLAND,
-            LOCALE_GALICIAN_SPAIN,
-            LOCALE_HINDI,
-            LOCALE_CROATIAN,
-            LOCALE_HUNGARIAN,
-            LOCALE_ARMENIAN_ARMENIA,
             LOCALE_INDONESIAN_1,
             LOCALE_INDONESIAN_2,
-            LOCALE_ICELANDIC,
-            LOCALE_ITALIAN,
-            LOCALE_ITALIAN_SWITZERLAND,
-            LOCALE_HEBREW_1,
-            LOCALE_HEBREW_2,
-            LOCALE_GEORGIAN_GEORGIA,
-            LOCALE_KAZAKH,
-            LOCALE_KHMER_CAMBODIA,
-            LOCALE_KANNADA_INDIA,
-            LOCALE_KYRGYZ,
-            LOCALE_LAO_LAOS,
-            LOCALE_LITHUANIAN,
-            LOCALE_LATVIAN,
-            LOCALE_MACEDONIAN,
-            LOCALE_MALAYALAM_INDIA,
-            LOCALE_MONGOLIAN_MONGOLIA,
-            LOCALE_MARATHI_INDIA,
-            LOCALE_MALAY_MALAYSIA,
-            LOCALE_NORWEGIAN_BOKMAL,
-            LOCALE_NEPALI_NEPAL,
-            LOCALE_DUTCH,
-            LOCALE_DUTCH_BELGIUM,
-            LOCALE_POLISH,
-            LOCALE_PORTUGUESE_BRAZIL,
-            LOCALE_PORTUGUESE_PORTUGAL,
-            LOCALE_ROMANIAN,
-            LOCALE_RUSSIAN,
-            LOCALE_SLOVAK,
-            LOCALE_SLOVENIAN,
-            LOCALE_SERBIAN,
-            LOCALE_SERBIAN_LATIN,
-            LOCALE_SWEDISH,
-            LOCALE_SWAHILI,
-            LOCALE_TAMIL_INDIA,
-            LOCALE_TAMIL_SINGAPORE,
-            LOCALE_TELUGU_INDIA,
-            LOCALE_THAI,
-            LOCALE_TAGALOG,
-            LOCALE_TURKISH,
-            LOCALE_UKRAINIAN,
-            LOCALE_URDU,
-            LOCALE_UZBEK_UZBEKISTAN,
-            LOCALE_VIETNAMESE,
-            LOCALE_ZULU
+            LOCALE_CHINESE_SIMPLIFIED,
+            LOCALE_CHINESE_TRADITIONAL_TAIWAN,
+            LOCALE_CHINESE_HONGKONG
     };
 
     /**
@@ -381,183 +244,25 @@ public final class SubtypeLocaleUtils {
             // The first subtype that is specified to be built here for each locale will be
             // considered the default.
             switch (mLocale) {
-                case LOCALE_AFRIKAANS:
-                case LOCALE_AZERBAIJANI_AZERBAIJAN:
-                case LOCALE_ENGLISH_INDIA:
+                // English locales (US and UK)
                 case LOCALE_ENGLISH_GREAT_BRITAIN:
                 case LOCALE_ENGLISH_UNITED_STATES:
+                    addLayout(LAYOUT_QWERTY);
+                    addGenericLayouts();
+                    break;
+
+                // Indonesian locales (support both old and new codes)
                 case LOCALE_INDONESIAN_1:
                 case LOCALE_INDONESIAN_2:
-                case LOCALE_ICELANDIC:
-                case LOCALE_ITALIAN:
-                case LOCALE_LITHUANIAN:
-                case LOCALE_LATVIAN:
-                case LOCALE_MALAY_MALAYSIA:
-                case LOCALE_DUTCH:
-                case LOCALE_POLISH:
-                case LOCALE_ROMANIAN:
-                case LOCALE_SLOVAK:
-                case LOCALE_SWAHILI:
-                case LOCALE_VIETNAMESE:
-                case LOCALE_ZULU:
                     addLayout(LAYOUT_QWERTY);
                     addGenericLayouts();
                     break;
-                case LOCALE_CZECH:
-                case LOCALE_GERMAN:
-                case LOCALE_CROATIAN:
-                case LOCALE_HUNGARIAN:
-                case LOCALE_SLOVENIAN:
-                    addLayout(LAYOUT_QWERTZ);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_FRENCH_CANADA:
+
+                // Chinese/Mandarin locales
+                case LOCALE_CHINESE_SIMPLIFIED:
+                case LOCALE_CHINESE_TRADITIONAL_TAIWAN:
+                case LOCALE_CHINESE_HONGKONG:
                     addLayout(LAYOUT_QWERTY);
-                    addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_FRENCH:
-                    addLayout(LAYOUT_AZERTY);
-                    addLayout(LAYOUT_BEPO);
-                    addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_DUTCH_BELGIUM:
-                    addLayout(LAYOUT_AZERTY);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_CATALAN:
-                case LOCALE_SPANISH:
-                case LOCALE_SPANISH_UNITED_STATES:
-                case LOCALE_SPANISH_LATIN_AMERICA:
-                case LOCALE_BASQUE_SPAIN:
-                case LOCALE_GALICIAN_SPAIN:
-                case LOCALE_TAGALOG:
-                    addLayout(LAYOUT_SPANISH);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_ESPERANTO:
-                    addLayout(LAYOUT_SPANISH);
-                    break;
-                case LOCALE_DANISH:
-                case LOCALE_ESTONIAN_ESTONIA:
-                case LOCALE_FINNISH:
-                case LOCALE_NORWEGIAN_BOKMAL:
-                case LOCALE_SWEDISH:
-                    addLayout(LAYOUT_NORDIC);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_FRENCH_SWITZERLAND:
-                    addLayout(LAYOUT_SWISS);
-                    addLayout(LAYOUT_BEPO);
-                    addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_GERMAN_SWITZERLAND:
-                case LOCALE_ITALIAN_SWITZERLAND:
-                    addLayout(LAYOUT_SWISS);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_TURKISH:
-                    addLayout(LAYOUT_QWERTY);
-                    addLayout(LAYOUT_TURKISH_Q, R.string.subtype_q);
-                    addLayout(LAYOUT_TURKISH_F, R.string.subtype_f);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_UZBEK_UZBEKISTAN:
-                    addLayout(LAYOUT_UZBEK);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_ARABIC:
-                    addLayout(LAYOUT_ARABIC);
-                    break;
-                case LOCALE_BELARUSIAN_BELARUS:
-                case LOCALE_KAZAKH:
-                case LOCALE_KYRGYZ:
-                case LOCALE_RUSSIAN:
-                case LOCALE_UKRAINIAN:
-                    addLayout(LAYOUT_EAST_SLAVIC);
-                    break;
-                case LOCALE_BULGARIAN:
-                    addLayout(LAYOUT_BULGARIAN);
-                    addLayout(LAYOUT_BULGARIAN_BDS, R.string.subtype_bds);
-                    break;
-                case LOCALE_BENGALI_BANGLADESH:
-                    addLayout(LAYOUT_BENGALI_UNIJOY);
-                    addLayout(LAYOUT_BENGALI_AKKHOR, R.string.subtype_akkhor);
-                    break;
-                case LOCALE_BENGALI_INDIA:
-                    addLayout(LAYOUT_BENGALI);
-                    break;
-                case LOCALE_GREEK:
-                    addLayout(LAYOUT_GREEK);
-                    break;
-                case LOCALE_PERSIAN:
-                    addLayout(LAYOUT_FARSI);
-                    break;
-                case LOCALE_HINDI:
-                    addLayout(LAYOUT_HINDI);
-                    addLayout(LAYOUT_HINDI_COMPACT, R.string.subtype_compact);
-                    break;
-                case LOCALE_ARMENIAN_ARMENIA:
-                    addLayout(LAYOUT_ARMENIAN_PHONETIC);
-                    break;
-                case LOCALE_HEBREW_1:
-                case LOCALE_HEBREW_2:
-                    addLayout(LAYOUT_HEBREW);
-                    break;
-                case LOCALE_GEORGIAN_GEORGIA:
-                    addLayout(LAYOUT_GEORGIAN);
-                    break;
-                case LOCALE_KHMER_CAMBODIA:
-                    addLayout(LAYOUT_KHMER);
-                    break;
-                case LOCALE_KANNADA_INDIA:
-                    addLayout(LAYOUT_KANNADA);
-                    break;
-                case LOCALE_LAO_LAOS:
-                    addLayout(LAYOUT_LAO);
-                    break;
-                case LOCALE_MACEDONIAN:
-                    addLayout(LAYOUT_MACEDONIAN);
-                    break;
-                case LOCALE_MALAYALAM_INDIA:
-                    addLayout(LAYOUT_MALAYALAM);
-                    break;
-                case LOCALE_MONGOLIAN_MONGOLIA:
-                    addLayout(LAYOUT_MONGOLIAN);
-                    break;
-                case LOCALE_MARATHI_INDIA:
-                    addLayout(LAYOUT_MARATHI);
-                    break;
-                case LOCALE_NEPALI_NEPAL:
-                    addLayout(LAYOUT_NEPALI_ROMANIZED);
-                    addLayout(LAYOUT_NEPALI_TRADITIONAL, R.string.subtype_traditional);
-                    break;
-                case LOCALE_SERBIAN:
-                    addLayout(LAYOUT_SERBIAN);
-                    break;
-                case LOCALE_SERBIAN_LATIN:
-                    addLayout(LAYOUT_SERBIAN_QWERTZ);
-                    addGenericLayouts();
-                    break;
-                case LOCALE_TAMIL_INDIA:
-                case LOCALE_TAMIL_SINGAPORE:
-                    addLayout(LAYOUT_TAMIL);
-                    break;
-                case LOCALE_TELUGU_INDIA:
-                    addLayout(LAYOUT_TELUGU);
-                    break;
-                case LOCALE_THAI:
-                    addLayout(LAYOUT_THAI);
-                    break;
-                case LOCALE_URDU:
-                    addLayout(LAYOUT_URDU);
-                    break;
-                case LOCALE_PORTUGUESE_BRAZIL:
-                case LOCALE_PORTUGUESE_PORTUGAL:
-                    addLayout(LAYOUT_QWERTY);
-                    addLayout(LAYOUT_HCESAR, R.string.subtype_hcesar);
                     addGenericLayouts();
                     break;
             }

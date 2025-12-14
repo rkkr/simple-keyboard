@@ -2,7 +2,7 @@
 <!--
 /*
 **
-** Copyright 2009, The Android Open Source Project
+** Copyright 2013, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -21,4 +21,12 @@
     <!-- Symbols that separate words -->
     <!-- Don't remove the enclosing double quotes, they protect whitespace (not just U+0020) -->
     <string name="symbols_word_separators">"&#x0009;&#x0020;&#x000A;&#x00A0;"()[]{}*&amp;&lt;&gt;+=|.,;:!?/_\"</string>
+    <!-- The sentence separator code point, for capitalization and auto-insertion -->
+    <!-- U+3002: "。" IDEOGRAPHIC FULL STOP   ; 3002h = 12290d -->
+    <integer name="sentence_separator">12290</integer>
+    <!-- The abbreviation marker code point -->
+    <!-- U+3002: "。" IDEOGRAPHIC FULL STOP   ; 3002h = 12290d -->
+    <integer name="abbreviation_marker">12290</integer>
+    <!-- Symbols that terminate sentences (Chinese full-width punctuation) -->
+    <string name="symbols_sentence_terminators">。！？</string>
 </resources>

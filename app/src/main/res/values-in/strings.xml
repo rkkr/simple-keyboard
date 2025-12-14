@@ -49,7 +49,7 @@
     <string name="show_number_row">Tampilkan tombol angka terpisah</string>
     <string name="space_swipe">Geser untuk menggerakan kursor</string>
     <string name="delete_swipe">Hapus dengan menggeser</string>
-    <string name="setup_message">Simple Keyboard belum diaktifkan. Klik OKE untuk membuka setelan Bahasa &amp; Masukan. Anda perlu memilih Simple Keyboard di dalam setelan keyboard untuk menggunakannya.</string>
+    <string name="setup_message">MandaKey Learn belum diaktifkan. Klik OKE untuk membuka setelan Bahasa &amp; Masukan. Anda perlu memilih MandaKey Learn di dalam setelan keyboard untuk menggunakannya.</string>
     <string name="user_languages">Bahasa keyboard yang dihidupkan</string>
     <string name="add_language">Tambah bahasa</string>
     <string name="remove_language">Hapus bahasa</string>
