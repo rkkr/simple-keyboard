@@ -473,42 +473,81 @@
             U+78361: 𓈙
             U+1303B: "𓀻"
             U+1331E: "𓌞"
+            &#x131B7; 𓆷
+            &#x1334B; 𓍋
+            &#x1315C; 𓅜
+            &#x13186; 𓆆
+            &#x131B7; 𓆷
+            &#x13184; 𓆄
+            &#x1321D; 𓈝
+            &#x13362; 𓍢
+            &#x13372; 𓍲
+            &#x13371; 𓍱
+            &#x1311E; 𓄞
+            &#x131D7; 𓇗  (šmꜥ)
+            &#x13341; 𓍁  (šnꜥ)
+            &#x13290; 𓊐  (šzp)
+
             -->
             <Key
                 latin:keySpec="&#78361;"
                 latin:keyHintLabel="&#x0634;"
-                latin:moreKeys="&#x1303B;,&#x1331E;"
+                latin:moreKeys="&#x0634;,&#x1303B;,&#x1331E;,&#x131B7;,&#x1334B;,&#x1315C;,&#x13186;,&#x13184;,&#x1321D;,&#x13362;,&#x13372;,&#x13371;,&#x1311E;,&#x131D7;,&#x13341;,&#x13290;"
                 />
             <!--
             &#78580; : 𓋴
             &#x0633; : "س" ARABIC LETTER SEEN
             &#x1316D; : "𓅭"
             &#78626; : 𓌢
+            &#x1341F; 𓐟
+            &#x13420; 𓐠
+            &#x131D3; 𓇓
+            &#x1339D; 𓎝
+            &#x1311D; 𓄝
+            &#x132EB; 𓋫
+            &#x133F4; 𓏴
+            &#x13302; 𓌂  (sḫm)
+            &#x1311C; 𓄜  (sꜣb)
+            &#x132EB; 𓋫  (sꜣṯ)
+            &#x132F7; 𓋷  (siꜣ)
+            &#x133FC; 𓇼  (sbꜣ)
+            &#x1312D; 𓄭  (spr)
+            &#x132F4; 𓋴  (snb)
+            &#x132F6; 𓋶  (smꜣ)
+            &#x1317E; 𓅾  (snḏ)
+            &#x13349; 𓍉  (stp)
              -->
             <Key
                 latin:keySpec="&#78580;"
                 latin:keyHintLabel="&#x0633;"
                 latin:keyLetterSize="45%"
-                latin:moreKeys="&#x1316D;,&#78626;"
+                latin:moreKeys="&#x0633;,&#x1316D;,&#78626;,&#x1341F;,&#x13420;,&#x131D3;,&#x1339D;,&#x1311D;,&#x132EB;,&#x133F4;,&#x13302;,&#x1311C;,&#x132EB;,&#x132F7;,&#x133FC;,&#x1312D;,&#x132F4;,&#x132F6;,&#x1317E;,&#x13349;"
                 />
             <!--
             &#78284; : 𓇌
            &#x064A;  : "ي" ARABIC LETTER YEH
+           &#x133ED; 𓏭
             -->
             <Key
                 latin:keySpec="&#78284;"
                 latin:keyLetterSize="50%"
-                latin:keyHintLabel="&#x064A;"/>
+                latin:keyHintLabel="&#x064A;"
+                latin:moreKeys="&#x064A;,&#x133ED;"
+
+                />
             <!--
              &#78016; : 𓃀
              &#x0628; : "ب" ARABIC LETTER BEH
-             &#x1316E; : "𓅮"
+             &#x13161; 𓅡
+            &#x13111; 𓄑
+            &#x133B0; 𓎰  (bꜣs)
+
             -->
             <Key
                 latin:keySpec="&#78016;"
                 latin:keyLetterSize="40%"
                 latin:keyHintLabel="&#x0628;"
-                latin:moreKeys="&#x1316E;"/>
+                latin:moreKeys="&#x0628;,&#x13161;,&#x13111;,&#x133B0;"/>
             <!--
             &#78061; : 𓃭
             &#x0644; : "ل" ARABIC LETTER LAM
@@ -516,7 +555,9 @@
             <Key
                 latin:keySpec="&#78061;"
                 latin:keyLetterSize="50%"
-                latin:keyHintLabel="&#x0644;" />
+                latin:keyHintLabel="&#x0644;"
+                latin:moreKeys="&#x0644;"
+                />
             <!--
             &#78061; : 𓄿
             &#x0627; : أ
@@ -529,26 +570,51 @@
             <Key
                 latin:keySpec="&#78143;"
                 latin:keyHintLabel="&#x0627;"
-                latin:moreKeys="&#78144;,&#x13039;,&#x1312B;,&#x1334B;,&#x1311C;,&#x130F0;"/>
+                latin:moreKeys="&#x0627;,&#78144;,&#x13039;,&#x1312B;,&#x1334B;,&#x1311C;,&#x130F0;"/>
             <!--
             &#78799; : 𓏏
             &#x062A; : "ت" ARABIC LETTER TEH
             &#x13343; : "𓍃" EGYPTIAN HIEROGLYPH U011
             &#x13036; : "𓁶" EGYPTIAN HIEROGLYPH D050
             &#x13102; : "𓅂" EGYPTIAN HIEROGLYPH E002
+            &#x133FE; 𓇾
+            &#x133FF; 𓇿
+            &#x13354; 𓍔
+            &#x13358; 𓍘
+            &#x130B6; 𓁶
+            &#x13350; 𓌐
+            &#x131B5; 𓆵
+            &#x13142; 𓅂  (tiw)
+
+
             -->
             <Key
                 latin:keySpec="&#78799;"
                 latin:keyHintLabel="&#x062A;"
-                latin:moreKeys="&#x13343;,&#x13036;,&#x13102;"/>
+                latin:moreKeys="&#x062A;,&#x13343;,&#x13036;,&#x13102;,&#x133FE;,&#x133FF;,&#x13354;,&#x13358;,&#x13350;,&#x131B5;,&#x13142;,&#x13142;"/>
 
             <!-- U+0646: "ن" ARABIC LETTER NOON
              &#78358; : 𓈖
+             &#x132D4; 𓋔
+             &#x1309C; 𓂜
+            &#x130A2; 𓂢
+            &#x13347; 𓍇
+            &#x133CC; 𓏌
+            &#x1339F; 𓎟
+            &#x13255; 𓉕
+            &#x13330; 𓌰
+            &#x13331; 𓌱
+            &#x131D2; 𓇒
+            &#x13182; 𓆂
+            &#x13158; 𓅘
+            &#x13113; 𓄓
+            &#x13429; 𓐩
+            &#x131DB; 𓇛  (nḏm)
              -->
             <Key
                 latin:keySpec="&#78358;"
                 latin:keyHintLabel="&#x0646;"
-                latin:moreKeys="&#x13124;,&#x132B9;,&#x132DE;"
+                latin:moreKeys="&#x0646;,&#x132D4;,&#x13124;,&#x132B9;,&#x132DE;,&#x1309C;,&#x130A2;,&#x13347;,&#x133CC;,&#x1339F;,&#x13330;,&#x13331;,&#x131D2;,&#x13182;,&#x13158;,&#x13113;,&#x13429;,&#x131DB;"
                 />
             <!--
              &#78163; : 𓅓
@@ -559,24 +625,41 @@
              &#x1311F; : "𓄟" EGYPTIAN HIEROGLYPH F019
              &#x13419; : "𓐙" EGYPTIAN HIEROGLYPH V028
              &#x13110; : "𓅐" EGYPTIAN HIEROGLYPH E010
+             &#x13333; 𓌳
+            &#x1309D; 𓂝
+            &#x1309F; 𓂟
+            &#x13318; 𓈘
+            &#x133C7; 𓏇
+            &#x13307; 𓌇
+            &#x133E0; 𓏠
+            &#x13318; 𓈘
+            &#x13255; 𓉕
+            &#x13338; 𓌸
+            &#x1334B; 𓍋
+            &#x13394; 𓎔
+            &#x1311F; 𓄟
+            &#x130B8; 𓂸
+            &#x13303; 𓌃
+            &#x132DC; 𓋜  (mḏḥ)
             -->
             <Key
                 latin:keySpec="&#78163;"
                 latin:keyHintLabel="&#x0645;"
-                latin:moreKeys="&#78164;,&#x13338;,&#x13217;,&#x1311F;,&#x13419;,&#x13110;"
+                latin:moreKeys="&#x0645;,&#78164;,&#x13338;,&#x13217;,&#x1311F;,&#x13419;,&#x13110;,&#x13333;,&#x1309D;,&#x1309F;,&#x13318;,&#x133C7;,&#x13307;,&#x133E0;,&#x13318;,&#x13255;,&#x13338;,&#x1334B;,&#x13394;,&#x130B8;,&#x13150;,&#x13303;,&#x132DC;"
                 />
             <!-- U+0643: "ك" ARABIC LETTER KAF
                  &#x13093; : "𓂓" ARABIC LETTER GAF
                  U+06A9: "ک" ARABIC LETTER KEHEH
                  1318E: "𓆎" EGYPTIAN HIEROGLYPH F046
+                 &#x132B6; 𓊶
                  -->
             <Key
                 latin:keySpec="&#78753;"
                 latin:keyHintLabel="&#x0643;"
-                latin:moreKeys="&#x13093;,&#x1318E;"
+                latin:moreKeys="&#x0643;,&#x13093;,&#x1318E;,&#x132B6;"
                 />
                         <!--    "𓋹"
-            
+            ت
 
             -->
             <!--
@@ -595,10 +678,26 @@
             &#x1337A; : "𓍺" EGYPTIAN HIEROGLYPH V11B
             &#x1337B; : "𓍻" EGYPTIAN HIEROGLYPH V11C
             &#x1337C; : "𓍼" EGYPTIAN HIEROGLYPH V12
+            &#x130E9; 𓃩
+            &#x13143; 𓅃
+            &#x13149; 𓅉
+            &#x1314A; 𓅊
+            &#x13198; 𓆘
+            &#x13281; 𓊁
+
+            &#x132D1; 𓋑
+            &#x132D4; 𓋔
+            &#x132D6; 𓋖
+            &#x132D9; 𓋙
+            &#x132DA; 𓋚
+            &#x132DB; 𓋛
+            &#x132EF; 𓋯
+            &#x132FE; 𓋾
+
             -->
             <Key
                 latin:keySpec="&#x13080;"
-                latin:moreKeys="&#x131A5;,&#x131A4;,&#x131D3;,&#x13261;,&#x1327B;,&#x13300;,&#x13376;,&#x13377;,&#x13378;,&#x13379;,&#x1337A;,&#x1337B;,&#x1337C;"
+                latin:moreKeys="&#x131A5;,&#x131A4;,&#x131D3;,&#x13261;,&#x1327B;,&#x13300;,&#x13376;,&#x13377;,&#x13378;,&#x13379;,&#x1337A;,&#x1337B;,&#x1337C;,&#x130E9;,&#x13143;,&#x13149;,&#x1314A;,&#x13198;,&#x13281;,&#x132D1;,&#x132D4;,&#x132D6;,&#x132D9;,&#x132DA;,&#x132DB;,&#x132EF;,&#x132FE;"
                 />
 <!--            &lt;!&ndash; U+0637: "ط" ARABIC LETTER TAH &ndash;&gt;-->
 <!--            <Key-->
