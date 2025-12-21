@@ -12,8 +12,8 @@ android {
         compileSdk 35
         minSdkVersion 21
         targetSdkVersion 35
-        versionCode 120
-        versionName "5.33"
+        versionCode 121
+        versionName "5.34"
     }
 
     signingConfigs {
