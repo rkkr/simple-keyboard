@@ -577,12 +577,12 @@
             &#x13343; : "𓍃" EGYPTIAN HIEROGLYPH U011
             &#x13036; : "𓁶" EGYPTIAN HIEROGLYPH D050
             &#x13102; : "𓅂" EGYPTIAN HIEROGLYPH E002
-            &#x133FE; 𓇾
-            &#x133FF; 𓇿
+            &#x131FE; 𓇾
+            &#x131FF; 𓇿
             &#x13354; 𓍔
             &#x13358; 𓍘
             &#x130B6; 𓁶
-            &#x13350; 𓌐
+            &#x13310; 𓌐
             &#x131B5; 𓆵
             &#x13142; 𓅂  (tiw)
 
@@ -591,7 +591,7 @@
             <Key
                 latin:keySpec="&#78799;"
                 latin:keyHintLabel="&#x062A;"
-                latin:moreKeys="&#x062A;,&#x13343;,&#x13036;,&#x13102;,&#x133FE;,&#x133FF;,&#x13354;,&#x13358;,&#x13350;,&#x131B5;,&#x13142;,&#x13142;"/>
+                latin:moreKeys="&#x062A;,&#x13343;,&#x13036;,&#x13102;,&#x131FE;,&#x131FF;,&#x13354;,&#x13358;,&#x13310;,&#x131B5;,&#x13142;"/>
 
             <!-- U+0646: "ن" ARABIC LETTER NOON
              &#78358; : 𓈖
