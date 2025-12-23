@@ -61,7 +61,6 @@ import rkr.simplekeyboard.inputmethod.latin.utils.TypefaceUtils;
  * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarTextRatio
  * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarTextColor
  * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarFinalAlpha
- * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarFadeoutAnimator
  * @attr ref R.styleable#MainKeyboardView_altCodeKeyWhileTypingFadeoutAnimator
  * @attr ref R.styleable#MainKeyboardView_altCodeKeyWhileTypingFadeinAnimator
  * @attr ref R.styleable#MainKeyboardView_keyHysteresisDistance
@@ -104,9 +103,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     private Key mSpaceKey;
     // Stuff to draw language name on spacebar.
     private final int mLanguageOnSpacebarFinalAlpha;
-    private ObjectAnimator mLanguageOnSpacebarFadeoutAnimator;
     private int mLanguageOnSpacebarFormatType;
-    private int mLanguageOnSpacebarAnimAlpha = Constants.Color.ALPHA_OPAQUE;
     private final float mLanguageOnSpacebarTextRatio;
     private float mLanguageOnSpacebarTextSize;
     private final int mLanguageOnSpacebarTextColor;
@@ -182,8 +179,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         mLanguageOnSpacebarFinalAlpha = mainKeyboardViewAttr.getInt(
                 R.styleable.MainKeyboardView_languageOnSpacebarFinalAlpha,
                 Constants.Color.ALPHA_OPAQUE);
-        final int languageOnSpacebarFadeoutAnimatorResId = mainKeyboardViewAttr.getResourceId(
-                R.styleable.MainKeyboardView_languageOnSpacebarFadeoutAnimator, 0);
         final int altCodeKeyWhileTypingFadeoutAnimatorResId = mainKeyboardViewAttr.getResourceId(
                 R.styleable.MainKeyboardView_altCodeKeyWhileTypingFadeoutAnimator, 0);
         final int altCodeKeyWhileTypingFadeinAnimatorResId = mainKeyboardViewAttr.getResourceId(
@@ -203,8 +198,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
 
         final LayoutInflater inflater = LayoutInflater.from(getContext());
         mMoreKeysKeyboardContainer = inflater.inflate(moreKeysKeyboardLayoutId, null);
-        mLanguageOnSpacebarFadeoutAnimator = loadObjectAnimator(
-                languageOnSpacebarFadeoutAnimatorResId, this);
         mAltCodeKeyWhileTypingFadeoutAnimator = loadObjectAnimator(
                 altCodeKeyWhileTypingFadeoutAnimatorResId, this);
         mAltCodeKeyWhileTypingFadeinAnimator = loadObjectAnimator(
@@ -263,11 +256,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
                     mAltCodeKeyWhileTypingFadeinAnimator, mAltCodeKeyWhileTypingFadeoutAnimator);
             break;
         }
-    }
-
-    public void setLanguageOnSpacebarAnimAlpha(final int alpha) {
-        mLanguageOnSpacebarAnimAlpha = alpha;
-        invalidateKey(mSpaceKey);
     }
 
     public void setKeyboardActionListener(final KeyboardActionListener listener) {
@@ -564,23 +552,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
             KeyPreviewView.clearTextCache();
         }
         mLanguageOnSpacebarFormatType = languageOnSpacebarFormatType;
-        final ObjectAnimator animator = mLanguageOnSpacebarFadeoutAnimator;
-        if (animator == null) {
-            mLanguageOnSpacebarFormatType = LanguageOnSpacebarUtils.FORMAT_TYPE_NONE;
-        } else {
-            if (subtypeChanged
-                    && languageOnSpacebarFormatType != LanguageOnSpacebarUtils.FORMAT_TYPE_NONE) {
-                setLanguageOnSpacebarAnimAlpha(Constants.Color.ALPHA_OPAQUE);
-                if (animator.isStarted()) {
-                    animator.cancel();
-                }
-                animator.start();
-            } else {
-                if (!animator.isStarted()) {
-                    mLanguageOnSpacebarAnimAlpha = mLanguageOnSpacebarFinalAlpha;
-                }
-            }
-        }
         invalidateKey(mSpaceKey);
     }
 
@@ -655,7 +626,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         final float textHeight = -paint.ascent() + descent;
         final float baseline = height / 2 + textHeight / 2;
         paint.setColor(mLanguageOnSpacebarTextColor);
-        paint.setAlpha(mLanguageOnSpacebarAnimAlpha);
+        paint.setAlpha(mLanguageOnSpacebarFinalAlpha);
         canvas.drawText(language, width / 2, baseline - descent, paint);
         paint.clearShadowLayer();
         paint.setTextScaleX(1.0f);

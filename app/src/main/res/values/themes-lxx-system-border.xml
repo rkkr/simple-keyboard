@@ -51,6 +51,7 @@
         <item name="keyShiftedLetterHintInactivatedColor">@color/key_text_inactive_color_lxx_system</item>
         <item name="keyShiftedLetterHintActivatedColor">@color/key_text_color_lxx_system</item>
         <item name="keyPreviewTextColor">@color/key_text_color_lxx_system</item>
+        <item name="languageOnSpacebarTextColor">@color/key_text_inactive_color_lxx_system</item>
     </style>
     <style
         name="MainKeyboardView.LXX_SystemBorder"
