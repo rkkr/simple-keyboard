@@ -122,6 +122,7 @@ public final class SubtypeLocaleUtils {
     private static final String LOCALE_URDU = "ur";
     private static final String LOCALE_UZBEK_UZBEKISTAN = "uz_UZ";
     private static final String LOCALE_VIETNAMESE = "vi";
+    private static final String LOCALE_SIMPLIFIED_CHINESE = "zh_CN";
     private static final String LOCALE_ZULU = "zu";
 
     private static final String[] sSupportedLocales = new String[] {
@@ -202,13 +203,16 @@ public final class SubtypeLocaleUtils {
             LOCALE_URDU,
             LOCALE_UZBEK_UZBEKISTAN,
             LOCALE_VIETNAMESE,
+            LOCALE_SIMPLIFIED_CHINESE,
             LOCALE_ZULU
     };
 
     /**
      * Get a list of all of the currently supported subtype locales.
-     * @return a list of subtype strings in the format of "ll_cc_variant" where "ll" is a language
-     * code, "cc" is a country code.
+     * 
+     * @return a list of subtype strings in the format of "ll_cc_variant" where "ll"
+     *         is a language
+     *         code, "cc" is a country code.
      */
     public static List<String> getSupportedLocales() {
         return Arrays.asList(sSupportedLocales);
@@ -258,7 +262,8 @@ public final class SubtypeLocaleUtils {
 
     /**
      * Get a list of all of the supported subtypes for a locale.
-     * @param locale the locale string for the subtypes to look up.
+     * 
+     * @param locale    the locale string for the subtypes to look up.
      * @param resources the resources to use.
      * @return the list of subtypes for the specified locale.
      */
@@ -268,9 +273,11 @@ public final class SubtypeLocaleUtils {
 
     /**
      * Get the default subtype for a locale.
-     * @param locale the locale string for the subtype to look up.
+     * 
+     * @param locale    the locale string for the subtype to look up.
      * @param resources the resources to use.
-     * @return the default subtype for the specified locale or null if the locale isn't supported.
+     * @return the default subtype for the specified locale or null if the locale
+     *         isn't supported.
      */
     public static Subtype getDefaultSubtype(final String locale, final Resources resources) {
         final List<Subtype> subtypes = new SubtypeBuilder(locale, true, resources).getSubtypes();
@@ -279,20 +286,22 @@ public final class SubtypeLocaleUtils {
 
     /**
      * Get a subtype for a specific locale and keyboard layout.
-     * @param locale the locale string for the subtype to look up.
+     * 
+     * @param locale    the locale string for the subtype to look up.
      * @param layoutSet the keyboard layout set name for the subtype.
      * @param resources the resources to use.
-     * @return the subtype for the specified locale and layout or null if it isn't supported.
+     * @return the subtype for the specified locale and layout or null if it isn't
+     *         supported.
      */
     public static Subtype getSubtype(final String locale, final String layoutSet,
-                                     final Resources resources) {
-        final List<Subtype> subtypes =
-                new SubtypeBuilder(locale, layoutSet, resources).getSubtypes();
+            final Resources resources) {
+        final List<Subtype> subtypes = new SubtypeBuilder(locale, layoutSet, resources).getSubtypes();
         return subtypes.size() == 0 ? null : subtypes.get(0);
     }
 
     /**
      * Get the list subtypes corresponding to the system's languages.
+     * 
      * @param resources the resources to use.
      * @return the default list of subtypes based on the system's languages.
      */
@@ -325,10 +334,14 @@ public final class SubtypeLocaleUtils {
     }
 
     /**
-     * Utility for building the supported subtype objects. {@link #getSubtypes} sets up the full
-     * list of available subtypes for a locale, but not all of the subtypes that it requests always
-     * get returned. The parameters passed in the constructor limit what subtypes are actually built
-     * and returned. This allows for a central location for indicating what subtypes are available
+     * Utility for building the supported subtype objects. {@link #getSubtypes} sets
+     * up the full
+     * list of available subtypes for a locale, but not all of the subtypes that it
+     * requests always
+     * get returned. The parameters passed in the constructor limit what subtypes
+     * are actually built
+     * and returned. This allows for a central location for indicating what subtypes
+     * are available
      * for each locale without always needing to build them all.
      */
     private static class SubtypeBuilder {
@@ -340,12 +353,13 @@ public final class SubtypeLocaleUtils {
 
         /**
          * Builder for single subtype with a specific locale and layout.
-         * @param locale the locale string for the subtype to build.
+         * 
+         * @param locale    the locale string for the subtype to build.
          * @param layoutSet the keyboard layout set name for the subtype.
          * @param resources the resources to use.
          */
         public SubtypeBuilder(final String locale, final String layoutSet,
-                              final Resources resources) {
+                final Resources resources) {
             mLocale = locale;
             mExpectedLayoutSet = layoutSet;
             mAllowMultiple = false;
@@ -354,8 +368,10 @@ public final class SubtypeLocaleUtils {
 
         /**
          * Builder for one or all subtypes with a specific locale.
-         * @param locale the locale string for the subtype to build.
-         * @param all true to get all of the subtypes for the locale or false for just the default.
+         * 
+         * @param locale    the locale string for the subtype to build.
+         * @param all       true to get all of the subtypes for the locale or false for
+         *                  just the default.
          * @param resources the resources to use.
          */
         public SubtypeBuilder(final String locale, final boolean all, final Resources resources) {
@@ -367,17 +383,21 @@ public final class SubtypeLocaleUtils {
 
         /**
          * Get the requested subtypes.
+         * 
          * @return the list of subtypes that were built.
          */
         public List<Subtype> getSubtypes() {
             if (mSubtypes != null) {
-                // in case this gets called again for some reason, the subtypes should only be built
+                // in case this gets called again for some reason, the subtypes should only be
+                // built
                 // once
                 return mSubtypes;
             }
             mSubtypes = new ArrayList<>();
-            // This should call to build all of the available for each supported locale. The private
-            // helper functions will handle skipping building the subtypes that weren't requested.
+            // This should call to build all of the available for each supported locale. The
+            // private
+            // helper functions will handle skipping building the subtypes that weren't
+            // requested.
             // The first subtype that is specified to be built here for each locale will be
             // considered the default.
             switch (mLocale) {
@@ -560,12 +580,18 @@ public final class SubtypeLocaleUtils {
                     addLayout(LAYOUT_HCESAR, R.string.subtype_hcesar);
                     addGenericLayouts();
                     break;
+                case LOCALE_SIMPLIFIED_CHINESE:
+                    addLayout(LAYOUT_QWERTY);
+                    addGenericLayouts();
+                    break;
             }
             return mSubtypes;
         }
 
         /**
-         * Check if the layout should skip being built based on the request from the constructor.
+         * Check if the layout should skip being built based on the request from the
+         * constructor.
+         * 
          * @param keyboardLayoutSet the layout set for the subtype to potentially build.
          * @return whether the subtype should be skipped.
          */
@@ -583,8 +609,10 @@ public final class SubtypeLocaleUtils {
         }
 
         /**
-         * Add a single layout for the locale. This might not actually add the subtype to the list
+         * Add a single layout for the locale. This might not actually add the subtype
+         * to the list
          * depending on the original request.
+         * 
          * @param keyboardLayoutSet the keyboard layout set name.
          */
         private void addLayout(final String keyboardLayoutSet) {
@@ -593,10 +621,8 @@ public final class SubtypeLocaleUtils {
             }
 
             // if this is a generic layout, use that corresponding layout name
-            final String[] predefinedLayouts =
-                    mResources.getStringArray(R.array.predefined_layouts);
-            final int predefinedLayoutIndex =
-                    Arrays.asList(predefinedLayouts).indexOf(keyboardLayoutSet);
+            final String[] predefinedLayouts = mResources.getStringArray(R.array.predefined_layouts);
+            final int predefinedLayoutIndex = Arrays.asList(predefinedLayouts).indexOf(keyboardLayoutSet);
             final String layoutNameStr;
             if (predefinedLayoutIndex >= 0) {
                 final String[] predefinedLayoutDisplayNames = mResources.getStringArray(
@@ -611,11 +637,15 @@ public final class SubtypeLocaleUtils {
         }
 
         /**
-         * Add a single layout for the locale. This might not actually add the subtype to the list
+         * Add a single layout for the locale. This might not actually add the subtype
+         * to the list
          * depending on the original request.
+         * 
          * @param keyboardLayoutSet the keyboard layout set name.
-         * @param layoutRes the resource ID to use for the display name of the keyboard layout. This
-         *                 generally shouldn't include the name of the language.
+         * @param layoutRes         the resource ID to use for the display name of the
+         *                          keyboard layout. This
+         *                          generally shouldn't include the name of the
+         *                          language.
          */
         private void addLayout(final String keyboardLayoutSet, final int layoutRes) {
             if (shouldSkipLayout(keyboardLayoutSet)) {
@@ -626,8 +656,10 @@ public final class SubtypeLocaleUtils {
         }
 
         /**
-         * Add the predefined layouts (eg: QWERTY, AZERTY, etc) for the locale. This might not
-         * actually add all of the subtypes to the list depending on the original request.
+         * Add the predefined layouts (eg: QWERTY, AZERTY, etc) for the locale. This
+         * might not
+         * actually add all of the subtypes to the list depending on the original
+         * request.
          */
         private void addGenericLayouts() {
             if (mSubtypes.size() > 0 && !mAllowMultiple) {

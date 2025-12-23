@@ -23,12 +23,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="?attr/inputViewStyle">
-    <rkr.simplekeyboard.inputmethod.keyboard.MainKeyboardView
-        android:id="@+id/keyboard_view"
-        android:layoutDirection="ltr"
-        android:layout_gravity="bottom"
-        android:orientation="vertical"
-        android:fitsSystemWindows="true"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom">
+
+        <rkr.simplekeyboard.inputmethod.latin.CandidateView
+            android:id="@+id/candidate_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <rkr.simplekeyboard.inputmethod.keyboard.MainKeyboardView
+            android:id="@+id/keyboard_view"
+            android:layoutDirection="ltr"
+            android:orientation="vertical"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </rkr.simplekeyboard.inputmethod.latin.InputView>

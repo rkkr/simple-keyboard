@@ -123,6 +123,8 @@
     <string name="remove_language">Remove language</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> keyboard layouts</string>
     <string name="change_keyboard">Change keyboard</string>
+    <string name="locale_name_vi">Vietnamese</string>
+    <string name="locale_name_zh_CN">Chinese (Simplified)</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="license">License</string>
 </resources>
