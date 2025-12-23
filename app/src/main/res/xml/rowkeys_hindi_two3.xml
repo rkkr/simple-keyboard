@@ -510,9 +510,9 @@
                 -->
             <Key
                 latin:keySpec="&#78467;"
-                latin:keyHintLabel="&#1586;"
+                latin:keyHintLabel="z"
                 latin:keyLetterSize="47%"
-                latin:moreKeys="&#1586;,&#x1316D;,&#x13382;,&#x13383;,&#x13297;,&#x133F4;,&#x13315;,&#x13125;"
+                latin:moreKeys="z,&#x1316D;,&#x13382;,&#x13383;,&#x13297;,&#x133F4;,&#x13315;,&#x13125;"
 
                 />
             <!--
@@ -542,8 +542,8 @@
             -->
             <Key
                 latin:keySpec="&#78283;"
-                latin:keyHintLabel="&#1573;"
-                latin:moreKeys="&#1573;,&#x130BB;,&#x130DB;,&#x13123;,&#x133F6;,&#x1301F;,&#x1319B;,&#x133CC;,&#x133CE;,&#x13039;,&#x13079;,&#x13324;,&#x131E9;,&#x132A8;,&#x1313C;,&#x13017;,&#x1318A;,&#x13381;,&#x133BA;,&#x1327A;,&#x131AD;,&#x1312F;,&#x133A9;"
+                latin:keyHintLabel="j"
+                latin:moreKeys="j,i,&#x130BB;,&#x130DB;,&#x13123;,&#x133F6;,&#x1301F;,&#x1319B;,&#x133CC;,&#x133CE;,&#x13039;,&#x13079;,&#x13324;,&#x131E9;,&#x132A8;,&#x1313C;,&#x13017;,&#x1318A;,&#x13381;,&#x133BA;,&#x1327A;,&#x131AD;,&#x1312F;,&#x133A9;"
 
                 />
 
@@ -551,10 +551,12 @@
                     &#x1312D; 𓃭
                     &#x13338; 𓌘
                     &#x13317; 𓌗  (rwḏ)
+
+
             -->
             <Key latin:keySpec="&#77963;"
-                latin:keyHintLabel="&#x0631;"
-                latin:moreKeys="&#x0631;,&#x1312D;,&#x13338;,&#x13317;"
+                latin:keyHintLabel="r"
+                latin:moreKeys="r,&#x1312D;,&#x13338;,&#x13317;"
 
                 />
 
@@ -588,8 +590,8 @@
              -->
             <Key latin:keySpec="&#78193;"
 
-                latin:keyHintLabel="&#x0648;"
-                latin:moreKeys="&#x0648;,&#x133F2;,&#x1336F;,&#x13321;,&#x1310B;,&#x130F9;,&#x131EC;,&#x13168;,&#x1313C;,&#x132A9;,&#x131C5;,&#x13397;,&#x13398;,&#x1339D;,&#x13300;,&#x131C5;,&#x13102;,&#x131F6;,&#x1340E;,&#x132A0;,&#x13119;,&#x1310A;,&#x132DD;,&#x13423;"
+                latin:keyHintLabel="w"
+                latin:moreKeys="w,o,&#x133F2;,&#x1336F;,&#x13321;,&#x1310B;,&#x130F9;,&#x131EC;,&#x13168;,&#x1313C;,&#x132A9;,&#x131C5;,&#x13397;,&#x13398;,&#x1339D;,&#x13300;,&#x131C5;,&#x13102;,&#x131F6;,&#x1340E;,&#x132A0;,&#x13119;,&#x1310A;,&#x132DD;,&#x13423;"
                 />
 
             <!-- U+062F: "د" ARABIC LETTER DAL
@@ -601,8 +603,8 @@
              -->
             <Key latin:keySpec="&#77991;"
                 latin:keyLetterSize="40%"
-                latin:keyHintLabel="&#x062F;"
-                latin:moreKeys="&#x062F;,&#x1309E;,&#x133D9;,&#x132EC;,&#x1315F;"/>
+                latin:keyHintLabel="d"
+                latin:moreKeys="d,&#x1309E;,&#x133D9;,&#x132EC;,&#x1315F;"/>
 
             <!--
             &#x13050; : "𓁐" EGYPTIAN HIEROGLYPH A081
@@ -621,6 +623,9 @@
                 latin:moreKeys="&#x13051;,&#x13052;,&#x13053;,&#x13054;,&#x13055;,&#x13056;,&#x13057;,&#x13058;,&#x13059;"
                 />
                         <!--
+                        q w r t y i p
+                        a s d f g h j k l
+                        z x b n m
             &#x1305A; : "𓁚" EGYPTIAN HIEROGLYPH A091
             &#x1305B; : "𓁛" EGYPTIAN HIEROGLYPH A092
             &#x1305C; : "𓁜" EGYPTIAN HIEROGLYPH A093
