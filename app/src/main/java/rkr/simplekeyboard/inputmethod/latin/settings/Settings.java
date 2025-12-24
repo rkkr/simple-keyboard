@@ -124,10 +124,10 @@ public final class Settings extends BroadcastReceiver implements SharedPreferenc
         onSharedPreferenceChanged(mPrefs, null);
     }
 
-    public static void loadRestrictions(RestrictionsManager restrictionsMgr, SharedPreferences prefs) {
+    public static Set<String> loadRestrictions(RestrictionsManager restrictionsMgr, SharedPreferences prefs) {
         final Bundle appRestrictions = restrictionsMgr.getApplicationRestrictions();
         final SharedPreferences.Editor prefsEditor = prefs.edit();
-        final Set<String> restrictionKeys =  appRestrictions.keySet();
+        final Set<String> restrictionKeys = appRestrictions.keySet();
         for (final String key: restrictionKeys) {
             switch (key) {
                 case PREF_ENABLED_SUBTYPES:
@@ -173,6 +173,7 @@ public final class Settings extends BroadcastReceiver implements SharedPreferenc
 
         prefsEditor.putStringSet(ACTIVE_RESTRICTIONS, restrictionKeys);
         prefsEditor.apply();
+        return restrictionKeys;
     }
 
     public void loadSettings(final InputAttributes inputAttributes) {
