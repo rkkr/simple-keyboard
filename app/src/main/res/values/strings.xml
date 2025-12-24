@@ -80,7 +80,7 @@
 <!-- Description for Ergo-L keyboard layout. -->
 <string name="subtype_ergol">Ergo-L</string>
 <!-- Description for Egyptian Two keyboard layout. -->
-<string name="subtype_egyptian_two">Egyptian (British)</string>
+<string name="subtype_egyptian_two">ḳwꜥẖrt hints</string>
 
 <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
 <string name="keyboard_theme_light_border" translatable="false">Material Light Border</string>

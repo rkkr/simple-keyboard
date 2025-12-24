@@ -399,8 +399,8 @@
             <!-- TODO: DroidSansArabic lacks the glyph of U+06A8 ARABIC LETTER QAF WITH THREE DOTS ABOVE -->
             <Key
                 latin:keySpec="&#78350;"
-                latin:keyHintLabel="q"
-                latin:additionalMoreKeys="q,&#x13416;,&#x1331F;,&#x1342A;"
+                latin:keyHintLabel="ḳ"
+                latin:additionalMoreKeys="ḳ,q,&#x13416;,&#x1331F;,&#x1342A;"
 
                 />
             <!-- U+0648: "و" ARABIC LETTER WAW
