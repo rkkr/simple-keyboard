@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2012, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<merge xmlns:latin="http://schemas.android.com/apk/res-auto">
+    <switch>
+        <case latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLocked">
+
+            <!--
+            Second set of hieroglyphs (A028-A054)
+            &#x1301B; : "𓀛" EGYPTIAN HIEROGLYPH A028
+            &#x1301C; : "𓀜" EGYPTIAN HIEROGLYPH A029
+            &#x1301D; : "𓀝" EGYPTIAN HIEROGLYPH A030
+            &#x1301E; : "𓀞" EGYPTIAN HIEROGLYPH A031
+            &#x1301F; : "𓀟" EGYPTIAN HIEROGLYPH A032
+            &#x13020; : "𓀠" EGYPTIAN HIEROGLYPH A033
+            &#x13021; : "𓀡" EGYPTIAN HIEROGLYPH A034
+            &#x13022; : "𓀢" EGYPTIAN HIEROGLYPH A035
+            &#x13023; : "𓀣" EGYPTIAN HIEROGLYPH A036
+            &#x13024; : "𓀤" EGYPTIAN HIEROGLYPH A037
+            &#x13026; : "𓀦" EGYPTIAN HIEROGLYPH A039
+            &#x13027; : "𓀧" EGYPTIAN HIEROGLYPH A040
+            &#x13028; : "𓀨" EGYPTIAN HIEROGLYPH A041
+            &#x13029; : "𓀩" EGYPTIAN HIEROGLYPH A042
+            &#x1302B; : "𓀫" EGYPTIAN HIEROGLYPH A044
+            &#x1302C; : "𓀬" EGYPTIAN HIEROGLYPH A045
+            &#x1302D; : "𓀭" EGYPTIAN HIEROGLYPH A046
+            &#x1302E; : "𓀮" EGYPTIAN HIEROGLYPH A047
+            &#x1302F; : "𓀯" EGYPTIAN HIEROGLYPH A048
+            &#x13030; : "𓀰" EGYPTIAN HIEROGLYPH A049
+            &#x13031; : "𓀱" EGYPTIAN HIEROGLYPH A050
+            &#x13032; : "𓀲" EGYPTIAN HIEROGLYPH A051
+            &#x13033; : "𓀳" EGYPTIAN HIEROGLYPH A052
+            &#x13034; : "𓀴" EGYPTIAN HIEROGLYPH A053
+            &#x13035; : "𓀵" EGYPTIAN HIEROGLYPH A054
+            -->
+            <Key
+                latin:keySpec="&#x1301B;"
+                latin:moreKeys="&#x1301C;,&#x1301D;,&#x1301E;,&#x1301F;,&#x13020;,&#x13021;,&#x13022;,&#x13023;,&#x13024;,&#x13026;,&#x13027;,&#x13028;,&#x13029;,&#x1302B;,&#x1302C;,&#x1302D;,&#x1302E;,&#x1302F;,&#x13030;,&#x13031;,&#x13032;,&#x13033;,&#x13034;,&#x13035;"
+                />
+
+            <!--
+            Third set of hieroglyphs (A055-A080)
+            &#x13036; : "𓀶" EGYPTIAN HIEROGLYPH A055
+            &#x13037; : "𓀷" EGYPTIAN HIEROGLYPH A056
+            &#x13038; : "𓀸" EGYPTIAN HIEROGLYPH A057
+            &#x13039; : "𓀹" EGYPTIAN HIEROGLYPH A058
+            &#x1303A; : "𓀺" EGYPTIAN HIEROGLYPH A059
+            &#x1303B; : "𓀻" EGYPTIAN HIEROGLYPH A060
+            &#x1303C; : "𓀼" EGYPTIAN HIEROGLYPH A061
+            &#x1303D; : "𓀽" EGYPTIAN HIEROGLYPH A062
+            &#x1303E; : "𓀾" EGYPTIAN HIEROGLYPH A063
+            &#x1303F; : "𓀿" EGYPTIAN HIEROGLYPH A064
+            &#x13040; : "𓁀" EGYPTIAN HIEROGLYPH A065
+            &#x13041; : "𓁁" EGYPTIAN HIEROGLYPH A066
+            &#x13042; : "𓁂" EGYPTIAN HIEROGLYPH A067
+            &#x13043; : "𓁃" EGYPTIAN HIEROGLYPH A068
+            &#x13044; : "𓁄" EGYPTIAN HIEROGLYPH A069
+            &#x13045; : "𓁅" EGYPTIAN HIEROGLYPH A070
+            &#x13046; : "𓁆" EGYPTIAN HIEROGLYPH A071
+            &#x13047; : "𓁇" EGYPTIAN HIEROGLYPH A072
+            &#x13048; : "𓁈" EGYPTIAN HIEROGLYPH A073
+            &#x13049; : "𓁉" EGYPTIAN HIEROGLYPH A074
+            &#x1304A; : "𓁊" EGYPTIAN HIEROGLYPH A075
+            &#x1304B; : "𓁋" EGYPTIAN HIEROGLYPH A076
+            &#x1304C; : "𓁌" EGYPTIAN HIEROGLYPH A077
+            &#x1304D; : "𓁍" EGYPTIAN HIEROGLYPH A078
+            &#x1304E; : "𓁎" EGYPTIAN HIEROGLYPH A079
+            &#x1304F; : "𓁏" EGYPTIAN HIEROGLYPH A080
+            -->
+            <Key
+                latin:keySpec="&#x13036;"
+                latin:moreKeys="&#x13037;,&#x13038;,&#x13039;,&#x1303A;,&#x1303B;,&#x1303C;,&#x1303D;,&#x1303E;,&#x1303F;,&#x13040;,&#x13041;,&#x13042;,&#x13043;,&#x13044;,&#x13045;,&#x13046;,&#x13047;,&#x13048;,&#x13049;,&#x1304A;,&#x1304B;,&#x1304C;,&#x1304D;,&#x1304E;,&#x1304F;"
+                />
+
+           
+                       <!--
+            First key (D050-D089):
+            &#x13080; : "𓂀" EGYPTIAN HIEROGLYPH D060
+            &#x13076; : "𓁶" EGYPTIAN HIEROGLYPH D050
+            &#x13077; : "𓁷" EGYPTIAN HIEROGLYPH D051
+            &#x13078; : "𓁸" EGYPTIAN HIEROGLYPH D052
+            &#x13079; : "𓁹" EGYPTIAN HIEROGLYPH D053
+            &#x1307E; : "𓁾" EGYPTIAN HIEROGLYPH D058
+            &#x1307F; : "𓁿" EGYPTIAN HIEROGLYPH D059
+            &#x13082; : "𓂂" EGYPTIAN HIEROGLYPH D062
+            &#x13083; : "𓂃" EGYPTIAN HIEROGLYPH D063
+            &#x13084; : "𓂄" EGYPTIAN HIEROGLYPH D064
+            &#x13085; : "𓂅" EGYPTIAN HIEROGLYPH D065
+            &#x13086; : "𓂆" EGYPTIAN HIEROGLYPH D066
+            &#x13087; : "𓂇" EGYPTIAN HIEROGLYPH D067
+            &#x13088; : "𓂈" EGYPTIAN HIEROGLYPH D068
+            &#x13089; : "𓂉" EGYPTIAN HIEROGLYPH D069
+            &#x1308A; : "𓂊" EGYPTIAN HIEROGLYPH D070
+            &#x1308B; : "𓂋" EGYPTIAN HIEROGLYPH D071
+            &#x1308C; : "𓂌" EGYPTIAN HIEROGLYPH D072
+            &#x1308E; : "𓂎" EGYPTIAN HIEROGLYPH D074
+            &#x1308F; : "𓂏" EGYPTIAN HIEROGLYPH D075
+            &#x13090; : "𓂐" EGYPTIAN HIEROGLYPH D076
+            &#x13092; : "𓂒" EGYPTIAN HIEROGLYPH D078
+            &#x13093; : "𓂓" EGYPTIAN HIEROGLYPH D079
+            &#x13094; : "𓂔" EGYPTIAN HIEROGLYPH D080
+            &#x13095; : "𓂕" EGYPTIAN HIEROGLYPH D081
+            &#x13096; : "𓂖" EGYPTIAN HIEROGLYPH D082
+            &#x13097; : "𓂗" EGYPTIAN HIEROGLYPH D083
+            &#x13098; : "𓂘" EGYPTIAN HIEROGLYPH D084
+            &#x13099; : "𓂙" EGYPTIAN HIEROGLYPH D085
+            &#x1309B; : "𓂛" EGYPTIAN HIEROGLYPH D087
+            &#x1309C; : "𓂜" EGYPTIAN HIEROGLYPH D088
+            -->
+            <Key
+                latin:keySpec="&#x13080;"
+                latin:moreKeys="&#x13076;,&#x13077;,&#x13078;,&#x13079;,&#x1307E;,&#x1307F;,&#x13080;,&#x13082;,&#x13083;,&#x13084;,&#x13085;,&#x13086;,&#x13087;,&#x13088;,&#x13089;,&#x1308B;,&#x1308C;,&#x1308E;,&#x1308F;,&#x13090;,&#x13092;,&#x13093;,&#x13094;,&#x13095;,&#x13096;,&#x13097;,&#x13098;,&#x13099;,&#x1309B;,&#x1309C;"
+                />
+
+            <!--
+            Second key (D090-D129):
+            &#x1309D; : "𓂝" EGYPTIAN HIEROGLYPH D089
+            &#x1309E; : "𓂞" EGYPTIAN HIEROGLYPH D090
+            &#x1309F; : "𓂟" EGYPTIAN HIEROGLYPH D091
+            &#x130A0; : "𓂠" EGYPTIAN HIEROGLYPH D092
+            &#x130A1; : "𓂡" EGYPTIAN HIEROGLYPH D093
+            &#x130A2; : "𓂢" EGYPTIAN HIEROGLYPH D094
+            &#x130A3; : "𓂣" EGYPTIAN HIEROGLYPH D095
+            &#x130A4; : "𓂤" EGYPTIAN HIEROGLYPH D096
+            &#x130A5; : "𓂥" EGYPTIAN HIEROGLYPH D097
+            &#x130A7; : "𓂧" EGYPTIAN HIEROGLYPH D099
+            &#x130A8; : "𓂨" EGYPTIAN HIEROGLYPH D100
+            &#x130A9; : "𓂩" EGYPTIAN HIEROGLYPH D101
+            &#x130AA; : "𓂪" EGYPTIAN HIEROGLYPH D102
+            &#x130AB; : "𓂫" EGYPTIAN HIEROGLYPH D103
+            &#x130AC; : "𓂬" EGYPTIAN HIEROGLYPH D104
+            &#x130AD; : "𓂭" EGYPTIAN HIEROGLYPH D105
+            &#x130AE; : "𓂮" EGYPTIAN HIEROGLYPH D106
+            &#x130AF; : "𓂯" EGYPTIAN HIEROGLYPH D107
+            &#x130B0; : "𓂰" EGYPTIAN HIEROGLYPH D108
+            &#x130B1; : "𓂱" EGYPTIAN HIEROGLYPH D109
+            &#x130B2; : "𓂲" EGYPTIAN HIEROGLYPH D110
+            &#x130B3; : "𓂳" EGYPTIAN HIEROGLYPH D111
+            &#x130B4; : "𓂴" EGYPTIAN HIEROGLYPH D112
+            &#x130B5; : "𓂵" EGYPTIAN HIEROGLYPH D113
+            &#x130B6; : "𓂶" EGYPTIAN HIEROGLYPH D114
+            &#x130B7; : "𓂷" EGYPTIAN HIEROGLYPH D115
+            &#x130B8; : "𓂸" EGYPTIAN HIEROGLYPH D116
+            &#x130B9; : "𓂹" EGYPTIAN HIEROGLYPH D117
+            &#x130BA; : "𓂺" EGYPTIAN HIEROGLYPH D118
+            &#x130BB; : "𓂻" EGYPTIAN HIEROGLYPH D119
+            &#x130BC; : "𓂼" EGYPTIAN HIEROGLYPH D120
+            &#x130BD; : "𓂽" EGYPTIAN HIEROGLYPH D121
+            &#x130BE; : "𓂾" EGYPTIAN HIEROGLYPH D122
+            &#x130BF; : "𓂿" EGYPTIAN HIEROGLYPH D123
+            &#x130C0; : "𓃀" EGYPTIAN HIEROGLYPH D124
+            &#x130C1; : "𓃁" EGYPTIAN HIEROGLYPH D125
+            &#x130C2; : "𓃂" EGYPTIAN HIEROGLYPH D126
+            &#x130C3; : "𓃃" EGYPTIAN HIEROGLYPH D127
+            &#x130C4; : "𓃄" EGYPTIAN HIEROGLYPH D128
+            &#x130C5; : "𓃅" EGYPTIAN HIEROGLYPH D129
+            -->
+            <Key
+                latin:keySpec="&#x1309D;"
+                latin:keyLetterSize="45%"
+                latin:moreKeys="&#x1309E;,&#x1309F;,&#x130A0;,&#x130A1;,&#x130A2;,&#x130A3;,&#x130A4;,&#x130A5;,&#x130A7;,&#x130A8;,&#x130A9;,&#x130AA;,&#x130AB;,&#x130AC;,&#x130AD;,&#x130AE;,&#x130AF;,&#x130B0;,&#x130B1;,&#x130B2;,&#x130B3;,&#x130B4;,&#x130B5;,&#x130B6;,&#x130B7;,&#x130B8;,&#x130B9;,&#x130BA;,&#x130BB;,&#x130BC;,&#x130BD;,&#x130BE;,&#x130BF;,&#x130C0;,&#x130C1;,&#x130C2;,&#x130C3;,&#x130C4;,&#x130C5;"
+                />
+
+            <!--
+            Third key (D130-D141):
+            &#x130C6; : "𓃆" EGYPTIAN HIEROGLYPH D130
+            &#x130C7; : "𓃇" EGYPTIAN HIEROGLYPH D131
+            &#x130C8; : "𓃈" EGYPTIAN HIEROGLYPH D132
+            &#x130C9; : "𓃉" EGYPTIAN HIEROGLYPH D133
+            &#x130CA; : "𓃊" EGYPTIAN HIEROGLYPH D134
+            &#x130CB; : "𓃋" EGYPTIAN HIEROGLYPH D135
+            &#x130CC; : "𓃌" EGYPTIAN HIEROGLYPH D136
+            &#x130CD; : "𓃍" EGYPTIAN HIEROGLYPH D137
+            &#x130CE; : "𓃎" EGYPTIAN HIEROGLYPH D138
+            &#x130CF; : "𓃏" EGYPTIAN HIEROGLYPH D139
+            &#x130D0; : "𓃐" EGYPTIAN HIEROGLYPH D140
+            &#x130D1; : "𓃑" EGYPTIAN HIEROGLYPH D141
+            -->
+            <Key
+                latin:keyLetterSize="40%"
+                latin:keySpec="&#x130C6;"
+                latin:moreKeys="&#x130C7;,&#x130C8;,&#x130C9;,&#x130CA;,&#x130CB;,&#x130CC;,&#x130CD;,&#x130CE;,&#x130CF;,&#x130D0;,&#x130D1;"
+                />
+           
+           
+           
+                     <!--
+            First key (D142-D161):
+            &#x130D2; : "𓃒" EGYPTIAN HIEROGLYPH D142
+            &#x130D3; : "𓃓" EGYPTIAN HIEROGLYPH D143
+            &#x130D4; : "𓃔" EGYPTIAN HIEROGLYPH D144
+            &#x130D5; : "𓃕" EGYPTIAN HIEROGLYPH D145
+            &#x130D6; : "𓃖" EGYPTIAN HIEROGLYPH D146
+            &#x130D7; : "𓃗" EGYPTIAN HIEROGLYPH D147
+            &#x130D8; : "𓃘" EGYPTIAN HIEROGLYPH D148
+            &#x130D9; : "𓃙" EGYPTIAN HIEROGLYPH D149
+            &#x130DA; : "𓃚" EGYPTIAN HIEROGLYPH D150
+            &#x130DB; : "𓃛" EGYPTIAN HIEROGLYPH D151
+            &#x130DC; : "𓃜" EGYPTIAN HIEROGLYPH D152
+            &#x130DD; : "𓃝" EGYPTIAN HIEROGLYPH D153
+            &#x130DE; : "𓃞" EGYPTIAN HIEROGLYPH D154
+            &#x130DF; : "𓃟" EGYPTIAN HIEROGLYPH D155
+            &#x130E0; : "𓃠" EGYPTIAN HIEROGLYPH D156
+            &#x130E1; : "𓃡" EGYPTIAN HIEROGLYPH D157
+            &#x130E2; : "𓃢" EGYPTIAN HIEROGLYPH D158
+            &#x130E3; : "𓃣" EGYPTIAN HIEROGLYPH D159
+            &#x130E4; : "𓃤" EGYPTIAN HIEROGLYPH D160
+            &#x130E5; : "𓃥" EGYPTIAN HIEROGLYPH D161
+            -->
+            <Key
+                latin:keySpec="&#x130D2;"
+                latin:moreKeys="&#x130D3;,&#x130D4;,&#x130D5;,&#x130D6;,&#x130D7;,&#x130D8;,&#x130D9;,&#x130DA;,&#x130DB;,&#x130DC;,&#x130DD;,&#x130DE;,&#x130DF;,&#x130E0;,&#x130E1;,&#x130E2;,&#x130E3;,&#x130E4;,&#x130E5;"
+                />
+
+            <!--
+            Second key (D162-D181):
+            &#x130E6; : "𓃦" EGYPTIAN HIEROGLYPH D162
+            &#x130E7; : "𓃧" EGYPTIAN HIEROGLYPH D163
+            &#x130E8; : "𓃨" EGYPTIAN HIEROGLYPH D164
+            &#x130E9; : "𓃩" EGYPTIAN HIEROGLYPH D165
+            &#x130EA; : "𓃪" EGYPTIAN HIEROGLYPH D166
+            &#x130EB; : "𓃫" EGYPTIAN HIEROGLYPH D167
+            &#x130EC; : "𓃬" EGYPTIAN HIEROGLYPH D168
+            &#x130ED; : "𓃭" EGYPTIAN HIEROGLYPH D169
+            &#x130EE; : "𓃮" EGYPTIAN HIEROGLYPH D170
+            &#x130EF; : "𓃯" EGYPTIAN HIEROGLYPH D171
+            &#x130F0; : "𓃰" EGYPTIAN HIEROGLYPH D172
+            &#x130F1; : "𓃱" EGYPTIAN HIEROGLYPH D173
+            &#x130F2; : "𓃲" EGYPTIAN HIEROGLYPH D174
+            &#x130F3; : "𓃳" EGYPTIAN HIEROGLYPH D175
+            &#x130F4; : "𓃴" EGYPTIAN HIEROGLYPH D176
+            &#x130F5; : "𓃵" EGYPTIAN HIEROGLYPH D177
+            &#x130F6; : "𓃶" EGYPTIAN HIEROGLYPH D178
+            &#x130F7; : "𓃷" EGYPTIAN HIEROGLYPH D179
+            &#x130F8; : "𓃸" EGYPTIAN HIEROGLYPH D180
+            &#x130F9; : "𓃹" EGYPTIAN HIEROGLYPH D181
+            &#x130FA; : "𓃺" EGYPTIAN HIEROGLYPH D182
+            &#x130FB; : "𓃻" EGYPTIAN HIEROGLYPH D183
+            &#x130FC; : "𓃼" EGYPTIAN HIEROGLYPH D184
+            &#x130FD; : "𓃽" EGYPTIAN HIEROGLYPH D185
+            -->
+            <Key
+                latin:keySpec="&#x130E6;"
+                latin:moreKeys="&#x130E7;,&#x130E8;,&#x130E9;,&#x130EA;,&#x130EB;,&#x130EC;,&#x130ED;,&#x130EE;,&#x130EF;,&#x130F0;,&#x130F1;,&#x130F2;,&#x130F3;,&#x130F4;,&#x130F5;,&#x130F6;,&#x130F7;,&#x130F8;,&#x130F9;,&#x130FA;,&#x130FB;,&#x130FC;,&#x130FD;"
+                />
+
+           
+           
+            <!--
+            First key (F1-F17):
+            &#x130FE; : "𓃾" EGYPTIAN HIEROGLYPH F1
+            &#x130FF; : "𓃿" EGYPTIAN HIEROGLYPH F1A
+            &#x13100; : "𓄀" EGYPTIAN HIEROGLYPH F2
+            &#x13101; : "𓄁" EGYPTIAN HIEROGLYPH F3
+            &#x13102; : "𓄂" EGYPTIAN HIEROGLYPH F4
+            &#x13103; : "𓄃" EGYPTIAN HIEROGLYPH F5
+            &#x13104; : "𓄄" EGYPTIAN HIEROGLYPH F6
+            &#x13105; : "𓄅" EGYPTIAN HIEROGLYPH F7
+            &#x13106; : "𓄆" EGYPTIAN HIEROGLYPH F8
+            &#x13107; : "𓄇" EGYPTIAN HIEROGLYPH F9
+            &#x13108; : "𓄈" EGYPTIAN HIEROGLYPH F10
+            &#x13109; : "𓄉" EGYPTIAN HIEROGLYPH F11
+            &#x1310A; : "𓄊" EGYPTIAN HIEROGLYPH F12
+            &#x1310B; : "𓄋" EGYPTIAN HIEROGLYPH F13
+            &#x1310C; : "𓄌" EGYPTIAN HIEROGLYPH F13A
+            &#x1310D; : "𓄍" EGYPTIAN HIEROGLYPH F14
+            &#x1310E; : "𓄎" EGYPTIAN HIEROGLYPH F15
+            &#x1310F; : "𓄏" EGYPTIAN HIEROGLYPH F16
+            &#x13110; : "𓄐" EGYPTIAN HIEROGLYPH F17
+            -->
+            <Key
+                latin:keySpec="&#x130FE;"
+                latin:moreKeys="&#x130FF;,&#x13100;,&#x13101;,&#x13102;,&#x13103;,&#x13104;,&#x13105;,&#x13106;,&#x13107;,&#x13108;,&#x13109;,&#x1310A;,&#x1310B;,&#x1310C;,&#x1310D;,&#x1310E;,&#x1310F;,&#x13110;"
+                />
+            <!--
+            Second key (F18-F35):
+            &#x13124; : "𓄤" EGYPTIAN HIEROGLYPH F35
+            &#x13111; : "𓄑" EGYPTIAN HIEROGLYPH F18
+            &#x13112; : "𓄒" EGYPTIAN HIEROGLYPH F19
+            &#x13113; : "𓄓" EGYPTIAN HIEROGLYPH F20
+            &#x13114; : "𓄔" EGYPTIAN HIEROGLYPH F21
+            &#x13115; : "𓄕" EGYPTIAN HIEROGLYPH F21A
+            &#x13116; : "𓄖" EGYPTIAN HIEROGLYPH F22
+            &#x13117; : "𓄗" EGYPTIAN HIEROGLYPH F23
+            &#x13118; : "𓄘" EGYPTIAN HIEROGLYPH F24
+            &#x13119; : "𓄙" EGYPTIAN HIEROGLYPH F25
+            &#x1311A; : "𓄚" EGYPTIAN HIEROGLYPH F26
+            &#x1311B; : "𓄛" EGYPTIAN HIEROGLYPH F27
+            &#x1311C; : "𓄜" EGYPTIAN HIEROGLYPH F28
+            &#x1311D; : "𓄝" EGYPTIAN HIEROGLYPH F29
+            &#x1311E; : "𓄞" EGYPTIAN HIEROGLYPH F30
+            &#x1311F; : "𓄟" EGYPTIAN HIEROGLYPH F31
+            &#x13120; : "𓄠" EGYPTIAN HIEROGLYPH F31A
+            &#x13121; : "𓄡" EGYPTIAN HIEROGLYPH F32
+            &#x13122; : "𓄢" EGYPTIAN HIEROGLYPH F33
+            &#x13123; : "𓄣" EGYPTIAN HIEROGLYPH F34
+            -->
+            <Key
+                latin:keySpec="&#x13124;"
+                latin:moreKeys="&#x13111;,&#x13112;,&#x13113;,&#x13114;,&#x13115;,&#x13116;,&#x13117;,&#x13118;,&#x13119;,&#x1311A;,&#x1311B;,&#x1311C;,&#x1311D;,&#x1311E;,&#x1311F;,&#x13120;,&#x13121;,&#x13122;,&#x13123;"
+                />
+
+            <!--
+            Third key (F36-F52):
+            &#x13125; : "𓄥" EGYPTIAN HIEROGLYPH F36
+            &#x13126; : "𓄦" EGYPTIAN HIEROGLYPH F37
+            &#x13127; : "𓄧" EGYPTIAN HIEROGLYPH F37A
+            &#x13128; : "𓄨" EGYPTIAN HIEROGLYPH F38
+            &#x13129; : "𓄩" EGYPTIAN HIEROGLYPH F38A
+            &#x1312A; : "𓄪" EGYPTIAN HIEROGLYPH F39
+            &#x1312B; : "𓄫" EGYPTIAN HIEROGLYPH F40
+            &#x1312C; : "𓄬" EGYPTIAN HIEROGLYPH F41
+            &#x1312D; : "𓄭" EGYPTIAN HIEROGLYPH F42
+            &#x1312E; : "𓄮" EGYPTIAN HIEROGLYPH F43
+            &#x1312F; : "𓄯" EGYPTIAN HIEROGLYPH F44
+            &#x13130; : "𓄰" EGYPTIAN HIEROGLYPH F45
+            &#x13131; : "𓄱" EGYPTIAN HIEROGLYPH F45A
+            &#x13132; : "𓄲" EGYPTIAN HIEROGLYPH F46
+            &#x13133; : "𓄳" EGYPTIAN HIEROGLYPH F46A
+            &#x13134; : "𓄴" EGYPTIAN HIEROGLYPH F47
+            &#x13135; : "𓄵" EGYPTIAN HIEROGLYPH F47A
+            &#x13136; : "𓄶" EGYPTIAN HIEROGLYPH F48
+            &#x13137; : "𓄷" EGYPTIAN HIEROGLYPH F49
+            &#x13138; : "𓄸" EGYPTIAN HIEROGLYPH F50
+            &#x13139; : "𓄹" EGYPTIAN HIEROGLYPH F51
+            &#x1313A; : "𓄺" EGYPTIAN HIEROGLYPH F51A
+            &#x1313B; : "𓄻" EGYPTIAN HIEROGLYPH F51B
+            &#x1313C; : "𓄼" EGYPTIAN HIEROGLYPH F51C
+            &#x1313D; : "𓄽" EGYPTIAN HIEROGLYPH F52
+            &#x1313E; : "𓄾" EGYPTIAN HIEROGLYPH F52A
+            -->
+            <Key
+                latin:keySpec="&#x13125;"
+                latin:moreKeys="&#x13126;,&#x13127;,&#x13128;,&#x13129;,&#x1312A;,&#x1312B;,&#x1312C;,&#x1312D;,&#x1312E;,&#x1312F;,&#x13130;,&#x13131;,&#x13132;,&#x13133;,&#x13134;,&#x13135;,&#x13136;,&#x13137;,&#x13138;,&#x13139;,&#x1313A;,&#x1313B;,&#x1313C;,&#x1313D;,&#x1313E;"
+                />
+
+            <!--
+            First key (G1-G27):
+            &#x1313F; : "𓄿" EGYPTIAN HIEROGLYPH G1 (Egyptian vulture)
+            &#x13140; : "𓅀" EGYPTIAN HIEROGLYPH G2 (two Egyptian vultures)
+            &#x13141; : "𓅁" EGYPTIAN HIEROGLYPH G3 (combination of Egyptian vulture and sickle)
+            &#x13142; : "𓅂" EGYPTIAN HIEROGLYPH G4 (buzzard)
+            &#x13143; : "𓅃" EGYPTIAN HIEROGLYPH G5 (falcon)
+            &#x13144; : "𓅄" EGYPTIAN HIEROGLYPH G6 (combination of falcon and flagellum)
+            &#x13145; : "𓅅" EGYPTIAN HIEROGLYPH G6A (falcon on basket)
+            &#x13146; : "𓅆" EGYPTIAN HIEROGLYPH G7 (falcon on standard)
+            &#x13147; : "𓅇" EGYPTIAN HIEROGLYPH G7A (falcon in boat)
+            &#x13149; : "𓅉" EGYPTIAN HIEROGLYPH G8 (falcon on collar of beads)
+            &#x1314A; : "𓅊" EGYPTIAN HIEROGLYPH G9 (falcon with sun on head)
+            &#x1314B; : "𓅋" EGYPTIAN HIEROGLYPH G10 (falcon in Sokar barque)
+            &#x1314D; : "𓅍" EGYPTIAN HIEROGLYPH G11A (image of falcon on standard)
+            &#x1314E; : "𓅎" EGYPTIAN HIEROGLYPH G12 (combination of image of falcon and flagellum)
+            &#x1314F; : "𓅏" EGYPTIAN HIEROGLYPH G13 (image of falcon with two plumes)
+            &#x13150; : "𓅐" EGYPTIAN HIEROGLYPH G14 (vulture)
+            &#x13151; : "𓅑" EGYPTIAN HIEROGLYPH G15 (combination of vulture and flagellum)
+            &#x13152; : "𓅒" EGYPTIAN HIEROGLYPH G16 (vulture and cobra each on a basket)
+            &#x13153; : "𓅓" EGYPTIAN HIEROGLYPH G17 (owl)
+            &#x13154; : "𓅔" EGYPTIAN HIEROGLYPH G18 (two owls)
+            &#x13155; : "𓅕" EGYPTIAN HIEROGLYPH G19 (combination of owl and forearm with conical loaf)
+            &#x13156; : "𓅖" EGYPTIAN HIEROGLYPH G20 (combination of owl and forearm)
+            &#x13157; : "𓅗" EGYPTIAN HIEROGLYPH G20A (combination of owl and mouth)
+            &#x13158; : "𓅘" EGYPTIAN HIEROGLYPH G21 (guineafowl)
+            &#x13159; : "𓅙" EGYPTIAN HIEROGLYPH G22 (hoopoe)
+            &#x1315B; : "𓅛" EGYPTIAN HIEROGLYPH G24 (lapwing with twisted wings)
+            &#x1315C; : "𓅜" EGYPTIAN HIEROGLYPH G25 (northern bald ibis)
+            &#x1315E; : "𓅞" EGYPTIAN HIEROGLYPH G26A (sacred Ibis)
+            &#x1315F; : "𓅟" EGYPTIAN HIEROGLYPH G27 (flamingo)
+            -->
+            <Key
+                latin:keySpec="&#x1313F;"
+                latin:moreKeys="&#x13140;,&#x13141;,&#x13142;,&#x13143;,&#x13144;,&#x13145;,&#x13146;,&#x13147;,&#x13149;,&#x1314A;,&#x1314B;,&#x1314D;,&#x1314E;,&#x1314F;,&#x13150;,&#x13151;,&#x13152;,&#x13153;,&#x13154;,&#x13155;,&#x13156;,&#x13157;,&#x13158;,&#x13159;,&#x1315B;,&#x1315C;,&#x1315E;,&#x1315F;"
+                />
+        </case>
+        <default>
+            <!--
+                U+0642: "q"
+                 U+06A8: q
+                 &#x13416; 𓐖
+                 &#x1331F; 𓌟
+                 &#x1342A; 𓐪
+                 -->
+            <!-- TODO: DroidSansArabic lacks the glyph of U+06A8 ARABIC LETTER QAF WITH THREE DOTS ABOVE -->
+            <Key
+                latin:keySpec="ḳ"
+                latin:keyHintLabel="&#78350;"
+                latin:additionalMoreKeys="&#78350;,q,&#x13416;,&#x1331F;,&#x1342A;"
+
+                />
+            <!-- U+0648: "و" ARABIC LETTER WAW
+
+             &#x1336F; 𓍯
+             &#x133F2; 𓏲
+            &#x13321; 𓌡
+            &#x1310B; 𓄋
+            &#x130F9; 𓃹
+            &#x131EC; 𓇬
+            &#x13168; 𓅨
+            &#x1313C; 𓄼
+            &#x132A9; 𓊩
+            &#x131C5; 𓇅
+            &#x13397; 𓎗
+            &#x13398; 𓎘
+            &#x1339D; 𓎝  (wꜣḥ)
+            &#x13300; 𓌀  (wꜣs)
+            &#x131C5; 𓇅  (wꜣḏ)
+            &#x13102; 𓃂  (wꜥb)
+            &#x131F6; 𓇶  (wbn)
+            &#x1340E; 𓐎  (wḥꜣ)
+            &#x132A0; 𓊠  (wḥꜥ)
+            &#x13119; 𓄙  (wḥm)
+            &#x1310A; 𓄊  (wsr)
+            &#x132DD; 𓋝  (wsḫ)
+            &#x13423; 𓐣  (wḏꜥ)
+
+
+             -->
+            <Key latin:keySpec="w"
+                latin:keyHintLabel="&#78193;"
+                latin:moreKeys="&#78193;,o,&#x133F2;,&#x1336F;,&#x13321;,&#x1310B;,&#x130F9;,&#x131EC;,&#x13168;,&#x1313C;,&#x132A9;,&#x131C5;,&#x13397;,&#x13398;,&#x1339D;,&#x13300;,&#x131C5;,&#x13102;,&#x131F6;,&#x1340E;,&#x132A0;,&#x13119;,&#x1310A;,&#x132DD;,&#x13423;"
+                />
+            <!-- U+0639: "ع" ARABIC LETTER AIN
+                 U+0667: "٧" ARABIC-INDIC DIGIT SEVEN
+                &#x1327B; 𓉻
+                &#x1327C; 𓉼
+                &#x1310F; 𓄏
+                &#x13324; 𓌤
+                &#x13167; 𓅧
+                &#x1319D; 𓆝
+                &#x13399; 𓎙
+                &#x1339A; 𓎚
+                &#x132FF; 𓋿  (ꜥwt)
+                &#x1309A; 𓂚  (ꜥḥꜣ)
+                &#x1338C; 𓍼  (ꜥrq)
+                &#x13422; 𓐢  (ꜥpr)
+                &#x132F9; 𓋹  (ꜥnḫ)
+                &#x132A2; 𓊢  (ꜥḥꜥ)
+                &#x13188; 𓆈  (ꜥšꜣ)
+                &#x131A6; 𓆦
+                 -->
+            <Key
+                latin:keySpec="ꜥ"
+                latin:keyLetterSize="45%"
+                latin:keyHintLabel="&#77981;"
+                latin:additionalMoreKeys="&#77981;,&#x1327B;,&#x1327C;,&#x1310F;,&#x13324;,&#x13167;,&#x1319D;,&#x13399;,&#x1339A;,&#x132FF;,&#x1309A;,&#x1338C;,&#x13422;,&#x132F9;,&#x132A2;,&#x13188;,&#x131A6;" />
+            <!-- U+063A: "غ" ARABIC LETTER GHAIN
+                 U+0666: "٦" ARABIC-INDIC DIGIT SIX
+                &#x1319E; 𓆞
+                &#x13099; 𓂙
+                &#x1311A; 𓄚
+                &#x13328; 𓌨
+                &#x132BB; 𓊻
+                &#x133B8; 𓎸
+                  -->
+            <Key
+                latin:keySpec="ẖ"
+                latin:keyHintLabel="&#78113;"
+                latin:additionalMoreKeys="&#78113;,&#x1319E;,&#x13099;,&#x1311A;,&#x13328;,&#x132BB;,&#x133B8;" />
+            <!--     U+0631: "ر" ARABIC LETTER REH
+                    &#x1312D; 𓃭
+                    &#x13338; 𓌘
+                    &#x13317; 𓌗  (rwḏ)
+
+
+            -->
+            <Key latin:keySpec="r"
+                latin:keyHintLabel="&#77963;"
+                latin:moreKeys="&#77963;,&#x1312D;,&#x13338;,&#x13317;"
+
+                />
+            <!--
+            &#78799; : 𓏏
+            &#x062A; : "ت" ARABIC LETTER TEH
+            &#x13343; : "𓍃" EGYPTIAN HIEROGLYPH U011
+            &#x13036; : "𓁶" EGYPTIAN HIEROGLYPH D050
+            &#x13102; : "𓅂" EGYPTIAN HIEROGLYPH E002
+            &#x131FE; 𓇾
+            &#x131FF; 𓇿
+            &#x13354; 𓍔
+            &#x13358; 𓍘
+            &#x130B6; 𓁶
+            &#x13310; 𓌐
+            &#x131B5; 𓆵
+            &#x13142; 𓅂  (tiw)
+
+
+            -->
+            <Key
+                latin:keySpec="t"
+                latin:keyHintLabel="&#78799;"
+                latin:moreKeys="&#78799;,&#x13343;,&#x13036;,&#x13102;,&#x131FE;,&#x131FF;,&#x13354;,&#x13358;,&#x13310;,&#x131B5;,&#x13142;"/>
+            <!--
+            &#78284; : 𓇌
+           &#x064A;  : "ي" ARABIC LETTER YEH
+           &#x133ED; 𓏭
+            -->
+            <Key
+                latin:keySpec="y"
+                latin:keyLetterSize="50%"
+                latin:keyHintLabel="&#78284;"
+                latin:moreKeys="&#78284;,&#x133ED;"
+
+                />
+            <!-- U+062B: "ṯ" ARABIC LETTER THEH
+                𓍿
+                 &#78199; : 𓅷
+                 &#x132ED; 𓋭
+
+                 -->
+            <Key
+                latin:keySpec="ṯ"
+                latin:keyHintLabel="&#78719;"
+                latin:additionalMoreKeys="&#78719;,&#78199;,&#x132ED;"
+                />
+           
+            <!--  &#x0686; : "چ" ARABIC LETTER TCHEH
+            &#x13351; 𓍑
+            &#x13352; 𓍒
+            &#x1320B; 𓈋
+            &#x13159; 𓅙
+            &#x132E5; 𓇥
+            &#x132BD; 𓊽
+            &#x13195; 𓆕
+            &#x13301; 𓌁  (ḏꜥm)
+            &#x13325; 𓌥  (ḏbꜣ)
+
+                 -->
+            <Key
+                latin:keySpec="ḏ"
+                latin:keyLetterSize="50%"
+                latin:keyHintLabel="&#78227;"
+                latin:additionalMoreKeys="&#78227;,&#x13351;,&#x13352;,&#x1320B;,&#x13159;,&#x132E5;,&#x132BD;,&#x13195;,&#x13301;,&#x13325;" />
+            <!--
+إ
+     &#x130BB; 𓂻
+     &#x130DB; 𓃛
+     &#x13123; 𓄣
+     &#x133F6; 𓏶
+     &#x1301F; 𓀟
+    &#x1319B; 𓆛
+    &#x133CC; 𓏌
+    &#x133CE; 𓏎
+    &#x13039; 𓀹
+    &#x13079; 𓁹
+    &#x13324; 𓌤
+    &#x131E9; 𓇩
+    &#x132A8; 𓊨
+    &#x1313C; 𓄼
+    &#x13017; 𓀗
+    &#x1318A; 𓆊
+    &#x13381; 𓎁
+    &#x133BA; 𓎺  (iꜥb)
+    &#x1327A; 𓉺  (iwn)
+    &#x131AD; 𓆭  (imꜣ)
+    &#x1312F; 𓄯  (isw)
+    &#x133A9; 𓎩  (idr)
+-->
+            <Key
+                latin:keySpec="i"
+                latin:keyHintLabel="&#78283;"
+                latin:moreKeys="&#78283;,j,&#x130BB;,&#x130DB;,&#x13123;,&#x133F6;,&#x1301F;,&#x1319B;,&#x133CC;,&#x133CE;,&#x13039;,&#x13079;,&#x13324;,&#x131E9;,&#x132A8;,&#x1313C;,&#x13017;,&#x1318A;,&#x13381;,&#x133BA;,&#x1327A;,&#x131AD;,&#x1312F;,&#x133A9;"
+
+                />
+            <!--
+            &#x067E; : "پ" ARABIC LETTER PEH
+            &#x132AA; : "𓊪" EGYPTIAN HIEROGLYPH P003
+            &#x1316E; 𓅮
+            &#x1316F; 𓅯
+            &#x13250; 𓉐
+            &#x13116; 𓄖
+            &#x130BE; 𓂾
+            &#x13312; 𓌒
+            &#x13180; 𓆀  (pꜣq)
+            &#x13181; 𓆁  (pꜣq)
+            &#x13132; 𓄲  (pẖr)
+            &#x131F7; 𓇷  (psḏ)
+            &#x131F8; 𓇸  (psḏ)
+
+            -->
+            <Key
+                latin:keySpec="p"
+                latin:keyHintLabel="&#x132AA;"
+                latin:additionalMoreKeys="&#x132AA;,&#x1316E;,&#x1316F;,&#x13250;,&#x13116;,&#x130BE;,&#x13312;,&#x13180;,&#x13181;,&#x13132;,&#x131F7;,&#x131F8;"
+                />
+
+        </default>
+    </switch>
+</merge>
+

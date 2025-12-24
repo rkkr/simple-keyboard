@@ -149,6 +149,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_HINDI = "hindi";
     public static final String LAYOUT_HINDI_COMPACT = "hindi_compact";
     public static final String LAYOUT_HINDI_TWO = "hindi_two";
+    public static final String LAYOUT_HINDI_THREE = "hindi_three";
     public static final String LAYOUT_KANNADA = "kannada";
     public static final String LAYOUT_KHMER = "khmer";
     public static final String LAYOUT_LAO = "lao";
@@ -306,6 +307,7 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_HINDI:
                     addLayout(LAYOUT_HINDI);
                     addLayout(LAYOUT_HINDI_TWO, R.string.subtype_egyptian_two);
+                    addLayout(LAYOUT_HINDI_THREE, R.string.subtype_hindi_three);
                     break;
                 case LOCALE_AFRIKAANS:
                 case LOCALE_AZERBAIJANI_AZERBAIJAN:

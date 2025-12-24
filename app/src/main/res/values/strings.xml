@@ -81,6 +81,8 @@
 <string name="subtype_ergol">Ergo-L</string>
 <!-- Description for Egyptian Two keyboard layout. -->
 <string name="subtype_egyptian_two">ḳwꜥẖrt hints</string>
+<!-- Description for ḳwꜥẖrt keyboard layout. -->
+<string name="subtype_hindi_three">ḳwꜥẖrt</string>
 
 <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
 <string name="keyboard_theme_light_border" translatable="false">Material Light Border</string>
