@@ -24,8 +24,11 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+
+import java.util.Set;
 
 import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 
@@ -67,6 +70,18 @@ public abstract class SubScreenFragment extends PreferenceFragment
     @Override
     public void addPreferencesFromResource(final int preferencesResId) {
         super.addPreferencesFromResource(preferencesResId);
+
+        final Set<String> restrictionKeys = getSharedPreferences().getStringSet(Settings.ACTIVE_RESTRICTIONS, null);
+        if (restrictionKeys != null && !restrictionKeys.isEmpty()) {
+            final PreferenceGroup group = getPreferenceScreen();
+            final int count = group.getPreferenceCount();
+            for (int index = 0; index < count; index++) {
+                final Preference preference = group.getPreference(index);
+                if (restrictionKeys.contains(preference.getKey())) {
+                    preference.setEnabled(false);
+                }
+            }
+        }
     }
 
     @Override

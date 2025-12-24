@@ -28,7 +28,7 @@ import rkr.simplekeyboard.inputmethod.latin.settings.Settings;
 public final class KeyboardTheme {
     private static final String TAG = KeyboardTheme.class.getSimpleName();
 
-    static final String KEYBOARD_THEME_KEY = "pref_keyboard_theme_20140509";
+    public static final String KEYBOARD_THEME_KEY = "pref_keyboard_theme_20140509";
 
     // These should be aligned with Keyboard.themeId and Keyboard.Case.keyboardTheme
     // attributes' values in attrs.xml.

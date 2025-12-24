@@ -19,6 +19,7 @@
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
 import android.content.Context;
+import android.content.RestrictionsManager;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.text.TextUtils;
@@ -26,6 +27,7 @@ import android.text.TextUtils;
 import java.util.Set;
 
 import rkr.simplekeyboard.inputmethod.R;
+import rkr.simplekeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.simplekeyboard.inputmethod.latin.Subtype;
 import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
 
@@ -42,6 +44,9 @@ import rkr.simplekeyboard.inputmethod.latin.RichInputMethodManager;
     public boolean init(final Context context, final PreferenceScreen prefScreen) {
         RichInputMethodManager.init(context);
         mRichImm = RichInputMethodManager.getInstance();
+
+        final RestrictionsManager restrictionsMgr = (RestrictionsManager) context.getSystemService(Context.RESTRICTIONS_SERVICE);
+        Settings.loadRestrictions(restrictionsMgr, PreferenceManagerCompat.getDeviceSharedPreferences(context));
 
         mSubtypeEnablerPreference = new Preference(context);
         mSubtypeEnablerPreference.setTitle(R.string.select_language);

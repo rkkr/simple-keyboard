@@ -19,13 +19,19 @@
 
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.RestrictionsManager;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
 
+import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 
 import rkr.simplekeyboard.inputmethod.R;
@@ -34,8 +40,9 @@ import rkr.simplekeyboard.inputmethod.keyboard.KeyboardTheme;
 import rkr.simplekeyboard.inputmethod.latin.AudioAndHapticFeedbackManager;
 import rkr.simplekeyboard.inputmethod.latin.InputAttributes;
 
-public final class Settings implements SharedPreferences.OnSharedPreferenceChangeListener {
+public final class Settings extends BroadcastReceiver implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = Settings.class.getSimpleName();
+    public static final String ACTIVE_RESTRICTIONS = "active_restrictions";
     // Settings screens
     public static final String SCREEN_THEME = "screen_theme";
     // In the same order as xml/prefs.xml
@@ -60,9 +67,11 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     private static final float UNDEFINED_PREFERENCE_VALUE_FLOAT = -1.0f;
     private static final int UNDEFINED_PREFERENCE_VALUE_INT = -1;
 
+    private Context mContext;
     private Resources mRes;
     private SharedPreferences mPrefs;
     private SettingsValues mSettingsValues;
+    private RestrictionsManager mRestrictionsMgr;
     private final ReentrantLock mSettingsValuesLock = new ReentrantLock();
 
     private static final Settings sInstance = new Settings();
@@ -80,13 +89,18 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     }
 
     private void onCreate(final Context context) {
+        mContext = context;
         mRes = context.getResources();
         mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(context);
         mPrefs.registerOnSharedPreferenceChangeListener(this);
+        mRestrictionsMgr = (RestrictionsManager) context.getSystemService(Context.RESTRICTIONS_SERVICE);
+        loadRestrictions(mRestrictionsMgr, mPrefs);
+        context.registerReceiver(this, new IntentFilter(Intent.ACTION_APPLICATION_RESTRICTIONS_CHANGED));
     }
 
     public void onDestroy() {
         mPrefs.unregisterOnSharedPreferenceChangeListener(this);
+        mContext.unregisterReceiver(this);
     }
 
     @Override
@@ -103,6 +117,62 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         } finally {
             mSettingsValuesLock.unlock();
         }
+    }
+
+    @Override public void onReceive(Context context, Intent intent) {
+        loadRestrictions(mRestrictionsMgr, mPrefs);
+        onSharedPreferenceChanged(mPrefs, null);
+    }
+
+    public static void loadRestrictions(RestrictionsManager restrictionsMgr, SharedPreferences prefs) {
+        final Bundle appRestrictions = restrictionsMgr.getApplicationRestrictions();
+        final SharedPreferences.Editor prefsEditor = prefs.edit();
+        final Set<String> restrictionKeys =  appRestrictions.keySet();
+        for (final String key: restrictionKeys) {
+            switch (key) {
+                case PREF_ENABLED_SUBTYPES:
+                case SCREEN_THEME:
+                    prefsEditor.putString(KeyboardTheme.KEYBOARD_THEME_KEY, appRestrictions.getString(key));
+                    break;
+                case PREF_AUTO_CAP:
+                case PREF_SHOW_NUMBER_ROW:
+                case PREF_SHOW_SPECIAL_CHARS:
+                case PREF_SHOW_LANGUAGE_SWITCH_KEY:
+                case PREF_USE_ON_SCREEN:
+                case PREF_ENABLE_IME_SWITCH:
+                case PREF_DELETE_SWIPE:
+                case PREF_SPACE_SWIPE:
+                case PREF_VIBRATE_ON:
+                case PREF_SOUND_ON:
+                case PREF_POPUP_ON:
+                    prefsEditor.putBoolean(key, appRestrictions.getBoolean(key));
+                    break;
+                case PREF_KEYPRESS_SOUND_VOLUME:
+                case PREF_KEYBOARD_HEIGHT:
+                    prefsEditor.putFloat(key, appRestrictions.getInt(key) / 100f);
+                    break;
+                case PREF_KEY_LONGPRESS_TIMEOUT:
+                case PREF_BOTTOM_OFFSET_PORTRAIT:
+                    prefsEditor.putInt(key, appRestrictions.getInt(key));
+                    break;
+                case PREF_KEYBOARD_COLOR:
+                    String color = appRestrictions.getString(key);
+                    if (color.startsWith("#")) {
+                        try {
+                            color = "FF" + color.substring(1);
+                            prefsEditor.putInt(key, Integer.parseUnsignedInt(color, 16));
+                            break;
+                        } catch (NumberFormatException ignored) { }
+                    }
+                    prefsEditor.remove(key);
+                    break;
+                default:
+                    Log.e(TAG, "Unhandled restriction: " + key);
+            }
+        }
+
+        prefsEditor.putStringSet(ACTIVE_RESTRICTIONS, restrictionKeys);
+        prefsEditor.apply();
     }
 
     public void loadSettings(final InputAttributes inputAttributes) {
