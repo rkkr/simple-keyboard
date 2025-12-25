@@ -399,8 +399,8 @@
             <!-- TODO: DroidSansArabic lacks the glyph of U+06A8 ARABIC LETTER QAF WITH THREE DOTS ABOVE -->
             <Key
                 latin:keySpec="&#78350;"
-                latin:keyHintLabel="ḳ"
-                latin:additionalMoreKeys="ḳ,q,&#x13416;,&#x1331F;,&#x1342A;"
+                latin:keyHintLabel="q"
+                latin:additionalMoreKeys="q,ḳ,&#x13416;,&#x1331F;,&#x1342A;"
 
                 />
             <!-- U+0648: "و" ARABIC LETTER WAW
@@ -459,7 +459,7 @@
                 latin:keySpec="&#77981;"
                 latin:keyLetterSize="45%"
                 latin:keyHintLabel="ꜥ"
-                latin:additionalMoreKeys="ꜥ,&#x1327B;,&#x1327C;,&#x1310F;,&#x13324;,&#x13167;,&#x1319D;,&#x13399;,&#x1339A;,&#x132FF;,&#x1309A;,&#x1338C;,&#x13422;,&#x132F9;,&#x132A2;,&#x13188;,&#x131A6;" />
+                latin:additionalMoreKeys="a,ꜥ,&#x1327B;,&#x1327C;,&#x1310F;,&#x13324;,&#x13167;,&#x1319D;,&#x13399;,&#x1339A;,&#x132FF;,&#x1309A;,&#x1338C;,&#x13422;,&#x132F9;,&#x132A2;,&#x13188;,&#x131A6;" />
             <!-- U+063A: "غ" ARABIC LETTER GHAIN
                  U+0666: "٦" ARABIC-INDIC DIGIT SIX
                 &#x1319E; 𓆞
@@ -472,7 +472,7 @@
             <Key
                 latin:keySpec="&#78113;"
                 latin:keyHintLabel="ẖ"
-                latin:additionalMoreKeys="ẖ,&#x1319E;,&#x13099;,&#x1311A;,&#x13328;,&#x132BB;,&#x133B8;" />
+                latin:additionalMoreKeys="ẖ,X,&#x1319E;,&#x13099;,&#x1311A;,&#x13328;,&#x132BB;,&#x133B8;" />
             <!--     U+0631: "ر" ARABIC LETTER REH
                     &#x1312D; 𓃭
                     &#x13338; 𓌘
@@ -527,7 +527,7 @@
             <Key
                 latin:keySpec="&#78719;"
                 latin:keyHintLabel="ṯ"
-                latin:additionalMoreKeys="ṯ,&#78199;,&#x132ED;"
+                latin:additionalMoreKeys="ṯ,T,&#78199;,&#x132ED;"
                 />
            
             <!--  &#x0686; : "چ" ARABIC LETTER TCHEH
@@ -546,7 +546,7 @@
                 latin:keySpec="&#78227;"
                 latin:keyLetterSize="50%"
                 latin:keyHintLabel="ḏ"
-                latin:additionalMoreKeys="ḏ,&#x13351;,&#x13352;,&#x1320B;,&#x13159;,&#x132E5;,&#x132BD;,&#x13195;,&#x13301;,&#x13325;" />
+                latin:additionalMoreKeys="ḏ,D,&#x13351;,&#x13352;,&#x1320B;,&#x13159;,&#x132E5;,&#x132BD;,&#x13195;,&#x13301;,&#x13325;" />
             <!--
 إ
      &#x130BB; 𓂻

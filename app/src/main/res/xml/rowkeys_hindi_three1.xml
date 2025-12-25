@@ -398,9 +398,9 @@
                  -->
             <!-- TODO: DroidSansArabic lacks the glyph of U+06A8 ARABIC LETTER QAF WITH THREE DOTS ABOVE -->
             <Key
-                latin:keySpec="ḳ"
+                latin:keySpec="q"
                 latin:keyHintLabel="&#78350;"
-                latin:additionalMoreKeys="&#78350;,q,&#x13416;,&#x1331F;,&#x1342A;"
+                latin:additionalMoreKeys="&#78350;,q,ḳ,&#x13416;,&#x1331F;,&#x1342A;"
 
                 />
             <!-- U+0648: "و" ARABIC LETTER WAW
@@ -458,7 +458,7 @@
                 latin:keySpec="ꜥ"
                 latin:keyLetterSize="45%"
                 latin:keyHintLabel="&#77981;"
-                latin:additionalMoreKeys="&#77981;,&#x1327B;,&#x1327C;,&#x1310F;,&#x13324;,&#x13167;,&#x1319D;,&#x13399;,&#x1339A;,&#x132FF;,&#x1309A;,&#x1338C;,&#x13422;,&#x132F9;,&#x132A2;,&#x13188;,&#x131A6;" />
+                latin:additionalMoreKeys="a,&#77981;,&#x1327B;,&#x1327C;,&#x1310F;,&#x13324;,&#x13167;,&#x1319D;,&#x13399;,&#x1339A;,&#x132FF;,&#x1309A;,&#x1338C;,&#x13422;,&#x132F9;,&#x132A2;,&#x13188;,&#x131A6;" />
             <!-- U+063A: "غ" ARABIC LETTER GHAIN
                  U+0666: "٦" ARABIC-INDIC DIGIT SIX
                 &#x1319E; 𓆞
@@ -471,7 +471,7 @@
             <Key
                 latin:keySpec="ẖ"
                 latin:keyHintLabel="&#78113;"
-                latin:additionalMoreKeys="&#78113;,&#x1319E;,&#x13099;,&#x1311A;,&#x13328;,&#x132BB;,&#x133B8;" />
+                latin:additionalMoreKeys="X,&#78113;,&#x1319E;,&#x13099;,&#x1311A;,&#x13328;,&#x132BB;,&#x133B8;" />
             <!--     U+0631: "ر" ARABIC LETTER REH
                     &#x1312D; 𓃭
                     &#x13338; 𓌘
@@ -526,7 +526,7 @@
             <Key
                 latin:keySpec="ṯ"
                 latin:keyHintLabel="&#78719;"
-                latin:additionalMoreKeys="&#78719;,&#78199;,&#x132ED;"
+                latin:additionalMoreKeys="T,&#78719;,&#78199;,&#x132ED;"
                 />
            
             <!--  &#x0686; : "چ" ARABIC LETTER TCHEH
@@ -545,7 +545,7 @@
                 latin:keySpec="ḏ"
                 latin:keyLetterSize="50%"
                 latin:keyHintLabel="&#78227;"
-                latin:additionalMoreKeys="&#78227;,&#x13351;,&#x13352;,&#x1320B;,&#x13159;,&#x132E5;,&#x132BD;,&#x13195;,&#x13301;,&#x13325;" />
+                latin:additionalMoreKeys="D,&#78227;,&#x13351;,&#x13352;,&#x1320B;,&#x13159;,&#x132E5;,&#x132BD;,&#x13195;,&#x13301;,&#x13325;" />
             <!--
 إ
      &#x130BB; 𓂻
