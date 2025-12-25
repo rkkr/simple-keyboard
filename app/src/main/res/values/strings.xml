@@ -80,9 +80,9 @@
 <!-- Description for Ergo-L keyboard layout. -->
 <string name="subtype_ergol">Ergo-L</string>
 <!-- Description for Egyptian Two keyboard layout. -->
-<string name="subtype_egyptian_two">qwꜥẖrt hints</string>
+<string name="subtype_egyptian_two">transliteration hints - qwꜥẖrty</string>
 <!-- Description for qwꜥẖrt keyboard layout. -->
-<string name="subtype_hindi_three">qwꜥẖrt</string>
+<string name="subtype_hindi_three">transliteration - qwꜥẖrty</string>
 
 <string name="keyboard_theme_dark_border" translatable="false">Material Dark Border</string>
 <string name="keyboard_theme_light_border" translatable="false">Material Light Border</string>
