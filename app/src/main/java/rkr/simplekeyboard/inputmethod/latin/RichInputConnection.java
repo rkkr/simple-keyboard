@@ -36,11 +36,15 @@ import rkr.simplekeyboard.inputmethod.latin.settings.SpacingAndPunctuations;
 import rkr.simplekeyboard.inputmethod.latin.utils.CapsModeUtils;
 
 /**
- * Enrichment class for InputConnection to simplify interaction and add functionality.
+ * Enrichment class for InputConnection to simplify interaction and add
+ * functionality.
  *
- * This class serves as a wrapper to be able to simply add hooks to any calls to the underlying
- * InputConnection. It also keeps track of a number of things to avoid having to call upon IPC
- * all the time to find out what text is in the buffer, when we need it to determine caps mode
+ * This class serves as a wrapper to be able to simply add hooks to any calls to
+ * the underlying
+ * InputConnection. It also keeps track of a number of things to avoid having to
+ * call upon IPC
+ * all the time to find out what text is in the buffer, when we need it to
+ * determine caps mode
  * for example.
  */
 public final class RichInputConnection {
@@ -48,22 +52,29 @@ public final class RichInputConnection {
     private static final int INVALID_CURSOR_POSITION = -1;
 
     /**
-     * This variable contains an expected value for the selection start position. This is where the
-     * cursor or selection start may end up after all the keyboard-triggered updates have passed. We
-     * keep this to compare it to the actual selection start to guess whether the move was caused by
+     * This variable contains an expected value for the selection start position.
+     * This is where the
+     * cursor or selection start may end up after all the keyboard-triggered updates
+     * have passed. We
+     * keep this to compare it to the actual selection start to guess whether the
+     * move was caused by
      * a keyboard command or not.
-     * It's not really the selection start position: the selection start may not be there yet, and
+     * It's not really the selection start position: the selection start may not be
+     * there yet, and
      * in some cases, it may never arrive there.
      */
     private int mExpectedSelStart = INVALID_CURSOR_POSITION; // in chars, not code points
     /**
-     * The expected selection end.  Only differs from mExpectedSelStart if a non-empty selection is
-     * expected.  The same caveats as mExpectedSelStart apply.
+     * The expected selection end. Only differs from mExpectedSelStart if a
+     * non-empty selection is
+     * expected. The same caveats as mExpectedSelStart apply.
      */
     private int mExpectedSelEnd = INVALID_CURSOR_POSITION; // in chars, not code points
     /**
-     * This contains the committed text immediately preceding the cursor and the composing
-     * text, if any. It is refreshed when the cursor moves by calling upon the TextView.
+     * This contains the committed text immediately preceding the cursor and the
+     * composing
+     * text, if any. It is refreshed when the cursor moves by calling upon the
+     * TextView.
      */
     private String mTextBeforeCursor = "";
     private String mTextAfterCursor = "";
@@ -97,7 +108,8 @@ public final class RichInputConnection {
     }
 
     public void endBatchEdit() {
-        if (mNestLevel <= 0) Log.e(TAG, "Batch edit not in progress!"); // TODO: exception instead
+        if (mNestLevel <= 0)
+            Log.e(TAG, "Batch edit not in progress!"); // TODO: exception instead
         if (--mNestLevel == 0 && isConnected()) {
             mIC.endBatchEdit();
         }
@@ -119,7 +131,8 @@ public final class RichInputConnection {
         }
         final CharSequence text = textAroundCursor.getText();
         mTextBeforeCursor = text.subSequence(0, textAroundCursor.getSelectionStart()).toString();
-        mTextSelection = text.subSequence(textAroundCursor.getSelectionStart(), textAroundCursor.getSelectionEnd()).toString();
+        mTextSelection = text.subSequence(textAroundCursor.getSelectionStart(), textAroundCursor.getSelectionEnd())
+                .toString();
         mTextAfterCursor = text.subSequence(textAroundCursor.getSelectionEnd(), text.length()).toString();
     }
 
@@ -130,7 +143,7 @@ public final class RichInputConnection {
         mIC = mLatinIME.getCurrentInputConnection();
 
         if (mExpectedSelStart != INVALID_CURSOR_POSITION && mExpectedSelEnd != INVALID_CURSOR_POSITION
-            && !restarting) {
+                && !restarting) {
             // Updated by onUpdateSelection, don't override as editorInfo might be invalid
             // If restarting, onStartInputView was called instead of onUpdateSelection
             return;
@@ -139,7 +152,8 @@ public final class RichInputConnection {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             final SurroundingText textAroundCursor = editorInfo
-                    .getInitialSurroundingText(Constants.EDITOR_CONTENTS_CACHE_SIZE, Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
+                    .getInitialSurroundingText(Constants.EDITOR_CONTENTS_CACHE_SIZE,
+                            Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
             setTextAroundCursor(textAroundCursor);
             mLatinIME.mHandler.postUpdateShiftState();
         } else {
@@ -164,8 +178,8 @@ public final class RichInputConnection {
                 return;
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                final SurroundingText textAroundCursor =
-                        mIC.getSurroundingText(Constants.EDITOR_CONTENTS_CACHE_SIZE, Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
+                final SurroundingText textAroundCursor = mIC.getSurroundingText(Constants.EDITOR_CONTENTS_CACHE_SIZE,
+                        Constants.EDITOR_CONTENTS_CACHE_SIZE, 0);
                 if (expectedSelStart != mExpectedSelStart || expectedSelEnd != mExpectedSelEnd) {
                     Log.w(TAG, "Selection range modified before thread completion.");
                     return;
@@ -233,21 +247,30 @@ public final class RichInputConnection {
     /**
      * Calls {@link InputConnection#commitText(CharSequence, int)}.
      *
-     * @param text The text to commit. This may include styles.
+     * @param text              The text to commit. This may include styles.
      * @param newCursorPosition The new cursor position around the text.
      */
     public void commitText(final CharSequence text, final int newCursorPosition) {
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
         mTextBeforeCursor += text;
-        // TODO: the following is exceedingly error-prone. Right now when the cursor is in the
-        // middle of the composing word mComposingText only holds the part of the composing text
-        // that is before the cursor, so this actually works, but it's terribly confusing. Fix this.
+        // TODO: the following is exceedingly error-prone. Right now when the cursor is
+        // in the
+        // middle of the composing word mComposingText only holds the part of the
+        // composing text
+        // that is before the cursor, so this actually works, but it's terribly
+        // confusing. Fix this.
         if (hasCursorPosition()) {
             mExpectedSelStart += text.length();
             mExpectedSelEnd = mExpectedSelStart;
         }
         if (isConnected()) {
             mIC.commitText(text, newCursorPosition);
+        }
+    }
+
+    public void setComposingText(final CharSequence text, final int newCursorPosition) {
+        if (isConnected()) {
+            mIC.setComposingText(text, newCursorPosition);
         }
     }
 
@@ -262,15 +285,20 @@ public final class RichInputConnection {
     /**
      * Gets the caps modes we should be in after this specific string.
      *
-     * This returns a bit set of TextUtils#CAP_MODE_*, masked by the inputType argument.
-     * This method also supports faking an additional space after the string passed in argument,
-     * to support cases where a space will be added automatically, like in phantom space
+     * This returns a bit set of TextUtils#CAP_MODE_*, masked by the inputType
+     * argument.
+     * This method also supports faking an additional space after the string passed
+     * in argument,
+     * to support cases where a space will be added automatically, like in phantom
+     * space
      * state for example.
-     * Note that for English, we are using American typography rules (which are not specific to
+     * Note that for English, we are using American typography rules (which are not
+     * specific to
      * American English, it's just the most common set of rules for English).
      *
-     * @param inputType a mask of the caps modes to test for.
-     * @param spacingAndPunctuations the values of the settings to use for locale and separators.
+     * @param inputType              a mask of the caps modes to test for.
+     * @param spacingAndPunctuations the values of the settings to use for locale
+     *                               and separators.
      * @return the caps modes that should be on as a set of bits
      */
     public int getCursorCapsMode(final int inputType, final SpacingAndPunctuations spacingAndPunctuations) {
@@ -278,7 +306,8 @@ public final class RichInputConnection {
         if (!isConnected()) {
             return Constants.TextUtils.CAP_MODE_OFF;
         }
-        // This never calls InputConnection#getCapsMode - in fact, it's a static method that
+        // This never calls InputConnection#getCapsMode - in fact, it's a static method
+        // that
         // never blocks or initiates IPC.
         // TODO: don't call #toString() here. Instead, all accesses to
         // mCommittedTextBeforeComposingText should be done on the main thread.
@@ -288,7 +317,8 @@ public final class RichInputConnection {
 
     public int getCodePointBeforeCursor() {
         final int length = mTextBeforeCursor.length();
-        if (length < 1) return Constants.NOT_A_CODE;
+        if (length < 1)
+            return Constants.NOT_A_CODE;
         return Character.codePointBefore(mTextBeforeCursor, length);
     }
 
@@ -356,39 +386,43 @@ public final class RichInputConnection {
     public void sendKeyEvent(final KeyEvent keyEvent) {
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
         if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
-            // This method is only called for enter or backspace when speaking to old applications
-            // (target SDK <= 15 (Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)), or for digits.
-            // When talking to new applications we never use this method because it's inherently
-            // racy and has unpredictable results, but for backward compatibility we continue
+            // This method is only called for enter or backspace when speaking to old
+            // applications
+            // (target SDK <= 15 (Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)), or for
+            // digits.
+            // When talking to new applications we never use this method because it's
+            // inherently
+            // racy and has unpredictable results, but for backward compatibility we
+            // continue
             // sending the key events for only Enter and Backspace because some applications
             // mistakenly catch them to do some stuff.
             switch (keyEvent.getKeyCode()) {
-            case KeyEvent.KEYCODE_ENTER:
-                mTextBeforeCursor += "\n";
-                if (hasCursorPosition()) {
-                    mExpectedSelStart += 1;
-                    mExpectedSelEnd = mExpectedSelStart;
-                }
-                break;
-            case KeyEvent.KEYCODE_UNKNOWN:
-                if (null != keyEvent.getCharacters()) {
-                    mTextBeforeCursor += keyEvent.getCharacters();
+                case KeyEvent.KEYCODE_ENTER:
+                    mTextBeforeCursor += "\n";
                     if (hasCursorPosition()) {
-                        mExpectedSelStart += keyEvent.getCharacters().length();
+                        mExpectedSelStart += 1;
                         mExpectedSelEnd = mExpectedSelStart;
                     }
-                }
-                break;
-            case KeyEvent.KEYCODE_DEL:
-                break;
-            default:
-                final String text = StringUtils.newSingleCodePointString(keyEvent.getUnicodeChar());
-                mTextBeforeCursor += text;
-                if (hasCursorPosition()) {
-                    mExpectedSelStart += text.length();
-                    mExpectedSelEnd = mExpectedSelStart;
-                }
-                break;
+                    break;
+                case KeyEvent.KEYCODE_UNKNOWN:
+                    if (null != keyEvent.getCharacters()) {
+                        mTextBeforeCursor += keyEvent.getCharacters();
+                        if (hasCursorPosition()) {
+                            mExpectedSelStart += keyEvent.getCharacters().length();
+                            mExpectedSelEnd = mExpectedSelStart;
+                        }
+                    }
+                    break;
+                case KeyEvent.KEYCODE_DEL:
+                    break;
+                default:
+                    final String text = StringUtils.newSingleCodePointString(keyEvent.getUnicodeChar());
+                    mTextBeforeCursor += text;
+                    if (hasCursorPosition()) {
+                        mExpectedSelStart += text.length();
+                        mExpectedSelEnd = mExpectedSelStart;
+                    }
+                    break;
             }
         }
         if (isConnected()) {
@@ -402,9 +436,10 @@ public final class RichInputConnection {
      * Calls through to {@link InputConnection#setSelection(int, int)}.
      *
      * @param start the character index where the selection should start.
-     * @param end the character index where the selection should end.
-     * valid when setting the selection or when retrieving the text cache at that point, or
-     * invalid arguments were passed.
+     * @param end   the character index where the selection should end.
+     *              valid when setting the selection or when retrieving the text
+     *              cache at that point, or
+     *              invalid arguments were passed.
      */
     public void setSelection(int start, int end) {
         if (start < 0 || end < 0 || start > end) {
@@ -452,15 +487,15 @@ public final class RichInputConnection {
     }
 
     /**
-     * Some chars, such as emoji consist of 2 chars (surrogate pairs). We should treat them as one character.
-     * Some chars are joined with ZERO WIDTH JOINER (U+200D), pairs need to be counted
+     * Some chars, such as emoji consist of 2 chars (surrogate pairs). We should
+     * treat them as one character.
+     * Some chars are joined with ZERO WIDTH JOINER (U+200D), pairs need to be
+     * counted
      */
     public int getUnicodeSteps(int chars, boolean rightSidePointer) {
         int steps = 0;
         if (chars < 0) {
-            CharSequence charsBeforeCursor = rightSidePointer && hasSelection() ?
-                    getSelectedText() :
-                    mTextBeforeCursor;
+            CharSequence charsBeforeCursor = rightSidePointer && hasSelection() ? getSelectedText() : mTextBeforeCursor;
             if (charsBeforeCursor == null || charsBeforeCursor == "") {
                 return chars;
             }
@@ -478,9 +513,7 @@ public final class RichInputConnection {
                 chars++;
             }
         } else if (chars > 0) {
-            CharSequence charsAfterCursor = !rightSidePointer && hasSelection() ?
-                    getSelectedText() :
-                    mTextAfterCursor;
+            CharSequence charsAfterCursor = !rightSidePointer && hasSelection() ? getSelectedText() : mTextAfterCursor;
             if (charsAfterCursor == null || charsAfterCursor == "") {
                 return chars;
             }
