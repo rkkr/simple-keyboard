@@ -126,7 +126,7 @@ public final class Settings extends BroadcastReceiver implements SharedPreferenc
         RichInputMethodManager.getInstance().reloadSubtypes(context);
     }
 
-    public static Set<String> loadRestrictions(RestrictionsManager restrictionsMgr, SharedPreferences prefs) {
+    public static Set<String> loadRestrictions(final RestrictionsManager restrictionsMgr, final SharedPreferences prefs) {
         final Bundle appRestrictions = restrictionsMgr.getApplicationRestrictions();
         final Set<String> restrictionKeys = appRestrictions.keySet();
         if (restrictionKeys.isEmpty()) {
@@ -177,8 +177,7 @@ public final class Settings extends BroadcastReceiver implements SharedPreferenc
                                 color = "FF" + color.substring(1);
                                 prefsEditor.putInt(key, Integer.parseUnsignedInt(color, 16));
                                 break;
-                            } catch (NumberFormatException ignored) {
-                            }
+                            } catch (NumberFormatException ignored) { }
                         }
                         prefsEditor.remove(key);
                         break;
