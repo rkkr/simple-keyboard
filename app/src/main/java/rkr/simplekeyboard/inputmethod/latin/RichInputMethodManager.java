@@ -104,6 +104,10 @@ public class RichInputMethodManager {
         mSubtypeList = new SubtypeList(context);
     }
 
+    public void reloadSubtypes(final Context context) {
+        mSubtypeList.reload(context);
+    }
+
     /**
      * Add a listener to be called when the virtual subtype changes.
      * @param listener the listener to call when the subtype changes.
@@ -129,7 +133,7 @@ public class RichInputMethodManager {
          *  of the list so that the next time the user uses the switch to next subtype button, all
          *  of the subtypes can be iterated through before potentially switching to a different
          *  input method. */
-        private final List<Subtype> mSubtypes;
+        private List<Subtype> mSubtypes;
         /** The index of the currently selected subtype. This is used for tracking the status of
          *  cycling through subtypes. When actually using the keyboard, the subtype should be moved
          *  to the beginning of the list, so this should normally be 0. */
@@ -144,7 +148,10 @@ public class RichInputMethodManager {
          */
         public SubtypeList(final Context context) {
             mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(context);
+            reload(context);
+        }
 
+        public void reload(final Context context) {
             final String prefSubtypes = Settings.readPrefSubtypes(mPrefs);
             final List<Subtype> subtypes = SubtypePreferenceUtils.createSubtypesFromPref(
                     prefSubtypes, context.getResources());
