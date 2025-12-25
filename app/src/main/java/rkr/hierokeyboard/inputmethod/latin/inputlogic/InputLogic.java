@@ -1,5 +1,10 @@
 /*
  * Copyright (C) 2013 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
+ * Copyright (C) 2025 Camille019
+ * Copyright (C) 2023 Md. Rifat Hasan Jihan
+ * Copyright (C) 2021 wittmane
+ * Copyright (C) 2019 Emmanuel
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +26,6 @@ import android.text.TextUtils;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
-
-import java.util.TreeSet;
 
 import rkr.hierokeyboard.inputmethod.event.Event;
 import rkr.hierokeyboard.inputmethod.event.InputTransaction;
@@ -46,8 +49,6 @@ public final class InputLogic {
     public final RichInputConnection mConnection;
     private final RecapitalizeStatus mRecapitalizeStatus = new RecapitalizeStatus();
 
-    public final TreeSet<Long> mCurrentlyPressedHardwareKeys = new TreeSet<>();
-
     /**
      * Create a new instance of the input logic.
      * @param latinIME the instance of the parent LatinIME. We should remove this when we can.
@@ -65,7 +66,10 @@ public final class InputLogic {
      */
     public void startInput() {
         mRecapitalizeStatus.disable(); // Do not perform recapitalize until the cursor is moved once
-        mCurrentlyPressedHardwareKeys.clear();
+    }
+
+    public void clearCaches() {
+        mConnection.clearCaches();
     }
 
     /**

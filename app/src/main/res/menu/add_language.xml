@@ -20,7 +20,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_add_language"
-        android:icon="@drawable/ic_add_circle_white_24dp"
+        android:icon="@drawable/ic_add_circle"
         android:title="@string/add_language"
         android:showAsAction="always" />
 </menu>

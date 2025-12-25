@@ -1,5 +1,13 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
+ * Copyright (C) 2025 Shunnuo
+ * Copyright (C) 2025 GoodOldAbe
+ * Copyright (C) 2025 Camille019
+ * Copyright (C) 2023 Md. Rifat Hasan Jihan
+ * Copyright (C) 2022 Md Rasel Hossain
+ * Copyright (C) 2021 HanefiAcar
+ * Copyright (C) 2021 wittmane
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -99,6 +107,7 @@ public final class SubtypeLocaleUtils {
     private static final String LOCALE_ROMANIAN = "ro";
     private static final String LOCALE_RUSSIAN = "ru";
     private static final String LOCALE_SLOVAK = "sk";
+    private static final String LOCALE_SAKHA = "sah";
     private static final String LOCALE_SLOVENIAN = "sl";
     private static final String LOCALE_SERBIAN = "sr";
     private static final String LOCALE_SERBIAN_LATIN = "sr_ZZ";
@@ -147,6 +156,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_FARSI = "farsi";
     public static final String LAYOUT_GEORGIAN = "georgian";
     public static final String LAYOUT_GREEK = "greek";
+    public static final String LAYOUT_HCESAR = "hcesar";
     public static final String LAYOUT_HEBREW = "hebrew";
     public static final String LAYOUT_HINDI = "hindi";
     public static final String LAYOUT_HINDI_COMPACT = "hindi_compact";
@@ -164,6 +174,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_NORDIC = "nordic";
     public static final String LAYOUT_QWERTY = "qwerty";
     public static final String LAYOUT_QWERTZ = "qwertz";
+    public static final String LAYOUT_SAKHA = "sakha";
     public static final String LAYOUT_SERBIAN = "serbian";
     public static final String LAYOUT_SERBIAN_QWERTZ = "serbian_qwertz";
     public static final String LAYOUT_SPANISH = "spanish";
@@ -325,8 +336,6 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_MALAY_MALAYSIA:
                 case LOCALE_DUTCH:
                 case LOCALE_POLISH:
-                case LOCALE_PORTUGUESE_BRAZIL:
-                case LOCALE_PORTUGUESE_PORTUGAL:
                 case LOCALE_ROMANIAN:
                 case LOCALE_SLOVAK:
                 case LOCALE_SWAHILI:
@@ -380,8 +389,8 @@ public final class SubtypeLocaleUtils {
                     addGenericLayouts();
                     break;
                 case LOCALE_FRENCH_SWITZERLAND:
-                    addLayout(LAYOUT_BEPO);
                     addLayout(LAYOUT_SWISS);
+                    addLayout(LAYOUT_BEPO);
                     addLayout(LAYOUT_ERGOL, R.string.subtype_ergol);
                     addGenericLayouts();
                     break;
@@ -463,6 +472,8 @@ public final class SubtypeLocaleUtils {
                     addLayout(LAYOUT_NEPALI_ROMANIZED);
                     addLayout(LAYOUT_NEPALI_TRADITIONAL, R.string.subtype_traditional);
                     break;
+                case LOCALE_SAKHA:
+                    addLayout(LAYOUT_SAKHA);
                 case LOCALE_SERBIAN:
                     addLayout(LAYOUT_SERBIAN);
                     break;
@@ -482,6 +493,12 @@ public final class SubtypeLocaleUtils {
                     break;
                 case LOCALE_URDU:
                     addLayout(LAYOUT_URDU);
+                    break;
+                case LOCALE_PORTUGUESE_BRAZIL:
+                case LOCALE_PORTUGUESE_PORTUGAL:
+                    addLayout(LAYOUT_QWERTY);
+                    addLayout(LAYOUT_HCESAR, R.string.subtype_hcesar);
+                    addGenericLayouts();
                     break;
             }
             return mSubtypes;

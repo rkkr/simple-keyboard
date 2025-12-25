@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
+ * Copyright (C) 2021 wittmane
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,42 +57,6 @@ import rkr.hierokeyboard.inputmethod.latin.utils.TypefaceUtils;
 
 /**
  * A view that is responsible for detecting key presses and touch movements.
- *
- * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarTextRatio
- * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarTextColor
- * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarFinalAlpha
- * @attr ref R.styleable#MainKeyboardView_languageOnSpacebarFadeoutAnimator
- * @attr ref R.styleable#MainKeyboardView_altCodeKeyWhileTypingFadeoutAnimator
- * @attr ref R.styleable#MainKeyboardView_altCodeKeyWhileTypingFadeinAnimator
- * @attr ref R.styleable#MainKeyboardView_keyHysteresisDistance
- * @attr ref R.styleable#MainKeyboardView_touchNoiseThresholdTime
- * @attr ref R.styleable#MainKeyboardView_touchNoiseThresholdDistance
- * @attr ref R.styleable#MainKeyboardView_keySelectionByDraggingFinger
- * @attr ref R.styleable#MainKeyboardView_keyRepeatStartTimeout
- * @attr ref R.styleable#MainKeyboardView_keyRepeatInterval
- * @attr ref R.styleable#MainKeyboardView_longPressKeyTimeout
- * @attr ref R.styleable#MainKeyboardView_longPressShiftKeyTimeout
- * @attr ref R.styleable#MainKeyboardView_ignoreAltCodeKeyTimeout
- * @attr ref R.styleable#MainKeyboardView_keyPreviewLayout
- * @attr ref R.styleable#MainKeyboardView_keyPreviewOffset
- * @attr ref R.styleable#MainKeyboardView_keyPreviewHeight
- * @attr ref R.styleable#MainKeyboardView_keyPreviewLingerTimeout
- * @attr ref R.styleable#MainKeyboardView_keyPreviewDismissAnimator
- * @attr ref R.styleable#MainKeyboardView_moreKeysKeyboardLayout
- * @attr ref R.styleable#MainKeyboardView_backgroundDimAlpha
- * @attr ref R.styleable#MainKeyboardView_showMoreKeysKeyboardAtTouchPoint
- * @attr ref R.styleable#MainKeyboardView_gestureFloatingPreviewTextLingerTimeout
- * @attr ref R.styleable#MainKeyboardView_gestureStaticTimeThresholdAfterFastTyping
- * @attr ref R.styleable#MainKeyboardView_gestureDetectFastMoveSpeedThreshold
- * @attr ref R.styleable#MainKeyboardView_gestureDynamicThresholdDecayDuration
- * @attr ref R.styleable#MainKeyboardView_gestureDynamicTimeThresholdFrom
- * @attr ref R.styleable#MainKeyboardView_gestureDynamicTimeThresholdTo
- * @attr ref R.styleable#MainKeyboardView_gestureDynamicDistanceThresholdFrom
- * @attr ref R.styleable#MainKeyboardView_gestureDynamicDistanceThresholdTo
- * @attr ref R.styleable#MainKeyboardView_gestureSamplingMinimumDistance
- * @attr ref R.styleable#MainKeyboardView_gestureRecognitionMinimumTime
- * @attr ref R.styleable#MainKeyboardView_gestureRecognitionSpeedThreshold
- * @attr ref R.styleable#MainKeyboardView_suppressKeyPreviewAfterBatchInputDuration
  */
 public final class MainKeyboardView extends KeyboardView implements MoreKeysPanel.Controller, DrawingProxy {
     private static final String TAG = MainKeyboardView.class.getSimpleName();
@@ -102,9 +68,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     private Key mSpaceKey;
     // Stuff to draw language name on spacebar.
     private final int mLanguageOnSpacebarFinalAlpha;
-    private ObjectAnimator mLanguageOnSpacebarFadeoutAnimator;
     private int mLanguageOnSpacebarFormatType;
-    private int mLanguageOnSpacebarAnimAlpha = Constants.Color.ALPHA_OPAQUE;
     private final float mLanguageOnSpacebarTextRatio;
     private float mLanguageOnSpacebarTextSize;
     private final int mLanguageOnSpacebarTextColor;
@@ -180,8 +144,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         mLanguageOnSpacebarFinalAlpha = mainKeyboardViewAttr.getInt(
                 R.styleable.MainKeyboardView_languageOnSpacebarFinalAlpha,
                 Constants.Color.ALPHA_OPAQUE);
-        final int languageOnSpacebarFadeoutAnimatorResId = mainKeyboardViewAttr.getResourceId(
-                R.styleable.MainKeyboardView_languageOnSpacebarFadeoutAnimator, 0);
         final int altCodeKeyWhileTypingFadeoutAnimatorResId = mainKeyboardViewAttr.getResourceId(
                 R.styleable.MainKeyboardView_altCodeKeyWhileTypingFadeoutAnimator, 0);
         final int altCodeKeyWhileTypingFadeinAnimatorResId = mainKeyboardViewAttr.getResourceId(
@@ -201,8 +163,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
 
         final LayoutInflater inflater = LayoutInflater.from(getContext());
         mMoreKeysKeyboardContainer = inflater.inflate(moreKeysKeyboardLayoutId, null);
-        mLanguageOnSpacebarFadeoutAnimator = loadObjectAnimator(
-                languageOnSpacebarFadeoutAnimatorResId, this);
         mAltCodeKeyWhileTypingFadeoutAnimator = loadObjectAnimator(
                 altCodeKeyWhileTypingFadeoutAnimatorResId, this);
         mAltCodeKeyWhileTypingFadeinAnimator = loadObjectAnimator(
@@ -261,11 +221,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
                     mAltCodeKeyWhileTypingFadeinAnimator, mAltCodeKeyWhileTypingFadeoutAnimator);
             break;
         }
-    }
-
-    public void setLanguageOnSpacebarAnimAlpha(final int alpha) {
-        mLanguageOnSpacebarAnimAlpha = alpha;
-        invalidateKey(mSpaceKey);
     }
 
     public void setKeyboardActionListener(final KeyboardActionListener listener) {
@@ -328,7 +283,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
             Log.w(TAG, "Cannot find root view");
             return;
         }
-        final ViewGroup windowContentView = (ViewGroup)rootView.findViewById(android.R.id.content);
+        final ViewGroup windowContentView = rootView.findViewById(android.R.id.content);
         // Note: It'd be very weird if we get null by android.R.id.content.
         if (windowContentView == null) {
             Log.w(TAG, "Cannot find android.R.id.content view to add DrawingPreviewPlacerView");
@@ -360,8 +315,9 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
 
         locatePreviewPlacerView();
         getLocationInWindow(mOriginCoords);
+        final int backgroundColor = mTheme.mCustomColorSupport ? mCustomColor : Color.TRANSPARENT;
         mKeyPreviewChoreographer.placeAndShowKeyPreview(key, keyboard.mIconsSet, getKeyDrawParams(),
-                mOriginCoords, mDrawingPreviewPlacerView, isHardwareAccelerated());
+                mOriginCoords, mDrawingPreviewPlacerView, isHardwareAccelerated(), backgroundColor);
     }
 
     private void dismissKeyPreviewWithoutDelay(final Key key) {
@@ -561,23 +517,6 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
             KeyPreviewView.clearTextCache();
         }
         mLanguageOnSpacebarFormatType = languageOnSpacebarFormatType;
-        final ObjectAnimator animator = mLanguageOnSpacebarFadeoutAnimator;
-        if (animator == null) {
-            mLanguageOnSpacebarFormatType = LanguageOnSpacebarUtils.FORMAT_TYPE_NONE;
-        } else {
-            if (subtypeChanged
-                    && languageOnSpacebarFormatType != LanguageOnSpacebarUtils.FORMAT_TYPE_NONE) {
-                setLanguageOnSpacebarAnimAlpha(Constants.Color.ALPHA_OPAQUE);
-                if (animator.isStarted()) {
-                    animator.cancel();
-                }
-                animator.start();
-            } else {
-                if (!animator.isStarted()) {
-                    mLanguageOnSpacebarAnimAlpha = mLanguageOnSpacebarFinalAlpha;
-                }
-            }
-        }
         invalidateKey(mSpaceKey);
     }
 
@@ -655,7 +594,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
         final float textHeight = -paint.ascent() + descent;
         final float baseline = height / 2 + textHeight / 2;
         paint.setColor(mLanguageOnSpacebarTextColor);
-        paint.setAlpha(mLanguageOnSpacebarAnimAlpha);
+        paint.setAlpha(mLanguageOnSpacebarFinalAlpha);
         canvas.drawText(language, width / 2, baseline - descent, paint);
         paint.clearShadowLayer();
         paint.setTextScaleX(1.0f);

@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
+ * Copyright (C) 2021 wittmane
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,18 +24,14 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Insets;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.NinePatchDrawable;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.WindowInsets;
 
 import java.util.HashSet;
 
@@ -90,10 +88,10 @@ public class KeyboardView extends View {
     private final Drawable mKeyBackground;
     private final Drawable mFunctionalKeyBackground;
     private final Drawable mSpacebarBackground;
-    private final float mSpacebarIconWidthRatio;
     private final Rect mKeyBackgroundPadding = new Rect();
     private static final float KET_TEXT_SHADOW_RADIUS_DISABLED = -1.0f;
-    public int mCustomColor = 0;
+    protected int mCustomColor = 0;
+    protected KeyboardTheme mTheme;
 
     // The maximum key label width in the proportion to the key width.
     private static final float MAX_LABEL_RATIO = 0.90f;
@@ -135,8 +133,6 @@ public class KeyboardView extends View {
         final Drawable spacebarBackground = keyboardViewAttr.getDrawable(
                 R.styleable.KeyboardView_spacebarBackground);
         mSpacebarBackground = (spacebarBackground != null) ? spacebarBackground : mKeyBackground;
-        mSpacebarIconWidthRatio = keyboardViewAttr.getFloat(
-                R.styleable.KeyboardView_spacebarIconWidthRatio, 1.0f);
         mKeyHintLetterPadding = keyboardViewAttr.getDimension(
                 R.styleable.KeyboardView_keyHintLetterPadding, 0.0f);
         mKeyShiftedLetterHintPadding = keyboardViewAttr.getDimension(
@@ -176,6 +172,7 @@ public class KeyboardView extends View {
         mKeyDrawParams.updateParams(keyHeight, keyboard.mKeyVisualAttributes);
         final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(getContext());
         mCustomColor = Settings.readKeyboardColor(prefs, getContext());
+        mTheme = Settings.getKeyboardTheme(getContext());
         invalidateAllKeys();
         requestLayout();
     }
@@ -206,16 +203,8 @@ public class KeyboardView extends View {
         }
         // The main keyboard expands to the entire this {@link KeyboardView}.
         final int width = keyboard.mOccupiedWidth + getPaddingLeft() + getPaddingRight();
-        final int height = keyboard.mOccupiedHeight + getPaddingTop() + getPaddingBottom() + getSystemBarHeight();
+        final int height = keyboard.mOccupiedHeight + getPaddingTop() + getPaddingBottom();
         setMeasuredDimension(width, height);
-    }
-
-    private int getSystemBarHeight() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            final Insets insets = getRootWindowInsets().getInsets(WindowInsets.Type.navigationBars());
-            return insets.bottom;
-        }
-        return 0;
     }
 
     @Override
@@ -270,8 +259,12 @@ public class KeyboardView extends View {
 
         final Paint paint = mPaint;
         final Drawable background = getBackground();
-        if (Color.alpha(mCustomColor) > 0 && keyboard.getKey(Constants.CODE_SPACE) != null) {
-            setBackgroundColor(mCustomColor);
+        if (background != null && mTheme.mCustomColorSupport) {
+            if (keyboard.getClass() == MoreKeysKeyboard.class) {
+                background.setColorFilter(mCustomColor, PorterDuff.Mode.OVERLAY);
+            } else {
+                setBackgroundColor(mCustomColor);
+            }
         }
         // Calculate clip region and set.
         final boolean drawAllKeys = mInvalidateAllKeys || mInvalidatedKeys.isEmpty();
@@ -454,12 +447,7 @@ public class KeyboardView extends View {
 
         // Draw key icon.
         if (label == null && icon != null) {
-            final int iconWidth;
-            if (key.getCode() == Constants.CODE_SPACE && icon instanceof NinePatchDrawable) {
-                iconWidth = (int)(keyWidth * mSpacebarIconWidthRatio);
-            } else {
-                iconWidth = Math.min(icon.getIntrinsicWidth(), keyWidth);
-            }
+            final int iconWidth = Math.min(icon.getIntrinsicWidth(), keyWidth);
             final int iconHeight = icon.getIntrinsicHeight();
             final int iconY;
             if (key.isAlignIconToBottom()) {

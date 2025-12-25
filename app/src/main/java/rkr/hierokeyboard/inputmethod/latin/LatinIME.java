@@ -1,5 +1,10 @@
 /*
  * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
+ * Copyright (C) 2021 wittmane
+ * Copyright (C) 2021 Maarten Trompper
+ * Copyright (C) 2019 Micha LaQua
+ * Copyright (C) 2019 Emmanuel
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +45,6 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowInsetsController;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 
 import java.io.FileDescriptor;
@@ -50,8 +54,6 @@ import java.util.concurrent.TimeUnit;
 
 import rkr.hierokeyboard.inputmethod.compat.EditorInfoCompatUtils;
 import rkr.hierokeyboard.inputmethod.compat.PreferenceManagerCompat;
-import rkr.hierokeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils;
-import rkr.hierokeyboard.inputmethod.compat.ViewOutlineProviderCompatUtils.InsetsUpdater;
 import rkr.hierokeyboard.inputmethod.event.Event;
 import rkr.hierokeyboard.inputmethod.event.InputTransaction;
 import rkr.hierokeyboard.inputmethod.keyboard.Keyboard;
@@ -89,7 +91,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     // TODO: Move these {@link View}s to {@link KeyboardSwitcher}.
     private View mInputView;
-    private InsetsUpdater mInsetsUpdater;
 
     private RichInputMethodManager mRichImm;
     final KeyboardSwitcher mKeyboardSwitcher;
@@ -292,6 +293,16 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
     @Override
+    public boolean onEvaluateInputViewShown() {
+        final boolean useOnScreen = super.onEvaluateInputViewShown();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA) {
+            return useOnScreen;
+        } else {
+            return useOnScreen || mSettings.getCurrent().mUseOnScreen;
+        }
+    }
+
+    @Override
     public void onConfigurationChanged(final Configuration conf) {
         SettingsValues settingsValues = mSettings.getCurrent();
         if (settingsValues.mHasHardwareKeyboard != Settings.readHasHardwareKeyboard(conf)) {
@@ -302,22 +313,22 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             loadSettings();
         }
 
-        mKeyboardSwitcher.updateKeyboardTheme(conf.uiMode);
+        mKeyboardSwitcher.onConfigurationChanged();
 
         super.onConfigurationChanged(conf);
     }
 
     @Override
     public View onCreateInputView() {
-        return mKeyboardSwitcher.onCreateInputView(getResources().getConfiguration().uiMode);
+        return mKeyboardSwitcher.onCreateInputView();
     }
 
     @Override
     public void setInputView(final View view) {
         super.setInputView(view);
         mInputView = view;
-        mInsetsUpdater = ViewOutlineProviderCompatUtils.setInsetsOutlineProvider(view);
         updateSoftInputWindowLayoutParameters();
+        view.requestApplyInsets();
     }
 
     @Override
@@ -337,6 +348,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public void onFinishInputView(final boolean finishingInput) {
+        mInputLogic.clearCaches();
         mRichImm.resetSubtypeCycleOrder();
         mHandler.onFinishInputView(finishingInput);
     }
@@ -371,7 +383,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // Switch to the null consumer to handle cases leading to early exit below, for which we
         // also wouldn't be consuming gesture data.
         final KeyboardSwitcher switcher = mKeyboardSwitcher;
-        switcher.updateKeyboardTheme(getResources().getConfiguration().uiMode);
+        switcher.updateKeyboardTheme();
         final MainKeyboardView mainKeyboardView = switcher.getMainKeyboardView();
         // If we are starting input in a different text field from before, we'll have to reload
         // settings, so currentSettingsValues can't be final.
@@ -396,7 +408,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     + ((editorInfo.inputType & InputType.TYPE_TEXT_FLAG_CAP_WORDS) != 0));
         }
         Log.i(TAG, "Starting input. Cursor position = "
-                + editorInfo.initialSelStart + "," + editorInfo.initialSelEnd);
+                + editorInfo.initialSelStart + "," + editorInfo.initialSelEnd +
+                " Restarting = " + restarting);
 
         // In landscape mode, this method gets called without the input view being created.
         if (mainKeyboardView == null) {
@@ -426,7 +439,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
             // Some applications call onStartInputView without updating EditorInfo. In these cases
             // selection will be incorrect.
-            mInputLogic.mConnection.reloadTextCache(editorInfo);
+            mInputLogic.mConnection.reloadTextCache(editorInfo, restarting);
         }
 
         if (isDifferentTextField ||
@@ -439,16 +452,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
             switcher.loadKeyboard(editorInfo, currentSettingsValues, getCurrentAutoCapsState(),
                     getCurrentRecapitalizeState());
-        } else if (restarting) {
+        } else {
             // TODO: Come up with a more comprehensive way to reset the keyboard layout when
             // a keyboard layout set doesn't get reloaded in this method.
             switcher.resetKeyboardStateToAlphabet(getCurrentAutoCapsState(),
-                    getCurrentRecapitalizeState());
-            // In apps like Talk, we come here when the text is sent and the field gets emptied and
-            // we need to re-evaluate the shift state, but not the whole layout which would be
-            // disruptive.
-            // Space state must be updated before calling updateShiftState
-            switcher.requestUpdatingShiftState(getCurrentAutoCapsState(),
                     getCurrentRecapitalizeState());
         }
 
@@ -459,7 +466,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void onWindowShown() {
         super.onWindowShown();
         if (isInputViewShown())
-            clearNavigationBar();
+            setNavigationBarColor();
     }
 
     @Override
@@ -539,7 +546,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // no visual element will be shown on the screen.
             outInsets.contentTopInsets = inputHeight;
             outInsets.visibleTopInsets = inputHeight;
-            mInsetsUpdater.setInsets(outInsets);
             return;
         }
         final int visibleTopY = inputHeight - visibleKeyboardView.getHeight();
@@ -556,7 +562,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
         outInsets.contentTopInsets = visibleTopY;
         outInsets.visibleTopInsets = visibleTopY;
-        mInsetsUpdater.setInsets(outInsets);
     }
 
     @Override
@@ -927,20 +932,22 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return shouldSwitchToOtherInputMethods(token);
     }
 
-    private void clearNavigationBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+    private void setNavigationBarColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             final Window window = getWindow().getWindow();
             if (window == null) {
                 return;
             }
-            window.setNavigationBarContrastEnforced(false);
-            window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
             final SharedPreferences prefs = PreferenceManagerCompat.getDeviceSharedPreferences(this);
             final int keyboardColor = Settings.readKeyboardColor(prefs, this);
-            final int flags = ResourceUtils.isBrightColor(keyboardColor) ?
-                    WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS : ~WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
-            window.getInsetsController().setSystemBarsAppearance(flags, flags);
+            window.setNavigationBarColor(keyboardColor);
+            window.setNavigationBarContrastEnforced(false);
+            final int flag = WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
+            if (ResourceUtils.isBrightColor(keyboardColor)) {
+                window.getInsetsController().setSystemBarsAppearance(flag, flag);
+            } else {
+                window.getInsetsController().setSystemBarsAppearance(0, flag);
+            }
         }
     }
 }

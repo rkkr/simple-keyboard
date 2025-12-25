@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2013 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -152,13 +153,13 @@ public class RecapitalizeStatus {
                 mStringAfter = mStringBefore;
                 break;
             case CAPS_MODE_ALL_LOWER:
-                mStringAfter = mStringBefore.toLowerCase(mLocale);
+                mStringAfter = StringUtils.toLowerCase(mStringBefore, mLocale);
                 break;
             case CAPS_MODE_FIRST_WORD_UPPER:
                 mStringAfter = StringUtils.capitalizeEachWord(mStringBefore, mLocale);
                 break;
             case CAPS_MODE_ALL_UPPER:
-                mStringAfter = mStringBefore.toUpperCase(mLocale);
+                mStringAfter = StringUtils.toUpperCase(mStringBefore, mLocale);
                 break;
             default:
                 mStringAfter = mStringBefore;

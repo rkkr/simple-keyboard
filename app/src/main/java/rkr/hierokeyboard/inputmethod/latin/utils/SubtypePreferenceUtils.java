@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2021 wittmane
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,8 +45,8 @@ public final class SubtypePreferenceUtils {
         return localeString + LOCALE_AND_LAYOUT_SEPARATOR + keyboardLayoutSetName;
     }
 
-    public static List<Subtype> createSubtypesFromPref(final String prefSubtypes,
-                                                   final Resources resources) {
+    public static List<Subtype> createSubtypesFromPref(final String prefSubtypes, final Resources resources) {
+        Log.i(TAG, "Loading subtypes: " + prefSubtypes);
         if (TextUtils.isEmpty(prefSubtypes)) {
             return new ArrayList<>();
         }

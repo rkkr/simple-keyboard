@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
+ * Copyright (C) 2024 wittmane
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +21,8 @@ package rkr.hierokeyboard.inputmethod.latin.settings;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
+import android.preference.Preference;
 
 import rkr.hierokeyboard.inputmethod.R;
 import rkr.hierokeyboard.inputmethod.keyboard.KeyboardTheme;
@@ -42,12 +44,25 @@ public final class AppearanceSettingsFragment extends SubScreenFragment {
     @Override
     public void onResume() {
         super.onResume();
-        refreshSettings();
+
+        ThemeSettingsFragment.updateKeyboardThemeSummary(findPreference(Settings.SCREEN_THEME));
+
+        final Preference colorPreference = findPreference(Settings.PREF_KEYBOARD_COLOR);
+        if (colorPreference.isEnabled()) {
+            final SharedPreferences prefs = getSharedPreferences();
+            final KeyboardTheme theme = KeyboardTheme.getKeyboardTheme(prefs);
+            colorPreference.setEnabled(theme.mCustomColorSupport);
+        }
     }
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        refreshSettings();
+        if (KeyboardTheme.KEYBOARD_THEME_KEY.equals(key)) {
+            ThemeSettingsFragment.updateKeyboardThemeSummary(findPreference(Settings.SCREEN_THEME));
+
+            final KeyboardTheme theme = KeyboardTheme.getKeyboardTheme(prefs);
+            setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR, theme.mCustomColorSupport);
+        }
     }
 
     private void refreshSettings() {
@@ -55,9 +70,7 @@ public final class AppearanceSettingsFragment extends SubScreenFragment {
 
         final SharedPreferences prefs = getSharedPreferences();
         final KeyboardTheme theme = KeyboardTheme.getKeyboardTheme(prefs);
-        final boolean isSystemTheme = theme.mThemeId != KeyboardTheme.THEME_ID_SYSTEM
-                && theme.mThemeId != KeyboardTheme.THEME_ID_SYSTEM_BORDER;
-        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR, isSystemTheme);
+        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR, theme.mCustomColorSupport);
     }
 
     private void setupKeyboardHeightSettings() {

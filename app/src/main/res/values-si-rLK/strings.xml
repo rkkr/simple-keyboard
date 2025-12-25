@@ -45,8 +45,6 @@
     <string name="button_default">"සුපුරුදු"</string>
     <string name="prefs_keyboard_height_settings">යතුරුපුවරුවේ උස</string>
     <string name="keyboard_color">අභිරුචි වර්ණයක් සකසන්න</string>
-    <string name="hide_special_chars">විශේෂ අකුරු සඟවන්න</string>
-    <string name="hide_language_switch_key">භාෂාව මාරුකරන යතුර සඟවන්න</string>
     <string name="pref_enable_ime_switch">වෙනත් යතුරුපුවරුවකට මාරුවන්න</string>
     <string name="show_number_row">වෙනම අංක පේලියක් පෙන්වන්න</string>
     <string name="space_swipe">අවකාශ යතුර තල්ලුවෙන් දර්ශකය ගෙනයන්න</string>

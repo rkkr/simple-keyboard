@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2024 Raimondas Rimkus
+ * Copyright (C) 2024 wittmane
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +34,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.lang.ref.SoftReference;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import rkr.hierokeyboard.inputmethod.R;
@@ -119,6 +122,7 @@ public final class KeyboardLayoutSet {
     private static void clearKeyboardCache() {
         sKeyboardCache.clear();
         sUniqueKeysCache.clear();
+        Arrays.fill(sForcibleKeyboardCache, null);
     }
 
     KeyboardLayoutSet(final Context context, final Params params) {

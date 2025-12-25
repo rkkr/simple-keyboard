@@ -9,11 +9,11 @@ if (keystorePropertiesFile.exists()) {
 android {
     defaultConfig {
         applicationId "rkr.hierokeyboard.inputmethod"
-        compileSdk 35
-        minSdkVersion 21
-        targetSdkVersion 35
-        versionCode 122
-        versionName "5.35"
+        compileSdk 36
+        minSdkVersion 24
+        targetSdkVersion 36
+        versionCode 142
+        versionName "6.1"
     }
 
     signingConfigs {
@@ -28,8 +28,7 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     namespace 'rkr.hierokeyboard.inputmethod'

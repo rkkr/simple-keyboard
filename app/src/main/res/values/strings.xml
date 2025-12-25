@@ -46,39 +46,43 @@
 <!-- Description for option to enable auto capitalization of sentences -->
 <string name="auto_cap_summary">Capitalize the first word of each sentence</string>
 
-<!-- Preference for input language selection -->
-<string name="select_language">Languages</string>
+    <!-- Preference for input language selection -->
+    <string name="select_language">Languages</string>
+    <string name="select_language_description" translatable="false">en_US:qwerty;en_US:qwertz;de:qwertz</string>
+    <string name="pref_keyboard_color_description" translatable="false">#ECEFF1</string>
 
-<!-- Description for English (UK) keyboard subtype [CHAR LIMIT=25]
-     (UK) should be an abbreviation of United Kingdom to fit in the CHAR LIMIT. -->
-<string name="locale_name_en_GB">English (UK)</string>
-<!-- Description for English (US) keyboard subtype [CHAR LIMIT=25]
-     (US) should be an abbreviation of United States to fit in the CHAR LIMIT. -->
-<string name="locale_name_en_US">English (US)</string>
-<!-- Description for Spanish (US) keyboard subtype [CHAR LIMIT=25]
-     (US) should be an abbreviation of United States to fit in the CHAR LIMIT. -->
-<string name="locale_name_es_US">Spanish (US)</string>
-<!-- Description for Hinglish (https://en.wikipedia.org/wiki/Hinglish) keyboard subtype [CHAR LIMIT=25] -->
-<string name="locale_name_hi_ZZ">Hinglish</string>
-<!-- Description for Serbian (Latin) keyboard subtype [CHAR LIMIT=25]
-     (Latin) can be an abbreviation to fit in the CHAR LIMIT. -->
-<string name="locale_name_sr_ZZ">Serbian (Latin)</string>
-<!-- Description for a keyboard layout listing the language and layout name. -->
-<string name="subtype_generic_layout"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> (<xliff:g id="LAYOUT" example="QWERTY">%s</xliff:g>)</string>
-<!-- Description for a traditional keyboard layout, such as Nepali (Traditional). -->
-<string name="subtype_traditional">Traditional</string>
-<!-- Description for a compact keyboard layout, such as Hindi (Compact). -->
-<string name="subtype_compact">Compact</string>
-<!-- Description for Bulgarian (BDS) keyboard layout. -->
-<string name="subtype_bds">BDS</string>
-<!-- Description for Turkish (Q) keyboard layout. -->
-<string name="subtype_q">Q</string>
-<!-- Description for Turkish (F) keyboard layout. -->
-<string name="subtype_f">F</string>
-<!-- Description for Bengali (Akkhor) keyboard layout. -->
-<string name="subtype_akkhor">Akkhor</string>
-<!-- Description for Ergo-L keyboard layout. -->
-<string name="subtype_ergol">Ergo-L</string>
+    <!-- Description for English (UK) keyboard subtype [CHAR LIMIT=25]
+         (UK) should be an abbreviation of United Kingdom to fit in the CHAR LIMIT. -->
+    <string name="locale_name_en_GB">English (UK)</string>
+    <!-- Description for English (US) keyboard subtype [CHAR LIMIT=25]
+         (US) should be an abbreviation of United States to fit in the CHAR LIMIT. -->
+    <string name="locale_name_en_US">English (US)</string>
+    <!-- Description for Spanish (US) keyboard subtype [CHAR LIMIT=25]
+         (US) should be an abbreviation of United States to fit in the CHAR LIMIT. -->
+    <string name="locale_name_es_US">Spanish (US)</string>
+    <!-- Description for Hinglish (https://en.wikipedia.org/wiki/Hinglish) keyboard subtype [CHAR LIMIT=25] -->
+    <string name="locale_name_hi_ZZ">Hinglish</string>
+    <!-- Description for Serbian (Latin) keyboard subtype [CHAR LIMIT=25]
+         (Latin) can be an abbreviation to fit in the CHAR LIMIT. -->
+    <string name="locale_name_sr_ZZ">Serbian (Latin)</string>
+    <!-- Description for a keyboard layout listing the language and layout name. -->
+    <string name="subtype_generic_layout"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> (<xliff:g id="LAYOUT" example="QWERTY">%s</xliff:g>)</string>
+    <!-- Description for a traditional keyboard layout, such as Nepali (Traditional). -->
+    <string name="subtype_traditional">Traditional</string>
+    <!-- Description for a compact keyboard layout, such as Hindi (Compact). -->
+    <string name="subtype_compact">Compact</string>
+    <!-- Description for Bulgarian (BDS) keyboard layout. -->
+    <string name="subtype_bds">BDS</string>
+    <!-- Description for Turkish (Q) keyboard layout. -->
+    <string name="subtype_q">Q</string>
+    <!-- Description for Turkish (F) keyboard layout. -->
+    <string name="subtype_f">F</string>
+    <!-- Description for Bengali (Akkhor) keyboard layout. -->
+    <string name="subtype_akkhor">Akkhor</string>
+    <!-- Description for Ergo-L keyboard layout. -->
+    <string name="subtype_ergol">Ergo-L</string>
+    <!-- Description for Hcesar keyboard layout. -->
+    <string name="subtype_hcesar">HCESAR</string>
 <!-- Description for Egyptian Two keyboard layout. -->
 <string name="subtype_egyptian_two">transliteration hints - qwꜥẖrty</string>
 <!-- Description for qwꜥẖrt keyboard layout. -->
@@ -127,4 +131,8 @@
 <string name="donation">𓂠 Donation</string>
 <string name="privacy_policy">Privacy Policy</string>
 <string name="last_step_switch_keyboard">𓉢 Last Step Switch to the Keyboard</string>
+<string name="show_special_chars">Show special characters</string>
+<string name="show_language_switch_key">Show language switch key</string>
+<string name="pref_use_on_screen">Show on-screen keyboard</string>
+<string name="pref_use_on_screen_summary">Show on-screen keyboard while using physical keyboard</string>
 </resources>

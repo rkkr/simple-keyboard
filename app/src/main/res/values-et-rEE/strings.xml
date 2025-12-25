@@ -43,9 +43,12 @@
     <string name="prefs_key_longpress_timeout_settings">"Pika klahvivajutuse viide"</string>
     <string name="button_default">"Vaikeväärtus"</string>
     <string name="prefs_keyboard_height_settings">Klaviatuuri kõrgus</string>
-    <string name="keyboard_color">Määrake kohandatud klaviatuuri värv</string>
-    <string name="hide_special_chars">HPeida eri tähed</string>
-    <string name="hide_language_switch_key">Peida keele vahetus nupp</string>
+    <string name="prefs_bottom_offset_portrait_settings">Veerised all ääres</string>
+    <string name="keyboard_color">Määra kohandatud klaviatuuri värv</string>
+    <string name="show_special_chars">Näita erimärke</string>
+    <string name="show_language_switch_key">Näita keelevahetuse nuppi</string>
+    <string name="pref_use_on_screen">Kuva ekraaniklaviatuur</string>
+    <string name="pref_use_on_screen_summary">Kuva füüsilise klaviatuuri kasutamisel ekraaniklaviatuur</string>
     <string name="pref_enable_ime_switch">Vaheta teistele klavjatuuridele</string>
     <string name="show_number_row">Kuva eraldi numbririda</string>
     <string name="space_swipe">Space pühi kursori liigutus</string>

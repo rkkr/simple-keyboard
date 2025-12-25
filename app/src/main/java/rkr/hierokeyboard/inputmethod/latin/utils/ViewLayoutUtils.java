@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,11 +96,7 @@ public final class ViewLayoutUtils {
 
     public static void applyViewInsets(final View view, final Insets insets) {
         if (insets != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-            mlp.leftMargin = insets.left;
-            mlp.bottomMargin = insets.bottom;
-            mlp.rightMargin = insets.right;
-            view.setLayoutParams(mlp);
+            view.setPadding(insets.left, 0, insets.right, insets.bottom);
         }
     }
 }

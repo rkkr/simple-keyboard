@@ -16,33 +16,39 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_screen_preferences">
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="auto_cap"
         android:title="@string/auto_cap"
         android:summary="@string/auto_cap_summary"
         android:defaultValue="true"
         android:persistent="true" />
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="pref_show_number_row"
         android:title="@string/show_number_row"
         android:defaultValue="false" />
-    <CheckBoxPreference
-        android:key="pref_hide_special_chars"
-        android:title="@string/hide_special_chars"
+    <SwitchPreference
+        android:key="pref_show_special_chars"
+        android:title="@string/show_special_chars"
+        android:defaultValue="true" />
+    <SwitchPreference
+        android:key="pref_show_language_switch_key"
+        android:title="@string/show_language_switch_key"
+        android:defaultValue="true" />
+    <SwitchPreference
+        android:key="pref_use_on_screen"
+        android:title="@string/pref_use_on_screen"
+        android:summary="@string/pref_use_on_screen_summary"
         android:defaultValue="false" />
-    <CheckBoxPreference
-        android:key="pref_hide_language_switch_key"
-        android:title="@string/hide_language_switch_key"
-        android:defaultValue="false" />
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="pref_enable_ime_switch"
         android:title="@string/pref_enable_ime_switch"
+        android:dependency="pref_show_language_switch_key"
         android:defaultValue="false" />
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="pref_space_swipe"
         android:title="@string/space_swipe"
         android:defaultValue="false" />
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="pref_delete_swipe"
         android:title="@string/delete_swipe"
         android:defaultValue="false" />

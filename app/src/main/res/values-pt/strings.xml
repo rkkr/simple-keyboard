@@ -23,7 +23,7 @@
     <string name="sound_on_keypress">"Som ao tocar a tecla"</string>
     <string name="popup_on_keypress">"Exibir pop-up ao digitar"</string>
     <string name="settings_screen_preferences">"Preferências"</string>
-    <string name="settings_screen_key_press">"Pressionar tecla"</string>
+    <string name="settings_screen_key_press">Premir tecla</string>
     <string name="settings_screen_appearance">Aparência</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="settings_system_default">"Padrão do sistema"</string>
@@ -43,10 +43,13 @@
     <string name="prefs_key_longpress_timeout_settings">"Atraso ao pressionar teclas"</string>
     <string name="button_default">"Padrão"</string>
     <string name="prefs_keyboard_height_settings">Altura do teclado</string>
+    <string name="prefs_bottom_offset_portrait_settings">Margem inferior</string>
     <string name="keyboard_color">Personalizar cor do teclado</string>
-    <string name="hide_special_chars">Ocultar caracteres especiais</string>
-    <string name="hide_language_switch_key">Ocultar tecla de mudança de idioma</string>
-    <string name="pref_enable_ime_switch">Mudar para outros teclados</string>
+    <string name="show_special_chars">Mostrar caracteres especiais</string>
+    <string name="show_language_switch_key">Mostrar tecla para alterar idioma</string>
+    <string name="pref_use_on_screen">Mostrar teclado no ecrã</string>
+    <string name="pref_use_on_screen_summary">Mostrar teclado no ecrã ao usar teclado físico</string>
+    <string name="pref_enable_ime_switch">Mudar para outro teclado</string>
     <string name="show_number_row">Mostrar números em linha separada</string>
     <string name="space_swipe">Deslizar a barra de espaço para mover o cursor</string>
     <string name="delete_swipe">Deslizar para excluir</string>
@@ -54,6 +57,8 @@
     <string name="user_languages">Idiomas de teclado ativados</string>
     <string name="add_language">Adicionar idioma</string>
     <string name="remove_language">Remover idioma</string>
-    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> layouts de teclado</string>
+    <string name="generic_language_layouts">Layouts de teclado para <xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g></string>
     <string name="change_keyboard">Mudar teclado</string>
+    <string name="privacy_policy">Política de Privacidade</string>
+    <string name="license">Licença</string>
 </resources>

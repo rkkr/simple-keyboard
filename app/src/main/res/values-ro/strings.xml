@@ -45,8 +45,6 @@
     <string name="button_default">"Prestabilit"</string>
     <string name="prefs_keyboard_height_settings">Înălțime tastatură</string>
     <string name="keyboard_color">Setează culoare personalizată</string>
-    <string name="hide_special_chars">Ascunde caracterele speciale</string>
-    <string name="hide_language_switch_key">Ascunde butonul de schimbare limbă</string>
     <string name="pref_enable_ime_switch">Treceți la alte tastaturi</string>
     <string name="show_number_row">Arată un rând separat cu cifre</string>
     <string name="space_swipe">Glisarea pe tasta Spațiu mută cursorul</string>

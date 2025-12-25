@@ -44,8 +44,6 @@
     <string name="button_default">"Predefinito"</string>
     <string name="prefs_keyboard_height_settings">Altezza tastiera</string>
     <string name="keyboard_color">Cambia colore tastiera</string>
-    <string name="hide_special_chars">Nascondi caratteri speciali</string>
-    <string name="hide_language_switch_key">Nascondi tasto per cambiare lingua</string>
     <string name="pref_enable_ime_switch">"Passa a un'altra tastiera"</string>
     <string name="show_number_row">Mostra numeri in una riga separata</string>
     <string name="space_swipe">Muovi cursore scorrendo sulla barra spaziatrice</string>

@@ -27,8 +27,7 @@
     <!-- TODO: consolidate key preview linger timeout with the above animation parameters. -->
     <integer name="config_key_preview_linger_timeout">53</integer>
 
-    <bool name="config_default_vibration_enabled">false</bool>
-    <integer name="config_max_vibration_duration">100</integer>
+    <bool name="config_default_vibration_enabled">true</bool>
 
     <integer name="config_default_longpress_key_timeout">200</integer>
     <integer name="config_max_longpress_timeout">700</integer>
@@ -38,15 +37,6 @@
 
     <!-- Long pressing shift will invoke caps-lock if > 0, never invoke caps-lock if == 0 -->
     <integer name="config_longpress_shift_lock_timeout">1200</integer>
-
-    <!-- Sliding key input preview parameters -->
-    <dimen name="config_sliding_key_input_preview_width">8.0dp</dimen>
-    <!-- Percentages of sliding key input preview body and shadow, in proportion to the width.
-         A negative value of the shadow ratio disables drawing shadow. -->
-    <!-- TODO: May use the shadow to alleviate rugged trail drawing. -->
-    <integer name="config_sliding_key_input_preview_body_ratio">100</integer>
-    <integer name="config_sliding_key_input_preview_shadow_ratio">-1</integer>
-    <dimen name="config_key_hysteresis_distance_for_sliding_modifier">8.0dp</dimen>
 
     <integer name="config_language_on_spacebar_final_alpha">128</integer>
     <dimen name="config_language_on_spacebar_horizontal_margin">1dp</dimen>

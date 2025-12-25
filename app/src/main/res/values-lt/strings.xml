@@ -43,9 +43,12 @@
     <string name="prefs_key_longpress_timeout_settings">"Klavišo ilgo paspaudimo delsa"</string>
     <string name="button_default">"Numatytieji"</string>
     <string name="prefs_keyboard_height_settings">Klaviatūros aukštis</string>
+    <string name="prefs_bottom_offset_portrait_settings">Apatinio tarpo aukštis</string>
     <string name="keyboard_color">Keisti klaviatūros spalvą</string>
-    <string name="hide_special_chars">Paslėpti specialius simbolius</string>
-    <string name="hide_language_switch_key">Paslėpti kalbos pasirinkimą</string>
+    <string name="show_special_chars">Rodyti specialius simbolius</string>
+    <string name="show_language_switch_key">Rodyti kalbos pasirinkimą</string>
+    <string name="pref_use_on_screen">Rodyti klaviatūrą ant ekrano</string>
+    <string name="pref_use_on_screen_summary">Rodyti klaviatūrą ant ekrano naudojant fizinę klaviatūrą</string>
     <string name="pref_enable_ime_switch">Perjungti į kitas klaviatūras</string>
     <string name="show_number_row">Rodyti skaičių eilutę</string>
     <string name="space_swipe">Judinti kursorių tarpo klavišu</string>

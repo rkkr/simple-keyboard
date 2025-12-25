@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
+ * Copyright (C) 2024 wittmane
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,10 +45,6 @@ import rkr.hierokeyboard.inputmethod.latin.utils.ResourceUtils;
 public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
     private static final String TAG = KeyboardSwitcher.class.getSimpleName();
 
-    private InputView mCurrentInputView;
-    private int mCurrentUiMode;
-    private int mCurrentTextColor = 0x0;
-    private View mMainKeyboardFrame;
     private MainKeyboardView mKeyboardView;
     private LatinIME mLatinIME;
     private RichInputMethodManager mRichImm;
@@ -80,28 +78,28 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         mState = new KeyboardState(this);
     }
 
-    public void updateKeyboardTheme(final int uiMode) {
+    public void updateKeyboardTheme() {
         final boolean themeUpdated = updateKeyboardThemeAndContextThemeWrapper(
-                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME), uiMode);
+                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME));
         if (themeUpdated && mKeyboardView != null) {
-            mLatinIME.setInputView(onCreateInputView(uiMode));
+            mLatinIME.setInputView(onCreateInputView());
+        }
+    }
+
+    public void onConfigurationChanged() {
+        mKeyboardTheme = KeyboardTheme.getKeyboardTheme(mLatinIME);
+        mThemeContext = new ContextThemeWrapper(mLatinIME, mKeyboardTheme.mStyleId);
+        KeyboardLayoutSet.onKeyboardThemeChanged();
+        if (mKeyboardView != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            // Live color pallet reloading doesn't work, need to rerender the View
+            mLatinIME.setInputView(onCreateInputView());
         }
     }
 
     private boolean updateKeyboardThemeAndContextThemeWrapper(final Context context,
-            final KeyboardTheme keyboardTheme, final int uiMode) {
-        int newTextColor = 0x0;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            newTextColor = context.getResources().getColor(R.color.key_text_color_lxx_system);
-        }
-
-        if (mThemeContext == null
-                || !keyboardTheme.equals(mKeyboardTheme)
-                || mCurrentUiMode != uiMode
-                || newTextColor != mCurrentTextColor) {
+            final KeyboardTheme keyboardTheme) {
+        if (mThemeContext == null || !keyboardTheme.equals(mKeyboardTheme)) {
             mKeyboardTheme = keyboardTheme;
-            mCurrentUiMode = uiMode;
-            mCurrentTextColor = newTextColor;
             mThemeContext = new ContextThemeWrapper(context, keyboardTheme.mStyleId);
             KeyboardLayoutSet.onKeyboardThemeChanged();
             return true;
@@ -121,7 +119,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         builder.setKeyboardGeometry(keyboardWidth, keyboardHeight, keyboardBottomOffset);
         builder.setSubtype(mRichImm.getCurrentSubtype());
         builder.setLanguageSwitchKeyEnabled(mLatinIME.shouldShowLanguageSwitchKey());
-        builder.setShowSpecialChars(!settingsValues.mHideSpecialChars);
+        builder.setShowSpecialChars(settingsValues.mShowSpecialChars);
         builder.setShowNumberRow(settingsValues.mShowNumberRow);
         mKeyboardLayoutSet = builder.build();
         try {
@@ -254,10 +252,6 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         final int visibility =  isImeSuppressedByHardwareKeyboard(settingsValues, toggleState)
                 ? View.GONE : View.VISIBLE;
         mKeyboardView.setVisibility(visibility);
-        // The visibility of {@link #mKeyboardView} must be aligned with {@link #MainKeyboardFrame}.
-        // @see #getVisibleKeyboardView() and
-        // @see LatinIME#onComputeInset(android.inputmethodservice.InputMethodService.Insets)
-        mMainKeyboardFrame.setVisibility(visibility);
     }
 
     public enum KeyboardSwitchState {
@@ -369,19 +363,18 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         }
     }
 
-    public View onCreateInputView(final int uiMode) {
+    public View onCreateInputView() {
         if (mKeyboardView != null) {
             mKeyboardView.closing();
         }
 
         updateKeyboardThemeAndContextThemeWrapper(
-                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */), uiMode);
-        mCurrentInputView = (InputView)LayoutInflater.from(mThemeContext).inflate(
+                mLatinIME, KeyboardTheme.getKeyboardTheme(mLatinIME /* context */));
+        final InputView currentInputView = (InputView) LayoutInflater.from(mThemeContext).inflate(
                 R.layout.input_view, null);
-        mMainKeyboardFrame = mCurrentInputView.findViewById(R.id.main_keyboard_frame);
 
-        mKeyboardView = (MainKeyboardView) mCurrentInputView.findViewById(R.id.keyboard_view);
+        mKeyboardView = currentInputView.findViewById(R.id.keyboard_view);
         mKeyboardView.setKeyboardActionListener(mLatinIME);
-        return mCurrentInputView;
+        return currentInputView;
     }
 }

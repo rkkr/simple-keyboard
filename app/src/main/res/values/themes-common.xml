@@ -19,7 +19,7 @@
 -->
 
 <resources>
-    <style name="KeyboardIcons" />
+    <style name="KeyboardTheme" />
     <style name="InputView" />
     <!-- Default theme values -->
     <style name="Keyboard">
@@ -44,13 +44,9 @@
         <item name="backgroundDimAlpha">128</item>
         <!-- Common attributes of MainKeyboardView -->
         <item name="keyHysteresisDistance">@dimen/config_key_hysteresis_distance</item>
-        <item name="keyHysteresisDistanceForSlidingModifier">@dimen/config_key_hysteresis_distance_for_sliding_modifier</item>
         <item name="touchNoiseThresholdTime">@integer/config_touch_noise_threshold_time</item>
         <item name="touchNoiseThresholdDistance">@dimen/config_touch_noise_threshold_distance</item>
         <item name="keySelectionByDraggingFinger">@bool/config_key_selection_by_dragging_finger</item>
-        <item name="slidingKeyInputPreviewWidth">@dimen/config_sliding_key_input_preview_width</item>
-        <item name="slidingKeyInputPreviewBodyRatio">@integer/config_sliding_key_input_preview_body_ratio</item>
-        <item name="slidingKeyInputPreviewShadowRatio">@integer/config_sliding_key_input_preview_shadow_ratio</item>
         <item name="keyRepeatStartTimeout">@integer/config_key_repeat_start_timeout</item>
         <item name="keyRepeatInterval">@integer/config_key_repeat_interval</item>
         <item name="longPressShiftLockTimeout">@integer/config_longpress_shift_lock_timeout</item>
@@ -59,7 +55,6 @@
         <item name="showMoreKeysKeyboardAtTouchedPoint">@bool/config_show_more_keys_keyboard_at_touched_point</item>
         <item name="languageOnSpacebarTextRatio">@fraction/config_language_on_spacebar_text_ratio</item>
         <item name="languageOnSpacebarFinalAlpha">@integer/config_language_on_spacebar_final_alpha</item>
-        <item name="languageOnSpacebarFadeoutAnimator">@anim/language_on_spacebar_fadeout</item>
         <item name="keyLetterSize">@fraction/config_key_letter_ratio_lxx</item>
         <item name="keyLabelSize">@fraction/config_key_label_ratio_lxx</item>
         <item name="keyHintLetterRatio">@fraction/config_key_hint_letter_ratio_lxx</item>
@@ -69,7 +64,6 @@
         <item name="keyHintLabelRatio">@fraction/config_key_hint_label_ratio_lxx</item>
         <item name="keyHintLabelOffCenterRatio">300%</item>
         <item name="keyLabelFlags">alignHintLabelToBottom</item>
-        <item name="spacebarIconWidthRatio">0.9</item>
     </style>
     <style
         name="MainKeyboardView"

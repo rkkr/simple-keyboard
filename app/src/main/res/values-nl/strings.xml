@@ -44,8 +44,6 @@
     <string name="button_default">"Standaard"</string>
     <string name="prefs_keyboard_height_settings">Toetsenbordhoogte</string>
     <string name="keyboard_color">Kies aangepaste toetsenbordkleur</string>
-    <string name="hide_special_chars">Verberg speciale karakters</string>
-    <string name="hide_language_switch_key">Verberg taalkeuzetoets</string>
     <string name="pref_enable_ime_switch">Naar andere toetsenborden overschakelen</string>
     <string name="show_number_row">Aparte nummerrij</string>
     <string name="space_swipe">Spatie-swipe beweegt cursor</string>

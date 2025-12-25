@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
+ * Copyright (C) 2021 wittmane
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +25,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.inputmethodservice.InputMethodService;
-import android.os.Build;
 import android.os.IBinder;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -50,8 +51,8 @@ import rkr.hierokeyboard.inputmethod.R;
 import rkr.hierokeyboard.inputmethod.compat.PreferenceManagerCompat;
 import rkr.hierokeyboard.inputmethod.latin.common.LocaleUtils;
 import rkr.hierokeyboard.inputmethod.latin.settings.Settings;
-import rkr.hierokeyboard.inputmethod.latin.utils.SubtypePreferenceUtils;
 import rkr.hierokeyboard.inputmethod.latin.utils.DialogUtils;
+import rkr.hierokeyboard.inputmethod.latin.utils.SubtypePreferenceUtils;
 import rkr.hierokeyboard.inputmethod.latin.utils.LocaleResourceUtils;
 import rkr.hierokeyboard.inputmethod.latin.utils.SubtypeLocaleUtils;
 
@@ -103,6 +104,10 @@ public class RichInputMethodManager {
         mSubtypeList = new SubtypeList(context);
     }
 
+    public void reloadSubtypes(final Context context) {
+        mSubtypeList.reload(context);
+    }
+
     /**
      * Add a listener to be called when the virtual subtype changes.
      * @param listener the listener to call when the subtype changes.
@@ -128,7 +133,7 @@ public class RichInputMethodManager {
          *  of the list so that the next time the user uses the switch to next subtype button, all
          *  of the subtypes can be iterated through before potentially switching to a different
          *  input method. */
-        private final List<Subtype> mSubtypes;
+        private List<Subtype> mSubtypes;
         /** The index of the currently selected subtype. This is used for tracking the status of
          *  cycling through subtypes. When actually using the keyboard, the subtype should be moved
          *  to the beginning of the list, so this should normally be 0. */
@@ -143,7 +148,10 @@ public class RichInputMethodManager {
          */
         public SubtypeList(final Context context) {
             mPrefs = PreferenceManagerCompat.getDeviceSharedPreferences(context);
+            reload(context);
+        }
 
+        public void reload(final Context context) {
             final String prefSubtypes = Settings.readPrefSubtypes(mPrefs);
             final List<Subtype> subtypes = SubtypePreferenceUtils.createSubtypesFromPref(
                     prefSubtypes, context.getResources());
@@ -519,12 +527,6 @@ public class RichInputMethodManager {
      * @return whether the IME should offer ways to switch to a next input method.
      */
     public boolean shouldOfferSwitchingToOtherInputMethods(final IBinder binder) {
-        // Use the default value instead on Jelly Bean MR2 and previous where
-        // {@link InputMethodManager#shouldOfferSwitchingToNextInputMethod} isn't yet available
-        // and on KitKat where the API is still just a stub to return true always.
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            return false;
-        }
         return mImmService.shouldOfferSwitchingToNextInputMethod(binder);
     }
 

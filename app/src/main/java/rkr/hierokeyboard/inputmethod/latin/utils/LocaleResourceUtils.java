@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
+ * Copyright (C) 2021 wittmane
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -169,6 +171,6 @@ public final class LocaleResourceUtils {
             displayName = LocaleUtils.constructLocaleFromString(localeString)
                     .getDisplayName(displayLocale);
         }
-        return StringUtils.capitalizeFirstCodePoint(displayName, displayLocale);
+        return StringUtils.capitalizeEachWord(displayName, displayLocale);
     }
 }

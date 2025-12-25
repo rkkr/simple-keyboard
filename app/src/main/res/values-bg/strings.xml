@@ -46,8 +46,6 @@
     <string name="button_default">"Стандартно"</string>
     <string name="prefs_keyboard_height_settings">Височина на клавиатурата</string>
     <string name="keyboard_color">Задай избираем цвят на клавиатурата</string>
-    <string name="hide_special_chars">Скрий специалните символи</string>
-    <string name="hide_language_switch_key">Скрий бутона за превключване на езика</string>
     <string name="pref_enable_ime_switch">Смени на други клавиатури</string>
     <string name="show_number_row">Показвай отделен ред с цифри</string>
     <string name="space_swipe">Местене на курсора с плъзгане върху интервал</string>

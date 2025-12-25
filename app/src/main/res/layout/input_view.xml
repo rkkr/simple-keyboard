@@ -23,7 +23,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="?attr/inputViewStyle">
-    <include
-        android:id="@+id/main_keyboard_frame"
-        layout="@layout/main_keyboard_frame" />
+    <rkr.hierokeyboard.inputmethod.keyboard.MainKeyboardView
+        android:id="@+id/keyboard_view"
+        android:layoutDirection="ltr"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </rkr.hierokeyboard.inputmethod.latin.InputView>

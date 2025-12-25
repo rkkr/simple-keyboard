@@ -49,8 +49,6 @@
     <string name="button_default">ডিফল্ট</string>
     <string name="prefs_keyboard_height_settings">কিবোর্ডের উচ্চতা</string>
     <string name="keyboard_color">কিবোর্ডের কাস্টম রং</string>
-    <string name="hide_special_chars">বিশেষ অক্ষর লুকান</string>
-    <string name="hide_language_switch_key">ভাষা পরিবর্তন বোতাম লুকান</string>
     <string name="pref_enable_ime_switch">অন্য কিবোর্ডে পরিবর্তন</string>
     <string name="show_number_row">পৃথক নম্বর সারি প্রদর্শন</string>
     <string name="space_swipe">কার্সর সরাতে স্পেস সোয়াইপ</string>

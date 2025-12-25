@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<restrictions xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- settings_screen_user_languages -->
+    <restriction
+        android:key="pref_enabled_subtypes"
+        android:title="@string/select_language"
+        android:restrictionType="string"
+        android:description="@string/select_language_description"
+        android:defaultValue="" />
+    <!-- settings_screen_preferences -->
+    <restriction
+        android:key="auto_cap"
+        android:title="@string/auto_cap"
+        android:restrictionType="bool"
+        android:description="@string/auto_cap_summary"
+        android:defaultValue="true" />
+    <restriction
+        android:key="pref_show_number_row"
+        android:title="@string/show_number_row"
+        android:restrictionType="bool"
+        android:defaultValue="false" />
+    <restriction
+        android:key="pref_show_special_chars"
+        android:title="@string/show_special_chars"
+        android:restrictionType="bool"
+        android:defaultValue="true" />
+    <restriction
+        android:key="pref_show_language_switch_key"
+        android:title="@string/show_language_switch_key"
+        android:restrictionType="bool"
+        android:defaultValue="true" />
+    <restriction
+        android:key="pref_use_on_screen"
+        android:title="@string/pref_use_on_screen"
+        android:restrictionType="bool"
+        android:description="@string/pref_use_on_screen_summary"
+        android:defaultValue="false" />
+    <restriction
+        android:key="pref_enable_ime_switch"
+        android:title="@string/space_swipe"
+        android:restrictionType="bool"
+        android:defaultValue="false" />
+    <restriction
+        android:key="pref_space_swipe"
+        android:title="@string/pref_enable_ime_switch"
+        android:restrictionType="bool"
+        android:defaultValue="false" />
+    <restriction
+        android:key="pref_delete_swipe"
+        android:title="@string/delete_swipe"
+        android:restrictionType="bool"
+        android:defaultValue="false" />
+    <!-- settings_screen_key_press -->
+    <restriction
+        android:key="vibrate_on"
+        android:title="@string/vibrate_on_keypress"
+        android:restrictionType="bool"
+        android:defaultValue="true" />
+    <restriction
+        android:key="sound_on"
+        android:title="@string/sound_on_keypress"
+        android:restrictionType="bool"
+        android:defaultValue="false" />
+    <restriction
+        android:key="pref_keypress_sound_volume"
+        android:title="@string/pref_enable_ime_switch"
+        android:restrictionType="integer"
+        android:defaultValue="50" />
+    <restriction
+        android:key="popup_on"
+        android:title="@string/popup_on_keypress"
+        android:restrictionType="bool"
+        android:defaultValue="true" />
+    <restriction
+        android:key="pref_key_longpress_timeout"
+        android:title="@string/prefs_key_longpress_timeout_settings"
+        android:restrictionType="integer"
+        android:defaultValue="300" />
+    <!-- settings_screen_appearance -->
+    <restriction
+        android:key="screen_theme"
+        android:title="@string/settings_screen_theme"
+        android:restrictionType="choice"
+        android:entries="@array/keyboard_theme_names"
+        android:entryValues="@array/keyboard_theme_ids"
+        android:defaultValue="5" />
+    <restriction
+        android:key="pref_keyboard_color"
+        android:title="@string/keyboard_color"
+        android:restrictionType="string"
+        android:description="@string/pref_keyboard_color_description"
+        android:defaultValue="" />
+    <restriction
+        android:key="pref_keyboard_height"
+        android:title="@string/prefs_keyboard_height_settings"
+        android:restrictionType="integer"
+        android:defaultValue="100" />
+    <restriction
+        android:key="pref_bottom_offset_portrait"
+        android:title="@string/prefs_bottom_offset_portrait_settings"
+        android:restrictionType="integer"
+        android:defaultValue="0" />
+</restrictions>

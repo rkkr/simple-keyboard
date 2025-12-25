@@ -45,8 +45,6 @@
     <string name="button_default">"Προεπιλογή"</string>
     <string name="prefs_keyboard_height_settings">Ύψος πληκτρολογίου</string>
     <string name="keyboard_color">Ορίστε προσαρμοσμένο χρώμα πληκτρολογίου</string>
-    <string name="hide_special_chars">Απόκρυψη ειδικών χαρακτήρων</string>
-    <string name="hide_language_switch_key">Απόκρυψη πλήκτρου εναλλαγής γλώσσας</string>
     <string name="pref_enable_ime_switch">Εναλλαγή πληκτρολογίου</string>
     <string name="show_number_row">Εμφάνιση ξεχωριστής σειράς αριθμών</string>
     <string name="space_swipe">Ολίσθηση στη γραμμή διαστήματος για μετακίνηση του δρομέα</string>

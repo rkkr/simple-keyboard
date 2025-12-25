@@ -3,6 +3,7 @@
 /*
 **
 ** Copyright 2012, The Android Open Source Project
+** Copyright (C) 2025 Raimondas Rimkus
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -26,8 +27,6 @@
     <color name="key_functional_text_color_lxx_system">@android:color/system_accent1_100</color>
     <color name="key_text_inactive_color_lxx_system">@android:color/system_accent1_100</color>
     <color name="key_hint_letter_color_lxx_system">@android:color/system_accent2_200</color>
-    <color name="language_on_spacebar_text_color_lxx_system">@android:color/system_accent1_100</color>
-    <color name="sliding_key_input_preview_color_lxx_system">@android:color/system_accent1_100</color>
     <color name="key_background_normal_lxx_system">@android:color/system_neutral1_800</color>
     <color name="key_background_pressed_lxx_system">@android:color/system_neutral1_700</color>
 </resources>

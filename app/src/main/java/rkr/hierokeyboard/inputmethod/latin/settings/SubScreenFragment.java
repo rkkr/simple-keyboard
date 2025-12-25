@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2020 Raimondas Rimkus
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +21,14 @@ import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+
+import java.util.Set;
 
 import rkr.hierokeyboard.inputmethod.compat.PreferenceManagerCompat;
 
@@ -67,16 +70,25 @@ public abstract class SubScreenFragment extends PreferenceFragment
     @Override
     public void addPreferencesFromResource(final int preferencesResId) {
         super.addPreferencesFromResource(preferencesResId);
-        TwoStatePreferenceHelper.replaceCheckBoxPreferencesBySwitchPreferences(
-                getPreferenceScreen());
+
+        final Set<String> restrictionKeys = getSharedPreferences().getStringSet(Settings.ACTIVE_RESTRICTIONS, null);
+        if (restrictionKeys != null && !restrictionKeys.isEmpty()) {
+            final PreferenceGroup group = getPreferenceScreen();
+            final int count = group.getPreferenceCount();
+            for (int index = 0; index < count; index++) {
+                final Preference preference = group.getPreference(index);
+                if (restrictionKeys.contains(preference.getKey())) {
+                    preference.setEnabled(false);
+                }
+            }
+        }
     }
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            super.getPreferenceManager().setStorageDeviceProtected();
-        }
+        super.getPreferenceManager().setStorageDeviceProtected();
+
         mSharedPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {

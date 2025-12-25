@@ -19,13 +19,17 @@
 -->
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <style name="KeyboardTheme.LXX_Light_Border" parent="KeyboardIcons.LXX_Light">
+    <style name="KeyboardTheme.LXX_Light_Border">
         <item name="inputViewStyle">@style/InputView</item>
         <item name="keyboardStyle">@style/Keyboard.LXX_Light_Border</item>
         <item name="keyboardViewStyle">@style/KeyboardView.LXX_Light_Border</item>
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.LXX_Light_Border</item>
         <item name="moreKeysKeyboardStyle">@style/MoreKeysKeyboard.LXX_Light</item>
         <item name="moreKeysKeyboardViewStyle">@style/MoreKeysKeyboardView.LXX_Light</item>
+        <item name="functionalTextColor">@color/key_functional_text_color_lxx_light</item>
+        <item name="popupPanelBackgroundColor">@color/background_secondary_lxx_light</item>
+        <item name="keyPressedBackgroundColor">@color/key_background_pressed_lxx_light</item>
+        <item name="keyNormalBackgroundColor">@color/key_background_normal_lxx_light</item>
     </style>
     <style
         name="Keyboard.LXX_Light_Border"
@@ -37,28 +41,26 @@
         parent="KeyboardView"
     >
         <item name="android:background">@color/background_lxx_light</item>
-        <item name="keyBackground">@drawable/btn_keyboard_key_lxx_light_border</item>
-        <item name="functionalKeyBackground">@drawable/btn_keyboard_key_functional_lxx_light_border</item>
-        <item name="spacebarBackground">@drawable/btn_keyboard_key_lxx_light_border</item>
+        <item name="keyBackground">@drawable/btn_keyboard_key_border</item>
+        <item name="functionalKeyBackground">@drawable/btn_keyboard_key_border</item>
+        <item name="spacebarBackground">@drawable/btn_keyboard_key_border</item>
         <item name="keyTextColor">@color/key_text_color_lxx_light</item>
         <item name="keyTextInactivatedColor">@color/key_text_inactive_color_lxx_light</item>
-        <item name="functionalTextColor">@color/key_functional_text_color_lxx_light</item>
         <item name="keyHintLetterColor">@color/key_hint_letter_color_lxx_light</item>
         <item name="keyHintLabelColor">@color/key_text_inactive_color_lxx_light</item>
         <item name="keyShiftedLetterHintInactivatedColor">@color/key_text_inactive_color_lxx_light</item>
         <item name="keyShiftedLetterHintActivatedColor">@color/key_text_color_lxx_light</item>
         <item name="keyPreviewTextColor">@color/key_text_color_lxx_light</item>
+        <item name="languageOnSpacebarTextColor">@color/key_text_inactive_color_lxx_light</item>
     </style>
     <style
         name="MainKeyboardView.LXX_Light_Border"
         parent="KeyboardView.LXX_Light_Border"
     >
-        <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background_lxx_light</item>
+        <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_background</item>
         <item name="keyPreviewHeight">@dimen/config_key_preview_height_lxx</item>
         <item name="keyPreviewWidth">@dimen/config_key_preview_width_lxx</item>
         <item name="keyPreviewOffset">@dimen/config_key_preview_offset_lxx</item>
         <item name="keyPreviewDismissAnimator">@anim/key_preview_dismiss_lxx</item>
-        <item name="slidingKeyInputPreviewColor">@color/sliding_key_input_preview_color_lxx_light</item>
-        <item name="languageOnSpacebarTextColor">@color/language_on_spacebar_text_color_lxx_light</item>
     </style>
 </resources>

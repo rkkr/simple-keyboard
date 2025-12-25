@@ -45,9 +45,12 @@
     <string name="prefs_key_longpress_timeout_settings">"Долгое нажатие"</string>
     <string name="button_default">"По умолчанию"</string>
     <string name="prefs_keyboard_height_settings">Высота клавиатуры</string>
+    <string name="prefs_bottom_offset_portrait_settings">Сдвиг снизу</string>
     <string name="keyboard_color">Установить пользовательский цвет клавиатуры</string>
-    <string name="hide_special_chars">Скрыть специальные символы</string>
-    <string name="hide_language_switch_key">Скрыть клавишу переключения языка</string>
+    <string name="show_special_chars">Показать специальные символы</string>
+    <string name="show_language_switch_key">Показать кнопку переключения языка</string>
+    <string name="pref_use_on_screen">Показать экранную клавиатуру</string>
+    <string name="pref_use_on_screen_summary">Показывать экранную клавиатуру при использовании физической клавиатуры</string>
     <string name="pref_enable_ime_switch">Переключение на другие клавиатуры</string>
     <string name="show_number_row">Показать ряд цифр</string>
     <string name="space_swipe">Перемещать курсор пробелом</string>

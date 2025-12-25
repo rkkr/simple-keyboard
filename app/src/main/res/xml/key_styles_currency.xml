@@ -61,7 +61,7 @@
              de: Germany (de_DE)
              es: Spain (es_ES)
              fi: Finland (fi_FI)
-             fr: France(fr_FR)
+             fr: France (fr_FR)
              it: Italy (it_IT)
              nl: Netherlands (nl_NL)
              sk: Slovakia (sk_SK)
@@ -73,9 +73,11 @@
         </case>
         <!-- ca: Catalan (Andorra, Spain)
              et: Estonian (Estonia)
+             lt: Lithuanian
+             lv: Latvian
              lb: Luxembougish (Luxembourg)
              mt: Maltese (Malta) -->
-        <case latin:languageCode="ca|et|lb|mt">
+        <case latin:languageCode="ca|et|lt|lv|lb|mt">
             <include latin:keyboardLayout="@xml/key_styles_currency_euro" />
         </case>
         <!-- fa: Persian (Rial and Afgahni)
@@ -88,14 +90,13 @@
              th: Thai (Baht)
              uk: Ukrainian (Hryvnia)
              ur: Pakistan (Pakistani Rupee)
-             vi: Vietnamese (Dong)  -->
+             vi: Vietnamese (Dong)
+             ru: Russian (Ruble) -->
         <!-- TODO: The currency sign of Turkish Lira was created in 2012 and assigned U+20BA for
              its unicode, although there is no font glyph for it as of November 2012. -->
         <!-- TODO: The currency sign of Armenian Dram was created in 2012 and assigned U+058F for
              its unicode, although there is no font glyph for it as of September 2013. -->
-        <!-- TODO: The currency sign of Russian Ruble was created in 2014 and assigned U+20BD for
-             its unicode, although there is no font glyph for it as of August 2014. -->
-        <case latin:languageCode="fa|hi|iw|lo|mn|ne|th|uk|ur|vi">
+        <case latin:languageCode="fa|hi|iw|he|lo|mn|ne|th|uk|ur|vi|ru|sah">
             <include latin:keyboardLayout="@xml/key_styles_currency_generic" />
         </case>
         <!-- si_LK: Sinhala (Sri Lanka) (Sri Lanka Rupee)

@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2020 wittmane
+ * Copyright (C) 2020 Raimondas Rimkus
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,17 +98,17 @@ public final class KeyPreviewChoreographer {
 
     public void placeAndShowKeyPreview(final Key key, final KeyboardIconsSet iconsSet,
             final KeyDrawParams drawParams, final int[] keyboardOrigin,
-            final ViewGroup placerView, final boolean withAnimation) {
+            final ViewGroup placerView, final boolean withAnimation,
+            final int backgroundColor) {
         final KeyPreviewView keyPreviewView = getKeyPreviewView(key, placerView);
-        placeKeyPreview(
-                key, keyPreviewView, iconsSet, drawParams, keyboardOrigin);
+        placeKeyPreview(key, keyPreviewView, iconsSet, drawParams, keyboardOrigin, backgroundColor);
         showKeyPreview(key, keyPreviewView, withAnimation);
     }
 
     private void placeKeyPreview(final Key key, final KeyPreviewView keyPreviewView,
             final KeyboardIconsSet iconsSet, final KeyDrawParams drawParams,
-            final int[] originCoords) {
-        keyPreviewView.setPreviewVisual(key, iconsSet, drawParams);
+            final int[] originCoords, final int backgroundColor) {
+        keyPreviewView.setPreviewVisual(key, iconsSet, drawParams, backgroundColor);
         keyPreviewView.measure(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mParams.setGeometry(keyPreviewView);

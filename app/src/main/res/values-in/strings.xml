@@ -45,8 +45,6 @@
     <string name="button_default">"Default"</string>
     <string name="prefs_keyboard_height_settings">Atur Ketinggian Keyboard</string>
     <string name="keyboard_color">Ganti warna keyboard</string>
-    <string name="hide_special_chars">Sembunyikan karakter spesial</string>
-    <string name="hide_language_switch_key">Sembunyikan tombol ganti bahasa</string>
     <string name="pref_enable_ime_switch">Beralih ke keyboard lain</string>
     <string name="show_number_row">Tampilkan tombol angka terpisah</string>
     <string name="space_swipe">Geser untuk menggerakan kursor</string>

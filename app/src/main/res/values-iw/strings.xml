@@ -45,8 +45,6 @@
     <string name="button_default">"ברירת מחדל"</string>
     <string name="prefs_keyboard_height_settings">הסר שפה</string>
     <string name="keyboard_color">בחר צבע למקלדת</string>
-    <string name="hide_special_chars">הסתר תווים מיוחדים</string>
-    <string name="hide_language_switch_key">הסתר מקש "החלפת שפה"</string>
     <string name="pref_enable_ime_switch">החלף למקלדות אחרות</string>
     <string name="show_number_row">הצג שורה נפרדת למספרים</string>
     <string name="space_swipe">נווט בטקסט בעזרת "רווח"</string>

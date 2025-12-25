@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2021 wittmane
+ * Copyright (C) 2019 Raimondas Rimkus
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,7 +19,6 @@
 package rkr.hierokeyboard.inputmethod.latin.common;
 
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.LocaleList;
 import android.text.TextUtils;
 
@@ -139,13 +140,9 @@ public final class LocaleUtils {
      */
     public static List<Locale> getSystemLocales() {
         ArrayList<Locale> locales = new ArrayList<>();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
-            for (int i = 0; i < localeList.size(); i++) {
-                locales.add(localeList.get(i));
-            }
-        } else {
-            locales.add(Resources.getSystem().getConfiguration().locale);
+        LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
+        for (int i = 0; i < localeList.size(); i++) {
+            locales.add(localeList.get(i));
         }
         return locales;
     }

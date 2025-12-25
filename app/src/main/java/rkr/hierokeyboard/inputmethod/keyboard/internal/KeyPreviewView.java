@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Android Open Source Project
+ * Copyright (C) 2024 Raimondas Rimkus
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +18,8 @@
 package rkr.hierokeyboard.inputmethod.keyboard.internal;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
@@ -47,7 +50,7 @@ public class KeyPreviewView extends TextView {
     }
 
     public void setPreviewVisual(final Key key, final KeyboardIconsSet iconsSet,
-            final KeyDrawParams drawParams) {
+            final KeyDrawParams drawParams, final int backgroundColor) {
         // What we show as preview should match what we show on a key top in onDraw().
         final int iconId = key.getIconId();
         if (iconId != KeyboardIconsSet.ICON_UNDEFINED) {
@@ -62,6 +65,7 @@ public class KeyPreviewView extends TextView {
         setTypeface(key.selectPreviewTypeface(drawParams));
         // TODO Should take care of temporaryShiftLabel here.
         setTextAndScaleX(key.getPreviewLabel());
+        setColor(backgroundColor);
     }
 
     private void setTextAndScaleX(final String text) {
@@ -85,6 +89,16 @@ public class KeyPreviewView extends TextView {
             return;
         }
         setTextScaleX(maxWidth / width);
+    }
+
+    private void setColor(final int backgroundColor) {
+        final Drawable background = getBackground();
+        if (background == null) {
+            return;
+        }
+        if (Color.alpha(backgroundColor) > 0) {
+            background.setColorFilter(backgroundColor, PorterDuff.Mode.OVERLAY);
+        }
     }
 
     public static void clearTextCache() {

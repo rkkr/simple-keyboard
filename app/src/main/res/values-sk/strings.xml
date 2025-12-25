@@ -44,8 +44,6 @@
     <string name="button_default">"Predvolené"</string>
     <string name="prefs_keyboard_height_settings">Výška klávesnice</string>
     <string name="keyboard_color">Nastaviť vlastnú farbu klávesnice</string>
-    <string name="hide_special_chars">Skryť špeciálne znaky</string>
-    <string name="hide_language_switch_key">Skryť klávesu na prepínanie jazykov</string>
     <string name="pref_enable_ime_switch">Prepínanie na iné klávesnice</string>
     <string name="show_number_row">Zobraziť samostatný číselný riadok</string>
     <string name="space_swipe">Hýb kurzorom šúchaním po medzerníku</string>

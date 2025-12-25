@@ -45,8 +45,6 @@
     <string name="button_default">"الافتراضية"</string>
     <string name="prefs_keyboard_height_settings">ارتفاع لوحة المفاتيح</string>
     <string name="keyboard_color">اختيار لون مخصص للوحة المفاتيح</string>
-    <string name="hide_special_chars">إخفاء الرموز الخاصة</string>
-    <string name="hide_language_switch_key">إخفاء زر تبديل اللغة</string>
     <string name="show_number_row">إظهار الأرقام في صف منفصل</string>
     <string name="space_swipe">سحب مفتاح المسافة لنقل المؤشر</string>
     <string name="delete_swipe">الحذف بالسحب</string>

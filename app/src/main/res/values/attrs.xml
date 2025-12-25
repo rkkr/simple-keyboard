@@ -32,6 +32,9 @@
         <attr name="moreKeysKeyboardStyle" format="reference" />
         <!-- MoreKeysKeyboardView style -->
         <attr name="moreKeysKeyboardViewStyle" format="reference" />
+        <attr name="popupPanelBackgroundColor" format="color" />
+        <attr name="keyPressedBackgroundColor" format="color" />
+        <attr name="keyNormalBackgroundColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="KeyboardView">
@@ -48,8 +51,6 @@
              {@link android.graphics.drawable.StateListDrawable}, with the following possible
              states: normal, pressed. -->
         <attr name="spacebarBackground" format="reference" />
-        <attr name="spacebarIconWidthRatio" format="float" />
-        <!-- Right padding of hint letter to the edge of the key.-->
         <attr name="keyHintLetterPadding" format="dimension" />
         <!-- Bottom padding of popup hint letter to the edge of the key.-->
         <attr name="keyShiftedLetterHintPadding" format="dimension" />
@@ -66,7 +67,6 @@
         <attr name="languageOnSpacebarTextColor" format="color" />
         <!-- Fadeout animator for spacebar language label. -->
         <attr name="languageOnSpacebarFinalAlpha" format="integer" />
-        <attr name="languageOnSpacebarFadeoutAnimator" format="reference" />
         <!-- Fadeout and fadein animator for altCodeWhileTyping keys. -->
         <attr name="altCodeKeyWhileTypingFadeoutAnimator" format="reference" />
         <attr name="altCodeKeyWhileTypingFadeinAnimator" format="reference" />
@@ -80,10 +80,6 @@
         <attr name="touchNoiseThresholdDistance" format="dimension" />
         <!-- Enable key selection by dragging finger -->
         <attr name="keySelectionByDraggingFinger" format="boolean" />
-        <attr name="slidingKeyInputPreviewColor" format="color" />
-        <attr name="slidingKeyInputPreviewWidth" format="dimension" />
-        <attr name="slidingKeyInputPreviewBodyRatio" format="integer" />
-        <attr name="slidingKeyInputPreviewShadowRatio" format="integer" />
         <!-- Key repeat start timeout -->
         <attr name="keyRepeatStartTimeout" format="integer" />
         <!-- Key repeat interval in millisecond. -->

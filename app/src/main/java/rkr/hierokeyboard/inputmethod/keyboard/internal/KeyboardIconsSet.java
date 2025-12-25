@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2019 Raimondas Rimkus
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +18,6 @@
 package rkr.hierokeyboard.inputmethod.keyboard.internal;
 
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.util.SparseIntArray;
@@ -59,29 +59,28 @@ public final class KeyboardIconsSet {
 
     private static final Object[] NAMES_AND_ATTR_IDS = {
         NAME_UNDEFINED,                   ATTR_UNDEFINED,
-        NAME_SHIFT_KEY,                   R.styleable.Keyboard_iconShiftKey,
-        NAME_DELETE_KEY,                  R.styleable.Keyboard_iconDeleteKey,
-        NAME_SETTINGS_KEY,                R.styleable.Keyboard_iconSettingsKey,
-        NAME_SPACE_KEY,                   R.styleable.Keyboard_iconSpaceKey,
-        NAME_ENTER_KEY,                   R.styleable.Keyboard_iconEnterKey,
-        NAME_GO_KEY,                      R.styleable.Keyboard_iconGoKey,
-        NAME_SEARCH_KEY,                  R.styleable.Keyboard_iconSearchKey,
-        NAME_SEND_KEY,                    R.styleable.Keyboard_iconSendKey,
-        NAME_NEXT_KEY,                    R.styleable.Keyboard_iconNextKey,
-        NAME_DONE_KEY,                    R.styleable.Keyboard_iconDoneKey,
-        NAME_PREVIOUS_KEY,                R.styleable.Keyboard_iconPreviousKey,
-        NAME_TAB_KEY,                     R.styleable.Keyboard_iconTabKey,
-        NAME_SPACE_KEY_FOR_NUMBER_LAYOUT, R.styleable.Keyboard_iconSpaceKeyForNumberLayout,
-        NAME_SHIFT_KEY_SHIFTED,           R.styleable.Keyboard_iconShiftKeyShifted,
-        NAME_LANGUAGE_SWITCH_KEY,         R.styleable.Keyboard_iconLanguageSwitchKey,
-        NAME_ZWNJ_KEY,                    R.styleable.Keyboard_iconZwnjKey,
-        NAME_ZWJ_KEY,                     R.styleable.Keyboard_iconZwjKey,
+        NAME_SHIFT_KEY,                   R.drawable.sym_keyboard_shift,
+        NAME_DELETE_KEY,                  R.drawable.sym_keyboard_delete,
+        NAME_SETTINGS_KEY,                R.drawable.sym_keyboard_settings,
+        NAME_SPACE_KEY,                   ATTR_UNDEFINED,
+        NAME_ENTER_KEY,                   R.drawable.sym_keyboard_return,
+        NAME_GO_KEY,                      R.drawable.sym_keyboard_go,
+        NAME_SEARCH_KEY,                  R.drawable.sym_keyboard_search,
+        NAME_SEND_KEY,                    R.drawable.sym_keyboard_send,
+        NAME_NEXT_KEY,                    R.drawable.sym_keyboard_next,
+        NAME_DONE_KEY,                    R.drawable.sym_keyboard_done,
+        NAME_PREVIOUS_KEY,                R.drawable.sym_keyboard_previous,
+        NAME_TAB_KEY,                     R.drawable.sym_keyboard_tab,
+        NAME_SPACE_KEY_FOR_NUMBER_LAYOUT, R.drawable.sym_keyboard_space,
+        NAME_SHIFT_KEY_SHIFTED,           R.drawable.sym_keyboard_shift_locked,
+        NAME_LANGUAGE_SWITCH_KEY,         R.drawable.sym_keyboard_language_switch,
+        NAME_ZWNJ_KEY,                    R.drawable.sym_keyboard_zwnj,
+        NAME_ZWJ_KEY,                     R.drawable.sym_keyboard_zwj,
     };
 
-    private static int NUM_ICONS = NAMES_AND_ATTR_IDS.length / 2;
+    private static final int NUM_ICONS = NAMES_AND_ATTR_IDS.length / 2;
     private static final String[] ICON_NAMES = new String[NUM_ICONS];
     private final Drawable[] mIcons = new Drawable[NUM_ICONS];
-    private final int[] mIconResourceIds = new int[NUM_ICONS];
 
     static {
         int iconId = ICON_UNDEFINED;
@@ -97,19 +96,18 @@ public final class KeyboardIconsSet {
         }
     }
 
-    public void loadIcons(final TypedArray keyboardAttrs) {
+    public void loadIcons(final Resources resources, final Resources.Theme theme) {
         final int size = ATTR_ID_TO_ICON_ID.size();
         for (int index = 0; index < size; index++) {
             final int attrId = ATTR_ID_TO_ICON_ID.keyAt(index);
             try {
-                final Drawable icon = keyboardAttrs.getDrawable(attrId);
+                final Drawable icon = resources.getDrawable(attrId, theme);
                 setDefaultBounds(icon);
                 final Integer iconId = ATTR_ID_TO_ICON_ID.get(attrId);
                 mIcons[iconId] = icon;
-                mIconResourceIds[iconId] = keyboardAttrs.getResourceId(attrId, 0);
             } catch (Resources.NotFoundException e) {
                 Log.w(TAG, "Drawable resource for icon #"
-                        + keyboardAttrs.getResources().getResourceEntryName(attrId)
+                        + resources.getResourceEntryName(attrId)
                         + " not found");
             }
         }

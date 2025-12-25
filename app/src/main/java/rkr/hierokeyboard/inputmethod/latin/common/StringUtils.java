@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2025 Raimondas Rimkus
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,18 +67,6 @@ public final class StringUtils {
             return false;
         }
         return containsInArray(text, extraValues.split(SEPARATOR_FOR_COMMA_SPLITTABLE_TEXT));
-    }
-
-    public static String capitalizeFirstCodePoint(final String s,
-            final Locale locale) {
-        if (s.length() <= 1) {
-            return s.toUpperCase(getLocaleUsedForToTitleCase(locale));
-        }
-        // Please refer to the comment below in
-        // {@link #capitalizeFirstAndDowncaseRest(String,Locale)} as this has the same shortcomings
-        final int cutoff = s.offsetByCodePoints(0, 1);
-        return s.substring(0, cutoff).toUpperCase(getLocaleUsedForToTitleCase(locale))
-                + s.substring(cutoff);
     }
 
     public static int[] toCodePointArray(final CharSequence charSequence) {
@@ -197,9 +186,9 @@ public final class StringUtils {
         for (int i = 0; i < len; i = text.offsetByCodePoints(i, 1)) {
             final String nextChar = text.substring(i, text.offsetByCodePoints(i, 1));
             if (needsCapsNext) {
-                builder.append(nextChar.toUpperCase(locale));
+                builder.append(toTitleCaseOfKeyLabel(nextChar, locale));
             } else {
-                builder.append(nextChar.toLowerCase(locale));
+                builder.append(toLowerCaseOfKeyLabel(nextChar, locale));
             }
             // We need a capital letter next if this is a whitespace.
             needsCapsNext = Character.isWhitespace(nextChar.codePointAt(0));
@@ -218,12 +207,50 @@ public final class StringUtils {
         return locale;
     }
 
-    public static String toTitleCaseOfKeyLabel(final String label,
-            final Locale locale) {
-        if (label == null) {
-            return label;
+    public static String toLowerCase(final String text, final Locale locale) {
+        final StringBuilder builder = new StringBuilder();
+        final int len = text.length();
+        for (int i = 0; i < len; i = text.offsetByCodePoints(i, 1)) {
+            final String nextChar = text.substring(i, text.offsetByCodePoints(i, 1));
+            builder.append(toLowerCaseOfKeyLabel(nextChar, locale));
         }
-        return label.toUpperCase(getLocaleUsedForToTitleCase(locale));
+        return builder.toString();
+    }
+
+    public static String toUpperCase(final String text, final Locale locale) {
+        final StringBuilder builder = new StringBuilder();
+        final int len = text.length();
+        for (int i = 0; i < len; i = text.offsetByCodePoints(i, 1)) {
+            final String nextChar = text.substring(i, text.offsetByCodePoints(i, 1));
+            builder.append(toTitleCaseOfKeyLabel(nextChar, locale));
+        }
+        return builder.toString();
+    }
+
+    public static String toLowerCaseOfKeyLabel(final String label, final Locale locale) {
+        if (label == null) {
+            return null;
+        }
+        switch (label) {
+            case "\u1E9E":
+                // sharp S (ß, U+00DF) => ẞ (U+1E9E), not 'SS'.
+                return "\u00DF";
+            default:
+                return label.toLowerCase(getLocaleUsedForToTitleCase(locale));
+        }
+    }
+
+    public static String toTitleCaseOfKeyLabel(final String label, final Locale locale) {
+        if (label == null) {
+            return null;
+        }
+        switch (label) {
+            case "\u00DF":
+                // sharp S (ß, U+00DF) => ẞ (U+1E9E), not 'SS'.
+                return "\u1E9E";
+            default:
+                return label.toUpperCase(getLocaleUsedForToTitleCase(locale));
+        }
     }
 
     public static int toTitleCaseOfKeyCode(final int code, final Locale locale) {

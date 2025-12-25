@@ -43,8 +43,6 @@
     <string name="button_default">"ڈیفالٹ"</string>
     <string name="prefs_keyboard_height_settings">کی بورڈ کی اونچائی</string>
     <string name="keyboard_color">کی بورڈ کا کسٹم رنگ منتخب کریں</string>
-    <string name="hide_special_chars">سپیشل حروف کو چُھپائیں</string>
-    <string name="hide_language_switch_key">زبان تبدیل کرنے کی کلید کو چُھپائیں</string>
     <string name="show_number_row">اعداد کے لیے علاحدہ قطار دکھائیں</string>
     <string name="space_swipe">سپیس کلید پر سوائپ سے کرسر کی حرکت</string>
     <string name="delete_swipe">سوائپ حذف کریں</string>

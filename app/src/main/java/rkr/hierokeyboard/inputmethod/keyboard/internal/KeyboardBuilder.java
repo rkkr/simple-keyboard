@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2024 wittmane
+ * Copyright (C) 2024 Raimondas Rimkus
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -217,7 +219,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                         }
                         mKeyboardDefined = true;
                         parseKeyboardAttributes(parser);
-                        startKeyboard();
                     }
                     parseKeyboardContent(parser, skip);
                 } else if (TAG_SWITCH.equals(tag)) {
@@ -287,7 +288,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             params.mMaxMoreKeysKeyboardColumn = keyAttr.getInt(
                     R.styleable.Keyboard_Key_maxMoreKeysColumn, 5);
 
-            params.mIconsSet.loadIcons(keyboardAttr);
+            params.mIconsSet.loadIcons(mResources, mContext.getTheme());
             params.mTextsSet.setLocale(params.mId.getLocale(), mContext);
         } finally {
             keyAttr.recycle();
@@ -719,10 +720,6 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             keyAttrs.recycle();
         }
         XmlParseUtils.checkEndTag(TAG_KEY_STYLE, parser);
-    }
-
-    private void startKeyboard() {
-
     }
 
     private void startRow(final KeyboardRow row) {

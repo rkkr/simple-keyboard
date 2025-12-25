@@ -46,8 +46,6 @@
     <string name="button_default">"默认"</string>
     <string name="prefs_keyboard_height_settings">键盘高度</string>
     <string name="keyboard_color">设置自定义键盘颜色</string>
-    <string name="hide_special_chars">隐藏特殊字符</string>
-    <string name="hide_language_switch_key">隐藏语言转换键</string>
     <string name="pref_enable_ime_switch">切换到其他键盘</string>
     <string name="show_number_row">显示单独的数字行</string>
     <string name="space_swipe">空格滑动光标移动</string>
