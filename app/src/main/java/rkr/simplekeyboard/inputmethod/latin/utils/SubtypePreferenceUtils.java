@@ -45,8 +45,8 @@ public final class SubtypePreferenceUtils {
         return localeString + LOCALE_AND_LAYOUT_SEPARATOR + keyboardLayoutSetName;
     }
 
-    public static List<Subtype> createSubtypesFromPref(final String prefSubtypes,
-                                                   final Resources resources) {
+    public static List<Subtype> createSubtypesFromPref(final String prefSubtypes, final Resources resources) {
+        Log.i(TAG, "Loading subtypes: " + prefSubtypes);
         if (TextUtils.isEmpty(prefSubtypes)) {
             return new ArrayList<>();
         }
