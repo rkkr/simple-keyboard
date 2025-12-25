@@ -119,6 +119,8 @@ public final class SubtypeLocaleUtils {
     private static final String[] sSupportedLocales = new String[] {
             LOCALE_ARABIC,
             LOCALE_ENGLISH_UNITED_STATES,
+            LOCALE_FRENCH,
+            LOCALE_GERMAN,
             LOCALE_HINDI,
     };
 
