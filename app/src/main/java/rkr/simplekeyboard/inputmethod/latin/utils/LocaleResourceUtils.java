@@ -39,8 +39,7 @@ public final class LocaleResourceUtils {
     private static final Object sInitializeLock = new Object();
     private static Resources sResources;
     // Exceptional locale whose name should be displayed in Locale.ROOT.
-    private static final HashMap<String, Integer> sExceptionalLocaleDisplayedInRootLocale =
-            new HashMap<>();
+    private static final HashMap<String, Integer> sExceptionalLocaleDisplayedInRootLocale = new HashMap<>();
     // Exceptional locale to locale name resource id map.
     private static final HashMap<String, Integer> sExceptionalLocaleToNameIdsMap = new HashMap<>();
     private static final String LOCALE_NAME_RESOURCE_PREFIX =
@@ -60,6 +59,10 @@ public final class LocaleResourceUtils {
                 sInitialized = true;
             }
         }
+    }
+
+    public static void onLocalChange(final Context context) {
+        sResources = context.getResources();
     }
 
     private static void initLocked(final Context context) {
