@@ -31,10 +31,11 @@
                 latin:moreKeys="&#x0945;" />
         </case>
         <case latin:keyboardLayoutSet="marathi">
+            <!-- U+0972: "ॲ" DEVANAGARI LETTER CANDRA A -->
             <!-- U+090D: "ऍ" DEVANAGARI LETTER CANDRA E -->
             <key-style
                 latin:styleName="moreKeysDevanagariVowelSignCandraE"
-                latin:moreKeys="&#x090D;" />
+                latin:moreKeys="&#x0972;,&#x090D;" />
         </case>
         <default>
             <key-style latin:styleName="moreKeysDevanagariVowelSignCandraE" />
