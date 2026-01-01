@@ -102,6 +102,11 @@
         latin:keySpec="!icon/settings_key|!code/key_settings"
         latin:keyActionFlags="noKeyPreview"
         latin:backgroundType="functional" />
+    <key-style
+        latin:styleName="pasteKeyStyle"
+        latin:keySpec="!icon/paste_key|!code/key_paste"
+        latin:keyActionFlags="noKeyPreview"
+        latin:backgroundType="functional" />
     <switch>
         <case
             latin:keyboardLayoutSetElement="alphabetManualShifted"

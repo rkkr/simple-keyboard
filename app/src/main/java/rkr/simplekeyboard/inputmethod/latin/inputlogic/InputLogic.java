@@ -200,6 +200,9 @@ public final class InputLogic {
             case Constants.CODE_SETTINGS:
                 onSettingsKeyPressed();
                 break;
+            case Constants.CODE_PASTE:
+                mConnection.pasteClipboard();
+                break;
             case Constants.CODE_ACTION_NEXT:
                 performEditorAction(EditorInfo.IME_ACTION_NEXT);
                 break;
