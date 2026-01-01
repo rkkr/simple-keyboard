@@ -390,7 +390,7 @@ public final class KeyboardTextsTable {
         // U+2205: "∅" EMPTY SET
         /* morekeys_symbols_0 */ "\u207F,\u2205",
         /* morekeys_am_pm */ "!fixedColumnOrder!2,!hasLabels!,!text/keylabel_time_am,!text/keylabel_time_pm",
-        /* keyspec_settings */ "!icon/settings_key|!code/key_settings",
+        /* keyspec_settings */ "!icon/paste_key|!code/key_paste,!icon/settings_key|!code/key_settings",
         /* keyspec_action_next */ "!code/key_action_next",
         /* keyspec_action_previous */ "!code/key_action_previous",
         // Label for "switch to more symbol" modifier key ("= \ <"). Must be short to fit on key!

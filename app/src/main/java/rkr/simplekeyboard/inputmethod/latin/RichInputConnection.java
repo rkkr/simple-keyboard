@@ -353,6 +353,10 @@ public final class RichInputConnection {
         }
     }
 
+    public void pasteClipboard() {
+        mIC.performContextMenuAction(android.R.id.paste);
+    }
+
     public void sendKeyEvent(final KeyEvent keyEvent) {
         RichInputMethodManager.getInstance().resetSubtypeCycleOrder();
         if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
