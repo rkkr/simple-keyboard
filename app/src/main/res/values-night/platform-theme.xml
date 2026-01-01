@@ -19,5 +19,6 @@
 -->
 
 <resources>
+    <style name="platformSettingsTheme" parent="@android:style/Theme.Material" />
     <style name="platformDialogTheme" parent="@android:style/Theme.DeviceDefault.Dialog" />
 </resources>
