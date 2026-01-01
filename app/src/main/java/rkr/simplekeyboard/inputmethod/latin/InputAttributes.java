@@ -21,7 +21,6 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 
-import rkr.simplekeyboard.inputmethod.latin.common.StringUtils;
 import rkr.simplekeyboard.inputmethod.latin.utils.InputTypeUtils;
 
 /**
@@ -105,10 +104,6 @@ public final class InputAttributes {
         mApplicationSpecifiedCompletionOn = flagAutoComplete && isFullscreenMode;
     }
 
-    public boolean isTypeNull() {
-        return InputType.TYPE_NULL == mInputType;
-    }
-
     public boolean isSameInputType(final EditorInfo editorInfo) {
         return editorInfo.inputType == mInputType;
     }
@@ -125,12 +120,5 @@ public final class InputAttributes {
                 (mApplicationSpecifiedCompletionOn ? " appSpecified" : ""),
                 (mShouldInsertSpacesAutomatically ? " insertSpaces" : ""),
                 mTargetApplicationPackageName);
-    }
-
-    public static boolean inPrivateImeOptions(final String packageName, final String key,
-            final EditorInfo editorInfo) {
-        if (editorInfo == null) return false;
-        final String findingKey = (packageName != null) ? packageName + "." + key : key;
-        return StringUtils.containsInCommaSplittableText(findingKey, editorInfo.privateImeOptions);
     }
 }

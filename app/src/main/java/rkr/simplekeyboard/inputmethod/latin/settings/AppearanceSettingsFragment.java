@@ -65,14 +65,6 @@ public final class AppearanceSettingsFragment extends SubScreenFragment {
         }
     }
 
-    private void refreshSettings() {
-        ThemeSettingsFragment.updateKeyboardThemeSummary(findPreference(Settings.SCREEN_THEME));
-
-        final SharedPreferences prefs = getSharedPreferences();
-        final KeyboardTheme theme = KeyboardTheme.getKeyboardTheme(prefs);
-        setPreferenceEnabled(Settings.PREF_KEYBOARD_COLOR, theme.mCustomColorSupport);
-    }
-
     private void setupKeyboardHeightSettings() {
         final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(
                 Settings.PREF_KEYBOARD_HEIGHT);
