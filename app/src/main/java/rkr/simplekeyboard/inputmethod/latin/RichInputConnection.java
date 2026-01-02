@@ -19,7 +19,13 @@
 
 package rkr.simplekeyboard.inputmethod.latin;
 
+import static android.content.ClipDescription.MIMETYPE_TEXT_HTML;
+import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
+
 import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -354,6 +360,21 @@ public final class RichInputConnection {
     }
 
     public void pasteClipboard() {
+        final ClipboardManager clipboard = (ClipboardManager) mLatinIME.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard != null && clipboard.hasPrimaryClip()) {
+            final ClipData clipData = clipboard.getPrimaryClip();
+            if (clipData != null && clipData.getItemCount() == 1) {
+                final String mimeType = clipData.getDescription().getMimeType(0);
+                if (MIMETYPE_TEXT_PLAIN.equals(mimeType) || MIMETYPE_TEXT_HTML.equals(mimeType)) {
+                    final CharSequence pasteData = clipData.getItemAt(0).getText();
+                    if (pasteData != null && pasteData.length() > 0) {
+                        mLatinIME.onTextInput(pasteData.toString());
+                        return;
+                    }
+                }
+            }
+        }
+
         mIC.performContextMenuAction(android.R.id.paste);
     }
 
