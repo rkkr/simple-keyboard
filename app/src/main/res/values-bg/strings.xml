@@ -45,7 +45,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Забавяне при продълж. натискане"</string>
     <string name="button_default">"Стандартно"</string>
     <string name="prefs_keyboard_height_settings">Височина на клавиатурата</string>
+    <string name="prefs_bottom_offset_portrait_settings">Долно отместване</string>
     <string name="keyboard_color">Задай избираем цвят на клавиатурата</string>
+    <string name="pref_use_on_screen_summary">Показване на екранната клавиатура при използване на физическа клавиатура</string>
     <string name="pref_enable_ime_switch">Смени на други клавиатури</string>
     <string name="show_number_row">Показвай отделен ред с цифри</string>
     <string name="space_swipe">Местене на курсора с плъзгане върху интервал</string>
@@ -58,4 +60,7 @@
     <string name="change_keyboard">Смени клавиатурата</string>
     <string name="privacy_policy">Политика за поверителност</string>
     <string name="license">Лиценз</string>
+    <string name="show_language_switch_key">Показване на клавиша за превключване на езика</string>
+    <string name="pref_use_on_screen">Показване на екранната клавиатура</string>
+    <string name="show_special_chars">Показване на специални символи</string>
 </resources>

@@ -44,11 +44,22 @@
     <string name="prefs_key_longpress_timeout_settings">"تأخير الضغط الطويل للمفاتيح"</string>
     <string name="button_default">"الافتراضية"</string>
     <string name="prefs_keyboard_height_settings">ارتفاع لوحة المفاتيح</string>
+    <string name="prefs_bottom_offset_portrait_settings">إزاحة سفلية</string>
     <string name="keyboard_color">اختيار لون مخصص للوحة المفاتيح</string>
+    <string name="pref_use_on_screen_summary">إظهار لوحة المفاتيح على الشاشة أثناء استخدام لوحة المفاتيح الفعلية</string>
+    <string name="pref_enable_ime_switch">التبديل إلى لوحات المفاتيح الأخرى</string>
     <string name="show_number_row">إظهار الأرقام في صف منفصل</string>
     <string name="space_swipe">سحب مفتاح المسافة لنقل المؤشر</string>
     <string name="delete_swipe">الحذف بالسحب</string>
+    <string name="user_languages">لغات لوحة المفاتيح الممكّنة</string>
     <string name="add_language">إضافة لغة</string>
     <string name="remove_language">إزالة اللغة</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> تخطيطات لوحة المفاتيح</string>
     <string name="change_keyboard">تغيير لوحة المفاتيح</string>
+    <string name="setup_message">Simple Keyboard غير مُفعّل. انقر على \"موافق\" لفتح إعدادات اللغات&amp;الإدخال. ستحتاج إلى تحديد Simple Keyboard في لوحة المفاتيح الحالية لاستخدامه.</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="license">رخصة</string>
+    <string name="show_language_switch_key">إظهار مفتاح تبديل اللغة</string>
+    <string name="pref_use_on_screen">إظهار لوحة المفاتيح على الشاشة</string>
+    <string name="show_special_chars">إظهار الأحرف الخاصة</string>
 </resources>

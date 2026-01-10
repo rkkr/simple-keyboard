@@ -44,7 +44,9 @@
     <string name="prefs_key_longpress_timeout_settings">"השהיית לחיצה ארוכה על מקש"</string>
     <string name="button_default">"ברירת מחדל"</string>
     <string name="prefs_keyboard_height_settings">הסר שפה</string>
+    <string name="prefs_bottom_offset_portrait_settings">היסט תחתון</string>
     <string name="keyboard_color">בחר צבע למקלדת</string>
+    <string name="pref_use_on_screen_summary">הצג מקלדת על המסך בעת שימוש במקלדת פיזית</string>
     <string name="pref_enable_ime_switch">החלף למקלדות אחרות</string>
     <string name="show_number_row">הצג שורה נפרדת למספרים</string>
     <string name="space_swipe">נווט בטקסט בעזרת "רווח"</string>
@@ -57,4 +59,7 @@
     <string name="change_keyboard">החלף מקלדת</string>
     <string name="privacy_policy">מדיניות פרטיות</string>
     <string name="license">רשיון</string>
+    <string name="show_language_switch_key">הצג מקש החלפת שפה</string>
+    <string name="pref_use_on_screen">הצג מקלדת על המסך</string>
+    <string name="show_special_chars">הצג תווים מיוחדים</string>
 </resources>

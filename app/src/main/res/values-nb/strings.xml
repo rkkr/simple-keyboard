@@ -43,7 +43,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Forsinkelse ved lange tastetrykk"</string>
     <string name="button_default">"Standard"</string>
     <string name="prefs_keyboard_height_settings">Tastaturhøyde</string>
+    <string name="prefs_bottom_offset_portrait_settings">Bunnforskyvning</string>
     <string name="keyboard_color">Still inn tilpasset tastaturfarge</string>
+    <string name="pref_use_on_screen_summary">Vis skjermtastaturet når du bruker det fysiske tastaturet</string>
     <string name="pref_enable_ime_switch">Skift til andre tastaturer</string>
     <string name="show_number_row">Vis separat tallrad</string>
     <string name="space_swipe">Mellomrom-sveip flytter markør</string>
@@ -54,4 +56,9 @@
     <string name="remove_language">Fjern språk</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> tastaturlayouter</string>
     <string name="change_keyboard">Endre tastatur</string>
+    <string name="privacy_policy">Personvernerklæring</string>
+    <string name="license">Lisens</string>
+    <string name="show_language_switch_key">Vis knapp for å endre språk</string>
+    <string name="pref_use_on_screen">Vis skjermtastaturet</string>
+    <string name="show_special_chars">Vis symbol</string>
 </resources>

@@ -48,7 +48,9 @@
     <string name="prefs_key_longpress_timeout_settings">দীর্ঘ কিপ্রেসের বিলম্ব</string>
     <string name="button_default">ডিফল্ট</string>
     <string name="prefs_keyboard_height_settings">কিবোর্ডের উচ্চতা</string>
+    <string name="prefs_bottom_offset_portrait_settings">নীচের অফসেট</string>
     <string name="keyboard_color">কিবোর্ডের কাস্টম রং</string>
+    <string name="pref_use_on_screen_summary">ফিজিক্যাল কীবোর্ড ব্যবহার করার সময় অন-স্ক্রিন কীবোর্ড দেখান</string>
     <string name="pref_enable_ime_switch">অন্য কিবোর্ডে পরিবর্তন</string>
     <string name="show_number_row">পৃথক নম্বর সারি প্রদর্শন</string>
     <string name="space_swipe">কার্সর সরাতে স্পেস সোয়াইপ</string>
@@ -61,4 +63,7 @@
     <string name="change_keyboard">কিবোর্ড পরিবর্তন</string>
     <string name="privacy_policy">গোপনীয়তা নীতি</string>
     <string name="license">লাইসেন্স</string>
+    <string name="show_language_switch_key">ভাষা পরিবর্তন কী দেখান</string>
+    <string name="pref_use_on_screen">অন-স্ক্রিন কীবোর্ড দেখান</string>
+    <string name="show_special_chars">বিশেষ অক্ষর দেখান</string>
 </resources>

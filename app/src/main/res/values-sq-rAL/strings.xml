@@ -23,6 +23,7 @@
     <string name="sound_on_keypress">"Lësho tingull kur shtyp tastin"</string>
     <string name="popup_on_keypress">"Zmadhim germe kur shtyp"</string>
     <string name="settings_screen_preferences">"Preferencat"</string>
+    <string name="settings_screen_appearance">Pamja</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> milisek."</string>
     <string name="settings_system_default">"Parazgjedhja e sistemit"</string>
@@ -42,10 +43,23 @@
     <string name="prefs_key_longpress_timeout_settings">"Vonesa e shtypjes së gjatë të tastit"</string>
     <string name="button_default">"I parazgjedhur"</string>
     <string name="prefs_keyboard_height_settings">Lartësia e tastierës</string>
+    <string name="prefs_bottom_offset_portrait_settings">Zhvendosja e poshtme</string>
     <string name="keyboard_color">Vendos ngjyrë tastiere me porosi</string>
+    <string name="pref_use_on_screen_summary">Shfaq tastierën në ekran gjatë përdorimit të tastierës fizike</string>
     <string name="pref_enable_ime_switch">Përdor tastierat e tjera</string>
     <string name="show_number_row">Shfaq rrjeshtin e veçantë të numrave</string>
     <string name="space_swipe">Lëvizjet e kursorit në tabin e hapsirës</string>
     <string name="delete_swipe">Fshij rrëshqitjet</string>
     <string name="setup_message">"Tastiera e Thjesht nuk është aktivizuar. Shtyp OK për të hapur Opsionet e Gjuhëve $amp; hyrëse. Do të duhet të zgjedhësh Tastierën e Thjesht si tastierën tënde të rradhës për t'a përdorur atë."</string>
+    <string name="settings_screen_key_press">Shtypja e tastit</string>
+    <string name="user_languages">Gjuhët e aktivizuara të tastierës</string>
+    <string name="add_language">Shto gjuhë</string>
+    <string name="remove_language">Hiq gjuhën</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> paraqitjet e tastierës</string>
+    <string name="change_keyboard">Ndrysho tastierën</string>
+    <string name="privacy_policy">Politika e Privatësisë</string>
+    <string name="license">Licencë</string>
+    <string name="show_language_switch_key">Shfaq tastin e ndërrimit të gjuhës</string>
+    <string name="pref_use_on_screen">Shfaq tastierën në ekran</string>
+    <string name="show_special_chars">Shfaq karaktere të veçanta</string>
 </resources>

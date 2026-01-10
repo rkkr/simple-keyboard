@@ -43,13 +43,22 @@
     <string name="prefs_key_longpress_timeout_settings">"Hosszú nyomás késleltetése"</string>
     <string name="button_default">"Alapértelmezett"</string>
     <string name="prefs_keyboard_height_settings">Billentyűzet magassága</string>
+    <string name="prefs_bottom_offset_portrait_settings">Alsó eltolás</string>
     <string name="keyboard_color">Egyéni háttérszín beállítása</string>
+    <string name="pref_use_on_screen_summary">Képernyő-billentyűzet megjelenítése fizikai billentyűzet használata közben</string>
     <string name="pref_enable_ime_switch">Váltás más billentyűzetekre</string>
     <string name="show_number_row">Számok megjelenítése külön sorban</string>
     <string name="space_swipe">Kurzor mozgatása a Szóköz billentytűn történő húzással</string>
     <string name="delete_swipe">Törlés a Törlés billenytűről való húzással</string>
+    <string name="setup_message">Az Egyszerű billentyűzet nincs engedélyezve. Kattintson az OK gombra a Nyelvek és beviteli beállítások &amp; megnyitásához. A használatához ki kell választania az Egyszerű billentyűzetet az aktuális billentyűzetén.</string>
     <string name="user_languages">Hozzáadott nyelvek</string>
     <string name="add_language">Nyelv hozzáadása</string>
     <string name="remove_language">Nyelv eltávolítása</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> billentyűzetkiosztások</string>
     <string name="change_keyboard">Billentyűzetváltás</string>
+    <string name="privacy_policy">Adatvédelmi irányelvek</string>
+    <string name="license">Engedély</string>
+    <string name="show_language_switch_key">Nyelvváltó gomb megjelenítése</string>
+    <string name="pref_use_on_screen">Képernyő-billentyűzet megjelenítése</string>
+    <string name="show_special_chars">Speciális karakterek megjelenítése</string>
 </resources>

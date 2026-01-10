@@ -43,7 +43,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Lengte toetsinvoer"</string>
     <string name="button_default">"Standaard"</string>
     <string name="prefs_keyboard_height_settings">Toetsenbordhoogte</string>
+    <string name="prefs_bottom_offset_portrait_settings">Onderste offset</string>
     <string name="keyboard_color">Kies aangepaste toetsenbordkleur</string>
+    <string name="pref_use_on_screen_summary">Schermtoetsenbord weergeven bij gebruik van fysiek toetsenbord</string>
     <string name="pref_enable_ime_switch">Naar andere toetsenborden overschakelen</string>
     <string name="show_number_row">Aparte nummerrij</string>
     <string name="space_swipe">Spatie-swipe beweegt cursor</string>
@@ -54,4 +56,9 @@
     <string name="remove_language">Taal verwijderen</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" voorbeeld="English (US)">%s</xliff:g> toetsenbordindelingen</string>
     <string name="change_keyboard">Toetsenbord wisselen</string>
+    <string name="privacy_policy">Privacybeleid</string>
+    <string name="license">Licentie</string>
+    <string name="show_language_switch_key">Toon de toets voor het wisselen van taal</string>
+    <string name="pref_use_on_screen">Schermtoetsenbord weergeven</string>
+    <string name="show_special_chars">Speciale tekens weergeven</string>
 </resources>

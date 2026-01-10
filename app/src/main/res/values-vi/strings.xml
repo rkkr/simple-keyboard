@@ -44,7 +44,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Thời gian trễ nhấn và giữ phím"</string>
     <string name="button_default">"Mặc định"</string>
     <string name="prefs_keyboard_height_settings">"Chiều cao bàn phím"</string>
+    <string name="prefs_bottom_offset_portrait_settings">Độ lệch dưới</string>
     <string name="keyboard_color">"Tuỳ chọn màu bàn phím"</string>
+    <string name="pref_use_on_screen_summary">Hiển thị bàn phím ảo trong khi sử dụng bàn phím vật lý</string>
     <string name="pref_enable_ime_switch">"Chuyển sang các bàn phím khác"</string>
     <string name="show_number_row">"Hiển thị bàn phím số"</string>
     <string name="space_swipe">"Vuốt phím space để di chuyển con trỏ"</string>
@@ -55,4 +57,9 @@
     <string name="remove_language">"Xóa ngôn ngữ"</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g>" bố cục bàn phím"</string>
     <string name="change_keyboard">Thay đổi bàn phím</string>
+    <string name="privacy_policy">Chính sách bảo mật</string>
+    <string name="license">Giấy phép</string>
+    <string name="show_language_switch_key">Hiển thị phím chuyển đổi ngôn ngữ</string>
+    <string name="pref_use_on_screen">Hiển thị bàn phím trên màn hình</string>
+    <string name="show_special_chars">Hiển thị các ký tự đặc biệt</string>
 </resources>

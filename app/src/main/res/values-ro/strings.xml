@@ -44,7 +44,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Timpul apăsării lungi a tastei"</string>
     <string name="button_default">"Prestabilit"</string>
     <string name="prefs_keyboard_height_settings">Înălțime tastatură</string>
+    <string name="prefs_bottom_offset_portrait_settings">Decalaj inferior</string>
     <string name="keyboard_color">Setează culoare personalizată</string>
+    <string name="pref_use_on_screen_summary">Afișați tastatura de pe ecran atunci când utilizați tastatura fizică</string>
     <string name="pref_enable_ime_switch">Treceți la alte tastaturi</string>
     <string name="show_number_row">Arată un rând separat cu cifre</string>
     <string name="space_swipe">Glisarea pe tasta Spațiu mută cursorul</string>
@@ -55,4 +57,9 @@
     <string name="remove_language">Eliminați limba</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> modele de tastatură</string>
     <string name="change_keyboard">Schimbați tastatura</string>
+    <string name="privacy_policy">Politica de confidențialitate</string>
+    <string name="license">Licența</string>
+    <string name="show_language_switch_key">Afișați tasta de schimbare a limbii</string>
+    <string name="pref_use_on_screen">Afișați tastatura de pe ecran</string>
+    <string name="show_special_chars">Afișați caracterele speciale</string>
 </resources>

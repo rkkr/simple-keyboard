@@ -43,7 +43,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Доцнење на долго притискање копче"</string>
     <string name="button_default">"Стандардно"</string>
     <string name="prefs_keyboard_height_settings">Висина на тастатурата</string>
+    <string name="prefs_bottom_offset_portrait_settings">Долен офсет</string>
     <string name="keyboard_color">Постави боја на тастатурата</string>
+    <string name="pref_use_on_screen_summary">Прикажи тастатура на екранот додека се користи физичка тастатура</string>
     <string name="pref_enable_ime_switch">Префрли се на друга тастатура</string>
     <string name="show_number_row">Покажи одделен ред со броеви</string>
     <string name="space_swipe">Помеси го курсорот преку лентата за празно место</string>
@@ -54,4 +56,9 @@
     <string name="remove_language">Отстрани јазик</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> распоред на тастатурата</string>
     <string name="change_keyboard">Промени ја тастатурата</string>
+    <string name="privacy_policy">Политика за приватност</string>
+    <string name="license">Лиценца</string>
+    <string name="show_language_switch_key">Прикажи копче за префрлување јазик</string>
+    <string name="pref_use_on_screen">Прикажи тастатура на екранот</string>
+    <string name="show_special_chars">Прикажи специјални знаци</string>
 </resources>

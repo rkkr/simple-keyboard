@@ -44,7 +44,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Penundaan tekan lama tombol"</string>
     <string name="button_default">"Default"</string>
     <string name="prefs_keyboard_height_settings">Atur Ketinggian Keyboard</string>
+    <string name="prefs_bottom_offset_portrait_settings">Pergeseran bawah</string>
     <string name="keyboard_color">Ganti warna keyboard</string>
+    <string name="pref_use_on_screen_summary">Tampilkan papan ketik di layar saat menggunakan papan ketik fisik</string>
     <string name="pref_enable_ime_switch">Beralih ke keyboard lain</string>
     <string name="show_number_row">Tampilkan tombol angka terpisah</string>
     <string name="space_swipe">Geser untuk menggerakan kursor</string>
@@ -55,4 +57,9 @@
     <string name="remove_language">Hapus bahasa</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME">%s</xliff:g> tata letak keyboard</string>
     <string name="change_keyboard">Ganti keyboard</string>
+    <string name="privacy_policy">Kebijakan Privasi</string>
+    <string name="license">Lisensi</string>
+    <string name="show_language_switch_key">Tampilkan tombol pengalih bahasa</string>
+    <string name="pref_use_on_screen">Tampilkan papan ketik di layar</string>
+    <string name="show_special_chars">Tampilkan karakter spesial</string>
 </resources>

@@ -44,7 +44,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Délai d\'appui prolongé"</string>
     <string name="button_default">"Par défaut"</string>
     <string name="prefs_keyboard_height_settings">Hauteur du clavier</string>
+    <string name="prefs_bottom_offset_portrait_settings">Décalage inférieur</string>
     <string name="keyboard_color">Définir une couleur de clavier personnalisée</string>
+    <string name="pref_use_on_screen_summary">Afficher le clavier à l\'écran tout en utilisant le clavier physique</string>
     <string name="pref_enable_ime_switch">Passer à d\'autres claviers</string>
     <string name="show_number_row">Afficher la ligne de chiffres</string>
     <string name="space_swipe">Glisser sur Espace pour déplacer le curseur</string>
@@ -55,4 +57,9 @@
     <string name="remove_language">Supprimer la langue</string>
     <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> dispositions du clavier</string>
     <string name="change_keyboard">Changer de clavier</string>
+    <string name="privacy_policy">Politique de confidentialité</string>
+    <string name="license">Licence</string>
+    <string name="show_language_switch_key">Afficher la touche de changement de langue</string>
+    <string name="pref_use_on_screen">Afficher le clavier à l\'écran</string>
+    <string name="show_special_chars">Afficher les caractères spéciaux</string>
 </resources>

@@ -23,6 +23,7 @@
     <string name="sound_on_keypress">"Knappljud"</string>
     <string name="popup_on_keypress">"Popup vid knapptryck"</string>
     <string name="settings_screen_preferences">"Inställningar"</string>
+    <string name="settings_screen_appearance">Utseende</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g> millisek."</string>
     <string name="settings_system_default">"Standardinställning"</string>
@@ -41,4 +42,24 @@
     <string name="prefs_keypress_sound_volume_settings">"Ljudvolym för tangenter"</string>
     <string name="prefs_key_longpress_timeout_settings">"Fördröjning vid långt tryck"</string>
     <string name="button_default">"Standard"</string>
+    <string name="prefs_keyboard_height_settings">Tangentbordets höjd</string>
+    <string name="prefs_bottom_offset_portrait_settings">Bottenförskjutning</string>
+    <string name="keyboard_color">Ange anpassad tangentbordsfärg</string>
+    <string name="pref_use_on_screen_summary">Visa skärmtangentbordet när du använder det fysiska tangentbordet</string>
+    <string name="pref_enable_ime_switch">Växla till andra tangentbord</string>
+    <string name="show_number_row">Visa separat sifferrad</string>
+    <string name="space_swipe">Blankstegssvepning av markören</string>
+    <string name="delete_swipe">Radera svepning</string>
+    <string name="setup_message">Enkelt tangentbord är inte aktiverat. Klicka på OK för att öppna inställningarna&amp; för språk och inmatning. Du måste välja Enkelt tangentbord på ditt nuvarande tangentbord för att använda det.</string>
+    <string name="settings_screen_key_press">Knapptryckning</string>
+    <string name="user_languages">Aktiverade tangentbordsspråk</string>
+    <string name="add_language">Lägg till språk</string>
+    <string name="remove_language">Ta bort språk</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> tangentbordslayouter</string>
+    <string name="change_keyboard">Ändra tangentbord</string>
+    <string name="privacy_policy">Integritetspolicy</string>
+    <string name="license">Licens</string>
+    <string name="show_language_switch_key">Visa språkväxlingsknapp</string>
+    <string name="pref_use_on_screen">Visa tangentbordet på skärmen</string>
+    <string name="show_special_chars">Visa specialtecken</string>
 </resources>

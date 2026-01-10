@@ -43,7 +43,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Ritardo pressione lunga tasti"</string>
     <string name="button_default">"Predefinito"</string>
     <string name="prefs_keyboard_height_settings">Altezza tastiera</string>
+    <string name="prefs_bottom_offset_portrait_settings">Offset inferiore</string>
     <string name="keyboard_color">Cambia colore tastiera</string>
+    <string name="pref_use_on_screen_summary">Mostra la tastiera sullo schermo mentre usi la tastiera fisica</string>
     <string name="pref_enable_ime_switch">"Passa a un'altra tastiera"</string>
     <string name="show_number_row">Mostra numeri in una riga separata</string>
     <string name="space_swipe">Muovi cursore scorrendo sulla barra spaziatrice</string>
@@ -54,4 +56,9 @@
     <string name="remove_language">Rimuovi lingua</string>
     <string name="generic_language_layouts">Layout della tastiera in <xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g></string>
     <string name="change_keyboard">Cambia tastiera</string>
+    <string name="privacy_policy">Politica sulla Riservatezza</string>
+    <string name="license">Licenza</string>
+    <string name="show_language_switch_key">Mostra il tasto di cambio lingua</string>
+    <string name="pref_use_on_screen">Mostra la tastiera sullo schermo</string>
+    <string name="show_special_chars">Mostra caratteri speciali</string>
 </resources>

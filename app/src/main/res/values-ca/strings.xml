@@ -23,6 +23,7 @@
     <string name="sound_on_keypress">"So en prémer tecles"</string>
     <string name="popup_on_keypress">"Amplia en prémer tecles"</string>
     <string name="settings_screen_preferences">"Preferències"</string>
+    <string name="settings_screen_appearance">Aspecte</string>
     <string name="settings_screen_theme">"Tema"</string>
     <string name="settings_system_default">"Predeterminat"</string>
     <string name="auto_cap">"Majúscules automàtiques"</string>
@@ -40,4 +41,24 @@
     <string name="prefs_keypress_sound_volume_settings">"Volum so en prémer tecla"</string>
     <string name="prefs_key_longpress_timeout_settings">"Retard en mantenir premut"</string>
     <string name="button_default">"Predeterminat"</string>
+    <string name="prefs_keyboard_height_settings">Alçada del teclat</string>
+    <string name="prefs_bottom_offset_portrait_settings">Desplaçament inferior</string>
+    <string name="keyboard_color">Defineix el color del teclat personalitzat</string>
+    <string name="pref_use_on_screen_summary">Mostra el teclat en pantalla mentre s\'utilitza el teclat físic</string>
+    <string name="pref_enable_ime_switch">Canvia a altres teclats</string>
+    <string name="show_number_row">Mostra una fila de números separada</string>
+    <string name="space_swipe">Moviment del cursor amb lliscament espacial</string>
+    <string name="delete_swipe">Lliscar per suprimir</string>
+    <string name="setup_message">Simple Keyboard no està habilitat. Feu clic a OK per obrir la configuració &amp; d\'idiomes i entrada. Haureu de seleccionar Simple Keyboard al vostre teclat actual per utilitzar-lo.</string>
+    <string name="settings_screen_key_press">Premsa de tecles</string>
+    <string name="user_languages">Idiomes de teclat activats</string>
+    <string name="add_language">Afegeix un idioma</string>
+    <string name="remove_language">Elimina l\'idioma</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> distribucions de teclat</string>
+    <string name="change_keyboard">Canvia el teclat</string>
+    <string name="privacy_policy">Política de privacitat</string>
+    <string name="license">Llicència</string>
+    <string name="show_language_switch_key">Mostra la tecla de canvi d\'idioma</string>
+    <string name="pref_use_on_screen">Mostra el teclat en pantalla</string>
+    <string name="show_special_chars">Mostra els caràcters especials</string>
 </resources>

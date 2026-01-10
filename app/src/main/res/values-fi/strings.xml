@@ -43,7 +43,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Pitkän painalluksen viive"</string>
     <string name="button_default">"Oletusarvot"</string>
     <string name="prefs_keyboard_height_settings">Näppäimistön korkeus</string>
+    <string name="prefs_bottom_offset_portrait_settings">Pohjan siirtymä</string>
     <string name="keyboard_color">Laita mukautettu näppäimistön väri</string>
+    <string name="pref_use_on_screen_summary">Näytä näyttönäppäimistö fyysistä näppäimistöä käytettäessä</string>
     <string name="pref_enable_ime_switch">Vaihda toisiin näppäimistöihin</string>
     <string name="show_number_row">Näytä erillinen numerorivi</string>
     <string name="space_swipe">Liikuta kursoria pyyhkäisemällä välilyöntiä</string>
@@ -52,5 +54,11 @@
     <string name="user_languages">Käytössä olevat näppäimistön kielet</string>
     <string name="add_language">Lisää kieli</string>
     <string name="remove_language">Poista kieli</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> näppäimistöasettelut</string>
     <string name="change_keyboard">Vaihda näppäimistöä</string>
+    <string name="privacy_policy">Tietosuojakäytäntö</string>
+    <string name="license">Lisenssi</string>
+    <string name="show_language_switch_key">Näytä kielenvaihtonäppäin</string>
+    <string name="pref_use_on_screen">Näytä näyttönäppäimistö</string>
+    <string name="show_special_chars">Näytä erikoismerkit</string>
 </resources>

@@ -43,6 +43,7 @@
     <string name="prefs_key_longpress_timeout_settings">"Oneskorenie dlhého stlačenia"</string>
     <string name="button_default">"Predvolené"</string>
     <string name="prefs_keyboard_height_settings">Výška klávesnice</string>
+    <string name="prefs_bottom_offset_portrait_settings">Spodný odsadenie</string>
     <string name="keyboard_color">Nastaviť vlastnú farbu klávesnice</string>
     <string name="pref_enable_ime_switch">Prepínanie na iné klávesnice</string>
     <string name="show_number_row">Zobraziť samostatný číselný riadok</string>
@@ -54,4 +55,9 @@
     <string name="remove_language">Odstrániť jazyk</string>
     <string name="generic_language_layouts">Rozloženia klávesnice <xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g></string>
     <string name="change_keyboard">Zmeniť klávesnicu</string>
+    <string name="privacy_policy">Zásady ochrany osobných údajov</string>
+    <string name="license">Licencia</string>
+    <string name="show_language_switch_key">Zobraziť kláves pre prepínanie jazykov</string>
+    <string name="pref_use_on_screen">Zobraziť klávesnicu na obrazovke</string>
+    <string name="show_special_chars">Zobraziť špeciálne znaky</string>
 </resources>

@@ -44,7 +44,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Затримка довгого натискання"</string>
     <string name="button_default">"За умовчанням"</string>
     <string name="prefs_keyboard_height_settings">Висота клавіатури</string>
+    <string name="prefs_bottom_offset_portrait_settings">Зсув знизу</string>
     <string name="keyboard_color">Змінити колір клавіатури</string>
+    <string name="pref_use_on_screen_summary">Показувати екранну клавіатуру під час використання фізичної клавіатури</string>
     <string name="pref_enable_ime_switch">Перемикатись на інші клавіатури</string>
     <string name="show_number_row">Показувати рядок цифр</string>
     <string name="space_swipe">Переміщати курсор ковзанням по пробілу</string>
@@ -57,4 +59,7 @@
     <string name="change_keyboard">Змінити клавіатуру</string>
     <string name="privacy_policy">Політика конфіденційності</string>
     <string name="license">Ліцензія</string>
+    <string name="show_language_switch_key">Показати клавішу перемикання мов</string>
+    <string name="pref_use_on_screen">Показати екранну клавіатуру</string>
+    <string name="show_special_chars">Показати спеціальні символи</string>
 </resources>

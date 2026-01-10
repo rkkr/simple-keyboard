@@ -47,6 +47,7 @@
     <string name="pref_enable_ime_switch">"മറ്റ് കീബോർഡുകളിലേക്ക് മാറുക"</string>
     <string name="show_number_row">"വേറിട്ട നമ്പർ വരി കാണിക്കുക"</string>
     <string name="delete_swipe">"നീക്കി ഇല്ലാതാക്കുക"</string>
+    <string name="setup_message">ലളിതമായ കീബോർഡ് പ്രവർത്തനക്ഷമമാക്കിയിട്ടില്ല. ഭാഷകൾ തുറക്കാൻ ശരി ക്ലിക്കുചെയ്യുക &amp; ഇൻപുട്ട് ക്രമീകരണങ്ങൾ. നിങ്ങളുടെ നിലവിലെ കീബോർഡ് ഉപയോഗിക്കുന്നതിന് ലളിതമായ കീബോർഡ് തിരഞ്ഞെടുക്കേണ്ടതുണ്ട്.</string>
     <string name="user_languages">"പ്രവർത്തനക്ഷമമാക്കിയ കീബോർഡ് ഭാഷകൾ"</string>
     <string name="add_language">"ഭാഷ ചേർക്കുക"</string>
     <string name="remove_language">"ഭാഷ നീക്കം ചെയ്യുക"</string>

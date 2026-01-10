@@ -44,13 +44,22 @@
     <string name="prefs_key_longpress_timeout_settings">"Καθυστέρηση παρατεταμένου πατήματος"</string>
     <string name="button_default">"Προεπιλογή"</string>
     <string name="prefs_keyboard_height_settings">Ύψος πληκτρολογίου</string>
+    <string name="prefs_bottom_offset_portrait_settings">Κάτω μετατόπιση</string>
     <string name="keyboard_color">Ορίστε προσαρμοσμένο χρώμα πληκτρολογίου</string>
+    <string name="pref_use_on_screen_summary">Εμφάνιση πληκτρολογίου οθόνης κατά τη χρήση φυσικού πληκτρολογίου</string>
     <string name="pref_enable_ime_switch">Εναλλαγή πληκτρολογίου</string>
     <string name="show_number_row">Εμφάνιση ξεχωριστής σειράς αριθμών</string>
     <string name="space_swipe">Ολίσθηση στη γραμμή διαστήματος για μετακίνηση του δρομέα</string>
     <string name="delete_swipe">Αφαίρεση της ολίσθησης</string>
     <string name="setup_message">Το Simple Keyboard δεν είναι ενεργοποιημένο. Πατήστε OK για να ανοίξετε τις ρυθμίσεις Γλώσσας &amp; Εισαγωγής. Θα πρέπει να επιλέξετε το Simple Keyboard ως τρέχον πληκτρολόγιο ώστε να μπορείτε να το χρησιμοποιήσετε.</string>
+    <string name="user_languages">Επιλεγμένες γλώσσες πληκτρολογίου</string>
     <string name="add_language">Προσθήκη γλώσσας</string>
     <string name="remove_language">Αφαίρεση γλώσσας</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> διατάξεις πληκτρολογίου</string>
     <string name="change_keyboard">Αλλαγή πληκτρολογίου</string>
+    <string name="privacy_policy">Πολιτική Απορρήτου</string>
+    <string name="license">Άδεια</string>
+    <string name="show_language_switch_key">Εμφάνιση πλήκτρου εναλλαγής γλώσσας</string>
+    <string name="pref_use_on_screen">Εμφάνιση πληκτρολογίου οθόνης</string>
+    <string name="show_special_chars">Εμφάνιση ειδικών χαρακτήρων</string>
 </resources>

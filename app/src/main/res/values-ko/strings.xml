@@ -23,6 +23,7 @@
     <string name="sound_on_keypress">"키를 누를 때 소리 발생"</string>
     <string name="popup_on_keypress">"키를 누를 때 팝업"</string>
     <string name="settings_screen_preferences">"환경설정"</string>
+    <string name="settings_screen_appearance">모습</string>
     <string name="settings_screen_theme">"테마"</string>
     <string name="abbreviation_unit_milliseconds">"<xliff:g id="MILLISECONDS">%s</xliff:g>ms"</string>
     <string name="settings_system_default">"시스템 기본값"</string>
@@ -42,4 +43,23 @@
     <string name="prefs_keypress_sound_volume_settings">"키를 누를 때 소리 볼륨"</string>
     <string name="prefs_key_longpress_timeout_settings">"키 길게 누르기 지연"</string>
     <string name="button_default">"기본값"</string>
+    <string name="prefs_bottom_offset_portrait_settings">하단 오프셋</string>
+    <string name="keyboard_color">사용자 지정 키보드 색상 설정</string>
+    <string name="pref_use_on_screen_summary">물리 키보드를 사용하는 동안 화면 키보드를 표시합니다.</string>
+    <string name="pref_enable_ime_switch">다른 키보드로 전환하세요</string>
+    <string name="show_number_row">숫자 행을 별도로 표시합니다</string>
+    <string name="space_swipe">스페이스바 스와이프 커서 이동</string>
+    <string name="delete_swipe">삭제 스와이프</string>
+    <string name="setup_message">간편 키보드가 활성화되어 있지 않습니다. 확인을 클릭하여 언어 및 입력&amp; 설정을 여세요. 간편 키보드를 사용하려면 현재 키보드 설정에서 간편 키보드를 선택해야 합니다.</string>
+    <string name="settings_screen_key_press">키 누르기</string>
+    <string name="user_languages">활성화된 키보드 언어</string>
+    <string name="add_language">언어 추가</string>
+    <string name="remove_language">언어를 제거하세요</string>
+    <string name="generic_language_layouts"><xliff:g id="LANGUAGE_NAME" example="English (US)">%s</xliff:g> 키보드 레이아웃</string>
+    <string name="change_keyboard">키보드 변경</string>
+    <string name="privacy_policy">개인정보 보호정책</string>
+    <string name="license">특허</string>
+    <string name="show_language_switch_key">언어 전환 키를 표시합니다</string>
+    <string name="pref_use_on_screen">화면 키보드 표시</string>
+    <string name="show_special_chars">특수 문자를 표시합니다</string>
 </resources>

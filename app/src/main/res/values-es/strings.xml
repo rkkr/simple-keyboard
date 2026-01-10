@@ -43,7 +43,9 @@
     <string name="prefs_key_longpress_timeout_settings">"Retraso al mantener pulsado"</string>
     <string name="button_default">"Predeterminado"</string>
     <string name="prefs_keyboard_height_settings">Altura del teclado</string>
+    <string name="prefs_bottom_offset_portrait_settings">Desplazamiento inferior</string>
     <string name="keyboard_color">Establecer color personalizado del teclado</string>
+    <string name="pref_use_on_screen_summary">Mostrar el teclado en pantalla mientras se usa el teclado físico</string>
     <string name="pref_enable_ime_switch">Cambiar a otros teclados</string>
     <string name="show_number_row">Mostrar la fila de dígitos separada</string>
     <string name="space_swipe">Desplazamiento del cursor del espacio</string>
@@ -53,4 +55,9 @@
     <string name="add_language">Añadir idioma</string>
     <string name="remove_language">Remover idioma</string>
     <string name="change_keyboard">Cambiar teclado</string>
+    <string name="privacy_policy">Política de privacidad</string>
+    <string name="license">Licencia</string>
+    <string name="show_language_switch_key">Mostrar tecla de cambio de idioma</string>
+    <string name="pref_use_on_screen">Mostrar el teclado en pantalla</string>
+    <string name="show_special_chars">Mostrar caracteres especiales</string>
 </resources>
