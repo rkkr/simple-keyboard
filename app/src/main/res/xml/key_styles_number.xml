@@ -28,6 +28,25 @@
         latin:styleName="numKeyStyle"
         latin:keyLabelFlags="followKeyLargeLetterRatio"
         latin:parentStyle="numKeyBaseStyle" />
+    <switch>
+        <case
+            latin:clobberSettingsKey="true"
+            >
+            <key-style
+                latin:styleName="numSettingsKeyStyle"
+                latin:backgroundType="functional"
+                latin:parentStyle="numKeyStyle" />
+        </case>
+        <!-- clobberSettingsKey="false" -->
+        <default>
+            <key-style
+                latin:styleName="numSettingsKeyStyle"
+                latin:keyLabelFlags="hasPopupHint"
+                latin:additionalMoreKeys="!text/keyspec_settings"
+                latin:backgroundType="functional"
+                latin:parentStyle="numKeyStyle" />
+        </default>
+    </switch>
     <key-style
         latin:styleName="numModeKeyStyle"
         latin:keyLabelFlags="fontNormal|followKeyLetterRatio|followFunctionalTextColor"

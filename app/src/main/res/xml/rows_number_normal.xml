@@ -100,14 +100,14 @@
             >
                 <Key
                     latin:keySpec="/"
-                    latin:keyStyle="numKeyStyle" />
+                    latin:keyStyle="numSettingsKeyStyle" />
             </case>
             <case
                 latin:mode="time"
             >
                 <Key
                     latin:keySpec=":"
-                    latin:keyStyle="numKeyStyle" />
+                    latin:keyStyle="numSettingsKeyStyle" />
             </case>
             <case
                 latin:mode="datetime"
@@ -115,12 +115,12 @@
                 <Key
                     latin:keySpec="/ :|/"
                     latin:moreKeys="!noPanelAutoMoreKey!,:"
-                    latin:keyStyle="numKeyStyle" />
+                    latin:keyStyle="numSettingsKeyStyle" />
             </case>
             <default>
                 <Key
                     latin:keySpec="."
-                    latin:keyStyle="numKeyStyle" />
+                    latin:keyStyle="numSettingsKeyStyle" />
             </default>
         </switch>
         <Key
