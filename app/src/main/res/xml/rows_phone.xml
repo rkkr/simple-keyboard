@@ -49,8 +49,7 @@
             latin:keyStyle="num6KeyStyle" />
         <Key
             latin:keySpec="."
-            latin:keyStyle="numKeyStyle"
-            latin:backgroundType="functional"
+            latin:keyStyle="numSettingsKeyStyle"
             latin:keyWidth="fillRight" />
     </Row>
     <Row>
