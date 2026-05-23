@@ -6,8 +6,8 @@ android {
         compileSdk 36
         minSdkVersion 24
         targetSdkVersion 36
-        versionCode 144
-        versionName "6.3"
+        versionCode 145
+        versionName "6.4"
     }
     buildTypes {
         release {

@@ -82,7 +82,7 @@
         android:title="@string/settings_screen_theme"
         android:restrictionType="choice"
         android:entries="@array/keyboard_theme_names"
-        android:entryValues="@array/keyboard_theme_ids"
+        android:entryValues="@array/keyboard_theme_ids_string"
         android:defaultValue="5" />
     <restriction
         android:key="pref_keyboard_color"
