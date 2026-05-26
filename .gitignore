@@ -20,6 +20,7 @@ out/
 gradle/
 build/
 release/
+!/gradle/wrapper/gradle-wrapper.properties
 
 # Local configuration file (sdk path, etc)
 local.properties
