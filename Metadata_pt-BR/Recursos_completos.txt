@@ -1,0 +1,31 @@
+Este teclado foi criado para quem precisa apenas de um teclado e nada mais!
+
+Para ativar o teclado:
+
+* Abra o “Teclado Simples” a partir do seu launcher
+
+* Ative o Teclado Simples (será exibido o aviso padrão do sistema sobre rastreamento)
+
+* Mude para o Teclado Simples a partir do método de entrada atual (varia de acordo com o teclado, geralmente pressionando longamente a barra de espaço)
+
+* Para editar as configurações do Teclado Simples, pressione longamente a tecla “,” ou acesse Configurações do sistema, Idiomas e entrada, Teclado Simples.
+
+* Você pode ativar/desativar todos os métodos de entrada em Configurações, Idiomas e Entrada, Gerenciar Teclados (varia de acordo com o aparelho)
+
+<b>Recursos:</b>
+
+* Pequeno (&lt;1MB)
+* Teclado com altura ajustável
+* Número em linha separada
+* Deslize na barra de espaço para mover o cursor
+* Deslizar para deletar
+* Cores personalizadas de temas
+* Permissões mínimas (Somente vibrar)
+* Livre de anúncios
+
+<b>Recursos que não possui e provavelmente nunca terá:</b>
+
+* Emojis
+* GIFs
+* Verificação ortográfica
+* Digitação por gestos
