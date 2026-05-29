@@ -1,5 +1,3 @@
-Este teclado foi criado para quem precisa apenas de um teclado e nada mais!
-
 Para ativar o teclado:
 
 * Abra o “Teclado Simples” a partir do seu launcher
