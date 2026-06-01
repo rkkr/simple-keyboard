@@ -27,6 +27,6 @@
         latin:keyLabelFlags="fontDefault" />
     <Key
         latin:keySpec="\?"
-        latin:moreKeys="!text/morekeys_question"
+        latin:moreKeys="!text/morekeys_question,&#x203D;"
         latin:keyLabelFlags="fontDefault" />
 </merge>
