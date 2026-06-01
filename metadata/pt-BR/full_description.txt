@@ -1,29 +1,31 @@
-Para ativar o teclado: 
-  
- * Abra o “Simple Keyboard” a partir do seu launcher 
-  
- * Ative o Simple Keyboard (será exibido o aviso padrão do sistema sobre rastreamento) 
-  
- * Mude para o Simple Keyboard a partir do método de entrada atual (varia de acordo com o teclado, geralmente pressionando longamente a barra de espaço) 
-  
- * Para editar as configurações do Simple Keyboard, pressione longamente a tecla “,” ou acesse Configurações do sistema, Idiomas e entrada, Simple Keyboard. 
-  
- * Você pode ativar/desativar todos os métodos de entrada em Configurações, Idiomas e Entrada, Gerenciar Teclados (varia de acordo com o aparelho) 
-  
- <b>Recursos:</b> 
-  
- * Pouco espaço (&lt;1MB) 
- * Teclado com altura ajustável 
- * Números em linha separada 
- * Deslize na barra de espaço para mover o cursor 
- * Deslizar para deletar 
- * Cores de tema personalizadas 
- * Permissões mínimas (Somente vibrar) 
- * Sem anúncios 
-  
- <b>Recursos que não possui e provavelmente nunca terá:</b> 
-  
- * Emojis 
- * GIFs 
- * Verificação ortográfica 
- * Digitação por gestos
+Este teclado foi criado para quem precisa apenas de um teclado e nada mais!
+
+Para ativar o teclado:
+
+* Abra o “Simple Keyboard” a partir do seu launcher
+
+* Ative o Simple Keyboard (será exibido o aviso padrão do sistema sobre rastreamento)
+
+* Mude para o Simple Keyboard a partir do método de entrada atual (varia de acordo com o teclado, geralmente pressionando longamente a barra de espaço)
+
+* Para editar as configurações do Simple Keyboard, pressione longamente a tecla “,” ou acesse Configurações do sistema, Idiomas e entrada, Simple Keyboard.
+
+* Você pode ativar/desativar todos os métodos de entrada em Configurações, Idiomas e Entrada, Gerenciar Teclados (varia de acordo com o aparelho)
+
+<b>Recursos:</b>
+
+* Pouco espaço (&lt;1MB)
+* Teclado com altura ajustável
+* Números em linha separada
+* Deslize na barra de espaço para mover o cursor
+* Deslizar para deletar
+* Cores de tema personalizadas
+* Permissões mínimas (Somente vibrar)
+* Sem anúncios
+
+<b>Recursos que não possui e provavelmente nunca terá:</b>
+
+* Emojis
+* GIFs
+* Verificação ortográfica
+* Digitação por gestos
