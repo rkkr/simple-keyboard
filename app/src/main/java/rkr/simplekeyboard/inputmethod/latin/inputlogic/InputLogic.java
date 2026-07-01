@@ -93,7 +93,8 @@ public final class InputLogic {
         final String rawText = event.getTextToCommit().toString();
         final InputTransaction inputTransaction = new InputTransaction(settingsValues);
         final String text = performSpecificTldProcessingOnTextInput(rawText);
-        mConnection.commitText(text, 1);
+        mConnection.commitText(applyZakhrafa(text), 1);
+
         // Space state must be updated before calling updateShiftState
         inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
         return inputTransaction;
@@ -527,4 +528,33 @@ public final class InputLogic {
 
         mConnection.commitText(StringUtils.newSingleCodePointString(codePoint), 1);
     }
+public String applyZakhrafa(String input) {
+    if (input == null) return "";
+    java.util.Map<String, String> map = new java.util.HashMap<>();
+    
+    map.put("ا", "آإ"); map.put("أ", "ٲ"); map.put("إ", "إآ");
+    map.put("ب", "بّہ"); map.put("ت", "تٌہ"); map.put("ث", "ثٌہمـ"); 
+    map.put("ج", "جَـٰ"); map.put("ح", "حۗہـ"); map.put("خ", "خٌہـ"); 
+    map.put("د", "دِٰ"); map.put("ذ", "ذآٰ"); map.put("ر", "رٍٰ"); 
+    map.put("ز", "زٍٰ"); map.put("س", "سٌہ"); map.put("ش", "شٍہـ"); 
+    map.put("ص", "صِہ"); map.put("ض", "ضـۗہ"); map.put("ط", "طُہ"); 
+    map.put("ظ", "ظٌہ"); map.put("ع", "عًـٰ"); map.put("غ", "غًـٰ"); 
+    map.put("ف", "فُہـ"); map.put("ق", "قًہـ"); map.put("ك", "كۗہـ"); 
+    map.put("ل", "لَـٰ"); map.put("م", "مـٰہ"); map.put("ن", "نْـٰ"); 
+    map.put("ه", "هـٰہ"); map.put("و", "وُٰ"); map.put("ي", "يّہـ"); 
+    map.put("ة", "ةّہ"); map.put("ى", "ىٰـ");
+
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < input.length(); i++) {
+        String letter = String.valueOf(input.charAt(i));
+        if (map.containsKey(letter)) {
+            sb.append(map.get(letter));
+        } else {
+            sb.append(letter);
+        }
+    }
+    return sb.toString();
+}
+
+}
 }
