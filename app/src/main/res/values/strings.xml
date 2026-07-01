@@ -15,7 +15,9 @@
 ** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
-*/
+*/<string translatable="false" name="app_name">كيبورد ابو رماح</string>
+<string translatable="false" name="main_keyboard_short_title">كيبورد ابو رماح</string>
+
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Option to provide vibrate/haptic feedback on keypress -->
