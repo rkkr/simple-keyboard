@@ -4475,8 +4475,8 @@ public final class KeyboardTextsTable {
         /* morekeys_j */ "\u0135",
     };
 
-    /* Locale en_IPA: International Phonetic Alphabet */
-    private static final String[] TEXTS_en_IPA = {
+    /* Locale IPA: International Phonetic Alphabet */
+    private static final String[] TEXTS_IPA = {
         // Índice 0: morekeys_a
         "æ,ɑ,ɒ,ɐ,ʌ",
         // Índice 1: morekeys_o
@@ -4541,7 +4541,7 @@ public final class KeyboardTextsTable {
         "de"     , TEXTS_de,    /*  16/ 66 German */
         "el"     , TEXTS_el,    /*   1/  5 Greek */
         "en"     , TEXTS_en,    /*   8/ 10 English */
-        "en_IPA" , TEXTS_en_IPA,/*  11/ 22 IPA */
+        "ipa"    , TEXTS_IPA,   /*  11/ 22 IPA */
         "eo"     , TEXTS_eo,    /*  26/126 Esperanto */
         "es"     , TEXTS_es,    /*   8/ 56 Spanish */
         "et_EE"  , TEXTS_et_EE, /*  22/ 27 Estonian (Estonia) */

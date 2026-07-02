@@ -59,7 +59,7 @@
     <string name="locale_name_en_US">English (US)</string>
     <!-- Description for Spanish (US) keyboard subtype [CHAR LIMIT=25]
          (US) should be an abbreviation of United States to fit in the CHAR LIMIT. -->
-    <string name="locale_name_en_IPA">IPA (International Phonetic Alphabet)</string>
+    <string name="locale_name_ipa">IPA (International Phonetic Alphabet)</string>
     <string name="layout_name_ipa">IPA (qwerty)</string>
 
     <string name="locale_name_es_US">Spanish (US)</string>
