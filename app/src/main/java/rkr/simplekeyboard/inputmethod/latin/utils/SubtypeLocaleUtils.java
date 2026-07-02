@@ -263,6 +263,8 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_URDU = "urdu";
     public static final String LAYOUT_UZBEK = "uzbek";
 
+    public static final String LAYOUT_IPA = "ipa";
+
     /**
      * Get a list of all of the supported subtypes for a locale.
      * @param locale the locale string for the subtypes to look up.
@@ -407,7 +409,6 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_SWAHILI:
                 case LOCALE_VIETNAMESE:
                 case LOCALE_ZULU:
-                case LOCALE_IPA:
                     addLayout(LAYOUT_QWERTY);
                     addGenericLayouts();
                     break;
@@ -570,6 +571,8 @@ public final class SubtypeLocaleUtils {
                     addLayout(LAYOUT_HCESAR, R.string.subtype_hcesar);
                     addGenericLayouts();
                     break;
+                case LOCALE_IPA:
+                    addLayout(LAYOUT_IPA);
             }
             return mSubtypes;
         }
