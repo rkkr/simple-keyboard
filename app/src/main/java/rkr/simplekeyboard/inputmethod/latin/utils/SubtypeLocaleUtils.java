@@ -125,6 +125,8 @@ public final class SubtypeLocaleUtils {
     private static final String LOCALE_VIETNAMESE = "vi";
     private static final String LOCALE_ZULU = "zu";
 
+    private static final String LOCALE_EN_IPA = "en_IPA";
+
     private static final String[] sSupportedLocales = new String[] {
             LOCALE_ENGLISH_UNITED_STATES,
             LOCALE_ENGLISH_GREAT_BRITAIN,
@@ -204,7 +206,9 @@ public final class SubtypeLocaleUtils {
             LOCALE_URDU,
             LOCALE_UZBEK_UZBEKISTAN,
             LOCALE_VIETNAMESE,
-            LOCALE_ZULU
+            LOCALE_ZULU,
+
+            LOCALE_EN_IPA
     };
 
     /**
@@ -403,6 +407,7 @@ public final class SubtypeLocaleUtils {
                 case LOCALE_SWAHILI:
                 case LOCALE_VIETNAMESE:
                 case LOCALE_ZULU:
+                case LOCALE_EN_IPA:
                     addLayout(LAYOUT_QWERTY);
                     addGenericLayouts();
                     break;
