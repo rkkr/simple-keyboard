@@ -23,57 +23,51 @@
 >
     <switch>
         <case
-            latin:showNumberRow="true"
+            latin:showNumberRow="false"
             latin:showExtraChars="true">
             <Key
                 latin:keySpec="!text/keyspec_q"
-                latin:keyHintLabel="_"
-                latin:additionalMoreKeys="_"
-                latin:moreKeys="!text/morekeys_q" />
+                latin:keyHintLabel="ʔ,ʡ"
+                latin:moreKeys="ʔ,ʡ" /> /*"!text/morekeys_q" */
             <Key
                 latin:keySpec="!text/keyspec_w"
-                latin:keyHintLabel="\\"
-                latin:additionalMoreKeys="\\\\"
-                latin:moreKeys="!text/morekeys_w" />
+                latin:keyHintLabel="ʍ,ɰ"
+                latin:moreKeys="ʍ,ɥ,ɰ,ʷ" /> /*"!text/morekeys_w"*/
             <Key
                 latin:keySpec="e"
-                latin:keyHintLabel="|"
-                latin:additionalMoreKeys="\\|"
-                latin:moreKeys="!text/morekeys_e" />
+                latin:keyHintLabel="ɛ,ɜ"
+                latin:moreKeys="ɛ,œ,ɜ,ø,ɘ" /> /*"!text/morekeys_e"*/
             <Key
                 latin:keySpec="r"
-                latin:keyHintLabel="="
-                latin:additionalMoreKeys="="
-                latin:moreKeys="!text/morekeys_r" />
+                latin:keyHintLabel="ɾ,ʁ,ɹ"
+                latin:moreKeys="ɾ,ɹ,ɽ,ɻ,x,ɣ,χ,ʁ,ʀ,ɰ" /> /*"!text/morekeys_r"*/
             <Key
                 latin:keySpec="t"
-                latin:keyHintLabel="["
-                latin:additionalMoreKeys="!text/keyspec_left_square_bracket"
-                latin:moreKeys="!text/morekeys_t" />
+                latin:keyHintLabel="ʈ,ʦ,ʧ"
+                latin:moreKeys="ʈ,ʦ,ʧ,ꭧ,ʨ" /> /*"!text/morekeys_t"*/
             <Key
                 latin:keySpec="!text/keyspec_y"
-                latin:keyHintLabel="]"
-                latin:additionalMoreKeys="!text/keyspec_right_square_bracket"
-                latin:moreKeys="!text/morekeys_y" />
+                latin:keyHintLabel="ʏ,ɥ,ɤ"
+                latin:moreKeys="ʏ,ɥ," /> /*"!text/morekeys_y"*/
             <Key
                 latin:keySpec="u"
-                latin:keyHintLabel="&lt;"
-                latin:additionalMoreKeys="!text/keyspec_less_than"
-                latin:moreKeys="!text/morekeys_u" />
+                latin:keyHintLabel="ʊ,ɯ"
+                latin:moreKeys="ʊ,ɯ,ʉ" /> /*"!text/morekeys_u"*/
             <Key
                 latin:keySpec="i"
-                latin:keyHintLabel="&gt;"
-                latin:additionalMoreKeys="!text/keyspec_greater_than"
-                latin:moreKeys="!text/morekeys_i" />
+                latin:keyHintLabel="ɨ,ɪ"
+                latin:moreKeys="ɨ,ɪ,ʏ" /> /*"!text/morekeys_i"*/
             <Key
                 latin:keySpec="o"
-                latin:keyHintLabel="{"
-                latin:additionalMoreKeys="!text/keyspec_left_curly_bracket"
-                latin:moreKeys="!text/morekeys_o" />
+                latin:keyHintLabel="ɔ,ɵ"
+                latin:moreKeys="ɔ,ɵ,ɞ,ʌ,ɒ,ɤ" /> /*"!text/morekeys_o"*/
             <Key
                 latin:keySpec="p"
-                latin:keyHintLabel="}"
-                latin:additionalMoreKeys="!text/keyspec_right_curly_bracket" />
+                latin:keyHintLabel="' [ ] /"
+                latin:moreKeys="',],[,/" />
+                />
+                /*latin:keyHintLabel="}"
+                latin:additionalMoreKeys="!text/keyspec_right_curly_bracket"*/
         </case>
         <case latin:showNumberRow="true">
             <Key

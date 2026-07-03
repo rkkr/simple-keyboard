@@ -25,45 +25,39 @@
         <case latin:showExtraChars="true">
             <Key latin:keySpec="a"
                 latin:keyHintLabel="æ,ɑ,ɐ"
-                latin:moreKeys="æ,ɑ,ɒ,ɐ,ʌ" /> /*"!text/morekeys_a" */
+                latin:moreKeys="æ,ɑ,ɒ,ɐ,ʌ,ɘ" /> /*alternatively, use "!text/morekeys_a" defined in KeyboardTextsTable*/
             <Key
                 latin:keySpec="s"
-                latin:keyHintLabel="#"
-                latin:moreKeys="!text/morekeys_s" />
+                latin:keyHintLabel="ʃ,ʂ,ɕ"
+                latin:moreKeys="ʃ,ʂ,ɕ,ç,ʝ,ɟ" />  <!-- Fricativas e palatal -->
             <Key
                 latin:keySpec="d"
-                latin:keyHintLabel="$"
-                latin:additionalMoreKeys="$"
-                latin:moreKeys="!text/morekeys_d" />
+                latin:keyHintLabel="ð,ɖ"
+                latin:moreKeys="ð,ɖ,ɗ,ʄ,ɠ" /> <!-- Fricativa dental sonora, retroflexa e implosivas -->
             <Key
                 latin:keySpec="f"
-                latin:keyHintLabel="%"
-                latin:additionalMoreKeys="%" />
+                latin:keyHintLabel="ɸ,θ"
+                latin:moreKeys="ɸ,θ,f,ʙ,ʀ" /> <!-- Bilabial, dental e vibrantes -->
             <Key
                 latin:keySpec="g"
-                latin:keyHintLabel="&amp;"
-                latin:additionalMoreKeys="&amp;"
-                latin:moreKeys="!text/morekeys_g" />
+                latin:keyHintLabel="ɣ,ɢ,ɠ"
+                latin:moreKeys="ɣ,ɢ,ɠ,ʛ,ɰ" /> <!-- Velar, uvular e implosivas -->
             <Key
                 latin:keySpec="h"
-                latin:keyHintLabel="-"
-                latin:additionalMoreKeys="-"
-                latin:moreKeys="!text/morekeys_h" />
+                latin:keyHintLabel="ħ,ɦ"
+                latin:moreKeys="ħ,ɦ,ʜ,ʢ,ʔ" /> <!-- Faríngeas, glotais -->
             <Key
                 latin:keySpec="j"
-                latin:keyHintLabel="+"
-                latin:additionalMoreKeys="+"
-                latin:moreKeys="!text/morekeys_j" />
+                latin:keyHintLabel="ʝ,ɟ"
+                latin:moreKeys="ʝ,ɟ,ʎ,ɫ,ʒ,ʑ,ʐ,ʓ" /> <!-- Palatal e lateral velarizada, fricativas sonoras -->
             <Key
                 latin:keySpec="k"
-                latin:keyHintLabel="("
-                latin:additionalMoreKeys="("
-                latin:moreKeys="!text/morekeys_k" />
+                latin:keyHintLabel="x,χ"
+                latin:moreKeys="x,χ,ɧ,q,ɢ" /> <!-- Fricativas e uvular -->
             <Key
                 latin:keySpec="l"
-                latin:keyHintLabel=")"
-                latin:additionalMoreKeys=")"
-                latin:moreKeys="!text/morekeys_l" />
+                latin:keyHintLabel="ɬ,ɮ"
+                latin:moreKeys="ɬ,ɮ,ʎ,ʟ,ɫ" /> <!-- Fricativas laterais e aproximantes -->
         </case>
         <default>
             <Key latin:keySpec="a"

@@ -25,37 +25,32 @@
         <case latin:showExtraChars="true">
             <Key
                 latin:keySpec="z"
-                latin:keyHintLabel="*"
-                latin:additionalMoreKeys="*"
-                latin:moreKeys="!text/morekeys_z" />
+                latin:keyHintLabel="ʒ,ʑ"
+                latin:moreKeys="ʒ,ʑ,ʐ,ʓ" /> <!-- Fricativas sonoras (já temos ʃ, ʂ, ɕ em s) -->
             <Key
-                latin:keySpec="!text/keyspec_x"
-                latin:keyHintLabel="&quot;"
-                latin:additionalMoreKeys="&quot;"
-                latin:moreKeys="!text/morekeys_x" />
+                latin:keySpec="x"
+                latin:keyHintLabel="χ,ħ,ʕ"
+                latin:moreKeys="χ,ħ,ʕ,ʢ,ʜ,ɧ" /> <!-- Fricativas uvular, faríngeas e a sueca -->
             <Key
                 latin:keySpec="c"
-                latin:keyHintLabel="&apos;"
-                latin:additionalMoreKeys="&apos;"
-                latin:moreKeys="!text/morekeys_c" />
+                latin:keyHintLabel="ʨ,ʧ,ʦ"
+                latin:moreKeys="ʨ,ʧ,ʦ,ʣ,ʥ,ʤ" /> <!-- Africadas (complemento) -->
             <Key
                 latin:keySpec="v"
-                latin:keyHintLabel=":"
-                latin:additionalMoreKeys=":"
-                latin:moreKeys="!text/morekeys_v" />
+                latin:keyHintLabel="ʋ,ⱱ"
+                latin:moreKeys="ʋ,ⱱ,ɞ" /> <!-- Aproximante labiodental e vogal aberta central -->
             <Key
                 latin:keySpec="b"
-                latin:keyHintLabel=";"
-                latin:additionalMoreKeys=";" />
+                latin:keyHintLabel="ɓ,ʙ"
+                latin:moreKeys="ɓ,ʙ,ɖ" /> <!-- Implosiva bilabial e vibrante bilabial -->
             <Key
                 latin:keySpec="n"
-                latin:keyHintLabel="!"
-                latin:additionalMoreKeys="!"
-                latin:moreKeys="!text/morekeys_n" />
+                latin:keyHintLabel="ɲ,ŋ,ɴ"
+                latin:moreKeys="ɲ,ŋ,ɴ,ɳ,ɱ" /> <!-- Nasais palatal, velar, uvular, retroflexa, labiodental -->
             <Key
                 latin:keySpec="m"
-                latin:keyHintLabel="\?"
-                latin:additionalMoreKeys="\\?" />
+                latin:keyHintLabel="ɱ,ɯ"
+                latin:moreKeys="ɱ,ɯ,ɰ" /> <!-- Nasal labiodental e vogal alta posterior não-arredondada -->
         </case>
         <default>
             <Key
