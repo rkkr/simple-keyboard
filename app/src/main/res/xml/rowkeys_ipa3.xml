@@ -36,7 +36,7 @@
     <Key
         latin:keySpec="c"
         latin:keyHintLabel="ʨ,ʧ,ʦ"
-        latin:moreKeys="ʨ,ʧ,ʦ,ʣ,ʥ,ʤ,ᶜ,ᶝ" />
+        latin:moreKeys="ʨ,ʧ,ʦ,ᶜ,ᶝ" />
 
     <!-- V -->
     <Key

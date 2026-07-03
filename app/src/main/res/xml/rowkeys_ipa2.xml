@@ -37,13 +37,13 @@
     <Key
         latin:keySpec="d"
         latin:keyHintLabel="ð,ɖ"
-        latin:moreKeys="ð,ɖ,ɗ,ʄ,ɠ,ᶑ,ᵈ" />
+        latin:moreKeys="ð,ɖ,ɗ,ʄ,ɠ,ᶑ,ʣ,ʥ,ʤ,ᵈ" />
 
     <!-- F -->
     <Key
         latin:keySpec="f"
         latin:keyHintLabel="ɸ,θ"
-        latin:moreKeys="ɸ,θ,ʙ,ʀ,ᶠ,ᶲ" />
+        latin:moreKeys="ɸ,θ,ᶠ,ᶲ" />
 
     <!-- G -->
     <Key
@@ -73,6 +73,6 @@
     <Key
         latin:keySpec="l"
         latin:keyHintLabel="ɬ,ɮ"
-        latin:moreKeys="ɬ,ɮ,ʎ,ʟ,ɫ,ˡ,ᶫ" />
+        latin:moreKeys="ɫ,ʎ,ɬ,ɮ,ʟ,ˡ,ᶫ" />
 
 </merge>
