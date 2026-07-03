@@ -20,33 +20,38 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Abertura (U+031F) -->
+    <!-- Avançado / recuado -->
     <Key
         android:keyLabel="◌̟"
-        latin:keySpec="̟" />
-    <!-- Arredondamento (U+0339) -->
+        latin:keySpec="̟"
+        latin:keyHintLabel="̠"
+        latin:moreKeys="̠" />
+    <!-- Mais arredondado / menos arredondado -->
     <Key
         android:keyLabel="◌̹"
-        latin:keySpec="̹" />
-    <!-- Avançado (U+0318) – na verdade é o símbolo de avançado, mas pode ser outro -->
-    <Key
-        android:keyLabel="◌̘"
-        latin:keySpec="̘" />
-    <!-- Recuado (U+0318) – corrigindo para o símbolo correto: U+0318 é "combining left tack below"? Não, vamos usar o que faz sentido -->
-    <Key
-        android:keyLabel="◌̙"
-        latin:keySpec="̙" />
-    <!-- Anel abaixo (U+0325) -->
+        latin:keySpec="̹"
+        latin:keyHintLabel="̜"
+        latin:moreKeys="̜" />
+    <!-- Surdo / sonoro / sussurrado / rangido -->
     <Key
         android:keyLabel="◌̥"
-        latin:keySpec="̥" />
-    <!-- Não-silábico (U+032F) -->
+        latin:keySpec="̥"
+        latin:keyHintLabel="̬,̤,̰"
+        latin:moreKeys="̬,̤,̰" />
+    <!-- Silábico / não-silábico -->
     <Key
-        android:keyLabel="◌̯"
-        latin:keySpec="̯" />
-    <!-- Alveolar (U+033A) -->
+        android:keyLabel="◌̩"
+        latin:keySpec="̩"
+        latin:keyHintLabel="̯"
+        latin:moreKeys="̯" />
+    <!-- Alveolar -->
     <Key
         android:keyLabel="◌̺"
         latin:keySpec="̺" />
-    <!-- (Pode adicionar mais conforme necessário) -->
+    <!-- Dental -->
+    <Key
+        android:keyLabel="◌̪"
+        latin:keySpec="̪" />
+    <Key android:keyLabel="◌̯"
+        latin:keySpec="̯" />
 </merge>

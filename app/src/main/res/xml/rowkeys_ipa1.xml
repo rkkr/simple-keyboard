@@ -32,11 +32,11 @@
             <Key
                 latin:keySpec="!text/keyspec_w"
                 latin:keyHintLabel="ʍ,ɰ"
-                latin:moreKeys="ʍ,ɥ,ɰ,ʷ" /> /*"!text/morekeys_w"*/
+                latin:moreKeys="ʍ,ɥ,ɰ,ʷ,ᵚ" /> /*"!text/morekeys_w"*/
             <Key
                 latin:keySpec="e"
                 latin:keyHintLabel="ɛ,ɜ"
-                latin:moreKeys="ɛ,œ,ɜ,ø,ɘ" /> /*"!text/morekeys_e"*/
+                latin:moreKeys="ɛ,œ,ɜ,ø,ɘ,ᵉ,ᵊ,ᵋ,ᶟ" /> /*"!text/morekeys_e"*/
             <Key
                 latin:keySpec="r"
                 latin:keyHintLabel="ɾ,ʁ,ɹ"
@@ -48,19 +48,19 @@
             <Key
                 latin:keySpec="!text/keyspec_y"
                 latin:keyHintLabel="ʏ,ɥ,ɤ"
-                latin:moreKeys="ʏ,ɥ," /> /*"!text/morekeys_y"*/
+                latin:moreKeys="ʏ,ɥ,ɤ,ʸ" /> /*"!text/morekeys_y"*/
             <Key
                 latin:keySpec="u"
                 latin:keyHintLabel="ʊ,ɯ"
-                latin:moreKeys="ʊ,ɯ,ʉ" /> /*"!text/morekeys_u"*/
+                latin:moreKeys="ʊ,ɯ,ʉ,ᵘ,ᶷ,ᶶ" /> /*"!text/morekeys_u"*/
             <Key
                 latin:keySpec="i"
                 latin:keyHintLabel="ɨ,ɪ"
-                latin:moreKeys="ɨ,ɪ,ʏ" /> /*"!text/morekeys_i"*/
+                latin:moreKeys="ɨ,ɪ,ʏ,ⁱ,ᶤ,ᶦ" /> /*"!text/morekeys_i"*/
             <Key
                 latin:keySpec="o"
                 latin:keyHintLabel="ɔ,ɵ"
-                latin:moreKeys="ɔ,ɵ,ɞ,ʌ,ɒ,ɤ" /> /*"!text/morekeys_o"*/
+                latin:moreKeys="ɔ,ɵ,ɞ,ʌ,ɒ,ɤ,ᵓ,ᶺ,ᶛ" /> /*"!text/morekeys_o"*/
             <Key
                 latin:keySpec="p"
                 latin:keyHintLabel="' [ ] /"

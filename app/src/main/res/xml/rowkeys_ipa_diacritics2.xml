@@ -20,40 +20,31 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Ogonek (U+0328) -->
-    <Key
-        android:keyLabel="◌̨"
-        latin:keySpec="̨" />
-    <!-- Ponto abaixo (U+0323) -->
-    <Key
-        android:keyLabel="◌̣"
-        latin:keySpec="̣" />
-    <!-- Ponto acima (U+0307) -->
-    <Key
-        android:keyLabel="◌̇"
-        latin:keySpec="̇" />
-    <!-- Duplo agudo (U+030B) -->
-    <Key
-        android:keyLabel="◌̋"
-        latin:keySpec="̋" />
-    <!-- Duplo grave (U+030F) -->
-    <Key
-        android:keyLabel="◌̏"
-        latin:keySpec="̏" />
-    <!-- Subscrito (U+0329) -->
-    <Key
-        android:keyLabel="◌̩"
-        latin:keySpec="̩" />
-    <!-- Meio anel direito (U+035C) -->
-    <Key
-        android:keyLabel="◌͜"
-        latin:keySpec="͜" />
-    <!-- Meio anel esquerdo (U+035B) -->
-    <Key
-        android:keyLabel="◌͛"
-        latin:keySpec="͛" />
-    <!-- Acento agudo duplo (U+034B) -->
-    <Key
-        android:keyLabel="◌͋"
-        latin:keySpec="͋" />
+    <!-- Ogonek -->
+    <Key android:keyLabel="◌̨"
+         latin:keySpec="̨" />
+    <!-- Ponto abaixo -->
+    <Key android:keyLabel="◌̣"
+         latin:keySpec="̣" />
+    <!-- Ponto acima -->
+    <Key android:keyLabel="◌̇"
+         latin:keySpec="̇" />
+    <!-- Duplo agudo -->
+    <Key android:keyLabel="◌̋"
+         latin:keySpec="̋" />
+    <!-- Duplo grave -->
+    <Key android:keyLabel="◌̏"
+         latin:keySpec="̏" />
+    <!-- Meio anel direito -->
+    <Key android:keyLabel="◌͜"
+         latin:keySpec="͜" />
+    <!-- Meio anel esquerdo -->
+    <Key android:keyLabel="◌͛"
+         latin:keySpec="͛" />
+    <!-- Acento agudo duplo -->
+    <Key android:keyLabel="◌͋"
+         latin:keySpec="͋" />
+    <!-- Anel abaixo (surdo) – movido da linha 3 -->
+    <Key android:keyLabel="◌̥"
+         latin:keySpec="̥" />
 </merge>

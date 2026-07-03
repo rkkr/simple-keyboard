@@ -28,7 +28,7 @@
         latin:elementKeyboard="@xml/kbd_ipa_diacritics" />
     <Element
         latin:elementName="symbolsShifted"
-        latin:elementKeyboard="@xml/kbd_symbols_shift" />
+        latin:elementKeyboard="@xml/kbd_ipa_diacritics_shifted" />
     <Element
         latin:elementName="phone"
         latin:elementKeyboard="@xml/kbd_phone" />

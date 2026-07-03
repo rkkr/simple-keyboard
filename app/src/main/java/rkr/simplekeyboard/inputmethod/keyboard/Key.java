@@ -560,7 +560,7 @@ public class Key implements Comparable<Key> {
 
     public final int selectTextSize(final KeyDrawParams params) {
         if (mLabel != null && mLabel.startsWith("◌")) {
-            return params.mLargeLetterSize; // or params.mLabelSize * 1.5
+            return (int) (params.mLabelSize * 1.5); //params.mLargeLetterSize; // or params.mLabelSize * 1.5
         }
         switch (mLabelFlags & LABEL_FLAGS_FOLLOW_KEY_TEXT_RATIO_MASK) {
         case LABEL_FLAGS_FOLLOW_KEY_LETTER_RATIO:

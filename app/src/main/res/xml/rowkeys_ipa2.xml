@@ -24,8 +24,8 @@
     <switch>
         <case latin:showExtraChars="true">
             <Key latin:keySpec="a"
-                latin:keyHintLabel="æ,ɑ,ɐ"
-                latin:moreKeys="æ,ɑ,ɒ,ɐ,ʌ,ɘ" /> /*alternatively, use "!text/morekeys_a" defined in KeyboardTextsTable*/
+                latin:keyHintLabel="ɐ,æ,ɑ"
+                latin:moreKeys="ɐ,ɑ,ɒ,æ,ʌ,ɘ,ᵃ,ᵄ,ᵅ,ᶛ,ᶺ,ᵊ" /> /*alternatively, use "!text/morekeys_a" defined in KeyboardTextsTable*/
             <Key
                 latin:keySpec="s"
                 latin:keyHintLabel="ʃ,ʂ,ɕ"
