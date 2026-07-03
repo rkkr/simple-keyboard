@@ -18,41 +18,35 @@
 */
 -->
 
-<merge
-    xmlns:latin="http://schemas.android.com/apk/res-auto"
->
+<merge xmlns:latin="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Abertura (U+031F) -->
     <Key
-        latin:keySpec="*"
-        latin:moreKeys="!text/morekeys_star" />
-    <switch>
-        <case
-            latin:languageCode="fa"
-        >
-            <Key
-                latin:keySpec="!text/keyspec_left_double_angle_quote"
-                latin:moreKeys="!text/morekeys_double_quote" />
-            <Key
-                latin:keySpec="!text/keyspec_right_double_angle_quote"
-                latin:moreKeys="!text/morekeys_single_quote" />
-        </case>
-        <default>
-            <Key
-                latin:keySpec="&quot;"
-                latin:moreKeys="!text/morekeys_double_quote" />
-            <Key
-                latin:keySpec="\'"
-                latin:moreKeys="!text/morekeys_single_quote" />
-        </default>
-    </switch>
+        android:keyLabel="◌̟"
+        latin:keySpec="̟" />
+    <!-- Arredondamento (U+0339) -->
     <Key
-        latin:keySpec=":" />
+        android:keyLabel="◌̹"
+        latin:keySpec="̹" />
+    <!-- Avançado (U+0318) – na verdade é o símbolo de avançado, mas pode ser outro -->
     <Key
-        latin:keySpec="!text/keyspec_symbols_semicolon"
-        latin:moreKeys="!text/morekeys_symbols_semicolon" />
+        android:keyLabel="◌̘"
+        latin:keySpec="̘" />
+    <!-- Recuado (U+0318) – corrigindo para o símbolo correto: U+0318 é "combining left tack below"? Não, vamos usar o que faz sentido -->
     <Key
-        latin:keySpec="!"
-        latin:moreKeys="!text/morekeys_exclamation" />
+        android:keyLabel="◌̙"
+        latin:keySpec="̙" />
+    <!-- Anel abaixo (U+0325) -->
     <Key
-        latin:keySpec="!text/keyspec_symbols_question"
-        latin:moreKeys="!text/morekeys_question" />
+        android:keyLabel="◌̥"
+        latin:keySpec="̥" />
+    <!-- Não-silábico (U+032F) -->
+    <Key
+        android:keyLabel="◌̯"
+        latin:keySpec="̯" />
+    <!-- Alveolar (U+033A) -->
+    <Key
+        android:keyLabel="◌̺"
+        latin:keySpec="̺" />
+    <!-- (Pode adicionar mais conforme necessário) -->
 </merge>

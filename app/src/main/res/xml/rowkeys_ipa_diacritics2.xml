@@ -18,49 +18,42 @@
 */
 -->
 
-<merge
-    xmlns:latin="http://schemas.android.com/apk/res-auto"
->
-    <switch>
-        <case
-            latin:languageCode="fa"
-        >
-            <!-- U+066C: "٬" ARABIC THOUSANDS SEPARATOR
-                 U+066B: "٫" ARABIC DECIMAL SEPARATOR -->
-            <Key
-                latin:keySpec="&#x066C;"
-                latin:keyHintLabel="\@"
-                latin:moreKeys="\@" />
-            <Key
-                latin:keySpec="&#x066B;"
-                latin:keyHintLabel="\#"
-                latin:moreKeys="\#" />
-        </case>
-        <default>
-            <Key
-                latin:keySpec="\@" />
-            <Key
-                latin:keySpec="\#"
-                latin:moreKeys="&#x2116;" /> <!-- U+2116: "№" NUMERO SIGN -->
-        </default>
-    </switch>
+<merge xmlns:latin="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Ogonek (U+0328) -->
     <Key
-        latin:keyStyle="currencyKeyStyle"
-        latin:keyLabelFlags="followKeyLetterRatio" />
+        android:keyLabel="◌̨"
+        latin:keySpec="̨" />
+    <!-- Ponto abaixo (U+0323) -->
     <Key
-        latin:keySpec="!text/keyspec_symbols_percent"
-        latin:moreKeys="!text/morekeys_symbols_percent" />
+        android:keyLabel="◌̣"
+        latin:keySpec="̣" />
+    <!-- Ponto acima (U+0307) -->
     <Key
-        latin:keySpec="&amp;" />
-    <!-- U+2013: "–" EN DASH
-         U+2014: "—" EM DASH
-         U+00B7: "·" MIDDLE DOT -->
+        android:keyLabel="◌̇"
+        latin:keySpec="̇" />
+    <!-- Duplo agudo (U+030B) -->
     <Key
-        latin:keySpec="-"
-        latin:moreKeys="_,&#x2013;,&#x2014;,&#x00B7;" />
+        android:keyLabel="◌̋"
+        latin:keySpec="̋" />
+    <!-- Duplo grave (U+030F) -->
     <Key
-        latin:keySpec="+"
-        latin:moreKeys="!text/morekeys_plus" />
-    <include
-        latin:keyboardLayout="@xml/keys_parentheses" />
+        android:keyLabel="◌̏"
+        latin:keySpec="̏" />
+    <!-- Subscrito (U+0329) -->
+    <Key
+        android:keyLabel="◌̩"
+        latin:keySpec="̩" />
+    <!-- Meio anel direito (U+035C) -->
+    <Key
+        android:keyLabel="◌͜"
+        latin:keySpec="͜" />
+    <!-- Meio anel esquerdo (U+035B) -->
+    <Key
+        android:keyLabel="◌͛"
+        latin:keySpec="͛" />
+    <!-- Acento agudo duplo (U+034B) -->
+    <Key
+        android:keyLabel="◌͋"
+        latin:keySpec="͋" />
 </merge>
