@@ -18,73 +18,61 @@
 */
 -->
 
-<merge
-    xmlns:latin="http://schemas.android.com/apk/res-auto"
->
-    <switch>
-        <case latin:showExtraChars="true">
-            <Key latin:keySpec="a"
-                latin:keyHintLabel="ɐ,æ,ɑ"
-                latin:moreKeys="ɐ,ɑ,ɒ,æ,ʌ,ɘ,ᵃ,ᵄ,ᵅ,ᶛ,ᶺ,ᵊ" /> /*alternatively, use "!text/morekeys_a" defined in KeyboardTextsTable*/
-            <Key
-                latin:keySpec="s"
-                latin:keyHintLabel="ʃ,ʂ,ɕ"
-                latin:moreKeys="ʃ,ʂ,ɕ,ç,ʝ,ɟ" />  <!-- Fricativas e palatal -->
-            <Key
-                latin:keySpec="d"
-                latin:keyHintLabel="ð,ɖ"
-                latin:moreKeys="ð,ɖ,ɗ,ʄ,ɠ" /> <!-- Fricativa dental sonora, retroflexa e implosivas -->
-            <Key
-                latin:keySpec="f"
-                latin:keyHintLabel="ɸ,θ"
-                latin:moreKeys="ɸ,θ,f,ʙ,ʀ" /> <!-- Bilabial, dental e vibrantes -->
-            <Key
-                latin:keySpec="g"
-                latin:keyHintLabel="ɣ,ɢ,ɠ"
-                latin:moreKeys="ɣ,ɢ,ɠ,ʛ,ɰ" /> <!-- Velar, uvular e implosivas -->
-            <Key
-                latin:keySpec="h"
-                latin:keyHintLabel="ħ,ɦ"
-                latin:moreKeys="ħ,ɦ,ʜ,ʢ,ʔ" /> <!-- Faríngeas, glotais -->
-            <Key
-                latin:keySpec="j"
-                latin:keyHintLabel="ʝ,ɟ"
-                latin:moreKeys="ʝ,ɟ,ʎ,ɫ,ʒ,ʑ,ʐ,ʓ" /> <!-- Palatal e lateral velarizada, fricativas sonoras -->
-            <Key
-                latin:keySpec="k"
-                latin:keyHintLabel="x,χ"
-                latin:moreKeys="x,χ,ɧ,q,ɢ" /> <!-- Fricativas e uvular -->
-            <Key
-                latin:keySpec="l"
-                latin:keyHintLabel="ɬ,ɮ"
-                latin:moreKeys="ɬ,ɮ,ʎ,ʟ,ɫ" /> <!-- Fricativas laterais e aproximantes -->
-        </case>
-        <default>
-            <Key latin:keySpec="a"
-                latin:moreKeys="!text/morekeys_a" />
-            <Key
-                latin:keySpec="s"
-                latin:moreKeys="!text/morekeys_s" />
-            <Key
-                latin:keySpec="d"
-                latin:moreKeys="!text/morekeys_d" />
-            <Key
-                latin:keySpec="f" />
-            <Key
-                latin:keySpec="g"
-                latin:moreKeys="!text/morekeys_g" />
-            <Key
-                latin:keySpec="h"
-                latin:moreKeys="!text/morekeys_h" />
-            <Key
-                latin:keySpec="j"
-                latin:moreKeys="!text/morekeys_j" />
-            <Key
-                latin:keySpec="k"
-                latin:moreKeys="!text/morekeys_k" />
-            <Key
-                latin:keySpec="l"
-                latin:moreKeys="!text/morekeys_l" />
-        </default>
-    </switch>
+
+<merge xmlns:latin="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- A -->
+    <Key
+        latin:keySpec="a"
+        latin:keyHintLabel="ɐ,æ,ɑ"
+        latin:moreKeys="ɐ,ɑ,ɒ,æ,ʌ,ɘ,ᵃ,ᵄ,ᵅ,ᶛ,ᶺ,ᵊ" />
+
+    <!-- S -->
+    <Key
+        latin:keySpec="s"
+        latin:keyHintLabel="ʃ,ʂ,ɕ"
+        latin:moreKeys="ʃ,ʂ,ɕ,ç,ʝ,ɟ,ˢ,ᶴ,ᶳ,ᶽ" />
+
+    <!-- D -->
+    <Key
+        latin:keySpec="d"
+        latin:keyHintLabel="ð,ɖ"
+        latin:moreKeys="ð,ɖ,ɗ,ʄ,ɠ,ᶑ,ᵈ" />
+
+    <!-- F -->
+    <Key
+        latin:keySpec="f"
+        latin:keyHintLabel="ɸ,θ"
+        latin:moreKeys="ɸ,θ,ʙ,ʀ,ᶠ,ᶲ" />
+
+    <!-- G -->
+    <Key
+        latin:keySpec="g"
+        latin:keyHintLabel="ɣ,ɢ,ɠ"
+        latin:moreKeys="ɣ,ɢ,ɠ,ʛ,ɰ,ᶢ,ᵍ" />
+
+    <!-- H -->
+    <Key
+        latin:keySpec="h"
+        latin:keyHintLabel="ħ,ɦ"
+        latin:moreKeys="ħ,ɦ,ʜ,ʢ,ʔ,ʰ,ʱ" />
+
+    <!-- J -->
+    <Key
+        latin:keySpec="j"
+        latin:keyHintLabel="ʝ,ɟ"
+        latin:moreKeys="ʝ,ɟ,ʎ,ɫ,ʒ,ʑ,ʐ,ʓ,ʲ,ᶨ" />
+
+    <!-- K -->
+    <Key
+        latin:keySpec="k"
+        latin:keyHintLabel="x,χ"
+        latin:moreKeys="x,χ,ɧ,q,ɢ,ᶄ,ᵏ" />
+
+    <!-- L -->
+    <Key
+        latin:keySpec="l"
+        latin:keyHintLabel="ɬ,ɮ"
+        latin:moreKeys="ɬ,ɮ,ʎ,ʟ,ɫ,ˡ,ᶫ" />
+
 </merge>
