@@ -2,7 +2,7 @@
 <!--
 /*
 **
-** Copyright 2026, The Android Open Source Project
+** Copyright 2026, lgmventura
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -20,19 +20,19 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Avançado / recuado -->
+    <!--  -->
     <Key
         android:keyLabel="◌̟"
         latin:keySpec="̟"
         latin:keyHintLabel="◌̽ ◌͓"
         latin:moreKeys="̽,͓" />
-    <!-- Mais arredondado / menos arredondado -->
+    <!--  -->
     <Key
         android:keyLabel="◌̹"
         latin:keySpec="̹"
         latin:keyHintLabel="◌̜"
         latin:moreKeys="̜" />
-    <!-- Silábico / não-silábico -->
+    <!--  -->
     <Key
         android:keyLabel="◌̩"
         latin:keySpec="̩"
@@ -50,12 +50,13 @@
         latin:keySpec="̪"
         latin:keyHintLabel="◌͆"
         latin:moreKeys="͆" />
+    <!-- Colchete aberto -->
     <Key
         android:keyLabel="["
         latin:keySpec="["
         latin:keyHintLabel="{ ⟦"
         latin:moreKeys="{,⟦" />
-    <!-- Colchete fechado + parênteses/chaves -->
+    <!-- Colchete fechado -->
     <Key
         android:keyLabel="]"
         latin:keySpec="]"

@@ -2,7 +2,7 @@
 <!--
 /*
 **
-** Copyright 2026, The Android Open Source Project
+** Copyright 2026, lgmventura
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -20,8 +20,7 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Plosiva não audível -->
-
+    <!--  -->
     <Key
         android:keyLabel="\\"
         latin:keySpec="\\"
@@ -37,12 +36,11 @@
         latin:keySpec="×"
         latin:keyHintLabel="÷"
         latin:moreKeys="÷" />
-    <!-- Barra inclinada -->
+    <!--  -->
     <Key android:keyLabel="+"
          latin:keySpec="+" />
     <Key android:keyLabel="-"
         latin:keySpec="-" />
     <Key android:keyLabel="="
         latin:keySpec="=" />
-    <!-- etc. -->
 </merge>

@@ -4476,6 +4476,9 @@ public final class KeyboardTextsTable {
     };
 
     /* Locale IPA: International Phonetic Alphabet */
+    /* This suggests an alternative use, but it is not used, since the keys are set directly in the
+    keyrows files.
+     */
     private static final String[] TEXTS_IPA = {
         // Índice 0: morekeys_a
         "æ,ɑ,ɒ,ɐ,ʌ",
@@ -4485,23 +4488,23 @@ public final class KeyboardTextsTable {
         "ə,ɛ,ɜ",
         // Índice 3: morekeys_u
         "ʊ,uː",
-        // Índice 4: keylabel_to_alpha (deixe null para usar o padrão "ABC")
+        // Índice 4: keylabel_to_alpha
         null,
         // Índice 5: morekeys_i
         "ɪ,iː,ɨ",
         // Índice 6: morekeys_n
         "ŋ",
         // Índice 7: morekeys_c
-        "ç",  // ou "ʃ" se preferir
-        // Índice 8: double_quotes (não personalizado)
+        "ç,ʃ",
+        // Índice 8:
         null,
         // Índice 9: morekeys_s
         "ʃ",
-        // Índice 10: single_quotes (não personalizado)
+        // Índice 10:
         null,
-        // Índice 11: keyspec_currency (não personalizado)
+        // Índice 11:
         null,
-        // Índice 12: morekeys_y (não personalizado)
+        // Índice 12:
         null,
         // Índice 13: morekeys_z
         "ʒ",
@@ -4510,19 +4513,17 @@ public final class KeyboardTextsTable {
         // Índice 15: morekeys_t
         "θ,ð",
         // Índice 16: morekeys_l
-        "ɫ",  // ou null
+        "ɫ",
         // Índice 17: morekeys_g
         "ɣ",
-        // Índice 18: single_angle_quotes (não personalizado)
+        // Índice 18:
         null,
-        // Índice 19: double_angle_quotes (não personalizado)
+        // Índice 19:
         null,
         // Índice 20: morekeys_r
         "ɹ,ɾ",
         // Índice 21: morekeys_k
         "x",
-        // Se você quiser personalizar mais, adicione mais posições até o índice desejado.
-        // Todos os índices não definidos serão tratados como null e o padrão será usado.
     };
 
     private static final Object[] LOCALES_AND_TEXTS = {
