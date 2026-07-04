@@ -24,39 +24,60 @@
     <!-- Tilde -->
     <Key
         android:keyLabel="◌̃"
-        latin:keySpec="̃" />
+        latin:keySpec="̃"
+        latin:keyHintLabel="◌̰ ◌͋"
+        latin:moreKeys="̰,͋,̴"
+        />
     <!-- Agudo -->
     <Key
         android:keyLabel="◌́"
-        latin:keySpec="́" />
+        latin:keySpec="́"
+        latin:keyHintLabel="◌̋"
+        latin:moreKeys="̋"
+        />
     <!-- Grave -->
     <Key
         android:keyLabel="◌̀"
-        latin:keySpec="̀" />
+        latin:keySpec="̀"
+        latin:keyHintLabel="◌̏"
+        latin:moreKeys="̏"
+        />
     <!-- Circunflexo -->
     <Key
         android:keyLabel="◌̂"
-        latin:keySpec="̂" />
+        latin:keySpec="̂"
+        latin:keyHintLabel="◌̬"
+        latin:moreKeys="̬" />
     <!-- Trema -->
     <Key
         android:keyLabel="◌̈"
-        latin:keySpec="̈" />
+        latin:keySpec="̈"
+        latin:keyHintLabel="◌̤"
+        latin:moreKeys="̤" />
     <!-- Macron -->
     <Key
         android:keyLabel="◌̄"
-        latin:keySpec="̄" />
+        latin:keySpec="̄"
+        latin:keyHintLabel="◌̠"
+        latin:moreKeys="̠" />
     <!-- Breve -->
     <Key
         android:keyLabel="◌̆"
-        latin:keySpec="̆" />
+        latin:keySpec="̆"
+        latin:keyHintLabel="◌̮ ◌̯"
+        latin:moreKeys="̮,̯,̑" />
     <!-- Caron -->
     <Key
         android:keyLabel="◌̌"
-        latin:keySpec="̌" />
+        latin:keySpec="̌"
+        latin:keyHintLabel="◌̬"
+        latin:moreKeys="̬" />
     <!-- Anel -->
     <Key
         android:keyLabel="◌̊"
-        latin:keySpec="̊" />
+        latin:keySpec="̊"
+        latin:keyHintLabel="◌̥"
+        latin:moreKeys="̥" />
     <!-- Cedilha -->
     <Key
         android:keyLabel="◌̧"

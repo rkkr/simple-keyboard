@@ -55,19 +55,19 @@
     <Key
         latin:keySpec="h"
         latin:keyHintLabel="ħ,ɦ"
-        latin:moreKeys="ħ,ɦ,ʜ,ʢ,ʔ,ʰ,ʱ" />
+        latin:moreKeys="ħ,ɦ,ɧ,ʜ,ʢ,ʔ,ʰ,ʱ" />
 
     <!-- J -->
     <Key
         latin:keySpec="j"
         latin:keyHintLabel="ʝ,ɟ"
-        latin:moreKeys="ʝ,ɟ,ʎ,ɫ,ʒ,ʑ,ʐ,ʓ,ʲ,ᶨ" />
+        latin:moreKeys="ʝ,ɟ,ʎ,ʒ,ʑ,ʐ,ʓ,ʲ,ᶨ" />
 
     <!-- K -->
     <Key
         latin:keySpec="k"
         latin:keyHintLabel="x,χ"
-        latin:moreKeys="x,χ,ɧ,q,ɢ,ᶄ,ᵏ" />
+        latin:moreKeys="x,χ,ɧ,ᶄ,ᵏ" />
 
     <!-- L -->
     <Key

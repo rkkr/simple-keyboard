@@ -20,24 +20,33 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Stress primário + secundário -->
-    <Key
-        android:keyLabel="ˈ"
-        latin:keySpec="ˈ"
-        latin:keyHintLabel="◌ˌ"
-        latin:moreKeys="ˌ" />
-    <!-- Duração longa + meia-longa -->
-    <Key
-        android:keyLabel="ː"
-        latin:keySpec="ː"
-        latin:keyHintLabel="◌ˑ"
-        latin:moreKeys="ˑ" />
+
     <!-- Tom alto + outros níveis e contornos -->
     <Key
         android:keyLabel="˥"
         latin:keySpec="˥"
-        latin:keyHintLabel="˦,˧,˨"
-        latin:moreKeys="˦,˧,˨,˩,↗,↘" />
+        latin:keyHintLabel="↗ ↘"
+        latin:moreKeys="↗,↘" />
+    <Key
+        android:keyLabel="˦"
+        latin:keySpec="˦"
+        latin:keyHintLabel=""
+        latin:moreKeys="" />
+    <Key
+        android:keyLabel="˧"
+        latin:keySpec="˧"
+        latin:keyHintLabel=""
+        latin:moreKeys="" />
+    <Key
+        android:keyLabel="˨"
+        latin:keySpec="˨"
+        latin:keyHintLabel=""
+        latin:moreKeys="" />
+    <Key
+        android:keyLabel="˩"
+        latin:keySpec="˩"
+        latin:keyHintLabel=""
+        latin:moreKeys="" />
     <!-- Barra simples + dupla -->
     <Key
         android:keyLabel="|"
@@ -52,18 +61,15 @@
         latin:moreKeys="͡,͜" />
     <!-- Colchete aberto + parênteses/chaves -->
     <Key
-        android:keyLabel="["
-        latin:keySpec="["
-        latin:keyHintLabel="(,{"
-        latin:moreKeys="(,{" />
+        android:keyLabel="&lt;"
+        latin:keySpec="&lt;"
+        latin:keyHintLabel="« ª"
+        latin:moreKeys="«,＜,ª" />
     <!-- Colchete fechado + parênteses/chaves -->
     <Key
-        android:keyLabel="]"
-        latin:keySpec="]"
-        latin:keyHintLabel="),}"
-        latin:moreKeys="),}" />
-    <!-- Símbolo de sílaba tônica -->
-    <Key
-        android:keyLabel="."
-        latin:keySpec="." />
+        android:keyLabel="&gt;"
+        latin:keySpec="&gt;"
+        latin:keyHintLabel="» º"
+        latin:moreKeys="»,＞,º" />
+    <!-- -->
 </merge>

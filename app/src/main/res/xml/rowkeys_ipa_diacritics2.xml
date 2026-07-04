@@ -20,31 +20,52 @@
 
 <merge xmlns:latin="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Ogonek -->
-    <Key android:keyLabel="◌̨"
-         latin:keySpec="̨" />
-    <!-- Ponto abaixo -->
-    <Key android:keyLabel="◌̣"
-         latin:keySpec="̣" />
-    <!-- Ponto acima -->
+    <!-- Combining Retroflex Hook Below; ogonek -->
+    <Key android:keyLabel="◌̢"
+        latin:keySpec="̢"
+        latin:keyHintLabel="◌̨"
+        latin:moreKeys="̨" />
+    <!-- Dot above, dot below -->
     <Key android:keyLabel="◌̇"
-         latin:keySpec="̇" />
-    <!-- Duplo agudo -->
-    <Key android:keyLabel="◌̋"
-         latin:keySpec="̋" />
-    <!-- Duplo grave -->
-    <Key android:keyLabel="◌̏"
-         latin:keySpec="̏" />
+         latin:keySpec="̇"
+         latin:keyHintLabel="◌̣"
+         latin:moreKeys="̣" />
+    <!-- Down tack (U+031E), up tack,  -->
+    <Key
+        android:keyLabel="◌̞"
+        latin:keySpec="̞"
+        latin:keyHintLabel="◌̘"
+        latin:moreKeys="̝,᷵,̘,,˔,̙" />
     <!-- Meio anel direito -->
     <Key android:keyLabel="◌͜"
-         latin:keySpec="͜" />
+         latin:keySpec="͜"
+        latin:keyHintLabel="◌͡"
+        latin:moreKeys="͡" />
     <!-- Meio anel esquerdo -->
-    <Key android:keyLabel="◌͛"
-         latin:keySpec="͛" />
-    <!-- Acento agudo duplo -->
-    <Key android:keyLabel="◌͋"
-         latin:keySpec="͋" />
-    <!-- Anel abaixo (surdo) – movido da linha 3 -->
-    <Key android:keyLabel="◌̥"
-         latin:keySpec="̥" />
+    <Key android:keyLabel="◌̼"
+         latin:keySpec="̼"
+        latin:keyHintLabel="◌˞ ◌͛"
+        latin:moreKeys="˞,͛" />
+    <Key
+        android:keyLabel="ː"
+        latin:keySpec="ː"
+        latin:keyHintLabel="◌ˑ"
+        latin:moreKeys="ˑ" />
+    <!-- Stress primário + secundário -->
+    <Key
+        android:keyLabel="ˈ"
+        latin:keySpec="ˈ"
+        latin:keyHintLabel="◌ˌ"
+        latin:moreKeys="ˌ,ʼ" />
+    <Key
+        android:keyLabel="("
+        latin:keySpec="("
+        latin:keyHintLabel="⟨ ⟪"
+        latin:moreKeys="⟨,⟪,｟" />
+    <!-- Colchete fechado + parênteses/chaves -->
+    <Key
+        android:keyLabel=")"
+        latin:keySpec=")"
+        latin:keyHintLabel="⟩ ⟫"
+        latin:moreKeys="⟩,⟫,｠" />
 </merge>

@@ -24,34 +24,41 @@
     <Key
         android:keyLabel="◌̟"
         latin:keySpec="̟"
-        latin:keyHintLabel="̠"
-        latin:moreKeys="̠" />
+        latin:keyHintLabel="◌̽ ◌͓"
+        latin:moreKeys="̽,͓" />
     <!-- Mais arredondado / menos arredondado -->
     <Key
         android:keyLabel="◌̹"
         latin:keySpec="̹"
-        latin:keyHintLabel="̜"
+        latin:keyHintLabel="◌̜"
         latin:moreKeys="̜" />
-    <!-- Surdo / sonoro / sussurrado / rangido -->
-    <Key
-        android:keyLabel="◌̥"
-        latin:keySpec="̥"
-        latin:keyHintLabel="̬,̤,̰"
-        latin:moreKeys="̬,̤,̰" />
     <!-- Silábico / não-silábico -->
     <Key
         android:keyLabel="◌̩"
         latin:keySpec="̩"
-        latin:keyHintLabel="̯"
-        latin:moreKeys="̯" />
+        latin:keyHintLabel="◌̍"
+        latin:moreKeys="̍" />
     <!-- Alveolar -->
     <Key
         android:keyLabel="◌̺"
-        latin:keySpec="̺" />
+        latin:keySpec="̺"
+        latin:keyHintLabel="◌̻ ◌̚"
+        latin:moreKeys="̻,̚" />
     <!-- Dental -->
     <Key
         android:keyLabel="◌̪"
-        latin:keySpec="̪" />
-    <Key android:keyLabel="◌̯"
-        latin:keySpec="̯" />
+        latin:keySpec="̪"
+        latin:keyHintLabel="◌͆"
+        latin:moreKeys="͆" />
+    <Key
+        android:keyLabel="["
+        latin:keySpec="["
+        latin:keyHintLabel="{ ⟦"
+        latin:moreKeys="{,⟦" />
+    <!-- Colchete fechado + parênteses/chaves -->
+    <Key
+        android:keyLabel="]"
+        latin:keySpec="]"
+        latin:keyHintLabel="} ⟧"
+        latin:moreKeys="},⟧" />
 </merge>
