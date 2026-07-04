@@ -12,6 +12,7 @@ Features:
 - Small size (<1MB)
 - Adjustable keyboard height for more screen space
 - Number row
+- International Phonetic Alphabet (IPA)
 - Swipe space to move pointer
 - Delete swipe
 - Custom theme colors
@@ -24,7 +25,12 @@ Feature it doesn't have and probably will never have:
 - Spell checker
 - Swipe typing
 
+## IPA
+This fork includes the <b>International Phonetic Alphabet (IPA)</b> as a language that can be chosen in the keyboard. It also creates a new keyboard layout for it. It contains all phonetic letters and diacritics — if you miss some, please inform me.
+It is only available as qwerty layout (adapted). Other layouts would be welcome.
+
 ## Downloads
+ATTENTION - the download links below still point to the original, not this fork.
 
 [<img src="https://f-droid.org/badge/get-it-on.png"
       alt="Get it on F-Droid"
