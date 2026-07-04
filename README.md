@@ -29,6 +29,12 @@ Feature it doesn't have and probably will never have:
 This fork includes the <b>International Phonetic Alphabet (IPA)</b> as a language that can be chosen in the keyboard. It also creates a new keyboard layout for it. It contains all phonetic letters and diacritics — if you miss some, please inform me.
 It is only available as qwerty layout (adapted). Other layouts would be welcome.
 
+<img width="408" height="303" alt="Screenshot_20260703_225401" src="https://github.com/user-attachments/assets/c6e0ef62-a830-48af-bfec-2332ad2fe1bd" />
+<img width="408" height="487" alt="Screenshot_20260703_225546" src="https://github.com/user-attachments/assets/ac1c8509-14cf-44ea-bee9-06707a553d5f" />
+<img width="474" height="306" alt="Screenshot_20260704_223718" src="https://github.com/user-attachments/assets/10d5435b-3422-4f8b-9fa2-4b1ffe7fce03" />
+<img width="474" height="286" alt="Screenshot_20260704_223732" src="https://github.com/user-attachments/assets/224aa06d-426e-42e6-b0ad-e6a63e31bb78" />
+
+
 ## Downloads
 ATTENTION - the download links below still point to the original, not this fork.
 
