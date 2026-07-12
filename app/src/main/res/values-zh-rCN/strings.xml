@@ -36,7 +36,7 @@
     <string name="locale_name_es_US">"西班牙语（美国）"</string>
     <string name="locale_name_hi_ZZ">"印地英语"</string>
     <string name="locale_name_sr_ZZ">"塞尔维亚语（拉丁语布局）"</string>
-    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%s</xliff:g>（<xliff:g id="LAYOUT">%s</xliff:g>）"</string>
+    <string name="subtype_generic_layout">"<xliff:g id="LANGUAGE_NAME">%1$s</xliff:g>（<xliff:g id="LAYOUT">%2$s</xliff:g>）"</string>
     <string name="subtype_traditional">"传统"</string>
     <string name="subtype_compact">"紧凑型"</string>
     <string name="add">"添加"</string>
