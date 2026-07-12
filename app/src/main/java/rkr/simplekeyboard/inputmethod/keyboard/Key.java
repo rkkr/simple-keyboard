@@ -2,6 +2,7 @@
  * Copyright (C) 2010 The Android Open Source Project
  * Copyright (C) 2023 Raimondas Rimkus
  * Copyright (C) 2021 wittmane
+ * Copyright (C) 2026 lgmventura
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -218,7 +219,7 @@ public class Key implements Comparable<Key> {
      */
     public Key(final String keySpec, final TypedArray keyAttr,
             final KeyStyle style, final KeyboardParams params,
-            final KeyboardRow row) {
+            final KeyboardRow row, final String androidKeyLabel) {
         // Update the row to work with the new key
         row.setCurrentKey(keyAttr, isSpacer());
 
@@ -305,10 +306,12 @@ public class Key implements Comparable<Key> {
             // code point nor as a surrogate pair.
             mLabel = new StringBuilder().appendCodePoint(code).toString();
         } else {
-            final String label = KeySpecParser.getLabel(keySpec);
-            mLabel = needsToUpcase
-                    ? StringUtils.toTitleCaseOfKeyLabel(label, localeForUpcasing)
-                    : label;
+            String labelFromSpec = KeySpecParser.getLabel(keySpec);
+            String computedLabel = needsToUpcase
+                    ? StringUtils.toTitleCaseOfKeyLabel(labelFromSpec, localeForUpcasing)
+                    : labelFromSpec;
+
+            mLabel = (androidKeyLabel != null) ? androidKeyLabel : computedLabel;
         }
         if ((mLabelFlags & LABEL_FLAGS_DISABLE_HINT_LABEL) != 0) {
             mHintLabel = null;
@@ -356,7 +359,9 @@ public class Key implements Comparable<Key> {
         final int altCode = needsToUpcase
                 ? StringUtils.toTitleCaseOfKeyCode(altCodeInAttr, localeForUpcasing)
                 : altCodeInAttr;
-        mOptionalAttributes = OptionalAttributes.newInstance(outputText, altCode);
+        String finalOutputText = outputText;
+
+        mOptionalAttributes = OptionalAttributes.newInstance(finalOutputText, altCode);
         mKeyVisualAttributes = KeyVisualAttributes.newInstance(keyAttr);
         mHashCode = computeHashCode(this);
     }
@@ -555,6 +560,9 @@ public class Key implements Comparable<Key> {
     }
 
     public final int selectTextSize(final KeyDrawParams params) {
+        if (mLabel != null && mLabel.startsWith("◌")) {
+            return (int) (params.mLabelSize * 1.6); //params.mLargeLetterSize; // or params.mLabelSize * 1.5
+        }
         switch (mLabelFlags & LABEL_FLAGS_FOLLOW_KEY_TEXT_RATIO_MASK) {
         case LABEL_FLAGS_FOLLOW_KEY_LETTER_RATIO:
             return params.mLetterSize;
@@ -900,7 +908,7 @@ public class Key implements Comparable<Key> {
     public static class Spacer extends Key {
         public Spacer(final TypedArray keyAttr, final KeyStyle keyStyle,
                 final KeyboardParams params, final KeyboardRow row) {
-            super(null /* keySpec */, keyAttr, keyStyle, params, row);
+            super(null /* keySpec */, keyAttr, keyStyle, params, row, null);
         }
     }
 }

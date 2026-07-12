@@ -4475,6 +4475,57 @@ public final class KeyboardTextsTable {
         /* morekeys_j */ "\u0135",
     };
 
+    /* Locale IPA: International Phonetic Alphabet */
+    /* This suggests an alternative use, but it is not used, since the keys are set directly in the
+    keyrows files.
+     */
+    private static final String[] TEXTS_IPA = {
+        // Índice 0: morekeys_a
+        "æ,ɑ,ɒ,ɐ,ʌ",
+        // Índice 1: morekeys_o
+        "ɔ,ɒ,ɵ",
+        // Índice 2: morekeys_e
+        "ə,ɛ,ɜ",
+        // Índice 3: morekeys_u
+        "ʊ,uː",
+        // Índice 4: keylabel_to_alpha
+        null,
+        // Índice 5: morekeys_i
+        "ɪ,iː,ɨ",
+        // Índice 6: morekeys_n
+        "ŋ",
+        // Índice 7: morekeys_c
+        "ç,ʃ",
+        // Índice 8:
+        null,
+        // Índice 9: morekeys_s
+        "ʃ",
+        // Índice 10:
+        null,
+        // Índice 11:
+        null,
+        // Índice 12:
+        null,
+        // Índice 13: morekeys_z
+        "ʒ",
+        // Índice 14: morekeys_d
+        "ð",
+        // Índice 15: morekeys_t
+        "θ,ð",
+        // Índice 16: morekeys_l
+        "ɫ",
+        // Índice 17: morekeys_g
+        "ɣ",
+        // Índice 18:
+        null,
+        // Índice 19:
+        null,
+        // Índice 20: morekeys_r
+        "ɹ,ɾ",
+        // Índice 21: morekeys_k
+        "x",
+    };
+
     private static final Object[] LOCALES_AND_TEXTS = {
     // "locale", TEXT_ARRAY,  /* numberOfNonNullText/lengthOf_TEXT_ARRAY localeName */
         "DEFAULT", TEXTS_DEFAULT, /* 176/176 DEFAULT */
@@ -4491,6 +4542,7 @@ public final class KeyboardTextsTable {
         "de"     , TEXTS_de,    /*  16/ 66 German */
         "el"     , TEXTS_el,    /*   1/  5 Greek */
         "en"     , TEXTS_en,    /*   8/ 10 English */
+        "ipa"    , TEXTS_IPA,   /*  11/ 22 IPA */
         "eo"     , TEXTS_eo,    /*  26/126 Esperanto */
         "es"     , TEXTS_es,    /*   8/ 56 Spanish */
         "et_EE"  , TEXTS_et_EE, /*  22/ 27 Estonian (Estonia) */

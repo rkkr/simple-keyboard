@@ -125,6 +125,8 @@ public final class SubtypeLocaleUtils {
     private static final String LOCALE_VIETNAMESE = "vi";
     private static final String LOCALE_ZULU = "zu";
 
+    private static final String LOCALE_IPA = "ipa";
+
     private static final String[] sSupportedLocales = new String[] {
             LOCALE_ENGLISH_UNITED_STATES,
             LOCALE_ENGLISH_GREAT_BRITAIN,
@@ -204,7 +206,9 @@ public final class SubtypeLocaleUtils {
             LOCALE_URDU,
             LOCALE_UZBEK_UZBEKISTAN,
             LOCALE_VIETNAMESE,
-            LOCALE_ZULU
+            LOCALE_ZULU,
+
+            LOCALE_IPA
     };
 
     /**
@@ -258,6 +262,8 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_TURKISH_F = "turkish_f";
     public static final String LAYOUT_URDU = "urdu";
     public static final String LAYOUT_UZBEK = "uzbek";
+
+    public static final String LAYOUT_IPA = "ipa";
 
     /**
      * Get a list of all of the supported subtypes for a locale.
@@ -565,6 +571,8 @@ public final class SubtypeLocaleUtils {
                     addLayout(LAYOUT_HCESAR, R.string.subtype_hcesar);
                     addGenericLayouts();
                     break;
+                case LOCALE_IPA:
+                    addLayout(LAYOUT_IPA);
             }
             return mSubtypes;
         }
