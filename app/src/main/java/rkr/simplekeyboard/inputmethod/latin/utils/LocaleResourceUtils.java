@@ -164,13 +164,11 @@ public final class LocaleResourceUtils {
             exceptionalNameResId = null;
         }
 
-        final String displayName;
         if (exceptionalNameResId != null) {
-            displayName = sResources.getString(exceptionalNameResId);
+            return sResources.getString(exceptionalNameResId);
         } else {
-            displayName = LocaleUtils.constructLocaleFromString(localeString)
+            return LocaleUtils.constructLocaleFromString(localeString)
                     .getDisplayName(displayLocale);
         }
-        return StringUtils.capitalizeEachWord(displayName, displayLocale);
     }
 }
