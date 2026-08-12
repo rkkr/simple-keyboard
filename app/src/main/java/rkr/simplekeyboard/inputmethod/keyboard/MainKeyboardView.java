@@ -420,7 +420,7 @@ public final class MainKeyboardView extends KeyboardView implements MoreKeysPane
     }
 
     public boolean isInCursorMove() {
-        return PointerTracker.isAnyInCursorMove();
+        return PointerTracker.isAnyInCursorMove() || mTimerHandler.isInKeyRepeat();
     }
 
     @Override

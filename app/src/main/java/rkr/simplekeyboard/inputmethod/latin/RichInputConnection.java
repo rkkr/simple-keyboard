@@ -333,6 +333,7 @@ public final class RichInputConnection {
         }
         if (mExpectedSelStart >= numChars) {
             mExpectedSelStart -= numChars;
+            mExpectedSelEnd = mExpectedSelStart;
         }
 
         mIC.deleteSurroundingText(numChars, 0);
