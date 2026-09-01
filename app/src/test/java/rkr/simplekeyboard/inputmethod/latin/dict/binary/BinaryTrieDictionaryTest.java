@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryTrieDictionaryTest {
@@ -110,8 +111,8 @@ public class BinaryTrieDictionaryTest {
 
     @Test
     public void testGetPrefixSuggestions() {
-        List<CharSequence> suggestions = esDict.getPrefixSuggestions("qu", 5);
-        assertNotNull(suggestions);
+        List<CharSequence> suggestions = new ArrayList<>();
+        esDict.getPrefixSuggestions("qu", 5, suggestions);
         assertTrue("Should have some suggestions", suggestions.size() > 0);
     }
 
@@ -134,8 +135,8 @@ public class BinaryTrieDictionaryTest {
 
     @Test
     public void testPrefixSuggestionsFindsWordsAcrossMultipleBranches() {
-        List<CharSequence> suggestions = esDict.getPrefixSuggestions("h", 30);
-        assertNotNull(suggestions);
+        List<CharSequence> suggestions = new ArrayList<>();
+        esDict.getPrefixSuggestions("h", 30, suggestions);
         assertTrue("Should collect suggestions across multiple branches", suggestions.size() > 0);
         boolean foundHoBranch = false;
         boolean foundHeBranch = false;
@@ -181,22 +182,62 @@ public class BinaryTrieDictionaryTest {
     @Test
     public void testPrefixSuggestionsBoundariesAndLimits() {
         // Limit 1, 5, 40 boundary tests
-        List<CharSequence> res1 = esDict.getPrefixSuggestions("a", 1);
-        assertNotNull(res1);
+        List<CharSequence> res1 = new ArrayList<>();
+        esDict.getPrefixSuggestions("a", 1, res1);
         assertEquals(1, res1.size());
 
-        List<CharSequence> res5 = esDict.getPrefixSuggestions("a", 5);
-        assertNotNull(res5);
+        List<CharSequence> res5 = new ArrayList<>();
+        esDict.getPrefixSuggestions("a", 5, res5);
         assertEquals(5, res5.size());
 
-        List<CharSequence> res40 = esDict.getPrefixSuggestions("a", 40);
-        assertNotNull(res40);
+        List<CharSequence> res40 = new ArrayList<>();
+        esDict.getPrefixSuggestions("a", 40, res40);
         assertEquals(40, res40.size());
 
         // Empty / non-matching prefix
-        List<CharSequence> resNone = esDict.getPrefixSuggestions("zzxxqq123", 10);
-        assertNotNull(resNone);
+        List<CharSequence> resNone = new ArrayList<>();
+        esDict.getPrefixSuggestions("zzxxqq123", 10, resNone);
         assertEquals(0, resNone.size());
+    }
+
+    @Test
+    public void testOutParameterBufferReuseAndIsolation() {
+        final List<CharSequence> buffer = new ArrayList<>();
+
+        // 1. Initial query fills buffer
+        esDict.getPrefixSuggestions("ho", 5, buffer);
+        assertEquals(3, buffer.size());
+        final List<CharSequence> firstSnapshot = new ArrayList<>(buffer);
+
+        // 2. Caller properly clears buffer and queries again: exact same result
+        buffer.clear();
+        esDict.getPrefixSuggestions("ho", 5, buffer);
+        assertEquals(firstSnapshot, buffer);
+
+        // 3. Invalid/empty inputs should not leave residual elements or fail
+        buffer.clear();
+        esDict.getPrefixSuggestions(null, 5, buffer);
+        assertTrue(buffer.isEmpty());
+
+        buffer.clear();
+        esDict.getPrefixSuggestions("", 5, buffer);
+        assertTrue(buffer.isEmpty());
+
+        buffer.clear();
+        esDict.getPrefixSuggestions("ho", 0, buffer);
+        assertTrue(buffer.isEmpty());
+
+        buffer.clear();
+        esDict.getPrefixSuggestions("ho", -1, buffer);
+        assertTrue(buffer.isEmpty());
+
+        // 4. Null buffer does not crash
+        esDict.getPrefixSuggestions("ho", 5, null);
+
+        // 5. Query after invalid inputs works identically
+        buffer.clear();
+        esDict.getPrefixSuggestions("ho", 5, buffer);
+        assertEquals(firstSnapshot, buffer);
     }
 
     @Test

@@ -104,6 +104,7 @@ public class BeamSearchDecoder {
     private final float[] mCandLogProbs = new float[MAX_CANDIDATES];
 
     private final List<CharSequence> mScratchSuggestions = new ArrayList<>(16);
+    private final List<CharSequence> mScratchPrefixes = new ArrayList<>(16);
     private final Set<String> mScratchDeduplication = new HashSet<>(16);
 
     public BeamSearchDecoder(BinaryTrieDictionary dictionary, SpatialTouchModel spatialModel) {
@@ -258,16 +259,15 @@ public class BeamSearchDecoder {
             final BeamHypothesis topHyp = mStateHistory[mCurrentDepth][0];
             if (topHyp.nodeOffset > 0 && topHyp.length > 0) {
                 final String topWord = topHyp.getWordString();
-                final List<CharSequence> prefixes = dictionary.getPrefixSuggestions(topWord, limit);
-                if (prefixes != null) {
-                    for (int i = 0; i < prefixes.size(); i++) {
-                        if (mScratchSuggestions.size() >= limit) {
-                            break;
-                        }
-                        final String word = prefixes.get(i).toString();
-                        if (mScratchDeduplication.add(word.toLowerCase())) {
-                            mScratchSuggestions.add(StringUtils.applyCasing(typedWord, word));
-                        }
+                mScratchPrefixes.clear();
+                dictionary.getPrefixSuggestions(topWord, limit, mScratchPrefixes);
+                for (int i = 0; i < mScratchPrefixes.size(); i++) {
+                    if (mScratchSuggestions.size() >= limit) {
+                        break;
+                    }
+                    final String word = mScratchPrefixes.get(i).toString();
+                    if (mScratchDeduplication.add(word.toLowerCase())) {
+                        mScratchSuggestions.add(StringUtils.applyCasing(typedWord, word));
                     }
                 }
             }

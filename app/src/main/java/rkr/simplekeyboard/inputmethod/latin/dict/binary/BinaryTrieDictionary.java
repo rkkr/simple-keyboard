@@ -214,11 +214,9 @@ public class BinaryTrieDictionary {
         return bestNode;
     }
 
-    public List<CharSequence> getPrefixSuggestions(String prefix, int limit) {
-        List<CharSequence> result = new ArrayList<>();
-        if (prefix == null || prefix.isEmpty() || limit <= 0) return result;
+    public void getPrefixSuggestions(String prefix, int limit, List<CharSequence> result) {
+        if (prefix == null || prefix.isEmpty() || limit <= 0 || result == null) return;
         collectPrefixMatches(rootOffset, prefix, 0, result, limit);
-        return result;
     }
 
     private void collectPrefixMatches(int nodeOffset, String prefix, int prefixIdx, List<CharSequence> result, int limit) {

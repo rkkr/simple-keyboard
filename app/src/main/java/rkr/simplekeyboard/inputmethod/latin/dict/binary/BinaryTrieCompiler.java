@@ -178,7 +178,7 @@ public final class BinaryTrieCompiler {
             }
 
             // Sort: word1Offset ascending, frequency descending, word2Offset ascending
-            compiledBigrams.sort((a, b) -> {
+            Collections.sort(compiledBigrams, (a, b) -> {
                 if (a.word1Offset != b.word1Offset) {
                     return Integer.compare(a.word1Offset, b.word1Offset);
                 }

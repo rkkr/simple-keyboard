@@ -181,6 +181,10 @@ public final class PrefixDictionary {
     private final List<CharSequence> mScratchSuggestions = new ArrayList<>(16);
     private final List<CharSequence> mScratchPredictions = new ArrayList<>(4);
     private final Set<String> mScratchPredictionsAdded = new HashSet<>(16);
+    private final List<CharSequence> mScratchBinaryPrefixes = new ArrayList<>(40);
+    private final String[] mScratchTopKWords = new String[32];
+    private final String[] mScratchTopKLower = new String[32];
+    private final int[] mScratchTopKFreqs = new int[32];
     private final StringBuilder mScratchFuzzyPath = new StringBuilder(32);
     private volatile rkr.simplekeyboard.inputmethod.latin.dict.binary.BinaryTrieDictionary mBinaryDict = null;
 
@@ -619,15 +623,14 @@ public final class PrefixDictionary {
 
         final rkr.simplekeyboard.inputmethod.latin.dict.binary.BinaryTrieDictionary bin = mBinaryDict;
         if (bin != null) {
-            final List<CharSequence> binSuggestions = bin.getPrefixSuggestions(trimmed, 40);
-            if (binSuggestions != null) {
-                for (CharSequence s : binSuggestions) {
-                    final String w = s.toString();
-                    if (!isBlocked(w)) {
-                        final int freq = bin.getWordFrequency(w);
-                        if (freq > 0) {
-                            mScratchRawWords.add(new ScoredWord(w, freq, freq));
-                        }
+            mScratchBinaryPrefixes.clear();
+            bin.getPrefixSuggestions(trimmed, 40, mScratchBinaryPrefixes);
+            for (int i = 0; i < mScratchBinaryPrefixes.size(); i++) {
+                final String w = mScratchBinaryPrefixes.get(i).toString();
+                if (!isBlocked(w)) {
+                    final int freq = bin.getWordFrequency(w);
+                    if (freq > 0) {
+                        mScratchRawWords.add(new ScoredWord(w, freq, freq));
                     }
                 }
             }
@@ -1127,23 +1130,95 @@ public final class PrefixDictionary {
         return word;
     }
 
-    private boolean collectTopNGramWords(final Map<String, Short> nextMap, final List<CharSequence> results, final Set<String> added, final int limit) {
+    boolean collectTopNGramWords(final Map<String, Short> nextMap, final List<CharSequence> results, final Set<String> added, final int limit) {
         if (nextMap == null || nextMap.isEmpty()) {
             return false;
         }
-        final List<Map.Entry<String, Short>> sortedEntries = new ArrayList<>(nextMap.entrySet());
-        Collections.sort(sortedEntries, (a, b) -> Integer.compare(b.getValue() & 0xFFFF, a.getValue() & 0xFFFF));
-        for (Map.Entry<String, Short> entry : sortedEntries) {
-            if (isBlocked(entry.getKey())) continue;
-            final String candidate = getCanonicalWord(entry.getKey());
-            if (candidate != null && !isBlocked(candidate) && added.add(candidate.toLowerCase())) {
-                results.add(candidate);
-                if (results.size() >= limit) {
-                    return true;
+        final int needed = limit - results.size();
+        if (needed <= 0) {
+            return results.size() >= limit;
+        }
+
+        final int k = Math.min(needed, mScratchTopKWords.length);
+        final String[] topWords = mScratchTopKWords;
+        final String[] topLower = mScratchTopKLower;
+        final int[] topFreqs = mScratchTopKFreqs;
+        int count = 0;
+
+        for (Map.Entry<String, Short> entry : nextMap.entrySet()) {
+            final String key = entry.getKey();
+            if (isBlocked(key)) {
+                continue;
+            }
+            final String candidate = getCanonicalWord(key);
+            if (candidate == null || isBlocked(candidate)) {
+                continue;
+            }
+            final String lower = candidate.toLowerCase();
+            if (added.contains(lower)) {
+                continue;
+            }
+            final int freq = entry.getValue() & 0xFFFF;
+
+            int existingIdx = -1;
+            for (int i = 0; i < count; i++) {
+                if (topLower[i].equals(lower)) {
+                    existingIdx = i;
+                    break;
+                }
+            }
+
+            if (existingIdx != -1) {
+                if (freq <= topFreqs[existingIdx]) {
+                    continue;
+                }
+                for (int i = existingIdx; i < count - 1; i++) {
+                    topWords[i] = topWords[i + 1];
+                    topLower[i] = topLower[i + 1];
+                    topFreqs[i] = topFreqs[i + 1];
+                }
+                count--;
+            }
+
+            if (count == k && freq <= topFreqs[count - 1]) {
+                continue;
+            }
+
+            int insertPos = 0;
+            while (insertPos < count && topFreqs[insertPos] >= freq) {
+                insertPos++;
+            }
+
+            if (insertPos < k) {
+                int moveCount = Math.min(count, k - 1) - insertPos;
+                if (moveCount > 0) {
+                    System.arraycopy(topWords, insertPos, topWords, insertPos + 1, moveCount);
+                    System.arraycopy(topLower, insertPos, topLower, insertPos + 1, moveCount);
+                    System.arraycopy(topFreqs, insertPos, topFreqs, insertPos + 1, moveCount);
+                }
+                topWords[insertPos] = candidate;
+                topLower[insertPos] = lower;
+                topFreqs[insertPos] = freq;
+                if (count < k) {
+                    count++;
                 }
             }
         }
-        return false;
+
+        boolean reachedLimit = false;
+        for (int i = 0; i < count; i++) {
+            final String c = topWords[i];
+            final String l = topLower[i];
+            topWords[i] = null;
+            topLower[i] = null;
+            if (!reachedLimit && added.add(l)) {
+                results.add(c);
+                if (results.size() >= limit) {
+                    reachedLimit = true;
+                }
+            }
+        }
+        return reachedLimit;
     }
 
     private boolean predictTrigrams(final String w1, final String w2, final List<CharSequence> results, final Set<String> added, final int limit) {

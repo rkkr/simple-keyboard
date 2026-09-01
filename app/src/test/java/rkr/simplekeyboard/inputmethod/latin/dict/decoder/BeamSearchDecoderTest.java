@@ -62,8 +62,7 @@ public class BeamSearchDecoderTest {
         }
         
         @Override
-        public List<CharSequence> getPrefixSuggestions(String prefix, int limit) {
-            return new java.util.ArrayList<>();
+        public void getPrefixSuggestions(String prefix, int limit, List<CharSequence> result) {
         }
     }
     

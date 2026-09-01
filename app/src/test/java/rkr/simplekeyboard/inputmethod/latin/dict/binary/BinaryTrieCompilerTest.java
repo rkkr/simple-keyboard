@@ -55,8 +55,8 @@ public class BinaryTrieCompilerTest {
             assertEquals(220, dict.getWordFrequency("bien"));
             assertEquals(210, dict.getWordFrequency("también"));
 
-            final List<CharSequence> suggestions = dict.getPrefixSuggestions("hol", 5);
-            assertNotNull(suggestions);
+            final List<CharSequence> suggestions = new ArrayList<>();
+            dict.getPrefixSuggestions("hol", 5, suggestions);
             assertTrue(suggestions.size() >= 2);
             assertEquals("también", dict.getCanonicalWord("tambien"));
         }
