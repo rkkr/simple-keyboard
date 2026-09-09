@@ -3817,6 +3817,18 @@ public final class KeyboardTextsTable {
         /* keyspec_currency */ "\u20B9",
     };
 
+    /* Locale tg: Tajik */
+    private static final String[] TEXTS_tg = {
+        /* morekeys_a ~ */
+        null, null, null, null,
+        /* ~ morekeys_u */
+        // Label for "switch to alphabetic" key.
+        // U+0410: "А" CYRILLIC CAPITAL LETTER A
+        // U+0411: "Б" CYRILLIC CAPITAL LETTER BE
+        // U+0412: "В" CYRILLIC CAPITAL LETTER VE
+        /* keylabel_to_alpha */ "\u0410\u0411\u0412",
+    };
+
     /* Locale th: Thai */
     private static final String[] TEXTS_th = {
         /* morekeys_a ~ */
@@ -4540,6 +4552,7 @@ public final class KeyboardTextsTable {
         "ta_LK"  , TEXTS_ta_LK, /*   2/ 12 Tamil (Sri Lanka) */
         "ta_SG"  , TEXTS_ta_SG, /*   1/  5 Tamil (Singapore) */
         "te_IN"  , TEXTS_te_IN, /*   2/ 12 Telugu (India) */
+        "tg"     , TEXTS_tg,    /*   1/  5 Tajik */
         "th"     , TEXTS_th,    /*   2/ 12 Thai */
         "tl"     , TEXTS_tl,    /*   7/  8 Tagalog */
         "tr"     , TEXTS_tr,    /*  11/ 18 Turkish */
