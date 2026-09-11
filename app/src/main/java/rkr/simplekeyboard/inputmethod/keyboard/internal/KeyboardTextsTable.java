@@ -3994,9 +3994,9 @@ public final class KeyboardTextsTable {
         /* morekeys_cyrillic_i */ null,
         null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null,
         // U+044D: "э" CYRILLIC SMALL LETTER E
-        /* morekeys_east_slavic_row2_11 */ "\u044d",
+        /* #119: morekeys_east_slavic_row2_11 */ "\u044d",
     };
 
     /* Locale ur: Urdu */
