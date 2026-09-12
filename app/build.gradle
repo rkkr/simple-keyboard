@@ -6,8 +6,8 @@ android {
         compileSdk 37
         minSdkVersion 24
         targetSdkVersion 37
-        versionCode 147
-        versionName "6.6"
+        versionCode 148
+        versionName "6.7"
     }
     buildTypes {
         release {
@@ -16,6 +16,11 @@ android {
         }
     }
     namespace 'rkr.simplekeyboard.inputmethod'
+
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
 }
 
 dependencies {
