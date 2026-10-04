@@ -3989,7 +3989,7 @@ public final class KeyboardTextsTable {
         // U+0438: "и" CYRILLIC SMALL LETTER I
         /* keyspec_east_slavic_row3_5 */ "\u0438",
         // U+044A: "ъ" CYRILLIC SMALL LETTER HARD SIGN
-        /* morekeys_cyrillic_soft_sign */ "\u044A",
+        /* morekeys_cyrillic_soft_sign */ "\u044A,\u044B",
         /* keyspec_symbols_1 ~ */
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
