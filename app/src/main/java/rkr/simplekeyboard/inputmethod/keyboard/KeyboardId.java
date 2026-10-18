@@ -104,7 +104,9 @@ public final class KeyboardId {
                 id.navigateNext(),
                 id.navigatePrevious(),
                 id.mSubtype,
-                id.mThemeId
+                id.mThemeId,
+                id.mShowMoreKeys,
+                id.mShowNumberRow
         });
     }
 
@@ -125,7 +127,9 @@ public final class KeyboardId {
                 && other.navigateNext() == navigateNext()
                 && other.navigatePrevious() == navigatePrevious()
                 && other.mSubtype.equals(mSubtype)
-                && other.mThemeId == mThemeId;
+                && other.mThemeId == mThemeId
+                && other.mShowMoreKeys == mShowMoreKeys
+                && other.mShowNumberRow == mShowNumberRow;
     }
 
     private static boolean isAlphabetKeyboard(final int elementId) {

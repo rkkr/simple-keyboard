@@ -18,12 +18,10 @@
 
 package rkr.simplekeyboard.inputmethod.latin.settings;
 
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
 import rkr.simplekeyboard.inputmethod.R;
-import rkr.simplekeyboard.inputmethod.keyboard.KeyboardLayoutSet;
 
 /**
  * "Preferences" settings sub screen.
@@ -46,14 +44,6 @@ public final class PreferencesSettingsFragment extends SubScreenFragment {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA) {
             removePreference(Settings.PREF_USE_ON_SCREEN);
-        }
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(final SharedPreferences prefs, final String key) {
-        if (key.equals(Settings.PREF_SHOW_SPECIAL_CHARS) ||
-                key.equals(Settings.PREF_SHOW_NUMBER_ROW)) {
-            KeyboardLayoutSet.onKeyboardThemeChanged();
         }
     }
 }
