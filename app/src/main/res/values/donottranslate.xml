@@ -50,6 +50,7 @@
         <item>workman</item>
         <item>pcqwerty</item>
         <item>abc</item>
+        <item>ipa</item>
     </string-array>
     <!-- Predefined keyboard layout display names -->
     <string-array name="predefined_layout_display_names">
@@ -62,5 +63,6 @@
         <item>Workman</item>
         <item>PC</item>
         <item>ABC</item>
+        <item>IPA (qwerty)</item>
     </string-array>
 </resources>

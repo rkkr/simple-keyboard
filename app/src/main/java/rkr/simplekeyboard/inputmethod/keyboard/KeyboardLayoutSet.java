@@ -272,7 +272,9 @@ public final class KeyboardLayoutSet {
         private static int getXmlId(final Resources resources, final String keyboardLayoutSetName) {
             final String packageName = resources.getResourcePackageName(
                     R.xml.keyboard_layout_set_qwerty);
-            return resources.getIdentifier(keyboardLayoutSetName, "xml", packageName);
+            int id = resources.getIdentifier(keyboardLayoutSetName, "xml", packageName);
+            Log.d("KeyboardLayoutSet", "keyboardLayoutSetName=" + keyboardLayoutSetName + " id=" + id);
+            return id;
         }
 
         private void parseKeyboardLayoutSet(final Resources res, final int resId)

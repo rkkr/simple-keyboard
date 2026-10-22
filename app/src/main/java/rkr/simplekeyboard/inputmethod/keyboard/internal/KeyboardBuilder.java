@@ -393,14 +393,17 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             if (DEBUG) startEndTag("<%s /> skipped", TAG_KEY);
             return;
         }
-        final TypedArray keyAttr = mResources.obtainAttributes(
-                Xml.asAttributeSet(parser), R.styleable.Keyboard_Key);
+        final AttributeSet attr = Xml.asAttributeSet(parser);
+        final TypedArray keyAttr = mResources.obtainAttributes(attr, R.styleable.Keyboard_Key);
         final KeyStyle keyStyle = mParams.mKeyStyles.getKeyStyle(keyAttr, parser);
         final String keySpec = keyStyle.getString(keyAttr, R.styleable.Keyboard_Key_keySpec);
         if (TextUtils.isEmpty(keySpec)) {
             throw new ParseException("Empty keySpec", parser);
         }
-        final Key key = new Key(keySpec, keyAttr, keyStyle, mParams, row);
+
+        final String keyLabel = attr.getAttributeValue("http://schemas.android.com/apk/res/android", "keyLabel");
+
+        final Key key = new Key(keySpec, keyAttr, keyStyle, mParams, row, keyLabel);
         keyAttr.recycle();
         if (DEBUG) {
             startEndTag("<%s %s moreKeys=%s />", TAG_KEY, key, Arrays.toString(key.getMoreKeys()));
