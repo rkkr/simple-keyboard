@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     namespace = 'rkr.simplekeyboard.inputmethod'
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = 'com.hyouka56.blackofflinekeyboard'
@@ -14,8 +14,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled = true
-            shrinkResources = true
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -27,9 +27,6 @@ android {
         includeInApk = false
         includeInBundle = false
     }
-}
-
-dependencies {
 }
 
 // Report exact deprecated Java API call sites instead of only a generic compiler note.

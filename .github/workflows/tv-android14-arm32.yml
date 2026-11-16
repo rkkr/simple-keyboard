@@ -27,7 +27,7 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Accept SDK licenses and install Android 14
+      - name: Accept SDK licenses and install Android 16 compile SDK
         shell: bash
         run: |
           set -euo pipefail
@@ -38,7 +38,7 @@ jobs:
           SDK_STATUS=${PIPESTATUS[1]}
           set -o pipefail
           test "$SDK_STATUS" -eq 0
-          "$SDKMANAGER" "platforms;android-34" "build-tools;36.0.0" "platform-tools"
+          "$SDKMANAGER" "platforms;android-36" "build-tools;36.0.0" "platform-tools"
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
@@ -48,7 +48,7 @@ jobs:
       - name: Build APK
         run: gradle --no-daemon --stacktrace assembleDebug
 
-      - name: Verify Android 14 and Java-only APK
+      - name: Verify Android 14 target and Java-only APK
         shell: bash
         run: |
           set -euo pipefail
