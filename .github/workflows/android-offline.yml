@@ -1,4 +1,5 @@
 name: Android TV 14 build and privacy checks
+run-name: Android TV 14 ARM32-compatible APK
 
 on:
   push:
