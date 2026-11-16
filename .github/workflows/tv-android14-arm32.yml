@@ -1,0 +1,60 @@
+name: Android TV 14 ARM32 APK
+
+on:
+  push:
+    branches:
+      - tv-android14-arm32
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-tv-apk:
+    name: Build Android TV 14 APK
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout TV branch
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android 14 SDK
+        run: |
+          yes | sdkmanager --licenses >/dev/null
+          sdkmanager "platforms;android-34" "build-tools;36.0.0"
+
+      - name: Build APK
+        run: |
+          chmod +x ./gradlew
+          ./gradlew --no-daemon --stacktrace assembleDebug
+
+      - name: Verify Android 14 and Java-only APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK="app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$APK"
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$APK" > apk-badging.txt
+          grep -F "targetSdkVersion:'34'" apk-badging.txt
+          if unzip -Z1 "$APK" | grep -E '^lib/[^/]+/[^/]+\.so$'; then
+            echo "Unexpected native libraries found; expected Java-only APK."
+            exit 1
+          fi
+          echo "APK verified: $(stat -c%s "$APK") bytes"
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: simple-keyboard-tv-android14-arm32
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
