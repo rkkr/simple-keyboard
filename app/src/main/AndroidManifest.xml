@@ -16,8 +16,16 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
     <application
         android:allowBackup="false"
+        android:banner="@drawable/tv_banner"
         android:icon="@drawable/ic_launcher"
         android:label="@string/english_ime_name"
         android:supportsRtl="true">
@@ -45,6 +53,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
 
@@ -55,9 +64,6 @@
                 <action android:name="android.intent.action.LOCALE_CHANGED" />
             </intent-filter>
         </receiver>
-
-        <meta-data android:name="android.content.APP_RESTRICTIONS"
-            android:resource="@xml/app_restrictions" />
     </application>
 
 </manifest>

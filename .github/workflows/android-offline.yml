@@ -1,8 +1,8 @@
-name: Android build and privacy checks
+name: Android TV 14 build and privacy checks
 
 on:
   push:
-    branches: [master]
+    branches: [master, tv-android14-arm32]
   pull_request:
   workflow_dispatch:
 
@@ -27,7 +27,7 @@ jobs:
           java-version: '21'
           cache: gradle
 
-      - name: Install Android SDK 36
+      - name: Install Android SDK 34
         shell: bash
         run: |
           set -euo pipefail
@@ -38,7 +38,7 @@ jobs:
           test -x "$SDKMANAGER"
           LICENSE_ACCEPTANCES="$(printf 'y\n%.0s' {1..100})"
           "$SDKMANAGER" --licenses <<< "$LICENSE_ACCEPTANCES" >/dev/null
-          "$SDKMANAGER" "platforms;android-36" "build-tools;36.0.0" "ndk;28.2.13676358" "cmake;3.22.1"
+          "$SDKMANAGER" "platforms;android-34" "build-tools;36.0.0"
 
       - name: Verify source privacy and language constraints
         shell: bash
@@ -53,11 +53,22 @@ jobs:
           assert 'android.permission.INTERNET' not in manifest, 'Internet permission found'
           assert 'android.permission.VIBRATE' not in manifest, 'Vibration permission found'
           assert 'android:allowBackup="false"' in manifest, 'Backups must remain disabled'
+          assert 'android.permission.INTERNET' not in manifest, 'TV build must remain offline'
 
           android_ns = '{http://schemas.android.com/apk/res/android}'
           manifest_root = ET.fromstring(manifest)
+          features = {
+              feature.attrib.get(android_ns + 'name'): feature.attrib.get(android_ns + 'required', 'true')
+              for feature in manifest_root.findall('uses-feature')
+          }
+          assert features.get('android.software.leanback') == 'false', 'TV feature must be optional for install compatibility'
+          assert features.get('android.hardware.touchscreen') == 'false', 'TV build must not require a touchscreen'
+
           application = manifest_root.find('application')
           assert application is not None, 'Application element is missing'
+          assert application.attrib.get(android_ns + 'banner') == '@drawable/tv_banner', 'Android TV banner must be declared'
+          assert Path('app/src/main/res/drawable/tv_banner.xml').exists(), 'Android TV banner drawable must exist'
+          assert not Path('app/src/main/res/xml/app_restrictions.xml').exists(), 'Managed-device restrictions must be removed from the TV build'
           ime_service = next((component for component in application.findall('service') if component.attrib.get(android_ns + 'name') == '.latin.LatinIME'), None)
           assert ime_service is not None, 'Keyboard input-method service must remain declared'
           assert ime_service.attrib.get(android_ns + 'exported') == 'true', 'Input-method service must be exported for Android to discover and bind the IME'
@@ -71,6 +82,12 @@ jobs:
               for intent_filter in settings_activity.findall('intent-filter')
           )
           assert launcher_present, 'Settings Activity must remain a launcher activity'
+          leanback_launcher_present = any(
+              'android.intent.action.MAIN' in {node.attrib.get(android_ns + 'name') for node in intent_filter.findall('action')}
+              and 'android.intent.category.LEANBACK_LAUNCHER' in {node.attrib.get(android_ns + 'name') for node in intent_filter.findall('category')}
+              for intent_filter in settings_activity.findall('intent-filter')
+          )
+          assert leanback_launcher_present, 'Settings Activity must be visible in the Android TV launcher'
           input_method_xml = ET.parse('app/src/main/res/xml/method.xml').getroot()
           assert input_method_xml.attrib.get(android_ns + 'settingsActivity') == 'rkr.simplekeyboard.inputmethod.latin.settings.SettingsActivity', 'Input method must advertise the settings screen'
           latin_ime_source = Path('app/src/main/java/rkr/simplekeyboard/inputmethod/latin/LatinIME.java').read_text()
@@ -103,6 +120,16 @@ jobs:
               'app/src/main/res/xml/empty_settings.xml',
           ]
           assert all(Path(path).exists() for path in settings_ui_files), 'Settings UI source/resources must remain present'
+          tv_preferences = ET.parse('app/src/main/res/xml/prefs.xml').getroot()
+          visible_pages = [item.attrib.get(android_ns + 'fragment') for item in tv_preferences.findall('PreferenceScreen')]
+          assert visible_pages == ['rkr.simplekeyboard.inputmethod.latin.settings.PreferencesSettingsFragment'], f'TV settings must expose only Preferences: {visible_pages}'
+          preference_controls = ET.parse('app/src/main/res/xml/prefs_screen_preferences.xml').getroot()
+          enabled_controls = [
+              item.attrib.get(android_ns + 'key')
+              for item in list(preference_controls)
+              if item.attrib.get(android_ns + 'enabled', 'true').lower() != 'false'
+          ]
+          assert enabled_controls == ['pref_show_language_switch_key'], f'Only language switch may be adjustable on TV: {enabled_controls}'
           keyboard_codes = Path('app/src/main/java/rkr/simplekeyboard/inputmethod/keyboard/internal/KeyboardCodesSet.java').read_text()
           assert 'key_settings' in keyboard_codes and 'CODE_SETTINGS' in keyboard_codes, 'Settings key code must remain available'
           for key_resource in [
@@ -132,8 +159,7 @@ jobs:
           assert 'if (!isAllowedLocale(locale))' in locale_source, 'Locale guard missing'
           subtype_manager = Path('app/src/main/java/rkr/simplekeyboard/inputmethod/latin/RichInputMethodManager.java').read_text()
           assert 'SubtypeLocaleUtils.getSupportedLocales().contains(subtype.getLocale())' in subtype_manager, 'Saved legacy locales must be filtered during migration'
-          restriction_strings = Path('app/src/main/res/values/strings.xml').read_text()
-          assert 'en_US:qwerty;ar:arabic' in restriction_strings and 'de:qwertz' not in restriction_strings, 'Managed-device locale list must contain only English and Arabic'
+          assert '@xml/app_restrictions' not in manifest, 'Managed-device restrictions metadata must be removed'
 
           for file in (
               'app/src/main/res/values/colors.xml',
@@ -194,7 +220,7 @@ jobs:
       - name: Build debug APK
         run: gradle --no-daemon --warning-mode=all --stacktrace assembleDebug
 
-      - name: Verify single ARM64-only APK and permissions
+      - name: Verify universal Android 14 TV APK and permissions
         shell: bash
         run: |
           set -euo pipefail
@@ -206,16 +232,15 @@ jobs:
             exit 1
           fi
           "$AAPT" dump badging "$APK" | tee apk-badging.txt
-          grep -Fq "native-code: 'arm64-v8a'" apk-badging.txt || {
-            echo 'The APK is not marked as ARM64-only.' >&2
+          grep -Fq "targetSdkVersion:'34'" apk-badging.txt || {
+            echo 'The APK must target Android 14 (API 34).' >&2
             exit 1
           }
-          LIB_ENTRIES="$(unzip -Z1 "$APK" | grep -E '^lib/[^/]+/[^/]+\.so$' | sort || true)"
-          EXPECTED_LIB='lib/arm64-v8a/libarm64_only_abi_marker.so'
-          if [[ "$LIB_ENTRIES" != "$EXPECTED_LIB" ]]; then
-            printf 'Expected only %s; found native libraries: %s\n' "$EXPECTED_LIB" "${LIB_ENTRIES:-none}" >&2
+          if grep -Fq 'native-code:' apk-badging.txt; then
+            echo 'The TV APK must remain Java-only and architecture-independent.' >&2
             exit 1
           fi
+          LIB_ENTRIES="$(unzip -Z1 "$APK" | grep -E '^lib/[^/]+/[^/]+\.so
           "$AAPT" dump permissions "$APK" | tee apk-permissions.txt
           if grep -Eq 'android\.permission\.(INTERNET|VIBRATE)' apk-permissions.txt; then
             echo 'Forbidden Internet or vibration permission found in the built APK.' >&2
@@ -225,6 +250,24 @@ jobs:
       - name: Upload debug APK
         uses: actions/upload-artifact@v7
         with:
-          name: black-offline-keyboard-debug-apk
+          name: simple-keyboard-tv-android14-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+ | sort || true)"
+          if [[ -n "$LIB_ENTRIES" ]]; then
+            printf 'Expected no native libraries in the Java-only APK; found: %s\n' "$LIB_ENTRIES" >&2
+            exit 1
+          fi
+          echo "Android TV 14 Java-only APK verified; size: $(stat -c%s "$APK") bytes."
+          "$AAPT" dump permissions "$APK" | tee apk-permissions.txt
+          if grep -Eq 'android\.permission\.(INTERNET|VIBRATE)' apk-permissions.txt; then
+            echo 'Forbidden Internet or vibration permission found in the built APK.' >&2
+            exit 1
+          fi
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: simple-keyboard-tv-android14-apk
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
