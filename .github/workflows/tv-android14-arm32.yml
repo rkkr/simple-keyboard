@@ -40,10 +40,13 @@ jobs:
           test "$SDK_STATUS" -eq 0
           "$SDKMANAGER" "platforms;android-34" "build-tools;36.0.0" "platform-tools"
 
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '9.6.0'
+
       - name: Build APK
-        run: |
-          chmod +x ./gradlew
-          ./gradlew --no-daemon --stacktrace assembleDebug
+        run: gradle --no-daemon --stacktrace assembleDebug
 
       - name: Verify Android 14 and Java-only APK
         shell: bash
