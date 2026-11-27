@@ -19,12 +19,16 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Rect;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.WindowManager;
 
 import rkr.simplekeyboard.inputmethod.R;
 import rkr.simplekeyboard.inputmethod.latin.settings.SettingsValues;
@@ -37,28 +41,50 @@ public final class ResourceUtils {
         // This utility class is not publicly instantiable.
     }
 
-    public static int getKeyboardHeight(final Resources res, final SettingsValues settingsValues) {
-        final int defaultKeyboardHeight = getDefaultKeyboardHeight(res);
+    public static int getKeyboardHeight(final Context context, final Resources res, final SettingsValues settingsValues) {
+        final int defaultKeyboardHeight = getDefaultKeyboardHeight(context, res);
         float scale = settingsValues.mKeyboardHeightScale;
         return (int)(defaultKeyboardHeight * scale);
     }
 
-    public static int getDefaultKeyboardHeight(final Resources res) {
-        final DisplayMetrics dm = res.getDisplayMetrics();
+    public static int getDefaultKeyboardHeight(final Context context, final Resources res) {
+        int heightPixels = 0;
+        int widthPixels = 0;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            final WindowManager wm = context.getSystemService(WindowManager.class);
+            if (wm != null) {
+                final Rect bounds = wm.getMaximumWindowMetrics().getBounds();
+                heightPixels = bounds.height();
+                widthPixels = bounds.width();
+            }
+        }
+
+        if (heightPixels <= 0 || widthPixels <= 0) {
+            final DisplayMetrics dm = res.getDisplayMetrics();
+            heightPixels = dm.heightPixels;
+            widthPixels = dm.widthPixels;
+        }
+
         final float keyboardHeight = res.getDimension(R.dimen.config_default_keyboard_height);
         final float maxKeyboardHeight = res.getFraction(
-                R.fraction.config_max_keyboard_height, dm.heightPixels, dm.heightPixels);
+                R.fraction.config_max_keyboard_height, heightPixels, heightPixels);
         float minKeyboardHeight = res.getFraction(
-                R.fraction.config_min_keyboard_height, dm.heightPixels, dm.heightPixels);
+                R.fraction.config_min_keyboard_height, heightPixels, heightPixels);
         if (minKeyboardHeight < 0.0f) {
             // Specified fraction was negative, so it should be calculated against display
             // width.
             minKeyboardHeight = -res.getFraction(
-                    R.fraction.config_min_keyboard_height, dm.widthPixels, dm.widthPixels);
+                    R.fraction.config_min_keyboard_height, widthPixels, widthPixels);
         }
-        // Keyboard height will not exceed maxKeyboardHeight and will not be less than
-        // minKeyboardHeight.
-        return (int)Math.max(Math.min(keyboardHeight, maxKeyboardHeight), minKeyboardHeight);
+
+        return clampKeyboardHeight(keyboardHeight, minKeyboardHeight, maxKeyboardHeight);
+    }
+
+    static int clampKeyboardHeight(final float keyboardHeight, final float minKeyboardHeight,
+                                   final float maxKeyboardHeight) {
+        return (int)Math.max(Math.min(keyboardHeight, maxKeyboardHeight),
+                Math.min(minKeyboardHeight, maxKeyboardHeight));
     }
 
     public static int getKeyboardBottomOffset(final Resources res,
