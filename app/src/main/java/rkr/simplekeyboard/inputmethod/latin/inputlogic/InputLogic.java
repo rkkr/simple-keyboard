@@ -22,6 +22,7 @@
 package rkr.simplekeyboard.inputmethod.latin.inputlogic;
 
 import android.os.SystemClock;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -29,6 +30,7 @@ import android.view.inputmethod.EditorInfo;
 
 import rkr.simplekeyboard.inputmethod.event.Event;
 import rkr.simplekeyboard.inputmethod.event.InputTransaction;
+import rkr.simplekeyboard.inputmethod.latin.BanglaPhoneticComposer;
 import rkr.simplekeyboard.inputmethod.latin.LatinIME;
 import rkr.simplekeyboard.inputmethod.latin.RichInputConnection;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
@@ -48,6 +50,17 @@ public final class InputLogic {
     // This has package visibility so it can be accessed from InputLogicHandler.
     public final RichInputConnection mConnection;
     private final RecapitalizeStatus mRecapitalizeStatus = new RecapitalizeStatus();
+    private final BanglaPhoneticComposer mBanglaComposer = new BanglaPhoneticComposer(new BanglaPhoneticComposer.Output() {
+        @Override
+        public void show(String s) {
+            mConnection.setComposingText(s, 1);
+        }
+
+        @Override
+        public void finish() {
+            mConnection.finishComposingText();
+        }
+    });
 
     /**
      * Create a new instance of the input logic.
@@ -59,17 +72,58 @@ public final class InputLogic {
         mConnection = new RichInputConnection(latinIME);
     }
 
+    private boolean isBanglaPhonetic() {
+        return mLatinIME.isBanglaPhonetic();
+    }
+
+    /**
+     * Phonetic transliteration only in ordinary text fields. Phone, number, password, email and
+     * URI fields keep Latin input (and ASCII digits), including browser address bars.
+     */
+    private boolean banglaPhoneticActive() {
+        if (!isBanglaPhonetic()) return false;
+        final EditorInfo ei = getCurrentInputEditorInfo();
+        if (ei == null) return false;
+        final int type = ei.inputType;
+        final int inputClass = type & InputType.TYPE_MASK_CLASS;
+        if (inputClass == InputType.TYPE_CLASS_NUMBER || inputClass == InputType.TYPE_CLASS_PHONE
+                || inputClass == InputType.TYPE_CLASS_DATETIME) {
+            return false;
+        }
+        if (InputTypeUtils.isPasswordInputType(type)
+                || InputTypeUtils.isVisiblePasswordInputType(type)) {
+            return false;
+        }
+        if (inputClass == InputType.TYPE_CLASS_TEXT) {
+            final int variation = type & InputType.TYPE_MASK_VARIATION;
+            if (InputTypeUtils.isEmailVariation(variation)
+                    || variation == InputType.TYPE_TEXT_VARIATION_URI) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * Initializes the input logic for input in an editor.
      *
      * Call this when input starts or restarts in some editor (typically, in onStartInputView).
      */
     public void startInput() {
+        mBanglaComposer.finish();
         mRecapitalizeStatus.disable(); // Do not perform recapitalize until the cursor is moved once
     }
 
     public void clearCaches() {
         mConnection.clearCaches();
+    }
+
+    /** Ends a Bangla phonetic word that is still being composed, if any. */
+    public void finishBanglaComposing() {
+        if (mBanglaComposer.isComposing()) {
+            mBanglaComposer.finish();
+            mConnection.reloadTextCache();
+        }
     }
 
     /**
@@ -92,6 +146,10 @@ public final class InputLogic {
     public InputTransaction onTextInput(final SettingsValues settingsValues, final Event event) {
         final String rawText = event.getTextToCommit().toString();
         final InputTransaction inputTransaction = new InputTransaction(settingsValues);
+        if (mBanglaComposer.isComposing()) {
+            mBanglaComposer.finish();
+            mConnection.reloadTextCache();
+        }
         final String text = performSpecificTldProcessingOnTextInput(rawText);
         mConnection.commitText(text, 1);
         // Space state must be updated before calling updateShiftState
@@ -130,6 +188,29 @@ public final class InputLogic {
      */
     public InputTransaction onCodeInput(final SettingsValues settingsValues, final Event event) {
         final InputTransaction inputTransaction = new InputTransaction(settingsValues);
+
+        if (banglaPhoneticActive() && event != null) {
+            if (event.isFunctionalKeyEvent() && event.mKeyCode == Constants.CODE_DELETE
+                    && mBanglaComposer.handleBackspace()) {
+                mConnection.reloadTextCache();
+                inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
+                return inputTransaction;
+            }
+            if (!event.isFunctionalKeyEvent() && mBanglaComposer.handleCharacter(event.mCodePoint)) {
+                mConnection.reloadTextCache();
+                inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
+                return inputTransaction;
+            }
+            int code = event.mKeyCode;
+            boolean modifierKey = event.isFunctionalKeyEvent()
+                    && (code == Constants.CODE_SHIFT || code == Constants.CODE_CAPSLOCK
+                        || code == Constants.CODE_SYMBOL_SHIFT || code == Constants.CODE_SWITCH_ALPHA_SYMBOL);
+            if (!modifierKey && mBanglaComposer.isComposing()) {
+                // Text/action keys end the word; Shift and layout modifiers do not.
+                mBanglaComposer.finish();
+                mConnection.reloadTextCache();
+            }
+        }
 
         Event currentEvent = event;
         while (null != currentEvent) {
@@ -338,6 +419,7 @@ public final class InputLogic {
      * Handle a press on the language switch key (the "globe key")
      */
     private void handleLanguageSwitchKey() {
+        mBanglaComposer.finish();
         mLatinIME.switchToNextSubtype();
     }
 
@@ -405,6 +487,7 @@ public final class InputLogic {
             case SubtypeLocaleUtils.LAYOUT_BENGALI:
             case SubtypeLocaleUtils.LAYOUT_BENGALI_AKKHOR:
             case SubtypeLocaleUtils.LAYOUT_BENGALI_UNIJOY:
+            case SubtypeLocaleUtils.LAYOUT_BENGALI_PHONETIC:
             case SubtypeLocaleUtils.LAYOUT_FARSI:
             case SubtypeLocaleUtils.LAYOUT_GEORGIAN:
             case SubtypeLocaleUtils.LAYOUT_HEBREW:

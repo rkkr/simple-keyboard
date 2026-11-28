@@ -481,6 +481,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     void onFinishInputInternal() {
         super.onFinishInput();
 
+        mInputLogic.finishBanglaComposing();
+
         final MainKeyboardView mainKeyboardView = mKeyboardSwitcher.getMainKeyboardView();
         if (mainKeyboardView != null) {
             mainKeyboardView.closing();
@@ -489,6 +491,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     void onFinishInputViewInternal(final boolean finishingInput) {
         super.onFinishInputView(finishingInput);
+        // Hiding the view does not always end the input session; finish any live word here too.
+        mInputLogic.finishBanglaComposing();
     }
 
     protected void deallocateMemory() {
@@ -501,6 +505,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             final int composingSpanStart, final int composingSpanEnd) {
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
                 composingSpanStart, composingSpanEnd);
+        // A tap or cursor move outside the composing word ends it. Updates caused by our own
+        // setComposingText keep the selection inside the span, so they are ignored.
+        if (isBanglaPhonetic() && composingSpanStart >= 0 && composingSpanEnd >= 0
+                && (newSelStart < composingSpanStart || newSelEnd > composingSpanEnd)) {
+            mInputLogic.finishBanglaComposing();
+        }
         final MainKeyboardView keyboardView = mKeyboardSwitcher.getMainKeyboardView();
         if (keyboardView != null && keyboardView.isInCursorMove()) {
             return;
@@ -710,6 +720,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void switchToNextSubtype() {
         final IBinder token = getWindow().getWindow().getAttributes().token;
         mRichImm.switchToNextInputMethod(token, !shouldSwitchToOtherInputMethods(token));
+    }
+
+    /** True when the current keyboard subtype is Bangla Phonetic. */
+    public boolean isBanglaPhonetic() {
+        final Subtype subtype = mRichImm.getCurrentSubtype();
+        return subtype != null && "bengali_phonetic".equals(subtype.getKeyboardLayoutSet());
     }
 
     // TODO: Instead of checking for alphabetic keyboard here, separate keycodes for

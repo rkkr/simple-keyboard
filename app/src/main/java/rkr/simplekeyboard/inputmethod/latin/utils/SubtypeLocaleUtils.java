@@ -52,6 +52,7 @@ public final class SubtypeLocaleUtils {
     private static final String LOCALE_BULGARIAN = "bg";
     private static final String LOCALE_BENGALI_BANGLADESH = "bn_BD";
     private static final String LOCALE_BENGALI_INDIA = "bn_IN";
+    private static final String LOCALE_BENGALI_PHONETIC = "bn_ZZ";
     private static final String LOCALE_CATALAN = "ca";
     private static final String LOCALE_CZECH = "cs";
     private static final String LOCALE_DANISH = "da";
@@ -136,6 +137,7 @@ public final class SubtypeLocaleUtils {
             LOCALE_BULGARIAN,
             LOCALE_BENGALI_BANGLADESH,
             LOCALE_BENGALI_INDIA,
+            LOCALE_BENGALI_PHONETIC,
             LOCALE_CATALAN,
             LOCALE_CZECH,
             LOCALE_DANISH,
@@ -224,6 +226,7 @@ public final class SubtypeLocaleUtils {
     public static final String LAYOUT_BENGALI = "bengali";
     public static final String LAYOUT_BENGALI_AKKHOR = "bengali_akkhor";
     public static final String LAYOUT_BENGALI_UNIJOY = "bengali_unijoy";
+    public static final String LAYOUT_BENGALI_PHONETIC = "bengali_phonetic";
     public static final String LAYOUT_BEPO = "bepo";
     public static final String LAYOUT_BULGARIAN = "bulgarian";
     public static final String LAYOUT_BULGARIAN_BDS = "bulgarian_bds";
@@ -494,6 +497,9 @@ public final class SubtypeLocaleUtils {
                     break;
                 case LOCALE_BENGALI_INDIA:
                     addLayout(LAYOUT_BENGALI);
+                    break;
+                case LOCALE_BENGALI_PHONETIC:
+                    addLayout(LAYOUT_BENGALI_PHONETIC);
                     break;
                 case LOCALE_GREEK:
                     addLayout(LAYOUT_GREEK);
