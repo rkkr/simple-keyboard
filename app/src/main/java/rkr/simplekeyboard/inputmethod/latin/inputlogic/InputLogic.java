@@ -172,8 +172,12 @@ public final class InputLogic {
                 inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
                 return inputTransaction;
             }
-            if (mBanglaComposer.isComposing()) {
-                // Any other key (including functional keys and separators) ends the word.
+            int code = event.mKeyCode;
+            boolean modifierKey = event.isFunctionalKeyEvent()
+                    && (code == Constants.CODE_SHIFT || code == Constants.CODE_CAPSLOCK
+                        || code == Constants.CODE_SYMBOL_SHIFT || code == Constants.CODE_SWITCH_ALPHA_SYMBOL);
+            if (!modifierKey && mBanglaComposer.isComposing()) {
+                // Text/action keys end the word; Shift and layout modifiers do not.
                 mBanglaComposer.finish();
                 mConnection.reloadTextCache();
             }
