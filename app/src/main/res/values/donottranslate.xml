@@ -38,7 +38,7 @@
         <item>sr_ZZ</item>
     </string-array>
 
-    <string name="locale_name_in_root_locale_bn_ZZ">বাংলা</string>
+    <string name="locale_name_in_root_locale_bn_ZZ">বাংলা (ফোনেটিক)</string>
     <string name="locale_name_in_root_locale_hi_ZZ">Hinglish</string>
     <string name="locale_name_in_root_locale_sr_ZZ">Srpski</string>
 

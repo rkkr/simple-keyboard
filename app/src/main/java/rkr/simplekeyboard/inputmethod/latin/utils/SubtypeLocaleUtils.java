@@ -499,7 +499,7 @@ public final class SubtypeLocaleUtils {
                     addLayout(LAYOUT_BENGALI);
                     break;
                 case LOCALE_BENGALI_PHONETIC:
-                    addLayout(LAYOUT_BENGALI_PHONETIC, R.string.subtype_phonetic);
+                    addLayout(LAYOUT_BENGALI_PHONETIC);
                     break;
                 case LOCALE_GREEK:
                     addLayout(LAYOUT_GREEK);
