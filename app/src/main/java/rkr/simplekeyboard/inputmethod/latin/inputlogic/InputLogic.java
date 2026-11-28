@@ -89,6 +89,14 @@ public final class InputLogic {
         mConnection.clearCaches();
     }
 
+    /** Ends a Bangla phonetic word that is still being composed, if any. */
+    public void finishBanglaComposing() {
+        if (mBanglaComposer.isComposing()) {
+            mBanglaComposer.finish();
+            mConnection.reloadTextCache();
+        }
+    }
+
     /**
      * Call this when the subtype changes.
      */
@@ -446,6 +454,7 @@ public final class InputLogic {
             case SubtypeLocaleUtils.LAYOUT_BENGALI:
             case SubtypeLocaleUtils.LAYOUT_BENGALI_AKKHOR:
             case SubtypeLocaleUtils.LAYOUT_BENGALI_UNIJOY:
+            case SubtypeLocaleUtils.LAYOUT_BENGALI_PHONETIC:
             case SubtypeLocaleUtils.LAYOUT_FARSI:
             case SubtypeLocaleUtils.LAYOUT_GEORGIAN:
             case SubtypeLocaleUtils.LAYOUT_HEBREW:
