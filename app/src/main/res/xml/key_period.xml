@@ -41,6 +41,17 @@
                 latin:moreKeys="!text/morekeys_period"
                 latin:backgroundType="functional" />
         </case>
+        <!-- Bangla Phonetic writes the danda directly, like Borno's phonetic layout -->
+        <case
+            latin:keyboardLayoutSet="bengali_phonetic"
+        >
+            <Key
+                latin:keySpec="&#x964;"
+                latin:keyHintLabel="!text/keyhintlabel_period"
+                latin:keyLabelFlags="hasPopupHint|hasShiftedLetterHint"
+                latin:moreKeys="!text/morekeys_period"
+                latin:backgroundType="functional" />
+        </case>
         <default>
             <Key
                 latin:keySpec="!text/keyspec_period"

@@ -23,6 +23,25 @@
         <case latin:passwordInput="true">
             <include latin:keyboardLayout="@xml/key_styles_currency_dollar" />
         </case>
+        <!-- Bangla Phonetic uses the Bangladeshi taka, like Borno's phonetic layout -->
+        <case latin:keyboardLayoutSet="bengali_phonetic">
+            <key-style
+                latin:styleName="currencyKeyStyle"
+                latin:keySpec="&#x09F3;"
+                latin:moreKeys="!text/morekeys_currency_generic" />
+            <key-style
+                latin:styleName="moreCurrency1KeyStyle"
+                latin:keySpec="$" />
+            <key-style
+                latin:styleName="moreCurrency2KeyStyle"
+                latin:keySpec="&#x00A3;" />
+            <key-style
+                latin:styleName="moreCurrency3KeyStyle"
+                latin:keySpec="&#x20AC;" />
+            <key-style
+                latin:styleName="moreCurrency4KeyStyle"
+                latin:keySpec="&#x00A5;" />
+        </case>
         <!-- Countries using Euro currency, 23 countries as of November 2012.
               1. Andorra (ca_AD, ca_ES)
               2. Austria (de_AT)
