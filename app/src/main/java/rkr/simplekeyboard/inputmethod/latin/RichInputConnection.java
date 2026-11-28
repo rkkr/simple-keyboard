@@ -257,6 +257,18 @@ public final class RichInputConnection {
         }
     }
 
+    public void setComposingText(final CharSequence text, final int newCursorPosition) {
+        if (isConnected()) {
+            mIC.setComposingText(text, newCursorPosition);
+        }
+    }
+
+    public void finishComposingText() {
+        if (isConnected()) {
+            mIC.finishComposingText();
+        }
+    }
+
     public CharSequence getSelectedText() {
         return mTextSelection;
     }

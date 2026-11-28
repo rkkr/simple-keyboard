@@ -712,6 +712,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mRichImm.switchToNextInputMethod(token, !shouldSwitchToOtherInputMethods(token));
     }
 
+    /** True when the current keyboard subtype is Bangla Phonetic. */
+    public boolean isBanglaPhonetic() {
+        final Subtype subtype = mRichImm.getCurrentSubtype();
+        return subtype != null && "bengali_phonetic".equals(subtype.getKeyboardLayoutSet());
+    }
+
     // TODO: Instead of checking for alphabetic keyboard here, separate keycodes for
     // alphabetic shift and shift while in symbol layout and get rid of this method.
     private int getCodePointForKeyboard(final int codePoint) {

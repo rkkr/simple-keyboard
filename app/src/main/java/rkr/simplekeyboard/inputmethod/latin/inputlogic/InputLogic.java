@@ -29,6 +29,7 @@ import android.view.inputmethod.EditorInfo;
 
 import rkr.simplekeyboard.inputmethod.event.Event;
 import rkr.simplekeyboard.inputmethod.event.InputTransaction;
+import rkr.simplekeyboard.inputmethod.latin.BanglaPhoneticComposer;
 import rkr.simplekeyboard.inputmethod.latin.LatinIME;
 import rkr.simplekeyboard.inputmethod.latin.RichInputConnection;
 import rkr.simplekeyboard.inputmethod.latin.common.Constants;
@@ -48,6 +49,17 @@ public final class InputLogic {
     // This has package visibility so it can be accessed from InputLogicHandler.
     public final RichInputConnection mConnection;
     private final RecapitalizeStatus mRecapitalizeStatus = new RecapitalizeStatus();
+    private final BanglaPhoneticComposer mBanglaComposer = new BanglaPhoneticComposer(new BanglaPhoneticComposer.Output() {
+        @Override
+        public void show(String s) {
+            mConnection.setComposingText(s, 1);
+        }
+
+        @Override
+        public void finish() {
+            mConnection.finishComposingText();
+        }
+    });
 
     /**
      * Create a new instance of the input logic.
@@ -59,12 +71,17 @@ public final class InputLogic {
         mConnection = new RichInputConnection(latinIME);
     }
 
+    private boolean isBanglaPhonetic() {
+        return mLatinIME.isBanglaPhonetic();
+    }
+
     /**
      * Initializes the input logic for input in an editor.
      *
      * Call this when input starts or restarts in some editor (typically, in onStartInputView).
      */
     public void startInput() {
+        mBanglaComposer.finish();
         mRecapitalizeStatus.disable(); // Do not perform recapitalize until the cursor is moved once
     }
 
@@ -92,6 +109,10 @@ public final class InputLogic {
     public InputTransaction onTextInput(final SettingsValues settingsValues, final Event event) {
         final String rawText = event.getTextToCommit().toString();
         final InputTransaction inputTransaction = new InputTransaction(settingsValues);
+        if (mBanglaComposer.isComposing()) {
+            mBanglaComposer.finish();
+            mConnection.reloadTextCache();
+        }
         final String text = performSpecificTldProcessingOnTextInput(rawText);
         mConnection.commitText(text, 1);
         // Space state must be updated before calling updateShiftState
@@ -130,6 +151,25 @@ public final class InputLogic {
      */
     public InputTransaction onCodeInput(final SettingsValues settingsValues, final Event event) {
         final InputTransaction inputTransaction = new InputTransaction(settingsValues);
+
+        if (isBanglaPhonetic() && event != null) {
+            if (event.isFunctionalKeyEvent() && event.mKeyCode == Constants.CODE_DELETE
+                    && mBanglaComposer.handleBackspace()) {
+                mConnection.reloadTextCache();
+                inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
+                return inputTransaction;
+            }
+            if (!event.isFunctionalKeyEvent() && mBanglaComposer.handleCharacter(event.mCodePoint)) {
+                mConnection.reloadTextCache();
+                inputTransaction.requireShiftUpdate(InputTransaction.SHIFT_UPDATE_NOW);
+                return inputTransaction;
+            }
+            if (mBanglaComposer.isComposing()) {
+                // Any other key (including functional keys and separators) ends the word.
+                mBanglaComposer.finish();
+                mConnection.reloadTextCache();
+            }
+        }
 
         Event currentEvent = event;
         while (null != currentEvent) {
@@ -338,6 +378,7 @@ public final class InputLogic {
      * Handle a press on the language switch key (the "globe key")
      */
     private void handleLanguageSwitchKey() {
+        mBanglaComposer.finish();
         mLatinIME.switchToNextSubtype();
     }
 
