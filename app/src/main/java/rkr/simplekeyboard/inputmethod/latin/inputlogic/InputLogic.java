@@ -22,6 +22,7 @@
 package rkr.simplekeyboard.inputmethod.latin.inputlogic;
 
 import android.os.SystemClock;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -73,6 +74,34 @@ public final class InputLogic {
 
     private boolean isBanglaPhonetic() {
         return mLatinIME.isBanglaPhonetic();
+    }
+
+    /**
+     * Phonetic transliteration only in ordinary text fields. Phone, number, password, email and
+     * URI fields keep Latin input (and ASCII digits), including browser address bars.
+     */
+    private boolean banglaPhoneticActive() {
+        if (!isBanglaPhonetic()) return false;
+        final EditorInfo ei = getCurrentInputEditorInfo();
+        if (ei == null) return false;
+        final int type = ei.inputType;
+        final int inputClass = type & InputType.TYPE_MASK_CLASS;
+        if (inputClass == InputType.TYPE_CLASS_NUMBER || inputClass == InputType.TYPE_CLASS_PHONE
+                || inputClass == InputType.TYPE_CLASS_DATETIME) {
+            return false;
+        }
+        if (InputTypeUtils.isPasswordInputType(type)
+                || InputTypeUtils.isVisiblePasswordInputType(type)) {
+            return false;
+        }
+        if (inputClass == InputType.TYPE_CLASS_TEXT) {
+            final int variation = type & InputType.TYPE_MASK_VARIATION;
+            if (InputTypeUtils.isEmailVariation(variation)
+                    || variation == InputType.TYPE_TEXT_VARIATION_URI) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -160,7 +189,7 @@ public final class InputLogic {
     public InputTransaction onCodeInput(final SettingsValues settingsValues, final Event event) {
         final InputTransaction inputTransaction = new InputTransaction(settingsValues);
 
-        if (isBanglaPhonetic() && event != null) {
+        if (banglaPhoneticActive() && event != null) {
             if (event.isFunctionalKeyEvent() && event.mKeyCode == Constants.CODE_DELETE
                     && mBanglaComposer.handleBackspace()) {
                 mConnection.reloadTextCache();
