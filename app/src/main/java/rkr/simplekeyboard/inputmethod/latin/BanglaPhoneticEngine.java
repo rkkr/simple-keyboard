@@ -153,6 +153,7 @@ public final class BanglaPhoneticEngine {
         String lastRoman = "";
         boolean noJoin = false;
         boolean forceIndependent = false;
+        int lastConsonantStart = 0;
         for (int i = 0; i < t.size(); i++) {
             String tok = t.get(i);
             String next = i + 1 < t.size() ? t.get(i + 1) : "";
@@ -188,6 +189,7 @@ public final class BanglaPhoneticEngine {
             }
 
             if (tok.equals("n")) {
+                lastConsonantStart = out.length();
                 if (next.equals("g")) {
                     if (isVowel(afterNext)) {
                         out.append("\u0999");                  // ঙ before a vowel
@@ -205,9 +207,11 @@ public final class BanglaPhoneticEngine {
                     out.append("\u0999");                      // ঙ before k
                 } else if (!next.isEmpty() && !isVowel(next)) {
                     String pair = PAIR.get("n|" + next);
-                    if (pair != null) { out.append(pair); i++; }
-                    else if (noJoin || next.equals("`")) out.append("ন");
-                    else out.append("ন").append(HASANTA);
+                    if (pair != null) {
+                        out.append(pair);
+                        lastConsonantStart = out.length() - pair.length();
+                        i++;
+                    } else out.append("ন");   // the next consonant adds the joining hasanta
                 } else {
                     out.append("ন");
                 }
@@ -218,9 +222,12 @@ public final class BanglaPhoneticEngine {
             }
 
             if (ALIAS.containsKey(tok)) {
+                boolean consonantAlias = tok.equals("chh") || tok.equals("x")
+                        || tok.equals("Nggh") || tok.equals("NGchh");
+                if (consonantAlias) lastConsonantStart = out.length();
                 out.append(ALIAS.get(tok));
-                before = (tok.equals("chh") || tok.equals("x") || tok.equals("Nggh") || tok.equals("NGchh"))
-                        ? Before.CONSONANT : Before.OTHER;
+                before = consonantAlias ? Before.CONSONANT
+                        : (tok.equals("G") ? Before.MARK : Before.OTHER);
                 lastRoman = tok;
                 noJoin = false;
                 continue;
@@ -242,13 +249,17 @@ public final class BanglaPhoneticEngine {
                 }
                 String pair = PAIR.get(lastRoman + "|" + tok);
                 if (pair != null && !noJoin && before == Before.CONSONANT) {
-                    deleteLastConsonant(out);
+                    out.setLength(lastConsonantStart);           // replace whole consonant unit
                     out.append(pair);
-                } else if (before == Before.CONSONANT && !noJoin
-                        && !NO_JOIN.contains(lastRoman + "|" + tok)) {
-                    out.append(HASANTA).append(CONSONANT.get(tok));
+                    lastConsonantStart = out.length() - pair.length();
                 } else {
-                    out.append(CONSONANT.get(tok));
+                    lastConsonantStart = out.length();
+                    if (before == Before.CONSONANT && !noJoin
+                            && !NO_JOIN.contains(lastRoman + "|" + tok)) {
+                        out.append(HASANTA).append(CONSONANT.get(tok));
+                    } else {
+                        out.append(CONSONANT.get(tok));
+                    }
                 }
                 before = Before.CONSONANT;
                 lastRoman = tok;
@@ -257,6 +268,8 @@ public final class BanglaPhoneticEngine {
             }
 
             if (tok.equals("rr")) {
+                forceIndependent = false;
+                lastConsonantStart = out.length();
                 boolean beforePhola = next.equals("y") || next.equals("z") || next.equals("Z")
                         || next.equals("w") || next.equals("r");
                 boolean reph = before == Before.CONSONANT || before == Before.VOWEL || before == Before.MARK;
@@ -268,6 +281,8 @@ public final class BanglaPhoneticEngine {
             }
 
             if (tok.equals("y") || tok.equals("Y") || tok.equals("z") || tok.equals("Z")) {
+                forceIndependent = false;
+                lastConsonantStart = out.length();
                 if (tok.equals("Y")) {
                     out.append("\u09DF");                    // capital Y keeps letter য়
                     before = Before.CONSONANT;
@@ -295,6 +310,8 @@ public final class BanglaPhoneticEngine {
             }
 
             if (tok.equals("w")) {
+                forceIndependent = false;
+                lastConsonantStart = out.length();
                 if (before == Before.CONSONANT) out.append(HASANTA).append("ব");
                 else out.append("ও");
                 before = before == Before.CONSONANT ? Before.CONSONANT : Before.VOWEL;
@@ -304,6 +321,7 @@ public final class BanglaPhoneticEngine {
             }
 
             if (SPECIAL.containsKey(tok)) {
+                forceIndependent = false;
                 out.append(SPECIAL.get(tok));
                 before = tok.equals(";") || tok.equals(".") || tok.equals("?") || tok.equals("!")
                         || tok.equals(",") || tok.equals(".`") ? Before.OTHER : Before.MARK;
@@ -313,6 +331,7 @@ public final class BanglaPhoneticEngine {
             }
 
             out.append(tok);
+            forceIndependent = false;
             before = Before.OTHER;
             lastRoman = tok;
             noJoin = false;

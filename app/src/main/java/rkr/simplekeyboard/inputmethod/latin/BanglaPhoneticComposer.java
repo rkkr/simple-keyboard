@@ -84,6 +84,7 @@ public final class BanglaPhoneticComposer {
         if (codePoint >= 'A' && codePoint <= 'Z') return true;
         if (codePoint >= '0' && codePoint <= '9') return true;
         return codePoint == '.' || codePoint == ',' || codePoint == '$' || codePoint == '^'
-                || codePoint == ':' || codePoint == '%' || codePoint == '/' || codePoint == '`';
+                || codePoint == ':' || codePoint == '%' || codePoint == '/' || codePoint == '`'
+                || codePoint == ';' || codePoint == '!' || codePoint == '?';
     }
 }
